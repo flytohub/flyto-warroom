@@ -34,6 +34,7 @@ ee-sim-logs:
 
 audit:
 	python3 install/scripts/audit-release-tree.py .
+	python3 scripts/audit-github-protection.py .
 
 build-local-images:
 	sh install/scripts/build-local-images.sh /Users/chester/flytohub

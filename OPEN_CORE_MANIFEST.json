@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-06-30T13:43:22.157669+00:00",
+  "generated_at": "2026-06-30T14:07:16.192091+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-indexer/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -43,11 +43,19 @@
     "docs/local-install.md",
     "docs/enterprise-simulation.md",
     "docs/code-protection.md",
+    "TRADEMARK.md",
+    "SECURITY.md",
+    "GOVERNANCE.md",
+    "docs/official-builds.md",
+    "docs/github-hardening.md",
     ".gitignore",
     "LICENSES.md",
     "CONTRIBUTING.md",
     "docs/upstream-feedback-loop.md",
     "scripts/export-upstream-patches.py",
+    ".github/CODEOWNERS",
+    ".github/pull_request_template.md",
+    "scripts/audit-github-protection.py",
     ".github/workflows/ci.yml"
   ],
   "packages": [

@@ -26,8 +26,11 @@ GENERATED_REVIEW_PREFIXES = (
 GENERATED_REVIEW_FILES = {
     "README.md",
     "CONTRIBUTING.md",
+    "GOVERNANCE.md",
     "LICENSES.md",
     "OPEN_CORE_MANIFEST.json",
+    "SECURITY.md",
+    "TRADEMARK.md",
 }
 
 

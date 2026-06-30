@@ -23,6 +23,15 @@ REQUIRED = [
     "docs/local-install.md",
     "docs/enterprise-simulation.md",
     "docs/code-protection.md",
+    "docs/official-builds.md",
+    "docs/github-hardening.md",
+    "TRADEMARK.md",
+    "SECURITY.md",
+    "GOVERNANCE.md",
+    ".github/CODEOWNERS",
+    ".github/pull_request_template.md",
+    ".github/workflows/ci.yml",
+    "scripts/audit-github-protection.py",
 ]
 
 PRIVATE_GLOBS = [

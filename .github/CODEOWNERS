@@ -1,0 +1,11 @@
+# Flyto2 Warroom CE generated open-core mirror.
+* @ChesterHsu
+
+/OPEN_CORE_MANIFEST.json @ChesterHsu
+/TRADEMARK.md @ChesterHsu
+/SECURITY.md @ChesterHsu
+/GOVERNANCE.md @ChesterHsu
+/.github/ @ChesterHsu
+/install/ @ChesterHsu
+/scripts/ @ChesterHsu
+/packages/flyto-contracts/ @ChesterHsu
