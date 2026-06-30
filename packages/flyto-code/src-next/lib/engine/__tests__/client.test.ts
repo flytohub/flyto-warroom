@@ -131,6 +131,21 @@ describe('engine client — token handling', () => {
     expect(firebaseAuthMock.currentUser.getIdToken).not.toHaveBeenCalled()
   })
 
+  it('with local_jwt auth mode, sends the session JWT without calling Firebase', async () => {
+    envMock.authMode = 'local_jwt'
+    sessionStorage.setItem('jwt_access_token', JSON.stringify('local-session-token'))
+    firebaseAuthMock.currentUser = {
+      getIdToken: vi.fn().mockResolvedValue('should-not-be-used'),
+    }
+    fetchMock.mockResolvedValueOnce(okJson({ ok: true }))
+
+    await request('GET', '/api/v1/me')
+
+    const [, init] = fetchMock.mock.calls[0]
+    expect(init.headers.Authorization).toBe('Bearer local-session-token')
+    expect(firebaseAuthMock.currentUser.getIdToken).not.toHaveBeenCalled()
+  })
+
   it('with enterprise auth mode, fails closed when no session JWT exists', async () => {
     envMock.authMode = 'enterprise'
     firebaseAuthMock.currentUser = {

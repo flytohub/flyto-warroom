@@ -17,8 +17,14 @@ import {
 } from 'firebase/auth'
 import { auth } from '@lib/firebase'
 import { env } from '@lib/env'
+import { isSessionJWTAuthMode } from '@lib/engine/authToken'
 import { GITLAB_TOKEN_KEY } from '@lib/oauth'
 import type { ReactNode } from 'react'
+
+const JWT_SESSION_KEY = 'jwt_access_token'
+const SESSION_USER_KEY = 'flyto_session_user'
+const sessionJWTAuth = isSessionJWTAuthMode()
+const localEngineAuth = env.authMode === 'local' || env.authMode === 'local_jwt' || env.authMode === 'community'
 
 /** DEV-only: a fake FirebaseUser. Wrapped in a helper that ONLY gets called
  *  from inside `if (import.meta.env.DEV && env.devAuthBypass)` blocks so
@@ -54,6 +60,95 @@ function makeDevUser(): FirebaseUser {
   return devUser
 }
 
+type EngineUser = {
+  id: string
+  email?: string
+  displayName?: string
+  photoURL?: string | null
+}
+
+function makeSessionUser(u: EngineUser): FirebaseUser {
+  return {
+    uid: u.id,
+    email: u.email || null,
+    displayName: u.displayName || u.email || u.id,
+    photoURL: u.photoURL || null,
+    emailVerified: true,
+    isAnonymous: false,
+    providerData: [],
+    refreshToken: '',
+    tenantId: null,
+    metadata: {},
+    phoneNumber: null,
+    providerId: env.authMode,
+    async getIdToken() {
+      const raw = sessionStorage.getItem(JWT_SESSION_KEY)
+      if (!raw) throw new Error('Not authenticated')
+      const parsed = JSON.parse(raw) as unknown
+      if (typeof parsed !== 'string' || !parsed) throw new Error('Not authenticated')
+      return parsed
+    },
+    getIdTokenResult: async () => ({}),
+    reload: async () => {},
+    delete: async () => {},
+    toJSON: () => u,
+  } as unknown as FirebaseUser
+}
+
+function readSessionUser(): FirebaseUser | null {
+  if (!sessionJWTAuth) return null
+  try {
+    const rawToken = sessionStorage.getItem(JWT_SESSION_KEY)
+    const rawUser = sessionStorage.getItem(SESSION_USER_KEY)
+    if (!rawToken || !rawUser) return null
+    const user = JSON.parse(rawUser) as EngineUser
+    if (!user?.id) return null
+    return makeSessionUser(user)
+  } catch {
+    return null
+  }
+}
+
+function clearSessionAuth() {
+  sessionStorage.removeItem(JWT_SESSION_KEY)
+  sessionStorage.removeItem(SESSION_USER_KEY)
+}
+
+function hasSessionToken(): boolean {
+  try {
+    return !!sessionStorage.getItem(JWT_SESSION_KEY)
+  } catch {
+    return false
+  }
+}
+
+async function fetchEngineMe(token: string): Promise<EngineUser> {
+  const res = await fetch(`${env.engineUrl}/api/v1/me`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  if (!res.ok) throw new Error('Not authenticated')
+  return res.json()
+}
+
+async function signInWithLocalEngine(email: string, password: string): Promise<FirebaseUser> {
+  const res = await fetch(`${env.engineUrl}/api/v1/auth/local/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+  })
+  if (!res.ok) throw new Error('auth/invalid-credential')
+  const body = await res.json() as {
+    accessToken?: string
+    access_token?: string
+    user?: EngineUser
+  }
+  const token = body.accessToken || body.access_token
+  if (!token || !body.user?.id) throw new Error('auth/invalid-credential')
+  sessionStorage.setItem(JWT_SESSION_KEY, JSON.stringify(token))
+  sessionStorage.setItem(SESSION_USER_KEY, JSON.stringify(body.user))
+  return makeSessionUser(body.user)
+}
+
 export interface AuthState {
   user: FirebaseUser | null
   loading: boolean
@@ -73,10 +168,14 @@ const AuthContext = createContext<AuthState | null>(null)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<FirebaseUser | null>(
-    () => (import.meta.env.DEV && env.devAuthBypass ? makeDevUser() : null),
+    () => {
+      if (sessionJWTAuth) return readSessionUser()
+      if (import.meta.env.DEV && env.devAuthBypass) return makeDevUser()
+      return null
+    },
   )
   const [loading, setLoading] = useState(
-    !(import.meta.env.DEV && env.devAuthBypass),
+    sessionJWTAuth ? hasSessionToken() : !(import.meta.env.DEV && env.devAuthBypass),
   )
   // GitHub connection state is now managed by useGitHubConnection (queries engine)
   const [gitlabToken, setGitlabTokenState] = useState<string | null>(
@@ -90,6 +189,43 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
+    if (sessionJWTAuth) {
+      const raw = sessionStorage.getItem(JWT_SESSION_KEY)
+      if (!raw) {
+        setLoading(false)
+        return
+      }
+      let cancelled = false
+      let token = ''
+      try {
+        const parsed = JSON.parse(raw) as unknown
+        token = typeof parsed === 'string' ? parsed : ''
+      } catch {
+        token = ''
+      }
+      if (!token) {
+        clearSessionAuth()
+        setUser(null)
+        setLoading(false)
+        return
+      }
+      fetchEngineMe(token)
+        .then((engineUser) => {
+          if (cancelled) return
+          sessionStorage.setItem(SESSION_USER_KEY, JSON.stringify(engineUser))
+          setUser(makeSessionUser(engineUser))
+          setLoading(false)
+        })
+        .catch(() => {
+          if (cancelled) return
+          clearSessionAuth()
+          setUser(null)
+          setLoading(false)
+        })
+      return () => {
+        cancelled = true
+      }
+    }
     // Skip the Firebase listener entirely when dev bypass is on — the initial
     // state already reflects the fake user and firebase init may also be
     // mocked out in this mode. Guard with import.meta.env.DEV so the check
@@ -132,7 +268,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const bc = typeof BroadcastChannel !== 'undefined' ? new BroadcastChannel('flyto:auth') : null
 
     const doSignOut = () => {
-      firebaseSignOut(auth).catch(() => {})
+      if (sessionJWTAuth) clearSessionAuth()
+      else firebaseSignOut(auth).catch(() => {})
       sessionStorage.removeItem(GITLAB_TOKEN_KEY)
       setGitlabTokenState(null)
       setUser(null)
@@ -159,6 +296,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Check redirect result on mount (for connectGitHub redirect flow)
   useEffect(() => {
+    if (sessionJWTAuth) return
     getRedirectResult(auth).then((result) => {
       if (!result) return
       GithubAuthProvider.credentialFromResult(result)
@@ -257,6 +395,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     connectGitHub: handleConnectGitHub,
     setGitLabToken,
     signInWithEmail: async (email, password) => {
+      if (sessionJWTAuth) {
+        if (!localEngineAuth) throw new Error('auth/provider-unavailable')
+        const sessionUser = await signInWithLocalEngine(email, password)
+        setUser(sessionUser)
+        setLoading(false)
+        return
+      }
       const cred = await signInWithEmailAndPassword(auth, email, password)
       setUser(cred.user)
       setLoading(false)
@@ -270,6 +415,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       })
     },
     resetPassword: async (email) => {
+      if (sessionJWTAuth) throw new Error('auth/provider-unavailable')
       await sendPasswordResetEmail(auth, email)
     },
     signOut: async () => {
@@ -289,6 +435,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         }
         for (const k of drop) localStorage.removeItem(k)
       } catch { /* private mode / quota — no-op */ }
+      if (sessionJWTAuth) {
+        clearSessionAuth()
+        setUser(null)
+        setLoading(false)
+        return
+      }
       await firebaseSignOut(auth)
     },
   }

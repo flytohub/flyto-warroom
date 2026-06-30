@@ -51,7 +51,7 @@ PY
 npm install --package-lock-only --ignore-scripts --legacy-peer-deps --prefix "$CODE_CTX"
 docker build \
   --build-arg VITE_ENGINE_URL="${FLYTO_CODE_ENGINE_URL:-http://localhost:8080}" \
-  --build-arg VITE_AUTH_MODE="${FLYTO_CODE_AUTH_MODE:-enterprise}" \
+  --build-arg VITE_AUTH_MODE="${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
   --build-arg VITE_AUTOMATION_URL="${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
   --build-arg VITE_CORTEX_URL="${FLYTO_CORTEX_URL:-http://localhost:8080}" \
   -t "$FRONTEND_IMAGE:$TAG" \

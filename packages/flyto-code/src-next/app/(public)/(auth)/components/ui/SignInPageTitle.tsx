@@ -1,8 +1,10 @@
 import Typography from '@mui/material/Typography';
 import Link from '@components/adapters/Link';
 import { t } from '@lib/i18n'
+import { env } from '@lib/env';
 
 function SignInPageTitle() {
+	const localAuth = env.authMode === 'local' || env.authMode === 'local_jwt' || env.authMode === 'community';
 	return (
 		<div className="w-full">
 			{/* Logo + heading clustered tightly: the previous layout had
@@ -19,15 +21,17 @@ function SignInPageTitle() {
 					{t('auth.signIn')}
 				</Typography>
 			</div>
-			<div className="mt-1.5 flex items-baseline font-medium">
-				<Typography>{t('auth.noAccount')}</Typography>
-				<Link
-					className="ml-1"
-					to="/sign-up"
-				>
-					{t('auth.register')}
-				</Link>
-			</div>
+			{!localAuth && (
+				<div className="mt-1.5 flex items-baseline font-medium">
+					<Typography>{t('auth.noAccount')}</Typography>
+					<Link
+						className="ml-1"
+						to="/sign-up"
+					>
+						{t('auth.register')}
+					</Link>
+				</div>
+			)}
 		</div>
 	);
 }

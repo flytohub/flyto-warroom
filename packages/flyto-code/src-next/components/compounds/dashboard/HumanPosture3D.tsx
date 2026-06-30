@@ -45,12 +45,12 @@ interface AnatomyPathSpec {
 }
 
 const anatomySignalPositions: Record<HumanPostureSignal['id'], [number, number, number]> = {
-  identity: [0, 1.92, 0.46],
-  cloud: [-0.22, 1.1, 0.48],
-  code: [-0.78, 0.72, 0.44],
-  external: [0.78, 0.72, 0.44],
-  runtime: [0, -0.28, 0.46],
-  workflow: [0.28, 0.36, 0.48],
+  identity: [0, 1.76, 0.42],
+  cloud: [-0.26, 0.88, 0.42],
+  code: [-0.82, 0.1, 0.38],
+  external: [0.82, 0.1, 0.38],
+  runtime: [0, -0.52, 0.4],
+  workflow: [0.24, 0.24, 0.42],
 }
 
 const vascularPaths: AnatomyPathSpec[] = [
@@ -59,63 +59,63 @@ const vascularPaths: AnatomyPathSpec[] = [
     kind: 'artery',
     radius: 0.018,
     opacity: 0.86,
-    points: [[0.04, 0.95, 0.24], [0.02, 1.24, 0.22], [0, 1.52, 0.18], [0, 1.77, 0.16]],
+    points: [[0.04, 0.82, 0.24], [0.02, 1.08, 0.22], [0, 1.34, 0.18], [0, 1.62, 0.16]],
   },
   {
     id: 'aorta-core',
     kind: 'artery',
     radius: 0.022,
     opacity: 0.92,
-    points: [[0.02, 0.86, 0.26], [0, 0.46, 0.24], [0, 0.05, 0.2], [0, -0.38, 0.16], [-0.2, -0.84, 0.1]],
+    points: [[0.02, 0.76, 0.26], [0, 0.38, 0.24], [0, -0.08, 0.2], [-0.08, -0.54, 0.16], [-0.2, -1.02, 0.1]],
   },
   {
     id: 'aorta-leg-right',
     kind: 'artery',
     radius: 0.015,
     opacity: 0.72,
-    points: [[0, -0.36, 0.16], [0.2, -0.78, 0.12], [0.28, -1.22, 0.08]],
+    points: [[0, -0.5, 0.16], [0.2, -0.92, 0.12], [0.26, -1.35, 0.08], [0.24, -1.7, 0.1]],
   },
   {
     id: 'aorta-arm-left',
     kind: 'artery',
     radius: 0.014,
     opacity: 0.72,
-    points: [[-0.1, 1.02, 0.22], [-0.42, 0.88, 0.2], [-0.68, 0.56, 0.17], [-0.86, 0.24, 0.12]],
+    points: [[-0.16, 0.92, 0.22], [-0.48, 0.74, 0.2], [-0.72, 0.28, 0.17], [-0.78, -0.26, 0.12]],
   },
   {
     id: 'aorta-arm-right',
     kind: 'artery',
     radius: 0.014,
     opacity: 0.72,
-    points: [[0.1, 1.02, 0.22], [0.42, 0.88, 0.2], [0.68, 0.56, 0.17], [0.86, 0.24, 0.12]],
+    points: [[0.16, 0.92, 0.22], [0.48, 0.74, 0.2], [0.72, 0.28, 0.17], [0.78, -0.26, 0.12]],
   },
   {
     id: 'vena-core',
     kind: 'vein',
     radius: 0.014,
     opacity: 0.72,
-    points: [[-0.08, 1.55, 0.12], [-0.12, 1.18, 0.18], [-0.11, 0.65, 0.2], [-0.1, 0.04, 0.14], [-0.22, -0.8, 0.1]],
+    points: [[-0.08, 1.38, 0.12], [-0.12, 1, 0.18], [-0.11, 0.48, 0.2], [-0.1, -0.1, 0.14], [-0.22, -1.02, 0.1]],
   },
   {
     id: 'vena-right',
     kind: 'vein',
     radius: 0.012,
     opacity: 0.64,
-    points: [[0.1, 1.46, 0.08], [0.16, 1, 0.14], [0.14, 0.42, 0.14], [0.22, -0.2, 0.1], [0.32, -0.94, 0.06]],
+    points: [[0.1, 1.3, 0.08], [0.16, 0.86, 0.14], [0.14, 0.3, 0.14], [0.22, -0.32, 0.1], [0.32, -1.18, 0.06]],
   },
   {
     id: 'nerve-left',
     kind: 'nerve',
     radius: 0.008,
     opacity: 0.5,
-    points: [[-0.02, 1.72, -0.02], [-0.16, 1.28, 0.02], [-0.38, 0.7, 0.04], [-0.62, 0.18, 0.02], [-0.28, -0.92, -0.02]],
+    points: [[-0.02, 1.55, -0.02], [-0.16, 1.12, 0.02], [-0.36, 0.52, 0.04], [-0.62, -0.08, 0.02], [-0.28, -1.28, -0.02]],
   },
   {
     id: 'nerve-right',
     kind: 'nerve',
     radius: 0.008,
     opacity: 0.5,
-    points: [[0.02, 1.72, -0.02], [0.16, 1.28, 0.02], [0.38, 0.7, 0.04], [0.62, 0.18, 0.02], [0.28, -0.92, -0.02]],
+    points: [[0.02, 1.55, -0.02], [0.16, 1.12, 0.02], [0.36, 0.52, 0.04], [0.62, -0.08, 0.02], [0.28, -1.28, -0.02]],
   },
 ]
 
@@ -177,7 +177,7 @@ export function HumanPosture3D({ signals }: HumanPosture3DProps) {
     <Canvas
       className="dashboard-human-canvas"
       data-testid="dashboard-human-3d-canvas"
-      camera={{ position: [0, 0.34, 6.48], fov: 39 }}
+      camera={{ position: [0, 0, 5.82], fov: 38 }}
       dpr={[1, 2]}
       gl={{ antialias: true, alpha: true }}
     >
@@ -201,7 +201,7 @@ function HumanRig({ signals, palette }: {
     const tNow = state.clock.getElapsedTime()
     if (rigRef.current) {
       rigRef.current.rotation.y = Math.sin(tNow * 0.32) * 0.16
-      rigRef.current.position.y = -0.12 + Math.sin(tNow * 0.62) * 0.035
+      rigRef.current.position.y = -0.02 + Math.sin(tNow * 0.62) * 0.035
     }
     if (scanRef.current) {
       scanRef.current.rotation.y = tNow * 0.2
@@ -242,11 +242,11 @@ function HumanRig({ signals, palette }: {
         ))}
       </group>
 
-      <mesh position={[0, -1.5, -0.1]} rotation={[-Math.PI / 2, 0, 0]} scale={[1.24, 0.68, 1]}>
+      <mesh position={[0, -1.9, -0.1]} rotation={[-Math.PI / 2, 0, 0]} scale={[1.24, 0.68, 1]}>
         <circleGeometry args={[1.9, 96]} />
         <meshBasicMaterial color={palette.floor} transparent opacity={0.46} />
       </mesh>
-      <mesh position={[0, -1.48, -0.06]} rotation={[-Math.PI / 2, 0, 0]} scale={[1.08, 0.62, 1]}>
+      <mesh position={[0, -1.88, -0.06]} rotation={[-Math.PI / 2, 0, 0]} scale={[1.08, 0.62, 1]}>
         <torusGeometry args={[1.9, 0.006, 8, 128]} />
         <meshBasicMaterial color={palette.floorLine} transparent opacity={0.3} />
       </mesh>
@@ -257,63 +257,76 @@ function HumanRig({ signals, palette }: {
 function AnatomyShell({ palette }: { palette: AnatomyPalette }) {
   return (
     <group>
-      <mesh position={[0, 1.84, 0]} scale={[0.72, 0.92, 0.66]}>
-        <sphereGeometry args={[0.34, 48, 48]} />
-        <meshStandardMaterial
-          color={palette.shell}
-          transparent
-          opacity={0.24}
-          roughness={0.18}
-          metalness={0.12}
-          side={THREE.DoubleSide}
-          depthWrite={false}
-        />
-      </mesh>
-      <mesh position={[0, 0.67, 0]} scale={[0.82, 1.16, 0.5]}>
-        <capsuleGeometry args={[0.48, 1.18, 24, 48]} />
-        <meshStandardMaterial
-          color={palette.shell}
-          emissive={palette.shield}
-          emissiveIntensity={0.06}
-          transparent
-          opacity={0.22}
-          roughness={0.18}
-          metalness={0.18}
-          side={THREE.DoubleSide}
-          depthWrite={false}
-        />
-      </mesh>
-      <mesh position={[0, -0.36, 0]} scale={[0.78, 0.48, 0.48]}>
-        <sphereGeometry args={[0.54, 40, 28]} />
-        <meshStandardMaterial color={palette.shell} transparent opacity={0.19} roughness={0.2} metalness={0.14} depthWrite={false} />
-      </mesh>
-      <ShellLimb position={[-0.57, 0.8, 0]} rotation={[0, 0, -0.36]} length={1.5} color={palette.shell} rim={palette.shellRim} />
-      <ShellLimb position={[0.57, 0.8, 0]} rotation={[0, 0, 0.36]} length={1.5} color={palette.shell} rim={palette.shellRim} />
-      <ShellLimb position={[-0.22, -0.92, 0]} rotation={[0, 0, 0.11]} length={1.18} color={palette.shell} rim={palette.shellRim} />
-      <ShellLimb position={[0.22, -0.92, 0]} rotation={[0, 0, -0.11]} length={1.18} color={palette.shell} rim={palette.shellRim} />
-      <mesh position={[0, 0.64, -0.04]} scale={[0.58, 1.26, 0.58]}>
-        <sphereGeometry args={[0.78, 36, 32]} />
-        <meshBasicMaterial color={palette.shellRim} wireframe transparent opacity={0.12} />
+      <SoftSphere position={[0, 1.62, 0.02]} scale={[0.26, 0.34, 0.23]} color={palette.shell} opacity={0.42} />
+      <SoftSphere position={[0, 1.25, 0]} scale={[0.13, 0.18, 0.13]} color={palette.shell} opacity={0.34} />
+      <ShellCapsule position={[-0.34, 1.12, 0]} rotation={[0, 0, Math.PI / 2.35]} length={0.58} radius={0.075} color={palette.shell} rim={palette.shellRim} opacity={0.32} />
+      <ShellCapsule position={[0.34, 1.12, 0]} rotation={[0, 0, -Math.PI / 2.35]} length={0.58} radius={0.075} color={palette.shell} rim={palette.shellRim} opacity={0.32} />
+
+      <SoftSphere position={[0, 0.72, 0]} scale={[0.54, 0.72, 0.3]} color={palette.shell} opacity={0.29} />
+      <SoftSphere position={[0, 0.12, 0.02]} scale={[0.4, 0.52, 0.25]} color={palette.shell} opacity={0.27} />
+      <SoftSphere position={[0, -0.42, 0]} scale={[0.52, 0.32, 0.28]} color={palette.shell} opacity={0.3} />
+
+      <ShellCapsule position={[-0.58, 0.75, 0]} rotation={[0, 0, -0.2]} length={0.72} radius={0.105} color={palette.shell} rim={palette.shellRim} opacity={0.34} />
+      <ShellCapsule position={[-0.72, 0.05, 0.02]} rotation={[0, 0, 0.1]} length={0.72} radius={0.088} color={palette.shell} rim={palette.shellRim} opacity={0.32} />
+      <SoftSphere position={[-0.72, -0.38, 0.04]} scale={[0.11, 0.16, 0.1]} color={palette.shell} opacity={0.36} />
+      <ShellCapsule position={[0.58, 0.75, 0]} rotation={[0, 0, 0.2]} length={0.72} radius={0.105} color={palette.shell} rim={palette.shellRim} opacity={0.34} />
+      <ShellCapsule position={[0.72, 0.05, 0.02]} rotation={[0, 0, -0.1]} length={0.72} radius={0.088} color={palette.shell} rim={palette.shellRim} opacity={0.32} />
+      <SoftSphere position={[0.72, -0.38, 0.04]} scale={[0.11, 0.16, 0.1]} color={palette.shell} opacity={0.36} />
+
+      <ShellCapsule position={[-0.22, -0.88, 0]} rotation={[0, 0, 0.05]} length={0.78} radius={0.12} color={palette.shell} rim={palette.shellRim} opacity={0.34} />
+      <ShellCapsule position={[-0.22, -1.45, 0]} rotation={[0, 0, -0.03]} length={0.7} radius={0.095} color={palette.shell} rim={palette.shellRim} opacity={0.33} />
+      <SoftSphere position={[-0.24, -1.86, 0.12]} scale={[0.19, 0.08, 0.27]} color={palette.shell} opacity={0.36} />
+      <ShellCapsule position={[0.22, -0.88, 0]} rotation={[0, 0, -0.05]} length={0.78} radius={0.12} color={palette.shell} rim={palette.shellRim} opacity={0.34} />
+      <ShellCapsule position={[0.22, -1.45, 0]} rotation={[0, 0, 0.03]} length={0.7} radius={0.095} color={palette.shell} rim={palette.shellRim} opacity={0.33} />
+      <SoftSphere position={[0.24, -1.86, 0.12]} scale={[0.19, 0.08, 0.27]} color={palette.shell} opacity={0.36} />
+
+      <mesh position={[0, 0.18, -0.02]} scale={[0.46, 1.02, 0.38]}>
+        <sphereGeometry args={[0.74, 40, 34]} />
+        <meshBasicMaterial color={palette.shellRim} wireframe transparent opacity={0.08} />
       </mesh>
     </group>
   )
 }
 
-function ShellLimb({ position, rotation, length, color, rim }: {
+function SoftSphere({ position, scale, color, opacity }: {
+  position: [number, number, number]
+  scale: [number, number, number]
+  color: string
+  opacity: number
+}) {
+  return (
+    <mesh position={position} scale={scale}>
+      <sphereGeometry args={[1, 40, 32]} />
+      <meshStandardMaterial
+        color={color}
+        transparent
+        opacity={opacity}
+        roughness={0.2}
+        metalness={0.12}
+        side={THREE.DoubleSide}
+        depthWrite={false}
+      />
+    </mesh>
+  )
+}
+
+function ShellCapsule({ position, rotation, length, radius, color, rim, opacity }: {
   position: [number, number, number]
   rotation: [number, number, number]
   length: number
+  radius: number
   color: string
   rim: string
+  opacity: number
 }) {
   return (
     <group position={position} rotation={rotation}>
       <mesh>
-        <capsuleGeometry args={[0.1, length, 14, 28]} />
-        <meshStandardMaterial color={color} transparent opacity={0.22} metalness={0.12} roughness={0.28} depthWrite={false} />
+        <capsuleGeometry args={[radius, length, 16, 28]} />
+        <meshStandardMaterial color={color} transparent opacity={opacity} metalness={0.12} roughness={0.28} depthWrite={false} />
       </mesh>
       <mesh>
-        <capsuleGeometry args={[0.106, length, 12, 24]} />
+        <capsuleGeometry args={[radius * 1.04, length, 12, 24]} />
         <meshBasicMaterial color={rim} wireframe transparent opacity={0.1} />
       </mesh>
     </group>
@@ -323,15 +336,15 @@ function ShellLimb({ position, rotation, length, color, rim }: {
 function AnatomyCore({ palette }: { palette: AnatomyPalette }) {
   return (
     <group>
-      <mesh position={[-0.18, 0.88, 0.08]} rotation={[0.08, 0.1, -0.2]} scale={[0.2, 0.34, 0.12]}>
+      <mesh position={[-0.16, 0.76, 0.08]} rotation={[0.08, 0.1, -0.18]} scale={[0.18, 0.3, 0.11]}>
         <sphereGeometry args={[1, 32, 24]} />
         <meshStandardMaterial color={palette.lung} emissive={palette.lung} emissiveIntensity={0.16} transparent opacity={0.42} roughness={0.36} />
       </mesh>
-      <mesh position={[0.18, 0.88, 0.08]} rotation={[0.08, -0.1, 0.2]} scale={[0.2, 0.34, 0.12]}>
+      <mesh position={[0.16, 0.76, 0.08]} rotation={[0.08, -0.1, 0.18]} scale={[0.18, 0.3, 0.11]}>
         <sphereGeometry args={[1, 32, 24]} />
         <meshStandardMaterial color={palette.lung} emissive={palette.lung} emissiveIntensity={0.16} transparent opacity={0.42} roughness={0.36} />
       </mesh>
-      <group position={[0.04, 0.74, 0.27]} rotation={[0.1, -0.22, 0.25]}>
+      <group position={[0.04, 0.66, 0.27]} rotation={[0.1, -0.22, 0.25]}>
         <mesh position={[-0.04, 0.06, 0]} scale={[0.11, 0.13, 0.1]}>
           <sphereGeometry args={[1, 28, 20]} />
           <meshStandardMaterial color={palette.heart} emissive={palette.heart} emissiveIntensity={0.38} roughness={0.18} metalness={0.12} />
@@ -345,16 +358,20 @@ function AnatomyCore({ palette }: { palette: AnatomyPalette }) {
           <meshStandardMaterial color={palette.heart} emissive={palette.heart} emissiveIntensity={0.34} roughness={0.2} metalness={0.1} />
         </mesh>
       </group>
-      <mesh position={[0, 0.22, -0.05]} rotation={[0, 0, 0]} scale={[0.06, 1.08, 0.06]}>
-        <capsuleGeometry args={[1, 0.65, 12, 26]} />
+      <mesh position={[0, 0.08, -0.05]} rotation={[0, 0, 0]} scale={[0.048, 1.2, 0.048]}>
+        <capsuleGeometry args={[1, 0.8, 12, 26]} />
         <meshStandardMaterial color={palette.bone} transparent opacity={0.66} roughness={0.32} metalness={0.08} />
       </mesh>
-      {[-0.18, -0.09, 0, 0.09, 0.18].map((offset, index) => (
-        <mesh key={offset} position={[0, 0.55 + index * 0.12, 0.04]} rotation={[0, 0, 0]} scale={[0.58 - index * 0.035, 0.16, 0.22]}>
-          <torusGeometry args={[0.55, 0.01, 8, 64]} />
+      {[-0.2, -0.1, 0, 0.1, 0.2].map((offset, index) => (
+        <mesh key={offset} position={[0, 0.43 + index * 0.11, 0.04]} rotation={[0, 0, 0]} scale={[0.5 - index * 0.025, 0.14, 0.2]}>
+          <torusGeometry args={[0.52, 0.009, 8, 64]} />
           <meshBasicMaterial color={palette.bone} transparent opacity={0.2} />
         </mesh>
       ))}
+      <mesh position={[0, -0.43, 0.02]} rotation={[Math.PI / 2, 0, 0]} scale={[0.48, 0.26, 0.12]}>
+        <torusGeometry args={[0.72, 0.012, 8, 72]} />
+        <meshBasicMaterial color={palette.bone} transparent opacity={0.18} />
+      </mesh>
     </group>
   )
 }

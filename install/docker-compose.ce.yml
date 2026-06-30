@@ -25,8 +25,16 @@ services:
       - "127.0.0.1:${FLYTO_ENGINE_PORT:-8080}:8080"
     environment:
       FLYTO_EDITION: "community"
+      FLYTO_AUTH_MODE: "local_jwt"
       FLYTO_ENV: "${FLYTO_ENV:-development}"
-      FLYTO_DEV_AUTH: "${FLYTO_DEV_AUTH:-1}"
+      FLYTO_LOCAL_AUTH_JWT_SECRET: "${FLYTO_LOCAL_AUTH_JWT_SECRET:?set FLYTO_LOCAL_AUTH_JWT_SECRET in install/.env}" # placeholder
+      FLYTO_LOCAL_AUTH_EMAIL: "${FLYTO_LOCAL_AUTH_EMAIL:?set FLYTO_LOCAL_AUTH_EMAIL in install/.env}"
+      FLYTO_LOCAL_AUTH_PASSWORD_SHA256: "${FLYTO_LOCAL_AUTH_PASSWORD_SHA256:?set FLYTO_LOCAL_AUTH_PASSWORD_SHA256 in install/.env}" # placeholder
+      FLYTO_LOCAL_AUTH_DISPLAY_NAME: "${FLYTO_LOCAL_AUTH_DISPLAY_NAME:-Local Admin}"
+      FLYTO_LOCAL_AUTH_USER_ID: "${FLYTO_LOCAL_AUTH_USER_ID:-local-admin}"
+      FLYTO_LOCAL_AUTH_ORG_ID: "${FLYTO_LOCAL_AUTH_ORG_ID:-local-warroom}"
+      FLYTO_LOCAL_AUTH_ORG_NAME: "${FLYTO_LOCAL_AUTH_ORG_NAME:-Flyto2 Warroom}"
+      FLYTO_LOCAL_AUTH_ORG_SLUG: "${FLYTO_LOCAL_AUTH_ORG_SLUG:-flyto2-warroom}"
       FLYTO_CORS_ORIGINS: "${FLYTO_CORS_ORIGINS:-http://localhost:8088,http://127.0.0.1:8088,http://localhost:5173,http://127.0.0.1:5173}"
       FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable" # placeholder
       FLYTO_SCAN_DRAINER: "${FLYTO_SCAN_DRAINER:-0}"
@@ -36,9 +44,9 @@ services:
       FLYTO_VERIFICATION_CALLBACK_URL: "http://engine:8080/api/v1/code/runner/executions/callback"
       FLYTO_PDF_URL: "http://pdf:3000"
       FLYTO_BRAND_VISION_URL: "http://brand-vision:8095"
-      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:-}" # placeholder
-      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:-}" # placeholder
-      FLYTO_RUNNER_DEV_OPEN: "${FLYTO_RUNNER_DEV_OPEN:-1}"
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env}" # placeholder
+      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:?set FLYTO_VERIFICATION_SECRET in install/.env}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
       FLYTO_MASTER_KEY: "${FLYTO_MASTER_KEY:-}"
       FLYTO_MASTER_KEY_ID: "${FLYTO_MASTER_KEY_ID:-local-ce}"
       FLYTO_PLATFORM_ADMIN_UIDS: "${FLYTO_PLATFORM_ADMIN_UIDS:-}"
@@ -82,8 +90,8 @@ services:
       FLYTO_RUNNER_URL: "http://runner:8090"
       FLYTO_PDF_URL: "http://pdf:3000"
       FLYTO_BRAND_VISION_URL: "http://brand-vision:8095"
-      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:-}" # placeholder
-      FLYTO_RUNNER_DEV_OPEN: "${FLYTO_RUNNER_DEV_OPEN:-1}"
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
       FLYTO_MASTER_KEY: "${FLYTO_MASTER_KEY:-}"
       FLYTO_MASTER_KEY_ID: "${FLYTO_MASTER_KEY_ID:-local-ce}"
       FLYTO_GITHUB_TOKEN: "${FLYTO_GITHUB_TOKEN:-}"
@@ -108,8 +116,8 @@ services:
       FLYTO_RUNNER_URL: "http://runner:8090"
       FLYTO_PDF_URL: "http://pdf:3000"
       FLYTO_BRAND_VISION_URL: "http://brand-vision:8095"
-      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:-}" # placeholder
-      FLYTO_RUNNER_DEV_OPEN: "${FLYTO_RUNNER_DEV_OPEN:-1}"
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
       FLYTO_DISCOVERY_DRAINER_MAX_CONCURRENCY: "${FLYTO_DISCOVERY_DRAINER_MAX_CONCURRENCY:-1}"
       FLYTO_DISCOVERY_DRAINER_MIN_FREE_MEMORY_MB: "${FLYTO_DISCOVERY_DRAINER_MIN_FREE_MEMORY_MB:-1024}"
       FLYTO_MASTER_KEY: "${FLYTO_MASTER_KEY:-}"
@@ -135,9 +143,9 @@ services:
       FLYTO_WORKER_MODE: "${FLYTO_WORKER_MODE:-queue-only}"
       FLYTO_RUNNER_URL: "http://runner:8090"
       FLYTO_VERIFICATION_URL: "http://verification:8344"
-      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:-}" # placeholder
-      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:-}" # placeholder
-      FLYTO_RUNNER_DEV_OPEN: "${FLYTO_RUNNER_DEV_OPEN:-1}"
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env}" # placeholder
+      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:?set FLYTO_VERIFICATION_SECRET in install/.env}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
       FLYTO_MASTER_KEY: "${FLYTO_MASTER_KEY:-}"
       FLYTO_MASTER_KEY_ID: "${FLYTO_MASTER_KEY_ID:-local-ce}"
       FLYTO_INDEX_BIN: "${FLYTO_INDEX_BIN:-flyto-index}"
@@ -159,8 +167,8 @@ services:
     environment:
       PORT: "8090"
       OPENAI_API_KEY: "${OPENAI_API_KEY:-}"
-      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:-}" # placeholder
-      FLYTO_RUNNER_DEV_OPEN: "${FLYTO_RUNNER_DEV_OPEN:-1}"
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
       FLYTO_ENGINE_COST_URL: "http://engine:8080/api/v1/code/runner/cost-events"
       FLYTO_ENGINE_CALLBACK_URL: "http://engine:8080/api/v1/code/runner/executions/callback"
       FLYTO_AI_ALLOW_PROD_TARGETS: "${FLYTO_AI_ALLOW_PROD_TARGETS:-0}"
@@ -179,8 +187,8 @@ services:
       - "127.0.0.1:${FLYTO_VERIFICATION_PORT:-8344}:8344"
     environment:
       FLYTO_ENGINE_URL: "http://engine:8080"
-      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:-}" # placeholder
-      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:-}" # placeholder
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env}" # placeholder
+      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:?set FLYTO_VERIFICATION_SECRET in install/.env}" # placeholder
       FLYTO_ALLOWED_HOSTS: "${FLYTO_ALLOWED_HOSTS:-host.docker.internal,localhost,127.0.0.1}"
       FLYTO_ALLOW_PRIVATE_NETWORK: "${FLYTO_ALLOW_PRIVATE_NETWORK:-true}"
 

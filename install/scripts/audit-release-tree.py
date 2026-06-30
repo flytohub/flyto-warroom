@@ -17,6 +17,7 @@ REQUIRED = [
     "install/docker-compose.ee-sim.yml",
     "install/.env.ce.example",
     "install/.env.ee-sim.example",
+    "install/scripts/hash-local-password.py",
     "install/scripts/mint-ee-sim-jwt.py",
     "docs/local-install.md",
     "docs/enterprise-simulation.md",
@@ -51,7 +52,9 @@ DENIED_ANYWHERE = [
 DENIED_CE_COMPOSE = [
     re.compile(r"ghcr\.io/.+-ee"),
     re.compile(r"enterprise_airgap"),
-    re.compile(r"FLYTO_AUTH_MODE"),
+    re.compile("FLYTO_AUTH_MODE:\\s*[\"']?(enterprise|enterprise_airgap|firebase)"),
+    re.compile("FLYTO_DEV_AUTH:\\s*[\"']?1"),
+    re.compile("FLYTO_RUNNER_DEV_OPEN:\\s*[\"']?1"),
     re.compile(r"FLYTO_ENTERPRISE_JWT_SECRET_KEY"),
 ]
 
@@ -78,6 +81,22 @@ def main() -> int:
         for regex in DENIED_CE_COMPOSE:
             if regex.search(ce_text):
                 blockers.append(f"CE compose contains denied marker: {regex.pattern}")
+        for marker in [
+            'FLYTO_EDITION: "community"',
+            'FLYTO_AUTH_MODE: "local_jwt"',
+            "FLYTO_LOCAL_AUTH_JWT_SECRET",
+            "FLYTO_LOCAL_AUTH_PASSWORD_SHA256",
+        ]:
+            if marker not in ce_text:
+                blockers.append(f"CE compose missing required marker: {marker}")
+    frontend_env = ROOT / "packages/flyto-code/.env.example"
+    if frontend_env.exists():
+        frontend_text = text(frontend_env)
+        if "VITE_AUTH_MODE=local_jwt" not in frontend_text:
+            blockers.append("frontend CE env must default VITE_AUTH_MODE=local_jwt")
+        for denied in ("VITE_AUTH_MODE=enterprise", "VITE_AUTH_MODE=firebase"):
+            if denied in frontend_text:
+                blockers.append(f"frontend CE env contains denied auth mode: {denied}")
     for path in ROOT.rglob("*"):
         if not path.is_file() or path.stat().st_size > 2_000_000:
             continue

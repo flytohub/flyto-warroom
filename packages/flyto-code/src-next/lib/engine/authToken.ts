@@ -2,10 +2,20 @@ import { env } from '@lib/env'
 
 const JWT_SESSION_KEY = 'jwt_access_token'
 
+export function isSessionJWTAuthMode(mode = env.authMode): boolean {
+  return mode === 'enterprise' ||
+    mode === 'enterprise_jwt' ||
+    mode === 'enterprise_airgap' ||
+    mode === 'jwt' ||
+    mode === 'local' ||
+    mode === 'local_jwt' ||
+    mode === 'community'
+}
+
 function readSessionToken(): string | null {
-  if (typeof window === 'undefined') return null
+  if (typeof globalThis.sessionStorage === 'undefined') return null
   try {
-    const raw = window.sessionStorage.getItem(JWT_SESSION_KEY)
+    const raw = globalThis.sessionStorage.getItem(JWT_SESSION_KEY)
     if (!raw) return null
     const parsed = JSON.parse(raw) as unknown
     return typeof parsed === 'string' && parsed ? parsed : null
@@ -32,7 +42,7 @@ export async function getEngineToken(): Promise<string> {
     return buildDevToken()
   }
 
-  if (env.authMode === 'enterprise' || env.authMode === 'enterprise_airgap' || env.authMode === 'jwt') {
+  if (isSessionJWTAuthMode()) {
     throw new Error('Not authenticated')
   }
 

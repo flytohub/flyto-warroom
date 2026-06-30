@@ -11,6 +11,8 @@ import { useSnackbar } from 'notistack';
 import { useAuth } from '@hooks/useAuth';
 import { t } from '@lib/i18n';
 import AuthPagesMessageSection from '../ui/AuthPagesMessageSection';
+import { Navigate } from 'react-router';
+import { env } from '@lib/env';
 
 function createSchema() {
 	return z.object({
@@ -21,6 +23,7 @@ function createSchema() {
 type FormType = z.infer<ReturnType<typeof createSchema>>;
 
 function ForgotPasswordPageView() {
+	const localAuth = env.authMode === 'local' || env.authMode === 'local_jwt' || env.authMode === 'community';
 	const { resetPassword } = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
 	const [sent, setSent] = useState(false);
@@ -31,6 +34,8 @@ function ForgotPasswordPageView() {
 		resolver: zodResolver(schema),
 	});
 	const { isValid, errors } = formState;
+
+	if (localAuth) return <Navigate to="/sign-in" replace />;
 
 	async function onSubmit(formData: FormType) {
 		try {

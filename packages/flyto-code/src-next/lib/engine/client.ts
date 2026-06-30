@@ -54,6 +54,11 @@ async function getToken(): Promise<string> {
   return getEngineToken()
 }
 
+function dispatchBrowserEvent(factory: () => Event): void {
+  if (typeof window === 'undefined' || typeof window.dispatchEvent !== 'function') return
+  window.dispatchEvent(factory())
+}
+
 export interface RequestOptions {
   /** Extra headers merged on top of Content-Type + Authorization. Used for
    *  endpoint-specific hints like X-GitHub-Token that engine looks for. */
@@ -88,7 +93,7 @@ export async function request<T>(
     // layer can force sign-out + redirect without every component needing
     // its own 401 handling.
     if (res.status === 401) {
-      window.dispatchEvent(new Event('flyto:auth-expired'))
+      dispatchBrowserEvent(() => new Event('flyto:auth-expired'))
     }
 
     // Engine error envelope: { error: { code, message, requestId, ... } }.
@@ -122,7 +127,7 @@ export async function request<T>(
       if (code === 'feature_required' || code === 'action_required'
           || code === 'seat_cap_exceeded' || code === 'repo_cap_exceeded'
           || code === 'domain_cap_exceeded') {
-        window.dispatchEvent(new CustomEvent('flyto:entitlement-denied', {
+        dispatchBrowserEvent(() => new CustomEvent('flyto:entitlement-denied', {
           detail: {
             kind: code,
             feature: body.feature,
@@ -176,7 +181,7 @@ export async function requestBlob(
   })
   if (!res.ok) {
     if (res.status === 401) {
-      window.dispatchEvent(new Event('flyto:auth-expired'))
+      dispatchBrowserEvent(() => new Event('flyto:auth-expired'))
     }
     const text = await res.text().catch(() => '')
     throw new Error(text || `${res.status} ${res.statusText}`)

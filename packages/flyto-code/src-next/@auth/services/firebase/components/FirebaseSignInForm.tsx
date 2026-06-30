@@ -9,6 +9,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuth } from '@hooks/useAuth';
 import { useSnackbar } from 'notistack';
 import { t } from '@lib/i18n';
+import { env } from '@lib/env';
 
 function createSchema() {
 	return z.object({
@@ -64,6 +65,7 @@ function FirebaseSignInForm() {
 	const { signInWithEmail, signInWithGoogle, signInWithGithub } = useAuth();
 	const { enqueueSnackbar } = useSnackbar();
 	const schema = createSchema();
+	const localAuth = env.authMode === 'local' || env.authMode === 'local_jwt' || env.authMode === 'community';
 
 	const { control, formState, handleSubmit, setError } = useForm<FormType>({
 		mode: 'onChange',
@@ -103,32 +105,36 @@ function FirebaseSignInForm() {
 	return (
 		<div className="w-full">
 			{/* OAuth buttons */}
-			<div className="flex gap-3 mb-6">
-				<Button
-					variant="outlined"
-					className="flex-1"
-					startIcon={<GoogleIcon />}
-					onClick={handleGoogleSignIn}
-					size="large"
-					sx={{ textTransform: 'none', fontWeight: 500, borderColor: 'divider', color: 'text.primary' }}
-				>
-					{t('auth.continueWithGoogle')}
-				</Button>
-				<Button
-					variant="outlined"
-					className="flex-1"
-					startIcon={<GithubIcon />}
-					onClick={handleGithubSignIn}
-					size="large"
-					sx={{ textTransform: 'none', fontWeight: 500, borderColor: 'divider', color: 'text.primary' }}
-				>
-					{t('auth.continueWithGithub')}
-				</Button>
-			</div>
+			{!localAuth && (
+				<>
+					<div className="flex gap-3 mb-6">
+						<Button
+							variant="outlined"
+							className="flex-1"
+							startIcon={<GoogleIcon />}
+							onClick={handleGoogleSignIn}
+							size="large"
+							sx={{ textTransform: 'none', fontWeight: 500, borderColor: 'divider', color: 'text.primary' }}
+						>
+							{t('auth.continueWithGoogle')}
+						</Button>
+						<Button
+							variant="outlined"
+							className="flex-1"
+							startIcon={<GithubIcon />}
+							onClick={handleGithubSignIn}
+							size="large"
+							sx={{ textTransform: 'none', fontWeight: 500, borderColor: 'divider', color: 'text.primary' }}
+						>
+							{t('auth.continueWithGithub')}
+						</Button>
+					</div>
 
-			<Divider className="mb-6">
-				<Typography variant="caption" color="text.secondary">{t('auth.orSignInWithEmail')}</Typography>
-			</Divider>
+					<Divider className="mb-6">
+						<Typography variant="caption" color="text.secondary">{t('auth.orSignInWithEmail')}</Typography>
+					</Divider>
+				</>
+			)}
 
 			{/* Email/password form */}
 			<form
@@ -174,14 +180,16 @@ function FirebaseSignInForm() {
 						/>
 					)}
 				/>
-				<div className="mb-3 flex justify-end">
-					<Link
-						className="text-md font-medium"
-						to="/forgot-password"
-					>
-						{t('auth.forgotPassword')}
-					</Link>
-				</div>
+				{!localAuth && (
+					<div className="mb-3 flex justify-end">
+						<Link
+							className="text-md font-medium"
+							to="/forgot-password"
+						>
+							{t('auth.forgotPassword')}
+						</Link>
+					</div>
+				)}
 
 				<Button
 					variant="contained"

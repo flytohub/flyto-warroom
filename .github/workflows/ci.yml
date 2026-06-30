@@ -29,7 +29,7 @@ jobs:
         working-directory: packages/flyto-code
         env:
           VITE_ENGINE_URL: http://localhost:8080
-          VITE_AUTH_MODE: enterprise
+          VITE_AUTH_MODE: local_jwt
           VITE_AUTOMATION_URL: http://localhost:8080
           VITE_CORTEX_URL: http://localhost:8080
         run: |

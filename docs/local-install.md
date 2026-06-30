@@ -21,6 +21,24 @@ names from Docker Hub after the release pipeline publishes them.
 
 ```sh
 cp /tmp/flyto2-warroom-ce/install/.env.ce.example /tmp/flyto2-warroom-ce/install/.env
+python3 /tmp/flyto2-warroom-ce/install/scripts/hash-local-password.py
+openssl rand -base64 48
+openssl rand -base64 48
+openssl rand -base64 48
+openssl rand -base64 48
+```
+
+Paste the generated values into `install/.env`:
+
+- first `openssl` output -> `FLYTO_LOCAL_AUTH_JWT_SECRET`
+- second `openssl` output -> `FLYTO_RUNNER_SECRET`
+- third `openssl` output -> `FLYTO_VERIFICATION_SECRET`
+- fourth `openssl` output -> `FLYTO_MASTER_KEY`
+- password hash output -> `FLYTO_LOCAL_AUTH_PASSWORD_SHA256`
+
+Then start the stack:
+
+```sh
 make -C /tmp/flyto2-warroom-ce ce-up
 ```
 
@@ -29,10 +47,9 @@ Open:
 - Frontend: `http://localhost:8088`
 - Engine health: `http://localhost:8080/health`
 
-CE local mode sets `FLYTO_DEV_AUTH=1` because production `local_jwt` auth is not
-implemented in the engine server yet. That is acceptable for a laptop smoke
-stack and blocked by documentation/audit from being described as production
-community auth.
+Sign in with the `FLYTO_LOCAL_AUTH_EMAIL` value and the password used by
+`hash-local-password.py`. CE uses engine-issued local JWTs; it does not require
+Firebase and it does not use dev auth.
 
 ## Reset The Database
 
