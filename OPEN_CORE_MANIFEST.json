@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-06-30T10:34:10.929968+00:00",
+  "generated_at": "2026-06-30T11:46:42.633802+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-indexer/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -25,7 +25,7 @@
     "install/docker-compose.ee-sim.yml",
     "install/.env.ce.example",
     "install/.env.ee-sim.example",
-    "install/Makefile",
+    "Makefile",
     "install/scripts/build-local-images.sh",
     "install/scripts/hash-local-password.py",
     "install/scripts/mint-ee-sim-jwt.py",

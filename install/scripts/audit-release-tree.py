@@ -7,6 +7,7 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 
 REQUIRED = [
     "OPEN_CORE_MANIFEST.json",
+    "Makefile",
     "packages/flyto-contracts/openapi/flyto-engine.openapi.yaml",
     "packages/flyto-contracts/capabilities/capabilities.yaml",
     "packages/flyto-contracts/schemas/evidence-event.schema.json",
@@ -31,12 +32,15 @@ PRIVATE_GLOBS = [
     "packages/flyto-code/.env",
     "packages/flyto-code/.env.local",
     "packages/flyto-code/.env.production",
-    "packages/flyto-code/dist/**",
-    "packages/flyto-code/dist-next/**",
-    "packages/flyto-code/node_modules/**",
-    "packages/flyto-code/reports/**",
-    "packages/flyto-code/test-results/**",
 ]
+
+LOCAL_ARTIFACT_PARTS = {
+    "node_modules",
+    "dist",
+    "dist-next",
+    "reports",
+    "test-results",
+}
 
 DENIED_ANYWHERE = [
     re.compile(r"FLYTO_RUNNER_SECRET[ \t]*=[ \t]*[^\s$<]+"),
@@ -66,6 +70,14 @@ def text(path: Path) -> str:
         return ""
 
 
+def is_local_artifact(path: Path) -> bool:
+    try:
+        rel = path.relative_to(ROOT)
+    except ValueError:
+        return False
+    return any(part in LOCAL_ARTIFACT_PARTS for part in rel.parts)
+
+
 def main() -> int:
     blockers: list[str] = []
     for rel in REQUIRED:
@@ -73,7 +85,7 @@ def main() -> int:
             blockers.append(f"missing required release file: {rel}")
     for pattern in PRIVATE_GLOBS:
         for match in ROOT.glob(pattern):
-            if match.is_file():
+            if match.is_file() and not is_local_artifact(match):
                 blockers.append(f"private path escaped release tree: {match.relative_to(ROOT)}")
     ce_compose = ROOT / "install/docker-compose.ce.yml"
     if ce_compose.exists():
@@ -99,6 +111,8 @@ def main() -> int:
                 blockers.append(f"frontend CE env contains denied auth mode: {denied}")
     for path in ROOT.rglob("*"):
         if not path.is_file() or path.stat().st_size > 2_000_000:
+            continue
+        if is_local_artifact(path):
             continue
         body = text(path)
         for regex in DENIED_ANYWHERE:

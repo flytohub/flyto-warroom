@@ -1,8 +1,9 @@
 SHELL := /bin/sh
 ENV_CE ?= install/.env
 ENV_EE_SIM ?= install/.env.ee-sim
-COMPOSE_CE = docker compose --env-file $(ENV_CE) -f install/docker-compose.ce.yml
-COMPOSE_EE_SIM = docker compose --env-file $(ENV_EE_SIM) -f install/docker-compose.ce.yml -f install/docker-compose.ee-sim.yml
+DOCKER_COMPOSE ?= $(shell if docker compose version >/dev/null 2>&1; then printf 'docker compose'; elif command -v docker-compose >/dev/null 2>&1; then printf 'docker-compose'; else printf 'docker compose'; fi)
+COMPOSE_CE = $(DOCKER_COMPOSE) --env-file $(ENV_CE) -f install/docker-compose.ce.yml
+COMPOSE_EE_SIM = $(DOCKER_COMPOSE) --env-file $(ENV_EE_SIM) -f install/docker-compose.ce.yml -f install/docker-compose.ee-sim.yml
 
 .PHONY: ce-up ce-down ce-logs ce-ps ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit build-local-images
 

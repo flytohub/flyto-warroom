@@ -12,7 +12,7 @@ BRAND_VISION_IMAGE="${FLYTO_WARROOM_BRAND_VISION_IMAGE:-docker.io/flytohub/flyto
 PDF_IMAGE="${FLYTO_WARROOM_PDF_IMAGE:-docker.io/flytohub/flyto2-warroom-pdf-ce}"
 
 docker build -t "$ENGINE_IMAGE:$TAG" "$WORKSPACE/flyto-engine"
-docker build -f "$WORKSPACE/flyto-engine/Dockerfile.worker" -t "$WORKER_IMAGE:$TAG" "$WORKSPACE/flyto-engine"
+docker tag "$ENGINE_IMAGE:$TAG" "$WORKER_IMAGE:$TAG"
 docker build -t "$RUNNER_IMAGE:$TAG" "$WORKSPACE/flyto-engine/runner"
 docker build -f "$WORKSPACE/flyto-core/Dockerfile.verification" -t "$VERIFICATION_IMAGE:$TAG" "$WORKSPACE/flyto-core"
 docker build -t "$BRAND_VISION_IMAGE:$TAG" "$WORKSPACE/flyto-engine/brand-vision"
