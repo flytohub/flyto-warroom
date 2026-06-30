@@ -144,6 +144,7 @@ services:
       FLYTO_ENV: "${FLYTO_ENV:-development}"
       FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable" # placeholder
       FLYTO_WORKER_MODE: "${FLYTO_WORKER_MODE:-queue-only}"
+      FLYTO_WORKSPACES: "${FLYTO_WORKSPACES:-local-warroom}"
       FLYTO_RUNNER_URL: "http://runner:8090"
       FLYTO_VERIFICATION_URL: "http://verification:8344"
       FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env}" # placeholder

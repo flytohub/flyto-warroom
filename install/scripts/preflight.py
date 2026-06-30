@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import os
 from pathlib import Path
+import re
 import shutil
 import stat
 import subprocess
@@ -20,6 +21,7 @@ REQUIRED_NON_EMPTY = [
     "FLYTO_VERIFICATION_SECRET",
     "FLYTO_MASTER_KEY",
 ]
+URL_SAFE_COMPONENT_RE = re.compile(r"^[A-Za-z0-9._~-]+$")
 
 
 def parse_env(path: Path) -> dict[str, str]:
@@ -60,6 +62,12 @@ def main() -> int:
                 blockers.append(f"{key} is empty in {env_path}")
         if values.get("POSTGRES_PASSWORD") == "change-me-local-only":
             blockers.append("POSTGRES_PASSWORD still uses the example placeholder")
+        postgres_password = values.get("POSTGRES_PASSWORD", "")
+        if postgres_password and not URL_SAFE_COMPONENT_RE.fullmatch(postgres_password):
+            blockers.append(
+                "POSTGRES_PASSWORD must use URL-safe characters [A-Za-z0-9._~-]; "
+                "run setup-ce.py again or replace characters like ':', '@', '/', '?', '#', '[', and ']'"
+            )
         if values.get("FLYTO_LOCAL_AUTH_EMAIL") == "local-admin@example.invalid":
             blockers.append("FLYTO_LOCAL_AUTH_EMAIL still uses the example placeholder")
         mode = stat.S_IMODE(env_path.stat().st_mode)
