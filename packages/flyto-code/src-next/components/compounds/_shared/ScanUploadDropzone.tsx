@@ -146,7 +146,10 @@ export function ScanUploadDropzone({ repoId, onSuccess, compact }: Props) {
         })
         targetRepoId = repo.id
       }
-      await request('POST', `/api/v1/code/repos/${targetRepoId}/scan-upload`, rawData)
+      const uploadBody = rawData && typeof rawData === 'object' && !Array.isArray(rawData)
+        ? { ...(rawData as Record<string, unknown>), source_mode: 'local_cli' }
+        : rawData
+      await request('POST', `/api/v1/code/repos/${targetRepoId}/scan-upload`, uploadBody)
       setDone(true)
       qc.invalidateQueries({ queryKey: qk.repos.healthSummary(org.id) })
       qc.invalidateQueries({ queryKey: qk.repos.connected(org.id) })

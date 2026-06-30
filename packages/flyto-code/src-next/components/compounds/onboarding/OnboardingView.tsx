@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type ComponentType } from 'react'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
@@ -13,10 +13,20 @@ import { useOrg } from '@hooks/useOrg'
 import { saveOrgToken } from '@lib/engine'
 import { getGitLabOAuthUrl, rememberGitLabReturnPath } from '@lib/oauth'
 import { t } from '@lib/i18n';
-import { RepoPickerModal, type RepoPickerCloseInfo } from '@compounds/_shared/picker'
+import { RepoPickerModal, type RepoPickerCloseInfo, type RepoProvider } from '@compounds/_shared/picker'
 import { ScanUploadDropzone } from '@compounds/_shared/ScanUploadDropzone'
 
 type StepNum = 1 | 2 | 3
+type ProviderConfig = {
+  id: RepoProvider
+  name: string
+  Logo: ComponentType<{ size?: number }>
+  color: string
+  bgLight: string
+  bgDark: string
+  desc: () => string
+  btnLabel: () => string
+}
 
 /* ── Provider SVG logos ── */
 function GitHubLogo({ size = 28 }: { size?: number }) {
@@ -51,7 +61,7 @@ function BitbucketLogo({ size = 28 }: { size?: number }) {
   )
 }
 
-const PROVIDERS = [
+const PROVIDERS: ProviderConfig[] = [
   {
     id: 'github',
     name: 'GitHub',
@@ -137,13 +147,14 @@ function IntakeAction({
 }
 
 export function OnboardingView() {
-  const { connectGitHub } = useAuth()
+  const { connectGitHub, gitlabToken } = useAuth()
   const { org } = useOrg()
   const ghConn = useGitHubConnection()
   const { enqueueSnackbar } = useSnackbar()
   const [step, setStep] = useState<StepNum>(ghConn.connected ? 2 : 1)
   const [connecting, setConnecting] = useState(false)
   const [pickerOpen, setPickerOpen] = useState(false)
+  const [repoProvider, setRepoProvider] = useState<RepoProvider>('github')
   const [noReposHint, setNoReposHint] = useState(false)
   const [providerIdx, setProviderIdx] = useState(0)
 
@@ -154,19 +165,28 @@ export function OnboardingView() {
     window.location.href = `/projects/${org.id}${suffix}`
   }
 
-  async function handleConnect() {
+  async function handleConnect(targetProvider = provider) {
     setConnecting(true)
     try {
-      if (provider.id === 'github') {
+      setRepoProvider(targetProvider.id)
+      if (targetProvider.id === 'github') {
         const token = await connectGitHub()
         if (token && org) {
           await saveOrgToken(org.id, token)
           ghConn.refresh()
         }
-      } else if (provider.id === 'gitlab') {
+      } else if (targetProvider.id === 'gitlab') {
+        if (gitlabToken && org) {
+          await saveOrgToken(org.id, gitlabToken, 'gitlab')
+          setStep(2)
+          return
+        }
         rememberGitLabReturnPath(window.location.pathname)
         const url = await getGitLabOAuthUrl()
         window.location.href = url
+        return
+      } else {
+        enqueueSnackbar(t('onboarding.comingSoon'), { variant: 'info' })
         return
       }
       setStep(2)
@@ -263,18 +283,18 @@ export function OnboardingView() {
                       <Button
                         size="small"
                         variant={isActive ? 'contained' : 'outlined'}
-                        disabled={connecting || p.id !== 'github'}
+                        disabled={connecting || p.id === 'bitbucket'}
                         onClick={(event) => {
                           event.stopPropagation()
                           setProviderIdx(i)
-                          if (p.id === 'github') void handleConnect()
+                          if (p.id !== 'bitbucket') void handleConnect(p)
                         }}
                         endIcon={connecting && p.id === provider.id ? <CircularProgress size={13} color="inherit" /> : <ArrowRight size={14} />}
                         sx={{ mt: 'auto', textTransform: 'none', fontWeight: 700, borderRadius: 1.5 }}
                       >
                         {p.btnLabel()}
                       </Button>
-                      {p.id !== 'github' && (
+                      {p.id === 'bitbucket' && (
                         <Typography variant="caption" color="text.secondary">
                           {t('onboarding.comingSoon')}
                         </Typography>
@@ -385,7 +405,7 @@ export function OnboardingView() {
         </Paper>
       )}
 
-      <RepoPickerModal opened={pickerOpen} onClose={handlePickerClose} />
+      <RepoPickerModal opened={pickerOpen} onClose={handlePickerClose} provider={repoProvider} />
 
       {/* Upload */}
       <Divider sx={{ width: '100%', my: 4 }}>

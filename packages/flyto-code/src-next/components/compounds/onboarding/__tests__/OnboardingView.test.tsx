@@ -3,9 +3,12 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
 
 const mockState = vi.hoisted(() => ({
-  pickerPropsHolder: { current: null as { opened: boolean; onClose: (info?: { connected: number }) => void } | null },
+  pickerPropsHolder: { current: null as { opened: boolean; onClose: (info?: { connected: number }) => void; provider?: string } | null },
   connectGitHubMock: vi.fn(),
   saveOrgTokenMock: vi.fn(),
+  getGitLabOAuthUrlMock: vi.fn(),
+  rememberGitLabReturnPathMock: vi.fn(),
+  gitlabToken: null as string | null,
   ghConnected: false,
 }))
 
@@ -13,13 +16,20 @@ vi.mock('@lib/i18n', () => ({
   t: (key: string) => {
     const map: Record<string, string> = {
       'onboarding.connectGithub': 'Connect GitHub',
+      'onboarding.connectGitlab': 'Connect GitLab',
+      'onboarding.connectBitbucket': 'Connect Bitbucket',
       'onboarding.connectGithubDesc': 'Connect your GitHub account',
+      'onboarding.githubDesc': 'GitHub repos',
+      'onboarding.gitlabDesc': 'GitLab projects',
+      'onboarding.bitbucketDesc': 'Bitbucket workspaces',
+      'onboarding.comingSoon': 'Coming soon',
       'onboarding.selectRepos': 'Select Repos',
       'onboarding.selectReposDesc': 'Choose repositories to scan',
       'onboarding.firstScan': 'First Scan',
       'onboarding.firstScanDesc': 'Run your first security scan',
       'onboarding.connectBtn': 'Connect',
       'onboarding.selectBtn': 'Select',
+      'onboarding.scanDone': 'All set!',
     }
     const translated = globalThis.__flytoTestT?.(key)
     return translated && translated !== key ? translated : map[key] ?? key
@@ -30,6 +40,7 @@ vi.mock('@lib/i18n', () => ({
 vi.mock('@hooks/useAuth', () => ({
   useAuth: () => ({
     connectGitHub: mockState.connectGitHubMock,
+    gitlabToken: mockState.gitlabToken,
   }),
 }))
 
@@ -51,8 +62,8 @@ vi.mock('@lib/engine', () => ({
 }))
 
 vi.mock('@lib/oauth', () => ({
-  getGitLabOAuthUrl: vi.fn(),
-  rememberGitLabReturnPath: vi.fn(),
+  getGitLabOAuthUrl: mockState.getGitLabOAuthUrlMock,
+  rememberGitLabReturnPath: mockState.rememberGitLabReturnPathMock,
 }))
 
 vi.mock('notistack', () => ({
@@ -60,10 +71,10 @@ vi.mock('notistack', () => ({
 }))
 
 vi.mock('@compounds/_shared/picker', () => ({
-  RepoPickerModal: (props: { opened: boolean; onClose: (info?: { connected: number }) => void }) => {
+  RepoPickerModal: (props: { opened: boolean; onClose: (info?: { connected: number }) => void; provider?: string }) => {
     mockState.pickerPropsHolder.current = props
     return props.opened
-      ? React.createElement('div', { 'data-testid': 'picker-modal' }, 'picker')
+      ? React.createElement('div', { 'data-testid': 'picker-modal' }, `picker:${props.provider ?? 'github'}`)
       : null
   },
 }))
@@ -77,6 +88,7 @@ import { OnboardingView } from '../OnboardingView'
 describe('OnboardingView', () => {
   beforeEach(() => {
     mockState.ghConnected = false
+    mockState.gitlabToken = null
     mockState.pickerPropsHolder.current = null
 
     mockState.connectGitHubMock.mockReset()
@@ -84,6 +96,10 @@ describe('OnboardingView', () => {
 
     mockState.saveOrgTokenMock.mockReset()
     mockState.saveOrgTokenMock.mockResolvedValue({ status: 'ok' })
+
+    mockState.getGitLabOAuthUrlMock.mockReset()
+    mockState.getGitLabOAuthUrlMock.mockResolvedValue('#gitlab-oauth')
+    mockState.rememberGitLabReturnPathMock.mockReset()
   })
 
   it('renders provider selector cards (GitHub, GitLab, Bitbucket)', () => {
@@ -119,6 +135,7 @@ describe('OnboardingView', () => {
     fireEvent.click(screen.getByRole('button', { name: /select repos/i }))
 
     await waitFor(() => expect(mockState.pickerPropsHolder.current?.opened).toBe(true))
+    expect(mockState.pickerPropsHolder.current?.provider).toBe('github')
     expect(screen.queryByTestId('picker-modal')).not.toBeNull()
 
     act(() => {
@@ -136,5 +153,50 @@ describe('OnboardingView', () => {
     expect(screen.getByRole('button', { name: /select repos/i })).toBeDefined()
     // No Connect GitHub button visible at step 2
     expect(screen.queryByText('Connect GitHub')).toBeNull()
+  })
+
+  it('connects GitLab with an existing token and opens the GitLab picker', async () => {
+    mockState.gitlabToken = 'test-gitlab-token'
+    render(<OnboardingView />)
+
+    fireEvent.click(screen.getByText('GitLab'))
+    fireEvent.click(screen.getByRole('button', { name: /connect gitlab/i }))
+
+    await waitFor(() =>
+      expect(mockState.saveOrgTokenMock).toHaveBeenCalledWith('org-1', 'test-gitlab-token', 'gitlab'),
+    )
+    expect(mockState.connectGitHubMock).not.toHaveBeenCalled()
+
+    await waitFor(() => expect(screen.getByRole('button', { name: /select repos/i })).toBeDefined())
+    fireEvent.click(screen.getByRole('button', { name: /select repos/i }))
+
+    await waitFor(() => expect(mockState.pickerPropsHolder.current?.opened).toBe(true))
+    expect(mockState.pickerPropsHolder.current?.provider).toBe('gitlab')
+    expect(screen.getByTestId('picker-modal').textContent).toBe('picker:gitlab')
+  })
+
+  it('redirects GitLab to OAuth when no token exists', async () => {
+    render(<OnboardingView />)
+
+    fireEvent.click(screen.getByText('GitLab'))
+    fireEvent.click(screen.getByRole('button', { name: /connect gitlab/i }))
+
+    await waitFor(() => expect(mockState.rememberGitLabReturnPathMock).toHaveBeenCalledWith(window.location.pathname))
+    await waitFor(() => expect(mockState.getGitLabOAuthUrlMock).toHaveBeenCalledTimes(1))
+    expect(mockState.saveOrgTokenMock).not.toHaveBeenCalled()
+    expect(mockState.connectGitHubMock).not.toHaveBeenCalled()
+  })
+
+  it('keeps Bitbucket visible but disabled until the connector is implemented', () => {
+    render(<OnboardingView />)
+
+    const bitbucketButton = screen.getByRole('button', { name: /connect bitbucket/i }) as HTMLButtonElement
+    expect(bitbucketButton.disabled).toBe(true)
+    fireEvent.click(screen.getByText('Bitbucket'))
+    fireEvent.click(bitbucketButton)
+
+    expect(screen.getByText('Coming soon')).toBeDefined()
+    expect(mockState.saveOrgTokenMock).not.toHaveBeenCalled()
+    expect(mockState.connectGitHubMock).not.toHaveBeenCalled()
   })
 })

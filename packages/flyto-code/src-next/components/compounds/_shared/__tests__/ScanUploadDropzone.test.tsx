@@ -130,7 +130,11 @@ describe('ScanUploadDropzone', () => {
     fireEvent.click(screen.getByRole('button', { name: /upload & analyze/i }))
 
     await waitFor(() => {
-      expect(requestMock).toHaveBeenCalledWith('POST', '/api/v1/code/repos/repo-1/scan-upload', expect.any(Object))
+      expect(requestMock).toHaveBeenCalledWith(
+        'POST',
+        '/api/v1/code/repos/repo-1/scan-upload',
+        expect.objectContaining({ source_mode: 'local_cli' }),
+      )
     })
     expect(connectRepoMock).not.toHaveBeenCalled()
   })
@@ -161,7 +165,11 @@ describe('ScanUploadDropzone', () => {
         repoName: 'local-api',
         fullName: 'Acme/local-api',
       }))
-      expect(requestMock).toHaveBeenCalledWith('POST', '/api/v1/code/repos/repo-created/scan-upload', expect.any(Object))
+      expect(requestMock).toHaveBeenCalledWith(
+        'POST',
+        '/api/v1/code/repos/repo-created/scan-upload',
+        expect.objectContaining({ source_mode: 'local_cli' }),
+      )
     })
   })
 })
