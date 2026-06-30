@@ -22,6 +22,16 @@ REQUIRED_MARKERS = {
         "Contributor Certificate",
         "private Flyto2 source workspace",
     ],
+    "AGENTS.md": [
+        "generated Flyto2 Warroom CE mirror",
+        "flyto-indexer",
+        "After Changes",
+    ],
+    "docs/enterprise-cloud-bridge.md": [
+        "Enterprise Cloud Bridge",
+        "Premium actions must fail closed",
+        "Airgap Alternative",
+    ],
     "docs/official-builds.md": [
         "Official Images",
         "OPEN_CORE_MANIFEST.json",

@@ -15,6 +15,10 @@ The official CE image repository and per-service tags are declared in
 `OPEN_CORE_MANIFEST.json`. A modified distribution must use different image
 names and must not imply that it is an official Flyto2 build.
 
+Official CE images are runnable distribution artifacts. They do not mean the
+private `flyto-engine` implementation, Enterprise datasets, Enterprise
+remediation workers, or Flyto Cloud control plane source have been published.
+
 ## Release Evidence
 
 An official release should include:
@@ -39,3 +43,7 @@ test.
 
 Forks may rebuild CE under their own names. Forks may not use Flyto2 trademarks,
 official tags, or official release channels for modified images.
+
+Enterprise Cloud Bridge compatibility must be described as compatibility, not as
+official entitlement. Only Flyto-issued entitlements can unlock Flyto Cloud
+premium services.

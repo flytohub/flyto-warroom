@@ -5,7 +5,7 @@ DOCKER_COMPOSE ?= $(shell if docker compose version >/dev/null 2>&1; then printf
 COMPOSE_CE = $(DOCKER_COMPOSE) --env-file $(ENV_CE) -f install/docker-compose.ce.yml
 COMPOSE_EE_SIM = $(DOCKER_COMPOSE) --env-file $(ENV_EE_SIM) -f install/docker-compose.ce.yml -f install/docker-compose.ee-sim.yml
 
-.PHONY: setup-ce preflight verify-images ce-up ce-down ce-logs ce-ps ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit build-local-images
+.PHONY: setup-ce preflight verify verify-images ce-up ce-down ce-logs ce-ps ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit build-local-images
 
 setup-ce:
 	python3 install/scripts/setup-ce.py
@@ -39,6 +39,9 @@ audit:
 	python3 install/scripts/audit-release-tree.py .
 	python3 scripts/audit-ce-boundary.py .
 	python3 scripts/audit-github-protection.py .
+
+verify: audit
+	python3 install/scripts/verify-docker-images.py --dry-run
 
 preflight:
 	python3 install/scripts/preflight.py --env $(ENV_CE)

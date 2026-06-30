@@ -1,4 +1,6 @@
 .DS_Store
+.flyto/
+.flyto-index/
 .env
 .env.*
 !install/.env.ce.example

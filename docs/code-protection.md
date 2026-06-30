@@ -8,10 +8,24 @@ The open-core release protects private code by construction:
   remediation orchestration are not copied.
 - `flyto-contracts` exposes OpenAPI, capabilities, schemas, examples, and SDK
   stubs instead of raw engine source.
+- Enterprise Cloud Bridge integration must use public API contracts, capability
+  snapshots, signed job requests, and signed evidence return paths.
 - CE compose only references public image coordinates or maintainer-overridden
   local CE image names.
 - EE simulation is an override file. It can enable enterprise gates locally, but
   it does not include enterprise implementation source.
+
+## Upgrade Boundary
+
+It is acceptable for CE to show premium actions, disabled states, and clear
+upgrade reasons. It is not acceptable for CE to include private datasets,
+private connector credentials, proprietary remediation workers, enterprise
+billing logic, or private control-plane source.
+
+Premium actions must fail closed. If the user has no entitlement, the connector
+is invalid, the cloud bridge is unavailable, or the returned evidence signature
+does not verify, CE should record a clear denial/error instead of pretending the
+operation succeeded.
 
 Run this before publishing:
 
