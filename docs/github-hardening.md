@@ -10,7 +10,8 @@ Recommended repository settings for `flytohub/flyto-warroom`:
 - require conversation resolution;
 - require linear history;
 - block force pushes and branch deletion;
-- require the `release-audit` and `governance-audit` status checks;
+- require the `release-audit`, `governance-audit`, and `docker-image-audit`
+  status checks;
 - restrict release publishing to maintainer-owned GitHub Actions.
 
 The repository also carries file-level guardrails:

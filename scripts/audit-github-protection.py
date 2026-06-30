@@ -29,7 +29,12 @@ REQUIRED_MARKERS = {
     ],
     "docs/github-hardening.md": [
         "require pull requests before merging",
-        "require the `release-audit` and `governance-audit` status checks",
+        "docker-image-audit",
+    ],
+    "docs/account-security.md": [
+        "Official publisher accounts must use 2FA",
+        "Docker Hub pushes should use access tokens",
+        "CE local JWT auth is password-based",
     ],
     ".github/CODEOWNERS": [
         "@ChesterHsu",
@@ -44,6 +49,7 @@ REQUIRED_MARKERS = {
     ".github/workflows/ci.yml": [
         "release-audit",
         "governance-audit",
+        "docker-image-audit",
         "Audit GitHub protection files",
         "Export upstream patch preview",
     ],

@@ -22,21 +22,19 @@ the same tags locally from the private workspace before starting compose.
 ## Start CE Locally
 
 ```sh
-cp /tmp/flyto2-warroom-ce/install/.env.ce.example /tmp/flyto2-warroom-ce/install/.env
-python3 /tmp/flyto2-warroom-ce/install/scripts/hash-local-password.py
-openssl rand -base64 48
-openssl rand -base64 48
-openssl rand -base64 48
-openssl rand -base64 48
+python3 /tmp/flyto2-warroom-ce/install/scripts/setup-ce.py
+make -C /tmp/flyto2-warroom-ce verify-images
+make -C /tmp/flyto2-warroom-ce preflight
 ```
 
-Paste the generated values into `install/.env`:
+`setup-ce.py` prompts for the initial admin email and password, writes only the
+password SHA-256 hash, generates local-only Postgres/JWT/runner/verification
+secrets, and writes `install/.env` with owner-only permissions.
 
-- first `openssl` output -> `FLYTO_LOCAL_AUTH_JWT_SECRET`
-- second `openssl` output -> `FLYTO_RUNNER_SECRET`
-- third `openssl` output -> `FLYTO_VERIFICATION_SECRET`
-- fourth `openssl` output -> `FLYTO_MASTER_KEY`
-- password hash output -> `FLYTO_LOCAL_AUTH_PASSWORD_SHA256`
+`verify-images` checks that every public Docker Hub service tag in
+`OPEN_CORE_MANIFEST.json` has a valid manifest and matches the published digest.
+`preflight` verifies that local secrets are not blank/placeholders and that
+compose can resolve the final image set.
 
 Then start the stack:
 
@@ -49,9 +47,14 @@ Open:
 - Frontend: `http://localhost:8088`
 - Engine health: `http://localhost:8080/health`
 
-Sign in with the `FLYTO_LOCAL_AUTH_EMAIL` value and the password used by
-`hash-local-password.py`. CE uses engine-issued local JWTs; it does not require
+Sign in with the initial admin email and password provided to `setup-ce.py`.
+CE uses engine-issued local JWTs; it does not require
 Firebase and it does not use dev auth.
+
+CE local JWT auth is password-based. Do not claim or advertise local TOTP/2FA
+unless the backend login flow actually enforces it. For production deployments
+that require 2FA, place Flyto2 behind an identity provider or use an edition
+that supports enterprise SSO/MFA enforcement.
 
 ## Reset The Database
 

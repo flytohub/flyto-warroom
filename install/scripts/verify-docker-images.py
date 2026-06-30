@@ -1,0 +1,100 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import argparse
+import json
+from pathlib import Path
+import subprocess
+import sys
+
+
+ROOT = Path(__file__).resolve().parents[2]
+DEFAULT_MANIFEST = ROOT / "OPEN_CORE_MANIFEST.json"
+
+
+def service_images(manifest_path: Path) -> list[tuple[str, str, str]]:
+    payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    release = payload.get("release", {})
+    images = release.get("public_images", {})
+    tags = release.get("public_image_tags", {})
+    digests = release.get("public_image_digests", {})
+    default_repo = release.get("public_image_repository", "docker.io/chesterhsu/flyto-warroom")
+    defaults = {
+        "engine": "engine-ce",
+        "worker": "worker-ce",
+        "frontend": "code-ce",
+        "runner": "runner-ce",
+        "verification": "verification-ce",
+        "brand_vision": "brand-vision-ce",
+        "pdf": "pdf-ce",
+    }
+    result: list[tuple[str, str, str]] = []
+    for service, default_tag in defaults.items():
+        repo = images.get(service, default_repo)
+        tag = tags.get(service, default_tag)
+        result.append((service, f"{repo}:{tag}", digests.get(service, "")))
+    return result
+
+
+def run(cmd: list[str], *, timeout: int) -> subprocess.CompletedProcess[str]:
+    return subprocess.run(cmd, text=True, capture_output=True, timeout=timeout, check=False)
+
+
+def descriptor_digest(payload: object) -> str:
+    if isinstance(payload, dict):
+        descriptor = payload.get("Descriptor")
+        if isinstance(descriptor, dict) and isinstance(descriptor.get("digest"), str):
+            return descriptor["digest"]
+        if isinstance(payload.get("schemaVersion"), int):
+            return ""
+    if isinstance(payload, list) and len(payload) == 1:
+        return descriptor_digest(payload[0])
+    return ""
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Verify Flyto2 Warroom CE Docker Hub image tags and digests")
+    parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
+    parser.add_argument("--pull", action="store_true", help="also docker pull every image")
+    parser.add_argument("--dry-run", action="store_true", help="print images without contacting Docker Hub")
+    parser.add_argument("--timeout", type=int, default=120)
+    args = parser.parse_args()
+
+    manifest = Path(args.manifest)
+    blockers: list[str] = []
+    for service, image, expected_digest in service_images(manifest):
+        suffix = f" expected={expected_digest}" if expected_digest else ""
+        print(f"{service} {image}{suffix}")
+        if args.dry_run:
+            continue
+        inspected = run(["docker", "manifest", "inspect", "--verbose", image], timeout=args.timeout)
+        if inspected.returncode != 0:
+            blockers.append(f"manifest inspect failed for {image}: {inspected.stderr.strip() or inspected.stdout.strip()}")
+            continue
+        try:
+            parsed = json.loads(inspected.stdout)
+        except json.JSONDecodeError:
+            blockers.append(f"manifest inspect returned non-json output for {image}")
+            continue
+        actual_digest = descriptor_digest(parsed)
+        if expected_digest:
+            if actual_digest != expected_digest:
+                blockers.append(
+                    f"digest mismatch for {image}: expected {expected_digest}, got {actual_digest or 'missing'}"
+                )
+        elif not actual_digest:
+            blockers.append(f"manifest descriptor digest missing for {image}")
+        if args.pull:
+            pulled = run(["docker", "pull", image], timeout=args.timeout * 3)
+            if pulled.returncode != 0:
+                blockers.append(f"docker pull failed for {image}: {pulled.stderr.strip() or pulled.stdout.strip()}")
+    if blockers:
+        for blocker in blockers:
+            print("BLOCKED: " + blocker, file=sys.stderr)
+        return 2
+    print("ok")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

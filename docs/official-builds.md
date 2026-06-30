@@ -25,6 +25,16 @@ An official release should include:
 - Docker image digests for every service tag;
 - SBOM/provenance/signature evidence when the release pipeline supports it.
 
+Before publishing or announcing a release, run:
+
+```sh
+python install/scripts/verify-docker-images.py
+```
+
+This verifies every service tag and expected digest declared in
+`OPEN_CORE_MANIFEST.json` against Docker Hub. Use `--pull` for a stricter pull
+test.
+
 ## Forks
 
 Forks may rebuild CE under their own names. Forks may not use Flyto2 trademarks,
