@@ -3,18 +3,20 @@
 ````markdown
 # Flyto2 Warroom CE Preview
 
-Flyto2 Warroom CE is the self-hosted community edition of Flyto2 Warroom, an
-open-core security operations platform for code, cloud, container, runtime,
-external attack surface, evidence, and compliance workflows.
+Flyto2 Warroom CE is the self-hosted open-core edition of Flyto2 Warroom: a
+local security operations cockpit for code security, external attack surface,
+cloud/container/runtime posture, automated security testing, evidence, scoring,
+and compliance workflows.
 
-This is a CE Preview release for local labs, evaluators, security teams, and
-open-source users who want to run the Warroom stack on their own Docker host.
+This is a CE Preview for local labs, evaluators, security teams, and
+open-source users who want to run Warroom on their own Docker host.
 
 ## Links
 
 - Website: https://flyto2.com
 - GitHub: https://github.com/flytohub/flyto-warroom
 - Install docs: https://github.com/flytohub/flyto-warroom/blob/main/docs/local-install.md
+- Enterprise bridge: https://github.com/flytohub/flyto-warroom/blob/main/docs/enterprise-cloud-bridge.md
 - Security policy: https://github.com/flytohub/flyto-warroom/blob/main/SECURITY.md
 
 ## Images
@@ -36,7 +38,7 @@ Versioned tags are also published for reproducible installs, for example:
 
 ## Quick Start
 
-Recommended install path is Docker Compose from the GitHub repository:
+Recommended install path is Docker Compose from GitHub:
 
 ```sh
 git clone https://github.com/flytohub/flyto-warroom.git
@@ -56,6 +58,31 @@ http://localhost:8088
 
 The setup script writes `install/.env`, generates local secrets, and stores only
 a password hash for the initial admin account.
+
+## What CE Includes
+
+- Local Warroom UI with local JWT auth, no Firebase requirement.
+- CE engine, worker, runner, verification, brand-vision, PDF, and Postgres
+  services.
+- Public frontend source, i18n packages, local code intelligence, YAML runtime,
+  public API/capability/evidence contracts, and installer scripts.
+- Baseline workflows for code security, CTEM/external posture, automated
+  security testing, evidence, reports, score views, and compliance surfaces.
+
+## Enterprise Path
+
+CE is not a full Enterprise source release. Premium capabilities can be attached
+through Flyto2 Enterprise Cloud Bridge:
+
+- commercial darkweb/threat-intel datasets and correlation;
+- managed DAST/browser runner fleet and red team execution;
+- cloud/container/runtime/VM live remediation orchestration;
+- commercial AI proposal workflows, approval, promotion, and rollback bundles;
+- SSO/SAML/SCIM, offline license, airgap packaging, legal hold, and support
+  controls.
+
+Premium actions should fail closed when entitlement, permission, connector,
+signature, or cloud validation fails.
 
 ## Default Ports
 
@@ -79,12 +106,10 @@ instance.
 
 ## Edition Model
 
-Community Edition includes the self-hosted open-core Warroom stack.
-
-Enterprise features such as hosted SaaS control plane, enterprise
-SSO/SAML/SCIM, commercial threat intelligence, advanced entitlement controls,
-managed runner fleets, airgap packaging, and enterprise support are separate
-commercial offerings.
+Community Edition includes the self-hosted open-core Warroom stack. Enterprise
+features are separate commercial offerings and are exposed through documented
+capabilities, contracts, signed evidence, private images, or Flyto Cloud
+services.
 
 ## Architecture Note
 

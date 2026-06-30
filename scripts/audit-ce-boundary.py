@@ -22,6 +22,7 @@ CE_CONTROL_FILES = [
 REQUIRED_FILES = [
     "docs/docker-hub-overview.md",
     "docs/code-protection.md",
+    "docs/enterprise-cloud-bridge.md",
     "docs/official-builds.md",
     "TRADEMARK.md",
     "GOVERNANCE.md",
@@ -57,7 +58,14 @@ REQUIRED_MARKERS = {
     ],
     "docs/code-protection.md": [
         "open-core release protects private code by construction",
+        "Enterprise Cloud Bridge integration",
         "audit-ce-boundary.py",
+    ],
+    "docs/enterprise-cloud-bridge.md": [
+        "Flyto2 Enterprise Cloud Bridge",
+        "What Can Be Cloud-Backed",
+        "Premium requests should follow the same contract",
+        "Airgap Alternative",
     ],
     "docs/official-builds.md": [
         "Official Images",
