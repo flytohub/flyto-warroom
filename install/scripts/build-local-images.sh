@@ -2,33 +2,35 @@
 set -eu
 
 WORKSPACE="${1:-/Users/chester/flytohub}"
-TAG="${FLYTO_WARROOM_TAG:-ce-local}"
-ENGINE_IMAGE="${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/flytohub/flyto2-warroom-engine-ce}"
-WORKER_IMAGE="${FLYTO_WARROOM_WORKER_IMAGE:-docker.io/flytohub/flyto2-warroom-worker-ce}"
-FRONTEND_IMAGE="${FLYTO_WARROOM_FRONTEND_IMAGE:-docker.io/flytohub/flyto2-warroom-code-ce}"
-RUNNER_IMAGE="${FLYTO_WARROOM_RUNNER_IMAGE:-docker.io/flytohub/flyto2-warroom-runner-ce}"
-VERIFICATION_IMAGE="${FLYTO_WARROOM_VERIFICATION_IMAGE:-docker.io/flytohub/flyto2-warroom-verification-ce}"
-BRAND_VISION_IMAGE="${FLYTO_WARROOM_BRAND_VISION_IMAGE:-docker.io/flytohub/flyto2-warroom-brand-vision-ce}"
-PDF_IMAGE="${FLYTO_WARROOM_PDF_IMAGE:-docker.io/flytohub/flyto2-warroom-pdf-ce}"
+IMAGE_REPOSITORY="${FLYTO_WARROOM_IMAGE_REPOSITORY:-docker.io/chesterhsu/flyto-warroom}"
+ENGINE_IMAGE="${FLYTO_WARROOM_ENGINE_IMAGE:-$IMAGE_REPOSITORY}"
+ENGINE_TAG="${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
+WORKER_IMAGE="${FLYTO_WARROOM_WORKER_IMAGE:-$IMAGE_REPOSITORY}"
+WORKER_TAG="${FLYTO_WARROOM_WORKER_TAG:-worker-ce}"
+FRONTEND_IMAGE="${FLYTO_WARROOM_FRONTEND_IMAGE:-$IMAGE_REPOSITORY}"
+FRONTEND_TAG="${FLYTO_WARROOM_FRONTEND_TAG:-code-ce}"
+RUNNER_IMAGE="${FLYTO_WARROOM_RUNNER_IMAGE:-$IMAGE_REPOSITORY}"
+RUNNER_TAG="${FLYTO_WARROOM_RUNNER_TAG:-runner-ce}"
+VERIFICATION_IMAGE="${FLYTO_WARROOM_VERIFICATION_IMAGE:-$IMAGE_REPOSITORY}"
+VERIFICATION_TAG="${FLYTO_WARROOM_VERIFICATION_TAG:-verification-ce}"
+BRAND_VISION_IMAGE="${FLYTO_WARROOM_BRAND_VISION_IMAGE:-$IMAGE_REPOSITORY}"
+BRAND_VISION_TAG="${FLYTO_WARROOM_BRAND_VISION_TAG:-brand-vision-ce}"
+PDF_IMAGE="${FLYTO_WARROOM_PDF_IMAGE:-$IMAGE_REPOSITORY}"
+PDF_TAG="${FLYTO_WARROOM_PDF_TAG:-pdf-ce}"
 
-docker build -t "$ENGINE_IMAGE:$TAG" "$WORKSPACE/flyto-engine"
-docker tag "$ENGINE_IMAGE:$TAG" "$WORKER_IMAGE:$TAG"
-docker build -t "$RUNNER_IMAGE:$TAG" "$WORKSPACE/flyto-engine/runner"
-docker build -f "$WORKSPACE/flyto-core/Dockerfile.verification" -t "$VERIFICATION_IMAGE:$TAG" "$WORKSPACE/flyto-core"
-docker build -t "$BRAND_VISION_IMAGE:$TAG" "$WORKSPACE/flyto-engine/brand-vision"
-docker build -t "$PDF_IMAGE:$TAG" "$WORKSPACE/flyto-engine/pdf-service"
+docker build -t "$ENGINE_IMAGE:$ENGINE_TAG" "$WORKSPACE/flyto-engine"
+docker tag "$ENGINE_IMAGE:$ENGINE_TAG" "$WORKER_IMAGE:$WORKER_TAG"
+docker build -t "$RUNNER_IMAGE:$RUNNER_TAG" "$WORKSPACE/flyto-engine/runner"
+docker build -f "$WORKSPACE/flyto-core/Dockerfile.verification" -t "$VERIFICATION_IMAGE:$VERIFICATION_TAG" "$WORKSPACE/flyto-core"
+docker build -t "$BRAND_VISION_IMAGE:$BRAND_VISION_TAG" "$WORKSPACE/flyto-engine/brand-vision"
+docker build -t "$PDF_IMAGE:$PDF_TAG" "$WORKSPACE/flyto-engine/pdf-service"
 
 TMP_ROOT="$(mktemp -d)"
 trap 'rm -rf "$TMP_ROOT"' EXIT
 CODE_CTX="$TMP_ROOT/flyto-code"
 mkdir -p "$CODE_CTX"
 tar -C "$WORKSPACE/flyto-code" -cf - . | tar -C "$CODE_CTX" -xf -
-rm -rf "$CODE_CTX/node_modules" \
-  "$CODE_CTX/dist" \
-  "$CODE_CTX/dist-next" \
-  "$CODE_CTX/out" \
-  "$CODE_CTX/test-results" \
-  "$CODE_CTX/flyto-design-tokens-pkg"
+rm -rf "$CODE_CTX/node_modules"   "$CODE_CTX/dist"   "$CODE_CTX/dist-next"   "$CODE_CTX/out"   "$CODE_CTX/test-results"   "$CODE_CTX/flyto-design-tokens-pkg"
 if [ -d "$WORKSPACE/flyto-design-tokens" ]; then
   cp -R "$WORKSPACE/flyto-design-tokens" "$CODE_CTX/flyto-design-tokens-pkg"
 else
@@ -83,5 +85,5 @@ docker build \
   --build-arg VITE_AUTH_MODE="${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
   --build-arg VITE_AUTOMATION_URL="${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
   --build-arg VITE_CORTEX_URL="${FLYTO_CORTEX_URL:-http://localhost:8080}" \
-  -t "$FRONTEND_IMAGE:$TAG" \
+  -t "$FRONTEND_IMAGE:$FRONTEND_TAG" \
   "$CODE_CTX"

@@ -14,8 +14,10 @@ sh /tmp/flyto2-warroom-ce/install/scripts/build-local-images.sh /Users/chester/f
 ```
 
 The script builds engine, worker, runner, verification, brand-vision, pdf, and
-frontend images with the `ce-local` tag. Public users would pull the same image
-names from Docker Hub after the release pipeline publishes them.
+frontend images with the same per-service tags used by Docker Hub
+(`engine-ce`, `worker-ce`, `code-ce`, and so on). Public users can pull those
+tags directly from the published image repository, while maintainers can rebuild
+the same tags locally from the private workspace before starting compose.
 
 ## Start CE Locally
 

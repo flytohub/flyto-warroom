@@ -19,7 +19,7 @@ services:
       retries: 60
 
   engine:
-    image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/flytohub/flyto2-warroom-engine-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLYTO_ENGINE_PORT:-8080}:8080"
@@ -82,7 +82,7 @@ services:
       retries: 30
 
   scan-drainer:
-    image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/flytohub/flyto2-warroom-engine-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
     restart: unless-stopped
     environment:
       FLYTO_SERVER_MODE: "scan-drain-loop"
@@ -108,7 +108,7 @@ services:
         condition: service_healthy
 
   discovery-drainer:
-    image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/flytohub/flyto2-warroom-engine-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
     restart: unless-stopped
     environment:
       FLYTO_SERVER_MODE: "discovery-drain-loop"
@@ -136,7 +136,7 @@ services:
         condition: service_healthy
 
   worker:
-    image: "${FLYTO_WARROOM_WORKER_IMAGE:-docker.io/flytohub/flyto2-warroom-worker-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_WORKER_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_WORKER_TAG:-worker-ce}"
     restart: unless-stopped
     entrypoint: ["/app/worker"]
     environment:
@@ -163,7 +163,7 @@ services:
         condition: service_healthy
 
   runner:
-    image: "${FLYTO_WARROOM_RUNNER_IMAGE:-docker.io/flytohub/flyto2-warroom-runner-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_RUNNER_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_RUNNER_TAG:-runner-ce}"
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLYTO_RUNNER_PORT:-8090}:8090"
@@ -186,7 +186,7 @@ services:
       retries: 30
 
   verification:
-    image: "${FLYTO_WARROOM_VERIFICATION_IMAGE:-docker.io/flytohub/flyto2-warroom-verification-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_VERIFICATION_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_VERIFICATION_TAG:-verification-ce}"
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLYTO_VERIFICATION_PORT:-8344}:8344"
@@ -198,7 +198,7 @@ services:
       FLYTO_ALLOW_PRIVATE_NETWORK: "${FLYTO_ALLOW_PRIVATE_NETWORK:-true}"
 
   brand-vision:
-    image: "${FLYTO_WARROOM_BRAND_VISION_IMAGE:-docker.io/flytohub/flyto2-warroom-brand-vision-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_BRAND_VISION_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_BRAND_VISION_TAG:-brand-vision-ce}"
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLYTO_BRAND_VISION_PORT:-8095}:8095"
@@ -213,14 +213,14 @@ services:
       retries: 15
 
   pdf:
-    image: "${FLYTO_WARROOM_PDF_IMAGE:-docker.io/flytohub/flyto2-warroom-pdf-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_PDF_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_PDF_TAG:-pdf-ce}"
     restart: unless-stopped
     environment:
       PORT: "3000"
       PDF_TIMEOUT_MS: "${PDF_TIMEOUT_MS:-30000}"
 
   frontend:
-    image: "${FLYTO_WARROOM_FRONTEND_IMAGE:-docker.io/flytohub/flyto2-warroom-code-ce}:${FLYTO_WARROOM_TAG:-ce-local}"
+    image: "${FLYTO_WARROOM_FRONTEND_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_FRONTEND_TAG:-code-ce}"
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLYTO_CODE_PORT:-8088}:80"
