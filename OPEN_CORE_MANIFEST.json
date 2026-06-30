@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-06-30T15:37:44.144979+00:00",
+  "generated_at": "2026-06-30T16:08:05.966923+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-indexer/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -70,6 +70,7 @@
     ".github/CODEOWNERS",
     ".github/pull_request_template.md",
     "scripts/audit-github-protection.py",
+    "scripts/audit-ce-boundary.py",
     ".github/workflows/ci.yml"
   ],
   "packages": [

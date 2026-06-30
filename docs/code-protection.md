@@ -17,10 +17,13 @@ Run this before publishing:
 
 ```sh
 python3 install/scripts/audit-release-tree.py .
+python3 scripts/audit-ce-boundary.py .
 ```
 
 The audit fails if private engine paths escape, CE compose references EE image
-coordinates, or generated files contain secret-like values.
+coordinates, generated files contain secret-like values, CE runtime config ships
+default analytics/phone-home keys, or the public docs lose their CE Preview and
+edition-boundary markers.
 
 This is technical containment, not a substitute for license, trademark, image
 signing, SBOM, and release provenance. A production release should publish signed

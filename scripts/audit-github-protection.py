@@ -43,6 +43,7 @@ REQUIRED_MARKERS = {
     ],
     ".github/pull_request_template.md": [
         "private image coordinates",
+        "audit-ce-boundary.py",
         "Signed-off-by:",
         "commercial releases",
     ],
@@ -50,8 +51,14 @@ REQUIRED_MARKERS = {
         "release-audit",
         "governance-audit",
         "docker-image-audit",
+        "Audit CE moat and privacy boundary",
         "Audit GitHub protection files",
         "Export upstream patch preview",
+    ],
+    "scripts/audit-ce-boundary.py": [
+        "CE_CONTROL_FILES",
+        "POSTHOG",
+        "Flyto2 Warroom CE Preview",
     ],
 }
 

@@ -37,6 +37,7 @@ REQUIRED = [
     ".github/pull_request_template.md",
     ".github/workflows/ci.yml",
     "scripts/audit-github-protection.py",
+    "scripts/audit-ce-boundary.py",
 ]
 
 PRIVATE_GLOBS = [

@@ -16,6 +16,8 @@ jobs:
           python-version: "3.11"
       - name: Audit GitHub protection files
         run: python scripts/audit-github-protection.py .
+      - name: Audit CE moat and privacy boundary
+        run: python scripts/audit-ce-boundary.py .
 
   release-audit:
     runs-on: ubuntu-latest
@@ -26,6 +28,8 @@ jobs:
           python-version: "3.11"
       - name: Audit generated release boundary
         run: python install/scripts/audit-release-tree.py .
+      - name: Audit CE moat and privacy boundary
+        run: python scripts/audit-ce-boundary.py .
       - name: Validate public contracts
         run: |
           python packages/flyto-contracts/conformance/validate.py runner-callback packages/flyto-contracts/examples/runner-callback.json
