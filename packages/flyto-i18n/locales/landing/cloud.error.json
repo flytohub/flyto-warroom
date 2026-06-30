@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.error",
+  "version": "1.0.0",
+  "translations": {
+    "error.failedToStartReplay": "",
+    "error.fixJsonFirst": "",
+    "error.imageTooLarge": "",
+    "error.invalidJsonContext": "",
+    "error.noStepsToValidate": "",
+    "error.replayFailed": ""
+  }
+}

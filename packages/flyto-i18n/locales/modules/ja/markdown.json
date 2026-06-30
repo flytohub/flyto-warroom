@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "MarkdownコンテンツからYAMLフロントマターを抽出",
+        "modules.markdown.parse_frontmatter.label": "フロントマターを解析",
+        "modules.markdown.parse_frontmatter.output.content.description": "フロントマターなしのMarkdownコンテンツ",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "辞書として解析されたフロントマター",
+        "modules.markdown.parse_frontmatter.params.text.description": "フロントマター付きのMarkdownコンテンツ",
+        "modules.markdown.parse_frontmatter.params.text.label": "Markdownテキスト",
+        "modules.markdown.to_html.description": "MarkdownテキストをHTMLに変換",
+        "modules.markdown.to_html.label": "MarkdownをHTMLに変換",
+        "modules.markdown.to_html.output.html.description": "変換されたHTMLコンテンツ",
+        "modules.markdown.to_html.output.word_count.description": "入力テキストの単語数",
+        "modules.markdown.to_html.params.extensions.description": "有効にするMarkdown拡張機能（markdownライブラリでのみ使用）",
+        "modules.markdown.to_html.params.extensions.label": "拡張機能",
+        "modules.markdown.to_html.params.text.description": "変換するMarkdownコンテンツ",
+        "modules.markdown.to_html.params.text.label": "Markdownテキスト",
+        "modules.markdown.toc.description": "Markdownの見出しから目次を生成",
+        "modules.markdown.toc.label": "目次を生成",
+        "modules.markdown.toc.output.toc.description": "レベル、タイトル、スラッグ付きの見出しリスト",
+        "modules.markdown.toc.output.toc_markdown.description": "フォーマット済みMarkdown目次",
+        "modules.markdown.toc.params.max_depth.description": "含める見出しの最大深度（1-6）",
+        "modules.markdown.toc.params.max_depth.label": "最大深度",
+        "modules.markdown.toc.params.text.description": "見出しを抽出するMarkdownコンテンツ",
+        "modules.markdown.toc.params.text.label": "Markdownテキスト"
+    }
+}

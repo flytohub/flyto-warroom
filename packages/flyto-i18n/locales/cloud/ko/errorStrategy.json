@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "계속",
+        "errorStrategy.continueDesc": "오류를 기록하고 다음 단계로 계속",
+        "errorStrategy.retry": "재시도",
+        "errorStrategy.retryDesc": "재시도 설정에 따라 재시도",
+        "errorStrategy.stop": "중지",
+        "errorStrategy.stopDesc": "워크플로우를 중지하고 실패로 표시"
+    }
+}

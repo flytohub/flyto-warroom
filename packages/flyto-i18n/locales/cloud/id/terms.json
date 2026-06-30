@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Terakhir Diperbarui",
+        "terms.sections.acceptance.content": "Dengan mengakses atau menggunakan layanan Flyto2, Anda setuju untuk terikat dengan Ketentuan Layanan ini. Jika Anda tidak setuju dengan ketentuan ini, harap jangan gunakan layanan kami.",
+        "terms.sections.acceptance.title": "Penerimaan Ketentuan",
+        "terms.sections.account.content": "Anda bertanggung jawab untuk menjaga kerahasiaan kredensial akun Anda dan untuk semua aktivitas yang terjadi di bawah akun Anda. Anda harus segera memberitahu kami tentang penggunaan yang tidak sah.",
+        "terms.sections.account.title": "Akun Pengguna",
+        "terms.sections.intellectual.content": "Semua konten, fitur, dan fungsionalitas Flyto2 dimiliki oleh kami dan dilindungi oleh hak cipta internasional, merek dagang, dan hukum kekayaan intelektual lainnya.",
+        "terms.sections.intellectual.title": "Kekayaan Intelektual",
+        "terms.sections.limitation.content": "Sejauh yang diizinkan oleh hukum, Flyto2 tidak bertanggung jawab atas kerugian tidak langsung, insidental, khusus, konsekuensial, atau punitif yang diakibatkan dari penggunaan layanan kami.",
+        "terms.sections.limitation.title": "Batasan Tanggung Jawab",
+        "terms.sections.prohibited.content": "Anda tidak boleh menggunakan layanan kami untuk tujuan ilegal, melanggar hukum, melanggar hak kekayaan intelektual, atau mengirimkan kode berbahaya. Kami berhak untuk mengakhiri akun yang melanggar ketentuan ini.",
+        "terms.sections.prohibited.title": "Penggunaan yang Dilarang",
+        "terms.sections.services.content": "Flyto2 menyediakan platform otomatisasi workflow yang memungkinkan pengguna untuk membuat, mengelola, dan menjalankan workflow otomatis. Kami berhak untuk memodifikasi atau menghentikan layanan kapan saja.",
+        "terms.sections.services.title": "Deskripsi Layanan",
+        "terms.sections.termination.content": "Kami dapat mengakhiri atau menangguhkan akun Anda dan akses ke layanan kami atas kebijakan kami sendiri, tanpa pemberitahuan sebelumnya, untuk perilaku yang kami yakini melanggar ketentuan ini atau berbahaya bagi pengguna lain.",
+        "terms.sections.termination.title": "Pengakhiran",
+        "terms.title": "Ketentuan Layanan"
+    }
+}

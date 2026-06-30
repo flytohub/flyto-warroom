@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "th",
+  "category": "cloud.categories",
+  "version": "1.0.0",
+  "translations": {
+    "categories.ai": "AI",
+    "categories.api": "API",
+    "categories.array": "อาเรย์",
+    "categories.browser": "เบราว์เซอร์",
+    "categories.cloud": "คลาวด์",
+    "categories.code": "โค้ด",
+    "categories.composite": "คอมโพสิต",
+    "categories.connector": "API Connector",
+    "categories.data": "ข้อมูล",
+    "categories.datetime": "วันที่/เวลา",
+    "categories.element": "องค์ประกอบ",
+    "categories.file": "ไฟล์",
+    "categories.flow": "การควบคุมการไหล",
+    "categories.form": "การป้อนข้อมูลฟอร์ม",
+    "categories.http": "HTTP",
+    "categories.huggingface": "HuggingFace",
+    "categories.image": "รูปภาพ",
+    "categories.llm": "LLM",
+    "categories.math": "คณิตศาสตร์",
+    "categories.my-templates": "แม่แบบของฉัน",
+    "categories.notification": "การแจ้งเตือน",
+    "categories.object": "ออบเจ็กต์",
+    "categories.other": "อื่นๆ",
+    "categories.string": "สตริง",
+    "categories.utility": "เครื่องมือ"
+  }
+}

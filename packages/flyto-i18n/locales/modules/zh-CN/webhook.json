@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "webhook",
+    "version": "1.0.0",
+    "translations": {
+        "modules.webhook.trigger.description": "发送 HTTP POST 请求到 webhook URL",
+        "modules.webhook.trigger.label": "触发 Webhook",
+        "modules.webhook.trigger.output.headers.description": "HTTP 回应状态码",
+        "modules.webhook.trigger.output.response.description": "HTTP 回应状态码",
+        "modules.webhook.trigger.output.status_code.description": "HTTP 回应状态码"
+    }
+}

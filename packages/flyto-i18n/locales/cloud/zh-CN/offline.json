@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "返回模板",
+        "offline.currentlyOffline": "您目前处于脱机模式",
+        "offline.languagePack.active": "使用中",
+        "offline.languagePack.currentLanguage": "目前语言",
+        "offline.languagePack.downloadHint": "从以下网址下载语言包",
+        "offline.languagePack.importButton": "导入语言包",
+        "offline.languagePack.importFailed": "导入语言包失败",
+        "offline.languagePack.importSuccess": "成功导入 {locale}（{count} 个键）",
+        "offline.languagePack.importedPacks": "已导入的语言包",
+        "offline.languagePack.importing": "导入中...",
+        "offline.languagePack.invalidFormat": "文件格式无效，请选择 flyto-i18n JSON 文件",
+        "offline.languagePack.noTranslations": "文件中没有翻译内容",
+        "offline.languagePack.subtitle": "导入脱机翻译文件",
+        "offline.languagePack.title": "语言包",
+        "offline.languagePack.use": "使用",
+        "offline.license": "授权",
+        "offline.settings": "脱机设置"
+    }
+}

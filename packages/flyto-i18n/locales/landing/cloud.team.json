@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.team",
+  "version": "1.0.0",
+  "translations": {
+    "team.activity.empty": "",
+    "team.activity.title": "",
+    "team.contributors.created": "",
+    "team.contributors.empty": "",
+    "team.contributors.executed": "",
+    "team.contributors.title": "",
+    "team.dashboard.subtitle": "",
+    "team.dashboard.title": "",
+    "team.stats.executions": "",
+    "team.stats.members": "",
+    "team.stats.templates": "",
+    "team.stats.workflows": ""
+  }
+}

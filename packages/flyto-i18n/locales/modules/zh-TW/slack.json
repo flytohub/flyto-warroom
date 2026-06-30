@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "slack",
+    "version": "1.0.0",
+    "translations": {
+        "modules.slack.send.description": "透過 incoming webhook 傳送訊息到 Slack 頻道",
+        "modules.slack.send.label": "傳送 Slack 訊息",
+        "modules.slack.send.output.sent.description": "訊息是否成功傳送"
+    }
+}

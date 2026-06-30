@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "AI Asistanı (AI'den yardım isteyin)",
+        "workflowCanvas.controls.autoLayout": "Otomatik Düzen",
+        "workflowCanvas.controls.fitView": "Görünümü Sığdır",
+        "workflowCanvas.controls.zoomIn": "Yakınlaştır",
+        "workflowCanvas.controls.zoomOut": "Uzaklaştır",
+        "workflowCanvas.deleteDialog.deleteAll": "Tümünü Sil",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "Bu düğümü ve tüm {count} alt düğüm(ler)i sil",
+        "workflowCanvas.deleteDialog.mergeToChild": "Alt Düğüme Birleştir",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "Sadece bu düğümü sil ve üst düğümü ilk alt düğüme bağla",
+        "workflowCanvas.deleteDialog.message": "Bu düğümün {count} alt düğüm(ler)i var. Ne yapmak istersiniz?",
+        "workflowCanvas.deleteDialog.title": "Alt Düğümlü Düğümü Sil",
+        "workflowCanvas.reconnect.cancel": "İptal",
+        "workflowCanvas.reconnect.connect": "Bağlan",
+        "workflowCanvas.reconnect.dontConnect": "Bağlanma",
+        "workflowCanvas.stickyNoteCreated": "Yapışkan not oluşturuldu"
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "テンプレートに戻る",
+        "offline.currentlyOffline": "現在オフラインで作業中です",
+        "offline.languagePack.active": "アクティブ",
+        "offline.languagePack.currentLanguage": "現在の言語",
+        "offline.languagePack.downloadHint": "言語パックのダウンロード元：",
+        "offline.languagePack.importButton": "言語パックをインポート",
+        "offline.languagePack.importFailed": "言語パックのインポートに失敗しました",
+        "offline.languagePack.importSuccess": "{locale}を正常にインポートしました（{count}キー）",
+        "offline.languagePack.importedPacks": "インポート済みパック",
+        "offline.languagePack.importing": "インポート中...",
+        "offline.languagePack.invalidFormat": "無効なファイル形式です。flyto-i18n JSONファイルを使用してください。",
+        "offline.languagePack.noTranslations": "ファイルに翻訳が見つかりません",
+        "offline.languagePack.subtitle": "オフライン用の翻訳をインポート",
+        "offline.languagePack.title": "言語パック",
+        "offline.languagePack.use": "使用",
+        "offline.license": "ライセンス",
+        "offline.settings": "オフライン設定"
+    }
+}

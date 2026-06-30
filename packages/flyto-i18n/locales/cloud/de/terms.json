@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Zuletzt aktualisiert",
+        "terms.sections.acceptance.content": "Durch den Zugriff auf oder die Nutzung der Flyto2-Dienste erklären Sie sich mit diesen Nutzungsbedingungen einverstanden. Wenn Sie diesen Bedingungen nicht zustimmen, nutzen Sie bitte unsere Dienste nicht.",
+        "terms.sections.acceptance.title": "Annahme der Bedingungen",
+        "terms.sections.account.content": "Sie sind für die Wahrung der Vertraulichkeit Ihrer Kontodaten und für alle Aktivitäten, die unter Ihrem Konto stattfinden, verantwortlich. Sie müssen uns unverzüglich über jede unbefugte Nutzung informieren.",
+        "terms.sections.account.title": "Benutzerkonten",
+        "terms.sections.intellectual.content": "Alle Inhalte, Funktionen und Funktionalitäten von Flyto2 sind unser Eigentum und durch internationale Urheberrechts-, Marken- und andere geistige Eigentumsgesetze geschützt.",
+        "terms.sections.intellectual.title": "Geistiges Eigentum",
+        "terms.sections.limitation.content": "Im maximal gesetzlich zulässigen Umfang haftet Flyto2 nicht für indirekte, zufällige, besondere, Folge- oder Strafschäden, die aus Ihrer Nutzung unserer Dienste resultieren.",
+        "terms.sections.limitation.title": "Haftungsbeschränkung",
+        "terms.sections.prohibited.content": "Sie dürfen unsere Dienste nicht für illegale Zwecke, zur Verletzung von Gesetzen, zur Verletzung von geistigen Eigentumsrechten oder zur Übertragung von schädlichem Code nutzen. Wir behalten uns das Recht vor, Konten zu kündigen, die gegen diese Bedingungen verstoßen.",
+        "terms.sections.prohibited.title": "Verbotene Nutzung",
+        "terms.sections.services.content": "Flyto2 bietet eine Workflow-Automatisierungsplattform, die es Benutzern ermöglicht, automatisierte Workflows zu erstellen, zu verwalten und auszuführen. Wir behalten uns das Recht vor, Dienste jederzeit zu ändern oder einzustellen.",
+        "terms.sections.services.title": "Beschreibung der Dienste",
+        "terms.sections.termination.content": "Wir können Ihr Konto und den Zugang zu unseren Diensten nach eigenem Ermessen, ohne vorherige Ankündigung, für Verhalten kündigen oder aussetzen, das unserer Meinung nach gegen diese Bedingungen verstößt oder anderen Benutzern schadet.",
+        "terms.sections.termination.title": "Kündigung",
+        "terms.title": "Nutzungsbedingungen"
+    }
+}

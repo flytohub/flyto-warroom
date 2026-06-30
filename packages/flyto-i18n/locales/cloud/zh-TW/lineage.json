@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "替代方案",
+        "lineage.decision.evidence": "證據",
+        "lineage.decision.reason": "原因",
+        "lineage.loop.clickToCollapse": "點擊收合",
+        "lineage.steps": "步驟",
+        "lineage.storyline.noSteps": "沒有步驟可顯示",
+        "lineage.storyline.noStepsInLane": "此區段沒有步驟",
+        "lineage.storyline.runHint": "執行工作流程以查看執行歷史",
+        "lineage.storyline.title": "執行時間軸"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.gridLayout",
+    "version": "1.0.0",
+    "translations": {
+        "gridLayout.fourColumns": "สี่คอลัมน์",
+        "gridLayout.singleColumn": "คอลัมน์เดียว",
+        "gridLayout.threeColumns": "สามคอลัมน์",
+        "gridLayout.twoColumns11": "สองคอลัมน์ (1:1)",
+        "gridLayout.twoColumns12": "สองคอลัมน์ (1:2)",
+        "gridLayout.twoColumns21": "สองคอลัมน์ (2:1)"
+    }
+}

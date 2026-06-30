@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.moduleCard",
+    "version": "1.0.0",
+    "translations": {
+        "moduleCard.expert": "高端",
+        "moduleCard.inputType": "输入: {type}",
+        "moduleCard.noDescription": "无说明",
+        "moduleCard.outputType": "输出: {type}"
+    }
+}

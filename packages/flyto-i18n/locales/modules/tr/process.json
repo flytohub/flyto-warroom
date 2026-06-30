@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Çalışan tüm arka plan işlemlerini listele",
+        "modules.process.list.label": "İşlemleri Listele",
+        "modules.process.list.output.count.description": "İşlem başarılı",
+        "modules.process.list.output.ok.description": "İşlem başarılı",
+        "modules.process.list.output.processes.description": "İşlem başarılı",
+        "modules.process.list.output.running.description": "İşlem bilgileri listesi",
+        "modules.process.list.output.stopped.description": "Toplam işlem sayısı",
+        "modules.process.start.description": "Arka plan işlemi başlat (sunucu, servis vb.)",
+        "modules.process.start.label": "Arka Plan İşlemi Başlat",
+        "modules.process.start.output.command.description": "process.stop için dahili işlem tanımlayıcı",
+        "modules.process.start.output.cwd.description": "İşlem adı",
+        "modules.process.start.output.initial_output.description": "İşlemin başladığı ISO zaman damgası",
+        "modules.process.start.output.name.description": "İşlem Kimliği",
+        "modules.process.start.output.ok.description": "İşlem başarıyla başladı mı",
+        "modules.process.start.output.pid.description": "İşlem başarıyla başladı mı",
+        "modules.process.start.output.process_id.description": "İşlem başarıyla başladı mı",
+        "modules.process.start.output.started_at.description": "Çalıştırılan komut",
+        "modules.process.stop.description": "Çalışan arka plan işlemini durdur",
+        "modules.process.stop.label": "İşlemi Durdur",
+        "modules.process.stop.output.count.description": "Durdurulan işlem bilgileri listesi",
+        "modules.process.stop.output.failed.description": "Durdurulan işlem bilgileri listesi",
+        "modules.process.stop.output.ok.description": "Tüm işlemler başarıyla durduruldu mu",
+        "modules.process.stop.output.stopped.description": "Tüm işlemler başarıyla durduruldu mu"
+    }
+}

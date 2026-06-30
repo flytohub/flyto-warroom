@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "Haga clic en Ejecutar para iniciar este flujo de trabajo",
+        "executionModal.execute": "Ejecutar",
+        "executionModal.executing": "Ejecutando flujo de trabajo...",
+        "executionModal.executionComplete": "Ejecución completada",
+        "executionModal.executionFailed": "Ejecución fallida",
+        "executionModal.noParamsRequired": "No se requieren parámetros de entrada",
+        "executionModal.runAgain": "Ejecutar de nuevo",
+        "executionModal.status.completed": "COMPLETADO",
+        "executionModal.status.failed": "FALLIDO",
+        "executionModal.status.ready": "LISTO",
+        "executionModal.status.running": "EJECUTANDO",
+        "executionModal.stop": "Detener",
+        "executionModal.title": "Ejecutar flujo de trabajo"
+    }
+}

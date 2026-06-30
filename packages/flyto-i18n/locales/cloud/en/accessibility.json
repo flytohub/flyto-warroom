@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "Breadcrumb",
+        "accessibility.clearInput": "Clear input",
+        "accessibility.closeDialog": "Close dialog",
+        "accessibility.closeMenu": "Close menu",
+        "accessibility.closeModal": "Close modal",
+        "accessibility.copyToClipboard": "Copy to clipboard",
+        "accessibility.imageEditingControls": "Image editing controls",
+        "accessibility.notifications": "Notifications",
+        "accessibility.openMenu": "Open menu",
+        "accessibility.rating": "Rating",
+        "accessibility.refreshList": "Refresh list",
+        "accessibility.removeIcon": "Remove icon",
+        "accessibility.resetImage": "Reset image position and zoom",
+        "accessibility.revokeKey": "Revoke key",
+        "accessibility.rotateLeft": "Rotate left 90 degrees",
+        "accessibility.rotateRight": "Rotate right 90 degrees",
+        "accessibility.showInMarketplace": "Show in marketplace",
+        "accessibility.zoomIn": "Zoom in",
+        "accessibility.zoomOut": "Zoom out"
+    }
+}

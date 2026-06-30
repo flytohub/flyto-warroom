@@ -1,0 +1,34 @@
+{
+  "$id": "https://schemas.flyto.dev/audit-event.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "action": {
+      "type": "string"
+    },
+    "actor": {
+      "type": "object"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "occurred_at": {
+      "type": "string"
+    },
+    "resource": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "event_id",
+    "actor",
+    "action",
+    "resource",
+    "occurred_at"
+  ],
+  "title": "Flyto audit event",
+  "type": "object"
+}

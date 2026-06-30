@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.nav",
+    "version": "1.0.0",
+    "translations": {
+        "nav.marketplace": "मार्केटप्लेस",
+        "nav.tools": "टूल"
+    }
+}

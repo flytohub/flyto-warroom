@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Avanzado",
+        "toolRunner.backToLibrary": "Volver a la biblioteca",
+        "toolRunner.copy": "Copiar",
+        "toolRunner.download": "Descargar",
+        "toolRunner.editTool": "Editar",
+        "toolRunner.executionFailed": "Ejecucion fallida",
+        "toolRunner.executionLogs": "Registros de ejecucion",
+        "toolRunner.executionSuccess": "Ejecucion completada",
+        "toolRunner.executionTimedOut": "La ejecucion excedio el tiempo limite",
+        "toolRunner.flowSteps": "Pasos del flujo",
+        "toolRunner.inputForm": "Formulario de entrada",
+        "toolRunner.loadFailed": "Error al cargar la herramienta",
+        "toolRunner.noLogs": "Sin registros aun. Ejecuta la herramienta para ver los registros de ejecucion.",
+        "toolRunner.resolvedParams": "Parametros resueltos",
+        "toolRunner.results": "Resultados",
+        "toolRunner.retry": "Reintentar",
+        "toolRunner.runAgain": "Ejecutar de nuevo",
+        "toolRunner.runToSeeResults": "Ejecuta la herramienta para ver los resultados aqui",
+        "toolRunner.runTool": "Ejecutar herramienta",
+        "toolRunner.running": "Ejecutando...",
+        "toolRunner.simpleMode": "Sencillo",
+        "toolRunner.toolNotFound": "Herramienta no encontrada",
+        "toolRunner.toolNotFoundError": "Herramienta no encontrada"
+    }
+}

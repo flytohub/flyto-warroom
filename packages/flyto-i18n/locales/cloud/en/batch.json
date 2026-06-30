@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Delete",
+        "batch.deleteConfirm.message": "Are you sure you want to delete {count} templates? This action cannot be undone.",
+        "batch.deleteConfirm.title": "Delete {count} Templates",
+        "batch.deselectAll": "Deselect All",
+        "batch.select": "Select",
+        "batch.selectAll": "Select All",
+        "batch.selected": "selected"
+    }
+}

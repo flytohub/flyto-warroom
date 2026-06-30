@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "เปรียบเทียบ",
+        "versions.current": "ปัจจุบัน",
+        "versions.diff.comparing": "กำลังเปรียบเทียบ",
+        "versions.diff.noChanges": "ไม่มีการเปลี่ยนแปลงระหว่างเวอร์ชัน",
+        "versions.diff.selectPrompt": "เลือกสองเวอร์ชันเพื่อเปรียบเทียบ",
+        "versions.diff.title": "การเปลี่ยนแปลง",
+        "versions.diff.to": "ถึง",
+        "versions.empty": "ไม่มีประวัติเวอร์ชัน",
+        "versions.rollback": "ย้อนกลับ",
+        "versions.rollback.confirm": "ย้อนกลับ",
+        "versions.rollback.description": "การย้อนกลับไป v{version} จะสร้างเวอร์ชันใหม่ที่มีเนื้อหาจากเวอร์ชันนั้น เวอร์ชันปัจจุบันจะยังคงอยู่ในประวัติ",
+        "versions.rollback.targetVersion": "เวอร์ชันเป้าหมาย",
+        "versions.rollback.title": "ย้อนกลับไปเวอร์ชัน",
+        "versions.rollback.warning": "การดำเนินการนี้จะสร้างเวอร์ชันใหม่",
+        "versions.title": "ประวัติเวอร์ชัน"
+    }
+}

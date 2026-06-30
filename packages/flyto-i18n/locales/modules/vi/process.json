@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Liệt kê tất cả các tiến trình nền đang chạy",
+        "modules.process.list.label": "Liệt kê tiến trình",
+        "modules.process.list.output.count.description": "Thao tác thành công",
+        "modules.process.list.output.ok.description": "Thao tác thành công",
+        "modules.process.list.output.processes.description": "Thao tác thành công",
+        "modules.process.list.output.running.description": "Danh sách thông tin tiến trình",
+        "modules.process.list.output.stopped.description": "Tổng số tiến trình",
+        "modules.process.start.description": "Khởi động tiến trình nền (server, dịch vụ, v.v.)",
+        "modules.process.start.label": "Khởi động tiến trình nền",
+        "modules.process.start.output.command.description": "Định danh tiến trình nội bộ cho process.stop",
+        "modules.process.start.output.cwd.description": "Tên tiến trình",
+        "modules.process.start.output.initial_output.description": "Dấu thời gian ISO khi tiến trình bắt đầu",
+        "modules.process.start.output.name.description": "ID Tiến trình",
+        "modules.process.start.output.ok.description": "Tiến trình có khởi động thành công không",
+        "modules.process.start.output.pid.description": "Tiến trình có khởi động thành công không",
+        "modules.process.start.output.process_id.description": "Tiến trình có khởi động thành công không",
+        "modules.process.start.output.started_at.description": "Lệnh đã thực thi",
+        "modules.process.stop.description": "Dừng tiến trình nền đang chạy",
+        "modules.process.stop.label": "Dừng tiến trình",
+        "modules.process.stop.output.count.description": "Danh sách thông tin tiến trình đã dừng",
+        "modules.process.stop.output.failed.description": "Danh sách thông tin tiến trình đã dừng",
+        "modules.process.stop.output.ok.description": "Tất cả tiến trình có được dừng thành công không",
+        "modules.process.stop.output.stopped.description": "Tất cả tiến trình có được dừng thành công không"
+    }
+}

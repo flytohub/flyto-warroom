@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.message",
+    "version": "1.0.0",
+    "translations": {
+        "message.replayCompleted": "¡Repetición completada correctamente!"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "Ekstrak teks dan konten dari dokumen Word (.docx)",
+        "modules.word.parse.label": "Parse Dokumen Word",
+        "modules.word.parse.output.images.description": "Daftar paragraf",
+        "modules.word.parse.output.metadata.description": "Tabel yang diekstrak sebagai array",
+        "modules.word.parse.output.paragraphs.description": "Konten teks lengkap dokumen",
+        "modules.word.parse.output.tables.description": "Konten teks lengkap dokumen",
+        "modules.word.parse.output.text.description": "Konten teks lengkap dokumen",
+        "modules.word.to_pdf.description": "Konversi dokumen Word (.docx) ke file PDF",
+        "modules.word.to_pdf.label": "Word ke PDF",
+        "modules.word.to_pdf.output.file_size.description": "Path ke file PDF yang dihasilkan",
+        "modules.word.to_pdf.output.method_used.description": "Ukuran file output dalam bytes",
+        "modules.word.to_pdf.output.output_path.description": "Path ke file PDF yang dihasilkan"
+    }
+}

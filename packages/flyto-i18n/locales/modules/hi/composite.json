@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "एक वेबपेज को स्क्रैप करें और संरचित JSON डेटा आउटपुट करें",
+        "modules.composite.browser.scrape_to_json.label": "वेब को JSON में स्क्रैप करें",
+        "modules.composite.data.csv_to_json.description": "एक CSV फ़ाइल पढ़ें और इसे JSON प्रारूप में बदलें",
+        "modules.composite.data.csv_to_json.label": "CSV से JSON",
+        "modules.composite.data.json_transform_notify.description": "JSON डेटा को ट्रांसफॉर्म करें और परिणामों के साथ सूचना भेजें",
+        "modules.composite.data.json_transform_notify.label": "JSON ट्रांसफॉर्म और सूचित करें",
+        "modules.composite.developer.api_to_notification.description": "किसी भी API से डेटा प्राप्त करें और इसे सूचना चैनल पर भेजें",
+        "modules.composite.developer.api_to_notification.label": "API से सूचना",
+        "modules.composite.developer.github_daily_digest.description": "GitHub रिपॉजिटरी अपडेट प्राप्त करें और दैनिक डाइजेस्ट सूचना भेजें",
+        "modules.composite.developer.github_daily_digest.label": "GitHub दैनिक डाइजेस्ट",
+        "modules.composite.notification.multi_channel_alert.description": "कई सूचना चैनलों पर एक साथ अलर्ट भेजें",
+        "modules.composite.notification.multi_channel_alert.label": "मल्टी-चैनल अलर्ट",
+        "modules.composite.notification.scheduled_report.description": "निर्धारित रिपोर्ट तैयार करें और सूचना चैनलों पर भेजें",
+        "modules.composite.notification.scheduled_report.label": "निर्धारित रिपोर्ट",
+        "modules.composite.test.api_test.description": "HTTP अनुरोधों और दावों के साथ API परीक्षण चलाएं",
+        "modules.composite.test.api_test.label": "API टेस्ट सूट",
+        "modules.composite.test.e2e_flow.description": "ब्राउज़र ऑटोमेशन के साथ एंड-टू-एंड वर्कफ़्लो परीक्षण",
+        "modules.composite.test.e2e_flow.label": "E2E फ्लो टेस्ट",
+        "modules.composite.test.quality_gate.description": "गुणवत्ता जांच चलाएं और थ्रेशोल्ड के आधार पर डिप्लॉयमेंट को गेट करें",
+        "modules.composite.test.quality_gate.label": "गुणवत्ता गेट",
+        "modules.composite.test.ui_review.description": "विज़ुअल प्रतिगमन परीक्षण और UI समीक्षा वर्कफ़्लो",
+        "modules.composite.test.ui_review.label": "UI समीक्षा",
+        "modules.composite.test.verify_fix.description": "बग फिक्स को पहले/बाद के परीक्षण और प्रतिगमन सूट के साथ सत्यापित करें",
+        "modules.composite.test.verify_fix.label": "फिक्स सत्यापित करें"
+    }
+}

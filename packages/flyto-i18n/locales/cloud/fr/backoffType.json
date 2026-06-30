@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.backoffType",
+    "version": "1.0.0",
+    "translations": {
+        "backoffType.exponential": "Exponentiel",
+        "backoffType.exponentialDesc": "delai_ms * 2^tentative (1000, 2000, 4000...)",
+        "backoffType.linear": "Lineaire",
+        "backoffType.linearDesc": "delai_ms * tentative (1000, 2000, 3000...)",
+        "backoffType.none": "Aucun",
+        "backoffType.noneDesc": "Delai fixe entre les tentatives"
+    }
+}

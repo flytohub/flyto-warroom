@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.form",
+    "version": "1.0.0",
+    "translations": {
+        "form.advanced": "Erweitert",
+        "form.moreOptions": "Weitere Optionen"
+    }
+}

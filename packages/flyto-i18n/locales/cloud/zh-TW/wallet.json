@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Credits 錢包",
+        "wallet.availableCredits": "可用 Credits",
+        "wallet.topup": "儲值",
+        "wallet.topupTitle": "儲值 Credits",
+        "wallet.topupSuccess": "儲值成功",
+        "wallet.topupCancelled": "儲值已取消",
+        "wallet.history": "交易紀錄",
+        "wallet.noTransactions": "尚無交易紀錄",
+        "wallet.balanceAfter": "餘額",
+        "wallet.conversionNote": "1 credit = $0.01 美金",
+        "wallet.proceedToPayment": "前往付款",
+        "wallet.confirmExecute": "確認執行",
+        "wallet.executionCost": "執行費用",
+        "wallet.yourBalance": "您的餘額",
+        "wallet.insufficientCredits": "Credits 不足",
+        "wallet.needMore": "還需要 {amount} credits",
+        "wallet.topupNow": "立即儲值",
+        "wallet.confirmAndExecute": "確認並執行",
+        "wallet.lowBalanceWarning": "Credits 餘額不足以再次執行，請儲值以繼續使用。"
+    }
+}

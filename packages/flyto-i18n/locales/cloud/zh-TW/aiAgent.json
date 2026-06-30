@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "zh-TW",
+  "category": "cloud.aiAgent",
+  "version": "1.0.0",
+  "translations": {
+    "aiAgent.apiKey": "Api鍵",
+    "aiAgent.apiKeyHint": "API 金鑰提示",
+    "aiAgent.apiKeyPlaceholder": "API 金鑰佔位",
+    "aiAgent.fromInput": "從輸入取得",
+    "aiAgent.manual": "手動輸入",
+    "aiAgent.promptPath": "輸入路徑",
+    "aiAgent.promptPathHint": "從上游節點取得提示的表達式",
+    "aiAgent.promptSource": "提示來源",
+    "aiAgent.selectVariable": "選擇變數",
+    "aiAgent.shellInfo": "Shell 資訊",
+    "aiAgent.shellInfoDesc": "檢視 Shell 環境和執行上下文",
+    "aiAgent.systemPrompt": "系統提示",
+    "aiAgent.systemPromptPlaceholder": "系統提示佔位",
+    "aiAgent.task": "任務",
+    "aiAgent.taskPlaceholder": "描述代理應該完成的任務...",
+    "aiAgent.temperature": "溫度"
+  }
+}

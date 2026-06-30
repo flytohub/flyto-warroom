@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "common",
+  "version": "1.0.0",
+  "translations": {
+    "common.params.description.description": "",
+    "common.params.description.label": "",
+    "common.ports.error": ""
+  }
+}

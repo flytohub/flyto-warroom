@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "Impossibile connettersi al server. Assicurati che il backend sia in esecuzione.",
+        "errors.somethingWentWrong": "Qualcosa e andato storto",
+        "errors.technicalDetails": "Dettagli tecnici",
+        "errors.timeout": "Richiesta scaduta. Riprova.",
+        "errors.unexpectedError": "Si e verificato un errore imprevisto"
+    }
+}

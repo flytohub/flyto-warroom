@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "始終啟用",
+        "cookies.lastUpdated": "最後更新",
+        "cookies.optional": "可選",
+        "cookies.preferencesSaved": "偏好設定儲存成功",
+        "cookies.savePreferences": "儲存偏好設定",
+        "cookies.sections.manage.content": "您可以控制允許哪些可選 Cookie。必要 Cookie 無法停用，因為它們是網站運作所必需的。",
+        "cookies.sections.manage.title": "管理您的偏好設定",
+        "cookies.sections.types.analytics.content": "這些 Cookie 透過匿名收集和報告資訊，幫助我們了解訪客如何與我們的網站互動。這有助於我們改善服務。",
+        "cookies.sections.types.analytics.title": "分析 Cookie",
+        "cookies.sections.types.essential.content": "這些 Cookie 是網站正常運作所必需的。它們啟用基本功能，如頁面導航和存取安全區域。沒有這些 Cookie，網站無法正常運作。",
+        "cookies.sections.types.essential.title": "必要 Cookie",
+        "cookies.sections.types.functional.content": "這些 Cookie 啟用個人化功能，如記住您的語言偏好、主題設定和登入狀態。它們增強您的體驗，但不是必需的。",
+        "cookies.sections.types.functional.title": "功能性 Cookie",
+        "cookies.sections.types.title": "我們使用的 Cookie 類型",
+        "cookies.sections.what.content": "Cookie 是當您訪問我們網站時儲存在您裝置上的小型文字檔案。它們透過記住您的偏好設定和了解您如何使用我們的服務，幫助我們為您提供更好的體驗。",
+        "cookies.sections.what.title": "什麼是 Cookie？",
+        "cookies.title": "Cookie 設定"
+    }
+}

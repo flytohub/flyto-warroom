@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.nodeOutput",
+    "version": "1.0.0",
+    "translations": {
+        "nodeOutput.diff": "差分",
+        "nodeOutput.input": "入力",
+        "nodeOutput.output": "出力",
+        "nodeOutput.table": "テーブル",
+        "nodeOutput.text": "テキスト"
+    }
+}

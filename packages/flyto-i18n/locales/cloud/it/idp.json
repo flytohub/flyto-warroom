@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.idp",
+    "version": "1.0.0",
+    "translations": {
+        "idp.actions.batch": "Processo in batch",
+        "idp.actions.export": "Esporta",
+        "idp.actions.title": "Azioni",
+        "idp.actions.train": "Addestra modello",
+        "idp.models.title": "Modelli",
+        "idp.queue.empty": "Nessun documento in coda",
+        "idp.queue.items": "elementi",
+        "idp.queue.title": "Coda di elaborazione",
+        "idp.recent.empty": "Nessun documento recente",
+        "idp.recent.title": "Documenti recenti",
+        "idp.results.fields": "Campi estratti",
+        "idp.results.title": "Risultati",
+        "idp.stats.accuracy": "Accuratezza",
+        "idp.stats.models": "Modelli",
+        "idp.stats.pending": "In sospeso",
+        "idp.stats.processed": "Elaborato",
+        "idp.upload.browse": "Sfoglia",
+        "idp.upload.desc": "Trascina e rilascia o clicca per caricare",
+        "idp.upload.formats": "Supportati: PDF, PNG, JPG",
+        "idp.upload.title": "Carica documento"
+    }
+}

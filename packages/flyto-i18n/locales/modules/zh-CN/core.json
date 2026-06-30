@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "core",
+    "version": "1.0.0",
+    "translations": {
+        "modules.core.api.google_search.output.count.description": "搜索结果数量",
+        "modules.core.api.google_search.output.data.description": "搜索结果数据",
+        "modules.core.api.google_search.output.status.description": "操作状态",
+        "modules.core.api.google_search.output.total_results.description": "总结果数",
+        "modules.core.api.http_get.output.body.description": "回应内容",
+        "modules.core.api.http_get.output.headers.description": "回应标头",
+        "modules.core.api.http_get.output.json.description": "JSON 回应（如果适用）",
+        "modules.core.api.http_get.output.status_code.description": "HTTP 状态码"
+    }
+}

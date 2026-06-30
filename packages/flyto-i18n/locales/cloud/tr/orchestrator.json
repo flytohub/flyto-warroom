@@ -1,0 +1,31 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "cloud.orchestrator",
+  "version": "1.0.0",
+  "translations": {
+    "orchestrator.jobs.empty": "No jobs",
+    "orchestrator.jobs.title": "Jobs",
+    "orchestrator.register.capabilities": "Capabilities",
+    "orchestrator.register.machineName": "Machine Ad",
+    "orchestrator.register.machineNamePlaceholder": "Enter machine Ad",
+    "orchestrator.register.name": "Robot Ad",
+    "orchestrator.register.namePlaceholder": "Enter robot Ad",
+    "orchestrator.register.osType": "OS Tür",
+    "orchestrator.register.submit": "Register",
+    "orchestrator.register.title": "Register Robot",
+    "orchestrator.robots.empty": "No robots registered",
+    "orchestrator.robots.emptyDesc": "Register a robot to get started",
+    "orchestrator.robots.lastSeen": "Last Seen",
+    "orchestrator.robots.maxJobs": "Max Jobs",
+    "orchestrator.robots.platform": "Platform",
+    "orchestrator.robots.register": "Register Robot",
+    "orchestrator.robots.registerFirst": "Register your first robot",
+    "orchestrator.robots.runJob": "Run Job",
+    "orchestrator.robots.title": "Robots",
+    "orchestrator.stats.available": "Available",
+    "orchestrator.stats.busy": "Busy",
+    "orchestrator.stats.offline": "Çevrimdışı",
+    "orchestrator.stats.totalRobots": "Toplam Robots"
+  }
+}

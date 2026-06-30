@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.binary",
+    "version": "1.0.0",
+    "translations": {
+        "binary.download": "Unduh",
+        "binary.downloadToOpen": "Unduh untuk Membuka",
+        "binary.downloadToView": "Unduh untuk Melihat",
+        "binary.noPreview": "Tidak ada Pratinjau",
+        "binary.pdfPreview": "Pratinjau PDF",
+        "binary.previewError": "Kesalahan Pratinjau"
+    }
+}

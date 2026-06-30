@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "ทางเลือกอื่น",
+        "lineage.decision.evidence": "หลักฐาน",
+        "lineage.decision.reason": "เหตุผล",
+        "lineage.loop.clickToCollapse": "คลิกเพื่อย่อ",
+        "lineage.steps": "ขั้นตอน",
+        "lineage.storyline.noSteps": "ไม่มีขั้นตอนที่จะแสดง",
+        "lineage.storyline.noStepsInLane": "ไม่มีขั้นตอนในช่องนี้",
+        "lineage.storyline.runHint": "รัน workflow เพื่อดูประวัติการดำเนินการ",
+        "lineage.storyline.title": "Timeline การดำเนินการ"
+    }
+}

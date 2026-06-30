@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "process",
+  "version": "1.0.0",
+  "translations": {
+    "modules.process.list.description": "",
+    "modules.process.list.label": "",
+    "modules.process.list.output.count.description": "",
+    "modules.process.list.output.ok.description": "",
+    "modules.process.list.output.processes.description": "",
+    "modules.process.list.output.running.description": "",
+    "modules.process.list.output.stopped.description": "",
+    "modules.process.start.description": "",
+    "modules.process.start.label": "",
+    "modules.process.start.output.command.description": "",
+    "modules.process.start.output.cwd.description": "",
+    "modules.process.start.output.initial_output.description": "",
+    "modules.process.start.output.name.description": "",
+    "modules.process.start.output.ok.description": "",
+    "modules.process.start.output.pid.description": "",
+    "modules.process.start.output.process_id.description": "",
+    "modules.process.start.output.started_at.description": "",
+    "modules.process.stop.description": "",
+    "modules.process.stop.label": "",
+    "modules.process.stop.output.count.description": "",
+    "modules.process.stop.output.failed.description": "",
+    "modules.process.stop.output.ok.description": "",
+    "modules.process.stop.output.stopped.description": ""
+  }
+}

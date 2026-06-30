@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.publishTab",
+  "version": "1.0.0",
+  "translations": {
+    "publishTab.media": "",
+    "publishTab.settings": ""
+  }
+}

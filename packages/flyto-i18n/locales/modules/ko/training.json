@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "training",
+    "version": "1.0.0",
+    "translations": {
+        "modules.training.practice.analyze.description": "연습용 웹사이트 구조 분석",
+        "modules.training.practice.analyze.label": "연습 분석",
+        "modules.training.practice.analyze.output.status.description": "웹사이트 구조 분석",
+        "modules.training.practice.analyze.output.structure.description": "웹사이트 구조 분석",
+        "modules.training.practice.execute.description": "연습 세션 실행",
+        "modules.training.practice.execute.label": "연습 실행",
+        "modules.training.practice.execute.output.items_processed.description": "연습 세션 실행",
+        "modules.training.practice.execute.output.status.description": "연습 세션 실행",
+        "modules.training.practice.infer_schema.description": "웹사이트에서 데이터 스키마 추론",
+        "modules.training.practice.infer_schema.label": "연습 스키마 추론",
+        "modules.training.practice.infer_schema.output.schema.description": "데이터 스키마 추론",
+        "modules.training.practice.infer_schema.output.status.description": "데이터 스키마 추론",
+        "modules.training.practice.stats.description": "연습 통계 가져오기",
+        "modules.training.practice.stats.label": "연습 통계",
+        "modules.training.practice.stats.output.history.description": "연습 통계 가져오기",
+        "modules.training.practice.stats.output.success_rate.description": "연습 통계 가져오기",
+        "modules.training.practice.stats.output.successful_sessions.description": "총 세션 수",
+        "modules.training.practice.stats.output.total_sessions.description": "총 세션 수"
+    }
+}

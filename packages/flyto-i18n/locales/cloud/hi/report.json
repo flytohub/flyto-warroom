@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "कृपया समस्या का वर्णन करें...",
+        "report.reasons.copyright": "कॉपीराइट या बौद्धिक संपदा उल्लंघन",
+        "report.reasons.harmful": "हानिकारक या खतरनाक सामग्री",
+        "report.reasons.inappropriate": "अनुचित या आपत्तिजनक सामग्री",
+        "report.reasons.misleading": "गलत या भ्रामक जानकारी",
+        "report.reasons.other": "अन्य (कृपया निर्दिष्ट करें)",
+        "report.reasons.spam": "स्पैम या भ्रामक",
+        "report.selectReason": "कृपया रिपोर्ट करने का कारण चुनें:",
+        "report.submit": "रिपोर्ट सबमिट करें",
+        "report.title": "सामग्री की रिपोर्ट करें"
+    }
+}

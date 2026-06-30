@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.alt",
+  "version": "1.0.0",
+  "translations": {
+    "alt.avatar": "",
+    "alt.flytoLogo": "",
+    "alt.preview": "",
+    "alt.result": "",
+    "alt.screenshot": "",
+    "alt.stepScreenshot": "",
+    "alt.templateIcon": ""
+  }
+}

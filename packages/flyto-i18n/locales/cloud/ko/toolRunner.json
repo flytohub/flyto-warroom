@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "고급",
+        "toolRunner.backToLibrary": "라이브러리로 돌아가기",
+        "toolRunner.copy": "복사",
+        "toolRunner.download": "다운로드",
+        "toolRunner.editTool": "편집",
+        "toolRunner.executionFailed": "실행 실패",
+        "toolRunner.executionLogs": "실행 로그",
+        "toolRunner.executionSuccess": "실행 완료",
+        "toolRunner.executionTimedOut": "실행 시간 초과",
+        "toolRunner.flowSteps": "흐름 단계",
+        "toolRunner.inputForm": "입력 폼",
+        "toolRunner.loadFailed": "도구를 불러오지 못했습니다",
+        "toolRunner.noLogs": "아직 로그가 없습니다. 도구를 실행하여 실행 로그를 확인하세요.",
+        "toolRunner.resolvedParams": "해결된 매개변수",
+        "toolRunner.results": "결과",
+        "toolRunner.retry": "다시 시도",
+        "toolRunner.runAgain": "다시 실행",
+        "toolRunner.runToSeeResults": "도구를 실행하여 여기에서 결과를 확인하세요",
+        "toolRunner.runTool": "도구 실행",
+        "toolRunner.running": "실행 중...",
+        "toolRunner.simpleMode": "간단",
+        "toolRunner.toolNotFound": "도구를 찾을 수 없습니다",
+        "toolRunner.toolNotFoundError": "도구를 찾을 수 없습니다"
+    }
+}

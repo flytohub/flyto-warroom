@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.footer",
+    "version": "1.0.0",
+    "translations": {
+        "footer.copyright": "(C) 2025 Flyto2. Wszelkie prawa zastrzezone.",
+        "footer.description": "Potezny wizualny edytor przeplywow, ktory integruje setki aplikacji, ulatwiajac automatyzacje dla kazdego.",
+        "footer.disclaimer": "Wszystkie zadania automatyzacji są uruchamiane na urządzeniu użytkownika. Użytkownicy są odpowiedzialni za zapewnienie, że ich użycie jest zgodne z regulaminem docelowych stron internetowych i obowiązującymi przepisami prawa."
+    }
+}

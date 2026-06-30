@@ -1,0 +1,43 @@
+{
+  "schema": "flyto-community-export/v1",
+  "license": "Apache-2.0",
+  "edition": "community",
+  "includePaths": [
+    "flyto-engine/LICENSE",
+    "flyto-engine/README.md",
+    "flyto-engine/go.mod",
+    "flyto-engine/go.sum",
+    "flyto-engine/ci/flyto-scan-action.yml",
+    "flyto-engine/internal/scanner",
+    "flyto-engine/internal/codescan",
+    "flyto-engine/internal/secrets",
+    "flyto-engine/internal/policyfile",
+    "flyto-code/docs/open-core/edition-boundary.md",
+    "flyto-code/docs/open-core/community-export-manifest.md"
+  ],
+  "excludePathFragments": [
+    "/enterprise/",
+    "enterprise-airgap",
+    "offline-license",
+    "offlinelicense",
+    "updatebundle",
+    "/internal/ai/",
+    "/internal/boy/",
+    "/internal/correlate/",
+    "/internal/threatintel/",
+    "/internal/stealerlogs/",
+    "/internal/brandprotect/",
+    "/internal/saml/",
+    "/internal/billing/",
+    "firebase",
+    "stripe",
+    "google-cloud",
+    "flyto2.com"
+  ],
+  "requiredDocs": [
+    "README.md",
+    "LICENSE",
+    "SBOM.placeholder.json",
+    "SECURITY.md"
+  ]
+}

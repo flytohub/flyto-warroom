@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "Zusätzliche Eingabe",
+        "breakpoint.approve": "Genehmigen",
+        "breakpoint.comment": "Kommentar",
+        "breakpoint.commentPlaceholder": "Kommentar hinzufügen...",
+        "breakpoint.contextSnapshot": "Kontext-Snapshot",
+        "breakpoint.createdAt": "Erstellt am",
+        "breakpoint.expires": "Läuft ab",
+        "breakpoint.humanCheckpoint": "Manueller Checkpoint",
+        "breakpoint.noBreakpoint": "Keine Breakpoints gesetzt",
+        "breakpoint.noPending": "Keine ausstehenden Genehmigungen",
+        "breakpoint.pendingApprovals": "Ausstehende Genehmigungen",
+        "breakpoint.reject": "Ablehnen",
+        "breakpoint.step": "Schritt",
+        "breakpoint.waitingApproval": "Warte auf Genehmigung",
+        "breakpoint.workflow": "Arbeitsablauf",
+        "browserInteract.execute": "Ausführen",
+        "browserInteract.noElements": "Keine interaktiven Elemente erkannt",
+        "browserInteract.pagePreview": "Seitenvorschau",
+        "browserInteract.selectHint": "Wähle ein Element zur Interaktion",
+        "browserInteract.skip": "Überspringen",
+        "browserInteract.title": "Browser-Interaktion"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "กรุณาอธิบายปัญหา...",
+        "report.reasons.copyright": "การละเมิดลิขสิทธิ์หรือทรัพย์สินทางปัญญา",
+        "report.reasons.harmful": "เนื้อหาที่เป็นอันตรายหรืออันตราย",
+        "report.reasons.inappropriate": "เนื้อหาไม่เหมาะสมหรือน่ารังเกียจ",
+        "report.reasons.misleading": "ข้อมูลเท็จหรือทำให้เข้าใจผิด",
+        "report.reasons.other": "อื่นๆ (กรุณาระบุ)",
+        "report.reasons.spam": "สแปมหรือหลอกลวง",
+        "report.selectReason": "กรุณาเลือกเหตุผลในการรายงาน:",
+        "report.submit": "ส่งรายงาน",
+        "report.title": "รายงานเนื้อหา"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "कोई हालिया गतिविधि नहीं",
+        "team.activity.title": "हालिया गतिविधि",
+        "team.contributors.created": "बनाया",
+        "team.contributors.empty": "अभी तक कोई योगदानकर्ता नहीं",
+        "team.contributors.executed": "निष्पादित किया",
+        "team.contributors.title": "योगदानकर्ता",
+        "team.dashboard.subtitle": "आपकी टीम की गतिविधि का अवलोकन",
+        "team.dashboard.title": "टीम डैशबोर्ड",
+        "team.stats.executions": "निष्पादन",
+        "team.stats.members": "सदस्य",
+        "team.stats.templates": "टेम्पलेट",
+        "team.stats.workflows": "वर्कफ़्लो"
+    }
+}

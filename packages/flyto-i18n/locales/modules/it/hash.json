@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "Calcola l'hash crittografico SHA-256 del testo",
+        "modules.hash.sha256.label": "Hash SHA-256",
+        "modules.hash.sha256.output.algorithm.description": "Hash SHA-256 (64 caratteri esadecimali)",
+        "modules.hash.sha256.output.hash.description": "Codifica del testo",
+        "modules.hash.sha256.params.encoding.description": "Testo da hashare",
+        "modules.hash.sha256.params.encoding.label": "Testo",
+        "modules.hash.sha256.params.text.description": "Testo da hashare",
+        "modules.hash.sha256.params.text.label": "Testo",
+        "modules.hash.sha512.description": "Calcola l'hash crittografico SHA-512 del testo",
+        "modules.hash.sha512.label": "Hash SHA-512",
+        "modules.hash.sha512.output.algorithm.description": "Hash SHA-512 (128 caratteri esadecimali)",
+        "modules.hash.sha512.output.hash.description": "Codifica del testo",
+        "modules.hash.sha512.params.encoding.description": "Testo da hashare",
+        "modules.hash.sha512.params.encoding.label": "Testo",
+        "modules.hash.sha512.params.text.description": "Testo da hashare",
+        "modules.hash.sha512.params.text.label": "Testo"
+    }
+}

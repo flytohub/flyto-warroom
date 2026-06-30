@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "dns",
+    "version": "1.0.0",
+    "translations": {
+        "modules.dns.lookup.description": "Consulta DNS para registros de domínio",
+        "modules.dns.lookup.label": "Consulta DNS",
+        "modules.dns.lookup.output.domain.description": "Domínio consultado",
+        "modules.dns.lookup.output.record_type.description": "Tipo de registro consultado",
+        "modules.dns.lookup.output.records.description": "Registros resolvidos",
+        "modules.dns.lookup.output.ttl.description": "Tempo de vida (se disponível)",
+        "modules.dns.lookup.params.domain.description": "Nome do domínio para consulta",
+        "modules.dns.lookup.params.domain.label": "Domínio",
+        "modules.dns.lookup.params.record_type.description": "Tipo de registro DNS para consulta",
+        "modules.dns.lookup.params.record_type.label": "Tipo de Registro",
+        "modules.dns.lookup.params.timeout.description": "Tempo limite da consulta em segundos",
+        "modules.dns.lookup.params.timeout.label": "Tempo Limite"
+    }
+}

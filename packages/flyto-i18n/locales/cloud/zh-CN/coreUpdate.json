@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "可用",
+        "coreUpdate.checkFailed": "检查状态失败",
+        "coreUpdate.downloadPage": "从官网下载",
+        "coreUpdate.installedVersion": "已安装版本",
+        "coreUpdate.invalidFile": "请选择有效的 .whl 文件",
+        "coreUpdate.lastCheck": "上次检查",
+        "coreUpdate.notInstalled": "尚未安装",
+        "coreUpdate.refresh": "检查更新",
+        "coreUpdate.title": "内核引擎",
+        "coreUpdate.upToDate": "已是最新版本",
+        "coreUpdate.uploadFailed": "上传失败",
+        "coreUpdate.uploadPackage": "上传套件",
+        "coreUpdate.whlFile": "上传 .whl 文件"
+    }
+}

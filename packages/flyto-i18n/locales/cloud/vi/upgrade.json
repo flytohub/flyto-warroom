@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "Liên hệ bộ phận bán hàng",
+        "upgrade.debugFeatures": "Mở khóa các tính năng gỡ lỗi và phân tích mạnh mẽ để cải thiện phát triển workflow.",
+        "upgrade.enterpriseHint": "Cần tính năng doanh nghiệp?",
+        "upgrade.featureLocked": "Tính năng này yêu cầu đăng ký Pro",
+        "upgrade.features.evidence": "Chụp ảnh màn hình & DOM cho mỗi bước",
+        "upgrade.features.lineage": "Theo dõi luồng dữ liệu và đồ thị phụ thuộc",
+        "upgrade.features.replay": "Phát lại thực thi với đầu vào đã sửa đổi",
+        "upgrade.features.tests": "Bộ kiểm tra workflow tự động",
+        "upgrade.features.versions": "Khóa và kiểm soát phiên bản module",
+        "upgrade.offlineLicense": "Mua giấy phép ngoại tuyến - $199 một lần",
+        "upgrade.subscription": "Đăng ký - $19/tháng",
+        "upgrade.subtitle": "Truy cập các công cụ gỡ lỗi nâng cao",
+        "upgrade.title": "Mở khóa tính năng Pro"
+    }
+}

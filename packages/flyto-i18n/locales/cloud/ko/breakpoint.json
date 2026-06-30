@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "추가 입력",
+        "breakpoint.approve": "승인",
+        "breakpoint.comment": "코멘트",
+        "breakpoint.commentPlaceholder": "코멘트 추가...",
+        "breakpoint.contextSnapshot": "컨텍스트 스냅샷",
+        "breakpoint.createdAt": "생성일",
+        "breakpoint.expires": "만료",
+        "breakpoint.humanCheckpoint": "수동 체크포인트",
+        "breakpoint.noBreakpoint": "중단점이 설정되지 않음",
+        "breakpoint.noPending": "대기 중인 승인 없음",
+        "breakpoint.pendingApprovals": "대기 중인 승인",
+        "breakpoint.reject": "거부",
+        "breakpoint.step": "단계",
+        "breakpoint.waitingApproval": "승인 대기 중",
+        "breakpoint.workflow": "워크플로우",
+        "browserInteract.execute": "실행",
+        "browserInteract.noElements": "조작 가능한 요소가 없습니다",
+        "browserInteract.pagePreview": "페이지 미리보기",
+        "browserInteract.selectHint": "조작할 요소를 선택하세요",
+        "browserInteract.skip": "건너뛰기",
+        "browserInteract.title": "브라우저 조작"
+    }
+}

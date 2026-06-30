@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "從 Excel 檔案（xlsx、xls）讀取資料",
+        "modules.excel.read.label": "讀取 Excel",
+        "modules.excel.read.output.data.description": "擷取的資料列",
+        "modules.excel.read.output.headers.description": "擷取的資料列",
+        "modules.excel.read.output.row_count.description": "擷取的資料列",
+        "modules.excel.read.output.sheet_names.description": "欄位標頭",
+        "modules.excel.write.description": "將資料寫入 Excel 檔案（xlsx）",
+        "modules.excel.write.label": "寫入 Excel",
+        "modules.excel.write.output.path.description": "建立的 Excel 檔案路徑",
+        "modules.excel.write.output.row_count.description": "建立的 Excel 檔案路徑",
+        "modules.excel.write.output.size.description": "建立的 Excel 檔案路徑"
+    }
+}

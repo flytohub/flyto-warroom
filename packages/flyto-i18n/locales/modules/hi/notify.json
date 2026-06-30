@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "notify",
+    "version": "1.0.0",
+    "translations": {
+        "modules.notify.send.description": "Telegram, Discord, Slack, LINE, या किसी भी webhook URL पर सूचना भेजें",
+        "modules.notify.send.label": "सूचना भेजें",
+        "modules.notify.send.output.ok.description": "क्या सूचना सफलतापूर्वक भेजी गई",
+        "modules.notify.send.output.platform.description": "प्लेटफ़ॉर्म का पता लगाया गया (telegram, discord, slack, आदि)",
+        "modules.notify.send.output.response.description": "Webhook से प्रतिक्रिया",
+        "modules.notify.send.output.status_code.description": "HTTP प्रतिक्रिया स्थिति कोड",
+        "modules.notify.send.params.chat_id.description": "Telegram चैट ID (Telegram के लिए आवश्यक)",
+        "modules.notify.send.params.chat_id.label": "चैट ID",
+        "modules.notify.send.params.message.description": "सूचना संदेश सामग्री",
+        "modules.notify.send.params.message.label": "संदेश",
+        "modules.notify.send.params.title.description": "वैकल्पिक शीर्षक (Discord, Slack, Teams के लिए)",
+        "modules.notify.send.params.title.label": "शीर्षक",
+        "modules.notify.send.params.url.description": "Webhook URL (Telegram, Discord, Slack, या कस्टम)",
+        "modules.notify.send.params.url.label": "Webhook URL"
+    }
+}

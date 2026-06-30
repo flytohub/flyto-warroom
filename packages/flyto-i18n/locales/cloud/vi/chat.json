@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "Đính kèm tệp",
+        "chat.messageUser": "Tin nhắn",
+        "chat.messages": "Tin nhắn",
+        "chat.noConversations": "Chưa có cuộc trò chuyện",
+        "chat.noMessages": "Chưa có tin nhắn. Hãy chào!",
+        "chat.online": "Trực tuyến",
+        "chat.searchConversations": "Tìm kiếm cuộc trò chuyện...",
+        "chat.selectConversation": "Chọn một cuộc trò chuyện để bắt đầu",
+        "chat.send": "Gửi",
+        "chat.startChat": "Bắt đầu trò chuyện",
+        "chat.startChatFailed": "Bắt đầu trò chuyện thất bại",
+        "chat.typePlaceholder": "Nhập tin nhắn...",
+        "chat.user": "Người dùng"
+    }
+}

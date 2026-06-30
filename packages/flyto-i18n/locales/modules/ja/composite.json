@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "ウェブページをスクレイピングして構造化されたJSONデータを出力",
+        "modules.composite.browser.scrape_to_json.label": "WebをJSONにスクレイピング",
+        "modules.composite.data.csv_to_json.description": "CSVファイルを読み込み、JSON形式に変換",
+        "modules.composite.data.csv_to_json.label": "CSVをJSONに変換",
+        "modules.composite.data.json_transform_notify.description": "JSONデータを変換し、結果を通知",
+        "modules.composite.data.json_transform_notify.label": "JSON変換と通知",
+        "modules.composite.developer.api_to_notification.description": "任意のAPIからデータを取得し、通知チャンネルに送信",
+        "modules.composite.developer.api_to_notification.label": "APIから通知へ",
+        "modules.composite.developer.github_daily_digest.description": "GitHubリポジトリの更新を取得し、デイリーダイジェスト通知を送信",
+        "modules.composite.developer.github_daily_digest.label": "GitHubデイリーダイジェスト",
+        "modules.composite.notification.multi_channel_alert.description": "複数の通知チャンネルに同時にアラートを送信",
+        "modules.composite.notification.multi_channel_alert.label": "マルチチャンネルアラート",
+        "modules.composite.notification.scheduled_report.description": "スケジュールされたレポートを生成し、通知チャンネルに送信",
+        "modules.composite.notification.scheduled_report.label": "スケジュールレポート",
+        "modules.composite.test.api_test.description": "HTTPリクエストとアサーションを使用してAPIテストを実行",
+        "modules.composite.test.api_test.label": "APIテストスイート",
+        "modules.composite.test.e2e_flow.description": "ブラウザ自動化によるエンドツーエンドのワークフローテスト",
+        "modules.composite.test.e2e_flow.label": "E2Eフローテスト",
+        "modules.composite.test.quality_gate.description": "品質チェックを実行し、しきい値に基づいてデプロイをゲート",
+        "modules.composite.test.quality_gate.label": "品質ゲート",
+        "modules.composite.test.ui_review.description": "ビジュアルリグレッションテストとUIレビューのワークフロー",
+        "modules.composite.test.ui_review.label": "UIレビュー",
+        "modules.composite.test.verify_fix.description": "バグ修正を確認し、前後テストとリグレッションスイートを実施",
+        "modules.composite.test.verify_fix.label": "修正確認"
+    }
+}

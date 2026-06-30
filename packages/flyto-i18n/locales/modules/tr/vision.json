@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "vision",
+  "version": "1.0.0",
+  "translations": {
+    "modules.vision.analyze.description": "OpenAI Vision API (GPT-4V) kullanarak görüntüleri analiz et",
+    "modules.vision.analyze.label": "Görüntüyü AI ile Analiz Et",
+    "modules.vision.analyze.output.analysis.description": "Analizin başarılı olup olmadığı",
+    "modules.vision.analyze.output.model.description": "Yapılandırılmış analiz verileri (output_format structured/json ise)",
+    "modules.vision.analyze.output.ok.description": "Analizin başarılı olup olmadığı",
+    "modules.vision.analyze.output.structured.description": "AI analiz sonucu",
+    "modules.vision.analyze.output.tokens_used.description": "Analiz için kullanılan model",
+    "modules.vision.compare.description": "İki görüntüyü karşılaştır ve görsel farklılıkları belirle",
+    "modules.vision.compare.label": "Görüntüleri Karşılaştır",
+    "modules.vision.compare.output.differences.description": "Benzerlik yüzdesi (0-100)",
+    "modules.vision.compare.output.has_differences.description": "Karşılaştırmanın başarılı olup olmadığı",
+    "modules.vision.compare.output.ok.description": "Karşılaştırmanın başarılı olup olmadığı",
+    "modules.vision.compare.output.recommendation.description": "Karşılaştırma sonuçlarının özeti",
+    "modules.vision.compare.output.similarity_score.description": "Önemli farklılıkların bulunup bulunmadığı",
+    "modules.vision.compare.output.summary.description": "Belirlenen farklılıkların listesi",
+    "modules.vision.compare.params.differences": "Differences",
+    "modules.vision.compare.params.focus_areas": "Focus Areas",
+    "modules.vision.compare.params.focus_areas.options.header": "Header",
+    "modules.vision.compare.params.focus_areas.options.main content": "Main Content"
+  }
+}

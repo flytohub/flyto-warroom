@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Kategorie",
+        "createModal.category.placeholder": "Kategorie auswählen (optional)",
+        "createModal.closeDialog": "Dialog schließen",
+        "createModal.create": "Vorlage erstellen",
+        "createModal.creating": "Erstelle...",
+        "createModal.description.label": "Beschreibung",
+        "createModal.description.placeholder": "Was macht diese Vorlage? (optional)",
+        "createModal.errors.createFailed": "Vorlage konnte nicht erstellt werden",
+        "createModal.errors.fileTooLarge": "Bild muss kleiner als 2MB sein",
+        "createModal.errors.invalidFileType": "Bitte wählen Sie eine Bilddatei",
+        "createModal.folder.label": "Ordner",
+        "createModal.folder.placeholder": "Standard (kein Ordner)",
+        "createModal.icon.change": "Symbol ändern",
+        "createModal.icon.hint": "PNG, JPG, GIF bis zu 2MB",
+        "createModal.icon.label": "Vorlagensymbol",
+        "createModal.icon.remove": "Symbol entfernen",
+        "createModal.icon.upload": "Symbol hochladen",
+        "createModal.name.label": "Vorlagenname",
+        "createModal.name.placeholder": "Meine tolle Automatisierung",
+        "createModal.title": "Neue Vorlage"
+    }
+}

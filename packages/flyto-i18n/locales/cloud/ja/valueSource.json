@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "ja",
+  "category": "cloud.valueSource",
+  "version": "1.0.0",
+  "translations": {
+    "valueSource.booleanFalse": "いいえ / False",
+    "valueSource.booleanTrue": "はい / True",
+    "valueSource.browsePath": "Browse Path",
+    "valueSource.changeSource": "値のソースを変更",
+    "valueSource.defaultPlaceholder": "値を入力...",
+    "valueSource.expressionHint": "使用可能: steps.{id}.result, ui.{field}, env.{var}",
+    "valueSource.expressionPlaceholder": "steps.step1.result または ui.search_keyword",
+    "valueSource.noPreviousSteps": "前のステップがありません",
+    "valueSource.noUIFields": "UI入力フィールドが定義されていません",
+    "valueSource.selectSourceType": "ソースタイプを選択",
+    "valueSource.selectStepOutput": "ステップの出力を選択...",
+    "valueSource.selectText": "テキスト",
+    "valueSource.selectUIField": "UIフィールドを選択...",
+    "valueSource.selectValue": "値",
+    "valueSource.sources.expression.description": "高度な動的値",
+    "valueSource.sources.expression.label": "式",
+    "valueSource.sources.previousStep.description": "前のステップの出力を使用",
+    "valueSource.sources.previousStep.label": "前のステップから",
+    "valueSource.sources.static.description": "固定値を入力",
+    "valueSource.sources.static.label": "静的値",
+    "valueSource.sources.uiInput.description": "フロントエンドのフォームフィールドにリンク",
+    "valueSource.sources.uiInput.label": "UI入力から"
+  }
+}

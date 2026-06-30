@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.moduleCard",
+    "version": "1.0.0",
+    "translations": {
+        "moduleCard.expert": "Pakar",
+        "moduleCard.inputType": "Input: {type}",
+        "moduleCard.noDescription": "Tidak ada deskripsi",
+        "moduleCard.outputType": "Output: {type}"
+    }
+}

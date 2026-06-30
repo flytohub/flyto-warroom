@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.message",
+    "version": "1.0.0",
+    "translations": {
+        "message.replayCompleted": "Relecture terminee avec succes !"
+    }
+}

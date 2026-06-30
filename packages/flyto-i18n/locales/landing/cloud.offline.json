@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.offline",
+  "version": "1.0.0",
+  "translations": {
+    "offline.backToTemplates": "",
+    "offline.currentlyOffline": "",
+    "offline.languagePack.active": "",
+    "offline.languagePack.currentLanguage": "",
+    "offline.languagePack.downloadHint": "",
+    "offline.languagePack.importButton": "",
+    "offline.languagePack.importFailed": "",
+    "offline.languagePack.importSuccess": "",
+    "offline.languagePack.importedPacks": "",
+    "offline.languagePack.importing": "",
+    "offline.languagePack.invalidFormat": "",
+    "offline.languagePack.noTranslations": "",
+    "offline.languagePack.subtitle": "",
+    "offline.languagePack.title": "",
+    "offline.languagePack.use": "",
+    "offline.license": "",
+    "offline.settings": ""
+  }
+}

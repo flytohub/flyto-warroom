@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Ler dados de arquivos Excel (xlsx, xls)",
+        "modules.excel.read.label": "Ler Excel",
+        "modules.excel.read.output.data.description": "Linhas de dados extraidas",
+        "modules.excel.read.output.headers.description": "Linhas de dados extraidas",
+        "modules.excel.read.output.row_count.description": "Linhas de dados extraidas",
+        "modules.excel.read.output.sheet_names.description": "Cabecalhos das colunas",
+        "modules.excel.write.description": "Escrever dados em arquivos Excel (xlsx)",
+        "modules.excel.write.label": "Escrever Excel",
+        "modules.excel.write.output.path.description": "Caminho para o arquivo Excel criado",
+        "modules.excel.write.output.row_count.description": "Caminho para o arquivo Excel criado",
+        "modules.excel.write.output.size.description": "Caminho para o arquivo Excel criado"
+    }
+}

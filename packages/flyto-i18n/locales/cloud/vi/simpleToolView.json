@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "Nâng cao",
+        "simpleToolView.copy": "Sao chép",
+        "simpleToolView.download": "Tải xuống",
+        "simpleToolView.downloadFile": "Tải xuống tệp",
+        "simpleToolView.dropOrClick": "Thả tệp hoặc nhấp để tải lên",
+        "simpleToolView.failed": "Thất bại",
+        "simpleToolView.generating": "Đang tạo...",
+        "simpleToolView.input": "Đầu vào",
+        "simpleToolView.moreRows": "+{count} hàng nữa",
+        "simpleToolView.output": "Đầu ra",
+        "simpleToolView.processing": "Đang xử lý...",
+        "simpleToolView.resultWillAppear": "Kết quả sẽ xuất hiện ở đây",
+        "simpleToolView.retry": "Thử lại",
+        "simpleToolView.selectOption": "Chọn một tùy chọn",
+        "simpleToolView.start": "Bắt đầu",
+        "simpleToolView.viewSteps": "Xem các bước"
+    }
+}

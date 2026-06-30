@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "計算文字的 SHA-256 加密雜湊值",
+        "modules.hash.sha256.label": "SHA-256 雜湊",
+        "modules.hash.sha256.output.algorithm.description": "SHA-256 雜湊（64 個十六進位字元）",
+        "modules.hash.sha256.output.hash.description": "文字編碼",
+        "modules.hash.sha256.params.encoding.description": "要雜湊的文字",
+        "modules.hash.sha256.params.encoding.label": "文字",
+        "modules.hash.sha256.params.text.description": "要雜湊的文字",
+        "modules.hash.sha256.params.text.label": "文字",
+        "modules.hash.sha512.description": "計算文字的 SHA-512 加密雜湊值",
+        "modules.hash.sha512.label": "SHA-512 雜湊",
+        "modules.hash.sha512.output.algorithm.description": "SHA-512 雜湊（128 個十六進位字元）",
+        "modules.hash.sha512.output.hash.description": "文字編碼",
+        "modules.hash.sha512.params.encoding.description": "要雜湊的文字",
+        "modules.hash.sha512.params.encoding.label": "文字",
+        "modules.hash.sha512.params.text.description": "要雜湊的文字",
+        "modules.hash.sha512.params.text.label": "文字"
+    }
+}

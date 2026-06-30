@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "Datei anhängen",
+        "chat.messageUser": "Nachricht",
+        "chat.messages": "Nachrichten",
+        "chat.noConversations": "Noch keine Unterhaltungen",
+        "chat.noMessages": "Noch keine Nachrichten. Sagen Sie Hallo!",
+        "chat.online": "Online",
+        "chat.searchConversations": "Unterhaltungen suchen...",
+        "chat.selectConversation": "Wählen Sie eine Unterhaltung, um zu chatten",
+        "chat.send": "Senden",
+        "chat.startChat": "Chat starten",
+        "chat.startChatFailed": "Chat konnte nicht gestartet werden",
+        "chat.typePlaceholder": "Nachricht eingeben...",
+        "chat.user": "Benutzer"
+    }
+}

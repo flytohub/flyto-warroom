@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.enterprise",
+  "version": "1.0.0",
+  "translations": {
+    "enterprise.actions.notSupported": "",
+    "enterprise.errors.actionFailed": "",
+    "enterprise.errors.loadFailed": "",
+    "enterprise.robotsOnline": "",
+    "enterprise.subtitle": "",
+    "enterprise.tabs.idp": "",
+    "enterprise.tabs.mining": "",
+    "enterprise.tabs.orchestrator": "",
+    "enterprise.tabs.queues": "",
+    "enterprise.tabs.rpa": "",
+    "enterprise.tabs.scheduler": "",
+    "enterprise.tabs.stateMachine": "",
+    "enterprise.title": ""
+  }
+}

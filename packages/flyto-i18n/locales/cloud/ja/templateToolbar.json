@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "グリッド表示",
+        "templateToolbar.listView": "リスト表示",
+        "templateToolbar.searchLabel": "テンプレートを検索",
+        "templateToolbar.searchPlaceholder": "テンプレートを検索...",
+        "templateToolbar.sortLabel": "並び替え",
+        "templateToolbar.sortOptions.created": "作成日順",
+        "templateToolbar.sortOptions.name": "名前順（A-Z）",
+        "templateToolbar.sortOptions.status": "ステータス順",
+        "templateToolbar.sortOptions.updated": "更新日順",
+        "templateToolbar.viewMode": "表示モード"
+    }
+}

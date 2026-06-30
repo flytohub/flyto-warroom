@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "Schließen",
+        "updateNotification.downloadFailed": "Update konnte nicht heruntergeladen werden",
+        "updateNotification.downloadUpdate": "Update herunterladen",
+        "updateNotification.downloading": "Update wird heruntergeladen",
+        "updateNotification.newVersionAvailable": "Neue Version verfügbar",
+        "updateNotification.percentComplete": "{percent}% abgeschlossen",
+        "updateNotification.remindLater": "Später erinnern",
+        "updateNotification.restartLater": "Später neu starten",
+        "updateNotification.restartNow": "Jetzt neu starten",
+        "updateNotification.restartToInstall": "Starten Sie die Anwendung neu, um das Update zu installieren",
+        "updateNotification.unknownError": "Unbekannter Fehler",
+        "updateNotification.updateDownloaded": "Update heruntergeladen",
+        "updateNotification.updateFailed": "Update fehlgeschlagen",
+        "updateNotification.versionReady": "Version {version} ist bereit zum Update"
+    }
+}

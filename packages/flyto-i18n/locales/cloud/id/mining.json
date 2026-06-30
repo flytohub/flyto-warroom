@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.mining",
+    "version": "1.0.0",
+    "translations": {
+        "mining.bottlenecks.empty": "Tidak ada hambatan ditemukan",
+        "mining.bottlenecks.title": "Hambatan",
+        "mining.discovery.analyze": "Analisis",
+        "mining.discovery.empty": "Tidak ada data untuk dianalisis",
+        "mining.discovery.selectWorkflow": "Pilih alur kerja untuk dianalisis",
+        "mining.discovery.title": "Penemuan Proses",
+        "mining.quality.fitness": "Kecocokan",
+        "mining.quality.generalization": "Generalisasi",
+        "mining.quality.precision": "Presisi",
+        "mining.stats.avgDuration": "Durasi Rata-rata",
+        "mining.stats.cases": "Kasus",
+        "mining.stats.conformance": "Kesesuaian",
+        "mining.stats.variants": "Varian",
+        "mining.suggestions.apply": "Terapkan",
+        "mining.suggestions.empty": "Tidak ada saran",
+        "mining.suggestions.title": "Saran",
+        "mining.variants.empty": "Tidak ada varian",
+        "mining.variants.title": "Varian Proses"
+    }
+}

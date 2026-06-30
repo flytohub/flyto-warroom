@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "หมวดหมู่",
+        "createModal.category.placeholder": "เลือกหมวดหมู่ (ไม่บังคับ)",
+        "createModal.closeDialog": "ปิดกล่องโต้ตอบ",
+        "createModal.create": "สร้างเทมเพลต",
+        "createModal.creating": "กำลังสร้าง...",
+        "createModal.description.label": "คำอธิบาย",
+        "createModal.description.placeholder": "เทมเพลตนี้ทำอะไร? (ไม่บังคับ)",
+        "createModal.errors.createFailed": "ไม่สามารถสร้างเทมเพลตได้",
+        "createModal.errors.fileTooLarge": "รูปภาพต้องมีขนาดเล็กกว่า 2MB",
+        "createModal.errors.invalidFileType": "กรุณาเลือกไฟล์รูปภาพ",
+        "createModal.folder.label": "โฟลเดอร์",
+        "createModal.folder.placeholder": "ค่าเริ่มต้น (ไม่มีโฟลเดอร์)",
+        "createModal.icon.change": "เปลี่ยนไอคอน",
+        "createModal.icon.hint": "PNG, JPG, GIF ไม่เกิน 2MB",
+        "createModal.icon.label": "ไอคอนเทมเพลต",
+        "createModal.icon.remove": "ลบไอคอน",
+        "createModal.icon.upload": "อัปโหลดไอคอน",
+        "createModal.name.label": "ชื่อเทมเพลต",
+        "createModal.name.placeholder": "Automation สุดเจ๋ง",
+        "createModal.title": "เทมเพลตใหม่"
+    }
+}

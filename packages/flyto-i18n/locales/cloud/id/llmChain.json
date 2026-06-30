@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.llmChain",
+    "version": "1.0.0",
+    "translations": {
+        "llmChain.advancedOptions": "Opsi Lanjutan",
+        "llmChain.detectedVariables": "Variabel terdeteksi",
+        "llmChain.insertVariable": "Sisipkan variabel",
+        "llmChain.maxTokens": "Token Maksimum",
+        "llmChain.maxTokensHint": "Panjang maksimum respons",
+        "llmChain.model": "Model",
+        "llmChain.systemPrompt": "Prompt Sistem",
+        "llmChain.systemPromptPlaceholder": "Anda adalah asisten yang membantu...",
+        "llmChain.temperature": "Temperatur",
+        "llmChain.temperatureHint": "Lebih tinggi = lebih kreatif, Lebih rendah = lebih fokus",
+        "llmChain.userPrompt": "Prompt Pengguna",
+        "llmChain.userPromptPlaceholder": "Masukkan prompt Anda dengan {{variables}}...",
+        "llmChain.variableHelp": "Gunakan {{variable}} untuk mereferensikan data dari langkah sebelumnya"
+    }
+}

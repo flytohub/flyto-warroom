@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "利用可能",
+        "coreUpdate.checkFailed": "ステータスの確認に失敗しました",
+        "coreUpdate.downloadPage": "公式サイトからダウンロード",
+        "coreUpdate.installedVersion": "インストール済みバージョン",
+        "coreUpdate.invalidFile": "有効な.whlファイルを選択してください",
+        "coreUpdate.lastCheck": "最終確認",
+        "coreUpdate.notInstalled": "未インストール",
+        "coreUpdate.refresh": "アップデートを確認",
+        "coreUpdate.title": "コアエンジン",
+        "coreUpdate.upToDate": "最新",
+        "coreUpdate.uploadFailed": "アップロードに失敗しました",
+        "coreUpdate.uploadPackage": "パッケージをアップロード",
+        "coreUpdate.whlFile": ".whlファイルをアップロード"
+    }
+}

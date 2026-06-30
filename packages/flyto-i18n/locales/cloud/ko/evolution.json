@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.evolution",
+    "version": "1.0.0",
+    "translations": {
+        "evolution.acceptSuggestion": "제안 수락",
+        "evolution.analyzing": "분석 중",
+        "evolution.apply": "적용",
+        "evolution.deepAnalysis": "심층 분석",
+        "evolution.details": "세부 정보",
+        "evolution.dismissSuggestion": "제안 무시",
+        "evolution.error": "오류",
+        "evolution.highPriority": "높은 우선순위",
+        "evolution.insights": "통찰",
+        "evolution.lastUpdated": "마지막 업데이트",
+        "evolution.noSuggestions": "제안 없음",
+        "evolution.noSuggestionsDesc": "사용 가능한 제안이 없습니다",
+        "evolution.reasoning": "추론",
+        "evolution.refresh": "새로고침",
+        "evolution.requestAnalysis": "분석 요청",
+        "evolution.suggestionApplied": "제안 적용됨",
+        "evolution.title": "진화",
+        "evolution.types.cost": "비용",
+        "evolution.types.other": "기타",
+        "evolution.types.performance": "성능",
+        "evolution.types.reliability": "신뢰성",
+        "evolution.types.security": "보안",
+        "evolution.viewDetails": "세부 정보 보기"
+    }
+}

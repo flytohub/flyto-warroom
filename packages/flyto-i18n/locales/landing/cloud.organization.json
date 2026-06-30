@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.organization",
+  "version": "1.0.0",
+  "translations": {
+    "organization.description": "",
+    "organization.info.description": "",
+    "organization.info.name": "",
+    "organization.info.title": "",
+    "organization.invite.email": "",
+    "organization.invite.emailPlaceholder": "",
+    "organization.invite.role": "",
+    "organization.invite.send": "",
+    "organization.invite.title": "",
+    "organization.members.empty": "",
+    "organization.members.invite": "",
+    "organization.members.removeConfirm": "",
+    "organization.members.title": "",
+    "organization.roles.admin": "",
+    "organization.roles.member": "",
+    "organization.roles.viewer": "",
+    "organization.title": ""
+  }
+}

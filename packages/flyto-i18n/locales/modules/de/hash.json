@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "SHA-256 kryptografischen Hash eines Textes berechnen",
+        "modules.hash.sha256.label": "SHA-256 Hash",
+        "modules.hash.sha256.output.algorithm.description": "SHA-256 Hash (64 hexadezimale Zeichen)",
+        "modules.hash.sha256.output.hash.description": "Textkodierung",
+        "modules.hash.sha256.params.encoding.description": "Text zum Hashen",
+        "modules.hash.sha256.params.encoding.label": "Text",
+        "modules.hash.sha256.params.text.description": "Text zum Hashen",
+        "modules.hash.sha256.params.text.label": "Text",
+        "modules.hash.sha512.description": "SHA-512 kryptografischen Hash eines Textes berechnen",
+        "modules.hash.sha512.label": "SHA-512 Hash",
+        "modules.hash.sha512.output.algorithm.description": "SHA-512 Hash (128 hexadezimale Zeichen)",
+        "modules.hash.sha512.output.hash.description": "Textkodierung",
+        "modules.hash.sha512.params.encoding.description": "Text zum Hashen",
+        "modules.hash.sha512.params.encoding.label": "Text",
+        "modules.hash.sha512.params.text.description": "Text zum Hashen",
+        "modules.hash.sha512.params.text.label": "Text"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.bindings",
+    "version": "1.0.0",
+    "translations": {
+        "bindings.noBinding": "Chưa thiết lập ràng buộc",
+        "bindings.waitingFor": "Đang chờ: {source}"
+    }
+}

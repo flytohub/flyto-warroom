@@ -1,0 +1,123 @@
+# Copyright 2026 Flyto2. Licensed under Apache-2.0. See LICENSE.
+
+"""
+browser.find - Find elements in page
+
+This is an atomic operation. Only responsible for finding and returning element ID list
+"""
+from typing import Any
+from ...base import BaseModule
+from ...registry import register_module
+from ...schema import compose, presets
+from ..element_registry import get_element_registry
+
+
+@register_module(
+    module_id='browser.find',
+    version='1.0.0',
+    category='browser',
+    subcategory='browser',
+    tags=['browser', 'find', 'element', 'selector', 'ssrf_protected'],
+    label='Find Elements',
+    label_key='modules.browser.find.label',
+    description='Find elements in page and return element ID list. Run browser.snapshot first to find the correct selector from the real page DOM.',
+    description_key='modules.browser.find.description',
+    icon='Search',
+    color='#8B5CF6',
+
+    # Connection types
+    input_types=['page'],
+    output_types=['element', 'array'],
+
+
+    can_receive_from=['browser.*', 'flow.*'],
+    can_connect_to=['browser.*', 'element.*', 'flow.*', 'data.*', 'string.*', 'array.*', 'object.*', 'file.*', 'ai.*', 'llm.*', 'agent.*'],    # Phase 2: Execution settings
+    timeout_ms=10000,  # Finding elements should complete within 10s
+    retryable=True,  # Can retry if elements not ready
+    max_retries=2,
+    concurrent_safe=True,  # Stateless find operation
+
+    # Phase 2: Security settings
+    requires_credentials=False,
+    handles_sensitive_data=False,
+    required_permissions=['browser.read', 'browser.write'],
+
+    params_schema=compose(
+        presets.SELECTOR(required=True, placeholder='div.result-item'),
+        presets.EXTRACT_LIMIT(),
+    ),
+    output_schema={
+        'status': {'type': 'string', 'description': 'Operation status (success/error)',
+                'description_key': 'modules.browser.find.output.status.description'},
+        'count': {'type': 'number', 'description': 'Number of items',
+                'description_key': 'modules.browser.find.output.count.description'},
+        'element_ids': {'type': 'array', 'description': 'The element ids',
+                'description_key': 'modules.browser.find.output.element_ids.description'}
+    },
+    examples=[{
+        'title': 'Find search results',
+        'params': {
+            'selector': 'div.tF2Cxc',
+            'limit': 10
+        }
+    }],
+    author='Flyto Team',
+    license='MIT'
+)
+class BrowserFindModule(BaseModule):
+    """
+    Find elements in page
+
+    Parameters:
+        selector: CSS Selector
+        limit: Limit count (optional)
+
+    Return:
+        element_ids: element ID list (list of UUID strings)
+
+    Example:
+        {
+            "module": "core.browser.find",
+            "params": {
+                "selector": "div.tF2Cxc",
+                "limit": 10
+            },
+            "output": "search_results"
+        }
+        # search_results = ['uuid-1', 'uuid-2', ...]
+    """
+
+    module_name = "Find Elements"
+    module_description = "Find elements in page and return element ID list"
+    required_permission = "browser.read"
+
+    def validate_params(self) -> None:
+        if 'selector' not in self.params:
+            raise ValueError("Missing parameter: selector")
+
+        self.selector = self.params['selector']
+        self.limit = self.params.get('limit', None)
+
+    async def execute(self) -> Any:
+        browser = self.context.get('browser')
+        if not browser or not browser.page:
+            raise RuntimeError("Browser not started")
+
+        # Use browser driver to find elements (supports CSS and XPath)
+        elements = await browser._query_selector_all(self.selector)
+
+        # Limit count
+        if self.limit is not None:
+            elements = elements[:self.limit]
+
+        # Get element registry from context (context-aware, not global singleton)
+        registry = get_element_registry(self.context)
+
+        # Register elements and return ID list
+        element_ids = registry.register_many(elements)
+
+        return {
+            "status": "success",
+            "count": len(element_ids),
+            "element_ids": element_ids
+        }

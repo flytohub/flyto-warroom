@@ -1,0 +1,513 @@
+# Copyright 2026 Flyto2. Licensed under Apache-2.0. See LICENSE.
+
+"""
+Workflow Validation API
+
+Validates entire workflows.
+Used by flyto-cloud before save/execute.
+"""
+
+from typing import List, Dict, Any, Optional, Set
+from dataclasses import dataclass, field
+
+from .errors import ErrorCode
+from .connection import validate_connection
+
+
+@dataclass
+class WorkflowError:
+    """A single workflow validation error"""
+    code: str
+    message: str
+    path: str  # e.g., 'nodes[n1]', 'edges[e1]'
+    meta: Dict[str, Any] = field(default_factory=dict)
+
+
+@dataclass
+class WorkflowResult:
+    """Result of workflow validation"""
+    valid: bool
+    errors: List[WorkflowError] = field(default_factory=list)
+    warnings: List[WorkflowError] = field(default_factory=list)
+
+
+def _evaluate_show_condition(condition: Any, current_value: Any) -> bool:
+    """
+    Evaluate a single showIf/hideIf condition against a current param value.
+
+    Supports:
+    - {"$in": [values]}  → value in list
+    - {"$ne": value}     → value != condition
+    - {"$notEmpty": true} → value is not empty
+    - [values]           → value in list (shorthand)
+    - single value       → equality
+    """
+    if isinstance(condition, dict):
+        if '$in' in condition:
+            return current_value in condition['$in']
+        if '$ne' in condition:
+            return current_value != condition['$ne']
+        if '$notEmpty' in condition:
+            is_empty = current_value is None or current_value == ''
+            return not is_empty if condition['$notEmpty'] else is_empty
+        return False
+    if isinstance(condition, list):
+        return current_value in condition
+    return current_value == condition
+
+
+def _is_field_active(param_def: Dict[str, Any], params: Dict[str, Any]) -> bool:
+    """
+    Check if a field is currently active based on showIf/hideIf/displayOptions.
+    Returns True if the field should be visible (and thus required checks apply).
+    """
+    # showIf: ALL conditions must match for the field to be visible
+    show_if = param_def.get('showIf')
+    if show_if and isinstance(show_if, dict):
+        for dep_key, condition in show_if.items():
+            if not _evaluate_show_condition(condition, params.get(dep_key)):
+                return False
+
+    # hideIf: ANY condition matching hides the field
+    hide_if = param_def.get('hideIf')
+    if hide_if and isinstance(hide_if, dict):
+        for dep_key, condition in hide_if.items():
+            if _evaluate_show_condition(condition, params.get(dep_key)):
+                return False
+
+    # displayOptions (n8n-style): { show: { field: [values] }, hide: { field: [values] } }
+    display_options = param_def.get('displayOptions')
+    if display_options and isinstance(display_options, dict):
+        show = display_options.get('show')
+        if show and isinstance(show, dict):
+            for dep_key, condition in show.items():
+                if not _evaluate_show_condition(condition, params.get(dep_key)):
+                    return False
+        hide = display_options.get('hide')
+        if hide and isinstance(hide, dict):
+            for dep_key, condition in hide.items():
+                if _evaluate_show_condition(condition, params.get(dep_key)):
+                    return False
+
+    return True
+
+
+def validate_node_params(
+    node: Dict[str, Any],
+    strict: bool = False,
+) -> List[WorkflowError]:
+    """
+    Validate node parameters against module's params_schema.
+
+    Checks:
+    - All provided params keys exist in params_schema
+    - Required params are present (respecting showIf/hideIf/displayOptions)
+    - Param values match expected types
+
+    Args:
+        node: Node definition with 'id', 'module_id', 'params'
+        strict: If True, unknown params are errors; if False, warnings
+
+    Returns:
+        List of validation errors/warnings
+    """
+    from ..modules.registry import ModuleRegistry
+
+    results: List[WorkflowError] = []
+    node_id = node.get('id', 'unknown')
+    module_id = node.get('module_id', '')
+    params = node.get('params', {})
+
+    if not module_id:
+        return results
+
+    meta = ModuleRegistry.get_metadata(module_id)
+    if not meta:
+        return results
+
+    params_schema = meta.get('params_schema', {})
+    if not params_schema:
+        return results  # No schema to validate against
+    # Support JSON Schema style: {type, properties, required}
+    if isinstance(params_schema, dict) and 'properties' in params_schema:
+        properties = params_schema.get('properties') or {}
+        required_list = params_schema.get('required') or []
+    else:
+        properties = params_schema
+        required_list = []
+
+    valid_keys = set(properties.keys()) if isinstance(properties, dict) else set()
+
+    # Check for unknown params
+    for param_key in params.keys():
+        if param_key not in valid_keys:
+            results.append(WorkflowError(
+                code=ErrorCode.UNKNOWN_PARAM,
+                message=f'Unknown parameter "{param_key}" in {node_id}',
+                path=f'nodes[{node_id}].params.{param_key}',
+                meta={
+                    'node_id': node_id,
+                    'module_id': module_id,
+                    'param': param_key,
+                    'valid_params': ', '.join(sorted(valid_keys)) or '(none)',
+                }
+            ))
+
+    # Track already-reported params to avoid duplicates
+    reported_missing = set()
+
+    # Check for missing required params (from top-level required list)
+    for param_key in required_list:
+        # Skip if field is conditionally hidden
+        param_def = properties.get(param_key, {}) if isinstance(properties, dict) else {}
+        if isinstance(param_def, dict) and not _is_field_active(param_def, params):
+            continue
+
+        value = params.get(param_key)
+        if value is None or value == '':
+            reported_missing.add(param_key)
+            results.append(WorkflowError(
+                code=ErrorCode.MISSING_REQUIRED_PARAM,
+                message=f'Missing required parameter: {param_key}',
+                path=f'nodes[{node_id}].params.{param_key}',
+                meta={
+                    'node_id': node_id,
+                    'module_id': module_id,
+                    'param': param_key,
+                }
+            ))
+
+    # Check per-property required flag
+    if isinstance(properties, dict):
+        for param_key, param_def in properties.items():
+            if param_key in reported_missing:
+                continue
+            if isinstance(param_def, dict) and param_def.get('required', False):
+                # Skip if field is conditionally hidden
+                if not _is_field_active(param_def, params):
+                    continue
+
+                value = params.get(param_key)
+                if value is None or value == '':
+                    results.append(WorkflowError(
+                        code=ErrorCode.MISSING_REQUIRED_PARAM,
+                        message=f'Missing required parameter: {param_key}',
+                        path=f'nodes[{node_id}].params.{param_key}',
+                        meta={
+                            'node_id': node_id,
+                            'module_id': module_id,
+                            'param': param_key,
+                        }
+                    ))
+
+    return results
+
+
+def validate_workflow(
+    nodes: List[Dict[str, Any]],
+    edges: List[Dict[str, Any]],
+    validate_params: bool = True,
+) -> WorkflowResult:
+    """
+    Validate entire workflow.
+
+    Checks:
+    - All edges are valid connections
+    - No orphan nodes (except start nodes)
+    - Start nodes are valid
+    - Required parameters are set
+    - Unknown params are flagged as warnings
+    - No cycles (except in loop modules)
+
+    Args:
+        nodes: List of node definitions
+            [{'id': 'n1', 'module_id': 'browser.launch', 'params': {...}}, ...]
+        edges: List of edge definitions
+            [{'id': 'e1', 'source': 'n1', 'target': 'n2'}, ...]
+        validate_params: Whether to validate params against schema
+
+    Returns:
+        WorkflowResult with valid=True/False and error/warning lists
+    """
+    errors: List[WorkflowError] = []
+    warnings: List[WorkflowError] = []
+
+    # Build lookup maps
+    node_map = {n['id']: n for n in nodes}
+    node_ids = set(node_map.keys())
+
+    # Track connections
+    outgoing: Dict[str, List[str]] = {nid: [] for nid in node_ids}
+    incoming: Dict[str, List[str]] = {nid: [] for nid in node_ids}
+
+    # Validate each edge
+    for i, edge in enumerate(edges):
+        source_id = edge.get('source')
+        target_id = edge.get('target')
+        source_handle = edge.get('sourceHandle') or edge.get('source_handle') or edge.get('from_port')
+        target_handle = edge.get('targetHandle') or edge.get('target_handle') or edge.get('to_port')
+        edge_id = edge.get('id', f'edge_{i}')
+
+        # Check nodes exist
+        if source_id not in node_ids:
+            errors.append(WorkflowError(
+                code=ErrorCode.MODULE_NOT_FOUND,
+                message=f'Source node not found: {source_id}',
+                path=f'edges[{edge_id}]',
+                meta={'node_id': source_id}
+            ))
+            continue
+
+        if target_id not in node_ids:
+            errors.append(WorkflowError(
+                code=ErrorCode.MODULE_NOT_FOUND,
+                message=f'Target node not found: {target_id}',
+                path=f'edges[{edge_id}]',
+                meta={'node_id': target_id}
+            ))
+            continue
+
+        # Check for node-level self-connection (different from module-level)
+        if source_id == target_id:
+            errors.append(WorkflowError(
+                code=ErrorCode.SELF_CONNECTION,
+                message='A node cannot connect to itself',
+                path=f'edges[{edge_id}]',
+                meta={'source': source_id, 'target': target_id}
+            ))
+            continue
+
+        # Validate connection (module compatibility)
+        source_module = node_map[source_id].get('module_id', '')
+        target_module = node_map[target_id].get('module_id', '')
+
+        # Skip module-level self-connection check if nodes are different
+        # (e.g., two different flow.end nodes connected is NOT a self-connection)
+        if source_module != target_module:
+            result = validate_connection(
+                source_module,
+                target_module,
+                from_port=source_handle or None,
+                to_port=target_handle or None,
+            )
+            if not result.valid:
+                errors.append(WorkflowError(
+                    code=result.error_code or ErrorCode.INCOMPATIBLE_MODULES,
+                    message=result.error_message or 'Invalid connection',
+                    path=f'edges[{edge_id}]',
+                    meta=result.meta
+                ))
+
+        # Track connections
+        outgoing[source_id].append(target_id)
+        incoming[target_id].append(source_id)
+
+    # Find start nodes (nodes with no incoming edges)
+    start_nodes = [nid for nid in node_ids if not incoming[nid]]
+
+    # Validate start nodes
+    start_errors = validate_start(nodes, edges)
+    errors.extend(start_errors)
+
+    # NOTE: ORPHAN_NODE check removed - users should be able to save
+    # work-in-progress workflows with unconnected nodes
+
+    # Validate params for each node
+    if validate_params:
+        for node in nodes:
+            param_errors = validate_node_params(node, strict=False)
+            for err in param_errors:
+                if err.code == ErrorCode.UNKNOWN_PARAM:
+                    warnings.append(err)
+                else:
+                    errors.append(err)
+
+    # Check for cycles (simple DFS)
+    cycle_errors = _detect_cycles(node_ids, outgoing, node_map)
+    errors.extend(cycle_errors)
+
+    return WorkflowResult(
+        valid=len(errors) == 0,
+        errors=errors,
+        warnings=warnings
+    )
+
+
+def validate_start(
+    nodes: List[Dict[str, Any]],
+    edges: List[Dict[str, Any]],
+) -> List[WorkflowError]:
+    """
+    Validate start nodes only.
+
+    Args:
+        nodes: List of node definitions
+        edges: List of edge definitions
+
+    Returns:
+        List of errors (empty if valid)
+    """
+    errors: List[WorkflowError] = []
+
+    if not nodes:
+        return errors
+
+    # Build incoming map
+    node_ids = {n['id'] for n in nodes}
+    incoming: Dict[str, int] = {nid: 0 for nid in node_ids}
+
+    for edge in edges:
+        target_id = edge.get('target')
+        if target_id in incoming:
+            incoming[target_id] += 1
+
+    # Find start nodes
+    start_node_ids = [nid for nid in node_ids if incoming[nid] == 0]
+
+    if not start_node_ids and len(nodes) > 1:
+        errors.append(WorkflowError(
+            code=ErrorCode.NO_START_NODE,
+            message='Workflow has no start node',
+            path='workflow',
+            meta={}
+        ))
+        return errors
+
+    # Validate each start node
+    from ..modules.registry import ModuleRegistry
+
+    for node in nodes:
+        if node['id'] not in start_node_ids:
+            continue
+
+        module_id = node.get('module_id', '')
+        meta = ModuleRegistry.get_metadata(module_id)
+
+        if not meta:
+            errors.append(WorkflowError(
+                code=ErrorCode.MODULE_NOT_FOUND,
+                message=f'Module not found: {module_id}',
+                path=f'nodes[{node["id"]}]',
+                meta={'module_id': module_id}
+            ))
+            continue
+
+        # Check can_be_start
+        can_be_start = meta.get('can_be_start', True)
+        if not can_be_start:
+            errors.append(WorkflowError(
+                code=ErrorCode.INVALID_START_NODE,
+                message=f'{module_id} cannot be used as a start node',
+                path=f'nodes[{node["id"]}]',
+                meta={'module_id': module_id}
+            ))
+
+        # Check start_requires_params
+        required_params = meta.get('start_requires_params', [])
+        node_params = node.get('params', {})
+
+        for param in required_params:
+            if param not in node_params or node_params[param] is None:
+                errors.append(WorkflowError(
+                    code=ErrorCode.MISSING_START_PARAMS,
+                    message=f'Start node {module_id} requires parameter: {param}',
+                    path=f'nodes[{node["id"]}].params.{param}',
+                    meta={'module_id': module_id, 'param': param}
+                ))
+
+    return errors
+
+
+def get_startable_modules() -> List[Dict[str, Any]]:
+    """
+    Get all modules that can be used as start nodes.
+
+    Returns:
+        List of module metadata for startable modules:
+        [
+            {
+                'module_id': 'browser.launch',
+                'label': 'Launch Browser',
+                'category': 'browser',
+                'icon': 'Globe',
+                'start_requires_params': []
+            },
+            ...
+        ]
+    """
+    from .index import ConnectionIndex
+    from ..modules.registry import ModuleRegistry
+
+    index = ConnectionIndex.get_instance()
+    results = []
+
+    for module_id in index.startable_modules:
+        meta = ModuleRegistry.get_metadata(module_id)
+        if meta:
+            results.append({
+                'module_id': module_id,
+                'label': meta.get('ui_label', module_id),
+                'category': meta.get('category', ''),
+                'icon': meta.get('ui_icon', 'Box'),
+                'color': meta.get('ui_color', '#6B7280'),
+                'start_requires_params': meta.get('start_requires_params', []),
+            })
+
+    return results
+
+
+def _detect_cycles(
+    node_ids: Set[str],
+    outgoing: Dict[str, List[str]],
+    node_map: Dict[str, Dict[str, Any]],
+) -> List[WorkflowError]:
+    """Detect cycles in the workflow graph using DFS"""
+    errors: List[WorkflowError] = []
+
+    # Skip cycle detection for loop modules
+    from ..modules.registry import ModuleRegistry
+
+    loop_nodes = set()
+    for nid in node_ids:
+        module_id = node_map[nid].get('module_id', '')
+        meta = ModuleRegistry.get_metadata(module_id)
+        if meta and meta.get('node_type') == 'loop':
+            loop_nodes.add(nid)
+
+    # DFS for cycle detection
+    WHITE, GRAY, BLACK = 0, 1, 2
+    color = {nid: WHITE for nid in node_ids}
+    path: List[str] = []
+
+    def dfs(node: str) -> bool:
+        """Returns True if cycle found"""
+        color[node] = GRAY
+        path.append(node)
+
+        for next_node in outgoing[node]:
+            if next_node in loop_nodes:
+                continue  # Skip loop modules
+            if color[next_node] == GRAY:
+                # Found cycle
+                cycle_start = path.index(next_node)
+                cycle_path = path[cycle_start:] + [next_node]
+                errors.append(WorkflowError(
+                    code=ErrorCode.CYCLE_DETECTED,
+                    message=f'Cycle detected: {" -> ".join(cycle_path)}',
+                    path='workflow',
+                    meta={'cycle': cycle_path}
+                ))
+                return True
+            if color[next_node] == WHITE:
+                if dfs(next_node):
+                    return True
+
+        path.pop()
+        color[node] = BLACK
+        return False
+
+    for node in node_ids:
+        if node not in loop_nodes and color[node] == WHITE:
+            dfs(node)
+
+    return errors

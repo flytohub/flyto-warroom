@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "添加项目",
+        "queues.create.maxRetries": "最大重试次数",
+        "queues.create.name": "队列名称",
+        "queues.create.namePlaceholder": "输入队列名称",
+        "queues.create.selectWorkflow": "选择工作流",
+        "queues.create.submit": "创建队列",
+        "queues.create.title": "创建队列",
+        "queues.create.workflow": "工作流",
+        "queues.createFirst": "创建您的第一个队列",
+        "queues.empty": "没有队列",
+        "queues.emptyDesc": "创建队列开始使用",
+        "queues.stats.completed": "已完成",
+        "queues.stats.pending": "待处理",
+        "queues.stats.processing": "处理中",
+        "queues.stats.totalItems": "项目总数",
+        "queues.status.completed": "已完成",
+        "queues.status.failed": "失败",
+        "queues.status.pending": "待处理",
+        "queues.status.processing": "处理中",
+        "queues.transactions.empty": "没有交易",
+        "queues.transactions.title": "交易"
+    }
+}

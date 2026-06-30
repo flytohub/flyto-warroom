@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "integration",
+    "version": "1.0.0",
+    "translations": {
+        "modules.integration.jira.create_issue.description": "Jiraに新しい課題を作成",
+        "modules.integration.jira.create_issue.label": "Jira課題作成",
+        "modules.integration.jira.search_issues.description": "JQLクエリを使用して課題を検索",
+        "modules.integration.jira.search_issues.label": "Jira課題検索",
+        "modules.integration.salesforce.create_record.description": "Salesforceに新しいレコードを作成",
+        "modules.integration.salesforce.create_record.label": "Salesforceレコード作成",
+        "modules.integration.salesforce.query.description": "SalesforceでSOQLクエリを実行",
+        "modules.integration.salesforce.query.label": "Salesforceクエリ",
+        "modules.integration.salesforce.update_record.description": "Salesforceの既存レコードを更新",
+        "modules.integration.salesforce.update_record.label": "Salesforceレコード更新",
+        "modules.integration.slack.list_channels.description": "Slackワークスペースのチャンネルを一覧表示",
+        "modules.integration.slack.list_channels.label": "Slackチャンネル一覧",
+        "modules.integration.slack.list_channels.params.channels": "チャンネル",
+        "modules.integration.slack.list_channels.params.channels.options.id": "Id",
+        "modules.integration.slack.list_channels.params.channels.options.is_private": "プライベート",
+        "modules.integration.slack.list_channels.params.channels.options.name": "名前",
+        "modules.integration.slack.list_channels.params.channels.options.num_members": "メンバー数",
+        "modules.integration.slack.send_message.description": "Slackチャンネルにメッセージを送信",
+        "modules.integration.slack.send_message.label": "Slackメッセージ送信"
+    }
+}

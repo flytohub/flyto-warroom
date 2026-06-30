@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.llmChain",
+    "version": "1.0.0",
+    "translations": {
+        "llmChain.advancedOptions": "उन्नत विकल्प",
+        "llmChain.detectedVariables": "पता लगाए गए वेरिएबल",
+        "llmChain.insertVariable": "वेरिएबल डालें",
+        "llmChain.maxTokens": "अधिकतम टोकन",
+        "llmChain.maxTokensHint": "रिस्पॉन्स की अधिकतम लंबाई",
+        "llmChain.model": "मॉडल",
+        "llmChain.systemPrompt": "सिस्टम प्रॉम्प्ट",
+        "llmChain.systemPromptPlaceholder": "आप एक सहायक असिस्टेंट हैं...",
+        "llmChain.temperature": "टेम्परेचर",
+        "llmChain.temperatureHint": "उच्च = अधिक रचनात्मक, निम्न = अधिक केंद्रित",
+        "llmChain.userPrompt": "यूज़र प्रॉम्प्ट",
+        "llmChain.userPromptPlaceholder": "{{variables}} के साथ अपना प्रॉम्प्ट दर्ज करें...",
+        "llmChain.variableHelp": "पिछले चरणों से डेटा संदर्भित करने के लिए {{variable}} का उपयोग करें"
+    }
+}

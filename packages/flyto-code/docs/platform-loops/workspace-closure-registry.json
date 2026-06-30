@@ -1,0 +1,204 @@
+{
+  "schema": "flyto-code.workspace-closure-registry.v1",
+  "purpose": "Keep SaaS, open-core, enterprise airgap, admin, verification, and browser workflow boundaries tied back to the same eight product surfaces.",
+  "surfacesSource": "docs/platform-loops/platform-loop-registry.json",
+  "requiredSurfaces": [
+    "overview",
+    "assets",
+    "code_redteam",
+    "exposure",
+    "runtime_cloud_identity",
+    "darkweb",
+    "scoring_compliance",
+    "operations_admin"
+  ],
+  "repos": [
+    {
+      "id": "flyto-engine",
+      "path": "flyto-engine",
+      "roles": [
+        "authoritative product entitlement and edition model",
+        "backend API and action gate source",
+        "signed offline license and update bundle verification"
+      ],
+      "requiredFiles": [
+        "go.mod",
+        "api/openapi.yaml",
+        "internal/permission/capabilities.go",
+        "internal/permission/editions.yaml",
+        "internal/offlinelicense/license.go",
+        "internal/updatebundle/bundle.go"
+      ],
+      "requiredText": [
+        {
+          "file": "internal/permission/editions.yaml",
+          "text": "enterprise_airgap:"
+        },
+        {
+          "file": "internal/offlinelicense/license.go",
+          "text": "flyto-offline-license/v1"
+        },
+        {
+          "file": "internal/updatebundle/bundle.go",
+          "text": "flyto-update-bundle/v1"
+        }
+      ]
+    },
+    {
+      "id": "flyto-code",
+      "path": "flyto-code",
+      "roles": [
+        "primary product UI and route closure",
+        "surface-level query key and SSE invalidation guard",
+        "community export and enterprise edition boundary guard"
+      ],
+      "requiredFiles": [
+        "package.json",
+        "docs/platform-loops/platform-loop-registry.json",
+        "docs/platform-loops/navbar-smoke-registry.json",
+        "scripts/audit-platform-loops.mjs",
+        "scripts/audit-edition-boundary.mjs",
+        "scripts/export-community.mjs",
+        "scripts/ai-branch-guard.mjs"
+      ],
+      "requiredScripts": [
+        {
+          "packageFile": "package.json",
+          "name": "audit:loops"
+        },
+        {
+          "packageFile": "package.json",
+          "name": "audit:edition-boundary"
+        },
+        {
+          "packageFile": "package.json",
+          "name": "audit:community-export"
+        },
+        {
+          "packageFile": "package.json",
+          "name": "guard:branch"
+        }
+      ]
+    },
+    {
+      "id": "flyto-cloud",
+      "path": "flyto-cloud",
+      "roles": [
+        "SaaS payment and Firebase gateway",
+        "runtime config bridge for editions and providers",
+        "enterprise airgap compose and Helm deployment packaging"
+      ],
+      "requiredFiles": [
+        "src/ui/web/backend/api/runtime_config.py",
+        "src/ui/web/backend/gateway/config.py",
+        "deploy/enterprise-airgap/docker-compose.yml",
+        "deploy/enterprise-airgap/helm/templates/configmap.yaml",
+        "deploy/enterprise-airgap/helm/templates/engine.yaml"
+      ],
+      "requiredText": [
+        {
+          "file": "src/ui/web/backend/api/runtime_config.py",
+          "text": "enterprise_airgap"
+        },
+        {
+          "file": "src/ui/web/backend/gateway/config.py",
+          "text": "self_hosted_online"
+        },
+        {
+          "file": "deploy/enterprise-airgap/docker-compose.yml",
+          "text": "FLYTO_OFFLINE_LICENSE_FILE"
+        },
+        {
+          "file": "deploy/enterprise-airgap/helm/templates/configmap.yaml",
+          "text": "FLYTO_UPDATE_BUNDLE_DIR"
+        }
+      ]
+    },
+    {
+      "id": "flyto-indexer",
+      "path": "flyto-indexer",
+      "roles": [
+        "codebase context and impact graph",
+        "cross-project contract verification",
+        "workspace verify gate for generated changes"
+      ],
+      "requiredFiles": [
+        "pyproject.toml",
+        "src/verify.py",
+        "tests/test_verify.py"
+      ],
+      "requiredText": [
+        {
+          "file": "src/verify.py",
+          "text": "_check_cross_project_contract"
+        },
+        {
+          "file": "src/verify.py",
+          "text": "_normalize_api_path"
+        }
+      ]
+    },
+    {
+      "id": "flyto-core",
+      "path": "flyto-core",
+      "roles": [
+        "browser and YAML workflow execution",
+        "security and pentest recipe bundles",
+        "local closed-loop smoke verification"
+      ],
+      "requiredFiles": [
+        "pyproject.toml",
+        "src/recipe_bundles/flyto2-warroom-smoke.yaml",
+        "src/recipes/api-pipeline.yaml",
+        "workflows/security_audit.yaml",
+        "workflows/pentests/registry.yaml"
+      ],
+      "requiredText": [
+        {
+          "file": "pyproject.toml",
+          "text": "flyto = \"cli.main:main\""
+        },
+        {
+          "file": "pyproject.toml",
+          "text": "flyto-serve = \"core.api:main\""
+        }
+      ]
+    },
+    {
+      "id": "flyto-admin",
+      "path": "flyto-admin",
+      "roles": [
+        "internal operations and admin UX",
+        "operator-facing build and lint surface",
+        "admin documentation and deployment handoff"
+      ],
+      "requiredFiles": [
+        "frontend/package.json",
+        "frontend/src/index.tsx",
+        "backend/README.md",
+        "frontend/README.md"
+      ],
+      "requiredScripts": [
+        {
+          "packageFile": "frontend/package.json",
+          "name": "build"
+        },
+        {
+          "packageFile": "frontend/package.json",
+          "name": "lint"
+        }
+      ]
+    }
+  ],
+  "requiredGuards": [
+    {
+      "packageFile": "flyto-code/package.json",
+      "script": "audit:workspace-closure",
+      "command": "node scripts/audit-workspace-closure.mjs"
+    },
+    {
+      "file": "flyto-code/scripts/ai-branch-guard.mjs",
+      "text": "audit:workspace-closure"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.orchestrator",
+    "version": "1.0.0",
+    "translations": {
+        "orchestrator.jobs.empty": "작업 없음",
+        "orchestrator.jobs.title": "작업",
+        "orchestrator.register.capabilities": "기능",
+        "orchestrator.register.machineName": "기계 이름",
+        "orchestrator.register.machineNamePlaceholder": "기계 이름을 입력하세요",
+        "orchestrator.register.name": "로봇 이름",
+        "orchestrator.register.namePlaceholder": "로봇 이름을 입력하세요",
+        "orchestrator.register.osType": "OS 유형",
+        "orchestrator.register.submit": "등록",
+        "orchestrator.register.title": "로봇 등록",
+        "orchestrator.robots.empty": "등록된 로봇 없음",
+        "orchestrator.robots.emptyDesc": "시작하려면 로봇을 등록하세요",
+        "orchestrator.robots.lastSeen": "마지막 확인",
+        "orchestrator.robots.maxJobs": "최대 작업 수",
+        "orchestrator.robots.platform": "플랫폼",
+        "orchestrator.robots.register": "로봇 등록",
+        "orchestrator.robots.registerFirst": "첫 번째 로봇을 등록하세요",
+        "orchestrator.robots.runJob": "작업 실행",
+        "orchestrator.robots.title": "로봇",
+        "orchestrator.stats.available": "사용 가능",
+        "orchestrator.stats.busy": "사용 중",
+        "orchestrator.stats.offline": "오프라인",
+        "orchestrator.stats.totalRobots": "총 로봇 수"
+    }
+}

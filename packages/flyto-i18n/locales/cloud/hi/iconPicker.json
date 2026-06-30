@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.iconPicker",
+    "version": "1.0.0",
+    "translations": {
+        "iconPicker.iconColor": "आइकन का रंग",
+        "iconPicker.noResults": "कोई परिणाम नहीं",
+        "iconPicker.searchPlaceholder": "आइकन खोजें..."
+    }
+}

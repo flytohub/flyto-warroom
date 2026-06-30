@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.observability",
+    "version": "1.0.0",
+    "translations": {
+        "observability.subtitle": "Pantau eksekusi dan kinerja workflow",
+        "observability.tabs.alerts": "Peringatan",
+        "observability.tabs.metrics": "Metrik",
+        "observability.tabs.traces": "Trace",
+        "observability.timeRange.24h": "24 jam terakhir",
+        "observability.timeRange.30d": "30 hari terakhir",
+        "observability.timeRange.7d": "7 hari terakhir",
+        "observability.timeRange.90d": "90 hari terakhir",
+        "observability.title": "Observabilitas"
+    }
+}

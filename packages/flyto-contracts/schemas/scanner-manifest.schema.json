@@ -1,0 +1,45 @@
+{
+  "$id": "https://schemas.flyto.dev/scanner-manifest.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "capabilities": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "evidence_contracts": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "runner": {
+      "type": "object"
+    },
+    "surfaces": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "surfaces",
+    "evidence_contracts"
+  ],
+  "title": "Flyto scanner manifest",
+  "type": "object"
+}

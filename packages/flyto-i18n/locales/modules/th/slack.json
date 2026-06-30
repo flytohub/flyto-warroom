@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "slack",
+    "version": "1.0.0",
+    "translations": {
+        "modules.slack.send.description": "ส่งข้อความไปยังช่อง Slack ผ่าน incoming webhook",
+        "modules.slack.send.label": "ส่งข้อความ Slack",
+        "modules.slack.send.output.sent.description": "ข้อความส่งสำเร็จหรือไม่"
+    }
+}

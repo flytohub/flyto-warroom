@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "analysis",
+  "version": "1.0.0",
+  "translations": {
+    "modules.analysis.html.analyze_readability.description": "",
+    "modules.analysis.html.analyze_readability.label": "",
+    "modules.analysis.html.extract_forms.description": "",
+    "modules.analysis.html.extract_forms.label": "",
+    "modules.analysis.html.extract_metadata.description": "",
+    "modules.analysis.html.extract_metadata.label": "",
+    "modules.analysis.html.extract_tables.description": "",
+    "modules.analysis.html.extract_tables.label": "",
+    "modules.analysis.html.find_patterns.description": "",
+    "modules.analysis.html.find_patterns.label": "",
+    "modules.analysis.html.structure.description": "",
+    "modules.analysis.html.structure.label": ""
+  }
+}

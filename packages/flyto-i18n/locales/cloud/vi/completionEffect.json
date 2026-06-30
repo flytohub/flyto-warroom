@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.completionEffect",
+    "version": "1.0.0",
+    "translations": {
+        "completionEffect.defaultMessage": "Tất cả các bước đã thực thi thành công",
+        "completionEffect.defaultTitle": "Workflow hoàn thành"
+    }
+}

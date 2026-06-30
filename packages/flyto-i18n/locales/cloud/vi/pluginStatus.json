@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.pluginStatus",
+    "version": "1.0.0",
+    "translations": {
+        "pluginStatus.downloading": "Đang tải xuống",
+        "pluginStatus.installed": "Đã cài đặt",
+        "pluginStatus.loaded": "Đã tải",
+        "pluginStatus.loading": "Đang tải",
+        "pluginStatus.notInstalled": "Chưa cài đặt",
+        "pluginStatus.unloading": "Đang gỡ"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.checkpoint",
+    "version": "1.0.0",
+    "translations": {
+        "checkpoint.clickToRemove": "Click to remove",
+        "checkpoint.disabled": "Checkpoint disabled",
+        "checkpoint.humanCheckpoint": "Human Checkpoint"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "ผู้ช่วย AI (ถาม AI เพื่อขอความช่วยเหลือ)",
+        "workflowCanvas.controls.autoLayout": "จัดเรียงอัตโนมัติ",
+        "workflowCanvas.controls.fitView": "พอดีหน้าจอ",
+        "workflowCanvas.controls.zoomIn": "ขยาย",
+        "workflowCanvas.controls.zoomOut": "ย่อ",
+        "workflowCanvas.deleteDialog.deleteAll": "ลบทั้งหมด",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "ลบ node นี้และ child node(s) ทั้งหมด {count} รายการ",
+        "workflowCanvas.deleteDialog.mergeToChild": "รวมกับ Child",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "ลบเฉพาะ node นี้และเชื่อมต่อ parent กับ child แรก",
+        "workflowCanvas.deleteDialog.message": "Node นี้มี {count} child node(s) คุณต้องการทำอะไร?",
+        "workflowCanvas.deleteDialog.title": "ลบ Node ที่มี Children",
+        "workflowCanvas.reconnect.cancel": "ยกเลิก",
+        "workflowCanvas.reconnect.connect": "เชื่อมต่อ",
+        "workflowCanvas.reconnect.dontConnect": "ไม่เชื่อมต่อ",
+        "workflowCanvas.stickyNoteCreated": "สร้างโน้ตสำเร็จ"
+    }
+}

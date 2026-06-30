@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.templateCategory",
+    "version": "1.0.0",
+    "translations": {
+        "templateCategory.automation": "อัตโนมัติ",
+        "templateCategory.dataProcessing": "ประมวลผลข้อมูล",
+        "templateCategory.productivity": "ประสิทธิภาพการทำงาน",
+        "templateCategory.socialMedia": "โซเชียลมีเดีย",
+        "templateCategory.webScraping": "Web Scraping",
+        "templateCategory.api": "API",
+        "templateCategory.media": "สื่อ",
+        "templateCategory.notification": "การแจ้งเตือน",
+        "templateCategory.ai": "AI",
+        "templateCategory.file": "ไฟล์",
+        "templateCategory.monitoring": "การตรวจสอบ",
+        "templateCategory.developer": "เครื่องมือนักพัฒนา"
+    }
+}

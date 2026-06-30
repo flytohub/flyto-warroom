@@ -1,0 +1,1 @@
+{"locale": "tr", "name": "Turkish", "native": "Türkçe", "region": "TR", "version": "9b6d1ede8820", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "Bu hata akışının açıklaması", "label": "Açıklama"}}, "pleaseSelect": "Lütfen seçin…", "ports": {"error": "Çıktı"}}}}

@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.gridLayout",
+    "version": "1.0.0",
+    "translations": {
+        "gridLayout.fourColumns": "Empat Kolom",
+        "gridLayout.singleColumn": "Satu Kolom",
+        "gridLayout.threeColumns": "Tiga Kolom",
+        "gridLayout.twoColumns11": "Dua Kolom (1:1)",
+        "gridLayout.twoColumns12": "Dua Kolom (1:2)",
+        "gridLayout.twoColumns21": "Dua Kolom (2:1)"
+    }
+}

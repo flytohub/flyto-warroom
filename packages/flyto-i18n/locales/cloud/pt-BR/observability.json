@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.observability",
+    "version": "1.0.0",
+    "translations": {
+        "observability.subtitle": "Monitorar execucoes de workflow e desempenho",
+        "observability.tabs.alerts": "Alertas",
+        "observability.tabs.metrics": "Metricas",
+        "observability.tabs.traces": "Rastreios",
+        "observability.timeRange.24h": "Ultimas 24 horas",
+        "observability.timeRange.30d": "Ultimos 30 dias",
+        "observability.timeRange.7d": "Ultimos 7 dias",
+        "observability.timeRange.90d": "Ultimos 90 dias",
+        "observability.title": "Observabilidade"
+    }
+}

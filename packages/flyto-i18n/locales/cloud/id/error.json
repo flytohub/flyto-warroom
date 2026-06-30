@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "Gagal memulai replay",
+        "error.fixJsonFirst": "Silakan perbaiki kesalahan JSON terlebih dahulu",
+        "error.imageTooLarge": "File gambar terlalu besar",
+        "error.invalidJsonContext": "JSON tidak valid dalam override konteks",
+        "error.noStepsToValidate": "Tidak ada langkah yang ditemukan untuk divalidasi",
+        "error.replayFailed": "Replay gagal"
+    }
+}

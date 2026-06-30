@@ -1,0 +1,50 @@
+id: cloud-container-vm-live-loop
+surface: runtime_cloud_identity
+description: Verify live cloud connector, VM/compute asset-map posture, and container workload/image findings remain split by source while merging into the unified runtime/cloud/identity cockpit.
+requires:
+  - frontend
+  - engine
+steps:
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/cloud-posture?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/containers?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+  - module: api.request
+    method: GET
+    url: "{{engineUrl}}/api/v1/code/orgs/{{orgId}}/cloud-posture"
+  - module: api.request
+    method: GET
+    url: "{{engineUrl}}/api/v1/code/orgs/{{orgId}}/container-posture"
+  - module: api.request
+    method: GET
+    url: "{{engineUrl}}/api/v1/code/orgs/{{orgId}}/container-findings"
+assertions:
+  - assert: query_key_present
+    query_key: cloud-posture
+  - assert: query_key_present
+    query_key: container-posture
+  - assert: query_key_present
+    query_key: container-findings
+  - assert: api_path_present
+    path: /cloud-posture
+  - assert: api_path_present
+    path: /container-posture
+  - assert: api_path_present
+    path: /container-findings
+  - assert: route_renders_without_error
+    step: 1
+  - assert: route_renders_without_error
+    step: 3
+  - assert: http_status
+    step: 5
+    status: 200
+  - assert: http_status
+    step: 6
+    status: 200
+  - assert: http_status
+    step: 7
+    status: 200

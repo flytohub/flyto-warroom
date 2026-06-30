@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.pluginStatus",
+    "version": "1.0.0",
+    "translations": {
+        "pluginStatus.downloading": "กำลังดาวน์โหลด",
+        "pluginStatus.installed": "ติดตั้งแล้ว",
+        "pluginStatus.loaded": "โหลดแล้ว",
+        "pluginStatus.loading": "กำลังโหลด",
+        "pluginStatus.notInstalled": "ยังไม่ได้ติดตั้ง",
+        "pluginStatus.unloading": "กำลังยกเลิกการโหลด"
+    }
+}

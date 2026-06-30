@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "जांचें कि क्या कोई मान सीमा से अधिक बदल गया है (मात्रा या प्रतिशत द्वारा)",
+        "modules.compare.change.label": "परिवर्तन का पता लगाएं",
+        "modules.compare.change.output.change_absolute.description": "प्रतिशत परिवर्तन (सकारात्मक = ऊपर, नकारात्मक = नीचे)",
+        "modules.compare.change.output.change_percent.description": "परिवर्तन की दिशा: ",
+        "modules.compare.change.output.changed.description": "क्या ऑपरेशन सफल हुआ",
+        "modules.compare.change.output.current.description": "पूर्ण परिवर्तन (सकारात्मक = ऊपर, नकारात्मक = नीचे)",
+        "modules.compare.change.output.direction.description": "क्या ऑपरेशन सफल हुआ",
+        "modules.compare.change.output.ok.description": "क्या ऑपरेशन सफल हुआ",
+        "modules.compare.change.output.previous.description": "पूर्ण परिवर्तन (सकारात्मक = ऊपर, नकारात्मक = नीचे)",
+        "modules.compare.change.output.summary.description": "वर्तमान मान",
+        "modules.compare.change.params.current.description": "तुलना के लिए वर्तमान/नया मान",
+        "modules.compare.change.params.current.label": "वर्तमान मान",
+        "modules.compare.change.params.direction.description": "किस दिशा में परिवर्तन का पता लगाएं",
+        "modules.compare.change.params.direction.label": "सीमा",
+        "modules.compare.change.params.mode.description": "तुलना के लिए पिछला/पुराना मान",
+        "modules.compare.change.params.mode.label": "पिछला मान",
+        "modules.compare.change.params.previous.description": "तुलना के लिए वर्तमान/नया मान",
+        "modules.compare.change.params.previous.label": "वर्तमान मान",
+        "modules.compare.change.params.threshold.description": "ट्रिगर करने के लिए न्यूनतम परिवर्तन (5 = 5% या 5 इकाइयाँ)",
+        "modules.compare.change.params.threshold.label": "प्रतिशत परिवर्तन"
+    }
+}

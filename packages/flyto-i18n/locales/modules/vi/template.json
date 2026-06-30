@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "Thực hiện một mẫu từ thư viện của bạn như một bước trong quy trình làm việc",
+        "modules.template.invoke.label": "Kích hoạt Mẫu",
+        "modules.template.invoke.output.__event__.description": "ID của mục trong thư viện (mua/chia sẻ/sở hữu)",
+        "modules.template.invoke.output.execution_time_ms.description": "Kết quả thực thi mẫu",
+        "modules.template.invoke.output.result.description": "Thời gian thực thi tối đa tính bằng giây",
+        "modules.template.invoke.output.template_id.description": "Sự kiện để định tuyến (thành công/lỗi)",
+        "modules.template.invoke.ports.input": "Kích hoạt Mẫu",
+        "modules.template.invoke.ports.success": "Đầu vào"
+    }
+}

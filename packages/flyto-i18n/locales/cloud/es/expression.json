@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "Variables disponibles",
+        "expression.editExpression": "Editar expresión",
+        "expression.enterExpression": "Ingrese una expresión para ver la vista previa",
+        "expression.expressionCode": "Expresión",
+        "expression.openEditor": "Abrir editor de expresiones",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "Vista previa"
+    }
+}

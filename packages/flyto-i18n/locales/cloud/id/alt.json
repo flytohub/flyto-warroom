@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.alt",
+    "version": "1.0.0",
+    "translations": {
+        "alt.avatar": "Avatar",
+        "alt.flytoLogo": "Logo Flyto2",
+        "alt.preview": "Pratinjau",
+        "alt.result": "Hasil",
+        "alt.screenshot": "Tangkapan Layar",
+        "alt.stepScreenshot": "Tangkapan Layar Langkah",
+        "alt.templateIcon": "Ikon template"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "Crea Progetto",
+        "projects.create.title": "Crea Progetto",
+        "projects.delete.message": "Sei sicuro di voler eliminare questo progetto? Tutti i workflow in questo progetto verranno spostati nel progetto predefinito.",
+        "projects.delete.title": "Elimina Progetto",
+        "projects.description": "Organizza i tuoi workflow in progetti",
+        "projects.edit.title": "Modifica Progetto",
+        "projects.empty.description": "Crea il tuo primo progetto per organizzare i workflow",
+        "projects.empty.title": "Nessun Progetto Ancora",
+        "projects.form.color": "Colore",
+        "projects.form.description": "Descrizione",
+        "projects.form.name": "Nome Progetto",
+        "projects.form.namePlaceholder": "Il Mio Progetto",
+        "projects.members": "membri",
+        "projects.title": "Progetti",
+        "projects.workflows": "workflow"
+    }
+}

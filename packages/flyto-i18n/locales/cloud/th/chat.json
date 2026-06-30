@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "แนบไฟล์",
+        "chat.messageUser": "ข้อความ",
+        "chat.messages": "ข้อความ",
+        "chat.noConversations": "ยังไม่มีการสนทนา",
+        "chat.noMessages": "ยังไม่มีข้อความ พูดสวัสดีสิ!",
+        "chat.online": "ออนไลน์",
+        "chat.searchConversations": "ค้นหาการสนทนา...",
+        "chat.selectConversation": "เลือกการสนทนาเพื่อเริ่มแชท",
+        "chat.send": "ส่ง",
+        "chat.startChat": "เริ่มแชท",
+        "chat.startChatFailed": "ไม่สามารถเริ่มแชทได้",
+        "chat.typePlaceholder": "พิมพ์ข้อความ...",
+        "chat.user": "ผู้ใช้"
+    }
+}

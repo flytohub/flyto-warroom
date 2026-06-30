@@ -1,0 +1,790 @@
+/* =================================================================
+   Exposure — external security monitoring.
+
+   Visual DNA cloned from sec-hero + pulse-card + wr-table.
+   Every card uses the same depth/radius/transition as the Security
+   Overview hero panel so the exposure section feels like the same
+   product, not a bolted-on page.
+   ================================================================= */
+
+/* ── Root ─────────────────────────────────────────────────── */
+
+.exp-root {
+  padding: 24px;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Header — Fuse pattern ────────────────────────────────────
+   Restyled 2026-05-19 to match Fuse-React-v17 demo page headers.
+   The old gradient-icon-box was the single biggest visual-noise
+   contributor in the exposure section per the audit; section
+   identity now comes from the sidebar's headerIcon, so the
+   per-page icon box is hidden and the title block takes the
+   full Fuse typography hierarchy (text-3xl semibold + text-base
+   secondary). JSX in 11 exposure views is unchanged — only the
+   visual treatment moves. ─────────────────────────────────────── */
+
+.exp-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  flex: none;
+  margin-bottom: 24px;
+}
+
+/* Hide the legacy gradient icon box. The chevron-shaped sidebar
+   section icon already carries "which page is this" semantics; the
+   per-page icon box was duplicating that signal. */
+.exp-header-icon {
+  display: none;
+}
+
+.exp-header-title {
+  font-size: 1.875rem;       /* text-3xl */
+  font-weight: 600;          /* semibold */
+  color: var(--color-text-primary);
+  letter-spacing: 0;
+  line-height: 1;            /* leading-none */
+}
+
+.exp-header-sub {
+  font-size: 1rem;           /* text-base */
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  margin-left: 0.125rem;     /* ml-0.5 — Fuse demo offset */
+  margin-top: 4px;
+}
+
+.exp-count {
+  margin-left: auto;
+  align-self: center;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+  background: var(--color-action-selected, rgba(255,255,255,0.08));
+  border: 1px solid var(--color-divider, rgba(255,255,255,0.12));
+  border-radius: 999px;
+}
+
+/* ── Scroll area ──────────────────────────────────────────── */
+
+.exp-scroll {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 6px;
+}
+
+.exp-scroll::-webkit-scrollbar { width: 5px; }
+.exp-scroll::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 3px; }
+.exp-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.15); }
+
+/* History evidence layout — two columns on workbench screens, stacked
+   below tablet width so sticky timeline headers do not cover feed rows. */
+.history-evidence-grid {
+  display: grid;
+  grid-template-areas:
+    "supportStrip timeline"
+    "pillStrip    timeline"
+    "hero         timeline";
+  grid-template-rows: auto auto 1fr;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 14px;
+}
+
+@media (max-width: 900px) {
+  .history-evidence-grid {
+    grid-template-areas:
+      "supportStrip"
+      "pillStrip"
+      "hero"
+      "timeline";
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(220px, 320px) minmax(360px, 1fr);
+    align-content: start;
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+
+  .history-evidence-grid .exp-card-head {
+    position: static;
+  }
+}
+
+/* ── Card — same depth as sec-hero / pulse-card ───────────── */
+
+.exp-card {
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25), 0 0 0 1px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: border-color 150ms, box-shadow 150ms;
+}
+
+/* Generic body slot — child elements not covered by .exp-card-head /
+   .exp-card-desc get this padding so custom content (lists, grids,
+   bulk action bars) doesn't kiss the card border. Add via
+   className="exp-card-body". */
+.exp-card-body {
+  padding: 12px 18px 16px;
+}
+
+/* Scrollbar breathing room — when an inline scroll lives directly
+   inside .exp-card, the scrollbar otherwise butts up against the
+   right border. Class applies a small inset on the right. */
+.exp-scroll-inset {
+  padding-right: 6px;
+}
+
+.exp-card:hover {
+  border-color: rgba(255,255,255,0.14);
+}
+
+.exp-card-accent {
+  border-top: 3px solid var(--exp-accent, #38bdf8);
+}
+
+/* ── Card header — gradient bar (matches wr-table-head) ──── */
+
+.exp-card-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px;
+  background:
+    linear-gradient(90deg, rgba(167,139,250,0.06) 0%, transparent 60%);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.exp-card-head svg {
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+/* ── Column header — uppercase (matches wr-table-head) ───── */
+
+.exp-col-head {
+  display: grid;
+  gap: 14px;
+  padding: 9px 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  background: linear-gradient(90deg, rgba(167,139,250,0.04), transparent);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── Row — hover glow (matches wr-table-row) ──────────────── */
+
+.exp-row {
+  display: grid;
+  gap: 14px;
+  padding: 11px 18px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  transition: background 120ms, box-shadow 120ms;
+}
+
+.exp-row:last-child { border-bottom: 0; }
+
+.exp-row:hover {
+  background: rgba(167,139,250,0.06);
+  box-shadow: inset 3px 0 0 var(--exp-accent, rgba(167,139,250,0.5));
+}
+
+.exp-row > div {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Stat card (matches sec-metric) ───────────────────────── */
+
+.exp-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--color-card-border, rgba(255,255,255,0.08));
+  background: var(--color-card-bg, rgba(255,255,255,0.035));
+  text-align: center;
+  transition: border-color 150ms, background 150ms, transform 150ms;
+}
+
+.exp-stat-card:hover {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  transform: translateY(-1px);
+}
+
+.exp-stat-card[data-accent] {
+  border-top: 3px solid var(--card-accent, var(--exp-accent));
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(167,139,250,0.06) 0%, transparent 70%),
+    var(--color-card-bg, rgba(255,255,255,0.035));
+}
+
+/* ── Big number (matches sec-hero-score-value) ────────────── */
+
+.exp-stat {
+  font-size: 28px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.exp-stat-label {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* ── Info panel — glassmorphic (matches sec-hero bg) ──────── */
+
+.exp-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(167,139,250,0.18);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(167,139,250,0.08) 0%, transparent 55%),
+    radial-gradient(circle at 90% 80%, rgba(56,189,248,0.04) 0%, transparent 50%),
+    linear-gradient(135deg, rgba(255,255,255,0.035) 0%, transparent 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.exp-info.is-error {
+  border-color: rgba(239,68,68,0.25);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(239,68,68,0.08) 0%, transparent 55%),
+    rgba(255,255,255,0.02);
+}
+
+.exp-info.is-success {
+  border-color: rgba(34,197,94,0.25);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(34,197,94,0.08) 0%, transparent 55%),
+    rgba(255,255,255,0.02);
+}
+
+/* ── Severity badges ──────────────────────────────────────── */
+
+.exp-sev {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.exp-sev-critical { background: rgba(239,68,68,0.15); color: #ef4444; }
+.exp-sev-high     { background: rgba(249,115,22,0.15); color: #f97316; }
+.exp-sev-medium   { background: rgba(234,179,8,0.15);  color: #eab308; }
+.exp-sev-low      { background: rgba(34,197,94,0.15);  color: #22c55e; }
+
+/* ── Status icons — glow ──────────────────────────────────── */
+
+.exp-status-pass { color: #22c55e; filter: drop-shadow(0 0 5px rgba(34,197,94,0.5)); }
+.exp-status-fail { color: #ef4444; filter: drop-shadow(0 0 5px rgba(239,68,68,0.5)); }
+.exp-status-warn { color: #eab308; filter: drop-shadow(0 0 5px rgba(234,179,8,0.5)); }
+.exp-status-na   { color: var(--color-text-tertiary); opacity: 0.25; }
+
+/* ── Monospace domain text ────────────────────────────────── */
+
+.exp-mono {
+  font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+  font-size: 12.5px;
+  color: var(--color-text-secondary);
+  letter-spacing: 0;
+}
+
+/* ── Priority circle ──────────────────────────────────────── */
+
+.exp-priority {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* ── Impact chip ──────────────────────────────────────────── */
+
+.exp-impact {
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(34,197,94,0.12);
+  color: #22c55e;
+  white-space: nowrap;
+}
+
+/* ── Expandable row ───────────────────────────────────────── */
+
+.exp-expand-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: inherit;
+  transition: background 120ms;
+}
+
+.exp-expand-trigger:hover {
+  background: rgba(167,139,250,0.06);
+}
+
+.exp-expand-body {
+  padding: 0 18px 18px 52px;
+}
+
+.exp-step-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.exp-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.exp-step-num {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-text-tertiary);
+}
+
+/* ── Vendor risk bar ──────────────────────────────────────── */
+
+.exp-risk-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.exp-risk-bar-track {
+  width: 40px;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.06);
+  overflow: hidden;
+}
+
+.exp-risk-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ── Button row ───────────────────────────────────────────── */
+
+.exp-btn-row {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* ── Slide-in animation ───────────────────────────────────── */
+
+@keyframes exp-slide-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.exp-card,
+.exp-stat-card,
+.exp-info {
+  animation: exp-slide-in 350ms ease-out;
+}
+
+/* ── CTEM Actions — body padding + subcards ────────────────
+   Sub-cards sit inside an .exp-card, used by CTEMExtrasPanel
+   for the three war-room actions (blast / fix / compliance). */
+
+.exp-card-desc {
+  margin: 0;
+  padding: 8px 18px 14px;
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  line-height: 1.45;
+}
+
+.exp-subcard {
+  margin: 0 14px 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+}
+
+.exp-subcard:last-child { margin-bottom: 14px; }
+
+.exp-subcard-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.exp-subcard-head svg { flex-shrink: 0; }
+
+.exp-subcard-body {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.exp-blast-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.exp-blast-label {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.exp-blast-value {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.exp-blast-summary {
+  margin: 8px 0 4px;
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  line-height: 1.45;
+}
+
+.exp-blast-meta {
+  margin: 0;
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+}
+
+.exp-fix-diff {
+  margin: 8px 0 0;
+  padding: 8px;
+  max-height: 220px;
+  overflow: auto;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.04);
+  color: var(--color-text-secondary);
+}
+
+/* ── Compliance-framework grid ─────────────────────────────
+   Two-column grid of {label, [md|pdf]} rows. Quiet bg, dotted
+   row separator. Anchor links use brand violet. */
+
+.exp-framework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 6px 18px;
+  padding: 0 18px 14px;
+}
+
+.exp-framework-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 0;
+  border-bottom: 1px dashed rgba(255,255,255,0.05);
+  font-size: 12px;
+}
+
+.exp-framework-row:last-child { border-bottom: 0; }
+
+.exp-framework-label {
+  color: var(--color-text-primary);
+}
+
+.exp-framework-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.exp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #a78bfa;
+  text-decoration: none;
+  transition: color 120ms;
+}
+
+button.exp-link {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button.exp-link:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.exp-link:hover { color: #c4b5fd; text-decoration: underline; }
+.exp-link-muted { color: var(--color-text-tertiary); font-weight: 500; }
+.exp-link-muted:hover { color: var(--color-text-secondary); }
+
+/* ── Alert picker list (CTEM Actions, "Per-alert war-room") ── */
+
+.exp-alert-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0 14px 14px;
+  max-height: 220px;
+  overflow: auto;
+}
+
+.exp-alert-row {
+  all: unset;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms;
+  border: 1px solid transparent;
+  font-size: 12px;
+}
+
+.exp-alert-row:hover {
+  background: rgba(255,255,255,0.04);
+}
+
+.exp-alert-row.is-active {
+  border-color: rgba(139,92,246,0.45);
+  background: rgba(139,92,246,0.08);
+}
+
+.exp-alert-sev-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.exp-alert-title {
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.exp-alert-sev {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+
+/* ── KpiTile — the canonical KPI card ──────────────────────
+   Used by every CTEM/Exposure page so the visual language
+   stays consistent. See KpiTile.tsx for tone semantics. */
+
+.exp-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.exp-kpi {
+  position: relative;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.025) 0%, rgba(255,255,255,0.01) 100%);
+  transition: border-color 150ms;
+}
+
+.exp-kpi:hover {
+  border-color: rgba(255,255,255,0.14);
+}
+
+.exp-kpi-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  opacity: 0.6;
+}
+
+.exp-kpi-value {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.exp-kpi-label {
+  margin-top: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-tertiary);
+}
+
+.exp-kpi-hint {
+  margin-top: 2px;
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  opacity: 0.7;
+}
+
+/* ── Filter chip row (Alert Center) ────────────────────────
+   Segmented chip toggles, more compact than MUI Select. The
+   `is-active` state gets a violet ring; inactive chips are
+   borderline-grey so a row of them reads as a quiet toolbar. */
+
+.exp-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.exp-filter-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-text-tertiary);
+  margin-right: 4px;
+}
+
+.exp-filter-chip {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  background: rgba(255,255,255,0.025);
+  border: 1px solid rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: background 120ms, border-color 120ms;
+  user-select: none;
+}
+
+.exp-filter-chip:hover { background: rgba(255,255,255,0.05); }
+
+.exp-filter-chip.is-active {
+  color: var(--color-text-primary);
+}
+
+.exp-filter-count {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  color: var(--color-text-tertiary);
+}
+
+.exp-filter-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}

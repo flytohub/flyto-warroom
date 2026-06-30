@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Erweitert",
+        "toolRunner.backToLibrary": "Zurück zur Bibliothek",
+        "toolRunner.copy": "Kopieren",
+        "toolRunner.download": "Herunterladen",
+        "toolRunner.editTool": "Bearbeiten",
+        "toolRunner.executionFailed": "Ausführung fehlgeschlagen",
+        "toolRunner.executionLogs": "Ausführungsprotokolle",
+        "toolRunner.executionSuccess": "Ausführung abgeschlossen",
+        "toolRunner.executionTimedOut": "Ausführung hat Zeitlimit überschritten",
+        "toolRunner.flowSteps": "Ablaufschritte",
+        "toolRunner.inputForm": "Eingabeformular",
+        "toolRunner.loadFailed": "Tool konnte nicht geladen werden",
+        "toolRunner.noLogs": "Noch keine Protokolle. Führen Sie das Tool aus, um Ausführungsprotokolle zu sehen.",
+        "toolRunner.resolvedParams": "Aufgelöste Parameter",
+        "toolRunner.results": "Ergebnisse",
+        "toolRunner.retry": "Wiederholen",
+        "toolRunner.runAgain": "Erneut ausführen",
+        "toolRunner.runToSeeResults": "Führen Sie das Tool aus, um Ergebnisse zu sehen",
+        "toolRunner.runTool": "Tool ausführen",
+        "toolRunner.running": "Wird ausgeführt...",
+        "toolRunner.simpleMode": "Einfach",
+        "toolRunner.toolNotFound": "Tool nicht gefunden",
+        "toolRunner.toolNotFoundError": "Tool nicht gefunden"
+    }
+}

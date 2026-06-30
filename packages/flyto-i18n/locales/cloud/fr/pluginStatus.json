@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.pluginStatus",
+    "version": "1.0.0",
+    "translations": {
+        "pluginStatus.downloading": "Telechargement",
+        "pluginStatus.installed": "Installe",
+        "pluginStatus.loaded": "Charge",
+        "pluginStatus.loading": "Chargement",
+        "pluginStatus.notInstalled": "Non installe",
+        "pluginStatus.unloading": "Dechargement"
+    }
+}

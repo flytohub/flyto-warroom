@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "追加入力",
+        "breakpoint.approve": "承認",
+        "breakpoint.comment": "コメント",
+        "breakpoint.commentPlaceholder": "コメントを追加...",
+        "breakpoint.contextSnapshot": "コンテキストスナップショット",
+        "breakpoint.createdAt": "作成日時",
+        "breakpoint.expires": "有効期限",
+        "breakpoint.humanCheckpoint": "ヒューマンチェックポイント",
+        "breakpoint.noBreakpoint": "ブレークポイントが設定されていません",
+        "breakpoint.noPending": "保留中の承認はありません",
+        "breakpoint.pendingApprovals": "保留中の承認",
+        "breakpoint.reject": "拒否",
+        "breakpoint.step": "ステップ",
+        "breakpoint.waitingApproval": "承認待ち",
+        "breakpoint.workflow": "ワークフロー",
+        "browserInteract.execute": "実行",
+        "browserInteract.noElements": "操作可能な要素が見つからない",
+        "browserInteract.pagePreview": "ページプレビュー",
+        "browserInteract.selectHint": "操作する要素を選択",
+        "browserInteract.skip": "スキップ",
+        "browserInteract.title": "ブラウザ操作"
+    }
+}

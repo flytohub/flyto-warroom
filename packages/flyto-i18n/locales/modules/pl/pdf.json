@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "Wypelnij pola formularza PDF danymi i opcjonalnie wstaw obrazy",
+        "modules.pdf.fill_form.label": "Wypelnij formularz PDF",
+        "modules.pdf.fill_form.output.fields_filled.description": "Sciezka do wypelnionego PDF",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Liczba wstawionych obrazow",
+        "modules.pdf.fill_form.output.images_inserted.description": "Sciezka do wypelnionego PDF",
+        "modules.pdf.fill_form.output.output_path.description": "Sciezka do wypelnionego PDF",
+        "modules.pdf.generate.description": "Generuj pliki PDF z zawartosci HTML lub tekstu",
+        "modules.pdf.generate.label": "Generuj PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "Liczba stron w PDF",
+        "modules.pdf.generate.output.output_path.description": "Sciezka do wygenerowanego PDF",
+        "modules.pdf.generate.output.page_count.description": "Sciezka do wygenerowanego PDF",
+        "modules.pdf.parse.description": "Wyodrebnij tekst i metadane z plikow PDF",
+        "modules.pdf.parse.label": "Parsuj PDF",
+        "modules.pdf.parse.output.metadata.description": "Wyodrebniona zawartosc tekstowa",
+        "modules.pdf.parse.output.page_count.description": "Zawartosc tekstowa na strone",
+        "modules.pdf.parse.output.pages.description": "Wyodrebniona zawartosc tekstowa",
+        "modules.pdf.parse.output.text.description": "Wyodrebniona zawartosc tekstowa",
+        "modules.pdf.to_word.description": "Konwertuj pliki PDF na dokumenty Word (.docx)",
+        "modules.pdf.to_word.label": "PDF do Word",
+        "modules.pdf.to_word.output.file_size.description": "Liczba skonwertowanych stron",
+        "modules.pdf.to_word.output.output_path.description": "Sciezka do wygenerowanego dokumentu Word",
+        "modules.pdf.to_word.output.page_count.description": "Sciezka do wygenerowanego dokumentu Word"
+    }
+}

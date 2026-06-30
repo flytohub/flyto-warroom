@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "Silakan jelaskan masalahnya...",
+        "report.reasons.copyright": "Pelanggaran hak cipta atau kekayaan intelektual",
+        "report.reasons.harmful": "Konten berbahaya atau berbahaya",
+        "report.reasons.inappropriate": "Konten tidak pantas atau menyinggung",
+        "report.reasons.misleading": "Informasi palsu atau menyesatkan",
+        "report.reasons.other": "Lainnya (silakan tentukan)",
+        "report.reasons.spam": "Spam atau menyesatkan",
+        "report.selectReason": "Silakan pilih alasan untuk melaporkan:",
+        "report.submit": "Kirim Laporan",
+        "report.title": "Laporkan Konten"
+    }
+}

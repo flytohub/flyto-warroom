@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.rpa",
+  "version": "1.0.0",
+  "translations": {
+    "rpa.actions.disconnect": "",
+    "rpa.actions.noAgent": "",
+    "rpa.actions.record": "",
+    "rpa.agents.connect": "",
+    "rpa.agents.connectFirst": "",
+    "rpa.agents.empty": "",
+    "rpa.agents.title": "",
+    "rpa.connect.codeExpires": "",
+    "rpa.connect.step1": "",
+    "rpa.connect.step2": "",
+    "rpa.connect.step3": "",
+    "rpa.connect.title": "",
+    "rpa.connect.waiting": "",
+    "rpa.elements.empty": "",
+    "rpa.elements.title": "",
+    "rpa.log.title": "",
+    "rpa.quickActions.title": "",
+    "rpa.recordings.empty": "",
+    "rpa.recordings.run": "",
+    "rpa.recordings.title": "",
+    "rpa.stats.agents": "",
+    "rpa.stats.executions": "",
+    "rpa.stats.recordings": "",
+    "rpa.stats.success": ""
+  }
+}

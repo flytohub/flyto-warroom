@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.evolution",
+    "version": "1.0.0",
+    "translations": {
+        "evolution.acceptSuggestion": "सुझाव स्वीकारें",
+        "evolution.analyzing": "विश्लेषण हो रहा है",
+        "evolution.apply": "लागू करें",
+        "evolution.deepAnalysis": "गहन विश्लेषण",
+        "evolution.details": "विवरण",
+        "evolution.dismissSuggestion": "सुझाव खारिज करें",
+        "evolution.error": "त्रुटि",
+        "evolution.highPriority": "उच्च प्राथमिकता",
+        "evolution.insights": "जानकारी",
+        "evolution.lastUpdated": "अंतिम अपडेट",
+        "evolution.noSuggestions": "कोई सुझाव नहीं",
+        "evolution.noSuggestionsDesc": "कोई सुझाव उपलब्ध नहीं हैं",
+        "evolution.reasoning": "तर्क",
+        "evolution.refresh": "ताज़ा करें",
+        "evolution.requestAnalysis": "विश्लेषण का अनुरोध करें",
+        "evolution.suggestionApplied": "सुझाव लागू किया गया",
+        "evolution.title": "विकास",
+        "evolution.types.cost": "लागत",
+        "evolution.types.other": "अन्य",
+        "evolution.types.performance": "प्रदर्शन",
+        "evolution.types.reliability": "विश्वसनीयता",
+        "evolution.types.security": "सुरक्षा",
+        "evolution.viewDetails": "विवरण देखें"
+    }
+}

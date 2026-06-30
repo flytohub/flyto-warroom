@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "Alternatifler",
+        "lineage.decision.evidence": "Kanıt",
+        "lineage.decision.reason": "Sebep",
+        "lineage.loop.clickToCollapse": "Daraltmak için tıklayın",
+        "lineage.steps": "Adımlar",
+        "lineage.storyline.noSteps": "Gösterilecek adım yok",
+        "lineage.storyline.noStepsInLane": "Bu şeritte adım yok",
+        "lineage.storyline.runHint": "Çalıştırma geçmişini görmek için iş akışını çalıştırın",
+        "lineage.storyline.title": "Çalıştırma Zaman Çizelgesi"
+    }
+}

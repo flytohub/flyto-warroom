@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "Fil d'Ariane",
+        "accessibility.clearInput": "Effacer la saisie",
+        "accessibility.closeDialog": "Fermer la boite de dialogue",
+        "accessibility.closeMenu": "Fermer le menu",
+        "accessibility.closeModal": "Fermer la fenetre modale",
+        "accessibility.copyToClipboard": "Copier dans le presse-papiers",
+        "accessibility.imageEditingControls": "Commandes d'edition d'image",
+        "accessibility.notifications": "Notifications",
+        "accessibility.openMenu": "Ouvrir le menu",
+        "accessibility.rating": "Note",
+        "accessibility.refreshList": "Actualiser la liste",
+        "accessibility.removeIcon": "Supprimer l'icone",
+        "accessibility.resetImage": "Reinitialiser la position et le zoom de l'image",
+        "accessibility.revokeKey": "Revoquer la cle",
+        "accessibility.rotateLeft": "Pivoter de 90 degres vers la gauche",
+        "accessibility.rotateRight": "Pivoter de 90 degres vers la droite",
+        "accessibility.showInMarketplace": "Afficher dans la place de marche",
+        "accessibility.zoomIn": "Zoom avant",
+        "accessibility.zoomOut": "Zoom arriere"
+    }
+}

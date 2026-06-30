@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "Fortfahren",
+        "errorStrategy.continueDesc": "Fehler protokollieren und zum nächsten Schritt fortfahren",
+        "errorStrategy.retry": "Wiederholen",
+        "errorStrategy.retryDesc": "Basierend auf der Wiederholungskonfiguration erneut versuchen",
+        "errorStrategy.stop": "Stoppen",
+        "errorStrategy.stopDesc": "Workflow stoppen und als fehlgeschlagen markieren"
+    }
+}

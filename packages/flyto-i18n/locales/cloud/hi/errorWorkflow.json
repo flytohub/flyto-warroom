@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.errorWorkflow",
+    "version": "1.0.0",
+    "translations": {
+        "errorWorkflow.description": "कॉन्फ़िगर करें कि जब यह वर्कफ़्लो विफल हो तो क्या होता है",
+        "errorWorkflow.doNothing": "कुछ न करें",
+        "errorWorkflow.onFailure": "वर्कफ़्लो विफलता पर",
+        "errorWorkflow.passContext": "त्रुटि कॉन्टेक्स्ट त्रुटि वर्कफ़्लो को पास करें",
+        "errorWorkflow.passContextHint": "त्रुटि संदेश, श्रेणी और सोर्स वर्कफ़्लो डेटा शामिल है",
+        "errorWorkflow.runWorkflow": "त्रुटि वर्कफ़्लो चलाएं",
+        "errorWorkflow.title": "त्रुटि हैंडलिंग"
+    }
+}

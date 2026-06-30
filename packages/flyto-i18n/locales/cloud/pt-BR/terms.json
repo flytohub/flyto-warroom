@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Ultima Atualizacao",
+        "terms.sections.acceptance.content": "Ao acessar ou usar os servicos do Flyto2, voce concorda em ficar vinculado a estes Termos de Servico. Se voce nao concordar com estes termos, por favor nao use nossos servicos.",
+        "terms.sections.acceptance.title": "Aceitacao dos Termos",
+        "terms.sections.account.content": "Voce e responsavel por manter a confidencialidade das credenciais da sua conta e por todas as atividades que ocorrem sob sua conta. Voce deve nos notificar imediatamente sobre qualquer uso nao autorizado.",
+        "terms.sections.account.title": "Contas de Usuario",
+        "terms.sections.intellectual.content": "Todo o conteudo, recursos e funcionalidades do Flyto2 sao de nossa propriedade e estao protegidos por leis internacionais de direitos autorais, marcas registradas e outras leis de propriedade intelectual.",
+        "terms.sections.intellectual.title": "Propriedade Intelectual",
+        "terms.sections.limitation.content": "Na extensao maxima permitida por lei, o Flyto2 nao sera responsavel por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos resultantes do seu uso de nossos servicos.",
+        "terms.sections.limitation.title": "Limitacao de Responsabilidade",
+        "terms.sections.prohibited.content": "Voce nao pode usar nossos servicos para fins ilegais, para violar quaisquer leis, para infringir direitos de propriedade intelectual ou para transmitir codigos maliciosos. Reservamo-nos o direito de encerrar contas que violem estes termos.",
+        "terms.sections.prohibited.title": "Usos Proibidos",
+        "terms.sections.services.content": "O Flyto2 fornece uma plataforma de automacao de workflow que permite aos usuarios criar, gerenciar e executar workflows automatizados. Reservamo-nos o direito de modificar ou descontinuar servicos a qualquer momento.",
+        "terms.sections.services.title": "Descricao dos Servicos",
+        "terms.sections.termination.content": "Podemos encerrar ou suspender sua conta e acesso aos nossos servicos a nosso criterio exclusivo, sem aviso previo, por conduta que acreditamos violar estes termos ou ser prejudicial a outros usuarios.",
+        "terms.sections.termination.title": "Rescisao",
+        "terms.title": "Termos de Servico"
+    }
+}

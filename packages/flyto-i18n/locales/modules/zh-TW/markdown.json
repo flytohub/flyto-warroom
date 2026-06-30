@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "從 Markdown 內容中提取 YAML frontmatter",
+        "modules.markdown.parse_frontmatter.label": "解析 Frontmatter",
+        "modules.markdown.parse_frontmatter.output.content.description": "不含 frontmatter 的 Markdown 內容",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "解析後的 frontmatter 字典",
+        "modules.markdown.parse_frontmatter.params.text.description": "包含 frontmatter 的 Markdown 內容",
+        "modules.markdown.parse_frontmatter.params.text.label": "Markdown 文字",
+        "modules.markdown.to_html.description": "將 Markdown 文字轉換為 HTML",
+        "modules.markdown.to_html.label": "Markdown 轉 HTML",
+        "modules.markdown.to_html.output.html.description": "轉換後的 HTML 內容",
+        "modules.markdown.to_html.output.word_count.description": "輸入文字的字數",
+        "modules.markdown.to_html.params.extensions.description": "要啟用的 Markdown 擴充功能（僅用於 markdown 函式庫）",
+        "modules.markdown.to_html.params.extensions.label": "擴充功能",
+        "modules.markdown.to_html.params.text.description": "要轉換的 Markdown 內容",
+        "modules.markdown.to_html.params.text.label": "Markdown 文字",
+        "modules.markdown.toc.description": "從 Markdown 標題生成目錄",
+        "modules.markdown.toc.label": "生成目錄",
+        "modules.markdown.toc.output.toc.description": "包含層級、標題和 slug 的標題列表",
+        "modules.markdown.toc.output.toc_markdown.description": "格式化的 Markdown 目錄",
+        "modules.markdown.toc.params.max_depth.description": "要包含的最大標題深度 (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "最大深度",
+        "modules.markdown.toc.params.text.description": "要提取標題的 Markdown 內容",
+        "modules.markdown.toc.params.text.label": "Markdown 文字"
+    }
+}

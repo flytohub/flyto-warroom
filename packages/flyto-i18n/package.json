@@ -1,0 +1,12 @@
+{
+  "name": "flyto-i18n",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "lint": "python3 -m compileall -q scripts",
+    "test": "python3 scripts/validate.py --strict && python3 scripts/coverage.py --json >/tmp/flyto-i18n-coverage.json",
+    "build": "python3 scripts/build-dist.py",
+    "verify": "npm run lint && npm test && npm run build"
+  }
+}

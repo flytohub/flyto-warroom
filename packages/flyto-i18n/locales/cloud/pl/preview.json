@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "Ask AI to fix",
+        "preview.emptyState.description": "Przelacz do trybu deweloperskiego, aby dodac kroki przeplywu",
+        "preview.emptyState.hint": "Brak dostepnego podgladu",
+        "preview.emptyState.title": "Nie zdefiniowano przeplywu",
+        "preview.executionFailed": "Wykonanie nie powiodlo sie",
+        "preview.fields": "pol",
+        "preview.inputs": "Wejscia",
+        "preview.noInputsRequired": "Nie sa wymagane wejscia",
+        "preview.noWorkflowHint": "Dodaj kroki przeplywu w trybie deweloperskim, aby wlaczyc wykonanie",
+        "preview.output": "Wyjscie",
+        "preview.ready": "Gotowy",
+        "preview.running": "W trakcie",
+        "preview.steps": "kroki",
+        "preview.untitledTemplate": "Szablon bez nazwy"
+    }
+}

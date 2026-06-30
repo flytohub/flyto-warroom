@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count} days ago",
+        "notifications.empty": "No notifications yet",
+        "notifications.hoursAgo": "{count} hr ago",
+        "notifications.justNow": "Just now",
+        "notifications.loadMore": "Load more",
+        "notifications.markAllRead": "Mark all read",
+        "notifications.minutesAgo": "{count} min ago",
+        "notifications.title": "Notifications"
+    }
+}

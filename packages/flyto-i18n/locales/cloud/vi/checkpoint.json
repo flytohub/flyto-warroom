@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.checkpoint",
+    "version": "1.0.0",
+    "translations": {
+        "checkpoint.clickToRemove": "Nhấp để xóa",
+        "checkpoint.disabled": "Đã tắt checkpoint",
+        "checkpoint.humanCheckpoint": "Điểm kiểm tra con người"
+    }
+}

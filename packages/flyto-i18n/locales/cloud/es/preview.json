@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "Pedir a la IA que lo arregle",
+        "preview.emptyState.description": "Cambia al modo Desarrollo para agregar pasos al flujo de trabajo",
+        "preview.emptyState.hint": "Vista previa no disponible",
+        "preview.emptyState.title": "Flujo de trabajo no definido",
+        "preview.executionFailed": "Ejecucion fallida",
+        "preview.fields": "campos",
+        "preview.inputs": "Entradas",
+        "preview.noInputsRequired": "No se requieren entradas",
+        "preview.noWorkflowHint": "Agrega pasos de flujo de trabajo en modo Desarrollo para habilitar la ejecucion",
+        "preview.output": "Salida",
+        "preview.ready": "Listo",
+        "preview.running": "Ejecutando",
+        "preview.steps": "pasos",
+        "preview.untitledTemplate": "Plantilla sin titulo"
+    }
+}

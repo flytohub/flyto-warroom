@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "Ajouter un élément",
+        "queues.create.maxRetries": "Réessais max",
+        "queues.create.name": "Nom de la file",
+        "queues.create.namePlaceholder": "Entrez le nom de la file",
+        "queues.create.selectWorkflow": "Sélectionnez le workflow",
+        "queues.create.submit": "Créer la file",
+        "queues.create.title": "Créer une file",
+        "queues.create.workflow": "Workflow",
+        "queues.createFirst": "Créez votre première file",
+        "queues.empty": "Aucune file",
+        "queues.emptyDesc": "Créez une file pour commencer",
+        "queues.stats.completed": "Terminé",
+        "queues.stats.pending": "En attente",
+        "queues.stats.processing": "En cours",
+        "queues.stats.totalItems": "Total des éléments",
+        "queues.status.completed": "Terminé",
+        "queues.status.failed": "Échoué",
+        "queues.status.pending": "En attente",
+        "queues.status.processing": "En cours",
+        "queues.transactions.empty": "Aucune transaction",
+        "queues.transactions.title": "Transactions"
+    }
+}

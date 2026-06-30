@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.analytics",
+    "version": "1.0.0",
+    "translations": {
+        "analytics.declining": "Menurun",
+        "analytics.eventBreakdown": "Rincian acara",
+        "analytics.frictionPoints": "Titik gesekan",
+        "analytics.healthScore": "Skor kesehatan",
+        "analytics.improving": "Meningkat",
+        "analytics.issues": "Masalah",
+        "analytics.noFriction": "Tidak ada gesekan",
+        "analytics.overallHealth": "Kesehatan keseluruhan",
+        "analytics.recommendations": "Rekomendasi",
+        "analytics.stable": "Stabil"
+    }
+}

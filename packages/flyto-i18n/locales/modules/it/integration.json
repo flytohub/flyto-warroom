@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "integration",
+    "version": "1.0.0",
+    "translations": {
+        "modules.integration.jira.create_issue.description": "Crea un nuovo issue in Jira",
+        "modules.integration.jira.create_issue.label": "Crea Issue Jira",
+        "modules.integration.jira.search_issues.description": "Cerca issue usando query JQL",
+        "modules.integration.jira.search_issues.label": "Cerca Issue Jira",
+        "modules.integration.salesforce.create_record.description": "Crea un nuovo record in Salesforce",
+        "modules.integration.salesforce.create_record.label": "Crea Record Salesforce",
+        "modules.integration.salesforce.query.description": "Esegui query SOQL in Salesforce",
+        "modules.integration.salesforce.query.label": "Query Salesforce",
+        "modules.integration.salesforce.update_record.description": "Aggiorna un record esistente in Salesforce",
+        "modules.integration.salesforce.update_record.label": "Aggiorna Record Salesforce",
+        "modules.integration.slack.list_channels.description": "Elenca canali nel workspace Slack",
+        "modules.integration.slack.list_channels.label": "Elenca Canali Slack",
+        "modules.integration.slack.list_channels.params.channels": "Canali",
+        "modules.integration.slack.list_channels.params.channels.options.id": "Id",
+        "modules.integration.slack.list_channels.params.channels.options.is_private": "È Privato",
+        "modules.integration.slack.list_channels.params.channels.options.name": "Nome",
+        "modules.integration.slack.list_channels.params.channels.options.num_members": "Numero Membri",
+        "modules.integration.slack.send_message.description": "Invia un messaggio a un canale Slack",
+        "modules.integration.slack.send_message.label": "Invia Messaggio Slack"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Chèn dữ liệu vào các bảng cơ sở dữ liệu",
+        "modules.database.insert.label": "Chèn cơ sở dữ liệu",
+        "modules.database.insert.output.inserted_count.description": "Số hàng đã chèn",
+        "modules.database.insert.output.returning_data.description": "Số hàng đã chèn",
+        "modules.database.query.description": "Thực thi truy vấn SQL trên cơ sở dữ liệu PostgreSQL, MySQL hoặc SQLite",
+        "modules.database.query.label": "Truy vấn cơ sở dữ liệu",
+        "modules.database.query.output.columns.description": "Các hàng kết quả truy vấn",
+        "modules.database.query.output.row_count.description": "Các hàng kết quả truy vấn",
+        "modules.database.query.output.rows.description": "Các hàng kết quả truy vấn",
+        "modules.database.update.description": "Cập nhật dữ liệu trong các bảng cơ sở dữ liệu",
+        "modules.database.update.label": "Cập nhật cơ sở dữ liệu",
+        "modules.database.update.output.updated_count.description": "Số hàng đã cập nhật"
+    }
+}

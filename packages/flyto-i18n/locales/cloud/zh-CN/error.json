@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "无法开始重播",
+        "error.fixJsonFirst": "请先修复 JSON 错误",
+        "error.imageTooLarge": "图片文件过大",
+        "error.invalidJsonContext": "上下文覆盖中的 JSON 无效",
+        "error.noStepsToValidate": "找不到可验证的步骤",
+        "error.replayFailed": "重播失败"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.footer",
+    "version": "1.0.0",
+    "translations": {
+        "footer.copyright": "© 2025 Flyto2. Alle Rechte vorbehalten.",
+        "footer.description": "Leistungsstarker visueller Workflow-Editor, der Hunderte von Anwendungen integriert und Automatisierung für jeden einfach macht.",
+        "footer.disclaimer": "Alle Automatisierungsaufgaben laufen auf dem eigenen Gerät des Nutzers. Die Nutzer sind dafür verantwortlich, dass ihre Nutzung mit den Nutzungsbedingungen der Zielwebseiten und den geltenden Gesetzen übereinstimmt."
+    }
+}

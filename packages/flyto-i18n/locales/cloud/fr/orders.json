@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "Accepter",
+        "orders.approve": "Approuver",
+        "orders.budget": "Budget",
+        "orders.budgetPlaceholder": "0,00",
+        "orders.completed": "Termine",
+        "orders.createFailed": "Echec de la creation de la commande",
+        "orders.createOrder": "Creer une commande",
+        "orders.createOrderSubtitle": "Envoyer une demande de projet a ce vendeur",
+        "orders.days": "jours",
+        "orders.deadline": "Delai de livraison",
+        "orders.decline": "Refuser",
+        "orders.deliver": "Livrer",
+        "orders.description": "Description",
+        "orders.descriptionPlaceholder": "Decrivez vos exigences de projet en detail...",
+        "orders.payNow": "Payer maintenant",
+        "orders.requirements": "Exigences supplementaires",
+        "orders.requirementsPlaceholder": "Toute exigence ou note specifique...",
+        "orders.sendOrder": "Envoyer la demande de commande",
+        "orders.sending": "Envoi en cours...",
+        "orders.sendingTo": "Envoi a",
+        "orders.title": "Titre du projet",
+        "orders.titlePlaceholder": "De quoi avez-vous besoin ?",
+        "orders.viewDetails": "Détails",
+        "orders.waitingResponse": "En attente de reponse"
+    }
+}

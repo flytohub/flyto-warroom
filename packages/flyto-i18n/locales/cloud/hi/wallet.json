@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "क्रेडिट वॉलेट",
+        "wallet.availableCredits": "उपलब्ध क्रेडिट",
+        "wallet.topup": "टॉप अप करें",
+        "wallet.topupTitle": "क्रेडिट टॉप अप",
+        "wallet.topupSuccess": "क्रेडिट सफलतापूर्वक जोड़े गए",
+        "wallet.topupCancelled": "टॉप-अप रद्द किया गया",
+        "wallet.history": "लेन-देन इतिहास",
+        "wallet.noTransactions": "अभी तक कोई लेन-देन नहीं",
+        "wallet.balanceAfter": "शेष राशि",
+        "wallet.conversionNote": "1 क्रेडिट = $0.01 USD",
+        "wallet.proceedToPayment": "भुगतान के लिए आगे बढ़ें",
+        "wallet.confirmExecute": "निष्पादन की पुष्टि करें",
+        "wallet.executionCost": "निष्पादन लागत",
+        "wallet.yourBalance": "आपकी शेष राशि",
+        "wallet.insufficientCredits": "अपर्याप्त क्रेडिट",
+        "wallet.needMore": "आपको {amount} और क्रेडिट चाहिए",
+        "wallet.topupNow": "अभी टॉप अप करें",
+        "wallet.confirmAndExecute": "पुष्टि करें और चलाएं",
+        "wallet.lowBalanceWarning": "आपके क्रेडिट कम हो रहे हैं। वर्कफ़्लो जारी रखने के लिए टॉप अप करें।"
+    }
+}

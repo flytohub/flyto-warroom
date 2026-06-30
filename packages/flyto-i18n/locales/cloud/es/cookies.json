@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Siempre activo",
+        "cookies.lastUpdated": "Última actualización",
+        "cookies.optional": "Opcional",
+        "cookies.preferencesSaved": "Preferencias guardadas correctamente",
+        "cookies.savePreferences": "Guardar preferencias",
+        "cookies.sections.manage.content": "Puede controlar qué cookies opcionales permite. Las cookies esenciales no se pueden deshabilitar ya que son necesarias para que el sitio web funcione.",
+        "cookies.sections.manage.title": "Administre sus preferencias",
+        "cookies.sections.types.analytics.content": "Estas cookies nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web al recopilar y reportar información de forma anónima. Esto nos ayuda a mejorar nuestros servicios.",
+        "cookies.sections.types.analytics.title": "Cookies de análisis",
+        "cookies.sections.types.essential.content": "Estas cookies son necesarias para que el sitio web funcione correctamente. Habilitan funciones básicas como la navegación de páginas y el acceso a áreas seguras. El sitio web no puede funcionar correctamente sin estas cookies.",
+        "cookies.sections.types.essential.title": "Cookies esenciales",
+        "cookies.sections.types.functional.content": "Estas cookies permiten funciones personalizadas como recordar su preferencia de idioma, configuración de tema y estado de inicio de sesión. Mejoran su experiencia pero no son esenciales.",
+        "cookies.sections.types.functional.title": "Cookies funcionales",
+        "cookies.sections.types.title": "Tipos de cookies que usamos",
+        "cookies.sections.what.content": "Las cookies son pequeños archivos de texto almacenados en su dispositivo cuando visita nuestro sitio web. Nos ayudan a brindarle una mejor experiencia al recordar sus preferencias y entender cómo usa nuestros servicios.",
+        "cookies.sections.what.title": "¿Qué son las cookies?",
+        "cookies.title": "Configuración de cookies"
+    }
+}

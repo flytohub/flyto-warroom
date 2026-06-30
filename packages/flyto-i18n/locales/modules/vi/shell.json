@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "Thực thi lệnh shell và bắt đầu ra",
+        "modules.shell.exec.label": "Thực thi lệnh Shell",
+        "modules.shell.exec.output.command.description": "Đầu ra tiêu chuẩn",
+        "modules.shell.exec.output.cwd.description": "Đầu ra lỗi tiêu chuẩn",
+        "modules.shell.exec.output.duration_ms.description": "Lệnh đã thực thi",
+        "modules.shell.exec.output.exit_code.description": "Lệnh có thực thi thành công không (mã thoát 0)",
+        "modules.shell.exec.output.ok.description": "Lệnh có thực thi thành công không (mã thoát 0)",
+        "modules.shell.exec.output.stderr.description": "Mã thoát lệnh",
+        "modules.shell.exec.output.stdout.description": "Lệnh có thực thi thành công không (mã thoát 0)"
+    }
+}

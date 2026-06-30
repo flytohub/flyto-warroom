@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "อ่านอีเมลจากเซิร์ฟเวอร์ IMAP",
+        "modules.email.read.label": "อ่านอีเมล",
+        "modules.email.read.output.count.description": "รายการออบเจกต์อีเมล",
+        "modules.email.read.output.emails.description": "รายการออบเจกต์อีเมล",
+        "modules.email.send.description": "ส่งอีเมลผ่านเซิร์ฟเวอร์ SMTP",
+        "modules.email.send.label": "ส่งอีเมล",
+        "modules.email.send.output.message_id.description": "อีเมลส่งสำเร็จหรือไม่",
+        "modules.email.send.output.recipients.description": "อีเมลส่งสำเร็จหรือไม่",
+        "modules.email.send.output.sent.description": "อีเมลส่งสำเร็จหรือไม่"
+    }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "th",
+  "category": "vision",
+  "version": "1.0.0",
+  "translations": {
+    "modules.vision.analyze.description": "วิเคราะห์รูปภาพโดยใช้ OpenAI Vision API (GPT-4V)",
+    "modules.vision.analyze.label": "วิเคราะห์รูปภาพด้วย AI",
+    "modules.vision.analyze.output.analysis.description": "การวิเคราะห์สำเร็จหรือไม่",
+    "modules.vision.analyze.output.model.description": "ข้อมูลการวิเคราะห์แบบมีโครงสร้าง (ถ้า output_format เป็น structured/json)",
+    "modules.vision.analyze.output.ok.description": "การวิเคราะห์สำเร็จหรือไม่",
+    "modules.vision.analyze.output.structured.description": "ผลการวิเคราะห์ AI",
+    "modules.vision.analyze.output.tokens_used.description": "โมเดลที่ใช้ในการวิเคราะห์",
+    "modules.vision.compare.description": "เปรียบเทียบสองรูปภาพและระบุความแตกต่างทางภาพ",
+    "modules.vision.compare.label": "เปรียบเทียบรูปภาพ",
+    "modules.vision.compare.output.differences.description": "เปอร์เซ็นต์ความคล้ายคลึง (0-100)",
+    "modules.vision.compare.output.has_differences.description": "การเปรียบเทียบสำเร็จหรือไม่",
+    "modules.vision.compare.output.ok.description": "การเปรียบเทียบสำเร็จหรือไม่",
+    "modules.vision.compare.output.recommendation.description": "สรุปผลการเปรียบเทียบ",
+    "modules.vision.compare.output.similarity_score.description": "พบความแตกต่างที่สำคัญหรือไม่",
+    "modules.vision.compare.output.summary.description": "รายการความแตกต่างที่พบ",
+    "modules.vision.compare.params.differences": "Differences",
+    "modules.vision.compare.params.focus_areas": "Focus Areas",
+    "modules.vision.compare.params.focus_areas.options.header": "Header",
+    "modules.vision.compare.params.focus_areas.options.main content": "Main Content"
+  }
+}

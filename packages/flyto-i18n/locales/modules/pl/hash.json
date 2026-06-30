@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "Oblicz kryptograficzny skrót SHA-256 tekstu",
+        "modules.hash.sha256.label": "Skrót SHA-256",
+        "modules.hash.sha256.output.algorithm.description": "Skrót SHA-256 (64 znaki szesnastkowe)",
+        "modules.hash.sha256.output.hash.description": "Kodowanie tekstu",
+        "modules.hash.sha256.params.encoding.description": "Tekst do skrótu",
+        "modules.hash.sha256.params.encoding.label": "Tekst",
+        "modules.hash.sha256.params.text.description": "Tekst do skrótu",
+        "modules.hash.sha256.params.text.label": "Tekst",
+        "modules.hash.sha512.description": "Oblicz kryptograficzny skrót SHA-512 tekstu",
+        "modules.hash.sha512.label": "Skrót SHA-512",
+        "modules.hash.sha512.output.algorithm.description": "Skrót SHA-512 (128 znaków szesnastkowych)",
+        "modules.hash.sha512.output.hash.description": "Kodowanie tekstu",
+        "modules.hash.sha512.params.encoding.description": "Tekst do skrótu",
+        "modules.hash.sha512.params.encoding.label": "Tekst",
+        "modules.hash.sha512.params.text.description": "Tekst do skrótu",
+        "modules.hash.sha512.params.text.label": "Tekst"
+    }
+}

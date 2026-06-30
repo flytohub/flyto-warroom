@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "退款金额",
+        "refund.cancelButton": "取消",
+        "refund.confirm": "确认退款",
+        "refund.confirmButton": "确认退款",
+        "refund.confirmTitle": "确认退款申请",
+        "refund.contactSupport": "联系支持",
+        "refund.days": "退款天数",
+        "refund.daysRemaining": "退款期限还剩 {days} 天",
+        "refund.eligible": "您符合退款资格",
+        "refund.expiredWindow": "30 天退款期限已过",
+        "refund.failed": "退款申请失败",
+        "refund.forksAffected": "以下 Fork 将被孤立（您的编辑会保留但与来源断开链接）：",
+        "refund.forksWarning": "分叉警告",
+        "refund.notEligible": "不符合退款资格",
+        "refund.processInfo": "退款流程信息",
+        "refund.processing": "处理中...",
+        "refund.success": "退款申请已提交",
+        "refund.template": "退款模板",
+        "refund.title": "申请退款",
+        "refund.warning": "警告",
+        "refund.warningDescription": "警告描述"
+    }
+}

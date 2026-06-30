@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.errorWorkflow",
+    "version": "1.0.0",
+    "translations": {
+        "errorWorkflow.description": "設定此工作流程失敗時的處理方式",
+        "errorWorkflow.doNothing": "不做任何處理",
+        "errorWorkflow.onFailure": "工作流程失敗時",
+        "errorWorkflow.passContext": "傳遞錯誤上下文",
+        "errorWorkflow.passContextHint": "包含錯誤訊息、分類及來源工作流程資料",
+        "errorWorkflow.runWorkflow": "執行錯誤處理流程",
+        "errorWorkflow.title": "錯誤處理"
+    }
+}

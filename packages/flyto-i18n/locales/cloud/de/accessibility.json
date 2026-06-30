@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "Brotkrumennavigation",
+        "accessibility.clearInput": "Eingabe löschen",
+        "accessibility.closeDialog": "Dialog schließen",
+        "accessibility.closeMenu": "Menü schließen",
+        "accessibility.closeModal": "Modal schließen",
+        "accessibility.copyToClipboard": "In die Zwischenablage kopieren",
+        "accessibility.imageEditingControls": "Bildbearbeitungssteuerung",
+        "accessibility.notifications": "Benachrichtigungen",
+        "accessibility.openMenu": "Menü öffnen",
+        "accessibility.rating": "Bewertung",
+        "accessibility.refreshList": "Liste aktualisieren",
+        "accessibility.removeIcon": "Symbol entfernen",
+        "accessibility.resetImage": "Bildposition und Zoom zurücksetzen",
+        "accessibility.revokeKey": "Schlüssel widerrufen",
+        "accessibility.rotateLeft": "90 Grad nach links drehen",
+        "accessibility.rotateRight": "90 Grad nach rechts drehen",
+        "accessibility.showInMarketplace": "Im Marktplatz anzeigen",
+        "accessibility.zoomIn": "Vergrößern",
+        "accessibility.zoomOut": "Verkleinern"
+    }
+}

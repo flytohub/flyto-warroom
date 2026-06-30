@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "लागू किया गया",
+        "dashboard.evolution.events": "घटनाएँ",
+        "dashboard.evolution.executions": "निष्पादन",
+        "dashboard.evolution.flytoCan": "कैन तक उड़ान",
+        "dashboard.evolution.fromCheckpoints": "चेकपॉइंट्स से",
+        "dashboard.evolution.last30days": "पिछले 30 दिन",
+        "dashboard.evolution.last7days": "पिछले 7 दिन",
+        "dashboard.evolution.last90days": "पिछले 90 दिन",
+        "dashboard.evolution.moatDescription": "खाई का विवरण",
+        "dashboard.evolution.moatTitle": "खाई का शीर्षक",
+        "dashboard.evolution.n8nCant": "N8n नहीं कर सकता",
+        "dashboard.evolution.overallImprovement": "कुल सुधार",
+        "dashboard.evolution.pending": "लंबित",
+        "dashboard.evolution.reliability": "विश्वसनीयता",
+        "dashboard.evolution.subtitle": "उपशीर्षक",
+        "dashboard.evolution.suggestionsApplied": "सुझाव लागू किए गए",
+        "dashboard.evolution.timeSaved": "समय बचाया गया",
+        "dashboard.evolution.timeline": "समयरेखा",
+        "dashboard.evolution.title": "शीर्षक",
+        "dashboard.evolution.today": "आज",
+        "dashboard.evolution.topImproved": "शीर्ष सुधार",
+        "dashboard.evolution.yesterday": "कल",
+        "dashboard.title": "डैशबोर्ड"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.colorPicker",
+    "version": "1.0.0",
+    "translations": {
+        "colorPicker.custom": "กำหนดเอง",
+        "colorPicker.popular": "ยอดนิยม",
+        "colorPicker.presets": "ค่าที่ตั้งไว้"
+    }
+}

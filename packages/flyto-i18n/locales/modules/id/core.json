@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "core",
+    "version": "1.0.0",
+    "translations": {
+        "modules.core.api.google_search.output.count.description": "Jumlah hasil pencarian",
+        "modules.core.api.google_search.output.data.description": "Data hasil pencarian",
+        "modules.core.api.google_search.output.status.description": "Status operasi",
+        "modules.core.api.google_search.output.total_results.description": "Total jumlah hasil",
+        "modules.core.api.http_get.output.body.description": "Body respons",
+        "modules.core.api.http_get.output.headers.description": "Header respons",
+        "modules.core.api.http_get.output.json.description": "Respons JSON (jika berlaku)",
+        "modules.core.api.http_get.output.status_code.description": "Kode status HTTP"
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "compare",
+  "version": "1.0.0",
+  "translations": {
+    "modules.compare.change.description": "",
+    "modules.compare.change.label": "",
+    "modules.compare.change.output.change_absolute.description": "",
+    "modules.compare.change.output.change_percent.description": "",
+    "modules.compare.change.output.changed.description": "",
+    "modules.compare.change.output.current.description": "",
+    "modules.compare.change.output.direction.description": "",
+    "modules.compare.change.output.ok.description": "",
+    "modules.compare.change.output.previous.description": "",
+    "modules.compare.change.output.summary.description": "",
+    "modules.compare.change.params.current.description": "",
+    "modules.compare.change.params.current.label": "",
+    "modules.compare.change.params.direction.description": "",
+    "modules.compare.change.params.direction.label": "",
+    "modules.compare.change.params.mode.description": "",
+    "modules.compare.change.params.mode.label": "",
+    "modules.compare.change.params.previous.description": "",
+    "modules.compare.change.params.previous.label": "",
+    "modules.compare.change.params.threshold.description": "",
+    "modules.compare.change.params.threshold.label": ""
+  }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "dns",
+    "version": "1.0.0",
+    "translations": {
+        "modules.dns.lookup.description": "查詢網域記錄的 DNS",
+        "modules.dns.lookup.label": "DNS 查詢",
+        "modules.dns.lookup.output.domain.description": "查詢的網域",
+        "modules.dns.lookup.output.record_type.description": "查詢的記錄類型",
+        "modules.dns.lookup.output.records.description": "解析的記錄",
+        "modules.dns.lookup.output.ttl.description": "存活時間（如果有的話）",
+        "modules.dns.lookup.params.domain.description": "要查詢的網域名稱",
+        "modules.dns.lookup.params.domain.label": "網域",
+        "modules.dns.lookup.params.record_type.description": "要查詢的 DNS 記錄類型",
+        "modules.dns.lookup.params.record_type.label": "記錄類型",
+        "modules.dns.lookup.params.timeout.description": "查詢逾時秒數",
+        "modules.dns.lookup.params.timeout.label": "逾時"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.checkpointTooltip",
+    "version": "1.0.0",
+    "translations": {
+        "checkpointTooltip.clickToAdd": "Nhấp để thêm checkpoint trên các kết nối",
+        "checkpointTooltip.clickToExit": "Nhấp để thoát chế độ checkpoint",
+        "checkpointTooltip.upgradeToUse": "Nâng cấp để sử dụng Human Checkpoint"
+    }
+}

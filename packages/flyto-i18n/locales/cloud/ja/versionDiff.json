@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "追加済み",
+        "versionDiff.addedItems": "追加項目",
+        "versionDiff.compare": "比較",
+        "versionDiff.computing": "計算中",
+        "versionDiff.current": "現在",
+        "versionDiff.from": "から",
+        "versionDiff.modified": "変更済み",
+        "versionDiff.modifiedItems": "変更項目",
+        "versionDiff.new": "新規",
+        "versionDiff.noChanges": "変更なし",
+        "versionDiff.old": "旧",
+        "versionDiff.removed": "削除済み",
+        "versionDiff.removedItems": "削除項目",
+        "versionDiff.selectVersions": "バージョンを選択",
+        "versionDiff.title": "バージョン比較",
+        "versionDiff.to": "まで"
+    }
+}

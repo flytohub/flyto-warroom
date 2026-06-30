@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "แสดงรายการ process พื้นหลังที่กำลังทำงาน",
+        "modules.process.list.label": "แสดงรายการ Process",
+        "modules.process.list.output.count.description": "การดำเนินการสำเร็จ",
+        "modules.process.list.output.ok.description": "การดำเนินการสำเร็จ",
+        "modules.process.list.output.processes.description": "การดำเนินการสำเร็จ",
+        "modules.process.list.output.running.description": "รายการข้อมูล process",
+        "modules.process.list.output.stopped.description": "จำนวน process ทั้งหมด",
+        "modules.process.start.description": "เริ่ม process พื้นหลัง (เซิร์ฟเวอร์, บริการ ฯลฯ)",
+        "modules.process.start.label": "เริ่ม Process พื้นหลัง",
+        "modules.process.start.output.command.description": "ตัวระบุ process ภายในสำหรับ process.stop",
+        "modules.process.start.output.cwd.description": "ชื่อ process",
+        "modules.process.start.output.initial_output.description": "เวลา ISO เมื่อ process เริ่มต้น",
+        "modules.process.start.output.name.description": "รหัส process",
+        "modules.process.start.output.ok.description": "process เริ่มต้นสำเร็จหรือไม่",
+        "modules.process.start.output.pid.description": "process เริ่มต้นสำเร็จหรือไม่",
+        "modules.process.start.output.process_id.description": "process เริ่มต้นสำเร็จหรือไม่",
+        "modules.process.start.output.started_at.description": "คำสั่งที่ดำเนินการ",
+        "modules.process.stop.description": "หยุด process พื้นหลังที่กำลังทำงาน",
+        "modules.process.stop.label": "หยุด Process",
+        "modules.process.stop.output.count.description": "รายการข้อมูล process ที่หยุด",
+        "modules.process.stop.output.failed.description": "รายการข้อมูล process ที่หยุด",
+        "modules.process.stop.output.ok.description": "process ทั้งหมดหยุดสำเร็จหรือไม่",
+        "modules.process.stop.output.stopped.description": "process ทั้งหมดหยุดสำเร็จหรือไม่"
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "en",
+  "category": "cloud.workflowCanvas",
+  "version": "1.0.0",
+  "translations": {
+    "workflowCanvas.controls.aiAssistant": "AI Assistant (Ask AI for help)",
+    "workflowCanvas.controls.autoLayout": "Auto Layout",
+    "workflowCanvas.controls.fitView": "Fit View",
+    "workflowCanvas.controls.zoomIn": "Zoom In",
+    "workflowCanvas.controls.zoomOut": "Zoom Out",
+    "workflowCanvas.deleteDialog.deleteAll": "Delete All",
+    "workflowCanvas.deleteDialog.deleteAllDesc": "Delete this node and all {count} child node(s)",
+    "workflowCanvas.deleteDialog.mergeToChild": "Merge to Child",
+    "workflowCanvas.deleteDialog.mergeToChildDesc": "Delete only this node and connect parent to the first child",
+    "workflowCanvas.deleteDialog.message": "This node has {count} child node(s). What would you like to do?",
+    "workflowCanvas.deleteDialog.title": "Delete Node with Children",
+    "workflowCanvas.reconnect.cancel": "Cancel",
+    "workflowCanvas.reconnect.connect": "Connect",
+    "workflowCanvas.reconnect.dontConnect": "Don't Connect",
+    "workflowCanvas.stickyNoteCreated": "Sticky note created"
+  }
+}

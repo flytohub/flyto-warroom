@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "लॉग साफ करें",
+        "terminal.closeTerminal": "टर्मिनल बंद करें",
+        "terminal.connected": "कनेक्टेड",
+        "terminal.disableAutoScroll": "ऑटो स्क्रॉल बंद करें",
+        "terminal.disconnected": "डिस्कनेक्टेड",
+        "terminal.enableAutoScroll": "ऑटो स्क्रॉल चालू करें",
+        "terminal.hideLogs": "{level} लॉग छुपाएं",
+        "terminal.logsWillAppear": "सिस्टम आउटपुट जनरेट करने पर लॉग यहां दिखाई देंगे",
+        "terminal.searchPlaceholder": "लॉग खोजें...",
+        "terminal.showLogs": "{level} लॉग दिखाएं",
+        "terminal.title": "सिस्टम टर्मिनल",
+        "terminal.waitingForLogs": "लॉग की प्रतीक्षा में..."
+    }
+}

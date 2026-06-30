@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "ติดต่อฝ่ายขาย",
+        "upgrade.debugFeatures": "ปลดล็อคฟีเจอร์ debugging และการวิเคราะห์ที่ทรงพลังเพื่อปรับปรุงการพัฒนา workflow ของคุณ",
+        "upgrade.enterpriseHint": "ต้องการฟีเจอร์ enterprise?",
+        "upgrade.featureLocked": "ฟีเจอร์นี้ต้องการการสมัครสมาชิก Pro",
+        "upgrade.features.evidence": "จับภาพหน้าจอและ DOM สำหรับทุกขั้นตอน",
+        "upgrade.features.lineage": "การติดตามการไหลของข้อมูลและกราฟการพึ่งพา",
+        "upgrade.features.replay": "เล่นซ้ำการดำเนินการด้วยข้อมูลนำเข้าที่แก้ไข",
+        "upgrade.features.tests": "ชุดทดสอบ workflow อัตโนมัติ",
+        "upgrade.features.versions": "การล็อคและควบคุมเวอร์ชันโมดูล",
+        "upgrade.offlineLicense": "ซื้อใบอนุญาตออฟไลน์ - $199 ครั้งเดียว",
+        "upgrade.subscription": "สมัครสมาชิก - $19/เดือน",
+        "upgrade.subtitle": "เข้าถึงเครื่องมือ debugging ขั้นสูง",
+        "upgrade.title": "ปลดล็อคฟีเจอร์ Pro"
+    }
+}

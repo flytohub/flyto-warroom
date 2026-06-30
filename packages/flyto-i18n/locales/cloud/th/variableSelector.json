@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.variableSelector",
+    "version": "1.0.0",
+    "translations": {
+        "variableSelector.insert": "แทรก",
+        "variableSelector.noVariables": "ไม่มีตัวแปร",
+        "variableSelector.searchPlaceholder": "ค้นหาตัวแปร...",
+        "variableSelector.selected": "เลือกแล้ว"
+    }
+}

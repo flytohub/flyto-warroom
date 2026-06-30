@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.autoForm",
+    "version": "1.0.0",
+    "translations": {
+        "autoForm.browsePath": "Yola göz at",
+        "autoForm.hideAdvanced": "Gelişmiş Seçenekleri Gizle",
+        "autoForm.hidePassword": "Şifreyi gizle",
+        "autoForm.multipleFilesSelected": "{count} dosya seçildi",
+        "autoForm.selectFilePlaceholder": "Dosya seç...",
+        "autoForm.selectPlaceholder": "Seç...",
+        "autoForm.showAdvanced": "Gelişmiş Seçenekleri Göster",
+        "autoForm.showPassword": "Şifreyi göster"
+    }
+}

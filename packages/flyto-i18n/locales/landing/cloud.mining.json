@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.mining",
+  "version": "1.0.0",
+  "translations": {
+    "mining.bottlenecks.empty": "",
+    "mining.bottlenecks.title": "",
+    "mining.discovery.analyze": "",
+    "mining.discovery.empty": "",
+    "mining.discovery.selectWorkflow": "",
+    "mining.discovery.title": "",
+    "mining.quality.fitness": "",
+    "mining.quality.generalization": "",
+    "mining.quality.precision": "",
+    "mining.stats.avgDuration": "",
+    "mining.stats.cases": "",
+    "mining.stats.conformance": "",
+    "mining.stats.variants": "",
+    "mining.suggestions.apply": "",
+    "mining.suggestions.empty": "",
+    "mining.suggestions.title": "",
+    "mining.variants.empty": "",
+    "mining.variants.title": ""
+  }
+}

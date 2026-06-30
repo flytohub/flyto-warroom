@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "Zeit zu Datum/Zeit hinzufügen",
+        "modules.datetime.add.label": "Zeit hinzufügen",
+        "modules.datetime.add.output.result.description": "Das Operationsergebnis",
+        "modules.datetime.add.output.timestamp.description": "Das Operationsergebnis",
+        "modules.datetime.format.description": "Datum/Zeit als String formatieren",
+        "modules.datetime.format.label": "Datum/Zeit formatieren",
+        "modules.datetime.format.output.result.description": "Das Operationsergebnis",
+        "modules.datetime.format.output.timestamp.description": "Das Operationsergebnis",
+        "modules.datetime.parse.description": "String zu Datum/Zeit parsen",
+        "modules.datetime.parse.label": "Datum/Zeit parsen",
+        "modules.datetime.parse.output.day.description": "Jahreskomponente",
+        "modules.datetime.parse.output.hour.description": "Monatskomponente",
+        "modules.datetime.parse.output.minute.description": "Tageskomponente",
+        "modules.datetime.parse.output.month.description": "Unix-Zeitstempel",
+        "modules.datetime.parse.output.result.description": "Das Operationsergebnis",
+        "modules.datetime.parse.output.second.description": "Stundenkomponente",
+        "modules.datetime.parse.output.timestamp.description": "Das Operationsergebnis",
+        "modules.datetime.parse.output.year.description": "Das Operationsergebnis",
+        "modules.datetime.subtract.description": "Zeit von Datum/Zeit subtrahieren",
+        "modules.datetime.subtract.label": "Zeit subtrahieren",
+        "modules.datetime.subtract.output.result.description": "Das Operationsergebnis",
+        "modules.datetime.subtract.output.timestamp.description": "Das Operationsergebnis"
+    }
+}

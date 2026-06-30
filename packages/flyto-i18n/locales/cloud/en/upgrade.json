@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "Contact Sales",
+        "upgrade.debugFeatures": "Debug & Development Tools",
+        "upgrade.enterpriseHint": "Need enterprise features?",
+        "upgrade.featureLocked": "This feature requires a Pro subscription",
+        "upgrade.features.evidence": "Evidence capture and review",
+        "upgrade.features.lineage": "Data lineage tracking",
+        "upgrade.features.replay": "Execution replay",
+        "upgrade.features.tests": "Test execution panel",
+        "upgrade.features.versions": "Version control",
+        "upgrade.offlineLicense": "Offline License",
+        "upgrade.subscription": "Subscribe Now",
+        "upgrade.subtitle": "Unlock premium features",
+        "upgrade.title": "Upgrade to Pro"
+    }
+}

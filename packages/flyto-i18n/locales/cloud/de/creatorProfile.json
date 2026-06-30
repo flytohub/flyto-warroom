@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "Zurück zum Marktplatz",
+        "creatorProfile.chatError": "Chat konnte nicht gestartet werden",
+        "creatorProfile.creatorTemplates": "Vorlagen des Erstellers",
+        "creatorProfile.editProfile": "Profil bearbeiten",
+        "creatorProfile.follow": "Folgen",
+        "creatorProfile.followError": "Follower-Status konnte nicht aktualisiert werden",
+        "creatorProfile.followers": "Follower",
+        "creatorProfile.following": "Folgt",
+        "creatorProfile.loadMore": "Mehr laden",
+        "creatorProfile.noDescription": "Keine Beschreibung",
+        "creatorProfile.noFollowers": "Noch keine Follower",
+        "creatorProfile.noFollowing": "Folgt niemandem",
+        "creatorProfile.noTemplates": "Noch keine Vorlagen veröffentlicht",
+        "creatorProfile.notFound": "Ersteller nicht gefunden",
+        "creatorProfile.notFoundDesc": "Der gesuchte Ersteller existiert nicht oder wurde entfernt.",
+        "creatorProfile.templates": "Vorlagen"
+    }
+}

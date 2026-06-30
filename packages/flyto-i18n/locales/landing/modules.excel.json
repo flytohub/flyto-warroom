@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "excel",
+  "version": "1.0.0",
+  "translations": {
+    "modules.excel.read.description": "",
+    "modules.excel.read.label": "",
+    "modules.excel.read.output.data.description": "",
+    "modules.excel.read.output.headers.description": "",
+    "modules.excel.read.output.row_count.description": "",
+    "modules.excel.read.output.sheet_names.description": "",
+    "modules.excel.write.description": "",
+    "modules.excel.write.label": "",
+    "modules.excel.write.output.path.description": "",
+    "modules.excel.write.output.row_count.description": "",
+    "modules.excel.write.output.size.description": ""
+  }
+}

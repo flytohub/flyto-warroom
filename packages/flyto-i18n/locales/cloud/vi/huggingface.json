@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.huggingface",
+    "version": "1.0.0",
+    "translations": {
+        "huggingface.browseMoreModels": "Duyệt thêm mô hình",
+        "huggingface.chooseModel": "Chọn mô hình",
+        "huggingface.inferenceAPI": "API Suy luận",
+        "huggingface.installedModels": "Mô hình đã cài đặt",
+        "huggingface.localExecution": "Thực thi cục bộ",
+        "huggingface.noModelsAvailable": "Không có mô hình khả dụng",
+        "huggingface.notInstalled": "Chưa cài đặt",
+        "huggingface.popularModels": "Mô hình phổ biến",
+        "huggingface.selectModel": "Chọn mô hình"
+    }
+}

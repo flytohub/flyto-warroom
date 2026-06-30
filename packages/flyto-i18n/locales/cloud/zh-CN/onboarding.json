@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.onboarding",
+    "version": "1.0.0",
+    "translations": {
+        "onboarding.finish": "完成",
+        "onboarding.next": "下一步",
+        "onboarding.previous": "上一步",
+        "onboarding.skip": "跳过"
+    }
+}

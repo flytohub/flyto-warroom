@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.completionEffect",
+    "version": "1.0.0",
+    "translations": {
+        "completionEffect.defaultMessage": "Semua langkah berhasil dijalankan",
+        "completionEffect.defaultTitle": "Workflow Selesai"
+    }
+}

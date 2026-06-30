@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "word",
+  "version": "1.0.0",
+  "translations": {
+    "modules.word.parse.description": "",
+    "modules.word.parse.label": "",
+    "modules.word.parse.output.images.description": "",
+    "modules.word.parse.output.metadata.description": "",
+    "modules.word.parse.output.paragraphs.description": "",
+    "modules.word.parse.output.tables.description": "",
+    "modules.word.parse.output.text.description": "",
+    "modules.word.to_pdf.description": "",
+    "modules.word.to_pdf.label": "",
+    "modules.word.to_pdf.output.file_size.description": "",
+    "modules.word.to_pdf.output.method_used.description": "",
+    "modules.word.to_pdf.output.output_path.description": ""
+  }
+}

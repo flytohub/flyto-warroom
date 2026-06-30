@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.categories",
+    "version": "1.0.0",
+    "translations": {
+        "categories.ai": "AI",
+        "categories.api": "API",
+        "categories.array": "Array",
+        "categories.browser": "Browser",
+        "categories.cloud": "Cloud",
+        "categories.code": "Code",
+        "categories.composite": "Komposit",
+        "categories.data": "Daten",
+        "categories.datetime": "Datum/Zeit",
+        "categories.element": "Element",
+        "categories.file": "Datei",
+        "categories.flow": "Ablaufsteuerung",
+        "categories.form": "Formulareingabe",
+        "categories.http": "HTTP",
+        "categories.huggingface": "HuggingFace",
+        "categories.image": "Bild",
+        "categories.llm": "LLM",
+        "categories.math": "Mathe",
+        "categories.my-templates": "Meine Vorlagen",
+        "categories.notification": "Benachrichtigung",
+        "categories.object": "Objekt",
+        "categories.other": "Sonstiges",
+        "categories.string": "Zeichenkette",
+        "categories.connector": "API-Connector",
+        "categories.utility": "Dienstprogramm"
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.pluginCapability",
+  "version": "1.0.0",
+  "translations": {
+    "pluginCapability.imageClassification": "",
+    "pluginCapability.speechRecognition": "",
+    "pluginCapability.textClassification": "",
+    "pluginCapability.textEmbedding": "",
+    "pluginCapability.textGeneration": "",
+    "pluginCapability.textToSpeech": ""
+  }
+}

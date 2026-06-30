@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.variableSelector",
+    "version": "1.0.0",
+    "translations": {
+        "variableSelector.insert": "삽입",
+        "variableSelector.noVariables": "사용 가능한 변수가 없습니다",
+        "variableSelector.searchPlaceholder": "변수 검색...",
+        "variableSelector.selected": "선택됨"
+    }
+}

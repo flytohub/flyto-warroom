@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.upload.label": "S3 Upload",
+        "modules.aws.s3.upload.description": "Upload a local file to an AWS S3 bucket",
+        "modules.aws.s3.upload.output.bucket.description": "S3 bucket name",
+        "modules.aws.s3.upload.output.key.description": "S3 object key",
+        "modules.aws.s3.upload.output.url.description": "Public URL of the uploaded object",
+        "modules.aws.s3.upload.output.size.description": "File size in bytes",
+        "modules.aws.s3.download.label": "S3 Download",
+        "modules.aws.s3.download.description": "Download a file from an AWS S3 bucket to a local path",
+        "modules.aws.s3.download.output.path.description": "Local file path where the file was saved",
+        "modules.aws.s3.download.output.size.description": "File size in bytes",
+        "modules.aws.s3.download.output.content_type.description": "MIME type of the downloaded file",
+        "modules.aws.s3.list.label": "S3 List Objects",
+        "modules.aws.s3.list.description": "List objects in an AWS S3 bucket with optional prefix filter",
+        "modules.aws.s3.list.output.objects.description": "List of S3 objects",
+        "modules.aws.s3.list.output.count.description": "Number of objects returned",
+        "modules.aws.s3.list.output.truncated.description": "Whether the results are truncated",
+        "modules.aws.s3.delete.label": "S3 Delete Object",
+        "modules.aws.s3.delete.description": "Delete an object from an AWS S3 bucket",
+        "modules.aws.s3.delete.output.bucket.description": "S3 bucket name",
+        "modules.aws.s3.delete.output.key.description": "Deleted object key",
+        "modules.aws.s3.delete.output.deleted.description": "Whether the object was deleted successfully"
+    }
+}

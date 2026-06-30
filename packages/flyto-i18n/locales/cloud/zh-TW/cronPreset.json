@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.cronPreset",
+    "version": "1.0.0",
+    "translations": {
+        "cronPreset.daily9am": "每日上午9點",
+        "cronPreset.everyMinute": "每分鐘",
+        "cronPreset.hourly": "每小時",
+        "cronPreset.weeklyMon": "每週一"
+    }
+}

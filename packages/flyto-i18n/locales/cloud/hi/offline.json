@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "टेम्पलेट्स पर वापस जाएं",
+        "offline.currentlyOffline": "आप वर्तमान में ऑफलाइन काम कर रहे हैं",
+        "offline.languagePack.active": "सक्रिय",
+        "offline.languagePack.currentLanguage": "वर्तमान भाषा",
+        "offline.languagePack.downloadHint": "भाषा पैक यहाँ से डाउनलोड करें",
+        "offline.languagePack.importButton": "भाषा पैक इम्पोर्ट करें",
+        "offline.languagePack.importFailed": "भाषा पैक इम्पोर्ट करने में विफल",
+        "offline.languagePack.importSuccess": "{locale} सफलतापूर्वक इम्पोर्ट हुआ ({count} keys)",
+        "offline.languagePack.importedPacks": "इम्पोर्ट किए गए पैक",
+        "offline.languagePack.importing": "इम्पोर्ट हो रहा है...",
+        "offline.languagePack.invalidFormat": "अमान्य फाइल फॉर्मेट। flyto-i18n JSON फाइल अपेक्षित।",
+        "offline.languagePack.noTranslations": "फाइल में कोई अनुवाद नहीं मिला",
+        "offline.languagePack.subtitle": "ऑफलाइन उपयोग के लिए अनुवाद इम्पोर्ट करें",
+        "offline.languagePack.title": "भाषा पैक",
+        "offline.languagePack.use": "उपयोग करें",
+        "offline.license": "लाइसेंस",
+        "offline.settings": "ऑफलाइन सेटिंग्स"
+    }
+}

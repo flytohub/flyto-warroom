@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "Đóng",
+        "updateNotification.downloadFailed": "Không thể tải xuống bản cập nhật",
+        "updateNotification.downloadUpdate": "Tải xuống bản cập nhật",
+        "updateNotification.downloading": "Đang tải xuống bản cập nhật",
+        "updateNotification.newVersionAvailable": "Có phiên bản mới",
+        "updateNotification.percentComplete": "Hoàn thành {percent}%",
+        "updateNotification.remindLater": "Nhắc sau",
+        "updateNotification.restartLater": "Khởi động lại sau",
+        "updateNotification.restartNow": "Khởi động lại ngay",
+        "updateNotification.restartToInstall": "Khởi động lại ứng dụng để cài đặt bản cập nhật",
+        "updateNotification.unknownError": "Lỗi không xác định",
+        "updateNotification.updateDownloaded": "Đã tải xuống bản cập nhật",
+        "updateNotification.updateFailed": "Cập nhật thất bại",
+        "updateNotification.versionReady": "Phiên bản {version} đã sẵn sàng để cập nhật"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "填写 PDF 表单字段并可选择插入图片",
+        "modules.pdf.fill_form.label": "填写 PDF 表单",
+        "modules.pdf.fill_form.output.fields_filled.description": "已填写 PDF 的路径",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "插入的图片数量",
+        "modules.pdf.fill_form.output.images_inserted.description": "已填写 PDF 的路径",
+        "modules.pdf.fill_form.output.output_path.description": "已填写 PDF 的路径",
+        "modules.pdf.generate.description": "从 HTML 内容或文本产生 PDF 文件",
+        "modules.pdf.generate.label": "产生 PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "PDF 的页数",
+        "modules.pdf.generate.output.output_path.description": "产生的 PDF 路径",
+        "modules.pdf.generate.output.page_count.description": "产生的 PDF 路径",
+        "modules.pdf.parse.description": "从 PDF 文件截取文本和中继数据",
+        "modules.pdf.parse.label": "解析 PDF",
+        "modules.pdf.parse.output.metadata.description": "截取的文本内容",
+        "modules.pdf.parse.output.page_count.description": "每页的文本内容",
+        "modules.pdf.parse.output.pages.description": "截取的文本内容",
+        "modules.pdf.parse.output.text.description": "截取的文本内容",
+        "modules.pdf.to_word.description": "将 PDF 文件转换为 Word 文档（.docx）",
+        "modules.pdf.to_word.label": "PDF 转 Word",
+        "modules.pdf.to_word.output.file_size.description": "转换的页数",
+        "modules.pdf.to_word.output.output_path.description": "产生的 Word 文档路径",
+        "modules.pdf.to_word.output.page_count.description": "产生的 Word 文档路径"
+    }
+}

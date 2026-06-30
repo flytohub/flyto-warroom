@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Her zaman açık",
+        "cookies.lastUpdated": "Son Güncelleme",
+        "cookies.optional": "İsteğe Bağlı",
+        "cookies.preferencesSaved": "Tercihler başarıyla kaydedildi",
+        "cookies.savePreferences": "Tercihleri Kaydet",
+        "cookies.sections.manage.content": "Hangi isteğe bağlı çerezlere izin vereceğinizi kontrol edebilirsiniz. Temel çerezler, web sitesinin çalışması için gerekli olduğundan devre dışı bırakılamaz.",
+        "cookies.sections.manage.title": "Tercihlerinizi Yönetin",
+        "cookies.sections.types.analytics.content": "Bu çerezler, anonim olarak bilgi toplayıp raporlayarak ziyaretçilerin web sitemizle nasıl etkileşime girdiğini anlamamıza yardımcı olur. Bu, hizmetlerimizi geliştirmemize yardımcı olur.",
+        "cookies.sections.types.analytics.title": "Analitik Çerezleri",
+        "cookies.sections.types.essential.content": "Bu çerezler web sitesinin düzgün çalışması için gereklidir. Sayfa navigasyonu ve güvenli alanlara erişim gibi temel özellikleri etkinleştirirler. Web sitesi bu çerezler olmadan düzgün çalışamaz.",
+        "cookies.sections.types.essential.title": "Temel Çerezler",
+        "cookies.sections.types.functional.content": "Bu çerezler, dil tercihinizi, tema ayarlarınızı ve giriş durumunuzu hatırlama gibi kişiselleştirilmiş özellikleri etkinleştirir. Deneyiminizi geliştirirler ancak zorunlu değildir.",
+        "cookies.sections.types.functional.title": "İşlevsel Çerezler",
+        "cookies.sections.types.title": "Kullandığımız Çerez Türleri",
+        "cookies.sections.what.content": "Çerezler, web sitemizi ziyaret ettiğinizde cihazınızda saklanan küçük metin dosyalarıdır. Tercihlerinizi hatırlayarak ve hizmetlerimizi nasıl kullandığınızı anlayarak size daha iyi bir deneyim sunmamıza yardımcı olurlar.",
+        "cookies.sections.what.title": "Çerez Nedir?",
+        "cookies.title": "Çerez Ayarları"
+    }
+}

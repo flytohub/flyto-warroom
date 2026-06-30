@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "Sprawdz URL i sprobuj ponownie",
+        "notFound.contactSupport": "Skontaktuj sie z pomocą techniczną",
+        "notFound.goBack": "Wstecz",
+        "notFound.goHome": "Strona glowna",
+        "notFound.helpText": "Potrzebujesz pomocy?",
+        "notFound.message": "Strona, ktorej szukasz, nie istnieje lub zostala przeniesiona.",
+        "notFound.myTemplates": "Moje szablony",
+        "notFound.pageNotExist": "Ta strona nie istnieje",
+        "notFound.suggestion1": "Sprawdz URL pod katem literowek",
+        "notFound.suggestion2": "Wroc do poprzedniej strony",
+        "notFound.suggestion3": "Przejdz do swoich szablonow",
+        "notFound.suggestions": "Oto co mozesz zrobic:",
+        "notFound.title": "Nie znaleziono strony"
+    }
+}

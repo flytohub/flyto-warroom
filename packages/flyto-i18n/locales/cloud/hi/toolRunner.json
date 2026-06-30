@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "उन्नत",
+        "toolRunner.backToLibrary": "लाइब्रेरी पर वापस",
+        "toolRunner.copy": "कॉपी करें",
+        "toolRunner.download": "डाउनलोड करें",
+        "toolRunner.editTool": "संपादित करें",
+        "toolRunner.executionFailed": "निष्पादन विफल",
+        "toolRunner.executionLogs": "निष्पादन लॉग",
+        "toolRunner.executionSuccess": "निष्पादन पूर्ण",
+        "toolRunner.executionTimedOut": "निष्पादन का समय समाप्त",
+        "toolRunner.flowSteps": "फ्लो स्टेप्स",
+        "toolRunner.inputForm": "इनपुट फॉर्म",
+        "toolRunner.loadFailed": "टूल लोड करने में विफल",
+        "toolRunner.noLogs": "अभी तक कोई लॉग नहीं। निष्पादन लॉग देखने के लिए टूल चलाएं।",
+        "toolRunner.resolvedParams": "हल किए गए पैरामीटर",
+        "toolRunner.results": "परिणाम",
+        "toolRunner.retry": "पुनः प्रयास करें",
+        "toolRunner.runAgain": "फिर से चलाएं",
+        "toolRunner.runToSeeResults": "परिणाम यहां देखने के लिए टूल चलाएं",
+        "toolRunner.runTool": "टूल चलाएं",
+        "toolRunner.running": "चल रहा है...",
+        "toolRunner.simpleMode": "सरल",
+        "toolRunner.toolNotFound": "टूल नहीं मिला",
+        "toolRunner.toolNotFoundError": "टूल नहीं मिला"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.status",
+    "version": "1.0.0",
+    "translations": {
+        "status.cancelled": "रद्द",
+        "status.completed": "पूर्ण",
+        "status.error": "त्रुटि",
+        "status.failed": "विफल",
+        "status.pending": "लंबित",
+        "status.running": "चल रहा है",
+        "status.success": "सफल"
+    }
+}

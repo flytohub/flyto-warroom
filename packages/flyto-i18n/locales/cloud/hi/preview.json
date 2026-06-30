@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "AI से सुधारने के लिए पूछें",
+        "preview.emptyState.description": "वर्कफ़्लो चरण जोड़ने के लिए Dev मोड पर स्विच करें",
+        "preview.emptyState.hint": "कोई पूर्वावलोकन उपलब्ध नहीं",
+        "preview.emptyState.title": "कोई वर्कफ़्लो परिभाषित नहीं",
+        "preview.executionFailed": "निष्पादन विफल",
+        "preview.fields": "फ़ील्ड",
+        "preview.inputs": "इनपुट",
+        "preview.noInputsRequired": "कोई इनपुट आवश्यक नहीं",
+        "preview.noWorkflowHint": "निष्पादन सक्षम करने के लिए Dev मोड में वर्कफ़्लो चरण जोड़ें",
+        "preview.output": "आउटपुट",
+        "preview.ready": "तैयार",
+        "preview.running": "चल रहा है",
+        "preview.steps": "चरण",
+        "preview.untitledTemplate": "बिना शीर्षक टेम्पलेट"
+    }
+}

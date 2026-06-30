@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "hash",
+  "version": "1.0.0",
+  "translations": {
+    "modules.hash.sha256.description": "",
+    "modules.hash.sha256.label": "",
+    "modules.hash.sha256.output.algorithm.description": "",
+    "modules.hash.sha256.output.hash.description": "",
+    "modules.hash.sha256.params.encoding.description": "",
+    "modules.hash.sha256.params.encoding.label": "",
+    "modules.hash.sha256.params.text.description": "",
+    "modules.hash.sha256.params.text.label": "",
+    "modules.hash.sha512.description": "",
+    "modules.hash.sha512.label": "",
+    "modules.hash.sha512.output.algorithm.description": "",
+    "modules.hash.sha512.output.hash.description": "",
+    "modules.hash.sha512.params.encoding.description": "",
+    "modules.hash.sha512.params.encoding.label": "",
+    "modules.hash.sha512.params.text.description": "",
+    "modules.hash.sha512.params.text.label": ""
+  }
+}

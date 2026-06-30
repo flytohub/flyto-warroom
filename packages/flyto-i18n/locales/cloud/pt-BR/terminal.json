@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "Limpar logs",
+        "terminal.closeTerminal": "Fechar terminal",
+        "terminal.connected": "CONECTADO",
+        "terminal.disableAutoScroll": "Desativar rolagem automatica",
+        "terminal.disconnected": "DESCONECTADO",
+        "terminal.enableAutoScroll": "Ativar rolagem automatica",
+        "terminal.hideLogs": "Ocultar logs {level}",
+        "terminal.logsWillAppear": "Os logs aparecero aqui quando o sistema gerar saida",
+        "terminal.searchPlaceholder": "Pesquisar logs...",
+        "terminal.showLogs": "Mostrar logs {level}",
+        "terminal.title": "Terminal do Sistema",
+        "terminal.waitingForLogs": "Aguardando logs..."
+    }
+}

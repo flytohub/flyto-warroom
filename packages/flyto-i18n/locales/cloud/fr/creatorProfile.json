@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "Retour a la place de marche",
+        "creatorProfile.chatError": "Echec du demarrage de la discussion",
+        "creatorProfile.creatorTemplates": "Modeles du createur",
+        "creatorProfile.editProfile": "Modifier le profil",
+        "creatorProfile.follow": "Suivre",
+        "creatorProfile.followError": "Echec de la mise a jour du statut de suivi",
+        "creatorProfile.followers": "Abonnes",
+        "creatorProfile.following": "Abonnements",
+        "creatorProfile.loadMore": "Charger plus",
+        "creatorProfile.noDescription": "Aucune description",
+        "creatorProfile.noFollowers": "Aucun abonne pour le moment",
+        "creatorProfile.noFollowing": "Ne suit personne",
+        "creatorProfile.noTemplates": "Aucun modele publie pour le moment",
+        "creatorProfile.notFound": "Createur introuvable",
+        "creatorProfile.notFoundDesc": "Le createur que vous recherchez n'existe pas ou a ete supprime.",
+        "creatorProfile.templates": "Modeles"
+    }
+}

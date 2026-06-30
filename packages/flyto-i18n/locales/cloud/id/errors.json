@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "Tidak dapat terhubung ke server. Pastikan backend sedang berjalan.",
+        "errors.somethingWentWrong": "Terjadi kesalahan",
+        "errors.technicalDetails": "Detail teknis",
+        "errors.timeout": "Permintaan timeout. Silakan coba lagi.",
+        "errors.unexpectedError": "Terjadi kesalahan yang tidak terduga"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "Buat Proyek",
+        "projects.create.title": "Buat Proyek",
+        "projects.delete.message": "Apakah Anda yakin ingin menghapus proyek ini? Semua workflow dalam proyek ini akan dipindahkan ke proyek default.",
+        "projects.delete.title": "Hapus Proyek",
+        "projects.description": "Atur workflow Anda ke dalam proyek",
+        "projects.edit.title": "Edit Proyek",
+        "projects.empty.description": "Buat proyek pertama Anda untuk mengatur workflow",
+        "projects.empty.title": "Belum Ada Proyek",
+        "projects.form.color": "Warna",
+        "projects.form.description": "Deskripsi",
+        "projects.form.name": "Nama Proyek",
+        "projects.form.namePlaceholder": "Proyek Saya",
+        "projects.members": "anggota",
+        "projects.title": "Proyek",
+        "projects.workflows": "workflow"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "Execute a template from your library as a workflow step",
+        "modules.template.invoke.label": "Invoke Template",
+        "modules.template.invoke.output.__event__.description": "ID of the library item (purchase/fork/owned)",
+        "modules.template.invoke.output.execution_time_ms.description": "Template execution result",
+        "modules.template.invoke.output.result.description": "Maximum execution time in seconds",
+        "modules.template.invoke.output.template_id.description": "Event for routing (success/error)",
+        "modules.template.invoke.ports.input": "Invoke Template",
+        "modules.template.invoke.ports.success": "Input"
+    }
+}

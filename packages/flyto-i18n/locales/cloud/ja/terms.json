@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "最終更新日",
+        "terms.sections.acceptance.content": "Flyto2サービスにアクセスまたは使用することにより、この利用規約に同意したものとみなされます。これらの条件に同意しない場合は、サービスを使用しないでください。",
+        "terms.sections.acceptance.title": "利用規約への同意",
+        "terms.sections.account.content": "アカウント認証情報の機密性を維持し、アカウント下で行われるすべての活動に責任を負います。不正使用があった場合は直ちに通知する必要があります。",
+        "terms.sections.account.title": "ユーザーアカウント",
+        "terms.sections.intellectual.content": "Flyto2のすべてのコンテンツ、機能、および機能性は当社が所有し、国際的な著作権、商標、およびその他の知的財産法によって保護されています。",
+        "terms.sections.intellectual.title": "知的財産",
+        "terms.sections.limitation.content": "法律で許可される最大限の範囲において、Flyto2は、サービスの使用に起因する間接的、偶発的、特別、結果的、または懲罰的損害について責任を負いません。",
+        "terms.sections.limitation.title": "責任の制限",
+        "terms.sections.prohibited.content": "違法な目的、法律違反、知的財産権の侵害、または有害なコードの送信にサービスを使用することはできません。これらの条件に違反するアカウントを終了する権利を留保します。",
+        "terms.sections.prohibited.title": "禁止事項",
+        "terms.sections.services.content": "Flyto2は、ユーザーが自動化されたワークフローを作成、管理、実行できるワークフロー自動化プラットフォームを提供します。いつでもサービスを変更または中止する権利を留保します。",
+        "terms.sections.services.title": "サービスの説明",
+        "terms.sections.termination.content": "これらの条件に違反する、または他のユーザーに有害であると判断される行為について、事前の通知なしに、当社の独自の裁量でアカウントおよびサービスへのアクセスを終了または一時停止する場合があります。",
+        "terms.sections.termination.title": "解約",
+        "terms.title": "利用規約"
+    }
+}

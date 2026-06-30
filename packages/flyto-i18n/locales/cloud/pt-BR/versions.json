@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "Comparar",
+        "versions.current": "Atual",
+        "versions.diff.comparing": "Comparando",
+        "versions.diff.noChanges": "Sem alteracoes entre versoes",
+        "versions.diff.selectPrompt": "Selecione duas versoes para comparar",
+        "versions.diff.title": "Alteracoes",
+        "versions.diff.to": "para",
+        "versions.empty": "Sem historico de versoes",
+        "versions.rollback": "Reverter",
+        "versions.rollback.confirm": "Reverter",
+        "versions.rollback.description": "Reverter para v{version} criara uma nova versao com o conteudo dessa versao. A versao atual permanecera no historico.",
+        "versions.rollback.targetVersion": "Versao Alvo",
+        "versions.rollback.title": "Reverter para Versao",
+        "versions.rollback.warning": "Isso criara uma nova versao",
+        "versions.title": "Historico de Versoes"
+    }
+}

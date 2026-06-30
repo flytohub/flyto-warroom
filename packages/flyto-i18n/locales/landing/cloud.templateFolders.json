@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.templateFolders",
+  "version": "1.0.0",
+  "translations": {
+    "templateFolders.createSuccess": "",
+    "templateFolders.created": "",
+    "templateFolders.defaultFolder": "",
+    "templateFolders.delete": "",
+    "templateFolders.deleteConfirmMessage": "",
+    "templateFolders.deleteConfirmTitle": "",
+    "templateFolders.deleteSuccess": "",
+    "templateFolders.emptyFolder": "",
+    "templateFolders.folderName": "",
+    "templateFolders.installed": "",
+    "templateFolders.manageFolders": "",
+    "templateFolders.maxDepth": "",
+    "templateFolders.move": "",
+    "templateFolders.moveSuccess": "",
+    "templateFolders.moveToFolder": "",
+    "templateFolders.moveToRoot": "",
+    "templateFolders.newFolder": "",
+    "templateFolders.noFolders": "",
+    "templateFolders.rename": "",
+    "templateFolders.root": "",
+    "templateFolders.selectColor": "",
+    "templateFolders.templateCount": "",
+    "templateFolders.templates": ""
+  }
+}

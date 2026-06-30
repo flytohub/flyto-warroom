@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "विकल्प",
+        "lineage.decision.evidence": "साक्ष्य",
+        "lineage.decision.reason": "कारण",
+        "lineage.loop.clickToCollapse": "संक्षिप्त करने के लिए क्लिक करें",
+        "lineage.steps": "स्टेप",
+        "lineage.storyline.noSteps": "दिखाने के लिए कोई स्टेप नहीं",
+        "lineage.storyline.noStepsInLane": "इस लेन में कोई स्टेप नहीं",
+        "lineage.storyline.runHint": "एक्जीक्यूशन इतिहास देखने के लिए वर्कफ़्लो चलाएं",
+        "lineage.storyline.title": "एक्जीक्यूशन टाइमलाइन"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "Wyodrębnij tekst i zawartość z dokumentów Word (.docx)",
+        "modules.word.parse.label": "Parsuj dokument Word",
+        "modules.word.parse.output.images.description": "Lista akapitów",
+        "modules.word.parse.output.metadata.description": "Wyodrębnione tabele jako tablice",
+        "modules.word.parse.output.paragraphs.description": "Pełna zawartość tekstowa dokumentu",
+        "modules.word.parse.output.tables.description": "Pełna zawartość tekstowa dokumentu",
+        "modules.word.parse.output.text.description": "Pełna zawartość tekstowa dokumentu",
+        "modules.word.to_pdf.description": "Konwertuj dokumenty Word (.docx) na pliki PDF",
+        "modules.word.to_pdf.label": "Word do PDF",
+        "modules.word.to_pdf.output.file_size.description": "Ścieżka do wygenerowanego pliku PDF",
+        "modules.word.to_pdf.output.method_used.description": "Rozmiar pliku wyjściowego w bajtach",
+        "modules.word.to_pdf.output.output_path.description": "Ścieżka do wygenerowanego pliku PDF"
+    }
+}

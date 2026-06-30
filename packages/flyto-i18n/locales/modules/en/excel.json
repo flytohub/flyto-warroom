@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Read data from Excel files (xlsx, xls)",
+        "modules.excel.read.label": "Read Excel",
+        "modules.excel.read.output.data.description": "Extracted data rows",
+        "modules.excel.read.output.headers.description": "Extracted data rows",
+        "modules.excel.read.output.row_count.description": "Extracted data rows",
+        "modules.excel.read.output.sheet_names.description": "Column headers",
+        "modules.excel.write.description": "Write data to Excel files (xlsx)",
+        "modules.excel.write.label": "Write Excel",
+        "modules.excel.write.output.path.description": "Path to the created Excel file",
+        "modules.excel.write.output.row_count.description": "Path to the created Excel file",
+        "modules.excel.write.output.size.description": "Path to the created Excel file"
+    }
+}

@@ -1,0 +1,51 @@
+services:
+  engine:
+    environment:
+      FLYTO_EDITION: "enterprise_airgap"
+      FLYTO_AUTH_MODE: "enterprise"
+      FLYTO_DEV_AUTH: "0"
+      FLYTO_ENTERPRISE_JWT_SECRET_KEY: "${FLYTO_ENTERPRISE_JWT_SECRET_KEY:?set FLYTO_ENTERPRISE_JWT_SECRET_KEY in install/.env.ee-sim}" # placeholder
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env.ee-sim}" # placeholder
+      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:?set FLYTO_VERIFICATION_SECRET in install/.env.ee-sim}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
+      FLYTO_MASTER_KEY: "${FLYTO_MASTER_KEY:?set FLYTO_MASTER_KEY in install/.env.ee-sim}"
+      FLYTO_MASTER_KEY_ID: "${FLYTO_MASTER_KEY_ID:-local-ee-sim}"
+      FLYTO_AI_BASE_URL: "${FLYTO_AI_BASE_URL:-http://host.docker.internal:11434/v1}"
+
+  scan-drainer:
+    environment:
+      FLYTO_EDITION: "enterprise_airgap"
+      FLYTO_AUTH_MODE: "enterprise"
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env.ee-sim}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
+      FLYTO_MASTER_KEY: "${FLYTO_MASTER_KEY:?set FLYTO_MASTER_KEY in install/.env.ee-sim}"
+      FLYTO_MASTER_KEY_ID: "${FLYTO_MASTER_KEY_ID:-local-ee-sim}"
+
+  discovery-drainer:
+    environment:
+      FLYTO_EDITION: "enterprise_airgap"
+      FLYTO_AUTH_MODE: "enterprise"
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env.ee-sim}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
+      FLYTO_MASTER_KEY: "${FLYTO_MASTER_KEY:?set FLYTO_MASTER_KEY in install/.env.ee-sim}"
+      FLYTO_MASTER_KEY_ID: "${FLYTO_MASTER_KEY_ID:-local-ee-sim}"
+
+  worker:
+    environment:
+      FLYTO_EDITION: "enterprise_airgap"
+      FLYTO_AUTH_MODE: "enterprise"
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env.ee-sim}" # placeholder
+      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:?set FLYTO_VERIFICATION_SECRET in install/.env.ee-sim}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
+      FLYTO_MASTER_KEY: "${FLYTO_MASTER_KEY:?set FLYTO_MASTER_KEY in install/.env.ee-sim}"
+      FLYTO_MASTER_KEY_ID: "${FLYTO_MASTER_KEY_ID:-local-ee-sim}"
+
+  runner:
+    environment:
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env.ee-sim}" # placeholder
+      FLYTO_RUNNER_DEV_OPEN: "0"
+
+  verification:
+    environment:
+      FLYTO_RUNNER_SECRET: "${FLYTO_RUNNER_SECRET:?set FLYTO_RUNNER_SECRET in install/.env.ee-sim}" # placeholder
+      FLYTO_VERIFICATION_SECRET: "${FLYTO_VERIFICATION_SECRET:?set FLYTO_VERIFICATION_SECRET in install/.env.ee-sim}" # placeholder

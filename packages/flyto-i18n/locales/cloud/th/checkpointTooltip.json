@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.checkpointTooltip",
+    "version": "1.0.0",
+    "translations": {
+        "checkpointTooltip.clickToAdd": "คลิกเพื่อเพิ่ม checkpoint บนการเชื่อมต่อ",
+        "checkpointTooltip.clickToExit": "คลิกเพื่อออกจากโหมด checkpoint",
+        "checkpointTooltip.upgradeToUse": "อัปเกรดเพื่อใช้ Human Checkpoint"
+    }
+}

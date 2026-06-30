@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "integration",
+  "version": "1.0.0",
+  "translations": {
+    "modules.integration.jira.create_issue.description": "",
+    "modules.integration.jira.create_issue.label": "",
+    "modules.integration.jira.search_issues.description": "",
+    "modules.integration.jira.search_issues.label": "",
+    "modules.integration.salesforce.create_record.description": "",
+    "modules.integration.salesforce.create_record.label": "",
+    "modules.integration.salesforce.query.description": "",
+    "modules.integration.salesforce.query.label": "",
+    "modules.integration.salesforce.update_record.description": "",
+    "modules.integration.salesforce.update_record.label": "",
+    "modules.integration.slack.list_channels.description": "",
+    "modules.integration.slack.list_channels.label": "",
+    "modules.integration.slack.list_channels.params.channels": "",
+    "modules.integration.slack.list_channels.params.channels.options.id": "",
+    "modules.integration.slack.list_channels.params.channels.options.is_private": "",
+    "modules.integration.slack.list_channels.params.channels.options.name": "",
+    "modules.integration.slack.list_channels.params.channels.options.num_members": "",
+    "modules.integration.slack.send_message.description": "",
+    "modules.integration.slack.send_message.label": ""
+  }
+}

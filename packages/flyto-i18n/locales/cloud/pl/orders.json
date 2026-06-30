@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "Akceptuj",
+        "orders.approve": "Zatwierdz",
+        "orders.budget": "Budzet",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "Zrealizowane",
+        "orders.createFailed": "Nie udalo sie utworzyc zamowienia",
+        "orders.createOrder": "Utworz zamowienie",
+        "orders.createOrderSubtitle": "Wyslij zapytanie projektowe do tego sprzedawcy",
+        "orders.days": "dni",
+        "orders.deadline": "Czas dostawy",
+        "orders.decline": "Odrzuc",
+        "orders.deliver": "Dostarcz",
+        "orders.description": "Opis",
+        "orders.descriptionPlaceholder": "Opisz szczegolowo wymagania projektu...",
+        "orders.payNow": "Zaplac teraz",
+        "orders.requirements": "Dodatkowe wymagania",
+        "orders.requirementsPlaceholder": "Jakiekolwiek konkretne wymagania lub uwagi...",
+        "orders.sendOrder": "Wyslij zapytanie o zamowienie",
+        "orders.sending": "Wysylanie...",
+        "orders.sendingTo": "Wysylanie do",
+        "orders.title": "Tytul projektu",
+        "orders.titlePlaceholder": "W czym potrzebujesz pomocy?",
+        "orders.viewDetails": "Szczegoly",
+        "orders.waitingResponse": "Oczekiwanie na odpowiedz"
+    }
+}

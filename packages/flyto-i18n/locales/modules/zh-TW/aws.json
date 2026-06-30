@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "從 AWS S3 儲存桶刪除物件",
+        "modules.aws.s3.delete.label": "S3 刪除物件",
+        "modules.aws.s3.delete.output.bucket.description": "S3 儲存桶名稱",
+        "modules.aws.s3.delete.output.deleted.description": "物件是否成功刪除",
+        "modules.aws.s3.delete.output.key.description": "已刪除物件的鍵值",
+        "modules.aws.s3.download.description": "從 AWS S3 儲存桶下載檔案到本地路徑",
+        "modules.aws.s3.download.label": "S3 下載",
+        "modules.aws.s3.download.output.content_type.description": "下載檔案的 MIME 類型",
+        "modules.aws.s3.download.output.path.description": "檔案儲存的本地路徑",
+        "modules.aws.s3.download.output.size.description": "檔案大小（位元組）",
+        "modules.aws.s3.list.description": "列出 AWS S3 儲存桶中的物件，可選擇性使用前綴過濾",
+        "modules.aws.s3.list.label": "S3 列出物件",
+        "modules.aws.s3.list.output.count.description": "返回的物件數量",
+        "modules.aws.s3.list.output.objects.description": "S3 物件列表",
+        "modules.aws.s3.list.output.truncated.description": "結果是否被截斷",
+        "modules.aws.s3.upload.description": "上傳本地檔案到 AWS S3 儲存桶",
+        "modules.aws.s3.upload.label": "S3 上傳",
+        "modules.aws.s3.upload.output.bucket.description": "S3 儲存桶名稱",
+        "modules.aws.s3.upload.output.key.description": "S3 物件鍵值",
+        "modules.aws.s3.upload.output.size.description": "檔案大小（位元組）",
+        "modules.aws.s3.upload.output.url.description": "已上傳物件的公開 URL"
+    }
+}

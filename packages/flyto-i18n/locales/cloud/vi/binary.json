@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.binary",
+    "version": "1.0.0",
+    "translations": {
+        "binary.download": "Tải xuống",
+        "binary.downloadToOpen": "Tải xuống để mở",
+        "binary.downloadToView": "Tải xuống để xem",
+        "binary.noPreview": "Không có bản xem trước",
+        "binary.pdfPreview": "Xem trước PDF",
+        "binary.previewError": "Lỗi xem trước"
+    }
+}

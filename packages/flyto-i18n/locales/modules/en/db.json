@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "Query documents from MongoDB collection",
+        "modules.db.mongodb.find.label": "MongoDB Find",
+        "modules.db.mongodb.find.output.count.description": "Array of matching documents",
+        "modules.db.mongodb.find.output.documents.description": "Array of matching documents",
+        "modules.db.mongodb.insert.description": "Insert one or more documents into MongoDB collection",
+        "modules.db.mongodb.insert.label": "MongoDB Insert",
+        "modules.db.mongodb.insert.output.inserted_count.description": "Number of documents inserted",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "Number of documents inserted",
+        "modules.db.mysql.query.description": "Execute a SQL query on MySQL database and return results",
+        "modules.db.mysql.query.label": "MySQL Query",
+        "modules.db.mysql.query.output.columns.description": "Array of result rows as objects",
+        "modules.db.mysql.query.output.row_count.description": "Array of result rows as objects",
+        "modules.db.mysql.query.output.rows.description": "Array of result rows as objects",
+        "modules.db.postgresql.query.description": "Execute a SQL query on PostgreSQL database and return results",
+        "modules.db.postgresql.query.label": "PostgreSQL Query",
+        "modules.db.postgresql.query.output.columns.description": "Array of result rows as objects",
+        "modules.db.postgresql.query.output.row_count.description": "Array of result rows as objects",
+        "modules.db.postgresql.query.output.rows.description": "Array of result rows as objects",
+        "modules.db.redis.get.description": "Get a value from Redis cache",
+        "modules.db.redis.get.label": "Redis Get",
+        "modules.db.redis.get.output.exists.description": "The returned value",
+        "modules.db.redis.get.output.key.description": "The returned value",
+        "modules.db.redis.get.output.value.description": "The returned value",
+        "modules.db.redis.set.description": "Set a value in Redis cache",
+        "modules.db.redis.set.label": "Redis Set"
+    }
+}

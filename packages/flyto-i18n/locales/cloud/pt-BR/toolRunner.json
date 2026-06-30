@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Avancado",
+        "toolRunner.backToLibrary": "Voltar para Biblioteca",
+        "toolRunner.copy": "Copiar",
+        "toolRunner.download": "Baixar",
+        "toolRunner.editTool": "Editar",
+        "toolRunner.executionFailed": "Execucao Falhou",
+        "toolRunner.executionLogs": "Logs de Execucao",
+        "toolRunner.executionSuccess": "Execucao Concluida",
+        "toolRunner.executionTimedOut": "Execucao expirou",
+        "toolRunner.flowSteps": "Etapas do Fluxo",
+        "toolRunner.inputForm": "Formulario de Entrada",
+        "toolRunner.loadFailed": "Falha ao carregar ferramenta",
+        "toolRunner.noLogs": "Nenhum log ainda. Execute a ferramenta para ver os logs de execucao.",
+        "toolRunner.resolvedParams": "Parametros Resolvidos",
+        "toolRunner.results": "Resultados",
+        "toolRunner.retry": "Tentar Novamente",
+        "toolRunner.runAgain": "Executar Novamente",
+        "toolRunner.runToSeeResults": "Execute a ferramenta para ver os resultados aqui",
+        "toolRunner.runTool": "Executar Ferramenta",
+        "toolRunner.running": "Executando...",
+        "toolRunner.simpleMode": "Simples",
+        "toolRunner.toolNotFound": "Ferramenta Nao Encontrada",
+        "toolRunner.toolNotFoundError": "Ferramenta nao encontrada"
+    }
+}

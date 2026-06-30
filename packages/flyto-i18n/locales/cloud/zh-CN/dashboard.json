@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "已应用",
+        "dashboard.evolution.events": "事件",
+        "dashboard.evolution.executions": "运行",
+        "dashboard.evolution.flytoCan": "飞往罐头",
+        "dashboard.evolution.fromCheckpoints": "从检查点",
+        "dashboard.evolution.last30days": "最近 30 天",
+        "dashboard.evolution.last7days": "最近 7 天",
+        "dashboard.evolution.last90days": "最近 90 天",
+        "dashboard.evolution.moatDescription": "护城河描述",
+        "dashboard.evolution.moatTitle": "护城河标题",
+        "dashboard.evolution.n8nCant": "N8n 无法",
+        "dashboard.evolution.overallImprovement": "整体改善",
+        "dashboard.evolution.pending": "待处理",
+        "dashboard.evolution.reliability": "可靠性",
+        "dashboard.evolution.subtitle": "副标题",
+        "dashboard.evolution.suggestionsApplied": "已应用建议",
+        "dashboard.evolution.timeSaved": "节省时间",
+        "dashboard.evolution.timeline": "时间轴",
+        "dashboard.evolution.title": "标题",
+        "dashboard.evolution.today": "今天",
+        "dashboard.evolution.topImproved": "改善最多",
+        "dashboard.evolution.yesterday": "昨天",
+        "dashboard.title": "仪表板"
+    }
+}

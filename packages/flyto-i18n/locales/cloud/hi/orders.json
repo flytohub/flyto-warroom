@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "स्वीकार करें",
+        "orders.approve": "मंजूर करें",
+        "orders.budget": "बजट",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "पूर्ण",
+        "orders.createFailed": "ऑर्डर बनाने में विफल",
+        "orders.createOrder": "ऑर्डर बनाएं",
+        "orders.createOrderSubtitle": "इस विक्रेता को प्रोजेक्ट अनुरोध भेजें",
+        "orders.days": "दिन",
+        "orders.deadline": "डिलीवरी समय",
+        "orders.decline": "अस्वीकार करें",
+        "orders.deliver": "डिलीवर करें",
+        "orders.description": "विवरण",
+        "orders.descriptionPlaceholder": "अपनी प्रोजेक्ट आवश्यकताओं का विस्तार से वर्णन करें...",
+        "orders.payNow": "अभी भुगतान करें",
+        "orders.requirements": "अतिरिक्त आवश्यकताएं",
+        "orders.requirementsPlaceholder": "कोई विशेष आवश्यकताएं या नोट्स...",
+        "orders.sendOrder": "ऑर्डर अनुरोध भेजें",
+        "orders.sending": "भेजा जा रहा है...",
+        "orders.sendingTo": "भेजा जा रहा है",
+        "orders.title": "प्रोजेक्ट शीर्षक",
+        "orders.titlePlaceholder": "आपको किसमें मदद चाहिए?",
+        "orders.viewDetails": "विवरण",
+        "orders.waitingResponse": "प्रतिक्रिया की प्रतीक्षा में"
+    }
+}

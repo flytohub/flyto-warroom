@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Derniere mise a jour",
+        "privacy.sections.collection.content": "Nous collectons les informations que vous nous fournissez directement, par exemple lorsque vous creez un compte, utilisez nos services ou nous contactez pour obtenir de l'aide. Cela peut inclure votre nom, votre adresse e-mail et des donnees d'utilisation pour ameliorer nos services.",
+        "privacy.sections.collection.title": "Informations que nous collectons",
+        "privacy.sections.contact.content": "Si vous avez des questions concernant cette politique de confidentialite ou nos pratiques en matiere de donnees, veuillez nous contacter a privacy{'@'}flytohub.com.",
+        "privacy.sections.contact.title": "Nous contacter",
+        "privacy.sections.rights.content": "Vous avez le droit d'acceder, de corriger ou de supprimer vos informations personnelles. Vous pouvez egalement demander la portabilite des donnees ou vous opposer a certaines activites de traitement. Contactez-nous pour exercer ces droits.",
+        "privacy.sections.rights.title": "Vos droits",
+        "privacy.sections.security.content": "Nous mettons en oeuvre des mesures techniques et organisationnelles appropriees pour proteger vos informations personnelles contre tout acces, modification, divulgation ou destruction non autorises.",
+        "privacy.sections.security.title": "Securite des donnees",
+        "privacy.sections.sharing.content": "Nous ne vendons pas vos informations personnelles. Nous pouvons partager vos informations avec des prestataires de services tiers qui nous aident a exploiter notre plateforme, sous reserve d'accords de confidentialite.",
+        "privacy.sections.sharing.title": "Partage des informations",
+        "privacy.sections.usage.content": "Nous utilisons les informations que nous collectons pour fournir, maintenir et ameliorer nos services, pour communiquer avec vous et pour personnaliser votre experience. Nous pouvons egalement utiliser des donnees agregees a des fins d'analyse.",
+        "privacy.sections.usage.title": "Comment nous utilisons vos informations",
+        "privacy.title": "Politique de confidentialite"
+    }
+}

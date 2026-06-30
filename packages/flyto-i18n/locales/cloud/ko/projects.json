@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "프로젝트 만들기",
+        "projects.create.title": "프로젝트 만들기",
+        "projects.delete.message": "이 프로젝트를 삭제하시겠습니까? 이 프로젝트의 모든 워크플로는 기본 프로젝트로 이동됩니다.",
+        "projects.delete.title": "프로젝트 삭제",
+        "projects.description": "워크플로를 프로젝트로 정리하세요",
+        "projects.edit.title": "프로젝트 편집",
+        "projects.empty.description": "워크플로를 정리할 첫 번째 프로젝트를 만드세요",
+        "projects.empty.title": "아직 프로젝트가 없습니다",
+        "projects.form.color": "색상",
+        "projects.form.description": "설명",
+        "projects.form.name": "프로젝트 이름",
+        "projects.form.namePlaceholder": "내 프로젝트",
+        "projects.members": "멤버",
+        "projects.title": "프로젝트",
+        "projects.workflows": "워크플로"
+    }
+}

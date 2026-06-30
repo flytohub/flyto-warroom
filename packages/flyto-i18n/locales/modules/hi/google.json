@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Google कैलेंडर में एक नया इवेंट बनाएं",
+        "modules.google.calendar.create_event.label": "कैलेंडर इवेंट बनाएं",
+        "modules.google.calendar.create_event.output.end.description": "इवेंट समाप्त होने का समय",
+        "modules.google.calendar.create_event.output.event_id.description": "बनाया गया इवेंट ID",
+        "modules.google.calendar.create_event.output.html_link.description": "Google कैलेंडर में इवेंट देखने के लिए लिंक",
+        "modules.google.calendar.create_event.output.start.description": "इवेंट शुरू होने का समय",
+        "modules.google.calendar.create_event.output.summary.description": "इवेंट का शीर्षक",
+        "modules.google.calendar.list_events.description": "Google कैलेंडर से आगामी इवेंट की सूची",
+        "modules.google.calendar.list_events.label": "कैलेंडर इवेंट सूची",
+        "modules.google.calendar.list_events.output.count.description": "वापस आए इवेंट की संख्या",
+        "modules.google.calendar.list_events.output.events.description": "कैलेंडर इवेंट की सूची",
+        "modules.google.gmail.search.description": "Gmail खोज क्वेरी सिंटैक्स का उपयोग करके Gmail संदेश खोजें",
+        "modules.google.gmail.search.label": "Gmail खोजें",
+        "modules.google.gmail.search.output.messages.description": "मेल खाने वाले संदेशों की सूची",
+        "modules.google.gmail.search.output.total.description": "वापस आए संदेशों की कुल संख्या",
+        "modules.google.gmail.send.description": "Gmail API के माध्यम से एक ईमेल भेजें",
+        "modules.google.gmail.send.label": "Gmail भेजें",
+        "modules.google.gmail.send.output.message_id.description": "Gmail संदेश ID",
+        "modules.google.gmail.send.output.thread_id.description": "Gmail थ्रेड ID",
+        "modules.google.gmail.send.output.to.description": "प्राप्तकर्ता का ईमेल पता"
+    }
+}

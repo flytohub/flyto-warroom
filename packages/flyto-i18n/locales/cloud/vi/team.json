@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "Không có hoạt động gần đây",
+        "team.activity.title": "Hoạt động gần đây",
+        "team.contributors.created": "Đã tạo",
+        "team.contributors.empty": "Chưa có người đóng góp",
+        "team.contributors.executed": "Đã thực thi",
+        "team.contributors.title": "Người đóng góp",
+        "team.dashboard.subtitle": "Tổng quan hoạt động của nhóm",
+        "team.dashboard.title": "Bảng điều khiển nhóm",
+        "team.stats.executions": "Lần thực thi",
+        "team.stats.members": "Thành viên",
+        "team.stats.templates": "Mẫu",
+        "team.stats.workflows": "Workflow"
+    }
+}

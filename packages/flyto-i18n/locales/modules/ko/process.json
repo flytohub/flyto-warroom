@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "실행 중인 모든 백그라운드 프로세스 나열",
+        "modules.process.list.label": "프로세스 나열",
+        "modules.process.list.output.count.description": "작업 성공",
+        "modules.process.list.output.ok.description": "작업 성공",
+        "modules.process.list.output.processes.description": "작업 성공",
+        "modules.process.list.output.running.description": "프로세스 정보 목록",
+        "modules.process.list.output.stopped.description": "총 프로세스 수",
+        "modules.process.start.description": "백그라운드 프로세스 시작 (서버, 서비스 등)",
+        "modules.process.start.label": "백그라운드 프로세스 시작",
+        "modules.process.start.output.command.description": "process.stop을 위한 내부 프로세스 식별자",
+        "modules.process.start.output.cwd.description": "프로세스 이름",
+        "modules.process.start.output.initial_output.description": "프로세스 시작 시간 (ISO 타임스탬프)",
+        "modules.process.start.output.name.description": "프로세스 ID",
+        "modules.process.start.output.ok.description": "프로세스 시작 성공 여부",
+        "modules.process.start.output.pid.description": "프로세스 시작 성공 여부",
+        "modules.process.start.output.process_id.description": "프로세스 시작 성공 여부",
+        "modules.process.start.output.started_at.description": "실행된 명령",
+        "modules.process.stop.description": "실행 중인 백그라운드 프로세스 중지",
+        "modules.process.stop.label": "프로세스 중지",
+        "modules.process.stop.output.count.description": "중지된 프로세스 정보 목록",
+        "modules.process.stop.output.failed.description": "중지된 프로세스 정보 목록",
+        "modules.process.stop.output.ok.description": "모든 프로세스가 성공적으로 중지되었는지 여부",
+        "modules.process.stop.output.stopped.description": "모든 프로세스가 성공적으로 중지되었는지 여부"
+    }
+}

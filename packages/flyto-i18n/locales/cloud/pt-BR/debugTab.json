@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.debugTab",
+    "version": "1.0.0",
+    "translations": {
+        "debugTab.context": "Contexto",
+        "debugTab.output": "Saida",
+        "debugTab.screenshot": "Captura de Tela"
+    }
+}

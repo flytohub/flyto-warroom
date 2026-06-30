@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Categoria",
+        "createModal.category.placeholder": "Seleziona una categoria (opzionale)",
+        "createModal.closeDialog": "Chiudi finestra di dialogo",
+        "createModal.create": "Crea Template",
+        "createModal.creating": "Creazione in corso...",
+        "createModal.description.label": "Descrizione",
+        "createModal.description.placeholder": "Cosa fa questo template? (opzionale)",
+        "createModal.errors.createFailed": "Impossibile creare il template",
+        "createModal.errors.fileTooLarge": "L'immagine deve essere inferiore a 2MB",
+        "createModal.errors.invalidFileType": "Seleziona un file immagine",
+        "createModal.folder.label": "Cartella",
+        "createModal.folder.placeholder": "Predefinito (nessuna cartella)",
+        "createModal.icon.change": "Cambia Icona",
+        "createModal.icon.hint": "PNG, JPG, GIF fino a 2MB",
+        "createModal.icon.label": "Icona Template",
+        "createModal.icon.remove": "Rimuovi icona",
+        "createModal.icon.upload": "Carica Icona",
+        "createModal.name.label": "Nome Template",
+        "createModal.name.placeholder": "La Mia Fantastica Automazione",
+        "createModal.title": "Nuovo Template"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "Esqueceu a Senha?",
+        "loginFormDefault.loginButton": "Entrar",
+        "loginFormDefault.passwordPlaceholder": "Digite a senha",
+        "loginFormDefault.usernamePlaceholder": "Digite o nome de usuario"
+    }
+}

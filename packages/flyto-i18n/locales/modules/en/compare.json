@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "Detect if a value has changed beyond threshold (by amount or percentage)",
+        "modules.compare.change.label": "Detect Change",
+        "modules.compare.change.output.change_absolute.description": "Percentage change (positive = up, negative = down)",
+        "modules.compare.change.output.change_percent.description": "Direction of change: ",
+        "modules.compare.change.output.changed.description": "Whether the operation succeeded",
+        "modules.compare.change.output.current.description": "Absolute change (positive = up, negative = down)",
+        "modules.compare.change.output.direction.description": "Whether the operation succeeded",
+        "modules.compare.change.output.ok.description": "Whether the operation succeeded",
+        "modules.compare.change.output.previous.description": "Absolute change (positive = up, negative = down)",
+        "modules.compare.change.output.summary.description": "The current value",
+        "modules.compare.change.params.current.description": "The current/new value to compare",
+        "modules.compare.change.params.current.label": "Current Value",
+        "modules.compare.change.params.direction.description": "Which direction of change to detect",
+        "modules.compare.change.params.direction.label": "Threshold",
+        "modules.compare.change.params.mode.description": "The previous/old value to compare against",
+        "modules.compare.change.params.mode.label": "Previous Value",
+        "modules.compare.change.params.previous.description": "The current/new value to compare",
+        "modules.compare.change.params.previous.label": "Current Value",
+        "modules.compare.change.params.threshold.description": "Minimum change to trigger (5 = 5% or 5 units)",
+        "modules.compare.change.params.threshold.label": "Percentage Change"
+    }
+}

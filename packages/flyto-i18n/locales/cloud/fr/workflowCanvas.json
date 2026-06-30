@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "Assistant AI (Demandez de l'aide à l'AI)",
+        "workflowCanvas.controls.autoLayout": "Disposition automatique",
+        "workflowCanvas.controls.fitView": "Ajuster la vue",
+        "workflowCanvas.controls.zoomIn": "Agrandir",
+        "workflowCanvas.controls.zoomOut": "Réduire",
+        "workflowCanvas.deleteDialog.deleteAll": "Tout supprimer",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "Supprimer ce noeud et tous les {count} noeud(s) enfant(s)",
+        "workflowCanvas.deleteDialog.mergeToChild": "Fusionner vers l'enfant",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "Supprimer uniquement ce noeud et connecter le parent au premier enfant",
+        "workflowCanvas.deleteDialog.message": "Ce noeud a {count} noeud(s) enfant(s). Que souhaitez-vous faire ?",
+        "workflowCanvas.deleteDialog.title": "Supprimer un noeud avec des enfants",
+        "workflowCanvas.reconnect.cancel": "Annuler",
+        "workflowCanvas.reconnect.connect": "Connecter",
+        "workflowCanvas.reconnect.dontConnect": "Ne pas connecter",
+        "workflowCanvas.stickyNoteCreated": "Note autocollante créée"
+    }
+}

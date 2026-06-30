@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "建立",
+        "actionLabel.delete": "刪除",
+        "actionLabel.execute": "執行",
+        "actionLabel.export": "匯出",
+        "actionLabel.import": "匯入",
+        "actionLabel.logout": "登出",
+        "actionLabel.update": "更新"
+    }
+}

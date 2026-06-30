@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.vectorStore",
+    "version": "1.0.0",
+    "translations": {
+        "vectorStore.addMetadata": "添加字段",
+        "vectorStore.collection": "集合",
+        "vectorStore.collectionName": "集合名称",
+        "vectorStore.content": "文档内容",
+        "vectorStore.contentPlaceholder": "输入文本或使用 {{变量}}...",
+        "vectorStore.createCollection": "创建新集合",
+        "vectorStore.deleteIds": "要删除的文档 ID",
+        "vectorStore.documentId": "文档 ID（选填）",
+        "vectorStore.filters": "元数据筛选",
+        "vectorStore.metadata": "元数据",
+        "vectorStore.noMetadata": "无元数据字段",
+        "vectorStore.query": "查找",
+        "vectorStore.queryPlaceholder": "输入搜索查找或使用 {{变量}}...",
+        "vectorStore.refreshCollections": "刷新集合",
+        "vectorStore.scoreThreshold": "相似度门槛",
+        "vectorStore.scoreThresholdHint": "最低相似度分数 (0-1)",
+        "vectorStore.selectCollection": "选择集合...",
+        "vectorStore.topK": "前 K 笔结果"
+    }
+}

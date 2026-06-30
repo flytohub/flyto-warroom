@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "ดึงข้อความและเนื้อหาจากเอกสาร Word (.docx)",
+        "modules.word.parse.label": "แปลงเอกสาร Word",
+        "modules.word.parse.output.images.description": "รายการย่อหน้า",
+        "modules.word.parse.output.metadata.description": "ตารางที่ดึงออกมาเป็นอาร์เรย์",
+        "modules.word.parse.output.paragraphs.description": "เนื้อหาข้อความทั้งหมดของเอกสาร",
+        "modules.word.parse.output.tables.description": "เนื้อหาข้อความทั้งหมดของเอกสาร",
+        "modules.word.parse.output.text.description": "เนื้อหาข้อความทั้งหมดของเอกสาร",
+        "modules.word.to_pdf.description": "แปลงเอกสาร Word (.docx) เป็นไฟล์ PDF",
+        "modules.word.to_pdf.label": "Word เป็น PDF",
+        "modules.word.to_pdf.output.file_size.description": "พาธไปยังไฟล์ PDF ที่สร้าง",
+        "modules.word.to_pdf.output.method_used.description": "ขนาดไฟล์เอาต์พุตเป็นไบต์",
+        "modules.word.to_pdf.output.output_path.description": "พาธไปยังไฟล์ PDF ที่สร้าง"
+    }
+}

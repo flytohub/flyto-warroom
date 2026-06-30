@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.creatorProfile",
+  "version": "1.0.0",
+  "translations": {
+    "creatorProfile.backToMarketplace": "",
+    "creatorProfile.chatError": "",
+    "creatorProfile.creatorTemplates": "",
+    "creatorProfile.editProfile": "",
+    "creatorProfile.follow": "",
+    "creatorProfile.followError": "",
+    "creatorProfile.followers": "",
+    "creatorProfile.following": "",
+    "creatorProfile.loadMore": "",
+    "creatorProfile.noDescription": "",
+    "creatorProfile.noFollowers": "",
+    "creatorProfile.noFollowing": "",
+    "creatorProfile.noTemplates": "",
+    "creatorProfile.notFound": "",
+    "creatorProfile.notFoundDesc": "",
+    "creatorProfile.templates": ""
+  }
+}

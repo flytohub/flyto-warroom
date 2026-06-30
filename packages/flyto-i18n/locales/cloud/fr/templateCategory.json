@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.templateCategory",
+    "version": "1.0.0",
+    "translations": {
+        "templateCategory.ai": "IA",
+        "templateCategory.api": "API",
+        "templateCategory.automation": "Automatisation",
+        "templateCategory.dataProcessing": "Traitement de donnees",
+        "templateCategory.developer": "Outils Dev",
+        "templateCategory.file": "Fichiers",
+        "templateCategory.media": "Medias",
+        "templateCategory.monitoring": "Surveillance",
+        "templateCategory.notification": "Notifications",
+        "templateCategory.productivity": "Productivite",
+        "templateCategory.socialMedia": "Reseaux sociaux",
+        "templateCategory.webScraping": "Web Scraping"
+    }
+}

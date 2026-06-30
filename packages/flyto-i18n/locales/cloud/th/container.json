@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.container",
+    "version": "1.0.0",
+    "translations": {
+        "container.editSubflow": "แก้ไข Subflow"
+    }
+}

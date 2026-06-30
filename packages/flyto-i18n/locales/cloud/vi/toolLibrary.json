@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "Tất cả",
+        "toolLibrary.createFirstTool": "Tạo công cụ đầu tiên",
+        "toolLibrary.createTool": "Tạo công cụ",
+        "toolLibrary.deleteConfirm": "Xóa công cụ",
+        "toolLibrary.deleteMessage": "Bạn có chắc chắn muốn xóa \"{name}\"? Hành động này không thể hoàn tác.",
+        "toolLibrary.noDescription": "Không có mô tả",
+        "toolLibrary.noTools": "Chưa có công cụ",
+        "toolLibrary.noToolsDesc": "Tạo công cụ đầu tiên để tự động hóa workflow của bạn",
+        "toolLibrary.run": "Chạy",
+        "toolLibrary.searchPlaceholder": "Tìm kiếm công cụ...",
+        "toolLibrary.steps": "bước",
+        "toolLibrary.subtitle": "Quản lý và chạy các công cụ tự động hóa của bạn",
+        "toolLibrary.title": "Thư viện công cụ"
+    }
+}

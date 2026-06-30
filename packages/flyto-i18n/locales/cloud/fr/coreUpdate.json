@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "disponible",
+        "coreUpdate.checkFailed": "Echec de la verification du statut",
+        "coreUpdate.downloadPage": "Telecharger depuis le site officiel",
+        "coreUpdate.installedVersion": "Version installee",
+        "coreUpdate.invalidFile": "Veuillez selectionner un fichier .whl valide",
+        "coreUpdate.lastCheck": "Derniere verification",
+        "coreUpdate.notInstalled": "Non installe",
+        "coreUpdate.refresh": "Rechercher des mises a jour",
+        "coreUpdate.title": "Moteur principal",
+        "coreUpdate.upToDate": "A jour",
+        "coreUpdate.uploadFailed": "Echec du telechargement",
+        "coreUpdate.uploadPackage": "Telecharger le paquet",
+        "coreUpdate.whlFile": "Telecharger le fichier .whl"
+    }
+}

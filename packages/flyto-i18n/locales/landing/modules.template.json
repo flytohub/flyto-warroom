@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "template",
+  "version": "1.0.0",
+  "translations": {
+    "modules.template.invoke.description": "",
+    "modules.template.invoke.label": "",
+    "modules.template.invoke.output.__event__.description": "",
+    "modules.template.invoke.output.execution_time_ms.description": "",
+    "modules.template.invoke.output.result.description": "",
+    "modules.template.invoke.output.template_id.description": "",
+    "modules.template.invoke.ports.input": "",
+    "modules.template.invoke.ports.success": ""
+  }
+}

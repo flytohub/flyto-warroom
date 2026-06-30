@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.completionEffect",
+    "version": "1.0.0",
+    "translations": {
+        "completionEffect.defaultMessage": "ดำเนินการทุกขั้นตอนสำเร็จ",
+        "completionEffect.defaultTitle": "Workflow เสร็จสมบูรณ์"
+    }
+}

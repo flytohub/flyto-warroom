@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Listar todos os processos em segundo plano em execucao",
+        "modules.process.list.label": "Listar Processos",
+        "modules.process.list.output.count.description": "Sucesso da operacao",
+        "modules.process.list.output.ok.description": "Sucesso da operacao",
+        "modules.process.list.output.processes.description": "Sucesso da operacao",
+        "modules.process.list.output.running.description": "Lista de informacoes de processos",
+        "modules.process.list.output.stopped.description": "Numero total de processos",
+        "modules.process.start.description": "Iniciar processo em segundo plano (servidor, servico, etc.)",
+        "modules.process.start.label": "Iniciar Processo em Segundo Plano",
+        "modules.process.start.output.command.description": "Identificador interno do processo para process.stop",
+        "modules.process.start.output.cwd.description": "Nome do processo",
+        "modules.process.start.output.initial_output.description": "Timestamp ISO de quando o processo iniciou",
+        "modules.process.start.output.name.description": "ID do processo",
+        "modules.process.start.output.ok.description": "Se o processo iniciou com sucesso",
+        "modules.process.start.output.pid.description": "Se o processo iniciou com sucesso",
+        "modules.process.start.output.process_id.description": "Se o processo iniciou com sucesso",
+        "modules.process.start.output.started_at.description": "O comando executado",
+        "modules.process.stop.description": "Parar processo em segundo plano em execucao",
+        "modules.process.stop.label": "Parar Processo",
+        "modules.process.stop.output.count.description": "Lista de info de processos parados",
+        "modules.process.stop.output.failed.description": "Lista de info de processos parados",
+        "modules.process.stop.output.ok.description": "Se todos os processos foram parados com sucesso",
+        "modules.process.stop.output.stopped.description": "Se todos os processos foram parados com sucesso"
+    }
+}

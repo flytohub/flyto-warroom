@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "cloud.stateMachine",
+  "version": "1.0.0",
+  "translations": {
+    "stateMachine.create.approval": "Approval İş akışı",
+    "stateMachine.create.blank": "Blank",
+    "stateMachine.create.descPlaceholder": "Enter Açıklama",
+    "stateMachine.create.description": "Açıklama",
+    "stateMachine.create.name": "Ad",
+    "stateMachine.create.namePlaceholder": "Enter state machine Ad",
+    "stateMachine.create.order": "Order Processing",
+    "stateMachine.create.template": "Şablon",
+    "stateMachine.create.ticket": "Destek Ticket",
+    "stateMachine.create.title": "Oluştur State Machine",
+    "stateMachine.diagram.select": "Seç a state machine",
+    "stateMachine.diagram.title": "State Diagram",
+    "stateMachine.instances.empty": "No instances",
+    "stateMachine.instances.history": "History",
+    "stateMachine.instances.title": "Instances",
+    "stateMachine.instances.trigger": "Trigger",
+    "stateMachine.list.empty": "No state machines",
+    "stateMachine.list.title": "State Machines",
+    "stateMachine.stats.activeInstances": "Active Instances",
+    "stateMachine.stats.completed": "Tamamlandı",
+    "stateMachine.stats.machines": "Machines",
+    "stateMachine.stats.transitions": "Transitions"
+  }
+}

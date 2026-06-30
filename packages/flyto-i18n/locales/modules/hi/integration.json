@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "integration",
+    "version": "1.0.0",
+    "translations": {
+        "modules.integration.jira.create_issue.description": "Jira में नया इश्यू बनाएं",
+        "modules.integration.jira.create_issue.label": "Jira इश्यू बनाएं",
+        "modules.integration.jira.search_issues.description": "JQL क्वेरी का उपयोग करके इश्यू खोजें",
+        "modules.integration.jira.search_issues.label": "Jira इश्यू खोजें",
+        "modules.integration.salesforce.create_record.description": "Salesforce में नया रिकॉर्ड बनाएं",
+        "modules.integration.salesforce.create_record.label": "Salesforce रिकॉर्ड बनाएं",
+        "modules.integration.salesforce.query.description": "Salesforce में SOQL क्वेरी निष्पादित करें",
+        "modules.integration.salesforce.query.label": "Salesforce क्वेरी",
+        "modules.integration.salesforce.update_record.description": "Salesforce में मौजूदा रिकॉर्ड अपडेट करें",
+        "modules.integration.salesforce.update_record.label": "Salesforce रिकॉर्ड अपडेट करें",
+        "modules.integration.slack.list_channels.description": "Slack वर्कस्पेस में चैनल सूचीबद्ध करें",
+        "modules.integration.slack.list_channels.label": "Slack चैनल सूचीबद्ध करें",
+        "modules.integration.slack.list_channels.params.channels": "चैनल",
+        "modules.integration.slack.list_channels.params.channels.options.id": "Id",
+        "modules.integration.slack.list_channels.params.channels.options.is_private": "क्या निजी है",
+        "modules.integration.slack.list_channels.params.channels.options.name": "नाम",
+        "modules.integration.slack.list_channels.params.channels.options.num_members": "सदस्यों की संख्या",
+        "modules.integration.slack.send_message.description": "Slack चैनल में संदेश भेजें",
+        "modules.integration.slack.send_message.label": "Slack संदेश भेजें"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "利用可能な変数",
+        "code.inputAllDesc": "前のステップからのすべてのアイテム",
+        "code.inputFirstDesc": "最初のアイテムのみ",
+        "code.jsonDesc": "現在のアイテムデータ（エイリアス）",
+        "code.language": "言語",
+        "code.localExecutionNotice": "セキュリティのためコードはローカルマシンで実行されます",
+        "code.sourceCode": "ソースコード"
+    }
+}

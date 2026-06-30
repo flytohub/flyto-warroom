@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "탐색 경로",
+        "accessibility.clearInput": "입력 지우기",
+        "accessibility.closeDialog": "대화상자 닫기",
+        "accessibility.closeMenu": "메뉴 닫기",
+        "accessibility.closeModal": "모달 닫기",
+        "accessibility.copyToClipboard": "클립보드에 복사",
+        "accessibility.imageEditingControls": "이미지 편집 컨트롤",
+        "accessibility.notifications": "알림",
+        "accessibility.openMenu": "메뉴 열기",
+        "accessibility.rating": "평점",
+        "accessibility.refreshList": "목록 새로고침",
+        "accessibility.removeIcon": "아이콘 제거",
+        "accessibility.resetImage": "이미지 위치 및 확대/축소 초기화",
+        "accessibility.revokeKey": "키 해지",
+        "accessibility.rotateLeft": "왼쪽으로 90도 회전",
+        "accessibility.rotateRight": "오른쪽으로 90도 회전",
+        "accessibility.showInMarketplace": "마켓플레이스에서 보기",
+        "accessibility.zoomIn": "확대",
+        "accessibility.zoomOut": "축소"
+    }
+}

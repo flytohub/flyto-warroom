@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "ヘッダー名",
+        "schema.field.body": "本文",
+        "schema.field.body_matches": "レスポンス",
+        "schema.field.full_page": "フルページ",
+        "schema.field.response": "レスポンス",
+        "schema.field.screenshot_format": "フルページ",
+        "schema.field.ssrf_protection": "SSRF 防御",
+        "schema.field.ssrf_protection.description": "プライベート/内部ネットワークへのリクエストをブロック（localhost、192.168.x.x、クラウドメタデータエンドポイント）。信頼できる内部ターゲットへのアクセス時のみ無効にしてください。",
+        "schema.field.url": "URL",
+        "schema.field.viewport_height": "幅",
+        "schema.field.viewport_width": "幅"
+    }
+}

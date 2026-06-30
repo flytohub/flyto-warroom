@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "मार्केटप्लेस पर वापस जाएं",
+        "creatorProfile.chatError": "चैट शुरू करने में विफल",
+        "creatorProfile.creatorTemplates": "क्रिएटर के टेम्पलेट",
+        "creatorProfile.editProfile": "प्रोफाइल संपादित करें",
+        "creatorProfile.follow": "फॉलो करें",
+        "creatorProfile.followError": "फॉलो स्थिति अपडेट करने में विफल",
+        "creatorProfile.followers": "फॉलोअर्स",
+        "creatorProfile.following": "फॉलो कर रहे हैं",
+        "creatorProfile.loadMore": "और लोड करें",
+        "creatorProfile.noDescription": "कोई विवरण नहीं",
+        "creatorProfile.noFollowers": "अभी कोई फॉलोअर्स नहीं",
+        "creatorProfile.noFollowing": "किसी को फॉलो नहीं कर रहे",
+        "creatorProfile.noTemplates": "अभी कोई टेम्पलेट प्रकाशित नहीं",
+        "creatorProfile.notFound": "क्रिएटर नहीं मिला",
+        "creatorProfile.notFoundDesc": "जिस क्रिएटर को आप खोज रहे हैं वह मौजूद नहीं है या हटा दिया गया है।",
+        "creatorProfile.templates": "टेम्पलेट"
+    }
+}

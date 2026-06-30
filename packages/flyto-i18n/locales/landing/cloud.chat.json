@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.chat",
+  "version": "1.0.0",
+  "translations": {
+    "chat.attachFile": "",
+    "chat.messageUser": "",
+    "chat.messages": "",
+    "chat.noConversations": "",
+    "chat.noMessages": "",
+    "chat.online": "",
+    "chat.searchConversations": "",
+    "chat.selectConversation": "",
+    "chat.send": "",
+    "chat.startChat": "",
+    "chat.startChatFailed": "",
+    "chat.typePlaceholder": "",
+    "chat.user": ""
+  }
+}

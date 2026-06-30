@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.gridLayout",
+    "version": "1.0.0",
+    "translations": {
+        "gridLayout.fourColumns": "चार कॉलम",
+        "gridLayout.singleColumn": "एक कॉलम",
+        "gridLayout.threeColumns": "तीन कॉलम",
+        "gridLayout.twoColumns11": "दो कॉलम (1:1)",
+        "gridLayout.twoColumns12": "दो कॉलम (1:2)",
+        "gridLayout.twoColumns21": "दो कॉलम (2:1)"
+    }
+}

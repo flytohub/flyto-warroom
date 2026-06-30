@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count} दिन पहले",
+        "notifications.empty": "अभी तक कोई सूचना नहीं",
+        "notifications.hoursAgo": "{count} घंटे पहले",
+        "notifications.justNow": "अभी-अभी",
+        "notifications.loadMore": "और लोड करें",
+        "notifications.markAllRead": "सभी पढ़ा हुआ चिह्नित करें",
+        "notifications.minutesAgo": "{count} मिनट पहले",
+        "notifications.title": "सूचनाएं"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "MongoDB कलेक्शन से डॉक्यूमेंट्स क्वेरी करें",
+        "modules.db.mongodb.find.label": "MongoDB खोजें",
+        "modules.db.mongodb.find.output.count.description": "मेल खाते डॉक्यूमेंट्स की सरणी",
+        "modules.db.mongodb.find.output.documents.description": "मेल खाते डॉक्यूमेंट्स की सरणी",
+        "modules.db.mongodb.insert.description": "MongoDB कलेक्शन में एक या अधिक डॉक्यूमेंट्स इन्सर्ट करें",
+        "modules.db.mongodb.insert.label": "MongoDB इन्सर्ट",
+        "modules.db.mongodb.insert.output.inserted_count.description": "इन्सर्ट किए गए डॉक्यूमेंट्स की संख्या",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "इन्सर्ट किए गए डॉक्यूमेंट्स की संख्या",
+        "modules.db.mysql.query.description": "MySQL डेटाबेस पर SQL क्वेरी निष्पादित करें और परिणाम लौटाएं",
+        "modules.db.mysql.query.label": "MySQL क्वेरी",
+        "modules.db.mysql.query.output.columns.description": "ऑब्जेक्ट के रूप में परिणाम पंक्तियों की सरणी",
+        "modules.db.mysql.query.output.row_count.description": "ऑब्जेक्ट के रूप में परिणाम पंक्तियों की सरणी",
+        "modules.db.mysql.query.output.rows.description": "ऑब्जेक्ट के रूप में परिणाम पंक्तियों की सरणी",
+        "modules.db.postgresql.query.description": "PostgreSQL डेटाबेस पर SQL क्वेरी निष्पादित करें और परिणाम लौटाएं",
+        "modules.db.postgresql.query.label": "PostgreSQL क्वेरी",
+        "modules.db.postgresql.query.output.columns.description": "ऑब्जेक्ट के रूप में परिणाम पंक्तियों की सरणी",
+        "modules.db.postgresql.query.output.row_count.description": "ऑब्जेक्ट के रूप में परिणाम पंक्तियों की सरणी",
+        "modules.db.postgresql.query.output.rows.description": "ऑब्जेक्ट के रूप में परिणाम पंक्तियों की सरणी",
+        "modules.db.redis.get.description": "Redis कैश से मान प्राप्त करें",
+        "modules.db.redis.get.label": "Redis प्राप्त करें",
+        "modules.db.redis.get.output.exists.description": "लौटाया गया मान",
+        "modules.db.redis.get.output.key.description": "लौटाया गया मान",
+        "modules.db.redis.get.output.value.description": "लौटाया गया मान",
+        "modules.db.redis.set.description": "Redis कैश में मान सेट करें",
+        "modules.db.redis.set.label": "Redis सेट करें"
+    }
+}

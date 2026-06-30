@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "ลืมรหัสผ่าน?",
+        "loginFormDefault.loginButton": "เข้าสู่ระบบ",
+        "loginFormDefault.passwordPlaceholder": "ป้อนรหัสผ่าน",
+        "loginFormDefault.usernamePlaceholder": "ป้อนชื่อผู้ใช้"
+    }
+}

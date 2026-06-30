@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.analytics",
+  "version": "1.0.0",
+  "translations": {
+    "analytics.declining": "",
+    "analytics.eventBreakdown": "",
+    "analytics.frictionPoints": "",
+    "analytics.healthScore": "",
+    "analytics.improving": "",
+    "analytics.issues": "",
+    "analytics.noFriction": "",
+    "analytics.overallHealth": "",
+    "analytics.recommendations": "",
+    "analytics.stable": ""
+  }
+}

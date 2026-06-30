@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.analytics",
+    "version": "1.0.0",
+    "translations": {
+        "analytics.declining": "감소 중",
+        "analytics.eventBreakdown": "이벤트 분석",
+        "analytics.frictionPoints": "마찰 지점",
+        "analytics.healthScore": "건강 점수",
+        "analytics.improving": "개선 중",
+        "analytics.issues": "문제",
+        "analytics.noFriction": "마찰 없음",
+        "analytics.overallHealth": "전체 건강",
+        "analytics.recommendations": "추천 사항",
+        "analytics.stable": "안정적"
+    }
+}

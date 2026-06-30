@@ -1,0 +1,42 @@
+{
+  "version": "1.0.0",
+  "description": "Shared locale metadata for all flyto projects — flags, regions, display names",
+  "flagBaseUrl": "/flags",
+  "cdnFlagUrl": "https://raw.githubusercontent.com/flytohub/flyto-i18n/main/dist/flags",
+  "locales": {
+    "en":    { "name": "English",                "native": "English",            "region": "US", "flag": "us.svg" },
+    "zh-TW": { "name": "Traditional Chinese",   "native": "繁體中文",            "region": "TW", "flag": "tw.svg" },
+    "zh-CN": { "name": "Simplified Chinese",    "native": "简体中文",            "region": "CN", "flag": "cn.svg" },
+    "ja":    { "name": "Japanese",               "native": "日本語",              "region": "JP", "flag": "jp.svg" },
+    "ko":    { "name": "Korean",                 "native": "한국어",              "region": "KR", "flag": "kr.svg" },
+    "fr":    { "name": "French",                 "native": "Français",           "region": "FR", "flag": "fr.svg" },
+    "es":    { "name": "Spanish",                "native": "Español",            "region": "ES", "flag": "es.svg" },
+    "de":    { "name": "German",                 "native": "Deutsch",            "region": "DE", "flag": "de.svg" },
+    "pt-BR": { "name": "Portuguese (Brazil)",    "native": "Português (Brasil)", "region": "BR", "flag": "br.svg" },
+    "it":    { "name": "Italian",                "native": "Italiano",           "region": "IT", "flag": "it.svg" },
+    "hi":    { "name": "Hindi",                  "native": "हिन्दी",               "region": "IN", "flag": "in.svg" },
+    "vi":    { "name": "Vietnamese",             "native": "Tiếng Việt",         "region": "VN", "flag": "vn.svg" },
+    "th":    { "name": "Thai",                   "native": "ภาษาไทย",             "region": "TH", "flag": "th.svg" },
+    "id":    { "name": "Indonesian",             "native": "Bahasa Indonesia",   "region": "ID", "flag": "id.svg" },
+    "tr":    { "name": "Turkish",                "native": "Türkçe",             "region": "TR", "flag": "tr.svg" },
+    "pl":    { "name": "Polish",                 "native": "Polski",             "region": "PL", "flag": "pl.svg" }
+  },
+  "regionMap": {
+    "en": "US", "en-US": "US", "en-GB": "GB", "en-AU": "AU",
+    "zh": "TW", "zh-TW": "TW", "zh-CN": "CN", "zh-HK": "HK",
+    "ja": "JP", "ja-JP": "JP",
+    "ko": "KR", "ko-KR": "KR",
+    "fr": "FR", "fr-FR": "FR",
+    "de": "DE", "de-DE": "DE",
+    "es": "ES", "es-ES": "ES",
+    "it": "IT", "it-IT": "IT",
+    "pt": "PT", "pt-BR": "BR", "pt-PT": "PT",
+    "hi": "IN", "hi-IN": "IN",
+    "vi": "VN", "vi-VN": "VN",
+    "th": "TH", "th-TH": "TH",
+    "id": "ID", "id-ID": "ID",
+    "tr": "TR", "tr-TR": "TR",
+    "pl": "PL", "pl-PL": "PL",
+    "ru": "RU", "ru-RU": "RU"
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Wyodrębnij frontmatter YAML z treści Markdown",
+        "modules.markdown.parse_frontmatter.label": "Analizuj Frontmatter",
+        "modules.markdown.parse_frontmatter.output.content.description": "Treść Markdown bez frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Przeanalizowany frontmatter jako słownik",
+        "modules.markdown.parse_frontmatter.params.text.description": "Treść Markdown z frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.label": "Tekst Markdown",
+        "modules.markdown.to_html.description": "Konwertuj tekst Markdown na HTML",
+        "modules.markdown.to_html.label": "Markdown na HTML",
+        "modules.markdown.to_html.output.html.description": "Przekonwertowana treść HTML",
+        "modules.markdown.to_html.output.word_count.description": "Liczba słów w tekście wejściowym",
+        "modules.markdown.to_html.params.extensions.description": "Rozszerzenia Markdown do włączenia (używane tylko z biblioteką markdown)",
+        "modules.markdown.to_html.params.extensions.label": "Rozszerzenia",
+        "modules.markdown.to_html.params.text.description": "Treść Markdown do konwersji",
+        "modules.markdown.to_html.params.text.label": "Tekst Markdown",
+        "modules.markdown.toc.description": "Generuj spis treści z nagłówków Markdown",
+        "modules.markdown.toc.label": "Generuj spis treści",
+        "modules.markdown.toc.output.toc.description": "Lista nagłówków z poziomem, tytułem i slugiem",
+        "modules.markdown.toc.output.toc_markdown.description": "Sformatowany spis treści w Markdown",
+        "modules.markdown.toc.params.max_depth.description": "Maksymalna głębokość nagłówka do uwzględnienia (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "Maksymalna głębokość",
+        "modules.markdown.toc.params.text.description": "Treść Markdown do wyodrębnienia nagłówków",
+        "modules.markdown.toc.params.text.label": "Tekst Markdown"
+    }
+}

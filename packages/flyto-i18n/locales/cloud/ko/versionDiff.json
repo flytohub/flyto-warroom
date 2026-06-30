@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "추가됨",
+        "versionDiff.addedItems": "추가된 항목",
+        "versionDiff.compare": "비교",
+        "versionDiff.computing": "계산 중",
+        "versionDiff.current": "현재",
+        "versionDiff.from": "부터",
+        "versionDiff.modified": "수정됨",
+        "versionDiff.modifiedItems": "수정된 항목",
+        "versionDiff.new": "새로운",
+        "versionDiff.noChanges": "변경 없음",
+        "versionDiff.old": "이전",
+        "versionDiff.removed": "삭제됨",
+        "versionDiff.removedItems": "삭제된 항목",
+        "versionDiff.selectVersions": "버전 선택",
+        "versionDiff.title": "버전 비교",
+        "versionDiff.to": "까지"
+    }
+}

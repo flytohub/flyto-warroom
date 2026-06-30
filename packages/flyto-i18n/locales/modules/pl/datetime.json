@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "Dodaj czas do daty",
+        "modules.datetime.add.label": "Dodaj czas",
+        "modules.datetime.add.output.result.description": "Wynik operacji",
+        "modules.datetime.add.output.timestamp.description": "Wynik operacji",
+        "modules.datetime.format.description": "Sformatuj date do lancucha znakow",
+        "modules.datetime.format.label": "Formatuj date",
+        "modules.datetime.format.output.result.description": "Wynik operacji",
+        "modules.datetime.format.output.timestamp.description": "Wynik operacji",
+        "modules.datetime.parse.description": "Parsuj lancuch znakow na date",
+        "modules.datetime.parse.label": "Parsuj date",
+        "modules.datetime.parse.output.day.description": "Skladnik roku",
+        "modules.datetime.parse.output.hour.description": "Skladnik miesiaca",
+        "modules.datetime.parse.output.minute.description": "Skladnik dnia",
+        "modules.datetime.parse.output.month.description": "Znacznik czasu Unix",
+        "modules.datetime.parse.output.result.description": "Wynik operacji",
+        "modules.datetime.parse.output.second.description": "Skladnik godziny",
+        "modules.datetime.parse.output.timestamp.description": "Wynik operacji",
+        "modules.datetime.parse.output.year.description": "Wynik operacji",
+        "modules.datetime.subtract.description": "Odejmij czas od daty",
+        "modules.datetime.subtract.label": "Odejmij czas",
+        "modules.datetime.subtract.output.result.description": "Wynik operacji",
+        "modules.datetime.subtract.output.timestamp.description": "Wynik operacji"
+    }
+}

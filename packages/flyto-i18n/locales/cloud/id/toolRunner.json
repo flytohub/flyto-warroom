@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Lanjutan",
+        "toolRunner.backToLibrary": "Kembali ke Perpustakaan",
+        "toolRunner.copy": "Salin",
+        "toolRunner.download": "Unduh",
+        "toolRunner.editTool": "Edit",
+        "toolRunner.executionFailed": "Eksekusi Gagal",
+        "toolRunner.executionLogs": "Log Eksekusi",
+        "toolRunner.executionSuccess": "Eksekusi Selesai",
+        "toolRunner.executionTimedOut": "Eksekusi habis waktu",
+        "toolRunner.flowSteps": "Langkah Alur",
+        "toolRunner.inputForm": "Form Input",
+        "toolRunner.loadFailed": "Gagal memuat tool",
+        "toolRunner.noLogs": "Belum ada log. Jalankan tool untuk melihat log eksekusi.",
+        "toolRunner.resolvedParams": "Param Terselesaikan",
+        "toolRunner.results": "Hasil",
+        "toolRunner.retry": "Coba Lagi",
+        "toolRunner.runAgain": "Jalankan Lagi",
+        "toolRunner.runToSeeResults": "Jalankan tool untuk melihat hasil di sini",
+        "toolRunner.runTool": "Jalankan Tool",
+        "toolRunner.running": "Berjalan...",
+        "toolRunner.simpleMode": "Sederhana",
+        "toolRunner.toolNotFound": "Tool Tidak Ditemukan",
+        "toolRunner.toolNotFoundError": "Tool tidak ditemukan"
+    }
+}

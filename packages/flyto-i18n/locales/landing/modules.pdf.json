@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "pdf",
+  "version": "1.0.0",
+  "translations": {
+    "modules.pdf.fill_form.description": "",
+    "modules.pdf.fill_form.label": "",
+    "modules.pdf.fill_form.output.fields_filled.description": "",
+    "modules.pdf.fill_form.output.file_size_bytes.description": "",
+    "modules.pdf.fill_form.output.images_inserted.description": "",
+    "modules.pdf.fill_form.output.output_path.description": "",
+    "modules.pdf.generate.description": "",
+    "modules.pdf.generate.label": "",
+    "modules.pdf.generate.output.file_size_bytes.description": "",
+    "modules.pdf.generate.output.output_path.description": "",
+    "modules.pdf.generate.output.page_count.description": "",
+    "modules.pdf.parse.description": "",
+    "modules.pdf.parse.label": "",
+    "modules.pdf.parse.output.metadata.description": "",
+    "modules.pdf.parse.output.page_count.description": "",
+    "modules.pdf.parse.output.pages.description": "",
+    "modules.pdf.parse.output.text.description": "",
+    "modules.pdf.to_word.description": "",
+    "modules.pdf.to_word.label": "",
+    "modules.pdf.to_word.output.file_size.description": "",
+    "modules.pdf.to_word.output.output_path.description": "",
+    "modules.pdf.to_word.output.page_count.description": ""
+  }
+}

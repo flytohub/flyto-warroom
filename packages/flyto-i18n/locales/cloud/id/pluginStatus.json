@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.pluginStatus",
+    "version": "1.0.0",
+    "translations": {
+        "pluginStatus.downloading": "Mengunduh",
+        "pluginStatus.installed": "Terinstal",
+        "pluginStatus.loaded": "Dimuat",
+        "pluginStatus.loading": "Memuat",
+        "pluginStatus.notInstalled": "Tidak Terinstal",
+        "pluginStatus.unloading": "Membongkar"
+    }
+}

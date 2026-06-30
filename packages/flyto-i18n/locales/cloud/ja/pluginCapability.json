@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.pluginCapability",
+    "version": "1.0.0",
+    "translations": {
+        "pluginCapability.imageClassification": "画像分類",
+        "pluginCapability.speechRecognition": "音声認識",
+        "pluginCapability.textClassification": "テキスト分類",
+        "pluginCapability.textEmbedding": "テキスト埋め込み",
+        "pluginCapability.textGeneration": "テキスト生成",
+        "pluginCapability.textToSpeech": "テキスト読み上げ"
+    }
+}

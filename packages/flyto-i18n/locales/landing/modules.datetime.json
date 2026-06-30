@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "datetime",
+  "version": "1.0.0",
+  "translations": {
+    "modules.datetime.add.description": "",
+    "modules.datetime.add.label": "",
+    "modules.datetime.add.output.result.description": "",
+    "modules.datetime.add.output.timestamp.description": "",
+    "modules.datetime.format.description": "",
+    "modules.datetime.format.label": "",
+    "modules.datetime.format.output.result.description": "",
+    "modules.datetime.format.output.timestamp.description": "",
+    "modules.datetime.parse.description": "",
+    "modules.datetime.parse.label": "",
+    "modules.datetime.parse.output.day.description": "",
+    "modules.datetime.parse.output.hour.description": "",
+    "modules.datetime.parse.output.minute.description": "",
+    "modules.datetime.parse.output.month.description": "",
+    "modules.datetime.parse.output.result.description": "",
+    "modules.datetime.parse.output.second.description": "",
+    "modules.datetime.parse.output.timestamp.description": "",
+    "modules.datetime.parse.output.year.description": "",
+    "modules.datetime.subtract.description": "",
+    "modules.datetime.subtract.label": "",
+    "modules.datetime.subtract.output.result.description": "",
+    "modules.datetime.subtract.output.timestamp.description": ""
+  }
+}

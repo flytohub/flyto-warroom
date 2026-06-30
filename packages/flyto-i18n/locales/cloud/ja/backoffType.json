@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.backoffType",
+    "version": "1.0.0",
+    "translations": {
+        "backoffType.exponential": "指数関数的",
+        "backoffType.exponentialDesc": "delay_ms * 2^回数 (1000, 2000, 4000...)",
+        "backoffType.linear": "線形",
+        "backoffType.linearDesc": "delay_ms * 回数 (1000, 2000, 3000...)",
+        "backoffType.none": "なし",
+        "backoffType.noneDesc": "リトライ間の固定遅延"
+    }
+}

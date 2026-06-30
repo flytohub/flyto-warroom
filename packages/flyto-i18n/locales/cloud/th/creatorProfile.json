@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "กลับไปที่ Marketplace",
+        "creatorProfile.chatError": "ไม่สามารถเริ่มแชทได้",
+        "creatorProfile.creatorTemplates": "เทมเพลตของครีเอเตอร์",
+        "creatorProfile.editProfile": "แก้ไขโปรไฟล์",
+        "creatorProfile.follow": "ติดตาม",
+        "creatorProfile.followError": "ไม่สามารถอัปเดตสถานะการติดตามได้",
+        "creatorProfile.followers": "ผู้ติดตาม",
+        "creatorProfile.following": "กำลังติดตาม",
+        "creatorProfile.loadMore": "โหลดเพิ่มเติม",
+        "creatorProfile.noDescription": "ไม่มีคำอธิบาย",
+        "creatorProfile.noFollowers": "ยังไม่มีผู้ติดตาม",
+        "creatorProfile.noFollowing": "ยังไม่ได้ติดตามใคร",
+        "creatorProfile.noTemplates": "ยังไม่มีเทมเพลตที่เผยแพร่",
+        "creatorProfile.notFound": "ไม่พบครีเอเตอร์",
+        "creatorProfile.notFoundDesc": "ครีเอเตอร์ที่คุณกำลังค้นหาไม่มีอยู่หรือถูกลบแล้ว",
+        "creatorProfile.templates": "เทมเพลต"
+    }
+}

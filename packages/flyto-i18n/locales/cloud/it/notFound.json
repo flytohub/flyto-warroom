@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "Controlla l'URL e riprova",
+        "notFound.contactSupport": "Contatta il Supporto",
+        "notFound.goBack": "Torna Indietro",
+        "notFound.goHome": "Vai alla Home",
+        "notFound.helpText": "Hai bisogno di aiuto?",
+        "notFound.message": "La pagina che stai cercando non esiste o e stata spostata.",
+        "notFound.myTemplates": "I Miei Template",
+        "notFound.pageNotExist": "Questa pagina non esiste",
+        "notFound.suggestion1": "Controlla l'URL per eventuali errori di battitura",
+        "notFound.suggestion2": "Torna alla pagina precedente",
+        "notFound.suggestion3": "Naviga verso i tuoi template",
+        "notFound.suggestions": "Ecco cosa puoi fare:",
+        "notFound.title": "Pagina Non Trovata"
+    }
+}

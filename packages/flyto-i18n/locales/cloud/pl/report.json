@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "Prosze opisac problem...",
+        "report.reasons.copyright": "Naruszenie praw autorskich lub wlasnosci intelektualnej",
+        "report.reasons.harmful": "Szkodliwa lub niebezpieczna tresc",
+        "report.reasons.inappropriate": "Nieodpowiednia lub obrazliwa tresc",
+        "report.reasons.misleading": "Falszywe lub wprowadzajace w blad informacje",
+        "report.reasons.other": "Inne (prosze sprecyzowac)",
+        "report.reasons.spam": "Spam lub wprowadzajaca w blad tresc",
+        "report.selectReason": "Prosze wybrac powod zgloszenia:",
+        "report.submit": "Wyslij zgloszenie",
+        "report.title": "Zglos tresc"
+    }
+}

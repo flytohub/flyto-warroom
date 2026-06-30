@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "Quên mật khẩu?",
+        "loginFormDefault.loginButton": "Đăng nhập",
+        "loginFormDefault.passwordPlaceholder": "Nhập mật khẩu",
+        "loginFormDefault.usernamePlaceholder": "Nhập tên người dùng"
+    }
+}

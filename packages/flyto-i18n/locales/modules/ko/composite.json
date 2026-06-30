@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "웹페이지를 스크랩하여 구조화된 JSON 데이터로 출력",
+        "modules.composite.browser.scrape_to_json.label": "웹 스크랩하여 JSON으로",
+        "modules.composite.data.csv_to_json.description": "CSV 파일을 읽어 JSON 형식으로 변환",
+        "modules.composite.data.csv_to_json.label": "CSV를 JSON으로",
+        "modules.composite.data.json_transform_notify.description": "JSON 데이터를 변환하고 결과를 알림으로 전송",
+        "modules.composite.data.json_transform_notify.label": "JSON 변환 및 알림",
+        "modules.composite.developer.api_to_notification.description": "API에서 데이터를 가져와 알림 채널로 전송",
+        "modules.composite.developer.api_to_notification.label": "API를 알림으로",
+        "modules.composite.developer.github_daily_digest.description": "GitHub 저장소 업데이트를 가져와 일일 요약 알림 전송",
+        "modules.composite.developer.github_daily_digest.label": "GitHub 일일 요약",
+        "modules.composite.notification.multi_channel_alert.description": "여러 알림 채널에 동시에 경고 전송",
+        "modules.composite.notification.multi_channel_alert.label": "다중 채널 경고",
+        "modules.composite.notification.scheduled_report.description": "예약된 보고서를 생성하여 알림 채널로 전송",
+        "modules.composite.notification.scheduled_report.label": "예약 보고서",
+        "modules.composite.test.api_test.description": "HTTP 요청 및 어설션으로 API 테스트 실행",
+        "modules.composite.test.api_test.label": "API 테스트 스위트",
+        "modules.composite.test.e2e_flow.description": "브라우저 자동화를 통한 엔드 투 엔드 워크플로우 테스트",
+        "modules.composite.test.e2e_flow.label": "E2E 흐름 테스트",
+        "modules.composite.test.quality_gate.description": "품질 검사를 실행하고 기준에 따라 배포를 제한",
+        "modules.composite.test.quality_gate.label": "품질 게이트",
+        "modules.composite.test.ui_review.description": "시각적 회귀 테스트 및 UI 검토 워크플로우",
+        "modules.composite.test.ui_review.label": "UI 검토",
+        "modules.composite.test.verify_fix.description": "버그 수정을 전후 테스트와 회귀 테스트로 확인",
+        "modules.composite.test.verify_fix.label": "수정 확인"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.errorWorkflow",
+    "version": "1.0.0",
+    "translations": {
+        "errorWorkflow.description": "ตั้งค่าสิ่งที่เกิดขึ้นเมื่อ workflow นี้ล้มเหลว",
+        "errorWorkflow.doNothing": "ไม่ทำอะไร",
+        "errorWorkflow.onFailure": "เมื่อ Workflow ล้มเหลว",
+        "errorWorkflow.passContext": "ส่ง context ข้อผิดพลาดไปยัง error workflow",
+        "errorWorkflow.passContextHint": "รวมข้อความข้อผิดพลาด หมวดหมู่ และข้อมูล workflow ต้นทาง",
+        "errorWorkflow.runWorkflow": "รัน error workflow",
+        "errorWorkflow.title": "การจัดการข้อผิดพลาด"
+    }
+}

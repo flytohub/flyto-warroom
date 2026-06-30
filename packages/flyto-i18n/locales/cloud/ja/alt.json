@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.alt",
+    "version": "1.0.0",
+    "translations": {
+        "alt.avatar": "アバター",
+        "alt.flytoLogo": "Flyto2 ロゴ",
+        "alt.preview": "プレビュー",
+        "alt.result": "結果",
+        "alt.screenshot": "スクリーンショット",
+        "alt.stepScreenshot": "ステップのスクリーンショット",
+        "alt.templateIcon": "テンプレートアイコン"
+    }
+}

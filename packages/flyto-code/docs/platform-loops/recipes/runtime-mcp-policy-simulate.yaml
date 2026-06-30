@@ -1,0 +1,29 @@
+id: runtime-mcp-policy-simulate
+surface: runtime_cloud_identity
+description: Verify MCP policy simulation and runtime evidence remain operator-visible.
+requires:
+  - frontend
+  - engine
+steps:
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/mcp?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+  - module: api.request
+    method: POST
+    url: "{{engineUrl}}/api/v1/code/orgs/{{orgId}}/mcp/policy/simulate"
+    body: '{"defaultMode":"enforce"}'
+assertions:
+  - assert: query_key_present
+    query_key: mcp-overview
+  - assert: query_key_present
+    query_key: runtime-events
+  - assert: event_routed
+    event: activity.logged
+  - assert: api_path_present
+    path: /mcp
+  - assert: route_renders_without_error
+    step: 1
+  - assert: http_status
+    step: 3
+    status: 200

@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.publishTab",
+    "version": "1.0.0",
+    "translations": {
+        "publishTab.media": "メディア",
+        "publishTab.settings": "設定"
+    }
+}

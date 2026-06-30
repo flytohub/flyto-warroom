@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "Dosya ekle",
+        "chat.messageUser": "Mesaj",
+        "chat.messages": "Mesajlar",
+        "chat.noConversations": "Henüz konuşma yok",
+        "chat.noMessages": "Henüz mesaj yok. Merhaba deyin!",
+        "chat.online": "Çevrimiçi",
+        "chat.searchConversations": "Konuşma ara...",
+        "chat.selectConversation": "Sohbet başlatmak için bir konuşma seçin",
+        "chat.send": "Gönder",
+        "chat.startChat": "Sohbet Başlat",
+        "chat.startChatFailed": "Sohbet başlatılamadı",
+        "chat.typePlaceholder": "Bir mesaj yazın...",
+        "chat.user": "Kullanıcı"
+    }
+}

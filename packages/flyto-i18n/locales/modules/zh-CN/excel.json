@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "从 Excel 文件（xlsx、xls）读取数据",
+        "modules.excel.read.label": "读取 Excel",
+        "modules.excel.read.output.data.description": "截取的数据列",
+        "modules.excel.read.output.headers.description": "截取的数据列",
+        "modules.excel.read.output.row_count.description": "截取的数据列",
+        "modules.excel.read.output.sheet_names.description": "字段标头",
+        "modules.excel.write.description": "将数据写入 Excel 文件（xlsx）",
+        "modules.excel.write.label": "写入 Excel",
+        "modules.excel.write.output.path.description": "创建的 Excel 文件路径",
+        "modules.excel.write.output.row_count.description": "创建的 Excel 文件路径",
+        "modules.excel.write.output.size.description": "创建的 Excel 文件路径"
+    }
+}

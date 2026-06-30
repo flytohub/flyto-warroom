@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.llmChain",
+    "version": "1.0.0",
+    "translations": {
+        "llmChain.advancedOptions": "Options avancees",
+        "llmChain.detectedVariables": "Variables detectees",
+        "llmChain.insertVariable": "Inserer une variable",
+        "llmChain.maxTokens": "Tokens max",
+        "llmChain.maxTokensHint": "Longueur maximale de la reponse",
+        "llmChain.model": "Modele",
+        "llmChain.systemPrompt": "Invite systeme",
+        "llmChain.systemPromptPlaceholder": "Vous etes un assistant utile...",
+        "llmChain.temperature": "Température",
+        "llmChain.temperatureHint": "Plus eleve = plus creatif, Plus bas = plus concentre",
+        "llmChain.userPrompt": "Invite utilisateur",
+        "llmChain.userPromptPlaceholder": "Entrez votre invite avec {{variables}}...",
+        "llmChain.variableHelp": "Utilisez {{variable}} pour referencer les donnees des etapes precedentes"
+    }
+}

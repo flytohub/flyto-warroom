@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "สร้างกิจกรรมใหม่ใน Google Calendar",
+        "modules.google.calendar.create_event.label": "สร้างกิจกรรมในปฏิทิน",
+        "modules.google.calendar.create_event.output.end.description": "เวลาสิ้นสุดกิจกรรม",
+        "modules.google.calendar.create_event.output.event_id.description": "รหัสกิจกรรมที่สร้าง",
+        "modules.google.calendar.create_event.output.html_link.description": "ลิงก์เพื่อดูกิจกรรมใน Google Calendar",
+        "modules.google.calendar.create_event.output.start.description": "เวลาเริ่มกิจกรรม",
+        "modules.google.calendar.create_event.output.summary.description": "ชื่อกิจกรรม",
+        "modules.google.calendar.list_events.description": "แสดงรายการกิจกรรมที่กำลังจะมาถึงจาก Google Calendar",
+        "modules.google.calendar.list_events.label": "รายการกิจกรรมปฏิทิน",
+        "modules.google.calendar.list_events.output.count.description": "จำนวนกิจกรรมที่ส่งคืน",
+        "modules.google.calendar.list_events.output.events.description": "รายการกิจกรรมในปฏิทิน",
+        "modules.google.gmail.search.description": "ค้นหาข้อความ Gmail ด้วยไวยากรณ์การค้นหา Gmail",
+        "modules.google.gmail.search.label": "ค้นหา Gmail",
+        "modules.google.gmail.search.output.messages.description": "รายการข้อความที่ตรงกัน",
+        "modules.google.gmail.search.output.total.description": "จำนวนข้อความทั้งหมดที่ส่งคืน",
+        "modules.google.gmail.send.description": "ส่งอีเมลผ่าน Gmail API",
+        "modules.google.gmail.send.label": "ส่ง Gmail",
+        "modules.google.gmail.send.output.message_id.description": "รหัสข้อความ Gmail",
+        "modules.google.gmail.send.output.thread_id.description": "รหัสเธรด Gmail",
+        "modules.google.gmail.send.output.to.description": "ที่อยู่อีเมลผู้รับ"
+    }
+}

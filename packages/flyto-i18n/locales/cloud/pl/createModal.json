@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Kategoria",
+        "createModal.category.placeholder": "Wybierz kategorie (opcjonalnie)",
+        "createModal.closeDialog": "Zamknij okno",
+        "createModal.create": "Utworz szablon",
+        "createModal.creating": "Tworzenie...",
+        "createModal.description.label": "Opis",
+        "createModal.description.placeholder": "Co robi ten szablon? (opcjonalnie)",
+        "createModal.errors.createFailed": "Nie udalo sie utworzyc szablonu",
+        "createModal.errors.fileTooLarge": "Obraz musi byc mniejszy niz 2MB",
+        "createModal.errors.invalidFileType": "Wybierz plik obrazu",
+        "createModal.folder.label": "Folder",
+        "createModal.folder.placeholder": "Domyślny (bez folderu)",
+        "createModal.icon.change": "Zmien ikone",
+        "createModal.icon.hint": "PNG, JPG, GIF do 2MB",
+        "createModal.icon.label": "Ikona szablonu",
+        "createModal.icon.remove": "Usun ikone",
+        "createModal.icon.upload": "Przeslij ikone",
+        "createModal.name.label": "Nazwa szablonu",
+        "createModal.name.placeholder": "Moja wspaniala automatyzacja",
+        "createModal.title": "Nowy szablon"
+    }
+}

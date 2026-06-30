@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Inserir dados em tabelas de banco de dados",
+        "modules.database.insert.label": "Inserir no Banco de Dados",
+        "modules.database.insert.output.inserted_count.description": "Numero de linhas inseridas",
+        "modules.database.insert.output.returning_data.description": "Numero de linhas inseridas",
+        "modules.database.query.description": "Executar consultas SQL em bancos de dados PostgreSQL, MySQL ou SQLite",
+        "modules.database.query.label": "Consulta de Banco de Dados",
+        "modules.database.query.output.columns.description": "Linhas do resultado da consulta",
+        "modules.database.query.output.row_count.description": "Linhas do resultado da consulta",
+        "modules.database.query.output.rows.description": "Linhas do resultado da consulta",
+        "modules.database.update.description": "Atualizar dados em tabelas de banco de dados",
+        "modules.database.update.label": "Atualizar Banco de Dados",
+        "modules.database.update.output.updated_count.description": "Numero de linhas atualizadas"
+    }
+}

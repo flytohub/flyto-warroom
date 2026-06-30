@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Zawsze wlaczone",
+        "cookies.lastUpdated": "Ostatnia aktualizacja",
+        "cookies.optional": "Opcjonalne",
+        "cookies.preferencesSaved": "Preferencje zapisane pomyslnie",
+        "cookies.savePreferences": "Zapisz preferencje",
+        "cookies.sections.manage.content": "Mozesz kontrolowac, ktore opcjonalne pliki cookie akceptujesz. Niezbedne pliki cookie nie moga byc wylaczone, poniewaz sa wymagane do dzialania strony.",
+        "cookies.sections.manage.title": "Zarzadzaj swoimi preferencjami",
+        "cookies.sections.types.analytics.content": "Te pliki cookie pomagaja nam zrozumiec, jak uzytkownicy korzystaja z naszej strony, zbierajac i raportujac informacje anonimowo. Pomaga nam to ulepszac nasze uslugi.",
+        "cookies.sections.types.analytics.title": "Pliki cookie analityczne",
+        "cookies.sections.types.essential.content": "Te pliki cookie sa niezbedne do prawidlowego dzialania strony. Umozliwiaja podstawowe funkcje, takie jak nawigacja po stronach i dostep do bezpiecznych obszarow. Strona nie moze dzialac prawidlowo bez tych plikow cookie.",
+        "cookies.sections.types.essential.title": "Niezbedne pliki cookie",
+        "cookies.sections.types.functional.content": "Te pliki cookie umozliwiaja spersonalizowane funkcje, takie jak zapamietywanie preferencji jezykowych, ustawien motywu i statusu logowania. Poprawiaja komfort uzytkowania, ale nie sa niezbedne.",
+        "cookies.sections.types.functional.title": "Funkcjonalne pliki cookie",
+        "cookies.sections.types.title": "Rodzaje plikow cookie, ktorych uzywamy",
+        "cookies.sections.what.content": "Pliki cookie to male pliki tekstowe przechowywane na Twoim urzadzeniu podczas odwiedzania naszej strony. Pomagaja nam zapewnic lepsze doswiadczenie, zapamietujac Twoje preferencje i rozumiejac, jak korzystasz z naszych uslug.",
+        "cookies.sections.what.title": "Czym sa pliki cookie?",
+        "cookies.title": "Ustawienia plikow cookie"
+    }
+}

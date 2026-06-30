@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "All",
+        "toolLibrary.createFirstTool": "Create Your First Tool",
+        "toolLibrary.createTool": "Create Tool",
+        "toolLibrary.deleteConfirm": "Delete Tool",
+        "toolLibrary.deleteMessage": "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
+        "toolLibrary.noDescription": "No description",
+        "toolLibrary.noTools": "No Tools Yet",
+        "toolLibrary.noToolsDesc": "Create your first tool to automate your workflows",
+        "toolLibrary.run": "Run",
+        "toolLibrary.searchPlaceholder": "Search tools...",
+        "toolLibrary.steps": "steps",
+        "toolLibrary.subtitle": "Manage and run your automation tools",
+        "toolLibrary.title": "Tool Library"
+    }
+}

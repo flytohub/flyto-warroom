@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Ekstrak frontmatter YAML dari konten Markdown",
+        "modules.markdown.parse_frontmatter.label": "Mengurai Frontmatter",
+        "modules.markdown.parse_frontmatter.output.content.description": "Konten Markdown tanpa frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Frontmatter yang telah di-parse sebagai kamus",
+        "modules.markdown.parse_frontmatter.params.text.description": "Konten Markdown dengan frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.label": "Teks Markdown",
+        "modules.markdown.to_html.description": "Ubah teks Markdown ke HTML",
+        "modules.markdown.to_html.label": "Markdown ke HTML",
+        "modules.markdown.to_html.output.html.description": "Konten HTML yang telah diubah",
+        "modules.markdown.to_html.output.word_count.description": "Jumlah kata dari teks input",
+        "modules.markdown.to_html.params.extensions.description": "Ekstensi Markdown yang diaktifkan (hanya digunakan dengan pustaka markdown)",
+        "modules.markdown.to_html.params.extensions.label": "Ekstensi",
+        "modules.markdown.to_html.params.text.description": "Konten Markdown untuk diubah",
+        "modules.markdown.to_html.params.text.label": "Teks Markdown",
+        "modules.markdown.toc.description": "Buat daftar isi dari judul-judul Markdown",
+        "modules.markdown.toc.label": "Buat Daftar Isi",
+        "modules.markdown.toc.output.toc.description": "Daftar judul dengan level, judul, dan slug",
+        "modules.markdown.toc.output.toc_markdown.description": "Daftar isi Markdown yang diformat",
+        "modules.markdown.toc.params.max_depth.description": "Kedalaman judul maksimum yang disertakan (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "Kedalaman Maks",
+        "modules.markdown.toc.params.text.description": "Konten Markdown untuk mengekstrak judul",
+        "modules.markdown.toc.params.text.label": "Teks Markdown"
+    }
+}

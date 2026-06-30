@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.cannotUnlink": "Nie można odłączyć — potrzebujesz przynajmniej jednej metody logowania",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.link": "Połącz konto",
+        "linkedAccounts.linkSuccess": "Konto Google zostało pomyślnie połączone",
+        "linkedAccounts.linked": "Połączono",
+        "linkedAccounts.notLinked": "Nie połączono",
+        "linkedAccounts.subtitle": "Zarządzaj swoimi połączonymi metodami logowania",
+        "linkedAccounts.title": "Połączone konta",
+        "linkedAccounts.unlink": "Odłącz",
+        "linkedAccounts.unlinkConfirm": "Czy na pewno chcesz odłączyć Google?",
+        "linkedAccounts.unlinkSuccess": "Konto Google zostało odłączone"
+    }
+}

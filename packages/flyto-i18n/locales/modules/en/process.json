@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "List all running background processes",
+        "modules.process.list.label": "List Processes",
+        "modules.process.list.output.count.description": "Operation success",
+        "modules.process.list.output.ok.description": "Operation success",
+        "modules.process.list.output.processes.description": "Operation success",
+        "modules.process.list.output.running.description": "List of process information",
+        "modules.process.list.output.stopped.description": "Total number of processes",
+        "modules.process.start.description": "Start a background process (server, service, etc.)",
+        "modules.process.start.label": "Start Background Process",
+        "modules.process.start.output.command.description": "Internal process identifier for process.stop",
+        "modules.process.start.output.cwd.description": "Process name",
+        "modules.process.start.output.initial_output.description": "ISO timestamp when process started",
+        "modules.process.start.output.name.description": "Process ID",
+        "modules.process.start.output.ok.description": "Whether process started successfully",
+        "modules.process.start.output.pid.description": "Whether process started successfully",
+        "modules.process.start.output.process_id.description": "Whether process started successfully",
+        "modules.process.start.output.started_at.description": "The executed command",
+        "modules.process.stop.description": "Stop a running background process",
+        "modules.process.stop.label": "Stop Process",
+        "modules.process.stop.output.count.description": "List of stopped process info",
+        "modules.process.stop.output.failed.description": "List of stopped process info",
+        "modules.process.stop.output.ok.description": "Whether all processes were stopped successfully",
+        "modules.process.stop.output.stopped.description": "Whether all processes were stopped successfully"
+    }
+}

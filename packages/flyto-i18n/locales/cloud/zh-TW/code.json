@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "可用變數",
+        "code.inputAllDesc": "來自上一步驟的所有項目",
+        "code.inputFirstDesc": "僅第一個項目",
+        "code.jsonDesc": "目前項目資料（別名）",
+        "code.language": "程式語言",
+        "code.localExecutionNotice": "為安全起見，程式碼在您的本機執行",
+        "code.sourceCode": "原始碼"
+    }
+}

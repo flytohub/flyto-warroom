@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "integration",
+    "version": "1.0.0",
+    "translations": {
+        "modules.integration.jira.create_issue.description": "Buat issue baru di Jira",
+        "modules.integration.jira.create_issue.label": "Buat Issue Jira",
+        "modules.integration.jira.search_issues.description": "Cari issue menggunakan kueri JQL",
+        "modules.integration.jira.search_issues.label": "Cari Issue Jira",
+        "modules.integration.salesforce.create_record.description": "Buat rekaman baru di Salesforce",
+        "modules.integration.salesforce.create_record.label": "Buat Rekaman Salesforce",
+        "modules.integration.salesforce.query.description": "Eksekusi kueri SOQL di Salesforce",
+        "modules.integration.salesforce.query.label": "Kueri Salesforce",
+        "modules.integration.salesforce.update_record.description": "Perbarui rekaman yang ada di Salesforce",
+        "modules.integration.salesforce.update_record.label": "Perbarui Rekaman Salesforce",
+        "modules.integration.slack.list_channels.description": "Daftar channel di workspace Slack",
+        "modules.integration.slack.list_channels.label": "Daftar Channel Slack",
+        "modules.integration.slack.list_channels.params.channels": "Saluran",
+        "modules.integration.slack.list_channels.params.channels.options.id": "Id",
+        "modules.integration.slack.list_channels.params.channels.options.is_private": "Apakah Pribadi",
+        "modules.integration.slack.list_channels.params.channels.options.name": "Nama",
+        "modules.integration.slack.list_channels.params.channels.options.num_members": "Jumlah Anggota",
+        "modules.integration.slack.send_message.description": "Kirim pesan ke channel Slack",
+        "modules.integration.slack.send_message.label": "Kirim Pesan Slack"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.purchases",
+    "version": "1.0.0",
+    "translations": {
+        "purchases.all": "모든 구매",
+        "purchases.browseMarketplace": "Browse marketplace",
+        "purchases.completed": "완료된 구매",
+        "purchases.empty": "구매 없음",
+        "purchases.emptyDescription": "아직 구매 내역이 없습니다.",
+        "purchases.filterAll": "전체",
+        "purchases.filterCompleted": "완료됨",
+        "purchases.filterRefunded": "환불됨",
+        "purchases.loadMore": "더 보기",
+        "purchases.loading": "로딩 중...",
+        "purchases.noPurchases": "구매 내역 없음",
+        "purchases.noPurchasesDesc": "구매한 템플릿이 여기에 표시됩니다",
+        "purchases.purchasedOn": "구매 날짜",
+        "purchases.refundAmount": "환불 금액",
+        "purchases.refundEligible": "환불 가능",
+        "purchases.refundExpired": "환불 기간 만료",
+        "purchases.refunded": "환불 완료",
+        "purchases.refundedOn": "환불 날짜",
+        "purchases.requestRefund": "Request refund",
+        "purchases.subtitle": "Purchase details",
+        "purchases.title": "Purchases",
+        "purchases.viewTemplate": "View template"
+    }
+}

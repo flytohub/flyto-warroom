@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Veritabanı tablolarına veri ekle",
+        "modules.database.insert.label": "Veritabanı Ekle",
+        "modules.database.insert.output.inserted_count.description": "Eklenen satır sayısı",
+        "modules.database.insert.output.returning_data.description": "Eklenen satır sayısı",
+        "modules.database.query.description": "PostgreSQL, MySQL veya SQLite veritabanlarında SQL sorguları çalıştır",
+        "modules.database.query.label": "Veritabanı Sorgusu",
+        "modules.database.query.output.columns.description": "Sorgu sonuç satırları",
+        "modules.database.query.output.row_count.description": "Sorgu sonuç satırları",
+        "modules.database.query.output.rows.description": "Sorgu sonuç satırları",
+        "modules.database.update.description": "Veritabanı tablolarındaki verileri güncelle",
+        "modules.database.update.label": "Veritabanı Güncelle",
+        "modules.database.update.output.updated_count.description": "Güncellenen satır sayısı"
+    }
+}

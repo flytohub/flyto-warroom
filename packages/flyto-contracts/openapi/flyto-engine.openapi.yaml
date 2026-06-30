@@ -1,0 +1,1861 @@
+openapi: 3.1.0
+info:
+  title: Flyto Engine API
+  version: "0.1.0"
+  description: |
+    Shared cloud backend for Flyto Automation and Flyto Cortex.
+    All endpoints under `/api/v1` require a Firebase ID token in the
+    `Authorization: Bearer <token>` header. Authentication itself (signup,
+    login, password reset, social OAuth) is handled client-side by the
+    Firebase Auth SDK; engine just verifies the resulting ID token.
+  contact:
+    name: flyto-engine
+    url: https://github.com/flytohub/flyto-engine
+  license:
+    name: Proprietary
+
+servers:
+  - url: https://api.flyto2.com
+    description: Cloud production
+  - url: http://localhost:8080
+    description: Local development
+
+tags:
+  - name: health
+  - name: auth
+  - name: workspaces
+  - name: resources
+  - name: canonical
+  - name: projects
+  - name: folders
+  - name: structure
+  - name: search
+  - name: jobs
+  - name: concepts
+  - name: audit
+  - name: permissions
+  - name: autofix
+  - name: threat-intel
+  - name: fusion
+    description: >
+      Evidence Fusion — vendor-agnostic multi-source ingestion + fused reads.
+      External vendor data (Bitsight / Cyble / Tenable / Okta / customer-authored
+      feeds) is normalized into kernel claims; one engine resolves an explainable
+      value with coverage, confidence, cross-source disagreements, and vendor
+      independence. A new vendor is a YAML mapping, never a new route.
+
+security:
+  - firebaseAuth: []
+
+paths:
+  /health:
+    get:
+      tags: [health]
+      summary: Liveness probe
+      security: []
+      responses:
+        "200":
+          description: Service is up
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string }
+                  service: { type: string }
+
+  # Auth endpoints — there are none.
+  # Engine trusts Firebase ID tokens. Clients obtain them via the Firebase
+  # Auth SDK in the browser / Tauri shell and pass them in the Authorization
+  # header. Engine verifies via Firebase Admin SDK in the middleware.
+
+  /api/v1/me:
+    get:
+      tags: [auth]
+      summary: Current authenticated user
+      responses:
+        "200":
+          description: User record (or {id} only for first-login case)
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/User"
+                  - type: object
+                    properties:
+                      id: { type: string }
+
+  # --------------------------------------------------------------------------
+  # Workspaces
+  # --------------------------------------------------------------------------
+  /api/v1/workspaces:
+    get:
+      tags: [workspaces]
+      summary: List workspaces owned by the authenticated user
+      responses:
+        "200":
+          description: Workspace list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  workspaces:
+                    type: array
+                    items: { $ref: "#/components/schemas/Workspace" }
+                  count: { type: integer }
+    post:
+      tags: [workspaces]
+      summary: Create a new workspace owned by the caller
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string }
+      responses:
+        "201":
+          description: Created workspace
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Workspace" }
+
+  # --------------------------------------------------------------------------
+  # Resources
+  # --------------------------------------------------------------------------
+  /api/v1/resources:
+    get:
+      tags: [resources]
+      summary: List resources in a workspace
+      parameters:
+        - { name: workspace_id, in: query, required: true, schema: { type: string } }
+        - { name: category, in: query, schema: { type: string } }
+        - { name: pipeline_status, in: query, schema: { type: string } }
+        - { name: project_id, in: query, schema: { type: string } }
+        - { name: folder_id, in: query, schema: { type: string } }
+        - { name: visibility, in: query, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer } }
+        - { name: offset, in: query, schema: { type: integer } }
+      responses:
+        "200":
+          description: Resource list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resources:
+                    type: array
+                    items: { $ref: "#/components/schemas/Resource" }
+                  count: { type: integer }
+    post:
+      tags: [resources]
+      summary: Create a metadata-only resource (no blob upload)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/Resource" }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Resource" }
+
+  /api/v1/notes:
+    post:
+      tags: [resources]
+      summary: Create a quick note (defaults to Inbox placement)
+      description: |
+        Thin wrapper over the ingest pipeline that synthesises a markdown
+        file from {title, content}. When projectId is omitted the note goes
+        into the workspace's Inbox project — matching the "jot now, organise
+        later" entrypoint in the UI.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [workspaceId]
+              properties:
+                workspaceId: { type: string }
+                projectId: { type: string, nullable: true }
+                title: { type: string }
+                content: { type: string }
+      responses:
+        "201":
+          description: Note created (same payload as ingest)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/IngestResult" }
+        "413": { $ref: "#/components/responses/PayloadTooLarge" }
+
+  /api/v1/resources/ingest:
+    post:
+      tags: [resources]
+      summary: Upload a file and run it through the ingestion pipeline
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required: [file, workspace_id]
+              properties:
+                file: { type: string, format: binary }
+                workspace_id: { type: string }
+                project_id: { type: string }
+                folder_id: { type: string }
+                visibility:
+                  type: string
+                  enum: [public, workspace, project, private, restricted]
+                sensitivity:
+                  type: string
+                  enum: [open, internal, confidential, secret]
+      responses:
+        "201":
+          description: Ingest result
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/IngestResult" }
+        "413": { $ref: "#/components/responses/PayloadTooLarge" }
+        "415": { $ref: "#/components/responses/UnsupportedMediaType" }
+
+  /api/v1/resources/{id}:
+    parameters: [{ $ref: "#/components/parameters/ResourceID" }]
+    get:
+      tags: [resources]
+      summary: Get a resource
+      responses:
+        "200":
+          description: Resource
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Resource" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    patch:
+      tags: [resources]
+      summary: Partial update (whitelisted fields only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Updated resource
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Resource" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    delete:
+      tags: [resources]
+      summary: Delete a resource
+      responses:
+        "204": { description: Deleted }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /api/v1/resources/{id}/versions:
+    parameters: [{ $ref: "#/components/parameters/ResourceID" }]
+    get:
+      tags: [resources]
+      summary: List prior versions of a resource
+      responses:
+        "200":
+          description: Version list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  versions:
+                    type: array
+                    items: { $ref: "#/components/schemas/ResourceVersion" }
+
+  /api/v1/resources/{id}/relationships:
+    parameters: [{ $ref: "#/components/parameters/ResourceID" }]
+    get:
+      tags: [resources]
+      summary: List explicit relationships touching a resource
+      responses:
+        "200":
+          description: Relationship list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  relationships:
+                    type: array
+                    items: { $ref: "#/components/schemas/Relationship" }
+
+  /api/v1/resources/{id}/impact:
+    parameters:
+      - $ref: "#/components/parameters/ResourceID"
+      - name: max_depth
+        in: query
+        schema: { type: integer, default: 3 }
+    get:
+      tags: [resources]
+      summary: Resources reachable via the relationship graph
+      responses:
+        "200":
+          description: Impact report
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  resource: { type: string }
+                  max_depth: { type: integer }
+                  impacted:
+                    type: array
+                    items: { type: string }
+                  total_affected: { type: integer }
+
+  /api/v1/resources/{id}/blob:
+    parameters: [{ $ref: "#/components/parameters/ResourceID" }]
+    get:
+      tags: [resources]
+      summary: Stream the CAS bytes for a resource
+      description: |
+        Returns the raw file bytes with an inferred Content-Type, an ETag
+        keyed to the resource's content_hash, and Cache-Control:private.
+        Supports If-None-Match for 304 replies. 409 when the resource is
+        still processing and has no blob yet.
+      responses:
+        "200":
+          description: Binary content
+          content:
+            application/octet-stream: {}
+        "304": { description: Not modified }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { description: Resource still processing }
+
+  /api/v1/resources/{id}/variants:
+    parameters: [{ $ref: "#/components/parameters/ResourceID" }]
+    get:
+      tags: [canonical]
+      summary: List variants sharing the canonical with this resource
+      responses:
+        "200":
+          description: Canonical + variant list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  canonical:
+                    oneOf:
+                      - $ref: "#/components/schemas/CanonicalResource"
+                      - type: "null"
+                  variants:
+                    type: array
+                    items: { $ref: "#/components/schemas/Resource" }
+                  count: { type: integer }
+
+  /api/v1/resources/{id}/promote:
+    parameters: [{ $ref: "#/components/parameters/ResourceID" }]
+    post:
+      tags: [canonical]
+      summary: Promote this variant to primary under its canonical
+      responses:
+        "204": { description: Promoted }
+        "404": { $ref: "#/components/responses/NotFound" }
+        "409": { description: Resource has no canonical }
+
+  # --------------------------------------------------------------------------
+  # Projects
+  # --------------------------------------------------------------------------
+  /api/v1/projects:
+    get:
+      tags: [projects]
+      summary: List projects in a workspace
+      parameters:
+        - { name: workspace_id, in: query, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Project list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  projects:
+                    type: array
+                    items: { $ref: "#/components/schemas/Project" }
+                  count: { type: integer }
+    post:
+      tags: [projects]
+      summary: Create a project
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/Project" }
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Project" }
+
+  /api/v1/projects/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [projects]
+      summary: Get a project
+      responses:
+        "200":
+          description: Project
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Project" }
+        "404": { $ref: "#/components/responses/NotFound" }
+    patch:
+      tags: [projects]
+      summary: Partial project update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Updated project
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Project" }
+    delete:
+      tags: [projects]
+      summary: Delete a project
+      responses:
+        "204": { description: Deleted }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  # --------------------------------------------------------------------------
+  # Folders + AI structure (scoped under a project)
+  # --------------------------------------------------------------------------
+  /api/v1/projects/{id}/folders:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      tags: [folders]
+      summary: List folders in a project
+      responses:
+        "200":
+          description: Folder list
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  folders:
+                    type: array
+                    items: { $ref: "#/components/schemas/Folder" }
+                  count: { type: integer }
+    post:
+      tags: [folders]
+      summary: Create a folder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name: { type: string }
+                description: { type: string }
+                icon: { type: string, nullable: true }
+                parentFolderId: { type: string, nullable: true }
+      responses:
+        "201":
+          description: Created folder
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Folder" }
+
+  /api/v1/folders/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    patch:
+      tags: [folders]
+      summary: Update a folder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        "200":
+          description: Updated folder
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Folder" }
+    delete:
+      tags: [folders]
+      summary: Delete a folder
+      responses:
+        "204": { description: Deleted }
+
+  /api/v1/projects/{id}/structure:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: string }
+    post:
+      tags: [structure]
+      summary: Run AI structure suggestion + apply (folders, placements, relationships, overview)
+      responses:
+        "200":
+          description: Suggestion applied
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  folders:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id: { type: string }
+                        name: { type: string }
+                        icon: { type: string }
+                  placements:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        resourceId: { type: string }
+                        folderId: { type: string }
+                  relationships:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        sourceResourceId: { type: string }
+                        targetResourceId: { type: string }
+                        strength: { type: number }
+                  overview: { type: string }
+
+  # --------------------------------------------------------------------------
+  # Search
+  # --------------------------------------------------------------------------
+  /api/v1/search:
+    post:
+      tags: [search]
+      summary: BM25 search over the workspace's resources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [workspaceId, query]
+              properties:
+                workspaceId: { type: string }
+                query: { type: string }
+                topK: { type: integer, default: 20 }
+                category: { type: string }
+                expandConcepts:
+                  type: integer
+                  description: If > 0, expand query via top N related concepts from the concept graph.
+                  default: 0
+      responses:
+        "200":
+          description: Ranked hits + (optional) concept expansions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  hits:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        resource: { $ref: "#/components/schemas/Resource" }
+                        score: { type: number }
+                  count: { type: integer }
+                  query: { type: string }
+                  expansions:
+                    type: array
+                    items: { type: string }
+
+  # --------------------------------------------------------------------------
+  # Processing jobs
+  # --------------------------------------------------------------------------
+  /api/v1/jobs:
+    get:
+      tags: [jobs]
+      summary: Pending processing jobs in a workspace
+      parameters:
+        - { name: workspace_id, in: query, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Jobs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  jobs:
+                    type: array
+                    items: { $ref: "#/components/schemas/ProcessingJob" }
+                  count: { type: integer }
+
+  /api/v1/jobs/{id}:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: string } }
+      - { name: workspace_id, in: query, required: true, schema: { type: string } }
+    get:
+      tags: [jobs]
+      summary: Get a pending job by id
+      responses:
+        "200":
+          description: Job
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ProcessingJob" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /api/v1/jobs/{id}/cancel:
+    parameters:
+      - { name: id, in: path, required: true, schema: { type: string } }
+    post:
+      tags: [jobs]
+      summary: Cancel a job
+      responses:
+        "204": { description: Cancelled }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  # --------------------------------------------------------------------------
+  # Concepts
+  # --------------------------------------------------------------------------
+  /api/v1/concepts:
+    get:
+      tags: [concepts]
+      summary: List learned concepts in a workspace
+      parameters:
+        - { name: workspace_id, in: query, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Concepts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  concepts:
+                    type: array
+                    items: { $ref: "#/components/schemas/Concept" }
+                  count: { type: integer }
+
+  # --------------------------------------------------------------------------
+  # Audit
+  # --------------------------------------------------------------------------
+  /api/v1/audit:
+    get:
+      tags: [audit]
+      summary: List audit log entries (optionally verify chain)
+      parameters:
+        - { name: workspace_id, in: query, required: true, schema: { type: string } }
+        - { name: limit, in: query, schema: { type: integer, default: 100 } }
+        - { name: verify, in: query, schema: { type: string, enum: ["true", "false"] } }
+      responses:
+        "200":
+          description: Entries + verification block (when verify=true)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  logs:
+                    type: array
+                    items: { $ref: "#/components/schemas/AuditLog" }
+                  count: { type: integer }
+                  verification:
+                    type: object
+                    properties:
+                      verified_entries: { type: integer }
+                      total_entries: { type: integer }
+                      chain_intact: { type: boolean }
+                      error: { type: string }
+
+  # --------------------------------------------------------------------------
+  # Permissions
+  # --------------------------------------------------------------------------
+  /api/v1/permissions/check:
+    post:
+      tags: [permissions]
+      summary: Resolve an access check against a policy chain or a single layer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/PermissionCheckRequest" }
+      responses:
+        "200":
+          description: Access decision
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: "#/components/schemas/AccessResult"
+                  - type: object
+                    properties:
+                      access: { $ref: "#/components/schemas/AccessResult" }
+                      effectiveVisibility: { type: string }
+                      effectiveSensitivity: { type: string }
+
+  # --------------------------------------------------------------------------
+  # AutoFix inventory and preview workflow
+  # --------------------------------------------------------------------------
+  /api/v1/code/orgs/{id}/autofix/findings:
+    get:
+      tags: [autofix]
+      summary: List AutoFix-eligible findings for an org
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Derived and cached AutoFix findings
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  findings:
+                    type: array
+                    nullable: true
+                    items: { $ref: "#/components/schemas/AutofixFinding" }
+
+  /api/v1/code/orgs/{id}/autofix/findings/{finding_id}:
+    get:
+      tags: [autofix]
+      summary: Get one AutoFix finding with cached patch detail
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: finding_id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: AutoFix finding detail
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AutofixFindingDetail" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /api/v1/code/orgs/{id}/autofix/findings/{finding_id}/preview:
+    post:
+      tags: [autofix]
+      summary: Generate or regenerate an AutoFix preview for one finding
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: finding_id, in: path, required: true, schema: { type: string } }
+        - { name: force, in: query, required: false, schema: { type: string, enum: ["1"] } }
+      responses:
+        "200":
+          description: Preview result, including structured no-preview reasons
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AutofixPreviewResponse" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  /api/v1/code/orgs/{id}/autofix/findings/{finding_id}/pr:
+    post:
+      tags: [autofix]
+      summary: Open a draft PR for a verified AutoFix preview
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: finding_id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Draft PR opened
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/AutofixOpenPRResponse" }
+        "404": { $ref: "#/components/responses/NotFound" }
+
+  # --------------------------------------------------------------------------
+  # Upstream data strategy (migration 016) — SLA budgets, peer
+  # benchmarks, MTTR history, score forecast.
+  # See docs/UPSTREAM_DATA_STRATEGY.md for context.
+  # --------------------------------------------------------------------------
+  /api/v1/code/orgs/{id}/threat-intel/sensor-map:
+    get:
+      tags: [threat-intel]
+      summary: Country rollup for org and global Sensor Intelligence observations
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: scope, in: query, required: false, schema: { type: string, enum: [org, global, both], default: org } }
+      responses:
+        "200":
+          description: Per-country sensor map counts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  by_country:
+                    type: object
+                    additionalProperties: { type: integer }
+                  org_by_country:
+                    type: object
+                    additionalProperties: { type: integer }
+                  global_by_country:
+                    type: object
+                    additionalProperties: { type: integer }
+                  scope: { type: string, enum: [org, global, both] }
+                  empty_reason: { type: string }
+
+  /api/v1/code/orgs/{id}/threat-intel/sensor-observations:
+    get:
+      tags: [threat-intel]
+      summary: Paginated global Sensor Intelligence observations
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: q, in: query, required: false, schema: { type: string } }
+        - { name: kind, in: query, required: false, schema: { type: string, enum: [ip, domain, url] } }
+        - { name: category, in: query, required: false, schema: { type: string } }
+        - { name: country, in: query, required: false, schema: { type: string } }
+        - { name: asn, in: query, required: false, schema: { type: integer } }
+        - { name: source, in: query, required: false, schema: { type: string } }
+        - { name: limit, in: query, required: false, schema: { type: integer, default: 100, maximum: 500 } }
+        - { name: offset, in: query, required: false, schema: { type: integer, default: 0 } }
+      responses:
+        "200":
+          description: Sensor observation rows plus aggregate stats
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  observations:
+                    type: array
+                    items: { $ref: "#/components/schemas/ThreatSensorObservation" }
+                  count: { type: integer }
+                  stats: { $ref: "#/components/schemas/ThreatSensorStats" }
+                  empty_reason: { type: string }
+                  limit: { type: integer }
+                  offset: { type: integer }
+
+  /api/v1/code/orgs/{id}/sla-policies:
+    get:
+      tags: [ctem]
+      summary: List per-severity SLA error budgets for an org
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: All policies ordered critical→low
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  org_id: { type: string }
+                  count: { type: integer }
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/SLAPolicy" }
+    post:
+      tags: [ctem]
+      summary: Upsert one severity's SLA error budget
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [severity, allowed_breaches]
+              properties:
+                severity: { type: string, enum: [critical, high, medium, low] }
+                allowed_breaches: { type: integer, minimum: 0 }
+                window_days: { type: integer, default: 90 }
+                alert_at_percent: { type: integer, minimum: 1, maximum: 100, default: 80 }
+                is_active: { type: boolean, default: true }
+      responses:
+        "200":
+          description: The upserted policy
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SLAPolicy" }
+
+  /api/v1/code/orgs/{id}/sla-policies/{severity}:
+    delete:
+      tags: [ctem]
+      summary: Drop one severity's SLA policy
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: severity, in: path, required: true,
+            schema: { type: string, enum: [critical, high, medium, low] } }
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  severity: { type: string }
+
+  /api/v1/code/orgs/{id}/sla-budget:
+    get:
+      tags: [ctem]
+      summary: Computed per-severity budget usage (SRE error budget)
+      description: |
+        Joins sla_policy × external_issue_tracker breaches × code_alerts
+        breaches to produce one BudgetUsage row per declared severity.
+        Status maps healthy / warning / exhausted / inactive based on
+        `used_breaches / allowed_breaches` vs `alert_at_percent`.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200":
+          description: Budget usage per severity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  org_id: { type: string }
+                  count: { type: integer }
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/BudgetUsage" }
+
+  /api/v1/code/orgs/{id}/peer-baseline:
+    get:
+      tags: [ctem]
+      summary: Per-sector peer benchmark percentiles + history
+      description: |
+        Returns the latest snapshot per percentile (25/50/75/90/95)
+        plus a `days`-day history strip for the requested sector +
+        metric. `sector` is validated against config/peer_corpus.yaml's
+        sector list when loaded — a 400 response includes `allowed_sectors`
+        to drive a picker. corpus_size + corpus_version on every row
+        keep the sample transparent to the operator.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: sector, in: query, required: true, schema: { type: string },
+            description: "Sector key (e.g. finance, saas, retail). See /peer-baseline for allowed values." }
+        - { name: metric, in: query, schema: { type: string, default: unified_score } }
+        - { name: days, in: query, schema: { type: integer, default: 90, minimum: 1, maximum: 365 } }
+      responses:
+        "200":
+          description: Latest + history
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  org_id: { type: string }
+                  sector: { type: string }
+                  metric: { type: string }
+                  latest:
+                    type: object
+                    description: "percentile → PeerBaselineSnapshot"
+                    additionalProperties: { $ref: "#/components/schemas/PeerBaselineSnapshot" }
+                  history:
+                    type: array
+                    items: { $ref: "#/components/schemas/PeerBaselineSnapshot" }
+        "400":
+          description: Invalid sector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error: { type: string }
+                  allowed_sectors:
+                    type: array
+                    items: { type: string }
+
+  /api/v1/code/orgs/{id}/mttr-history:
+    get:
+      tags: [ctem]
+      summary: Weekly per-severity MTTR percentile rollup
+      description: |
+        Newest-first weekly rollup of P50 / P75 / P90 fix-time hours
+        across the org's resolved findings. Populated by the worker's
+        forward-going tick + initial cmd/backfill run; `backfilled=true`
+        rows distinguish historical seeding from live rollups.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: severity, in: query, schema: { type: string },
+            description: "Optional filter — empty means all severities" }
+        - { name: weeks, in: query, schema: { type: integer, default: 52, minimum: 1, maximum: 156 } }
+      responses:
+        "200":
+          description: Weekly rollups
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  org_id: { type: string }
+                  severity: { type: string }
+                  count: { type: integer }
+                  items:
+                    type: array
+                    items: { $ref: "#/components/schemas/MTTRHistoryRow" }
+
+  /api/v1/code/orgs/{id}/score-forecast:
+    get:
+      tags: [ctem]
+      summary: Score forecast — linear trend + 7-day seasonal
+      description: |
+        Walks every project's unified_score history (cap 180 rows
+        per project), fits y = intercept + slope·t + seasonal(t mod 7),
+        emits per-day point predictions + 95% confidence bands.
+        Bands widen with horizon as σ·√k. Returns null forecast when
+        history is under 7 days.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: days, in: query, schema: { type: integer, default: 30, minimum: 1, maximum: 90 } }
+      responses:
+        "200":
+          description: Forecast envelope
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  org_id: { type: string }
+                  history_points: { type: integer }
+                  horizon_days: { type: integer }
+                  forecast:
+                    type: array
+                    nullable: true
+                    items: { $ref: "#/components/schemas/ForecastPoint" }
+
+  # ── Evidence Fusion (EF) — vendor-agnostic multi-source ingestion + fused reads.
+  # A new vendor is a YAML mapping + an org_integrations row, never a new route.
+  /api/v1/code/orgs/{id}/fusion/integrations:
+    get:
+      tags: [fusion]
+      summary: List wired data sources + their source health (control plane)
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: status, in: query, required: false, schema: { type: string, enum: [healthy, degraded, down, unknown] } }
+      responses:
+        "200": { description: Integrations with health }
+    post:
+      tags: [fusion]
+      summary: Wire or update a vendor integration (provider/mapping/alias/credential)
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [integrationId, mappingId]
+              properties:
+                integrationId: { type: string }
+                providerId: { type: string, description: "IGNORED — provider identity is derived from the mapping (server never trusts a caller-supplied provider)" }
+                mappingId: { type: string, description: "the versioned lens, e.g. bitsight.v1 — provider/trust/source_system_type are derived from it" }
+                alias: { type: string, description: cosmetic label }
+                credentialRef: { type: string, description: opaque ref to the secret store }
+                sourceSystemType: { type: string }
+                trustTier: { type: string, enum: [certified, org_custom, unverified] }
+                enabled: { type: boolean }
+                freshnessSlaHours: { type: integer }
+      responses:
+        "200": { description: The stored integration }
+  /api/v1/code/orgs/{id}/fusion/integrations/{integrationId}/ingest:
+    post:
+      tags: [fusion]
+      summary: Ingest a raw vendor payload through the integration's mapping
+      description: >
+        Streams arbitrary vendor JSON through the declarative engine into kernel
+        claims and records source health (degraded even on failure — never
+        fail-to-green). Body is the raw vendor payload (not a typed schema).
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: integrationId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { type: object, description: raw vendor payload }
+      responses:
+        "200": { description: "Ingest result (claimsWritten, resourcesTouched, drift)" }
+  /api/v1/code/orgs/{id}/fusion/integrations/{integrationId}/health:
+    get:
+      tags: [fusion]
+      summary: Source health + mapping-drift detail for one integration
+      description: >
+        The integration's health row plus an explainable mapping-drift
+        assessment (ok / watch / schema_drift_suspected) derived from the latest
+        pass's drift counters — surfaces a vendor that silently changed its
+        payload shape instead of failing to green.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: integrationId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Integration health + drift assessment }
+        "404": { description: integration not found }
+  /api/v1/code/orgs/{id}/fusion/integrations/{integrationId}/credential:
+    post:
+      tags: [fusion]
+      summary: Seal a BYO vendor API key for an integration (the wizard's "paste key" step)
+      description: >
+        Seals the plaintext via the KMS envelope and stores ONLY the sealed
+        bundle (never the plaintext); marks the integration as having a
+        credential. 503 if no secrets manager is configured on the engine.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: integrationId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [plaintext]
+              properties:
+                plaintext: { type: string, description: the raw vendor API key (sealed server-side, never stored in clear) }
+                label: { type: string }
+      responses:
+        "200": { description: "{ credentialRef, keyId, stored }" }
+        "404": { description: integration not found }
+        "503": { description: secrets manager not configured }
+  /api/v1/code/orgs/{id}/fusion/integrations/{integrationId}/poll-config:
+    get:
+      tags: [fusion]
+      summary: Get an integration's scheduled-poll config
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: integrationId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: "poll config (or configured:false)" }
+    put:
+      tags: [fusion]
+      summary: Configure scheduled polling for a BYO integration
+      description: >
+        The worker's vendor_poll runner pulls this endpoint on an interval and
+        ingests the response via the importmap engine. Auth uses the integration's
+        sealed token (EF-18 credential) placed in authHeader as authPrefix+token.
+        Pagination: none (single GET) or offset.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: integrationId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enabled: { type: boolean }
+                url: { type: string, description: required when enabled }
+                authHeader: { type: string, default: Authorization }
+                authPrefix: { type: string, description: "e.g. 'Bearer '" }
+                pageKind: { type: string, enum: [none, offset, cursor], default: none }
+                pageParam: { type: string, default: offset, description: "query param for the offset/cursor value" }
+                pageSize: { type: integer }
+                cursorPath: { type: string, description: "for pageKind=cursor: json path to the next cursor in each response, e.g. $.paging.next" }
+      responses:
+        "200": { description: the saved poll config }
+        "404": { description: integration not found }
+  /api/v1/code/orgs/{id}/fusion/resources/{resourceId}/posture:
+    get:
+      tags: [fusion]
+      summary: The fused evidence view of one entity (resolutions, coverage, disagreements, independence, confidence envelope)
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: resourceId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: ResourcePosture with its always-attached evidence envelope }
+  /api/v1/code/orgs/{id}/fusion/summary:
+    get:
+      tags: [fusion]
+      summary: Org-level fused posture (CISO rollup)
+      description: >
+        Aggregates across the org's kernel entities: open cross-source
+        disagreements by severity, org-wide coverage debt, vendor-independence
+        (concentration risk), and source-health counts.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: OrgFusionSummary }
+  /api/v1/code/orgs/{id}/fusion/unified-posture:
+    get:
+      tags: [fusion]
+      summary: Existing engine score + fusion qualifiers in one read (a score never travels naked)
+      description: >
+        Additive read combining the existing org_score with the fusion summary
+        (coverage debt, cross-source disagreements, vendor independence, source
+        health) so the existing dashboard can show the score WITH its
+        fusion-derived qualifiers. Modifies neither the scoring engine nor the UI.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: scoreType, in: query, required: false, schema: { type: string, default: overall } }
+      responses:
+        "200": { description: "{ scoreType, score, fusion }" }
+  /api/v1/code/orgs/{id}/fusion/reconciliations:
+    get:
+      tags: [fusion]
+      summary: Cross-source disagreement triage queue
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: status, in: query, required: false, schema: { type: string, enum: [open, acknowledged, resolved, suppressed] } }
+        - { name: resourceId, in: query, required: false, schema: { type: string } }
+        - { name: severity, in: query, required: false, schema: { type: string } }
+      responses:
+        "200": { description: Reconciliation findings }
+  /api/v1/code/orgs/{id}/fusion/reconciliations/{reconId}:
+    patch:
+      tags: [fusion]
+      summary: Transition a disagreement's workflow state (acknowledge / resolve / suppress)
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: reconId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status: { type: string, enum: [open, acknowledged, resolved, suppressed] }
+                note: { type: string }
+      responses:
+        "200": { description: ok }
+  /api/v1/code/orgs/{id}/fusion/mappings:
+    get:
+      tags: [fusion]
+      summary: List this org's custom (org-authored) import mappings
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Custom mappings }
+    post:
+      tags: [fusion]
+      summary: Create or update a custom import mapping (validated; trust forced to org_custom)
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [mappingId, providerId, yaml]
+              properties:
+                mappingId: { type: string }
+                providerId: { type: string, description: "must be namespaced custom:<org>:<name>" }
+                sourceSystemType: { type: string }
+                yaml: { type: string, description: the mapping source }
+                enabled: { type: boolean }
+      responses:
+        "200": { description: The stored custom mapping }
+  /api/v1/code/orgs/{id}/fusion/projects/{projectId}/modules:
+    get:
+      tags: [fusion]
+      summary: List a project's module config (enable / source / billing)
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: projectId, in: path, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Project modules }
+    put:
+      tags: [fusion]
+      summary: Bulk-upsert a project's module config (the wizard's confirm step)
+      description: >
+        The enable/billing dimension + each module's MULTI-SELECT sources,
+        separate from where data comes from. The platform never binds a module to
+        one vendor: a module can be fed by Flyto's own engine AND any number of
+        external integrations at once. Each source is { kind: flyto } or
+        { kind: integration, integrationId }. The integration's credential is set
+        separately via /fusion/integrations/{id}/credential.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+        - { name: projectId, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [modules]
+              properties:
+                modules:
+                  type: array
+                  items:
+                    type: object
+                    required: [module]
+                    properties:
+                      module: { type: string, description: "e.g. code / external / cloud / container / dark_web / identity / vuln_mgmt" }
+                      enabled: { type: boolean }
+                      billingTier: { type: string }
+                      sources:
+                        type: array
+                        description: multi-select — Flyto and/or any number of external integrations
+                        items:
+                          type: object
+                          required: [kind]
+                          properties:
+                            kind: { type: string, enum: [flyto, integration] }
+                            integrationId: { type: string, description: "required when kind=integration (a wired org_integration)" }
+      responses:
+        "200": { description: The saved module config (with assembled sources) }
+  /api/v1/code/orgs/{id}/fusion/probe:
+    post:
+      tags: [fusion]
+      summary: Test-call a customer endpoint and return its JSON field shape (self-serve mapping)
+      description: >
+        Fetches a sample from the given URL (token inline or taken from an
+        integration's sealed credential) and returns the observed leaf field
+        paths so the user can map them. SSRF-hardened (validate + dial-time IP
+        check + no redirects + size cap). The map/dry-run/enable steps follow via
+        /fusion/mappings.
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [url]
+              properties:
+                url: { type: string }
+                method: { type: string, default: GET }
+                token: { type: string, description: "sent verbatim in the token header (inline only — not stored; sealed tokens are never sent to a caller-supplied URL)" }
+                tokenHeader: { type: string, default: Authorization }
+      responses:
+        "200": { description: "{ status, fields:[{path,type,sample}], sampleRaw }" }
+        "400": { description: probe failed (incl. SSRF rejection of a private/metadata host) }
+  /api/v1/code/orgs/{id}/fusion/mappings/dry-run:
+    post:
+      tags: [fusion]
+      summary: Preview what a candidate mapping would produce from a sample payload (writes nothing)
+      parameters:
+        - { name: id, in: path, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [yaml, samplePayload]
+              properties:
+                yaml: { type: string }
+                samplePayload: { type: object }
+      responses:
+        "200": { description: "Preview (drafts + drift) — no write" }
+
+components:
+  securitySchemes:
+    firebaseAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Firebase ID token obtained via the Firebase Auth SDK on the client.
+
+  parameters:
+    ResourceID:
+      name: id
+      in: path
+      required: true
+      schema: { type: string }
+
+  responses:
+    Unauthorized:
+      description: Missing or invalid auth
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorResponse" }
+    Forbidden:
+      description: Not allowed
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorResponse" }
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorResponse" }
+    PayloadTooLarge:
+      description: Body/file exceeds server limit
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorResponse" }
+    UnsupportedMediaType:
+      description: Extension blocked or MIME rejected
+      content:
+        application/json:
+          schema: { $ref: "#/components/schemas/ErrorResponse" }
+
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        error: { type: string }
+
+    User:
+      type: object
+      properties:
+        id: { type: string }
+        email: { type: string, format: email }
+        displayName: { type: string }
+        photoURL: { type: string, nullable: true }
+        authSource: { type: string, enum: [password] }
+        createdAt: { type: string, format: date-time }
+
+
+    Workspace:
+      type: object
+      properties:
+        id: { type: string }
+        name: { type: string }
+        ownerId: { type: string }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+
+    Project:
+      type: object
+      properties:
+        id: { type: string }
+        workspaceId: { type: string }
+        name: { type: string }
+        description: { type: string }
+        icon: { type: string, nullable: true }
+        color: { type: string, nullable: true }
+        kind: { type: string, enum: [inbox, user, auto] }
+        visibility: { type: string }
+        defaultVisibility: { type: string }
+        defaultSensitivity: { type: string }
+        createdBy: { type: string }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+        archivedAt: { type: string, format: date-time, nullable: true }
+
+    Folder:
+      type: object
+      properties:
+        id: { type: string }
+        workspaceId: { type: string }
+        projectId: { type: string }
+        parentFolderId: { type: string, nullable: true }
+        name: { type: string }
+        description: { type: string }
+        icon: { type: string, nullable: true }
+        source: { type: string, enum: [user, auto, imported] }
+        sortOrder: { type: integer }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+
+    CanonicalResource:
+      type: object
+      properties:
+        id: { type: string }
+        workspaceId: { type: string }
+        primaryVariantId: { type: string, nullable: true }
+        contentSignature: { type: string }
+        title: { type: string }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+
+    Resource:
+      type: object
+      properties:
+        id: { type: string }
+        workspaceId: { type: string }
+        sourceType: { type: string }
+        contentHash: { type: string, description: "Short SHA-256[:16]" }
+        fullContentHash: { type: string, description: "Full SHA-256 used by CAS" }
+        metadataHash: { type: string }
+        size: { type: integer }
+        originalName: { type: string }
+        normalizedName: { type: string }
+        displayName: { type: string }
+        resourceType: { type: string }
+        category: { type: string }
+        subcategory: { type: string, nullable: true }
+        classificationSource: { type: string, enum: [auto, manual, learned] }
+        classificationConfidence: { type: number }
+        projectId: { type: string, nullable: true }
+        folderId: { type: string, nullable: true }
+        parentResourceId: { type: string, nullable: true }
+        canonicalId: { type: string, nullable: true }
+        variantRole:
+          type: string
+          enum: [source, derived, translation, summary, ocr, transcript]
+        pipelineStatus:
+          type: string
+          enum: [pending, processing, ready, failed, skipped]
+        extractedText: { type: string, nullable: true }
+        language: { type: string, nullable: true }
+        visibility:
+          type: string
+          enum: [public, workspace, project, private, restricted]
+        sensitivity:
+          type: string
+          enum: [open, internal, confidential, secret]
+        ownerUserId: { type: string }
+        tags: { type: array, items: { type: string } }
+        autoTags: { type: array, items: { type: string } }
+        versionNumber: { type: integer }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+        lastAccessedAt: { type: string, format: date-time }
+        archivedAt: { type: string, format: date-time, nullable: true }
+
+    ResourceVersion:
+      type: object
+      properties:
+        id: { type: string }
+        resourceId: { type: string }
+        version: { type: integer }
+        contentHash: { type: string }
+        metadataHash: { type: string }
+        size: { type: integer }
+        changeDescription: { type: string, nullable: true }
+        createdBy: { type: string }
+        createdAt: { type: string, format: date-time }
+
+    Relationship:
+      type: object
+      properties:
+        id: { type: string }
+        workspaceId: { type: string }
+        sourceResourceId: { type: string }
+        targetResourceId: { type: string }
+        type: { type: string }
+        strength: { type: number }
+        source: { type: string, enum: [explicit, inferred, learned] }
+        createdBy: { type: string }
+        createdAt: { type: string, format: date-time }
+
+    ProcessingJob:
+      type: object
+      properties:
+        id: { type: string }
+        resourceId: { type: string }
+        workspaceId: { type: string }
+        type: { type: string }
+        status: { type: string, enum: [queued, running, completed, failed, cancelled] }
+        provider: { type: string }
+        error: { type: string, nullable: true }
+        estimatedCostCents: { type: integer }
+        actualCostCents: { type: integer, nullable: true }
+        attemptNumber: { type: integer }
+        maxAttempts: { type: integer }
+        createdAt: { type: string, format: date-time }
+        startedAt: { type: string, format: date-time, nullable: true }
+        completedAt: { type: string, format: date-time, nullable: true }
+
+    Concept:
+      type: object
+      properties:
+        id: { type: string }
+        workspaceId: { type: string }
+        label: { type: string }
+        documentFrequency: { type: integer }
+        idf: { type: number }
+        source: { type: string, enum: [extracted, user_defined, learned] }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+
+    AuditLog:
+      type: object
+      properties:
+        id: { type: string }
+        workspaceId: { type: string }
+        timestamp: { type: string, format: date-time }
+        actorId: { type: string }
+        action: { type: string }
+        resourceType: { type: string }
+        resourceId: { type: string }
+        result: { type: string, enum: [success, failure] }
+        entryHash: { type: string }
+        prevHash: { type: string }
+
+    IngestResult:
+      type: object
+      properties:
+        Resource: { $ref: "#/components/schemas/Resource" }
+        Canonical: { $ref: "#/components/schemas/CanonicalResource" }
+        Duplicate: { type: boolean }
+        QueuedJobs: { type: array, items: { type: string } }
+        Categorized:
+          type: object
+          properties:
+            Category: { type: string }
+            Subcategory: { type: string }
+            Confidence: { type: number }
+            RuleName: { type: string }
+
+    PermissionCheckRequest:
+      type: object
+      properties:
+        userRole: { type: string, enum: [owner, admin, member, guest] }
+        isProjectMember: { type: boolean }
+        isOwner: { type: boolean }
+        visibility: { type: string }
+        sensitivity: { type: string }
+        workspace: { $ref: "#/components/schemas/PermissionLayer" }
+        project: { $ref: "#/components/schemas/PermissionLayer" }
+        folder: { $ref: "#/components/schemas/PermissionLayer" }
+        resource: { $ref: "#/components/schemas/PermissionLayer" }
+
+    PermissionLayer:
+      type: object
+      properties:
+        visibility: { type: string }
+        sensitivity: { type: string }
+
+    AccessResult:
+      type: object
+      properties:
+        CanAccess: { type: boolean }
+        AuditRequired: { type: boolean }
+        Reason: { type: string }
+
+    AutofixPatchStatus:
+      type: string
+      enum: [no_preview, preview, outdated, pr_opened, permanently_no_preview]
+
+    AutofixPatchStatusReason:
+      type: string
+      enum:
+        - not_generated
+        - patch_ready
+        - pr_opened
+        - cached_no_change
+        - finding_resolved
+        - clone_failed
+        - detect_failed
+        - transform_failed
+        - rule_unavailable
+        - ambiguous_match
+        - retry_cap
+        - empty_patch
+
+    AutofixConfidence:
+      type: object
+      properties:
+        level: { type: string, enum: [high, medium, low] }
+        tier: { type: integer, enum: [1, 2] }
+        reason_key: { type: string }
+        reason_gates:
+          type: array
+          items: { type: string }
+
+    AutofixFileChange:
+      type: object
+      properties:
+        path: { type: string }
+        status: { type: string, enum: [added, modified, removed] }
+        before: { type: string }
+        after: { type: string }
+
+    AutofixGate:
+      type: object
+      properties:
+        name: { type: string }
+        status: { type: string, enum: [pass, fail, skipped, error] }
+        message: { type: string }
+        took_ms: { type: integer }
+
+    AutofixFinding:
+      type: object
+      properties:
+        id: { type: string }
+        repo_id: { type: string }
+        repo_name: { type: string }
+        rule_id: { type: string }
+        rule_title: { type: string }
+        rule_category: { type: string }
+        file_path: { type: string }
+        line_number: { type: integer }
+        severity: { type: string }
+        title: { type: string }
+        description: { type: string }
+        patch_status: { $ref: "#/components/schemas/AutofixPatchStatus" }
+        patch_status_reason: { $ref: "#/components/schemas/AutofixPatchStatusReason" }
+        patch_status_message: { type: string }
+        patch_title: { type: string }
+        verify_passed: { type: boolean }
+        pr_url: { type: string }
+        pr_number: { type: integer }
+        fingerprint: { type: string }
+        detected_at: { type: string, format: date-time }
+        patched_at: { type: string, format: date-time }
+        confidence: { $ref: "#/components/schemas/AutofixConfidence" }
+
+    AutofixFindingDetail:
+      allOf:
+        - $ref: "#/components/schemas/AutofixFinding"
+        - type: object
+          properties:
+            patch_changes:
+              type: array
+              items: { $ref: "#/components/schemas/AutofixFileChange" }
+            verify_gates:
+              type: array
+              items: { $ref: "#/components/schemas/AutofixGate" }
+            patch_description: { type: string }
+            retry_count: { type: integer }
+            last_retry: { type: string, format: date-time }
+            cached: { type: boolean }
+
+    AutofixPreviewResponse:
+      type: object
+      properties:
+        status: { $ref: "#/components/schemas/AutofixPatchStatus" }
+        patch_status_reason: { $ref: "#/components/schemas/AutofixPatchStatusReason" }
+        patch_status_message: { type: string }
+        message: { type: string }
+        verify_passed: { type: boolean }
+        changes:
+          type: array
+          items: { $ref: "#/components/schemas/AutofixFileChange" }
+        gates:
+          type: array
+          items: { $ref: "#/components/schemas/AutofixGate" }
+        title: { type: string }
+        description: { type: string }
+        cached: { type: boolean }
+        retry_count: { type: integer }
+        last_retry: { type: string, format: date-time }
+        file_sha: { type: string }
+
+    AutofixOpenPRResponse:
+      type: object
+      properties:
+        status: { type: string, enum: [pr_opened] }
+        pr_url: { type: string }
+        pr_number: { type: integer }
+        warning: { type: string }
+
+    ThreatSensorObservation:
+      type: object
+      properties:
+        id: { type: string }
+        source: { type: string }
+        indicator: { type: string }
+        indicator_kind: { type: string, enum: [ip, domain, url] }
+        threat_category: { type: string }
+        country_code: { type: string }
+        asn: { type: integer }
+        as_name: { type: string }
+        protocol: { type: string }
+        port: { type: integer }
+        observed_count: { type: integer }
+        confidence: { type: number }
+        first_seen_at: { type: string, format: date-time }
+        last_seen_at: { type: string, format: date-time }
+        raw_payload: { type: string }
+
+    ThreatSensorStats:
+      type: object
+      properties:
+        total: { type: integer }
+        by_country:
+          type: object
+          additionalProperties: { type: integer }
+        by_category:
+          type: object
+          additionalProperties: { type: integer }
+        by_kind:
+          type: object
+          additionalProperties: { type: integer }
+        by_source:
+          type: object
+          additionalProperties: { type: integer }
+
+    # ── Upstream data strategy (migration 016) ──────────────────
+    SLAPolicy:
+      type: object
+      properties:
+        org_id: { type: string }
+        severity: { type: string, enum: [critical, high, medium, low] }
+        allowed_breaches: { type: integer, minimum: 0 }
+        window_days: { type: integer }
+        alert_at_percent: { type: integer }
+        is_active: { type: boolean }
+        created_by: { type: string }
+        created_at: { type: string, format: date-time }
+        updated_at: { type: string, format: date-time }
+
+    BudgetUsage:
+      type: object
+      properties:
+        severity: { type: string }
+        allowed_breaches: { type: integer }
+        used_breaches: { type: integer }
+        remaining_breaches: { type: integer }
+        used_percent: { type: number }
+        window_start: { type: string, format: date-time }
+        window_end: { type: string, format: date-time }
+        alert_at_percent: { type: integer }
+        status:
+          type: string
+          enum: [healthy, warning, exhausted, inactive, no_policy]
+
+    PeerBaselineSnapshot:
+      type: object
+      properties:
+        sector: { type: string }
+        metric: { type: string }
+        percentile: { type: integer }
+        value: { type: number }
+        snapshot_date: { type: string, format: date }
+        corpus_size: { type: integer }
+        corpus_version: { type: string }
+        source: { type: string, description: "public_corpus | customer_anonymized | partner_feed" }
+        created_at: { type: string, format: date-time }
+
+    MTTRHistoryRow:
+      type: object
+      properties:
+        org_id: { type: string }
+        severity: { type: string }
+        week_start: { type: string, format: date }
+        p50_hours: { type: number }
+        p75_hours: { type: number }
+        p90_hours: { type: number }
+        count_resolved: { type: integer }
+        backfilled: { type: boolean,
+          description: "true=row was seeded by cmd/backfill; false=live rollup" }
+        computed_at: { type: string, format: date-time }
+
+    ForecastPoint:
+      type: object
+      properties:
+        t: { type: string, format: date-time }
+        value: { type: number, description: "central estimate, clamped [0,1000]" }
+        lower: { type: number, description: "95% lower bound" }
+        upper: { type: number, description: "95% upper bound" }

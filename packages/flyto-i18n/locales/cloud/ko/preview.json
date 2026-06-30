@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "AI에게 수정 요청",
+        "preview.emptyState.description": "워크플로 단계를 추가하려면 개발 모드로 전환하세요",
+        "preview.emptyState.hint": "미리보기를 사용할 수 없습니다",
+        "preview.emptyState.title": "워크플로가 정의되지 않았습니다",
+        "preview.executionFailed": "실행 실패",
+        "preview.fields": "필드",
+        "preview.inputs": "입력",
+        "preview.noInputsRequired": "필요한 입력이 없습니다",
+        "preview.noWorkflowHint": "실행을 활성화하려면 개발 모드에서 워크플로 단계를 추가하세요",
+        "preview.output": "출력",
+        "preview.ready": "준비됨",
+        "preview.running": "실행 중",
+        "preview.steps": "단계",
+        "preview.untitledTemplate": "제목 없는 템플릿"
+    }
+}

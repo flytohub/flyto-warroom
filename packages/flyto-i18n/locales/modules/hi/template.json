@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "अपने पुस्तकालय से एक टेम्पलेट को वर्कफ़्लो चरण के रूप में निष्पादित करें",
+        "modules.template.invoke.label": "टेम्पलेट को आमंत्रित करें",
+        "modules.template.invoke.output.__event__.description": "पुस्तकालय आइटम का ID (खरीद/फोर्क/स्वामित्व)",
+        "modules.template.invoke.output.execution_time_ms.description": "टेम्पलेट निष्पादन परिणाम",
+        "modules.template.invoke.output.result.description": "अधिकतम निष्पादन समय सेकंड में",
+        "modules.template.invoke.output.template_id.description": "रूटिंग के लिए घटना (सफलता/त्रुटि)",
+        "modules.template.invoke.ports.input": "टेम्पलेट को आमंत्रित करें",
+        "modules.template.invoke.ports.success": "इनपुट"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "Xóa một đối tượng khỏi bucket AWS S3",
+        "modules.aws.s3.delete.label": "Xóa đối tượng S3",
+        "modules.aws.s3.delete.output.bucket.description": "Tên bucket S3",
+        "modules.aws.s3.delete.output.deleted.description": "Đối tượng đã được xóa thành công hay chưa",
+        "modules.aws.s3.delete.output.key.description": "Khóa đối tượng đã xóa",
+        "modules.aws.s3.download.description": "Tải một tệp từ bucket AWS S3 về đường dẫn máy",
+        "modules.aws.s3.download.label": "Tải xuống S3",
+        "modules.aws.s3.download.output.content_type.description": "Loại MIME của tệp đã tải xuống",
+        "modules.aws.s3.download.output.path.description": "Đường dẫn tệp trên máy nơi tệp được lưu",
+        "modules.aws.s3.download.output.size.description": "Kích thước tệp tính bằng byte",
+        "modules.aws.s3.list.description": "Liệt kê các đối tượng trong bucket AWS S3 với bộ lọc tiền tố tùy chọn",
+        "modules.aws.s3.list.label": "Liệt kê đối tượng S3",
+        "modules.aws.s3.list.output.count.description": "Số lượng đối tượng trả về",
+        "modules.aws.s3.list.output.objects.description": "Danh sách các đối tượng S3",
+        "modules.aws.s3.list.output.truncated.description": "Kết quả có bị cắt ngắn hay không",
+        "modules.aws.s3.upload.description": "Tải một tệp từ máy lên bucket AWS S3",
+        "modules.aws.s3.upload.label": "Tải lên S3",
+        "modules.aws.s3.upload.output.bucket.description": "Tên bucket S3",
+        "modules.aws.s3.upload.output.key.description": "Khóa đối tượng S3",
+        "modules.aws.s3.upload.output.size.description": "Kích thước tệp tính bằng byte",
+        "modules.aws.s3.upload.output.url.description": "URL công khai của đối tượng đã tải lên"
+    }
+}

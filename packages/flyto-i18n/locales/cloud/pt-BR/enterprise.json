@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.enterprise",
+    "version": "1.0.0",
+    "translations": {
+        "enterprise.actions.notSupported": "Action not supported",
+        "enterprise.errors.actionFailed": "Ação falhou",
+        "enterprise.errors.loadFailed": "Failed to load",
+        "enterprise.robotsOnline": "Robôs Online",
+        "enterprise.subtitle": "Ferramentas de automação empresarial",
+        "enterprise.tabs.idp": "Processamento de Documentos",
+        "enterprise.tabs.mining": "Mineração de Processos",
+        "enterprise.tabs.orchestrator": "Orquestrador",
+        "enterprise.tabs.queues": "Filas",
+        "enterprise.tabs.rpa": "RPA",
+        "enterprise.tabs.scheduler": "Agendador",
+        "enterprise.tabs.stateMachine": "Máquina de Estados",
+        "enterprise.title": "Empresarial"
+    }
+}

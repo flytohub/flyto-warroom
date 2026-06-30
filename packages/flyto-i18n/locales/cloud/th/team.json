@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "ไม่มีกิจกรรมล่าสุด",
+        "team.activity.title": "กิจกรรมล่าสุด",
+        "team.contributors.created": "สร้าง",
+        "team.contributors.empty": "ยังไม่มีผู้มีส่วนร่วม",
+        "team.contributors.executed": "ดำเนินการ",
+        "team.contributors.title": "ผู้มีส่วนร่วม",
+        "team.dashboard.subtitle": "ภาพรวมกิจกรรมของทีมคุณ",
+        "team.dashboard.title": "แดชบอร์ดทีม",
+        "team.stats.executions": "การดำเนินการ",
+        "team.stats.members": "สมาชิก",
+        "team.stats.templates": "เทมเพลต",
+        "team.stats.workflows": "Workflow"
+    }
+}

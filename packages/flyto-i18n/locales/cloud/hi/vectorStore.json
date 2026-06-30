@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.vectorStore",
+    "version": "1.0.0",
+    "translations": {
+        "vectorStore.addMetadata": "फ़ील्ड जोड़ें",
+        "vectorStore.collection": "कलेक्शन",
+        "vectorStore.collectionName": "कलेक्शन का नाम",
+        "vectorStore.content": "दस्तावेज़ सामग्री",
+        "vectorStore.contentPlaceholder": "टेक्स्ट दर्ज करें या {{variable}} का उपयोग करें...",
+        "vectorStore.createCollection": "नया कलेक्शन बनाएं",
+        "vectorStore.deleteIds": "हटाने के लिए दस्तावेज़ ID",
+        "vectorStore.documentId": "दस्तावेज़ ID (वैकल्पिक)",
+        "vectorStore.filters": "मेटाडेटा फ़िल्टर",
+        "vectorStore.metadata": "मेटाडेटा",
+        "vectorStore.noMetadata": "कोई मेटाडेटा फ़ील्ड नहीं",
+        "vectorStore.query": "क्वेरी",
+        "vectorStore.queryPlaceholder": "खोज क्वेरी दर्ज करें या {{variable}} का उपयोग करें...",
+        "vectorStore.refreshCollections": "कलेक्शन रीफ्रेश करें",
+        "vectorStore.scoreThreshold": "स्कोर थ्रेशोल्ड",
+        "vectorStore.scoreThresholdHint": "न्यूनतम समानता स्कोर (0-1)",
+        "vectorStore.selectCollection": "कलेक्शन चुनें...",
+        "vectorStore.topK": "शीर्ष K परिणाम"
+    }
+}

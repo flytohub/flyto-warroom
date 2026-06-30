@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "承諾",
+        "orders.approve": "承認",
+        "orders.budget": "予算",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "完了",
+        "orders.createFailed": "注文の作成に失敗しました",
+        "orders.createOrder": "注文を作成",
+        "orders.createOrderSubtitle": "この販売者にプロジェクトリクエストを送信",
+        "orders.days": "日",
+        "orders.deadline": "納期",
+        "orders.decline": "辞退",
+        "orders.deliver": "納品",
+        "orders.description": "説明",
+        "orders.descriptionPlaceholder": "プロジェクト要件を詳しく記述してください...",
+        "orders.payNow": "今すぐ支払う",
+        "orders.requirements": "追加要件",
+        "orders.requirementsPlaceholder": "特別な要件やメモがあれば...",
+        "orders.sendOrder": "注文リクエストを送信",
+        "orders.sending": "送信中...",
+        "orders.sendingTo": "送信先",
+        "orders.title": "プロジェクトタイトル",
+        "orders.titlePlaceholder": "何についてお手伝いが必要ですか？",
+        "orders.viewDetails": "詳細",
+        "orders.waitingResponse": "返答待ち"
+    }
+}

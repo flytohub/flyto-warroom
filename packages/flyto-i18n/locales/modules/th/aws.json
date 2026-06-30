@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "ลบวัตถุจาก AWS S3 bucket",
+        "modules.aws.s3.delete.label": "ลบวัตถุ S3",
+        "modules.aws.s3.delete.output.bucket.description": "ชื่อ S3 bucket",
+        "modules.aws.s3.delete.output.deleted.description": "วัตถุถูกลบสำเร็จหรือไม่",
+        "modules.aws.s3.delete.output.key.description": "คีย์ของวัตถุที่ถูกลบ",
+        "modules.aws.s3.download.description": "ดาวน์โหลดไฟล์จาก AWS S3 bucket ไปยังเส้นทางในเครื่อง",
+        "modules.aws.s3.download.label": "ดาวน์โหลด S3",
+        "modules.aws.s3.download.output.content_type.description": "ประเภท MIME ของไฟล์ที่ดาวน์โหลด",
+        "modules.aws.s3.download.output.path.description": "เส้นทางไฟล์ในเครื่องที่บันทึกไฟล์",
+        "modules.aws.s3.download.output.size.description": "ขนาดไฟล์เป็นไบต์",
+        "modules.aws.s3.list.description": "แสดงรายการวัตถุใน AWS S3 bucket พร้อมตัวกรองคำนำหน้า",
+        "modules.aws.s3.list.label": "รายการวัตถุ S3",
+        "modules.aws.s3.list.output.count.description": "จำนวนวัตถุที่ส่งคืน",
+        "modules.aws.s3.list.output.objects.description": "รายการวัตถุ S3",
+        "modules.aws.s3.list.output.truncated.description": "ผลลัพธ์ถูกตัดทอนหรือไม่",
+        "modules.aws.s3.upload.description": "อัปโหลดไฟล์จากเครื่องไปยัง AWS S3 bucket",
+        "modules.aws.s3.upload.label": "อัปโหลด S3",
+        "modules.aws.s3.upload.output.bucket.description": "ชื่อ S3 bucket",
+        "modules.aws.s3.upload.output.key.description": "คีย์ของวัตถุ S3",
+        "modules.aws.s3.upload.output.size.description": "ขนาดไฟล์เป็นไบต์",
+        "modules.aws.s3.upload.output.url.description": "URL สาธารณะของวัตถุที่อัปโหลด"
+    }
+}

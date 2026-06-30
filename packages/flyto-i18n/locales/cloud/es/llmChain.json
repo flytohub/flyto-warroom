@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.llmChain",
+    "version": "1.0.0",
+    "translations": {
+        "llmChain.advancedOptions": "Opciones avanzadas",
+        "llmChain.detectedVariables": "Variables detectadas",
+        "llmChain.insertVariable": "Insertar variable",
+        "llmChain.maxTokens": "Tokens máximos",
+        "llmChain.maxTokensHint": "Longitud máxima de la respuesta",
+        "llmChain.model": "Modelo",
+        "llmChain.systemPrompt": "Prompt del sistema",
+        "llmChain.systemPromptPlaceholder": "Eres un asistente útil...",
+        "llmChain.temperature": "Temperatura",
+        "llmChain.temperatureHint": "Mayor = más creativo, Menor = más enfocado",
+        "llmChain.userPrompt": "Prompt del usuario",
+        "llmChain.userPromptPlaceholder": "Ingrese su prompt con {{variables}}...",
+        "llmChain.variableHelp": "Use {{variable}} para referenciar datos de pasos anteriores"
+    }
+}

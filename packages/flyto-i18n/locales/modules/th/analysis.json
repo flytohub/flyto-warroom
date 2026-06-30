@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "วิเคราะห์ความสามารถในการอ่านเนื้อหา",
+        "modules.analysis.html.analyze_readability.label": "ความสามารถอ่าน HTML",
+        "modules.analysis.html.extract_forms.description": "ดึงข้อมูลฟอร์มจาก HTML",
+        "modules.analysis.html.extract_forms.label": "ดึงฟอร์ม",
+        "modules.analysis.html.extract_metadata.description": "ดึง metadata จาก HTML",
+        "modules.analysis.html.extract_metadata.label": "ดึง Metadata",
+        "modules.analysis.html.extract_tables.description": "ดึงข้อมูลตารางจาก HTML",
+        "modules.analysis.html.extract_tables.label": "ดึงตาราง",
+        "modules.analysis.html.find_patterns.description": "ค้นหารูปแบบข้อมูลที่ซ้ำใน HTML",
+        "modules.analysis.html.find_patterns.label": "ค้นหารูปแบบ",
+        "modules.analysis.html.structure.description": "วิเคราะห์โครงสร้าง DOM ของ HTML",
+        "modules.analysis.html.structure.label": "โครงสร้าง HTML"
+    }
+}

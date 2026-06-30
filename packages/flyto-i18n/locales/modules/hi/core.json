@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "core",
+    "version": "1.0.0",
+    "translations": {
+        "modules.core.api.google_search.output.count.description": "खोज परिणामों की संख्या",
+        "modules.core.api.google_search.output.data.description": "खोज परिणाम डेटा",
+        "modules.core.api.google_search.output.status.description": "ऑपरेशन स्थिति",
+        "modules.core.api.google_search.output.total_results.description": "कुल परिणाम गणना",
+        "modules.core.api.http_get.output.body.description": "प्रतिक्रिया बॉडी",
+        "modules.core.api.http_get.output.headers.description": "प्रतिक्रिया हेडर्स",
+        "modules.core.api.http_get.output.json.description": "JSON प्रतिक्रिया (यदि लागू हो)",
+        "modules.core.api.http_get.output.status_code.description": "HTTP स्थिति कोड"
+    }
+}

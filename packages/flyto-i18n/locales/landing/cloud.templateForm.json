@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.templateForm",
+  "version": "1.0.0",
+  "translations": {
+    "templateForm.category": "",
+    "templateForm.changeIcon": "",
+    "templateForm.description": "",
+    "templateForm.descriptionPlaceholder": "",
+    "templateForm.editTemplate": "",
+    "templateForm.iconUploadError": "",
+    "templateForm.namePlaceholder": "",
+    "templateForm.selectCategory": "",
+    "templateForm.templateColor": "",
+    "templateForm.templateIcon": "",
+    "templateForm.templateName": "",
+    "templateForm.uploadIcon": ""
+  }
+}

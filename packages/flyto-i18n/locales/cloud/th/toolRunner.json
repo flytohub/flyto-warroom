@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "ขั้นสูง",
+        "toolRunner.backToLibrary": "กลับไปคลัง",
+        "toolRunner.copy": "คัดลอก",
+        "toolRunner.download": "ดาวน์โหลด",
+        "toolRunner.editTool": "แก้ไข",
+        "toolRunner.executionFailed": "การดำเนินการล้มเหลว",
+        "toolRunner.executionLogs": "บันทึกการดำเนินการ",
+        "toolRunner.executionSuccess": "การดำเนินการเสร็จสิ้น",
+        "toolRunner.executionTimedOut": "การดำเนินการหมดเวลา",
+        "toolRunner.flowSteps": "ขั้นตอน Flow",
+        "toolRunner.inputForm": "ฟอร์มนำเข้า",
+        "toolRunner.loadFailed": "ไม่สามารถโหลดเครื่องมือได้",
+        "toolRunner.noLogs": "ยังไม่มีบันทึก รันเครื่องมือเพื่อดูบันทึกการดำเนินการ",
+        "toolRunner.resolvedParams": "พารามิเตอร์ที่แก้ไขแล้ว",
+        "toolRunner.results": "ผลลัพธ์",
+        "toolRunner.retry": "ลองอีกครั้ง",
+        "toolRunner.runAgain": "รันอีกครั้ง",
+        "toolRunner.runToSeeResults": "รันเครื่องมือเพื่อดูผลลัพธ์ที่นี่",
+        "toolRunner.runTool": "รันเครื่องมือ",
+        "toolRunner.running": "กำลังรัน...",
+        "toolRunner.simpleMode": "ง่าย",
+        "toolRunner.toolNotFound": "ไม่พบเครื่องมือ",
+        "toolRunner.toolNotFoundError": "ไม่พบเครื่องมือ"
+    }
+}

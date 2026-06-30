@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "slack",
+    "version": "1.0.0",
+    "translations": {
+        "modules.slack.send.description": "Wysylaj wiadomosci na kanaly Slack przez przychodzacy webhook",
+        "modules.slack.send.label": "Wyslij wiadomosc Slack",
+        "modules.slack.send.output.sent.description": "Czy wiadomosc zostala wyslana pomyslnie"
+    }
+}

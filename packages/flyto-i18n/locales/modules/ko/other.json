@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "헤더 이름",
+        "schema.field.body": "본문",
+        "schema.field.body_matches": "응답",
+        "schema.field.full_page": "전체 페이지",
+        "schema.field.response": "응답",
+        "schema.field.screenshot_format": "전체 페이지",
+        "schema.field.ssrf_protection": "SSRF 보호",
+        "schema.field.ssrf_protection.description": "내부/사설 네트워크로의 요청을 차단합니다(localhost, 192.168.x.x, 클라우드 메타데이터 엔드포인트). 신뢰할 수 있는 내부 대상에만 비활성화하세요.",
+        "schema.field.url": "URL",
+        "schema.field.viewport_height": "너비",
+        "schema.field.viewport_width": "너비"
+    }
+}

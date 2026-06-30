@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.moduleCard",
+    "version": "1.0.0",
+    "translations": {
+        "moduleCard.expert": "Chuyên gia",
+        "moduleCard.inputType": "Đầu vào: {type}",
+        "moduleCard.noDescription": "Không có mô tả",
+        "moduleCard.outputType": "Đầu ra: {type}"
+    }
+}

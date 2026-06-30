@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "Wykonaj polecenie powloki i przechwyc wyjscie",
+        "modules.shell.exec.label": "Wykonaj polecenie powloki",
+        "modules.shell.exec.output.command.description": "Standardowe wyjscie",
+        "modules.shell.exec.output.cwd.description": "Standardowe wyjscie bledu",
+        "modules.shell.exec.output.duration_ms.description": "Wykonane polecenie",
+        "modules.shell.exec.output.exit_code.description": "Czy polecenie wykonalo sie pomyslnie (kod wyjscia 0)",
+        "modules.shell.exec.output.ok.description": "Czy polecenie wykonalo sie pomyslnie (kod wyjscia 0)",
+        "modules.shell.exec.output.stderr.description": "Kod wyjscia polecenia",
+        "modules.shell.exec.output.stdout.description": "Czy polecenie wykonalo sie pomyslnie (kod wyjscia 0)"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Usun",
+        "batch.deleteConfirm.message": "Czy na pewno chcesz usunac {count} szablonow? Tej operacji nie mozna cofnac.",
+        "batch.deleteConfirm.title": "Usun {count} szablonow",
+        "batch.deselectAll": "Odznacz wszystko",
+        "batch.select": "Wybierz",
+        "batch.selectAll": "Zaznacz wszystko",
+        "batch.selected": "zaznaczono"
+    }
+}

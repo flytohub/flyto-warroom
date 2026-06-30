@@ -1,0 +1,97 @@
+# Copyright 2026 Flyto2. Licensed under Apache-2.0. See LICENSE.
+
+"""
+Object Omit Module
+Omit specific keys from an object
+"""
+from typing import Any, Dict
+
+from ...registry import register_module
+from ...schema import compose, presets
+from ...errors import InvalidTypeError
+
+
+@register_module(
+    module_id='object.omit',
+    version='1.0.0',
+    category='data',
+    subcategory='object',
+    tags=['object', 'omit', 'exclude'],
+    label='Object Omit',
+    label_key='modules.object.omit.label',
+    description='Omit specific keys from an object',
+    description_key='modules.object.omit.description',
+    icon='X',
+    color='#F59E0B',
+
+    # Connection types
+    input_types=['object'],
+    output_types=['object'],
+
+    can_receive_from=['*'],
+    can_connect_to=['*'],
+
+    # Execution settings
+    timeout_ms=5000,
+    retryable=False,
+    concurrent_safe=True,
+
+    # Security settings
+    requires_credentials=False,
+    handles_sensitive_data=False,
+    required_permissions=[],
+
+    # Schema-driven params
+    params_schema=compose(
+        presets.INPUT_OBJECT(required=True),
+        presets.OBJECT_KEYS(required=True),
+    ),
+    output_schema={
+        'result': {
+            'type': 'object',
+            'description': 'Object without omitted keys'
+        ,
+                'description_key': 'modules.object.omit.output.result.description'}
+    },
+    examples=[
+        {
+            'title': 'Omit sensitive fields',
+            'params': {
+                'object': {'name': 'John', 'age': 30, 'password': 'secret', 'ssn': '123-45-6789'},
+                'keys': ['password', 'ssn']
+            }
+        }
+    ],
+    author='Flyto Team',
+    license='MIT'
+)
+async def object_omit(context: Dict[str, Any]) -> Dict[str, Any]:
+    """Omit specific keys from an object."""
+    params = context['params']
+    obj = params.get('object')
+    keys = params.get('keys', [])
+
+    if not isinstance(obj, dict):
+        raise InvalidTypeError(
+            "object must be a dictionary",
+            field="object",
+            expected_type="dict",
+            actual_type=type(obj).__name__
+        )
+
+    if not isinstance(keys, list):
+        raise InvalidTypeError(
+            "keys must be an array",
+            field="keys",
+            expected_type="list",
+            actual_type=type(keys).__name__
+        )
+
+    result = {key: value for key, value in obj.items() if key not in keys}
+
+    return {
+        'ok': True,
+        'data': {
+            'result': result
+        }
+    }

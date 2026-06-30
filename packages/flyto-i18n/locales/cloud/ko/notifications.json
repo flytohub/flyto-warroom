@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count}일 전",
+        "notifications.empty": "아직 알림이 없습니다",
+        "notifications.hoursAgo": "{count}시간 전",
+        "notifications.justNow": "방금 전",
+        "notifications.loadMore": "더 보기",
+        "notifications.markAllRead": "모두 읽음으로 표시",
+        "notifications.minutesAgo": "{count}분 전",
+        "notifications.title": "알림"
+    }
+}

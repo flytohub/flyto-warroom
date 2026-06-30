@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "Biến khả dụng",
+        "expression.editExpression": "Sửa biểu thức",
+        "expression.enterExpression": "Nhập biểu thức để xem trước",
+        "expression.expressionCode": "Biểu thức",
+        "expression.openEditor": "Mở trình chỉnh sửa biểu thức",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "Xem trước"
+    }
+}

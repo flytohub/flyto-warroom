@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "इस वर्कफ़्लो को चलाने के लिए एक्जीक्यूट पर क्लिक करें",
+        "executionModal.execute": "एक्जीक्यूट करें",
+        "executionModal.executing": "वर्कफ़्लो चल रहा है...",
+        "executionModal.executionComplete": "एक्जीक्यूशन पूर्ण",
+        "executionModal.executionFailed": "एक्जीक्यूशन विफल",
+        "executionModal.noParamsRequired": "कोई इनपुट पैरामीटर आवश्यक नहीं",
+        "executionModal.runAgain": "फिर से चलाएं",
+        "executionModal.status.completed": "पूर्ण",
+        "executionModal.status.failed": "विफल",
+        "executionModal.status.ready": "तैयार",
+        "executionModal.status.running": "चल रहा है",
+        "executionModal.stop": "बंद करें",
+        "executionModal.title": "वर्कफ़्लो एक्जीक्यूट करें"
+    }
+}

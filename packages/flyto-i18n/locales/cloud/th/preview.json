@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "ถาม AI เพื่อแก้ไข",
+        "preview.emptyState.description": "เปลี่ยนเป็นโหมด Dev เพื่อเพิ่มขั้นตอน workflow",
+        "preview.emptyState.hint": "ไม่มีตัวอย่าง",
+        "preview.emptyState.title": "ไม่มี Workflow ที่กำหนด",
+        "preview.executionFailed": "การดำเนินการล้มเหลว",
+        "preview.fields": "ฟิลด์",
+        "preview.inputs": "ข้อมูลนำเข้า",
+        "preview.noInputsRequired": "ไม่ต้องการข้อมูลนำเข้า",
+        "preview.noWorkflowHint": "เพิ่มขั้นตอน workflow ในโหมด Dev เพื่อเปิดใช้งานการดำเนินการ",
+        "preview.output": "ผลลัพธ์",
+        "preview.ready": "พร้อม",
+        "preview.running": "กำลังทำงาน",
+        "preview.steps": "ขั้นตอน",
+        "preview.untitledTemplate": "เทมเพลตไม่มีชื่อ"
+    }
+}

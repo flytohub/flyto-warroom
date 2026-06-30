@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "Sunucuya bağlanılamıyor. Lütfen arka ucun çalıştığından emin olun.",
+        "errors.somethingWentWrong": "Bir şeyler yanlış gitti",
+        "errors.technicalDetails": "Teknik detaylar",
+        "errors.timeout": "İstek zaman aşımına uğradı. Lütfen tekrar deneyin.",
+        "errors.unexpectedError": "Beklenmeyen bir hata oluştu"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "core",
+    "version": "1.0.0",
+    "translations": {
+        "modules.core.api.google_search.output.count.description": "Anzahl der Suchergebnisse",
+        "modules.core.api.google_search.output.data.description": "Suchergebnisdaten",
+        "modules.core.api.google_search.output.status.description": "Operationsstatus",
+        "modules.core.api.google_search.output.total_results.description": "Gesamtanzahl der Ergebnisse",
+        "modules.core.api.http_get.output.body.description": "Antworttext",
+        "modules.core.api.http_get.output.headers.description": "Antwortheader",
+        "modules.core.api.http_get.output.json.description": "JSON-Antwort (falls zutreffend)",
+        "modules.core.api.http_get.output.status_code.description": "HTTP-Statuscode"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "Jumlah pengembalian",
+        "refund.cancelButton": "Batal",
+        "refund.confirm": "Konfirmasi pengembalian",
+        "refund.confirmButton": "Konfirmasi Pengembalian Dana",
+        "refund.confirmTitle": "Konfirmasi Permintaan Pengembalian Dana",
+        "refund.contactSupport": "Hubungi dukungan",
+        "refund.days": "Hari pengembalian",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "Anda berhak mendapatkan pengembalian dana",
+        "refund.expiredWindow": "Jangka waktu pengembalian dana 30 hari telah berakhir",
+        "refund.failed": "Gagal meminta pengembalian dana",
+        "refund.forksAffected": "Fork berikut akan menjadi yatim piatu (editan Anda akan disimpan tetapi terputus dari sumber):",
+        "refund.forksWarning": "Peringatan forks",
+        "refund.notEligible": "Tidak memenuhi syarat untuk pengembalian",
+        "refund.processInfo": "Info proses pengembalian",
+        "refund.processing": "Sedang diproses...",
+        "refund.success": "Permintaan pengembalian dana berhasil",
+        "refund.template": "Template pengembalian",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "Deskripsi peringatan"
+    }
+}

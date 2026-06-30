@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "AI 어시스턴트 (AI에게 도움 요청)",
+        "workflowCanvas.controls.autoLayout": "자동 레이아웃",
+        "workflowCanvas.controls.fitView": "화면 맞춤",
+        "workflowCanvas.controls.zoomIn": "확대",
+        "workflowCanvas.controls.zoomOut": "축소",
+        "workflowCanvas.deleteDialog.deleteAll": "모두 삭제",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "이 노드와 모든 {count}개의 하위 노드 삭제",
+        "workflowCanvas.deleteDialog.mergeToChild": "하위로 병합",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "이 노드만 삭제하고 부모를 첫 번째 하위 노드에 연결",
+        "workflowCanvas.deleteDialog.message": "이 노드에는 {count}개의 하위 노드가 있습니다. 어떻게 하시겠습니까?",
+        "workflowCanvas.deleteDialog.title": "하위 노드가 있는 노드 삭제",
+        "workflowCanvas.reconnect.cancel": "취소",
+        "workflowCanvas.reconnect.connect": "연결",
+        "workflowCanvas.reconnect.dontConnect": "연결 안 함",
+        "workflowCanvas.stickyNoteCreated": "메모가 생성되었습니다"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "Fechar",
+        "updateNotification.downloadFailed": "Falha ao baixar atualizacao",
+        "updateNotification.downloadUpdate": "Baixar Atualizacao",
+        "updateNotification.downloading": "Baixando Atualizacao",
+        "updateNotification.newVersionAvailable": "Nova Versao Disponivel",
+        "updateNotification.percentComplete": "{percent}% completo",
+        "updateNotification.remindLater": "Lembrar Depois",
+        "updateNotification.restartLater": "Reiniciar Depois",
+        "updateNotification.restartNow": "Reiniciar Agora",
+        "updateNotification.restartToInstall": "Reinicie o aplicativo para instalar a atualizacao",
+        "updateNotification.unknownError": "Erro desconhecido",
+        "updateNotification.updateDownloaded": "Atualizacao Baixada",
+        "updateNotification.updateFailed": "Atualizacao Falhou",
+        "updateNotification.versionReady": "Versao {version} esta pronta para atualizar"
+    }
+}

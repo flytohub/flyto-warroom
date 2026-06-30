@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "บทบาทที่มีอยู่",
+        "roles.create": "สร้างบทบาท",
+        "roles.create.title": "สร้างบทบาท",
+        "roles.custom.empty": "ไม่มีบทบาทที่กำหนดเอง",
+        "roles.custom.title": "บทบาทที่กำหนดเอง",
+        "roles.delete.message": "คุณแน่ใจหรือไม่ว่าต้องการลบบทบาทนี้? ผู้ใช้ที่มีบทบาทนี้จะถูกกำหนดให้เป็นบทบาทสมาชิกเริ่มต้น",
+        "roles.delete.title": "ลบบทบาท",
+        "roles.description": "จัดการบทบาทและสิทธิ์การเข้าถึง",
+        "roles.edit.title": "แก้ไขบทบาท",
+        "roles.form.description": "คำอธิบาย",
+        "roles.form.name": "ชื่อบทบาท",
+        "roles.form.permissions": "สิทธิ์",
+        "roles.permissions": "สิทธิ์",
+        "roles.title": "บทบาทและสิทธิ์",
+        "roles.users": "ผู้ใช้"
+    }
+}

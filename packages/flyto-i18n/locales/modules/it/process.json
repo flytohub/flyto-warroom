@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Elenca tutti i processi in background in esecuzione",
+        "modules.process.list.label": "Elenca Processi",
+        "modules.process.list.output.count.description": "Operazione riuscita",
+        "modules.process.list.output.ok.description": "Operazione riuscita",
+        "modules.process.list.output.processes.description": "Operazione riuscita",
+        "modules.process.list.output.running.description": "Lista delle informazioni processo",
+        "modules.process.list.output.stopped.description": "Numero totale di processi",
+        "modules.process.start.description": "Avvia un processo in background (server, servizio, ecc.)",
+        "modules.process.start.label": "Avvia Processo in Background",
+        "modules.process.start.output.command.description": "Identificatore processo interno per process.stop",
+        "modules.process.start.output.cwd.description": "Nome processo",
+        "modules.process.start.output.initial_output.description": "Timestamp ISO quando il processo e avviato",
+        "modules.process.start.output.name.description": "ID Processo",
+        "modules.process.start.output.ok.description": "Se il processo e stato avviato con successo",
+        "modules.process.start.output.pid.description": "Se il processo e stato avviato con successo",
+        "modules.process.start.output.process_id.description": "Se il processo e stato avviato con successo",
+        "modules.process.start.output.started_at.description": "Il comando eseguito",
+        "modules.process.stop.description": "Ferma un processo in background in esecuzione",
+        "modules.process.stop.label": "Ferma Processo",
+        "modules.process.stop.output.count.description": "Lista delle info processi fermati",
+        "modules.process.stop.output.failed.description": "Lista delle info processi fermati",
+        "modules.process.stop.output.ok.description": "Se tutti i processi sono stati fermati con successo",
+        "modules.process.stop.output.stopped.description": "Se tutti i processi sono stati fermati con successo"
+    }
+}

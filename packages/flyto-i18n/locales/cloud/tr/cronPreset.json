@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.cronPreset",
+    "version": "1.0.0",
+    "translations": {
+        "cronPreset.daily9am": "Her Gün 09:00",
+        "cronPreset.everyMinute": "Her dakika",
+        "cronPreset.hourly": "Saatlik",
+        "cronPreset.weeklyMon": "Haftalık Pazartesi"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "Ejecutar un comando de shell y capturar salida",
+        "modules.shell.exec.label": "Ejecutar comando de shell",
+        "modules.shell.exec.output.command.description": "Salida estandar",
+        "modules.shell.exec.output.cwd.description": "Salida de error estandar",
+        "modules.shell.exec.output.duration_ms.description": "El comando ejecutado",
+        "modules.shell.exec.output.exit_code.description": "Si el comando se ejecuto exitosamente (codigo de salida 0)",
+        "modules.shell.exec.output.ok.description": "Si el comando se ejecuto exitosamente (codigo de salida 0)",
+        "modules.shell.exec.output.stderr.description": "Codigo de salida del comando",
+        "modules.shell.exec.output.stdout.description": "Si el comando se ejecuto exitosamente (codigo de salida 0)"
+    }
+}

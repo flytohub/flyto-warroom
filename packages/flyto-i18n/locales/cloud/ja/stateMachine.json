@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "承認ワークフロー",
+        "stateMachine.create.blank": "空白",
+        "stateMachine.create.descPlaceholder": "説明を入力",
+        "stateMachine.create.description": "説明",
+        "stateMachine.create.name": "名前",
+        "stateMachine.create.namePlaceholder": "ステートマシン名を入力",
+        "stateMachine.create.order": "注文処理",
+        "stateMachine.create.template": "テンプレート",
+        "stateMachine.create.ticket": "サポートチケット",
+        "stateMachine.create.title": "ステートマシンを作成",
+        "stateMachine.diagram.select": "ステートマシンを選択",
+        "stateMachine.diagram.title": "ステート図",
+        "stateMachine.instances.empty": "インスタンスなし",
+        "stateMachine.instances.history": "履歴",
+        "stateMachine.instances.title": "インスタンス",
+        "stateMachine.instances.trigger": "トリガー",
+        "stateMachine.list.empty": "ステートマシンなし",
+        "stateMachine.list.title": "ステートマシン",
+        "stateMachine.stats.activeInstances": "アクティブなインスタンス",
+        "stateMachine.stats.completed": "完了",
+        "stateMachine.stats.machines": "マシン",
+        "stateMachine.stats.transitions": "遷移"
+    }
+}

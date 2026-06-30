@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.alt",
+    "version": "1.0.0",
+    "translations": {
+        "alt.avatar": "Awatar",
+        "alt.flytoLogo": "Logo Flyto2",
+        "alt.preview": "Podglad",
+        "alt.result": "Wynik",
+        "alt.screenshot": "Zrzut ekranu",
+        "alt.stepScreenshot": "Zrzut ekranu kroku",
+        "alt.templateIcon": "Ikona szablonu"
+    }
+}

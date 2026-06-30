@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Kategori",
+        "createModal.category.placeholder": "Pilih kategori (opsional)",
+        "createModal.closeDialog": "Tutup dialog",
+        "createModal.create": "Buat Template",
+        "createModal.creating": "Membuat...",
+        "createModal.description.label": "Deskripsi",
+        "createModal.description.placeholder": "Apa yang dilakukan template ini? (opsional)",
+        "createModal.errors.createFailed": "Gagal membuat template",
+        "createModal.errors.fileTooLarge": "Gambar harus lebih kecil dari 2MB",
+        "createModal.errors.invalidFileType": "Silakan pilih file gambar",
+        "createModal.folder.label": "Folder",
+        "createModal.folder.placeholder": "Default (tanpa folder)",
+        "createModal.icon.change": "Ubah Ikon",
+        "createModal.icon.hint": "PNG, JPG, GIF hingga 2MB",
+        "createModal.icon.label": "Ikon Template",
+        "createModal.icon.remove": "Hapus ikon",
+        "createModal.icon.upload": "Unggah Ikon",
+        "createModal.name.label": "Nama Template",
+        "createModal.name.placeholder": "Otomasi Keren Saya",
+        "createModal.title": "Template Baru"
+    }
+}

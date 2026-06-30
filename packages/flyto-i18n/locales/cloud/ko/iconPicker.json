@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.iconPicker",
+    "version": "1.0.0",
+    "translations": {
+        "iconPicker.iconColor": "아이콘 색상",
+        "iconPicker.noResults": "결과 없음",
+        "iconPicker.searchPlaceholder": "아이콘 검색..."
+    }
+}

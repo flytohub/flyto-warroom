@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "Flujo de Aprobación",
+        "stateMachine.create.blank": "En Blanco",
+        "stateMachine.create.descPlaceholder": "Ingresa descripción",
+        "stateMachine.create.description": "Descripción",
+        "stateMachine.create.name": "Nombre",
+        "stateMachine.create.namePlaceholder": "Ingresa nombre de la máquina de estados",
+        "stateMachine.create.order": "Procesamiento de Pedidos",
+        "stateMachine.create.template": "Plantilla",
+        "stateMachine.create.ticket": "Ticket de Soporte",
+        "stateMachine.create.title": "Crear Máquina de Estados",
+        "stateMachine.diagram.select": "Selecciona una máquina de estados",
+        "stateMachine.diagram.title": "Diagrama de Estados",
+        "stateMachine.instances.empty": "No hay instancias",
+        "stateMachine.instances.history": "Historial",
+        "stateMachine.instances.title": "Instancias",
+        "stateMachine.instances.trigger": "Disparador",
+        "stateMachine.list.empty": "No hay máquinas de estados",
+        "stateMachine.list.title": "Máquinas de Estados",
+        "stateMachine.stats.activeInstances": "Instancias Activas",
+        "stateMachine.stats.completed": "Completado",
+        "stateMachine.stats.machines": "Máquinas",
+        "stateMachine.stats.transitions": "Transiciones"
+    }
+}

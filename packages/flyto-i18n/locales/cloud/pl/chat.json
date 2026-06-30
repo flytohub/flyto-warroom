@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "Dolacz plik",
+        "chat.messageUser": "Wiadomosc",
+        "chat.messages": "Wiadomosci",
+        "chat.noConversations": "Brak konwersacji",
+        "chat.noMessages": "Brak wiadomosci. Przywitaj sie!",
+        "chat.online": "Online",
+        "chat.searchConversations": "Szukaj konwersacji...",
+        "chat.selectConversation": "Wybierz konwersacje, aby rozpoczac czat",
+        "chat.send": "Wyslij",
+        "chat.startChat": "Rozpocznij czat",
+        "chat.startChatFailed": "Nie udalo sie rozpoczac czatu",
+        "chat.typePlaceholder": "Wpisz wiadomosc...",
+        "chat.user": "Uzytkownik"
+    }
+}

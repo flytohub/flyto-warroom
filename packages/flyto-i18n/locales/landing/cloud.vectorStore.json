@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.vectorStore",
+  "version": "1.0.0",
+  "translations": {
+    "vectorStore.addMetadata": "",
+    "vectorStore.collection": "",
+    "vectorStore.collectionName": "",
+    "vectorStore.content": "",
+    "vectorStore.contentPlaceholder": "",
+    "vectorStore.createCollection": "",
+    "vectorStore.deleteIds": "",
+    "vectorStore.documentId": "",
+    "vectorStore.filters": "",
+    "vectorStore.metadata": "",
+    "vectorStore.noMetadata": "",
+    "vectorStore.query": "",
+    "vectorStore.queryPlaceholder": "",
+    "vectorStore.refreshCollections": "",
+    "vectorStore.scoreThreshold": "",
+    "vectorStore.scoreThresholdHint": "",
+    "vectorStore.selectCollection": "",
+    "vectorStore.topK": ""
+  }
+}

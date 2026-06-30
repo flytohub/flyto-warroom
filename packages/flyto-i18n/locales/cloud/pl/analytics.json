@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.analytics",
+    "version": "1.0.0",
+    "translations": {
+        "analytics.declining": "Spadek",
+        "analytics.eventBreakdown": "Podział wydarzeń",
+        "analytics.frictionPoints": "Punkty tarcia",
+        "analytics.healthScore": "Wynik zdrowia",
+        "analytics.improving": "Poprawa",
+        "analytics.issues": "Problemy",
+        "analytics.noFriction": "Brak tarcia",
+        "analytics.overallHealth": "Ogólny stan zdrowia",
+        "analytics.recommendations": "Rekomendacje",
+        "analytics.stable": "Stabilny"
+    }
+}

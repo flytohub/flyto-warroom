@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "slack",
+  "version": "1.0.0",
+  "translations": {
+    "modules.slack.send.description": "",
+    "modules.slack.send.label": "",
+    "modules.slack.send.output.sent.description": ""
+  }
+}

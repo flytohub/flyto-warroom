@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.actionLabel",
+  "version": "1.0.0",
+  "translations": {
+    "actionLabel.create": "",
+    "actionLabel.delete": "",
+    "actionLabel.execute": "",
+    "actionLabel.export": "",
+    "actionLabel.import": "",
+    "actionLabel.logout": "",
+    "actionLabel.update": ""
+  }
+}

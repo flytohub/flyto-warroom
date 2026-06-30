@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.variableSelector",
+    "version": "1.0.0",
+    "translations": {
+        "variableSelector.insert": "डालें",
+        "variableSelector.noVariables": "कोई वेरिएबल उपलब्ध नहीं",
+        "variableSelector.searchPlaceholder": "वेरिएबल खोजें...",
+        "variableSelector.selected": "चयनित"
+    }
+}

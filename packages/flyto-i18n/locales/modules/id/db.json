@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "Kueri dokumen dari koleksi MongoDB",
+        "modules.db.mongodb.find.label": "MongoDB Temukan",
+        "modules.db.mongodb.find.output.count.description": "Array dokumen yang cocok",
+        "modules.db.mongodb.find.output.documents.description": "Array dokumen yang cocok",
+        "modules.db.mongodb.insert.description": "Sisipkan satu atau lebih dokumen ke koleksi MongoDB",
+        "modules.db.mongodb.insert.label": "MongoDB Masukkan",
+        "modules.db.mongodb.insert.output.inserted_count.description": "Jumlah dokumen yang disisipkan",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "Jumlah dokumen yang disisipkan",
+        "modules.db.mysql.query.description": "Eksekusi kueri SQL pada database MySQL dan kembalikan hasil",
+        "modules.db.mysql.query.label": "MySQL Kueri",
+        "modules.db.mysql.query.output.columns.description": "Array baris hasil sebagai objek",
+        "modules.db.mysql.query.output.row_count.description": "Array baris hasil sebagai objek",
+        "modules.db.mysql.query.output.rows.description": "Array baris hasil sebagai objek",
+        "modules.db.postgresql.query.description": "Eksekusi kueri SQL pada database PostgreSQL dan kembalikan hasil",
+        "modules.db.postgresql.query.label": "PostgreSQL Kueri",
+        "modules.db.postgresql.query.output.columns.description": "Array baris hasil sebagai objek",
+        "modules.db.postgresql.query.output.row_count.description": "Array baris hasil sebagai objek",
+        "modules.db.postgresql.query.output.rows.description": "Array baris hasil sebagai objek",
+        "modules.db.redis.get.description": "Ambil nilai dari cache Redis",
+        "modules.db.redis.get.label": "Redis Dapatkan",
+        "modules.db.redis.get.output.exists.description": "Nilai yang dikembalikan",
+        "modules.db.redis.get.output.key.description": "Nilai yang dikembalikan",
+        "modules.db.redis.get.output.value.description": "Nilai yang dikembalikan",
+        "modules.db.redis.set.description": "Atur nilai di cache Redis",
+        "modules.db.redis.set.label": "Redis Atur"
+    }
+}

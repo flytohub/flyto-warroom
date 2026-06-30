@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "Asystent AI (Poproś AI o pomoc)",
+        "workflowCanvas.controls.autoLayout": "Automatyczny układ",
+        "workflowCanvas.controls.fitView": "Dopasuj widok",
+        "workflowCanvas.controls.zoomIn": "Powiększ",
+        "workflowCanvas.controls.zoomOut": "Pomniejsz",
+        "workflowCanvas.deleteDialog.deleteAll": "Usun wszystko",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "Usun ten wezel i wszystkie {count} wezel(ow) podrzednych",
+        "workflowCanvas.deleteDialog.mergeToChild": "Polacz z potomkiem",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "Usun tylko ten wezel i polacz rodzica z pierwszym potomkiem",
+        "workflowCanvas.deleteDialog.message": "Ten wezel ma {count} wezel(ow) podrzednych. Co chcialbys zrobic?",
+        "workflowCanvas.deleteDialog.title": "Usun wezel z potomkami",
+        "workflowCanvas.reconnect.cancel": "Anuluj",
+        "workflowCanvas.reconnect.connect": "Połącz",
+        "workflowCanvas.reconnect.dontConnect": "Nie łącz",
+        "workflowCanvas.stickyNoteCreated": "Utworzono notatkę samoprzylepną"
+    }
+}

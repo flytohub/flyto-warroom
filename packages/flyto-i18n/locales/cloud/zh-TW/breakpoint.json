@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "額外輸入",
+        "breakpoint.approve": "批准",
+        "breakpoint.comment": "備註",
+        "breakpoint.commentPlaceholder": "新增備註...",
+        "breakpoint.contextSnapshot": "上下文快照",
+        "breakpoint.createdAt": "建立時間",
+        "breakpoint.expires": "到期時間",
+        "breakpoint.humanCheckpoint": "人工檢查點",
+        "breakpoint.noBreakpoint": "未設定中斷點",
+        "breakpoint.noPending": "沒有待審核項目",
+        "breakpoint.pendingApprovals": "待審核",
+        "breakpoint.reject": "拒絕",
+        "breakpoint.step": "步驟",
+        "breakpoint.waitingApproval": "等待審核中",
+        "breakpoint.workflow": "工作流程",
+        "browserInteract.title": "瀏覽器互動",
+        "browserInteract.pagePreview": "頁面預覽",
+        "browserInteract.noElements": "未偵測到互動元素",
+        "browserInteract.selectHint": "選擇一個元素進行互動",
+        "browserInteract.skip": "跳過",
+        "browserInteract.execute": "執行"
+    }
+}

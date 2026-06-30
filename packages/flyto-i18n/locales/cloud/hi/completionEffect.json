@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.completionEffect",
+    "version": "1.0.0",
+    "translations": {
+        "completionEffect.defaultMessage": "सभी स्टेप सफलतापूर्वक पूर्ण हुए",
+        "completionEffect.defaultTitle": "वर्कफ़्लो पूर्ण"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "slack",
+    "version": "1.0.0",
+    "translations": {
+        "modules.slack.send.description": "Gửi tin nhắn đến kênh Slack qua incoming webhook",
+        "modules.slack.send.label": "Gửi tin nhắn Slack",
+        "modules.slack.send.output.sent.description": "Tin nhắn có được gửi thành công không"
+    }
+}

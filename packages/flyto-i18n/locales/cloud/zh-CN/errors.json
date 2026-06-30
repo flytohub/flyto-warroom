@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "无法连接至服务器，请确认后端是否正在运行。",
+        "errors.somethingWentWrong": "发生错误",
+        "errors.technicalDetails": "技术详情",
+        "errors.timeout": "请求逾时，请重试。",
+        "errors.unexpectedError": "发生未预期的错误"
+    }
+}

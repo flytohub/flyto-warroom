@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "最后更新",
+        "terms.sections.acceptance.content": "访问或使用 Flyto2 服务即表示您同意受本服务条款约束。如果您不同意这些条款，请勿使用我们的服务。",
+        "terms.sections.acceptance.title": "条款接受",
+        "terms.sections.account.content": "您有责任维护账号凭证的机密性，并对账号下发生的所有活动负责。您必须立即通知我们任何未经授权的使用。",
+        "terms.sections.account.title": "用户账号",
+        "terms.sections.intellectual.content": "Flyto2 的所有内容、功能和功能性均归我们所有，并受国际著作权、商标和其他知识产权法律保护。",
+        "terms.sections.intellectual.title": "知识产权",
+        "terms.sections.limitation.content": "在法律允许的最大范围内，Flyto2 不对因使用我们服务而产生的任何间接、附带、特殊、后果性或惩罚性损害承担责任。",
+        "terms.sections.limitation.title": "责任限制",
+        "terms.sections.prohibited.content": "您不得将我们的服务用于任何非法目的、违反任何法律、侵犯知识产权或传输有害代码。我们保留终止违反这些条款的账号的权利。",
+        "terms.sections.prohibited.title": "禁止行为",
+        "terms.sections.services.content": "Flyto2 提供工作流程自动化平台，让用户可以创建、管理和运行自动化工作流程。我们保留随时修改或终止服务的权利。",
+        "terms.sections.services.title": "服务说明",
+        "terms.sections.termination.content": "我们可能会自行决定终止或暂停您的账号和服务访问权，无需事先通知，如果我们认为您的行为违反这些条款或对其他用户有害。",
+        "terms.sections.termination.title": "终止",
+        "terms.title": "服务条款"
+    }
+}

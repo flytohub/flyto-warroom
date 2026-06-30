@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Zuletzt aktualisiert",
+        "privacy.sections.collection.content": "Wir erfassen Informationen, die Sie uns direkt zur Verfügung stellen, z. B. wenn Sie ein Konto erstellen, unsere Dienste nutzen oder uns für Support kontaktieren. Dies kann Ihren Namen, Ihre E-Mail-Adresse und Nutzungsdaten umfassen, um unsere Dienste zu verbessern.",
+        "privacy.sections.collection.title": "Informationen, die wir erfassen",
+        "privacy.sections.contact.content": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder unseren Datenpraktiken haben, kontaktieren Sie uns bitte unter privacy{'@'}flytohub.com.",
+        "privacy.sections.contact.title": "Kontaktieren Sie uns",
+        "privacy.sections.rights.content": "Sie haben das Recht, auf Ihre personenbezogenen Daten zuzugreifen, sie zu korrigieren oder zu löschen. Sie können auch Datenportabilität anfordern oder bestimmten Verarbeitungsaktivitäten widersprechen. Kontaktieren Sie uns, um diese Rechte auszuüben.",
+        "privacy.sections.rights.title": "Ihre Rechte",
+        "privacy.sections.security.content": "Wir implementieren geeignete technische und organisatorische Maßnahmen, um Ihre personenbezogenen Daten vor unbefugtem Zugriff, Änderung, Offenlegung oder Zerstörung zu schützen.",
+        "privacy.sections.security.title": "Datensicherheit",
+        "privacy.sections.sharing.content": "Wir verkaufen Ihre personenbezogenen Daten nicht. Wir können Ihre Informationen mit Drittanbietern teilen, die uns beim Betrieb unserer Plattform unterstützen, vorbehaltlich Vertraulichkeitsvereinbarungen.",
+        "privacy.sections.sharing.title": "Weitergabe von Informationen",
+        "privacy.sections.usage.content": "Wir verwenden die gesammelten Informationen, um unsere Dienste bereitzustellen, zu warten und zu verbessern, um mit Ihnen zu kommunizieren und Ihr Erlebnis zu personalisieren. Wir können auch aggregierte Daten für Analysezwecke verwenden.",
+        "privacy.sections.usage.title": "Wie wir Ihre Informationen verwenden",
+        "privacy.title": "Datenschutzrichtlinie"
+    }
+}

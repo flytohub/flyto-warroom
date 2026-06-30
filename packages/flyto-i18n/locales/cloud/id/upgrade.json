@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "Hubungi Sales",
+        "upgrade.debugFeatures": "Buka fitur debugging dan analisis yang kuat untuk meningkatkan pengembangan workflow Anda.",
+        "upgrade.enterpriseHint": "Butuh fitur enterprise?",
+        "upgrade.featureLocked": "Fitur ini memerlukan langganan Pro",
+        "upgrade.features.evidence": "Screenshot & tangkapan DOM untuk setiap langkah",
+        "upgrade.features.lineage": "Pelacakan aliran data dan grafik dependensi",
+        "upgrade.features.replay": "Putar ulang eksekusi dengan input yang dimodifikasi",
+        "upgrade.features.tests": "Suite pengujian workflow otomatis",
+        "upgrade.features.versions": "Penguncian dan kontrol versi modul",
+        "upgrade.offlineLicense": "Beli Lisensi Offline - $199 sekali bayar",
+        "upgrade.subscription": "Berlangganan - $19/bulan",
+        "upgrade.subtitle": "Dapatkan akses ke tools debugging lanjutan",
+        "upgrade.title": "Buka Fitur Pro"
+    }
+}

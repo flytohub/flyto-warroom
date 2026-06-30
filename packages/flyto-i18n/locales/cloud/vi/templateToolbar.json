@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "Xem dạng lưới",
+        "templateToolbar.listView": "Xem dạng danh sách",
+        "templateToolbar.searchLabel": "Tìm kiếm mẫu",
+        "templateToolbar.searchPlaceholder": "Tìm kiếm mẫu...",
+        "templateToolbar.sortLabel": "Sắp xếp mẫu theo",
+        "templateToolbar.sortOptions.created": "Mới tạo gần đây",
+        "templateToolbar.sortOptions.name": "Tên A-Z",
+        "templateToolbar.sortOptions.status": "Theo trạng thái",
+        "templateToolbar.sortOptions.updated": "Cập nhật gần đây",
+        "templateToolbar.viewMode": "Chế độ xem"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "Ajouter du temps a une date/heure",
+        "modules.datetime.add.label": "Ajouter du temps",
+        "modules.datetime.add.output.result.description": "Resultat de l'operation",
+        "modules.datetime.add.output.timestamp.description": "Resultat de l'operation",
+        "modules.datetime.format.description": "Formater une date/heure en chaine",
+        "modules.datetime.format.label": "Formater Date/Heure",
+        "modules.datetime.format.output.result.description": "Resultat de l'operation",
+        "modules.datetime.format.output.timestamp.description": "Resultat de l'operation",
+        "modules.datetime.parse.description": "Analyser une chaine en date/heure",
+        "modules.datetime.parse.label": "Analyser Date/Heure",
+        "modules.datetime.parse.output.day.description": "Composant annee",
+        "modules.datetime.parse.output.hour.description": "Composant mois",
+        "modules.datetime.parse.output.minute.description": "Composant jour",
+        "modules.datetime.parse.output.month.description": "Horodatage Unix",
+        "modules.datetime.parse.output.result.description": "Resultat de l'operation",
+        "modules.datetime.parse.output.second.description": "Composant heure",
+        "modules.datetime.parse.output.timestamp.description": "Resultat de l'operation",
+        "modules.datetime.parse.output.year.description": "Resultat de l'operation",
+        "modules.datetime.subtract.description": "Soustraire du temps d'une date/heure",
+        "modules.datetime.subtract.label": "Soustraire du temps",
+        "modules.datetime.subtract.output.result.description": "Resultat de l'operation",
+        "modules.datetime.subtract.output.timestamp.description": "Resultat de l'operation"
+    }
+}

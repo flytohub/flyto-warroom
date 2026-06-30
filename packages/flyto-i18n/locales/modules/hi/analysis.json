@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "सामग्री पठनीयता का विश्लेषण करें",
+        "modules.analysis.html.analyze_readability.label": "HTML पठनीयता",
+        "modules.analysis.html.extract_forms.description": "HTML से फ़ॉर्म डेटा निकालें",
+        "modules.analysis.html.extract_forms.label": "फ़ॉर्म निकालें",
+        "modules.analysis.html.extract_metadata.description": "HTML से मेटाडेटा निकालें",
+        "modules.analysis.html.extract_metadata.label": "मेटाडेटा निकालें",
+        "modules.analysis.html.extract_tables.description": "HTML से टेबल डेटा निकालें",
+        "modules.analysis.html.extract_tables.label": "टेबल निकालें",
+        "modules.analysis.html.find_patterns.description": "HTML में दोहराए जाने वाले डेटा पैटर्न खोजें",
+        "modules.analysis.html.find_patterns.label": "पैटर्न खोजें",
+        "modules.analysis.html.structure.description": "HTML DOM संरचना का विश्लेषण करें",
+        "modules.analysis.html.structure.label": "HTML संरचना"
+    }
+}

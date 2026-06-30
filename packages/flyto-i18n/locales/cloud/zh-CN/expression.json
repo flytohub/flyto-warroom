@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "可用变量",
+        "expression.editExpression": "编辑表达式",
+        "expression.enterExpression": "输入表达式以查看预览",
+        "expression.expressionCode": "表达式",
+        "expression.openEditor": "打开表达式编辑器",
+        "expression.placeholder": "输入 ${ 查看可用变量...",
+        "expression.preview": "预览"
+    }
+}

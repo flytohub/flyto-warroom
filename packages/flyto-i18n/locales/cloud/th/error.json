@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "ไม่สามารถเริ่ม replay ได้",
+        "error.fixJsonFirst": "กรุณาแก้ไขข้อผิดพลาด JSON ก่อน",
+        "error.imageTooLarge": "ไฟล์รูปภาพใหญ่เกินไป",
+        "error.invalidJsonContext": "JSON ใน context overrides ไม่ถูกต้อง",
+        "error.noStepsToValidate": "ไม่พบขั้นตอนที่จะตรวจสอบ",
+        "error.replayFailed": "Replay ล้มเหลว"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.pluginType",
+    "version": "1.0.0",
+    "translations": {
+        "pluginType.audio": "ऑडियो",
+        "pluginType.embedding": "एम्बेडिंग",
+        "pluginType.languageModel": "भाषा मॉडल",
+        "pluginType.multimodal": "मल्टीमोडल",
+        "pluginType.vision": "विज़न"
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "th",
+  "category": "cloud.metrics",
+  "version": "1.0.0",
+  "translations": {
+    "metrics.chart.failed": "ล้มเหลว",
+    "metrics.chart.noData": "ไม่มีข้อมูล",
+    "metrics.chart.successful": "สำเร็จ",
+    "metrics.chart.title": "แนวโน้มการดำเนินการ",
+    "metrics.recentFailures.copy": "Copy",
+    "metrics.recentFailures.noData": "ไม่มีความล้มเหลวล่าสุด",
+    "metrics.recentFailures.title": "ความล้มเหลวล่าสุด",
+    "metrics.stats.avgDuration": "ระยะเวลาเฉลี่ย",
+    "metrics.stats.failed": "ล้มเหลว",
+    "metrics.stats.successRate": "อัตราสำเร็จ",
+    "metrics.stats.totalExecutions": "การดำเนินการทั้งหมด",
+    "metrics.topWorkflows.executions": "การดำเนินการ",
+    "metrics.topWorkflows.noData": "ยังไม่มี workflows ที่ดำเนินการ",
+    "metrics.topWorkflows.title": "Workflows ยอดนิยม",
+    "metrics.vsPrevious": "เทียบกับก่อนหน้า"
+  }
+}

@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "Appliqué",
+        "dashboard.evolution.events": "Événements",
+        "dashboard.evolution.executions": "Exécutions",
+        "dashboard.evolution.flytoCan": "Voler vers la boîte",
+        "dashboard.evolution.fromCheckpoints": "Depuis les points de contrôle",
+        "dashboard.evolution.last30days": "30 derniers jours",
+        "dashboard.evolution.last7days": "7 derniers jours",
+        "dashboard.evolution.last90days": "90 derniers jours",
+        "dashboard.evolution.moatDescription": "Description du fossé",
+        "dashboard.evolution.moatTitle": "Titre du fossé",
+        "dashboard.evolution.n8nCant": "N8n ne peut pas",
+        "dashboard.evolution.overallImprovement": "Amélioration globale",
+        "dashboard.evolution.pending": "En attente",
+        "dashboard.evolution.reliability": "Fiabilité",
+        "dashboard.evolution.subtitle": "Sous-titre",
+        "dashboard.evolution.suggestionsApplied": "Suggestions appliquées",
+        "dashboard.evolution.timeSaved": "Temps économisé",
+        "dashboard.evolution.timeline": "Chronologie",
+        "dashboard.evolution.title": "Titre",
+        "dashboard.evolution.today": "Aujourd'hui",
+        "dashboard.evolution.topImproved": "Meilleure amélioration",
+        "dashboard.evolution.yesterday": "Hier",
+        "dashboard.title": "Tableau de bord"
+    }
+}

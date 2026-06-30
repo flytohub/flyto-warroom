@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Son Güncelleme",
+        "privacy.sections.collection.content": "Hesap oluşturduğunuzda, hizmetlerimizi kullandığınızda veya destek için bizimle iletişime geçtiğinizde doğrudan bize sağladığınız bilgileri topluyoruz. Bu, hizmetlerimizi iyileştirmek için adınızı, e-posta adresinizi ve kullanım verilerinizi içerebilir.",
+        "privacy.sections.collection.title": "Topladığımız Bilgiler",
+        "privacy.sections.contact.content": "Bu Gizlilik Politikası veya veri uygulamalarımız hakkında sorularınız varsa, lütfen privacy{'@'}flytohub.com adresinden bizimle iletişime geçin.",
+        "privacy.sections.contact.title": "İletişim",
+        "privacy.sections.rights.content": "Kişisel bilgilerinize erişme, düzeltme veya silme hakkına sahipsiniz. Ayrıca veri taşınabilirliği talep edebilir veya belirli işleme faaliyetlerine itiraz edebilirsiniz. Bu hakları kullanmak için bizimle iletişime geçin.",
+        "privacy.sections.rights.title": "Haklarınız",
+        "privacy.sections.security.content": "Kişisel bilgilerinizi yetkisiz erişim, değişiklik, ifşa veya imhaya karşı korumak için uygun teknik ve organizasyonel önlemler uyguluyoruz.",
+        "privacy.sections.security.title": "Veri Güvenliği",
+        "privacy.sections.sharing.content": "Kişisel bilgilerinizi satmıyoruz. Platformumuzu işletmemize yardımcı olan üçüncü taraf hizmet sağlayıcılarla, gizlilik sözleşmelerine tabi olarak bilgilerinizi paylaşabiliriz.",
+        "privacy.sections.sharing.title": "Bilgi Paylaşımı",
+        "privacy.sections.usage.content": "Topladığımız bilgileri hizmetlerimizi sağlamak, sürdürmek ve iyileştirmek, sizinle iletişim kurmak ve deneyiminizi kişiselleştirmek için kullanıyoruz. Ayrıca analiz amaçlı toplu veriler kullanabiliriz.",
+        "privacy.sections.usage.title": "Bilgilerinizi Nasıl Kullanıyoruz",
+        "privacy.title": "Gizlilik Politikası"
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "training",
+    "version": "1.0.0",
+    "translations": {
+        "modules.training.practice.analyze.description": "分析网站结构以供练习",
+        "modules.training.practice.analyze.label": "练习分析",
+        "modules.training.practice.analyze.output.status.description": "分析网站结构",
+        "modules.training.practice.analyze.output.structure.description": "分析网站结构",
+        "modules.training.practice.execute.description": "运行练习会话",
+        "modules.training.practice.execute.label": "练习运行",
+        "modules.training.practice.execute.output.items_processed.description": "运行练习会话",
+        "modules.training.practice.execute.output.status.description": "运行练习会话",
+        "modules.training.practice.infer_schema.description": "从网站推断数据结构",
+        "modules.training.practice.infer_schema.label": "练习推断结构",
+        "modules.training.practice.infer_schema.output.schema.description": "推断数据结构",
+        "modules.training.practice.infer_schema.output.status.description": "推断数据结构",
+        "modules.training.practice.stats.description": "取得练习统计数据",
+        "modules.training.practice.stats.label": "练习统计",
+        "modules.training.practice.stats.output.history.description": "取得练习统计数据",
+        "modules.training.practice.stats.output.success_rate.description": "取得练习统计数据",
+        "modules.training.practice.stats.output.successful_sessions.description": "总会话数",
+        "modules.training.practice.stats.output.total_sessions.description": "总会话数"
+    }
+}

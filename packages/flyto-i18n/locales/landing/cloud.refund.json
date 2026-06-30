@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.refund",
+  "version": "1.0.0",
+  "translations": {
+    "refund.amount": "",
+    "refund.cancelButton": "",
+    "refund.confirm": "",
+    "refund.confirmButton": "",
+    "refund.confirmTitle": "",
+    "refund.contactSupport": "",
+    "refund.days": "",
+    "refund.daysRemaining": "",
+    "refund.eligible": "",
+    "refund.expiredWindow": "",
+    "refund.failed": "",
+    "refund.forksAffected": "",
+    "refund.forksWarning": "",
+    "refund.notEligible": "",
+    "refund.processInfo": "",
+    "refund.processing": "",
+    "refund.success": "",
+    "refund.template": "",
+    "refund.title": "",
+    "refund.warning": "",
+    "refund.warningDescription": ""
+  }
+}

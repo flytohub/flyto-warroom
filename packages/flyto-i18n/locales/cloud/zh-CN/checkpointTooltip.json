@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.checkpointTooltip",
+    "version": "1.0.0",
+    "translations": {
+        "checkpointTooltip.clickToAdd": "点击在连接上添加检查点",
+        "checkpointTooltip.clickToExit": "点击退出检查点模式",
+        "checkpointTooltip.upgradeToUse": "升级以使用人工检查点"
+    }
+}

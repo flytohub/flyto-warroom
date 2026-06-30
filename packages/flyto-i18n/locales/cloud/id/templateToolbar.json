@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "Tampilan grid",
+        "templateToolbar.listView": "Tampilan daftar",
+        "templateToolbar.searchLabel": "Cari template",
+        "templateToolbar.searchPlaceholder": "Cari template...",
+        "templateToolbar.sortLabel": "Urutkan template berdasarkan",
+        "templateToolbar.sortOptions.created": "Baru Dibuat",
+        "templateToolbar.sortOptions.name": "Nama A-Z",
+        "templateToolbar.sortOptions.status": "Berdasarkan Status",
+        "templateToolbar.sortOptions.updated": "Baru Diperbarui",
+        "templateToolbar.viewMode": "Mode tampilan"
+    }
+}

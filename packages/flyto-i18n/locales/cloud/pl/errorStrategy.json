@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "Kontynuuj",
+        "errorStrategy.continueDesc": "Zaloguj blad i przejdz do nastepnego kroku",
+        "errorStrategy.retry": "Ponow",
+        "errorStrategy.retryDesc": "Ponow probe zgodnie z konfiguracja ponowien",
+        "errorStrategy.stop": "Zatrzymaj",
+        "errorStrategy.stopDesc": "Zatrzymaj przeplyw i oznacz jako nieudany"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.aria",
+    "version": "1.0.0",
+    "translations": {
+        "aria.subflowNavigation": "Subflow navigation"
+    }
+}

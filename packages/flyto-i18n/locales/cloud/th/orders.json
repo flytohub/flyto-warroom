@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "ยอมรับ",
+        "orders.approve": "อนุมัติ",
+        "orders.budget": "งบประมาณ",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "เสร็จสิ้น",
+        "orders.createFailed": "ไม่สามารถสร้างคำสั่งซื้อได้",
+        "orders.createOrder": "สร้างคำสั่งซื้อ",
+        "orders.createOrderSubtitle": "ส่งคำขอโปรเจกต์ไปยังผู้ขายรายนี้",
+        "orders.days": "วัน",
+        "orders.deadline": "เวลาจัดส่ง",
+        "orders.decline": "ปฏิเสธ",
+        "orders.deliver": "ส่งมอบ",
+        "orders.description": "คำอธิบาย",
+        "orders.descriptionPlaceholder": "อธิบายความต้องการของโปรเจกต์อย่างละเอียด...",
+        "orders.payNow": "ชำระเงินเลย",
+        "orders.requirements": "ข้อกำหนดเพิ่มเติม",
+        "orders.requirementsPlaceholder": "ข้อกำหนดเฉพาะหรือหมายเหตุ...",
+        "orders.sendOrder": "ส่งคำขอคำสั่งซื้อ",
+        "orders.sending": "กำลังส่ง...",
+        "orders.sendingTo": "ส่งไปยัง",
+        "orders.title": "ชื่อโปรเจกต์",
+        "orders.titlePlaceholder": "คุณต้องการความช่วยเหลือเรื่องอะไร?",
+        "orders.viewDetails": "รายละเอียด",
+        "orders.waitingResponse": "รอการตอบกลับ"
+    }
+}

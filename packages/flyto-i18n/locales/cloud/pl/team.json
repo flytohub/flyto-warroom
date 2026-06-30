@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "Brak ostatniej aktywnosci",
+        "team.activity.title": "Ostatnia aktywnosc",
+        "team.contributors.created": "Utworzono",
+        "team.contributors.empty": "Brak wspoltworcow",
+        "team.contributors.executed": "Wykonano",
+        "team.contributors.title": "Wspoltwory",
+        "team.dashboard.subtitle": "Przeglad aktywnosci Twojego zespolu",
+        "team.dashboard.title": "Panel zespolu",
+        "team.stats.executions": "Wykonania",
+        "team.stats.members": "Czlonkowie",
+        "team.stats.templates": "Szablony",
+        "team.stats.workflows": "Przeplywy"
+    }
+}

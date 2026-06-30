@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "始终激活",
+        "cookies.lastUpdated": "最后更新",
+        "cookies.optional": "可选",
+        "cookies.preferencesSaved": "偏好设置保存成功",
+        "cookies.savePreferences": "保存偏好设置",
+        "cookies.sections.manage.content": "您可以控制允许哪些可选 Cookie。必要 Cookie 无法停用，因为它们是网站运作所必需的。",
+        "cookies.sections.manage.title": "管理您的偏好设置",
+        "cookies.sections.types.analytics.content": "这些 Cookie 通过匿名收集和报告信息，帮助我们了解访客如何与我们的网站交互。这有助于我们改善服务。",
+        "cookies.sections.types.analytics.title": "分析 Cookie",
+        "cookies.sections.types.essential.content": "这些 Cookie 是网站正常运作所必需的。它们激活基本功能，如页面导航和访问安全区域。没有这些 Cookie，网站无法正常运作。",
+        "cookies.sections.types.essential.title": "必要 Cookie",
+        "cookies.sections.types.functional.content": "这些 Cookie 激活个人化功能，如记住您的语言偏好、主题设置和登录状态。它们增强您的体验，但不是必需的。",
+        "cookies.sections.types.functional.title": "功能性 Cookie",
+        "cookies.sections.types.title": "我们使用的 Cookie 类型",
+        "cookies.sections.what.content": "Cookie 是当您访问我们网站时保存在您设备上的小型文本文件。它们通过记住您的偏好设置和了解您如何使用我们的服务，帮助我们为您提供更好的体验。",
+        "cookies.sections.what.title": "什么是 Cookie？",
+        "cookies.title": "Cookie 设置"
+    }
+}

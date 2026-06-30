@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "데이터베이스 테이블에 데이터 삽입",
+        "modules.database.insert.label": "데이터베이스 삽입",
+        "modules.database.insert.output.inserted_count.description": "삽입된 행 수",
+        "modules.database.insert.output.returning_data.description": "삽입된 행 수",
+        "modules.database.query.description": "PostgreSQL, MySQL 또는 SQLite 데이터베이스에서 SQL 쿼리 실행",
+        "modules.database.query.label": "데이터베이스 쿼리",
+        "modules.database.query.output.columns.description": "쿼리 결과 행",
+        "modules.database.query.output.row_count.description": "쿼리 결과 행",
+        "modules.database.query.output.rows.description": "쿼리 결과 행",
+        "modules.database.update.description": "데이터베이스 테이블의 데이터 업데이트",
+        "modules.database.update.label": "데이터베이스 업데이트",
+        "modules.database.update.output.updated_count.description": "업데이트된 행 수"
+    }
+}

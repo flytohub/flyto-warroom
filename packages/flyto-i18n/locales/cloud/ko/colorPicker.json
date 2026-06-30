@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.colorPicker",
+    "version": "1.0.0",
+    "translations": {
+        "colorPicker.custom": "사용자 정의",
+        "colorPicker.popular": "인기 색상",
+        "colorPicker.presets": "프리셋"
+    }
+}

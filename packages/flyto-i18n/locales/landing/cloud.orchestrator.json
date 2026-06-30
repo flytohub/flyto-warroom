@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.orchestrator",
+  "version": "1.0.0",
+  "translations": {
+    "orchestrator.jobs.empty": "",
+    "orchestrator.jobs.title": "",
+    "orchestrator.register.capabilities": "",
+    "orchestrator.register.machineName": "",
+    "orchestrator.register.machineNamePlaceholder": "",
+    "orchestrator.register.name": "",
+    "orchestrator.register.namePlaceholder": "",
+    "orchestrator.register.osType": "",
+    "orchestrator.register.submit": "",
+    "orchestrator.register.title": "",
+    "orchestrator.robots.empty": "",
+    "orchestrator.robots.emptyDesc": "",
+    "orchestrator.robots.lastSeen": "",
+    "orchestrator.robots.maxJobs": "",
+    "orchestrator.robots.platform": "",
+    "orchestrator.robots.register": "",
+    "orchestrator.robots.registerFirst": "",
+    "orchestrator.robots.runJob": "",
+    "orchestrator.robots.title": "",
+    "orchestrator.stats.available": "",
+    "orchestrator.stats.busy": "",
+    "orchestrator.stats.offline": "",
+    "orchestrator.stats.totalRobots": ""
+  }
+}

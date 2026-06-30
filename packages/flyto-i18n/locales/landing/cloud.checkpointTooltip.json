@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.checkpointTooltip",
+  "version": "1.0.0",
+  "translations": {
+    "checkpointTooltip.clickToAdd": "",
+    "checkpointTooltip.clickToExit": "",
+    "checkpointTooltip.upgradeToUse": ""
+  }
+}

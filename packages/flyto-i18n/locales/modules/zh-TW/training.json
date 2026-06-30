@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "training",
+    "version": "1.0.0",
+    "translations": {
+        "modules.training.practice.analyze.description": "分析網站結構以供練習",
+        "modules.training.practice.analyze.label": "練習分析",
+        "modules.training.practice.analyze.output.status.description": "分析網站結構",
+        "modules.training.practice.analyze.output.structure.description": "分析網站結構",
+        "modules.training.practice.execute.description": "執行練習會話",
+        "modules.training.practice.execute.label": "練習執行",
+        "modules.training.practice.execute.output.items_processed.description": "執行練習會話",
+        "modules.training.practice.execute.output.status.description": "執行練習會話",
+        "modules.training.practice.infer_schema.description": "從網站推斷資料結構",
+        "modules.training.practice.infer_schema.label": "練習推斷結構",
+        "modules.training.practice.infer_schema.output.schema.description": "推斷資料結構",
+        "modules.training.practice.infer_schema.output.status.description": "推斷資料結構",
+        "modules.training.practice.stats.description": "取得練習統計資料",
+        "modules.training.practice.stats.label": "練習統計",
+        "modules.training.practice.stats.output.history.description": "取得練習統計資料",
+        "modules.training.practice.stats.output.success_rate.description": "取得練習統計資料",
+        "modules.training.practice.stats.output.successful_sessions.description": "總會話數",
+        "modules.training.practice.stats.output.total_sessions.description": "總會話數"
+    }
+}

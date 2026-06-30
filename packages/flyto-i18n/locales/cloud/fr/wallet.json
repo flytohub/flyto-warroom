@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Portefeuille de crédits",
+        "wallet.availableCredits": "Crédits disponibles",
+        "wallet.topup": "Recharger",
+        "wallet.topupTitle": "Recharger les crédits",
+        "wallet.topupSuccess": "Crédits ajoutés avec succès",
+        "wallet.topupCancelled": "Recharge annulée",
+        "wallet.history": "Historique des transactions",
+        "wallet.noTransactions": "Aucune transaction pour le moment",
+        "wallet.balanceAfter": "Solde",
+        "wallet.conversionNote": "1 crédit = 0,01 $ USD",
+        "wallet.proceedToPayment": "Procéder au paiement",
+        "wallet.confirmExecute": "Confirmer l'exécution",
+        "wallet.executionCost": "Coût d'exécution",
+        "wallet.yourBalance": "Votre solde",
+        "wallet.insufficientCredits": "Crédits insuffisants",
+        "wallet.needMore": "Vous avez besoin de {amount} crédits supplémentaires",
+        "wallet.topupNow": "Recharger maintenant",
+        "wallet.confirmAndExecute": "Confirmer et exécuter",
+        "wallet.lowBalanceWarning": "Vos crédits sont faibles. Rechargez pour continuer à exécuter des workflows."
+    }
+}

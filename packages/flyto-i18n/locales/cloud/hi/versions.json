@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "तुलना करें",
+        "versions.current": "वर्तमान",
+        "versions.diff.comparing": "तुलना हो रही है",
+        "versions.diff.noChanges": "संस्करणों के बीच कोई परिवर्तन नहीं",
+        "versions.diff.selectPrompt": "तुलना के लिए दो संस्करण चुनें",
+        "versions.diff.title": "परिवर्तन",
+        "versions.diff.to": "से",
+        "versions.empty": "कोई संस्करण इतिहास नहीं",
+        "versions.rollback": "रोलबैक",
+        "versions.rollback.confirm": "रोलबैक",
+        "versions.rollback.description": "v{version} पर रोलबैक करने से उस संस्करण की सामग्री के साथ एक नया संस्करण बनेगा। वर्तमान संस्करण इतिहास में रहेगा।",
+        "versions.rollback.targetVersion": "लक्ष्य संस्करण",
+        "versions.rollback.title": "संस्करण पर रोलबैक करें",
+        "versions.rollback.warning": "यह एक नया संस्करण बनाएगा",
+        "versions.title": "संस्करण इतिहास"
+    }
+}

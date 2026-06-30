@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "pt-BR",
+  "category": "cloud.linkedAccounts",
+  "version": "1.0.0",
+  "translations": {
+    "linkedAccounts.cannotUnlink": "Não é possível desconectar — você precisa de pelo menos um método de login",
+    "linkedAccounts.google": "Google",
+    "linkedAccounts.link": "Conectar Conta",
+    "linkedAccounts.linkSuccess": "Conta do Google conectada com sucesso",
+    "linkedAccounts.linked": "Conectado",
+    "linkedAccounts.notLinked": "Não conectado",
+    "linkedAccounts.subtitle": "Gerencie seus métodos de login conectados",
+    "linkedAccounts.title": "Contas Conectadas",
+    "linkedAccounts.unlink": "Desconectar",
+    "linkedAccounts.unlinkConfirm": "Tem certeza de que deseja desconectar o Google?",
+    "linkedAccounts.unlinkSuccess": "Conta do Google desconectada"
+  }
+}

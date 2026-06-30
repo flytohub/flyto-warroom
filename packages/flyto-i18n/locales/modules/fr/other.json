@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "Nom de l'en-tete",
+        "schema.field.body": "Corps",
+        "schema.field.body_matches": "Reponse",
+        "schema.field.full_page": "Page entiere",
+        "schema.field.response": "Reponse",
+        "schema.field.screenshot_format": "Page entiere",
+        "schema.field.ssrf_protection": "Protection SSRF",
+        "schema.field.ssrf_protection.description": "Bloque les requêtes vers les réseaux privés/internes (localhost, 192.168.x.x, endpoints de métadonnées cloud). Désactivez uniquement pour des cibles internes de confiance.",
+        "schema.field.url": "URL",
+        "schema.field.viewport_height": "Largeur",
+        "schema.field.viewport_width": "Largeur"
+    }
+}

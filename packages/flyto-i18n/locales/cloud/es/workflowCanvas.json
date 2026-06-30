@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "Asistente de IA (Pide ayuda a la IA)",
+        "workflowCanvas.controls.autoLayout": "Diseño Automático",
+        "workflowCanvas.controls.fitView": "Ajustar Vista",
+        "workflowCanvas.controls.zoomIn": "Acercar",
+        "workflowCanvas.controls.zoomOut": "Alejar",
+        "workflowCanvas.deleteDialog.deleteAll": "Eliminar todo",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "Eliminar este nodo y todos los {count} nodo(s) hijo(s)",
+        "workflowCanvas.deleteDialog.mergeToChild": "Fusionar con hijo",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "Eliminar solo este nodo y conectar el padre con el primer hijo",
+        "workflowCanvas.deleteDialog.message": "Este nodo tiene {count} nodo(s) hijo(s). Que te gustaria hacer?",
+        "workflowCanvas.deleteDialog.title": "Eliminar nodo con hijos",
+        "workflowCanvas.reconnect.cancel": "Cancelar",
+        "workflowCanvas.reconnect.connect": "Conectar",
+        "workflowCanvas.reconnect.dontConnect": "No Conectar",
+        "workflowCanvas.stickyNoteCreated": "Nota adhesiva creada"
+    }
+}

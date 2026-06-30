@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.createModal",
+  "version": "1.0.0",
+  "translations": {
+    "createModal.category.label": "",
+    "createModal.category.placeholder": "",
+    "createModal.closeDialog": "",
+    "createModal.create": "",
+    "createModal.creating": "",
+    "createModal.description.label": "",
+    "createModal.description.placeholder": "",
+    "createModal.errors.createFailed": "",
+    "createModal.errors.fileTooLarge": "",
+    "createModal.errors.invalidFileType": "",
+    "createModal.folder.label": "",
+    "createModal.folder.placeholder": "",
+    "createModal.icon.change": "",
+    "createModal.icon.hint": "",
+    "createModal.icon.label": "",
+    "createModal.icon.remove": "",
+    "createModal.icon.upload": "",
+    "createModal.name.label": "",
+    "createModal.name.placeholder": "",
+    "createModal.title": ""
+  }
+}

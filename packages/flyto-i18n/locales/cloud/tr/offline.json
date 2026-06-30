@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "Şablonlara Dön",
+        "offline.currentlyOffline": "Şu anda çevrimdışı çalışıyorsunuz",
+        "offline.languagePack.active": "Aktif",
+        "offline.languagePack.currentLanguage": "Geçerli Dil",
+        "offline.languagePack.downloadHint": "Dil paketlerini şuradan indirin",
+        "offline.languagePack.importButton": "Dil Paketini İçe Aktar",
+        "offline.languagePack.importFailed": "Dil paketi içe aktarılamadı",
+        "offline.languagePack.importSuccess": "{locale} başarıyla içe aktarıldı ({count} anahtar)",
+        "offline.languagePack.importedPacks": "İçe Aktarılan Paketler",
+        "offline.languagePack.importing": "İçe aktarılıyor...",
+        "offline.languagePack.invalidFormat": "Geçersiz dosya formatı. flyto-i18n JSON dosyası bekleniyor.",
+        "offline.languagePack.noTranslations": "Dosyada çeviri bulunamadı",
+        "offline.languagePack.subtitle": "Çevrimdışı kullanım için çevirileri içe aktarın",
+        "offline.languagePack.title": "Dil Paketi",
+        "offline.languagePack.use": "Kullan",
+        "offline.license": "Lisans",
+        "offline.settings": "Çevrimdışı Ayarlar"
+    }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "th",
+  "category": "datetime",
+  "version": "1.0.0",
+  "translations": {
+    "modules.datetime.add.description": "เพิ่มเวลาให้กับวันที่เวลา",
+    "modules.datetime.add.label": "เพิ่มเวลา",
+    "modules.datetime.add.output.result.description": "ผลลัพธ์การดำเนินการ",
+    "modules.datetime.add.output.timestamp.description": "ผลลัพธ์การดำเนินการ",
+    "modules.datetime.format.description": "จัดรูปแบบวันที่เวลาเป็นข้อความ",
+    "modules.datetime.format.label": "จัดรูปแบบวันที่เวลา",
+    "modules.datetime.format.output.result.description": "ผลลัพธ์การดำเนินการ",
+    "modules.datetime.format.output.timestamp.description": "ผลลัพธ์การดำเนินการ",
+    "modules.datetime.parse.description": "แปลงข้อความเป็นวันที่เวลา",
+    "modules.datetime.parse.label": "แปลงวันที่เวลา",
+    "modules.datetime.parse.output.day.description": "ส่วนประกอบปี",
+    "modules.datetime.parse.output.hour.description": "ส่วนประกอบเดือน",
+    "modules.datetime.parse.output.minute.description": "ส่วนประกอบวัน",
+    "modules.datetime.parse.output.month.description": "Unix timestamp",
+    "modules.datetime.parse.output.result.description": "ผลลัพธ์การดำเนินการ",
+    "modules.datetime.parse.output.second.description": "ส่วนประกอบชั่วโมง",
+    "modules.datetime.parse.output.timestamp.description": "ผลลัพธ์การดำเนินการ",
+    "modules.datetime.parse.output.year.description": "ผลลัพธ์การดำเนินการ",
+    "modules.datetime.subtract.description": "ลบเวลาออกจากวันที่เวลา",
+    "modules.datetime.subtract.label": "ลบเวลา",
+    "modules.datetime.subtract.output.result.description": "ผลลัพธ์การดำเนินการ",
+    "modules.datetime.subtract.output.timestamp.description": "ผลลัพธ์การดำเนินการ"
+  }
+}

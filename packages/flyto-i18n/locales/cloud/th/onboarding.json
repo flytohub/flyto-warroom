@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.onboarding",
+    "version": "1.0.0",
+    "translations": {
+        "onboarding.finish": "เสร็จสิ้น",
+        "onboarding.next": "ถัดไป",
+        "onboarding.previous": "ย้อนกลับ",
+        "onboarding.skip": "ข้าม"
+    }
+}

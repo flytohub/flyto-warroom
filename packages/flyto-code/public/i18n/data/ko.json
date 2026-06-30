@@ -1,0 +1,1 @@
+{"locale": "ko", "name": "Korean", "native": "한국어", "region": "KR", "version": "b12b993930c7", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "이 오류 워크플로우의 설명", "label": "설명"}}, "pleaseSelect": "선택해 주세요…", "ports": {"error": "출력"}}}}

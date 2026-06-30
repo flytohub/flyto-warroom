@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "PDF-Formularfelder mit Daten füllen und optional Bilder einfügen",
+        "modules.pdf.fill_form.label": "PDF-Formular ausfüllen",
+        "modules.pdf.fill_form.output.fields_filled.description": "Pfad zur ausgefüllten PDF",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Anzahl der eingefügten Bilder",
+        "modules.pdf.fill_form.output.images_inserted.description": "Pfad zur ausgefüllten PDF",
+        "modules.pdf.fill_form.output.output_path.description": "Pfad zur ausgefüllten PDF",
+        "modules.pdf.generate.description": "PDF-Dateien aus HTML-Inhalt oder Text generieren",
+        "modules.pdf.generate.label": "PDF generieren",
+        "modules.pdf.generate.output.file_size_bytes.description": "Anzahl der Seiten in der PDF",
+        "modules.pdf.generate.output.output_path.description": "Pfad zur generierten PDF",
+        "modules.pdf.generate.output.page_count.description": "Pfad zur generierten PDF",
+        "modules.pdf.parse.description": "Text und Metadaten aus PDF-Dateien extrahieren",
+        "modules.pdf.parse.label": "PDF parsen",
+        "modules.pdf.parse.output.metadata.description": "Extrahierter Textinhalt",
+        "modules.pdf.parse.output.page_count.description": "Textinhalt pro Seite",
+        "modules.pdf.parse.output.pages.description": "Extrahierter Textinhalt",
+        "modules.pdf.parse.output.text.description": "Extrahierter Textinhalt",
+        "modules.pdf.to_word.description": "PDF-Dateien in Word-Dokumente (.docx) konvertieren",
+        "modules.pdf.to_word.label": "PDF zu Word",
+        "modules.pdf.to_word.output.file_size.description": "Anzahl der konvertierten Seiten",
+        "modules.pdf.to_word.output.output_path.description": "Pfad zum generierten Word-Dokument",
+        "modules.pdf.to_word.output.page_count.description": "Pfad zum generierten Word-Dokument"
+    }
+}

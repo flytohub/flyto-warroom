@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.templateCategory",
+    "version": "1.0.0",
+    "translations": {
+        "templateCategory.automation": "自動化",
+        "templateCategory.dataProcessing": "資料處理",
+        "templateCategory.productivity": "生產力",
+        "templateCategory.socialMedia": "社群媒體",
+        "templateCategory.webScraping": "瀏覽器 / 爬蟲",
+        "templateCategory.api": "API",
+        "templateCategory.media": "媒體",
+        "templateCategory.notification": "通知",
+        "templateCategory.ai": "AI",
+        "templateCategory.file": "檔案",
+        "templateCategory.monitoring": "監控",
+        "templateCategory.developer": "開發工具"
+    }
+}

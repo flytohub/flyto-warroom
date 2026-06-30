@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "返回商城",
+        "creatorProfile.chatError": "无法开始聊天",
+        "creatorProfile.creatorTemplates": "创作者的模板",
+        "creatorProfile.editProfile": "编辑个人数据",
+        "creatorProfile.follow": "追踪",
+        "creatorProfile.followError": "更新追踪状态失败",
+        "creatorProfile.followers": "粉丝",
+        "creatorProfile.following": "追踪中",
+        "creatorProfile.loadMore": "加载更多",
+        "creatorProfile.noDescription": "无说明",
+        "creatorProfile.noFollowers": "尚无粉丝",
+        "creatorProfile.noFollowing": "尚未追踪任何人",
+        "creatorProfile.noTemplates": "尚未发布任何模板",
+        "creatorProfile.notFound": "找不到创作者",
+        "creatorProfile.notFoundDesc": "您要找的创作者不存在或已被移除。",
+        "creatorProfile.templates": "模板"
+    }
+}

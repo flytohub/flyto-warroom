@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "pt-BR",
+  "category": "cloud.categories",
+  "version": "1.0.0",
+  "translations": {
+    "categories.ai": "AI",
+    "categories.api": "API",
+    "categories.array": "Array",
+    "categories.browser": "Navegador",
+    "categories.cloud": "Nuvem",
+    "categories.code": "Código",
+    "categories.composite": "Composto",
+    "categories.connector": "Conector API",
+    "categories.data": "Dados",
+    "categories.datetime": "Data/Hora",
+    "categories.element": "Elemento",
+    "categories.file": "Arquivo",
+    "categories.flow": "Controle de Fluxo",
+    "categories.form": "Entrada de Formulário",
+    "categories.http": "HTTP",
+    "categories.huggingface": "HuggingFace",
+    "categories.image": "Imagem",
+    "categories.llm": "LLM",
+    "categories.math": "Matemática",
+    "categories.my-templates": "Meus Modelos",
+    "categories.notification": "Notificação",
+    "categories.object": "Objeto",
+    "categories.other": "Outros",
+    "categories.string": "String",
+    "categories.utility": "Utilitário"
+  }
+}

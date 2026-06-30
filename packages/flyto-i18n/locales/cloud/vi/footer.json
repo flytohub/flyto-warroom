@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.footer",
+    "version": "1.0.0",
+    "translations": {
+        "footer.copyright": "© 2025 Flyto2. Bảo lưu mọi quyền.",
+        "footer.description": "Trình soạn thảo workflow trực quan mạnh mẽ tích hợp hàng trăm ứng dụng, giúp tự động hóa dễ dàng cho mọi người.",
+        "footer.disclaimer": "Tất cả các tác vụ tự động đều chạy trên thiết bị của người dùng. Người dùng chịu trách nhiệm đảm bảo việc sử dụng tuân thủ điều khoản dịch vụ của các trang web mục tiêu và luật pháp hiện hành."
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.subflow",
+    "version": "1.0.0",
+    "translations": {
+        "subflow.navigateRoot": "ルートへ",
+        "subflow.navigateUp": "上へ"
+    }
+}

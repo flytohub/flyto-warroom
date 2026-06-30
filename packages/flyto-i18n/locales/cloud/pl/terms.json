@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Ostatnia aktualizacja",
+        "terms.sections.acceptance.content": "Uzyskujac dostep do uslug Flyto2 lub korzystajac z nich, zgadzasz sie byc zwiazany niniejszymi Warunkami Swiadczenia Uslug. Jesli nie zgadzasz sie z tymi warunkami, prosze nie korzystac z naszych uslug.",
+        "terms.sections.acceptance.title": "Akceptacja warunkow",
+        "terms.sections.account.content": "Jestes odpowiedzialny za zachowanie poufnosci danych uwierzytelniajacych konta i za wszystkie dzialania podejmowane na Twoim koncie. Musisz nas natychmiast powiadomic o kazdym nieautoryzowanym uzyciu.",
+        "terms.sections.account.title": "Konta uzytkownikow",
+        "terms.sections.intellectual.content": "Cala zawartosc, funkcje i funkcjonalnosc Flyto2 sa nasza wlasnoscia i sa chronione miedzynarodowymi prawami autorskimi, znakami towarowymi i innymi przepisami dotyczacymi wlasnosci intelektualnej.",
+        "terms.sections.intellectual.title": "Wlasnosc intelektualna",
+        "terms.sections.limitation.content": "W maksymalnym zakresie dozwolonym przez prawo, Flyto2 nie ponosi odpowiedzialnosci za jakiekolwiek posrednie, przypadkowe, specjalne, wynikowe lub karne szkody wynikajace z korzystania z naszych uslug.",
+        "terms.sections.limitation.title": "Ograniczenie odpowiedzialnosci",
+        "terms.sections.prohibited.content": "Nie wolno korzystac z naszych uslug w celach nielegalnych, do naruszania jakichkolwiek przepisow, do naruszania praw wlasnosci intelektualnej lub do przesylania szkodliwego kodu. Zastrzegamy sobie prawo do zamkniecia kont, ktore naruszaja te warunki.",
+        "terms.sections.prohibited.title": "Zabronione uzycie",
+        "terms.sections.services.content": "Flyto2 udostepnia platforme automatyzacji przeplywow, ktora pozwala uzytkownikom tworzyc, zarzadzac i wykonywac zautomatyzowane przeplywy. Zastrzegamy sobie prawo do modyfikacji lub zaprzestania swiadczenia uslug w dowolnym momencie.",
+        "terms.sections.services.title": "Opis uslug",
+        "terms.sections.termination.content": "Mozemy zamknac lub zawiesic Twoje konto i dostep do naszych uslug wedlug wlasnego uznania, bez uprzedniego powiadomienia, za zachowanie, ktore naszym zdaniem narusza te warunki lub jest szkodliwe dla innych uzytkownikow.",
+        "terms.sections.termination.title": "Wypowiedzenie",
+        "terms.title": "Warunki swiadczenia uslug"
+    }
+}

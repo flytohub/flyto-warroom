@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Derniere mise a jour",
+        "terms.sections.acceptance.content": "En accedant ou en utilisant les services Flyto2, vous acceptez d'etre lie par ces Conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services.",
+        "terms.sections.acceptance.title": "Acceptation des conditions",
+        "terms.sections.account.content": "Vous etes responsable du maintien de la confidentialite de vos identifiants de compte et de toutes les activites qui se produisent sous votre compte. Vous devez nous informer immediatement de toute utilisation non autorisee.",
+        "terms.sections.account.title": "Comptes utilisateurs",
+        "terms.sections.intellectual.content": "Tout le contenu, les fonctionnalites et les fonctionnalites de Flyto2 nous appartiennent et sont proteges par les lois internationales sur le droit d'auteur, les marques et autres lois sur la propriete intellectuelle.",
+        "terms.sections.intellectual.title": "Propriete intellectuelle",
+        "terms.sections.limitation.content": "Dans la limite maximale autorisee par la loi, Flyto2 ne sera pas responsable des dommages indirects, accessoires, speciaux, consecutifs ou punitifs resultant de votre utilisation de nos services.",
+        "terms.sections.limitation.title": "Limitation de responsabilite",
+        "terms.sections.prohibited.content": "Vous ne pouvez pas utiliser nos services a des fins illegales, pour enfreindre les lois, pour porter atteinte aux droits de propriete intellectuelle ou pour transmettre du code nuisible. Nous nous reservons le droit de resilier les comptes qui violent ces conditions.",
+        "terms.sections.prohibited.title": "Utilisations interdites",
+        "terms.sections.services.content": "Flyto2 fournit une plateforme d'automatisation de workflows qui permet aux utilisateurs de creer, gerer et executer des workflows automatises. Nous nous reservons le droit de modifier ou d'interrompre les services a tout moment.",
+        "terms.sections.services.title": "Description des services",
+        "terms.sections.termination.content": "Nous pouvons resilier ou suspendre votre compte et votre acces a nos services a notre seule discretion, sans preavis, pour un comportement que nous estimons enfreindre ces conditions ou etre nuisible aux autres utilisateurs.",
+        "terms.sections.termination.title": "Resiliation",
+        "terms.title": "Conditions d'utilisation"
+    }
+}

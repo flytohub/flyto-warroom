@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "ログをクリア",
+        "terminal.closeTerminal": "ターミナルを閉じる",
+        "terminal.connected": "接続済み",
+        "terminal.disableAutoScroll": "自動スクロールを無効化",
+        "terminal.disconnected": "切断",
+        "terminal.enableAutoScroll": "自動スクロールを有効化",
+        "terminal.hideLogs": "{level}ログを非表示",
+        "terminal.logsWillAppear": "システムが出力を生成するとログがここに表示されます",
+        "terminal.searchPlaceholder": "ログを検索...",
+        "terminal.showLogs": "{level}ログを表示",
+        "terminal.title": "システムターミナル",
+        "terminal.waitingForLogs": "ログを待機中..."
+    }
+}

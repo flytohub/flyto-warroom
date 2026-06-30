@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.purchases",
+    "version": "1.0.0",
+    "translations": {
+        "purchases.all": "Tutti gli acquisti",
+        "purchases.browseMarketplace": "Browse marketplace",
+        "purchases.completed": "Acquisti completati",
+        "purchases.empty": "Nessun acquisto",
+        "purchases.emptyDescription": "Non hai ancora effettuato acquisti.",
+        "purchases.filterAll": "Tutti",
+        "purchases.filterCompleted": "Completati",
+        "purchases.filterRefunded": "Rimborsati",
+        "purchases.loadMore": "Carica altro",
+        "purchases.loading": "Caricamento...",
+        "purchases.noPurchases": "Nessun acquisto",
+        "purchases.noPurchasesDesc": "I modelli acquistati appariranno qui",
+        "purchases.purchasedOn": "Acquistato il",
+        "purchases.refundAmount": "Importo del rimborso",
+        "purchases.refundEligible": "Idoneo al rimborso",
+        "purchases.refundExpired": "Rimborso scaduto",
+        "purchases.refunded": "Rimborsato",
+        "purchases.refundedOn": "Rimborsato il",
+        "purchases.requestRefund": "Request refund",
+        "purchases.subtitle": "Purchase details",
+        "purchases.title": "Purchases",
+        "purchases.viewTemplate": "View template"
+    }
+}

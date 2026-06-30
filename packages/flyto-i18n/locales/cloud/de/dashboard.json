@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "Angewendet",
+        "dashboard.evolution.events": "Ereignisse",
+        "dashboard.evolution.executions": "Ausführungen",
+        "dashboard.evolution.flytoCan": "Flug zur Dose",
+        "dashboard.evolution.fromCheckpoints": "Von Checkpoints",
+        "dashboard.evolution.last30days": "Letzte 30 Tage",
+        "dashboard.evolution.last7days": "Letzte 7 Tage",
+        "dashboard.evolution.last90days": "Letzte 90 Tage",
+        "dashboard.evolution.moatDescription": "Grabenbeschreibung",
+        "dashboard.evolution.moatTitle": "Grabentitel",
+        "dashboard.evolution.n8nCant": "N8n kann nicht",
+        "dashboard.evolution.overallImprovement": "Gesamtverbesserung",
+        "dashboard.evolution.pending": "Ausstehend",
+        "dashboard.evolution.reliability": "Zuverlässigkeit",
+        "dashboard.evolution.subtitle": "Untertitel",
+        "dashboard.evolution.suggestionsApplied": "Vorschläge angewendet",
+        "dashboard.evolution.timeSaved": "Zeit gespart",
+        "dashboard.evolution.timeline": "Zeitachse",
+        "dashboard.evolution.title": "Titel",
+        "dashboard.evolution.today": "Heute",
+        "dashboard.evolution.topImproved": "Am meisten verbessert",
+        "dashboard.evolution.yesterday": "Gestern",
+        "dashboard.title": "Dashboard"
+    }
+}

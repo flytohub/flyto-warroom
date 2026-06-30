@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Crea un nuovo evento in Google Calendar",
+        "modules.google.calendar.create_event.label": "Crea Evento in Calendario",
+        "modules.google.calendar.create_event.output.end.description": "Ora di fine evento",
+        "modules.google.calendar.create_event.output.event_id.description": "ID evento creato",
+        "modules.google.calendar.create_event.output.html_link.description": "Link per visualizzare l'evento in Google Calendar",
+        "modules.google.calendar.create_event.output.start.description": "Ora di inizio evento",
+        "modules.google.calendar.create_event.output.summary.description": "Titolo dell'evento",
+        "modules.google.calendar.list_events.description": "Elenca i prossimi eventi da Google Calendar",
+        "modules.google.calendar.list_events.label": "Elenco Eventi in Calendario",
+        "modules.google.calendar.list_events.output.count.description": "Numero di eventi restituiti",
+        "modules.google.calendar.list_events.output.events.description": "Elenco degli eventi del calendario",
+        "modules.google.gmail.search.description": "Cerca messaggi Gmail usando la sintassi di ricerca di Gmail",
+        "modules.google.gmail.search.label": "Cerca in Gmail",
+        "modules.google.gmail.search.output.messages.description": "Elenco dei messaggi corrispondenti",
+        "modules.google.gmail.search.output.total.description": "Numero totale di messaggi restituiti",
+        "modules.google.gmail.send.description": "Invia un'email tramite l'API di Gmail",
+        "modules.google.gmail.send.label": "Invia con Gmail",
+        "modules.google.gmail.send.output.message_id.description": "ID messaggio Gmail",
+        "modules.google.gmail.send.output.thread_id.description": "ID thread Gmail",
+        "modules.google.gmail.send.output.to.description": "Indirizzo email del destinatario"
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.subflow",
+    "version": "1.0.0",
+    "translations": {
+        "subflow.navigateRoot": "前往根節點",
+        "subflow.navigateUp": "返回上層"
+    }
+}

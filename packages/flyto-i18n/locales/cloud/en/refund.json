@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "Refund amount",
+        "refund.cancelButton": "Cancel",
+        "refund.confirm": "Confirm refund",
+        "refund.confirmButton": "Confirm Refund",
+        "refund.confirmTitle": "Confirm Refund Request",
+        "refund.contactSupport": "Contact support",
+        "refund.days": "Refund days",
+        "refund.daysRemaining": "{days} days remaining in refund window",
+        "refund.eligible": "You are eligible for a refund",
+        "refund.expiredWindow": "The 30-day refund window has expired",
+        "refund.failed": "Failed to request refund",
+        "refund.forksAffected": "The following forks will be orphaned (your edits will be preserved but disconnected from source):",
+        "refund.forksWarning": "Forks warning",
+        "refund.notEligible": "Not eligible for refund",
+        "refund.processInfo": "Refund process info",
+        "refund.processing": "Processing...",
+        "refund.success": "Refund requested successfully",
+        "refund.template": "Refund template",
+        "refund.title": "Request Refund",
+        "refund.warning": "Warning",
+        "refund.warningDescription": "Warning description"
+    }
+}

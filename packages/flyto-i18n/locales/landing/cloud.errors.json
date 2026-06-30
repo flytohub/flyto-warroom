@@ -1,0 +1,13 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.errors",
+  "version": "1.0.0",
+  "translations": {
+    "errors.networkError": "",
+    "errors.somethingWentWrong": "",
+    "errors.technicalDetails": "",
+    "errors.timeout": "",
+    "errors.unexpectedError": ""
+  }
+}

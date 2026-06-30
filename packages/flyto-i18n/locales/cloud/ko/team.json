@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "최근 활동이 없습니다",
+        "team.activity.title": "최근 활동",
+        "team.contributors.created": "생성됨",
+        "team.contributors.empty": "아직 기여자가 없습니다",
+        "team.contributors.executed": "실행됨",
+        "team.contributors.title": "기여자",
+        "team.dashboard.subtitle": "팀 활동 개요",
+        "team.dashboard.title": "팀 대시보드",
+        "team.stats.executions": "실행",
+        "team.stats.members": "멤버",
+        "team.stats.templates": "템플릿",
+        "team.stats.workflows": "워크플로"
+    }
+}

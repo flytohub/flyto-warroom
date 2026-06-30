@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "続行",
+        "errorStrategy.continueDesc": "エラーをログに記録して次のステップに進む",
+        "errorStrategy.retry": "リトライ",
+        "errorStrategy.retryDesc": "リトライ設定に基づいて再試行",
+        "errorStrategy.stop": "停止",
+        "errorStrategy.stopDesc": "ワークフローを停止して失敗としてマーク"
+    }
+}

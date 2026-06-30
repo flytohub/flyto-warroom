@@ -1,0 +1,22 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "vi",
+  "category": "cloud.preview",
+  "version": "1.0.0",
+  "translations": {
+    "preview.askAIFix": "Ask AI to fix",
+    "preview.emptyState.description": "Chuyển sang chế độ Dev để thêm các bước workflow",
+    "preview.emptyState.hint": "Không có bản xem trước",
+    "preview.emptyState.title": "Chưa định nghĩa Workflow",
+    "preview.executionFailed": "Thực thi thất bại",
+    "preview.fields": "trường",
+    "preview.inputs": "Đầu vào",
+    "preview.noInputsRequired": "Không yêu cầu đầu vào",
+    "preview.noWorkflowHint": "Thêm các bước workflow trong chế độ Dev để kích hoạt thực thi",
+    "preview.output": "Đầu ra",
+    "preview.ready": "Sẵn sàng",
+    "preview.running": "Đang chạy",
+    "preview.steps": "bước",
+    "preview.untitledTemplate": "Mẫu chưa đặt tên"
+  }
+}

@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "vision",
+    "version": "1.0.0",
+    "translations": {
+        "modules.vision.analyze.description": "Analisis gambar menggunakan OpenAI Vision API (GPT-4V)",
+        "modules.vision.analyze.label": "Analisis Gambar dengan AI",
+        "modules.vision.analyze.output.analysis.description": "Apakah analisis berhasil",
+        "modules.vision.analyze.output.model.description": "Data analisis terstruktur (jika output_format adalah structured/json)",
+        "modules.vision.analyze.output.ok.description": "Apakah analisis berhasil",
+        "modules.vision.analyze.output.structured.description": "Hasil analisis AI",
+        "modules.vision.analyze.output.tokens_used.description": "Model yang digunakan untuk analisis",
+        "modules.vision.compare.description": "Bandingkan dua gambar dan identifikasi perbedaan visual",
+        "modules.vision.compare.label": "Bandingkan Gambar",
+        "modules.vision.compare.output.differences.description": "Persentase kesamaan (0-100)",
+        "modules.vision.compare.output.has_differences.description": "Apakah perbandingan berhasil",
+        "modules.vision.compare.output.ok.description": "Apakah perbandingan berhasil",
+        "modules.vision.compare.output.recommendation.description": "Ringkasan hasil perbandingan",
+        "modules.vision.compare.output.similarity_score.description": "Apakah perbedaan signifikan ditemukan",
+        "modules.vision.compare.output.summary.description": "Daftar perbedaan yang teridentifikasi",
+        "modules.vision.compare.params.differences": "Perbedaan",
+        "modules.vision.compare.params.focus_areas": "Area Fokus",
+        "modules.vision.compare.params.focus_areas.options.header": "Header",
+        "modules.vision.compare.params.focus_areas.options.main content": "Konten Utama"
+    }
+}

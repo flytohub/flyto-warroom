@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "Oluştur",
+        "actionLabel.delete": "Sil",
+        "actionLabel.execute": "Çalıştır",
+        "actionLabel.export": "Dışa Aktar",
+        "actionLabel.import": "İçe Aktar",
+        "actionLabel.logout": "Çıkış Yap",
+        "actionLabel.update": "Güncelle"
+    }
+}

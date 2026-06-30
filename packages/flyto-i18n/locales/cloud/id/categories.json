@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.categories",
+    "version": "1.0.0",
+    "translations": {
+        "categories.ai": "AI",
+        "categories.api": "API",
+        "categories.array": "Array",
+        "categories.browser": "Browser",
+        "categories.cloud": "Cloud",
+        "categories.code": "Kode",
+        "categories.composite": "Komposit",
+        "categories.data": "Data",
+        "categories.datetime": "Tanggal/Waktu",
+        "categories.element": "Elemen",
+        "categories.file": "Berkas",
+        "categories.flow": "Kontrol Alur",
+        "categories.form": "Input Formulir",
+        "categories.http": "HTTP",
+        "categories.huggingface": "HuggingFace",
+        "categories.image": "Gambar",
+        "categories.llm": "LLM",
+        "categories.math": "Matematika",
+        "categories.my-templates": "Template Saya",
+        "categories.notification": "Notifikasi",
+        "categories.object": "Objek",
+        "categories.other": "Lainnya",
+        "categories.string": "String",
+        "categories.connector": "API Connector",
+        "categories.utility": "Utilitas"
+    }
+}

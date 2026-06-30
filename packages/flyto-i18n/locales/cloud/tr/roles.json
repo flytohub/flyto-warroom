@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "Yerleşik Roller",
+        "roles.create": "Rol Oluştur",
+        "roles.create.title": "Rol Oluştur",
+        "roles.custom.empty": "Özel rol tanımlanmadı",
+        "roles.custom.title": "Özel Roller",
+        "roles.delete.message": "Bu rolü silmek istediğinizden emin misiniz? Bu role sahip kullanıcılara varsayılan üye rolü atanacak.",
+        "roles.delete.title": "Rolü Sil",
+        "roles.description": "Rolleri ve erişim izinlerini yönetin",
+        "roles.edit.title": "Rolü Düzenle",
+        "roles.form.description": "Açıklama",
+        "roles.form.name": "Rol Adı",
+        "roles.form.permissions": "İzinler",
+        "roles.permissions": "izin",
+        "roles.title": "Roller ve İzinler",
+        "roles.users": "kullanıcı"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "크레딧 지갑",
+        "wallet.availableCredits": "사용 가능한 크레딧",
+        "wallet.topup": "충전",
+        "wallet.topupTitle": "크레딧 충전",
+        "wallet.topupSuccess": "충전이 완료되었습니다",
+        "wallet.topupCancelled": "충전이 취소되었습니다",
+        "wallet.history": "거래 내역",
+        "wallet.noTransactions": "거래 내역이 없습니다",
+        "wallet.balanceAfter": "잔액",
+        "wallet.conversionNote": "1 credit = $0.01 USD",
+        "wallet.proceedToPayment": "결제 진행",
+        "wallet.confirmExecute": "실행 확인",
+        "wallet.executionCost": "실행 비용",
+        "wallet.yourBalance": "잔액",
+        "wallet.insufficientCredits": "크레딧 부족",
+        "wallet.needMore": "{amount} 크레딧이 더 필요합니다",
+        "wallet.topupNow": "지금 충전",
+        "wallet.confirmAndExecute": "확인 후 실행",
+        "wallet.lowBalanceWarning": "크레딧이 부족합니다. 워크플로를 계속 실행하려면 충전하세요."
+    }
+}

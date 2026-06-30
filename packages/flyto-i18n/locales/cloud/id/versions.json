@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "Bandingkan",
+        "versions.current": "Saat Ini",
+        "versions.diff.comparing": "Membandingkan",
+        "versions.diff.noChanges": "Tidak ada perubahan antar versi",
+        "versions.diff.selectPrompt": "Pilih dua versi untuk dibandingkan",
+        "versions.diff.title": "Perubahan",
+        "versions.diff.to": "ke",
+        "versions.empty": "Tidak ada riwayat versi",
+        "versions.rollback": "Kembali ke versi sebelumnya",
+        "versions.rollback.confirm": "Konfirmasi kembali ke versi sebelumnya",
+        "versions.rollback.description": "Rollback ke v{version} akan membuat versi baru dengan konten dari versi tersebut. Versi saat ini akan tetap ada di riwayat.",
+        "versions.rollback.targetVersion": "Versi Target",
+        "versions.rollback.title": "Rollback ke Versi",
+        "versions.rollback.warning": "Ini akan membuat versi baru",
+        "versions.title": "Riwayat Versi"
+    }
+}

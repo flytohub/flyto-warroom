@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "Echec du demarrage de la relecture",
+        "error.fixJsonFirst": "Veuillez d'abord corriger les erreurs JSON",
+        "error.imageTooLarge": "Le fichier image est trop volumineux",
+        "error.invalidJsonContext": "JSON invalide dans les surcharges de contexte",
+        "error.noStepsToValidate": "Aucune etape trouvee a valider",
+        "error.replayFailed": "Echec de la relecture"
+    }
+}

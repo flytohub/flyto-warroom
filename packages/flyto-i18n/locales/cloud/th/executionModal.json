@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "คลิกดำเนินการเพื่อรัน workflow นี้",
+        "executionModal.execute": "ดำเนินการ",
+        "executionModal.executing": "กำลังดำเนินการ workflow...",
+        "executionModal.executionComplete": "ดำเนินการเสร็จสิ้น",
+        "executionModal.executionFailed": "การดำเนินการล้มเหลว",
+        "executionModal.noParamsRequired": "ไม่ต้องการพารามิเตอร์ input",
+        "executionModal.runAgain": "รันอีกครั้ง",
+        "executionModal.status.completed": "เสร็จสิ้น",
+        "executionModal.status.failed": "ล้มเหลว",
+        "executionModal.status.ready": "พร้อม",
+        "executionModal.status.running": "กำลังทำงาน",
+        "executionModal.stop": "หยุด",
+        "executionModal.title": "ดำเนินการ Workflow"
+    }
+}

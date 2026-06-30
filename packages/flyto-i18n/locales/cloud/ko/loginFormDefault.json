@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "비밀번호를 잊으셨나요?",
+        "loginFormDefault.loginButton": "로그인",
+        "loginFormDefault.passwordPlaceholder": "비밀번호 입력",
+        "loginFormDefault.usernamePlaceholder": "사용자명 입력"
+    }
+}

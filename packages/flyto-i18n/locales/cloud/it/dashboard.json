@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "Applicato",
+        "dashboard.evolution.events": "Eventi",
+        "dashboard.evolution.executions": "Esecuzioni",
+        "dashboard.evolution.flytoCan": "Vola alla lattina",
+        "dashboard.evolution.fromCheckpoints": "Dai checkpoint",
+        "dashboard.evolution.last30days": "Ultimi 30 giorni",
+        "dashboard.evolution.last7days": "Ultimi 7 giorni",
+        "dashboard.evolution.last90days": "Ultimi 90 giorni",
+        "dashboard.evolution.moatDescription": "Descrizione del fossato",
+        "dashboard.evolution.moatTitle": "Titolo del fossato",
+        "dashboard.evolution.n8nCant": "N8n non può",
+        "dashboard.evolution.overallImprovement": "Miglioramento complessivo",
+        "dashboard.evolution.pending": "In sospeso",
+        "dashboard.evolution.reliability": "Affidabilità",
+        "dashboard.evolution.subtitle": "Sottotitolo",
+        "dashboard.evolution.suggestionsApplied": "Suggerimenti applicati",
+        "dashboard.evolution.timeSaved": "Tempo risparmiato",
+        "dashboard.evolution.timeline": "Cronologia",
+        "dashboard.evolution.title": "Titolo",
+        "dashboard.evolution.today": "Oggi",
+        "dashboard.evolution.topImproved": "Migliorato al massimo",
+        "dashboard.evolution.yesterday": "Ieri",
+        "dashboard.title": "Dashboard"
+    }
+}

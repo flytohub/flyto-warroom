@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.binary",
+    "version": "1.0.0",
+    "translations": {
+        "binary.download": "İndir",
+        "binary.downloadToOpen": "Açmak için indir",
+        "binary.downloadToView": "Görüntülemek için indir",
+        "binary.noPreview": "Önizleme yok",
+        "binary.pdfPreview": "PDF önizlemesi",
+        "binary.previewError": "Önizleme hatası"
+    }
+}

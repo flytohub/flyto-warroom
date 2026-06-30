@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.toolRunner",
+  "version": "1.0.0",
+  "translations": {
+    "toolRunner.advancedMode": "",
+    "toolRunner.backToLibrary": "",
+    "toolRunner.copy": "",
+    "toolRunner.download": "",
+    "toolRunner.editTool": "",
+    "toolRunner.executionFailed": "",
+    "toolRunner.executionLogs": "",
+    "toolRunner.executionSuccess": "",
+    "toolRunner.executionTimedOut": "",
+    "toolRunner.flowSteps": "",
+    "toolRunner.inputForm": "",
+    "toolRunner.loadFailed": "",
+    "toolRunner.noLogs": "",
+    "toolRunner.resolvedParams": "",
+    "toolRunner.results": "",
+    "toolRunner.retry": "",
+    "toolRunner.runAgain": "",
+    "toolRunner.runToSeeResults": "",
+    "toolRunner.runTool": "",
+    "toolRunner.running": "",
+    "toolRunner.simpleMode": "",
+    "toolRunner.toolNotFound": "",
+    "toolRunner.toolNotFoundError": ""
+  }
+}

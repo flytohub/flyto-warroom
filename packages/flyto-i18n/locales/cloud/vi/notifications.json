@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count} ngày trước",
+        "notifications.empty": "Chưa có thông báo",
+        "notifications.hoursAgo": "{count} giờ trước",
+        "notifications.justNow": "Vừa xong",
+        "notifications.loadMore": "Tải thêm",
+        "notifications.markAllRead": "Đánh dấu tất cả đã đọc",
+        "notifications.minutesAgo": "{count} phút trước",
+        "notifications.title": "Thông báo"
+    }
+}

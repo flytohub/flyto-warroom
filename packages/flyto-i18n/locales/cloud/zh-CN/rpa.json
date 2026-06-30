@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.rpa",
+    "version": "1.0.0",
+    "translations": {
+        "rpa.actions.disconnect": "中断连接",
+        "rpa.actions.noAgent": "没有可用的在线 Agent",
+        "rpa.actions.record": "录制",
+        "rpa.agents.connect": "连接",
+        "rpa.agents.connectFirst": "请先连接",
+        "rpa.agents.empty": "没有代理",
+        "rpa.agents.title": "代理",
+        "rpa.connect.codeExpires": "代码即将过期",
+        "rpa.connect.step1": "步骤 1",
+        "rpa.connect.step2": "步骤 2",
+        "rpa.connect.step3": "步骤 3",
+        "rpa.connect.title": "连接",
+        "rpa.connect.waiting": "等待中",
+        "rpa.elements.empty": "没有元素",
+        "rpa.elements.title": "元素",
+        "rpa.log.title": "日志",
+        "rpa.quickActions.title": "快速操作",
+        "rpa.recordings.empty": "没有录制",
+        "rpa.recordings.run": "运行录制",
+        "rpa.recordings.title": "录制",
+        "rpa.stats.agents": "代理数量",
+        "rpa.stats.executions": "运行次数",
+        "rpa.stats.recordings": "录制数量",
+        "rpa.stats.success": "成功次数"
+    }
+}

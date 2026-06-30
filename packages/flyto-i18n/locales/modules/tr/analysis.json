@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "İçerik okunabilirliğini analiz et",
+        "modules.analysis.html.analyze_readability.label": "HTML Okunabilirlik",
+        "modules.analysis.html.extract_forms.description": "HTML'den form verilerini çıkar",
+        "modules.analysis.html.extract_forms.label": "Formları Çıkar",
+        "modules.analysis.html.extract_metadata.description": "HTML'den meta verileri çıkar",
+        "modules.analysis.html.extract_metadata.label": "Meta Verileri Çıkar",
+        "modules.analysis.html.extract_tables.description": "HTML'den tablo verilerini çıkar",
+        "modules.analysis.html.extract_tables.label": "Tabloları Çıkar",
+        "modules.analysis.html.find_patterns.description": "HTML'de tekrarlanan veri kalıplarını bul",
+        "modules.analysis.html.find_patterns.label": "Kalıpları Bul",
+        "modules.analysis.html.structure.description": "HTML DOM yapısını analiz et",
+        "modules.analysis.html.structure.label": "HTML Yapısı"
+    }
+}

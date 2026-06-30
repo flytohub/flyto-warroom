@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.binary",
+    "version": "1.0.0",
+    "translations": {
+        "binary.download": "ดาวน์โหลด",
+        "binary.downloadToOpen": "ดาวน์โหลดเพื่อเปิด",
+        "binary.downloadToView": "ดาวน์โหลดเพื่อดู",
+        "binary.noPreview": "ไม่มีตัวอย่าง",
+        "binary.pdfPreview": "ดูตัวอย่าง PDF",
+        "binary.previewError": "เกิดข้อผิดพลาดในการดูตัวอย่าง"
+    }
+}

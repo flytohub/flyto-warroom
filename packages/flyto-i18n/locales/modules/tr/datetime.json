@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "Tarih saate zaman ekle",
+        "modules.datetime.add.label": "Zaman Ekle",
+        "modules.datetime.add.output.result.description": "İşlem sonucu",
+        "modules.datetime.add.output.timestamp.description": "İşlem sonucu",
+        "modules.datetime.format.description": "Tarih saati dizeye biçimlendir",
+        "modules.datetime.format.label": "Tarih Saat Biçimlendir",
+        "modules.datetime.format.output.result.description": "İşlem sonucu",
+        "modules.datetime.format.output.timestamp.description": "İşlem sonucu",
+        "modules.datetime.parse.description": "Dizeyi tarih saate ayrıştır",
+        "modules.datetime.parse.label": "Tarih Saat Ayrıştır",
+        "modules.datetime.parse.output.day.description": "Yıl bileşeni",
+        "modules.datetime.parse.output.hour.description": "Ay bileşeni",
+        "modules.datetime.parse.output.minute.description": "Gün bileşeni",
+        "modules.datetime.parse.output.month.description": "Unix zaman damgası",
+        "modules.datetime.parse.output.result.description": "İşlem sonucu",
+        "modules.datetime.parse.output.second.description": "Saat bileşeni",
+        "modules.datetime.parse.output.timestamp.description": "İşlem sonucu",
+        "modules.datetime.parse.output.year.description": "İşlem sonucu",
+        "modules.datetime.subtract.description": "Tarih saatten zaman çıkar",
+        "modules.datetime.subtract.label": "Zaman Çıkar",
+        "modules.datetime.subtract.output.result.description": "İşlem sonucu",
+        "modules.datetime.subtract.output.timestamp.description": "İşlem sonucu"
+    }
+}

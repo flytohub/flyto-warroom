@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Ultimo Aggiornamento",
+        "privacy.sections.collection.content": "Raccogliamo le informazioni che ci fornisci direttamente, come quando crei un account, utilizzi i nostri servizi o ci contatti per assistenza. Questo puo includere il tuo nome, indirizzo email e dati di utilizzo per migliorare i nostri servizi.",
+        "privacy.sections.collection.title": "Informazioni che Raccogliamo",
+        "privacy.sections.contact.content": "Se hai domande su questa Informativa sulla Privacy o sulle nostre pratiche relative ai dati, contattaci all'indirizzo privacy{'@'}flytohub.com.",
+        "privacy.sections.contact.title": "Contattaci",
+        "privacy.sections.rights.content": "Hai il diritto di accedere, correggere o eliminare le tue informazioni personali. Puoi anche richiedere la portabilita dei dati o opporti a determinate attivita di trattamento. Contattaci per esercitare questi diritti.",
+        "privacy.sections.rights.title": "I Tuoi Diritti",
+        "privacy.sections.security.content": "Implementiamo misure tecniche e organizzative appropriate per proteggere le tue informazioni personali da accessi non autorizzati, alterazioni, divulgazioni o distruzioni.",
+        "privacy.sections.security.title": "Sicurezza dei Dati",
+        "privacy.sections.sharing.content": "Non vendiamo le tue informazioni personali. Potremmo condividere le tue informazioni con fornitori di servizi terzi che ci assistono nella gestione della nostra piattaforma, soggetti ad accordi di riservatezza.",
+        "privacy.sections.sharing.title": "Condivisione delle Informazioni",
+        "privacy.sections.usage.content": "Utilizziamo le informazioni raccolte per fornire, mantenere e migliorare i nostri servizi, per comunicare con te e per personalizzare la tua esperienza. Potremmo anche utilizzare dati aggregati per scopi analitici.",
+        "privacy.sections.usage.title": "Come Utilizziamo le Tue Informazioni",
+        "privacy.title": "Informativa sulla Privacy"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "Thay thế",
+        "lineage.decision.evidence": "Bằng chứng",
+        "lineage.decision.reason": "Lý do",
+        "lineage.loop.clickToCollapse": "Nhấp để thu gọn",
+        "lineage.steps": "Bước",
+        "lineage.storyline.noSteps": "Không có bước để hiển thị",
+        "lineage.storyline.noStepsInLane": "Không có bước trong làn này",
+        "lineage.storyline.runHint": "Chạy workflow để xem lịch sử thực thi",
+        "lineage.storyline.title": "Timeline thực thi"
+    }
+}

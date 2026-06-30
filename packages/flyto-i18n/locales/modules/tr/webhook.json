@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "webhook",
+    "version": "1.0.0",
+    "translations": {
+        "modules.webhook.trigger.description": "Webhook URL'sine HTTP POST isteği gönder",
+        "modules.webhook.trigger.label": "Webhook Tetikle",
+        "modules.webhook.trigger.output.headers.description": "HTTP yanıt durum kodu",
+        "modules.webhook.trigger.output.response.description": "HTTP yanıt durum kodu",
+        "modules.webhook.trigger.output.status_code.description": "HTTP yanıt durum kodu"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "core",
+    "version": "1.0.0",
+    "translations": {
+        "modules.core.api.google_search.output.count.description": "Số kết quả tìm kiếm",
+        "modules.core.api.google_search.output.data.description": "Dữ liệu kết quả tìm kiếm",
+        "modules.core.api.google_search.output.status.description": "Trạng thái thao tác",
+        "modules.core.api.google_search.output.total_results.description": "Tổng số kết quả",
+        "modules.core.api.http_get.output.body.description": "Nội dung phản hồi",
+        "modules.core.api.http_get.output.headers.description": "Headers phản hồi",
+        "modules.core.api.http_get.output.json.description": "Phản hồi JSON (nếu có)",
+        "modules.core.api.http_get.output.status_code.description": "Mã trạng thái HTTP"
+    }
+}

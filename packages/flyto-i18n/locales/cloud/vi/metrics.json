@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "vi",
+  "category": "cloud.metrics",
+  "version": "1.0.0",
+  "translations": {
+    "metrics.chart.failed": "Thất bại",
+    "metrics.chart.noData": "Không có dữ liệu",
+    "metrics.chart.successful": "Thành công",
+    "metrics.chart.title": "Xu hướng thực thi",
+    "metrics.recentFailures.copy": "Copy",
+    "metrics.recentFailures.noData": "Không có lỗi gần đây",
+    "metrics.recentFailures.title": "Lỗi gần đây",
+    "metrics.stats.avgDuration": "Thời lượng TB",
+    "metrics.stats.failed": "Thất bại",
+    "metrics.stats.successRate": "Tỷ lệ thành công",
+    "metrics.stats.totalExecutions": "Tổng số thực thi",
+    "metrics.topWorkflows.executions": "lần thực thi",
+    "metrics.topWorkflows.noData": "Chưa có workflow nào được thực thi",
+    "metrics.topWorkflows.title": "Workflow hàng đầu",
+    "metrics.vsPrevious": "so với trước"
+  }
+}

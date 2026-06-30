@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Portfel kredytów",
+        "wallet.availableCredits": "Dostępne kredyty",
+        "wallet.topup": "Doładuj",
+        "wallet.topupTitle": "Doładuj kredyty",
+        "wallet.topupSuccess": "Kredyty dodane pomyślnie",
+        "wallet.topupCancelled": "Doładowanie anulowane",
+        "wallet.history": "Historia transakcji",
+        "wallet.noTransactions": "Brak transakcji",
+        "wallet.balanceAfter": "Saldo",
+        "wallet.conversionNote": "1 kredyt = 0,01 $ USD",
+        "wallet.proceedToPayment": "Przejdź do płatności",
+        "wallet.confirmExecute": "Potwierdź wykonanie",
+        "wallet.executionCost": "Koszt wykonania",
+        "wallet.yourBalance": "Twoje saldo",
+        "wallet.insufficientCredits": "Niewystarczające kredyty",
+        "wallet.needMore": "Potrzebujesz jeszcze {amount} kredytów",
+        "wallet.topupNow": "Doładuj teraz",
+        "wallet.confirmAndExecute": "Potwierdź i wykonaj",
+        "wallet.lowBalanceWarning": "Kredyty się kończą. Doładuj, aby kontynuować uruchamianie workflow."
+    }
+}

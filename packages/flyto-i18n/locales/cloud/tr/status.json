@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.status",
+    "version": "1.0.0",
+    "translations": {
+        "status.cancelled": "İptal Edildi",
+        "status.completed": "Tamamlandı",
+        "status.error": "Hata",
+        "status.failed": "Başarısız",
+        "status.pending": "Beklemede",
+        "status.running": "Çalışıyor",
+        "status.success": "Başarılı"
+    }
+}

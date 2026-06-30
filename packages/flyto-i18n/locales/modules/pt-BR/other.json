@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "Nome do Cabecalho",
+        "schema.field.body": "Corpo",
+        "schema.field.body_matches": "Resposta",
+        "schema.field.full_page": "Pagina Completa",
+        "schema.field.response": "Resposta",
+        "schema.field.screenshot_format": "Pagina Completa",
+        "schema.field.ssrf_protection": "Proteção SSRF",
+        "schema.field.ssrf_protection.description": "Bloqueia requisições para redes privadas/internas (localhost, 192.168.x.x, endpoints de metadados da nuvem). Desative apenas para destinos internos confiáveis.",
+        "schema.field.url": "URL",
+        "schema.field.viewport_height": "Largura",
+        "schema.field.viewport_width": "Largura"
+    }
+}

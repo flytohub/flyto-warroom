@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "Estrai testo e contenuto da documenti Word (.docx)",
+        "modules.word.parse.label": "Analizza Documento Word",
+        "modules.word.parse.output.images.description": "Lista dei paragrafi",
+        "modules.word.parse.output.metadata.description": "Tabelle estratte come array",
+        "modules.word.parse.output.paragraphs.description": "Contenuto testo completo del documento",
+        "modules.word.parse.output.tables.description": "Contenuto testo completo del documento",
+        "modules.word.parse.output.text.description": "Contenuto testo completo del documento",
+        "modules.word.to_pdf.description": "Converti documenti Word (.docx) in file PDF",
+        "modules.word.to_pdf.label": "Word a PDF",
+        "modules.word.to_pdf.output.file_size.description": "Percorso del file PDF generato",
+        "modules.word.to_pdf.output.method_used.description": "Dimensione del file di output in byte",
+        "modules.word.to_pdf.output.output_path.description": "Percorso del file PDF generato"
+    }
+}

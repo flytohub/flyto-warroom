@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "คิวรีเอกสารจากคอลเลกชัน MongoDB",
+        "modules.db.mongodb.find.label": "ค้นหา MongoDB",
+        "modules.db.mongodb.find.output.count.description": "อาร์เรย์ของเอกสารที่ตรงกัน",
+        "modules.db.mongodb.find.output.documents.description": "อาร์เรย์ของเอกสารที่ตรงกัน",
+        "modules.db.mongodb.insert.description": "เพิ่มเอกสารหนึ่งรายการขึ้นไปลงในคอลเลกชัน MongoDB",
+        "modules.db.mongodb.insert.label": "เพิ่มข้อมูล MongoDB",
+        "modules.db.mongodb.insert.output.inserted_count.description": "จำนวนเอกสารที่เพิ่ม",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "จำนวนเอกสารที่เพิ่ม",
+        "modules.db.mysql.query.description": "รันคำสั่ง SQL บนฐานข้อมูล MySQL และคืนค่าผลลัพธ์",
+        "modules.db.mysql.query.label": "คิวรี MySQL",
+        "modules.db.mysql.query.output.columns.description": "อาร์เรย์ของแถวผลลัพธ์เป็นออบเจกต์",
+        "modules.db.mysql.query.output.row_count.description": "อาร์เรย์ของแถวผลลัพธ์เป็นออบเจกต์",
+        "modules.db.mysql.query.output.rows.description": "อาร์เรย์ของแถวผลลัพธ์เป็นออบเจกต์",
+        "modules.db.postgresql.query.description": "รันคำสั่ง SQL บนฐานข้อมูล PostgreSQL และคืนค่าผลลัพธ์",
+        "modules.db.postgresql.query.label": "คิวรี PostgreSQL",
+        "modules.db.postgresql.query.output.columns.description": "อาร์เรย์ของแถวผลลัพธ์เป็นออบเจกต์",
+        "modules.db.postgresql.query.output.row_count.description": "อาร์เรย์ของแถวผลลัพธ์เป็นออบเจกต์",
+        "modules.db.postgresql.query.output.rows.description": "อาร์เรย์ของแถวผลลัพธ์เป็นออบเจกต์",
+        "modules.db.redis.get.description": "ดึงค่าจาก Redis cache",
+        "modules.db.redis.get.label": "ดึงค่า Redis",
+        "modules.db.redis.get.output.exists.description": "ค่าที่คืนกลับ",
+        "modules.db.redis.get.output.key.description": "ค่าที่คืนกลับ",
+        "modules.db.redis.get.output.value.description": "ค่าที่คืนกลับ",
+        "modules.db.redis.set.description": "ตั้งค่าใน Redis cache",
+        "modules.db.redis.set.label": "ตั้งค่า Redis"
+    }
+}

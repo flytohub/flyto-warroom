@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.nodeOutput",
+    "version": "1.0.0",
+    "translations": {
+        "nodeOutput.diff": "對比",
+        "nodeOutput.input": "輸入",
+        "nodeOutput.output": "輸出",
+        "nodeOutput.table": "表格",
+        "nodeOutput.text": "文字"
+    }
+}

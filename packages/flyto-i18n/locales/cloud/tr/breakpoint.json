@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "Ek Giriş",
+        "breakpoint.approve": "Onayla",
+        "breakpoint.comment": "Yorum",
+        "breakpoint.commentPlaceholder": "Bir yorum ekleyin...",
+        "breakpoint.contextSnapshot": "Bağlam Anlık Görüntüsü",
+        "breakpoint.createdAt": "Oluşturulma Tarihi",
+        "breakpoint.expires": "Bitiş",
+        "breakpoint.humanCheckpoint": "İnsan Kontrol Noktası",
+        "breakpoint.noBreakpoint": "Kesme noktası ayarlanmadı",
+        "breakpoint.noPending": "Bekleyen onay yok",
+        "breakpoint.pendingApprovals": "Bekleyen Onaylar",
+        "breakpoint.reject": "Reddet",
+        "breakpoint.step": "Adım",
+        "breakpoint.waitingApproval": "Onay bekleniyor",
+        "breakpoint.workflow": "İş Akışı",
+        "browserInteract.execute": "Çalıştır",
+        "browserInteract.noElements": "Etkileşimli öğe tespit edilmedi",
+        "browserInteract.pagePreview": "Sayfa Önizleme",
+        "browserInteract.selectHint": "Etkileşim için bir öğe seçin",
+        "browserInteract.skip": "Atla",
+        "browserInteract.title": "Tarayıcı Etkileşimi"
+    }
+}

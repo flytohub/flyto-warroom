@@ -1,0 +1,16 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "zh-TW",
+  "category": "cloud.browserEngine",
+  "version": "1.0.0",
+  "translations": {
+    "browserEngine.compReady": "",
+    "browserEngine.compWorking": "",
+    "browserEngine.degradedFallback": "",
+    "browserEngine.degradedTitle": "",
+    "browserEngine.provisioningHint": "",
+    "browserEngine.provisioningTitle": "",
+    "browserEngine.retry": "",
+    "browserEngine.retrying": ""
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "Roles integres",
+        "roles.create": "Creer un role",
+        "roles.create.title": "Creer un role",
+        "roles.custom.empty": "Aucun role personnalise defini",
+        "roles.custom.title": "Roles personnalises",
+        "roles.delete.message": "Etes-vous sur de vouloir supprimer ce role ? Les utilisateurs ayant ce role se verront attribuer le role de membre par defaut.",
+        "roles.delete.title": "Supprimer le role",
+        "roles.description": "Gerer les roles et les permissions d'acces",
+        "roles.edit.title": "Modifier le role",
+        "roles.form.description": "Description",
+        "roles.form.name": "Nom du role",
+        "roles.form.permissions": "Autorisations",
+        "roles.permissions": "autorisations",
+        "roles.title": "Roles et permissions",
+        "roles.users": "utilisateurs"
+    }
+}

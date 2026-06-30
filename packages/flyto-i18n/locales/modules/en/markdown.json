@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.toc.label": "Generate Table of Contents",
+        "modules.markdown.toc.description": "Generate a table of contents from Markdown headings",
+        "modules.markdown.toc.params.text.label": "Markdown Text",
+        "modules.markdown.toc.params.text.description": "Markdown content to extract headings from",
+        "modules.markdown.toc.params.max_depth.label": "Max Depth",
+        "modules.markdown.toc.params.max_depth.description": "Maximum heading depth to include (1-6)",
+        "modules.markdown.toc.output.toc.description": "List of headings with level, title, and slug",
+        "modules.markdown.toc.output.toc_markdown.description": "Formatted Markdown table of contents",
+        "modules.markdown.to_html.label": "Markdown to HTML",
+        "modules.markdown.to_html.description": "Convert Markdown text to HTML",
+        "modules.markdown.to_html.params.text.label": "Markdown Text",
+        "modules.markdown.to_html.params.text.description": "Markdown content to convert",
+        "modules.markdown.to_html.params.extensions.label": "Extensions",
+        "modules.markdown.to_html.params.extensions.description": "Markdown extensions to enable (only used with the markdown library)",
+        "modules.markdown.to_html.output.html.description": "Converted HTML content",
+        "modules.markdown.to_html.output.word_count.description": "Word count of the input text",
+        "modules.markdown.parse_frontmatter.label": "Parse Frontmatter",
+        "modules.markdown.parse_frontmatter.description": "Extract YAML frontmatter from Markdown content",
+        "modules.markdown.parse_frontmatter.params.text.label": "Markdown Text",
+        "modules.markdown.parse_frontmatter.params.text.description": "Markdown content with frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Parsed frontmatter as a dictionary",
+        "modules.markdown.parse_frontmatter.output.content.description": "Markdown content without frontmatter"
+    }
+}

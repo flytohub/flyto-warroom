@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "Deteksi jika nilai telah berubah melebihi batas (berdasarkan jumlah atau persentase)",
+        "modules.compare.change.label": "Deteksi Perubahan",
+        "modules.compare.change.output.change_absolute.description": "Perubahan persentase (positif = naik, negatif = turun)",
+        "modules.compare.change.output.change_percent.description": "Arah perubahan: ",
+        "modules.compare.change.output.changed.description": "Apakah operasi berhasil",
+        "modules.compare.change.output.current.description": "Perubahan absolut (positif = naik, negatif = turun)",
+        "modules.compare.change.output.direction.description": "Apakah operasi berhasil",
+        "modules.compare.change.output.ok.description": "Apakah operasi berhasil",
+        "modules.compare.change.output.previous.description": "Perubahan absolut (positif = naik, negatif = turun)",
+        "modules.compare.change.output.summary.description": "Nilai saat ini",
+        "modules.compare.change.params.current.description": "Nilai saat ini/baru untuk dibandingkan",
+        "modules.compare.change.params.current.label": "Nilai Saat Ini",
+        "modules.compare.change.params.direction.description": "Arah perubahan yang akan dideteksi",
+        "modules.compare.change.params.direction.label": "Batas",
+        "modules.compare.change.params.mode.description": "Nilai sebelumnya/lama untuk dibandingkan",
+        "modules.compare.change.params.mode.label": "Nilai Sebelumnya",
+        "modules.compare.change.params.previous.description": "Nilai saat ini/baru untuk dibandingkan",
+        "modules.compare.change.params.previous.label": "Nilai Saat Ini",
+        "modules.compare.change.params.threshold.description": "Perubahan minimum untuk memicu (5 = 5% atau 5 unit)",
+        "modules.compare.change.params.threshold.label": "Perubahan Persentase"
+    }
+}

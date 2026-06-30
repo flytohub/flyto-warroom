@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.cronPreset",
+    "version": "1.0.0",
+    "translations": {
+        "cronPreset.daily9am": "매일 오전 9시",
+        "cronPreset.everyMinute": "매분",
+        "cronPreset.hourly": "매시간",
+        "cronPreset.weeklyMon": "매주 월요일"
+    }
+}

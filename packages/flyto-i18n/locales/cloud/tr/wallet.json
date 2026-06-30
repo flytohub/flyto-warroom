@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Kredi Cüzdanı",
+        "wallet.availableCredits": "Kullanılabilir Krediler",
+        "wallet.topup": "Yükle",
+        "wallet.topupTitle": "Kredi Yükle",
+        "wallet.topupSuccess": "Krediler başarıyla eklendi",
+        "wallet.topupCancelled": "Yükleme iptal edildi",
+        "wallet.history": "İşlem Geçmişi",
+        "wallet.noTransactions": "Henüz işlem yok",
+        "wallet.balanceAfter": "Bakiye",
+        "wallet.conversionNote": "1 kredi = 0,01 $ USD",
+        "wallet.proceedToPayment": "Ödemeye geç",
+        "wallet.confirmExecute": "Yürütmeyi onayla",
+        "wallet.executionCost": "Yürütme maliyeti",
+        "wallet.yourBalance": "Bakiyeniz",
+        "wallet.insufficientCredits": "Yetersiz kredi",
+        "wallet.needMore": "{amount} kredi daha gerekiyor",
+        "wallet.topupNow": "Şimdi yükle",
+        "wallet.confirmAndExecute": "Onayla ve çalıştır",
+        "wallet.lowBalanceWarning": "Kredileriniz azalıyor. İş akışlarını çalıştırmaya devam etmek için yükleyin."
+    }
+}

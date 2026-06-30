@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "Applied",
+        "dashboard.evolution.events": "Events",
+        "dashboard.evolution.executions": "Executions",
+        "dashboard.evolution.flytoCan": "Fly to can",
+        "dashboard.evolution.fromCheckpoints": "From checkpoints",
+        "dashboard.evolution.last30days": "Last 30 days",
+        "dashboard.evolution.last7days": "Last 7 days",
+        "dashboard.evolution.last90days": "Last 90 days",
+        "dashboard.evolution.moatDescription": "Moat description",
+        "dashboard.evolution.moatTitle": "Moat title",
+        "dashboard.evolution.n8nCant": "N8n can't",
+        "dashboard.evolution.overallImprovement": "Overall improvement",
+        "dashboard.evolution.pending": "Pending",
+        "dashboard.evolution.reliability": "Reliability",
+        "dashboard.evolution.subtitle": "Subtitle",
+        "dashboard.evolution.suggestionsApplied": "Suggestions applied",
+        "dashboard.evolution.timeSaved": "Time saved",
+        "dashboard.evolution.timeline": "Timeline",
+        "dashboard.evolution.title": "Title",
+        "dashboard.evolution.today": "Today",
+        "dashboard.evolution.topImproved": "Top improved",
+        "dashboard.evolution.yesterday": "Yesterday",
+        "dashboard.title": "Dashboard"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "Kapat",
+        "updateNotification.downloadFailed": "Güncelleme indirilemedi",
+        "updateNotification.downloadUpdate": "Güncellemeyi İndir",
+        "updateNotification.downloading": "Güncelleme İndiriliyor",
+        "updateNotification.newVersionAvailable": "Yeni Sürüm Mevcut",
+        "updateNotification.percentComplete": "%{percent} tamamlandı",
+        "updateNotification.remindLater": "Daha Sonra Hatırlat",
+        "updateNotification.restartLater": "Daha Sonra Yeniden Başlat",
+        "updateNotification.restartNow": "Şimdi Yeniden Başlat",
+        "updateNotification.restartToInstall": "Güncellemeyi yüklemek için uygulamayı yeniden başlatın",
+        "updateNotification.unknownError": "Bilinmeyen hata",
+        "updateNotification.updateDownloaded": "Güncelleme İndirildi",
+        "updateNotification.updateFailed": "Güncelleme Başarısız",
+        "updateNotification.versionReady": "Sürüm {version} güncellemeye hazır"
+    }
+}

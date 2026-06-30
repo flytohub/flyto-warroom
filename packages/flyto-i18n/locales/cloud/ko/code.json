@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "사용 가능한 변수",
+        "code.inputAllDesc": "이전 단계의 모든 항목",
+        "code.inputFirstDesc": "첫 번째 항목만",
+        "code.jsonDesc": "현재 항목 데이터 (별칭)",
+        "code.language": "언어",
+        "code.localExecutionNotice": "보안을 위해 코드는 로컬 머신에서 실행됩니다",
+        "code.sourceCode": "소스 코드"
+    }
+}

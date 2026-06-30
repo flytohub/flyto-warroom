@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.huggingface",
+    "version": "1.0.0",
+    "translations": {
+        "huggingface.browseMoreModels": "Daha Fazla Model Görüntüle",
+        "huggingface.chooseModel": "Model Seç",
+        "huggingface.inferenceAPI": "Çıkarım API'si",
+        "huggingface.installedModels": "Yüklü Modeller",
+        "huggingface.localExecution": "Yerel Çalıştırma",
+        "huggingface.noModelsAvailable": "Kullanılabilir model yok",
+        "huggingface.notInstalled": "Yüklü Değil",
+        "huggingface.popularModels": "Popüler Modeller",
+        "huggingface.selectModel": "Model Seç"
+    }
+}

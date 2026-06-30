@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.gmail.send.label": "Gmail Send",
+        "modules.google.gmail.send.description": "Send an email via the Gmail API",
+        "modules.google.gmail.send.output.message_id.description": "Gmail message ID",
+        "modules.google.gmail.send.output.thread_id.description": "Gmail thread ID",
+        "modules.google.gmail.send.output.to.description": "Recipient email address",
+        "modules.google.gmail.search.label": "Gmail Search",
+        "modules.google.gmail.search.description": "Search Gmail messages using Gmail search query syntax",
+        "modules.google.gmail.search.output.messages.description": "List of matching messages",
+        "modules.google.gmail.search.output.total.description": "Total number of messages returned",
+        "modules.google.calendar.create_event.label": "Calendar Create Event",
+        "modules.google.calendar.create_event.description": "Create a new event in Google Calendar",
+        "modules.google.calendar.create_event.output.event_id.description": "Created event ID",
+        "modules.google.calendar.create_event.output.summary.description": "Event title",
+        "modules.google.calendar.create_event.output.start.description": "Event start time",
+        "modules.google.calendar.create_event.output.end.description": "Event end time",
+        "modules.google.calendar.create_event.output.html_link.description": "Link to view the event in Google Calendar",
+        "modules.google.calendar.list_events.label": "Calendar List Events",
+        "modules.google.calendar.list_events.description": "List upcoming events from Google Calendar",
+        "modules.google.calendar.list_events.output.events.description": "List of calendar events",
+        "modules.google.calendar.list_events.output.count.description": "Number of events returned"
+    }
+}

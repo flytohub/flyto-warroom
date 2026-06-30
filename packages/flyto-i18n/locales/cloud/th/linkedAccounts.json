@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "th",
+  "category": "cloud.linkedAccounts",
+  "version": "1.0.0",
+  "translations": {
+    "linkedAccounts.cannotUnlink": "ไม่สามารถยกเลิกการเชื่อมต่อได้ — คุณต้องมีวิธีการเข้าสู่ระบบอย่างน้อยหนึ่งวิธี",
+    "linkedAccounts.google": "Google",
+    "linkedAccounts.link": "เชื่อมต่อบัญชี",
+    "linkedAccounts.linkSuccess": "เชื่อมต่อบัญชี Google สำเร็จ",
+    "linkedAccounts.linked": "เชื่อมต่อแล้ว",
+    "linkedAccounts.notLinked": "ยังไม่ได้เชื่อมต่อ",
+    "linkedAccounts.subtitle": "จัดการวิธีการเข้าสู่ระบบที่เชื่อมต่อ",
+    "linkedAccounts.title": "บัญชีที่เชื่อมต่อ",
+    "linkedAccounts.unlink": "ยกเลิกการเชื่อมต่อ",
+    "linkedAccounts.unlinkConfirm": "คุณแน่ใจหรือไม่ว่าต้องการยกเลิกการเชื่อมต่อ Google?",
+    "linkedAccounts.unlinkSuccess": "ยกเลิกการเชื่อมต่อบัญชี Google แล้ว"
+  }
+}

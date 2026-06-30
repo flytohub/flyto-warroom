@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.idp",
+  "version": "1.0.0",
+  "translations": {
+    "idp.actions.batch": "",
+    "idp.actions.export": "",
+    "idp.actions.title": "",
+    "idp.actions.train": "",
+    "idp.models.title": "",
+    "idp.queue.empty": "",
+    "idp.queue.items": "",
+    "idp.queue.title": "",
+    "idp.recent.empty": "",
+    "idp.recent.title": "",
+    "idp.results.fields": "",
+    "idp.results.title": "",
+    "idp.stats.accuracy": "",
+    "idp.stats.models": "",
+    "idp.stats.pending": "",
+    "idp.stats.processed": "",
+    "idp.upload.browse": "",
+    "idp.upload.desc": "",
+    "idp.upload.formats": "",
+    "idp.upload.title": ""
+  }
+}

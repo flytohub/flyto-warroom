@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.cronPreset",
+    "version": "1.0.0",
+    "translations": {
+        "cronPreset.daily9am": "Quotidien 9h",
+        "cronPreset.everyMinute": "Chaque minute",
+        "cronPreset.hourly": "Toutes les heures",
+        "cronPreset.weeklyMon": "Hebdo lundi"
+    }
+}

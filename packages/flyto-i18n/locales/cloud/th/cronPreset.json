@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.cronPreset",
+    "version": "1.0.0",
+    "translations": {
+        "cronPreset.daily9am": "ทุกวัน 9:00 น.",
+        "cronPreset.everyMinute": "ทุกนาที",
+        "cronPreset.hourly": "ทุกชั่วโมง",
+        "cronPreset.weeklyMon": "ทุกสัปดาห์ จันทร์"
+    }
+}

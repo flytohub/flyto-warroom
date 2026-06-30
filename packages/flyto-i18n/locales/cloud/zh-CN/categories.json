@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.categories",
+    "version": "1.0.0",
+    "translations": {
+        "categories.ai": "人工智能",
+        "categories.api": "API",
+        "categories.array": "数组",
+        "categories.browser": "浏览器",
+        "categories.cloud": "云端",
+        "categories.code": "代码",
+        "categories.composite": "复合模块",
+        "categories.data": "数据处理",
+        "categories.datetime": "日期时间",
+        "categories.element": "元素操作",
+        "categories.file": "文件",
+        "categories.flow": "流程控制",
+        "categories.form": "表单输入",
+        "categories.http": "HTTP",
+        "categories.huggingface": "HuggingFace",
+        "categories.image": "图片",
+        "categories.llm": "语言模型",
+        "categories.math": "数学",
+        "categories.my-templates": "我的模板",
+        "categories.notification": "通知",
+        "categories.object": "对象",
+        "categories.other": "其他",
+        "categories.string": "字符串",
+        "categories.connector": "API 连接器",
+        "categories.utility": "工具"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.container",
+    "version": "1.0.0",
+    "translations": {
+        "container.editSubflow": "Editar Subfluxo"
+    }
+}

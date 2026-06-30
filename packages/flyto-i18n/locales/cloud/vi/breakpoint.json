@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "Đầu vào bổ sung",
+        "breakpoint.approve": "Phê duyệt",
+        "breakpoint.comment": "Bình luận",
+        "breakpoint.commentPlaceholder": "Thêm bình luận...",
+        "breakpoint.contextSnapshot": "Ảnh chụp ngữ cảnh",
+        "breakpoint.createdAt": "Tạo lúc",
+        "breakpoint.expires": "Hết hạn",
+        "breakpoint.humanCheckpoint": "Điểm kiểm tra con người",
+        "breakpoint.noBreakpoint": "Chưa đặt điểm dừng",
+        "breakpoint.noPending": "Không có phê duyệt đang chờ",
+        "breakpoint.pendingApprovals": "Phê duyệt đang chờ",
+        "breakpoint.reject": "Từ chối",
+        "breakpoint.step": "Bước",
+        "breakpoint.waitingApproval": "Đang chờ phê duyệt",
+        "breakpoint.workflow": "Quy trình",
+        "browserInteract.execute": "Thực thi",
+        "browserInteract.noElements": "Không phát hiện phần tử tương tác",
+        "browserInteract.pagePreview": "Xem Trước Trang",
+        "browserInteract.selectHint": "Chọn một phần tử để tương tác",
+        "browserInteract.skip": "Bỏ qua",
+        "browserInteract.title": "Tương Tác Trình Duyệt"
+    }
+}

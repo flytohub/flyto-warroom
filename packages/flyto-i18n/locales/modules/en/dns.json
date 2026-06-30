@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "dns",
+    "version": "1.0.0",
+    "translations": {
+        "modules.dns.lookup.label": "DNS Lookup",
+        "modules.dns.lookup.description": "DNS lookup for domain records",
+        "modules.dns.lookup.params.domain.label": "Domain",
+        "modules.dns.lookup.params.domain.description": "Domain name to look up",
+        "modules.dns.lookup.params.record_type.label": "Record Type",
+        "modules.dns.lookup.params.record_type.description": "DNS record type to query",
+        "modules.dns.lookup.params.timeout.label": "Timeout",
+        "modules.dns.lookup.params.timeout.description": "Query timeout in seconds",
+        "modules.dns.lookup.output.domain.description": "Queried domain",
+        "modules.dns.lookup.output.record_type.description": "Record type queried",
+        "modules.dns.lookup.output.records.description": "Resolved records",
+        "modules.dns.lookup.output.ttl.description": "Time to live (if available)"
+    }
+}

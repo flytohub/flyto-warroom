@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "Supprimer un objet d'un bucket AWS S3",
+        "modules.aws.s3.delete.label": "Supprimer Objet S3",
+        "modules.aws.s3.delete.output.bucket.description": "Nom du bucket S3",
+        "modules.aws.s3.delete.output.deleted.description": "Si l'objet a été supprimé avec succès",
+        "modules.aws.s3.delete.output.key.description": "Clé de l'objet supprimé",
+        "modules.aws.s3.download.description": "Télécharger un fichier d'un bucket AWS S3 vers un chemin local",
+        "modules.aws.s3.download.label": "Téléchargement S3",
+        "modules.aws.s3.download.output.content_type.description": "Type MIME du fichier téléchargé",
+        "modules.aws.s3.download.output.path.description": "Chemin du fichier local où le fichier a été enregistré",
+        "modules.aws.s3.download.output.size.description": "Taille du fichier en octets",
+        "modules.aws.s3.list.description": "Lister les objets dans un bucket AWS S3 avec un filtre de préfixe optionnel",
+        "modules.aws.s3.list.label": "Lister Objets S3",
+        "modules.aws.s3.list.output.count.description": "Nombre d'objets retournés",
+        "modules.aws.s3.list.output.objects.description": "Liste des objets S3",
+        "modules.aws.s3.list.output.truncated.description": "Si les résultats sont tronqués",
+        "modules.aws.s3.upload.description": "Téléverser un fichier local vers un bucket AWS S3",
+        "modules.aws.s3.upload.label": "Téléversement S3",
+        "modules.aws.s3.upload.output.bucket.description": "Nom du bucket S3",
+        "modules.aws.s3.upload.output.key.description": "Clé de l'objet S3",
+        "modules.aws.s3.upload.output.size.description": "Taille du fichier en octets",
+        "modules.aws.s3.upload.output.url.description": "URL publique de l'objet téléversé"
+    }
+}

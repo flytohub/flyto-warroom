@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Daten in Datenbanktabellen einfügen",
+        "modules.database.insert.label": "Datenbank-Einfügen",
+        "modules.database.insert.output.inserted_count.description": "Anzahl der eingefügten Zeilen",
+        "modules.database.insert.output.returning_data.description": "Anzahl der eingefügten Zeilen",
+        "modules.database.query.description": "SQL-Abfragen auf PostgreSQL-, MySQL- oder SQLite-Datenbanken ausführen",
+        "modules.database.query.label": "Datenbank-Abfrage",
+        "modules.database.query.output.columns.description": "Abfrageergebniszeilen",
+        "modules.database.query.output.row_count.description": "Abfrageergebniszeilen",
+        "modules.database.query.output.rows.description": "Abfrageergebniszeilen",
+        "modules.database.update.description": "Daten in Datenbanktabellen aktualisieren",
+        "modules.database.update.label": "Datenbank-Update",
+        "modules.database.update.output.updated_count.description": "Anzahl der aktualisierten Zeilen"
+    }
+}

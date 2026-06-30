@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "ลบ",
+        "batch.deleteConfirm.message": "คุณแน่ใจหรือไม่ว่าต้องการลบ {count} เทมเพลต? การดำเนินการนี้ไม่สามารถเลิกทำได้",
+        "batch.deleteConfirm.title": "ลบ {count} เทมเพลต",
+        "batch.deselectAll": "ยกเลิกเลือกทั้งหมด",
+        "batch.select": "เลือก",
+        "batch.selectAll": "เลือกทั้งหมด",
+        "batch.selected": "ที่เลือก"
+    }
+}

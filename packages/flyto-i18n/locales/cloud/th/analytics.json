@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.analytics",
+    "version": "1.0.0",
+    "translations": {
+        "analytics.declining": "ลดลง",
+        "analytics.eventBreakdown": "รายละเอียดเหตุการณ์",
+        "analytics.frictionPoints": "จุดติดขัด",
+        "analytics.healthScore": "คะแนนสุขภาพ",
+        "analytics.improving": "ดีขึ้น",
+        "analytics.issues": "ปัญหา",
+        "analytics.noFriction": "ไม่มีติดขัด",
+        "analytics.overallHealth": "สุขภาพโดยรวม",
+        "analytics.recommendations": "คำแนะนำ",
+        "analytics.stable": "คงที่"
+    }
+}

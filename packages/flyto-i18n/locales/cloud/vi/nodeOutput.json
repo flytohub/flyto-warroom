@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.nodeOutput",
+    "version": "1.0.0",
+    "translations": {
+        "nodeOutput.diff": "Khác biệt",
+        "nodeOutput.input": "Đầu vào",
+        "nodeOutput.output": "Đầu ra",
+        "nodeOutput.table": "Bảng",
+        "nodeOutput.text": "Văn bản"
+    }
+}

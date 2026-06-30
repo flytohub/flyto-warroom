@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "分類",
+        "createModal.category.placeholder": "選擇分類（選填）",
+        "createModal.closeDialog": "關閉對話框",
+        "createModal.create": "建立模板",
+        "createModal.creating": "建立中...",
+        "createModal.description.label": "描述",
+        "createModal.description.placeholder": "這個模板有什麼功能？（選填）",
+        "createModal.folder.label": "資料夾",
+        "createModal.folder.placeholder": "預設（無資料夾）",
+        "createModal.errors.createFailed": "建立模板失敗",
+        "createModal.errors.fileTooLarge": "圖片大小不能超過 2MB",
+        "createModal.errors.invalidFileType": "請選擇圖片檔案",
+        "createModal.icon.change": "更換圖示",
+        "createModal.icon.hint": "PNG、JPG、GIF，最大 2MB",
+        "createModal.icon.label": "模板圖示",
+        "createModal.icon.remove": "移除圖示",
+        "createModal.icon.upload": "上傳圖示",
+        "createModal.name.label": "模板名稱",
+        "createModal.name.placeholder": "我的自動化模板",
+        "createModal.title": "新建模板"
+    }
+}

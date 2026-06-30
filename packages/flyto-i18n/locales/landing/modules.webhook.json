@@ -1,0 +1,13 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "webhook",
+  "version": "1.0.0",
+  "translations": {
+    "modules.webhook.trigger.description": "",
+    "modules.webhook.trigger.label": "",
+    "modules.webhook.trigger.output.headers.description": "",
+    "modules.webhook.trigger.output.response.description": "",
+    "modules.webhook.trigger.output.status_code.description": ""
+  }
+}

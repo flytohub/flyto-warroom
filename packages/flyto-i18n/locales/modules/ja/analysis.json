@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "コンテンツの可読性を分析",
+        "modules.analysis.html.analyze_readability.label": "HTML可読性分析",
+        "modules.analysis.html.extract_forms.description": "HTMLからフォームデータを抽出",
+        "modules.analysis.html.extract_forms.label": "フォームを抽出",
+        "modules.analysis.html.extract_metadata.description": "HTMLからメタデータを抽出",
+        "modules.analysis.html.extract_metadata.label": "メタデータを抽出",
+        "modules.analysis.html.extract_tables.description": "HTMLからテーブルデータを抽出",
+        "modules.analysis.html.extract_tables.label": "テーブルを抽出",
+        "modules.analysis.html.find_patterns.description": "HTMLで繰り返しデータパターンを検索",
+        "modules.analysis.html.find_patterns.label": "パターンを検索",
+        "modules.analysis.html.structure.description": "HTML DOM構造を分析",
+        "modules.analysis.html.structure.label": "HTML構造"
+    }
+}

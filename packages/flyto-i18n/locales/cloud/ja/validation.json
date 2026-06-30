@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "英数字のみ使用できます",
+        "validation.error": "検証エラー",
+        "validation.failed": "検証に失敗しました",
+        "validation.invalidEmail": "無効なメールアドレスです",
+        "validation.maxLength": "最大{max}文字まで",
+        "validation.minLength": "最低{min}文字必要です",
+        "validation.needsLowercase": "小文字を1文字以上含める必要があります",
+        "validation.needsNumber": "数字を1文字以上含める必要があります",
+        "validation.needsUppercase": "大文字を1文字以上含める必要があります",
+        "validation.passwordHint": "12文字以上、大文字・小文字・数字を含む",
+        "validation.passwordMismatch": "パスワードが一致しません",
+        "validation.required": "この項目は必須です"
+    }
+}

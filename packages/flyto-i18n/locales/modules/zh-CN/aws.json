@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "从 AWS S3 保存桶删除对象",
+        "modules.aws.s3.delete.label": "S3 删除对象",
+        "modules.aws.s3.delete.output.bucket.description": "S3 保存桶名称",
+        "modules.aws.s3.delete.output.deleted.description": "对象是否成功删除",
+        "modules.aws.s3.delete.output.key.description": "已删除对象的键值",
+        "modules.aws.s3.download.description": "从 AWS S3 保存桶下载文件到本地路径",
+        "modules.aws.s3.download.label": "S3 下载",
+        "modules.aws.s3.download.output.content_type.description": "下载文件的 MIME 类型",
+        "modules.aws.s3.download.output.path.description": "文件保存的本地路径",
+        "modules.aws.s3.download.output.size.description": "文件大小（字节）",
+        "modules.aws.s3.list.description": "列出 AWS S3 保存桶中的对象，可选择性使用前缀过滤",
+        "modules.aws.s3.list.label": "S3 列出对象",
+        "modules.aws.s3.list.output.count.description": "返回的对象数量",
+        "modules.aws.s3.list.output.objects.description": "S3 对象列表",
+        "modules.aws.s3.list.output.truncated.description": "结果是否被截断",
+        "modules.aws.s3.upload.description": "上传本地文件到 AWS S3 保存桶",
+        "modules.aws.s3.upload.label": "S3 上传",
+        "modules.aws.s3.upload.output.bucket.description": "S3 保存桶名称",
+        "modules.aws.s3.upload.output.key.description": "S3 对象键值",
+        "modules.aws.s3.upload.output.size.description": "文件大小（字节）",
+        "modules.aws.s3.upload.output.url.description": "已上传对象的公开 URL"
+    }
+}

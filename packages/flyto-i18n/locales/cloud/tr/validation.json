@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "Sadece harfler ve rakamlar izin veriliyor",
+        "validation.error": "Doğrulama hatası",
+        "validation.failed": "Doğrulama başarısız",
+        "validation.invalidEmail": "Geçersiz e-posta adresi",
+        "validation.maxLength": "Maksimum {max} karakter",
+        "validation.minLength": "Minimum {min} karakter",
+        "validation.needsLowercase": "En az bir küçük harf içermelidir",
+        "validation.needsNumber": "En az bir rakam içermelidir",
+        "validation.needsUppercase": "En az bir büyük harf içermelidir",
+        "validation.passwordHint": "Min 12 karakter, büyük harf, küçük harf ve rakam içermeli",
+        "validation.passwordMismatch": "Şifreler eşleşmiyor",
+        "validation.required": "Bu alan zorunludur"
+    }
+}

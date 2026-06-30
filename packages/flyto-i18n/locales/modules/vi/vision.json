@@ -1,0 +1,27 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "vi",
+  "category": "vision",
+  "version": "1.0.0",
+  "translations": {
+    "modules.vision.analyze.description": "Phân tích hình ảnh sử dụng OpenAI Vision API (GPT-4V)",
+    "modules.vision.analyze.label": "Phân tích hình ảnh với AI",
+    "modules.vision.analyze.output.analysis.description": "Phân tích có thành công không",
+    "modules.vision.analyze.output.model.description": "Dữ liệu phân tích có cấu trúc (nếu output_format là structured/json)",
+    "modules.vision.analyze.output.ok.description": "Phân tích có thành công không",
+    "modules.vision.analyze.output.structured.description": "Kết quả phân tích AI",
+    "modules.vision.analyze.output.tokens_used.description": "Model được sử dụng để phân tích",
+    "modules.vision.compare.description": "So sánh hai hình ảnh và xác định sự khác biệt hình ảnh",
+    "modules.vision.compare.label": "So sánh hình ảnh",
+    "modules.vision.compare.output.differences.description": "Phần trăm tương đồng (0-100)",
+    "modules.vision.compare.output.has_differences.description": "So sánh có thành công không",
+    "modules.vision.compare.output.ok.description": "So sánh có thành công không",
+    "modules.vision.compare.output.recommendation.description": "Tóm tắt kết quả so sánh",
+    "modules.vision.compare.output.similarity_score.description": "Có tìm thấy sự khác biệt đáng kể không",
+    "modules.vision.compare.output.summary.description": "Danh sách các sự khác biệt được xác định",
+    "modules.vision.compare.params.differences": "Differences",
+    "modules.vision.compare.params.focus_areas": "Focus Areas",
+    "modules.vision.compare.params.focus_areas.options.header": "Header",
+    "modules.vision.compare.params.focus_areas.options.main content": "Main Content"
+  }
+}

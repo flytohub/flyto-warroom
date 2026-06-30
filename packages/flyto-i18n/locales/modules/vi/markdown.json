@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Trích xuất YAML frontmatter từ nội dung Markdown",
+        "modules.markdown.parse_frontmatter.label": "Phân tích Frontmatter",
+        "modules.markdown.parse_frontmatter.output.content.description": "Nội dung Markdown không có frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Frontmatter đã phân tích dưới dạng từ điển",
+        "modules.markdown.parse_frontmatter.params.text.description": "Nội dung Markdown có frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.label": "Văn bản Markdown",
+        "modules.markdown.to_html.description": "Chuyển đổi văn bản Markdown sang HTML",
+        "modules.markdown.to_html.label": "Markdown sang HTML",
+        "modules.markdown.to_html.output.html.description": "Nội dung HTML đã chuyển đổi",
+        "modules.markdown.to_html.output.word_count.description": "Số từ của văn bản đầu vào",
+        "modules.markdown.to_html.params.extensions.description": "Tiện ích mở rộng Markdown để kích hoạt (chỉ dùng với thư viện markdown)",
+        "modules.markdown.to_html.params.extensions.label": "Tiện ích mở rộng",
+        "modules.markdown.to_html.params.text.description": "Nội dung Markdown để chuyển đổi",
+        "modules.markdown.to_html.params.text.label": "Văn bản Markdown",
+        "modules.markdown.toc.description": "Tạo mục lục từ các tiêu đề trong Markdown",
+        "modules.markdown.toc.label": "Tạo Mục lục",
+        "modules.markdown.toc.output.toc.description": "Danh sách tiêu đề với cấp độ, tiêu đề và slug",
+        "modules.markdown.toc.output.toc_markdown.description": "Mục lục Markdown đã định dạng",
+        "modules.markdown.toc.params.max_depth.description": "Độ sâu tiêu đề tối đa để bao gồm (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "Độ sâu tối đa",
+        "modules.markdown.toc.params.text.description": "Nội dung Markdown để trích xuất tiêu đề",
+        "modules.markdown.toc.params.text.label": "Văn bản Markdown"
+    }
+}

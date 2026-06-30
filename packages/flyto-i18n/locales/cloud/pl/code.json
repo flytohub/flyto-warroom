@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "Dostepne zmienne",
+        "code.inputAllDesc": "Wszystkie elementy z poprzedniego kroku",
+        "code.inputFirstDesc": "Tylko pierwszy element",
+        "code.jsonDesc": "Dane biezacego elementu (alias)",
+        "code.language": "Jezyk",
+        "code.localExecutionNotice": "Kod jest uruchamiany lokalnie na Twoim komputerze dla bezpieczenstwa",
+        "code.sourceCode": "Kod zrodlowy"
+    }
+}

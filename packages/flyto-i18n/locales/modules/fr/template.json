@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "Exécutez un modèle de votre bibliothèque comme une étape de flux de travail",
+        "modules.template.invoke.label": "Invoquer le modèle",
+        "modules.template.invoke.output.__event__.description": "ID de l'élément de la bibliothèque (achat/fork/propriété)",
+        "modules.template.invoke.output.execution_time_ms.description": "Résultat de l'exécution du modèle",
+        "modules.template.invoke.output.result.description": "Temps d'exécution maximum en secondes",
+        "modules.template.invoke.output.template_id.description": "Événement pour le routage (succès/erreur)",
+        "modules.template.invoke.ports.input": "Invoquer le modèle",
+        "modules.template.invoke.ports.success": "Entrée"
+    }
+}

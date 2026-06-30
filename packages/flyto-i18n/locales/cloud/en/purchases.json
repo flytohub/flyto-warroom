@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.purchases",
+    "version": "1.0.0",
+    "translations": {
+        "purchases.all": "All purchases",
+        "purchases.browseMarketplace": "Browse Marketplace",
+        "purchases.completed": "Completed purchases",
+        "purchases.empty": "No purchases",
+        "purchases.emptyDescription": "You have no purchases yet.",
+        "purchases.filterAll": "All",
+        "purchases.filterCompleted": "Completed",
+        "purchases.filterRefunded": "Refunded",
+        "purchases.loadMore": "Load More",
+        "purchases.loading": "Loading...",
+        "purchases.noPurchases": "No purchases yet",
+        "purchases.noPurchasesDesc": "Templates you purchase will appear here",
+        "purchases.purchasedOn": "Purchased on",
+        "purchases.refundAmount": "Refund amount",
+        "purchases.refundEligible": "Eligible for refund",
+        "purchases.refundExpired": "Refund expired",
+        "purchases.refunded": "Refunded",
+        "purchases.refundedOn": "Refunded on",
+        "purchases.requestRefund": "Request Refund",
+        "purchases.subtitle": "View your purchased templates and manage refunds",
+        "purchases.title": "Purchase History",
+        "purchases.viewTemplate": "View Template"
+    }
+}

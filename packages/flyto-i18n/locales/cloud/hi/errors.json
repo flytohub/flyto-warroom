@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "सर्वर से कनेक्ट करने में असमर्थ। कृपया सुनिश्चित करें कि बैकएंड चल रहा है।",
+        "errors.somethingWentWrong": "कुछ गलत हो गया",
+        "errors.technicalDetails": "तकनीकी विवरण",
+        "errors.timeout": "रिक्वेस्ट टाइमआउट हो गई। कृपया पुनः प्रयास करें।",
+        "errors.unexpectedError": "एक अप्रत्याशित त्रुटि हुई"
+    }
+}

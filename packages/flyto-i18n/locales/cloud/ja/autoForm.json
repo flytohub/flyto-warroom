@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.autoForm",
+    "version": "1.0.0",
+    "translations": {
+        "autoForm.browsePath": "パスを参照",
+        "autoForm.hideAdvanced": "詳細を隠す",
+        "autoForm.hidePassword": "パスワードを隠す",
+        "autoForm.multipleFilesSelected": "{count} 個のファイルを選択中",
+        "autoForm.selectFilePlaceholder": "ファイルを選択...",
+        "autoForm.selectPlaceholder": "選択...",
+        "autoForm.showAdvanced": "詳細を表示",
+        "autoForm.showPassword": "パスワードを表示"
+    }
+}

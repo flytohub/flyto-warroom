@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.autoForm",
+    "version": "1.0.0",
+    "translations": {
+        "autoForm.browsePath": "Jelajahi jalur",
+        "autoForm.hideAdvanced": "Sembunyikan Lanjutan",
+        "autoForm.hidePassword": "Sembunyikan kata sandi",
+        "autoForm.multipleFilesSelected": "{count} file dipilih",
+        "autoForm.selectFilePlaceholder": "Pilih file...",
+        "autoForm.selectPlaceholder": "Pilih...",
+        "autoForm.showAdvanced": "Tampilkan Lanjutan",
+        "autoForm.showPassword": "Tampilkan kata sandi"
+    }
+}

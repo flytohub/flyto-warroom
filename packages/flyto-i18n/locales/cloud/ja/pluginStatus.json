@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.pluginStatus",
+    "version": "1.0.0",
+    "translations": {
+        "pluginStatus.downloading": "ダウンロード中",
+        "pluginStatus.installed": "インストール済み",
+        "pluginStatus.loaded": "ロード済み",
+        "pluginStatus.loading": "ロード中",
+        "pluginStatus.notInstalled": "未インストール",
+        "pluginStatus.unloading": "アンロード中"
+    }
+}

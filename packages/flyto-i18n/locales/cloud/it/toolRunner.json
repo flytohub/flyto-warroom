@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Avanzato",
+        "toolRunner.backToLibrary": "Torna alla Libreria",
+        "toolRunner.copy": "Copia",
+        "toolRunner.download": "Scarica",
+        "toolRunner.editTool": "Modifica",
+        "toolRunner.executionFailed": "Esecuzione Fallita",
+        "toolRunner.executionLogs": "Log di Esecuzione",
+        "toolRunner.executionSuccess": "Esecuzione Completata",
+        "toolRunner.executionTimedOut": "Esecuzione scaduta",
+        "toolRunner.flowSteps": "Passaggi Flusso",
+        "toolRunner.inputForm": "Form di Input",
+        "toolRunner.loadFailed": "Impossibile caricare lo strumento",
+        "toolRunner.noLogs": "Nessun log ancora. Esegui lo strumento per vedere i log di esecuzione.",
+        "toolRunner.resolvedParams": "Parametri Risolti",
+        "toolRunner.results": "Risultati",
+        "toolRunner.retry": "Riprova",
+        "toolRunner.runAgain": "Esegui di Nuovo",
+        "toolRunner.runToSeeResults": "Esegui lo strumento per vedere i risultati qui",
+        "toolRunner.runTool": "Esegui Strumento",
+        "toolRunner.running": "Esecuzione...",
+        "toolRunner.simpleMode": "Semplice",
+        "toolRunner.toolNotFound": "Strumento Non Trovato",
+        "toolRunner.toolNotFoundError": "Strumento non trovato"
+    }
+}

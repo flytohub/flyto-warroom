@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.backoffType",
+    "version": "1.0.0",
+    "translations": {
+        "backoffType.exponential": "指數",
+        "backoffType.exponentialDesc": "延遲 * 2^次數 (1000, 2000, 4000...)",
+        "backoffType.linear": "線性",
+        "backoffType.linearDesc": "延遲 * 次數 (1000, 2000, 3000...)",
+        "backoffType.none": "無",
+        "backoffType.noneDesc": "固定重試間隔"
+    }
+}

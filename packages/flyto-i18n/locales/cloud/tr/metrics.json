@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "cloud.metrics",
+  "version": "1.0.0",
+  "translations": {
+    "metrics.chart.failed": "Başarısız",
+    "metrics.chart.noData": "Veri mevcut değil",
+    "metrics.chart.successful": "Başarılı",
+    "metrics.chart.title": "Çalıştırma Trendi",
+    "metrics.recentFailures.copy": "Copy",
+    "metrics.recentFailures.noData": "Son başarısızlık yok",
+    "metrics.recentFailures.title": "Son Başarısızlıklar",
+    "metrics.stats.avgDuration": "Ort. Süre",
+    "metrics.stats.failed": "Başarısız",
+    "metrics.stats.successRate": "Başarı Oranı",
+    "metrics.stats.totalExecutions": "Toplam Çalıştırma",
+    "metrics.topWorkflows.executions": "çalıştırma",
+    "metrics.topWorkflows.noData": "Henüz çalıştırılan iş akışı yok",
+    "metrics.topWorkflows.title": "En Çok Kullanılan İş Akışları",
+    "metrics.vsPrevious": "öncekine göre"
+  }
+}

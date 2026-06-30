@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.onboarding",
+    "version": "1.0.0",
+    "translations": {
+        "onboarding.finish": "Fine",
+        "onboarding.next": "Avanti",
+        "onboarding.previous": "Indietro",
+        "onboarding.skip": "Salta"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "Nur Buchstaben und Zahlen erlaubt",
+        "validation.error": "Validierungsfehler",
+        "validation.failed": "Validierung fehlgeschlagen",
+        "validation.invalidEmail": "Ungültige E-Mail-Adresse",
+        "validation.maxLength": "Maximal {max} Zeichen",
+        "validation.minLength": "Mindestens {min} Zeichen",
+        "validation.needsLowercase": "Muss mindestens einen Kleinbuchstaben enthalten",
+        "validation.needsNumber": "Muss mindestens eine Zahl enthalten",
+        "validation.needsUppercase": "Muss mindestens einen Großbuchstaben enthalten",
+        "validation.passwordHint": "Min. 12 Zeichen, mit Groß-, Kleinbuchstaben und Zahl",
+        "validation.passwordMismatch": "Passwörter stimmen nicht überein",
+        "validation.required": "Dieses Feld ist erforderlich"
+    }
+}

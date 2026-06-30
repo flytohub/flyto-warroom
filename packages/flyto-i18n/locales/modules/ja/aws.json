@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "AWS S3バケットからオブジェクトを削除",
+        "modules.aws.s3.delete.label": "S3 オブジェクト削除",
+        "modules.aws.s3.delete.output.bucket.description": "S3バケット名",
+        "modules.aws.s3.delete.output.deleted.description": "オブジェクトが正常に削除されたかどうか",
+        "modules.aws.s3.delete.output.key.description": "削除されたオブジェクトキー",
+        "modules.aws.s3.download.description": "AWS S3バケットからローカルパスにファイルをダウンロード",
+        "modules.aws.s3.download.label": "S3 ダウンロード",
+        "modules.aws.s3.download.output.content_type.description": "ダウンロードされたファイルのMIMEタイプ",
+        "modules.aws.s3.download.output.path.description": "ファイルが保存されたローカルパス",
+        "modules.aws.s3.download.output.size.description": "ファイルサイズ（バイト）",
+        "modules.aws.s3.list.description": "AWS S3バケット内のオブジェクトをオプションのプレフィックスフィルターで一覧表示",
+        "modules.aws.s3.list.label": "S3 オブジェクト一覧",
+        "modules.aws.s3.list.output.count.description": "返されたオブジェクトの数",
+        "modules.aws.s3.list.output.objects.description": "S3オブジェクトの一覧",
+        "modules.aws.s3.list.output.truncated.description": "結果が切り捨てられたかどうか",
+        "modules.aws.s3.upload.description": "ローカルファイルをAWS S3バケットにアップロード",
+        "modules.aws.s3.upload.label": "S3 アップロード",
+        "modules.aws.s3.upload.output.bucket.description": "S3バケット名",
+        "modules.aws.s3.upload.output.key.description": "S3オブジェクトキー",
+        "modules.aws.s3.upload.output.size.description": "ファイルサイズ（バイト）",
+        "modules.aws.s3.upload.output.url.description": "アップロードされたオブジェクトの公開URL"
+    }
+}

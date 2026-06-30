@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "Alur Persetujuan",
+        "stateMachine.create.blank": "Kosong",
+        "stateMachine.create.descPlaceholder": "Masukkan deskripsi",
+        "stateMachine.create.description": "Deskripsi",
+        "stateMachine.create.name": "Nama",
+        "stateMachine.create.namePlaceholder": "Masukkan nama mesin status",
+        "stateMachine.create.order": "Pemrosesan Pesanan",
+        "stateMachine.create.template": "Template",
+        "stateMachine.create.ticket": "Tiket Dukungan",
+        "stateMachine.create.title": "Buat Mesin Status",
+        "stateMachine.diagram.select": "Pilih mesin status",
+        "stateMachine.diagram.title": "Diagram Status",
+        "stateMachine.instances.empty": "Tidak ada instansi",
+        "stateMachine.instances.history": "Riwayat",
+        "stateMachine.instances.title": "Instansi",
+        "stateMachine.instances.trigger": "Pemicu",
+        "stateMachine.list.empty": "Tidak ada mesin status",
+        "stateMachine.list.title": "Mesin Status",
+        "stateMachine.stats.activeInstances": "Instansi Aktif",
+        "stateMachine.stats.completed": "Selesai",
+        "stateMachine.stats.machines": "Mesin",
+        "stateMachine.stats.transitions": "Transisi"
+    }
+}

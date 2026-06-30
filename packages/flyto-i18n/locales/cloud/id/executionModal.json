@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "Klik Jalankan untuk menjalankan workflow ini",
+        "executionModal.execute": "Jalankan",
+        "executionModal.executing": "Menjalankan workflow...",
+        "executionModal.executionComplete": "Eksekusi Selesai",
+        "executionModal.executionFailed": "Eksekusi Gagal",
+        "executionModal.noParamsRequired": "Tidak ada parameter input yang diperlukan",
+        "executionModal.runAgain": "Jalankan Lagi",
+        "executionModal.status.completed": "SELESAI",
+        "executionModal.status.failed": "GAGAL",
+        "executionModal.status.ready": "SIAP",
+        "executionModal.status.running": "BERJALAN",
+        "executionModal.stop": "Hentikan",
+        "executionModal.title": "Jalankan Workflow"
+    }
+}

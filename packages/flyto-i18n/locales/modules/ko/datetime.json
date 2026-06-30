@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "날짜/시간에 시간 추가",
+        "modules.datetime.add.label": "시간 추가",
+        "modules.datetime.add.output.result.description": "작업 결과",
+        "modules.datetime.add.output.timestamp.description": "작업 결과",
+        "modules.datetime.format.description": "날짜/시간을 문자열로 포맷",
+        "modules.datetime.format.label": "날짜/시간 포맷",
+        "modules.datetime.format.output.result.description": "작업 결과",
+        "modules.datetime.format.output.timestamp.description": "작업 결과",
+        "modules.datetime.parse.description": "문자열을 날짜/시간으로 파싱",
+        "modules.datetime.parse.label": "날짜/시간 파싱",
+        "modules.datetime.parse.output.day.description": "연도 구성요소",
+        "modules.datetime.parse.output.hour.description": "월 구성요소",
+        "modules.datetime.parse.output.minute.description": "일 구성요소",
+        "modules.datetime.parse.output.month.description": "Unix 타임스탬프",
+        "modules.datetime.parse.output.result.description": "작업 결과",
+        "modules.datetime.parse.output.second.description": "시 구성요소",
+        "modules.datetime.parse.output.timestamp.description": "작업 결과",
+        "modules.datetime.parse.output.year.description": "작업 결과",
+        "modules.datetime.subtract.description": "날짜/시간에서 시간 빼기",
+        "modules.datetime.subtract.label": "시간 빼기",
+        "modules.datetime.subtract.output.result.description": "작업 결과",
+        "modules.datetime.subtract.output.timestamp.description": "작업 결과"
+    }
+}

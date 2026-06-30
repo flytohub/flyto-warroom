@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.debugTab",
+    "version": "1.0.0",
+    "translations": {
+        "debugTab.context": "컨텍스트",
+        "debugTab.output": "출력",
+        "debugTab.screenshot": "스크린샷"
+    }
+}

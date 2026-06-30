@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "继续",
+        "errorStrategy.continueDesc": "记录错误并继续下一步",
+        "errorStrategy.retry": "重试",
+        "errorStrategy.retryDesc": "根据重试配置进行重试",
+        "errorStrategy.stop": "停止",
+        "errorStrategy.stopDesc": "停止工作流程并标记为失败"
+    }
+}

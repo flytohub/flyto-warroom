@@ -1,0 +1,1 @@
+{"locale": "ja", "name": "Japanese", "native": "日本語", "region": "JP", "version": "d0dc9aad847d", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "このエラーワークフローの説明", "label": "説明"}}, "pleaseSelect": "選択してください…", "ports": {"error": "出力"}}}}

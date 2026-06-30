@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "tersedia",
+        "coreUpdate.checkFailed": "Gagal memeriksa status",
+        "coreUpdate.downloadPage": "Unduh dari situs resmi",
+        "coreUpdate.installedVersion": "Versi Terinstal",
+        "coreUpdate.invalidFile": "Silakan pilih file .whl yang valid",
+        "coreUpdate.lastCheck": "Terakhir diperiksa",
+        "coreUpdate.notInstalled": "Tidak terinstal",
+        "coreUpdate.refresh": "Periksa pembaruan",
+        "coreUpdate.title": "Mesin Inti",
+        "coreUpdate.upToDate": "Sudah terbaru",
+        "coreUpdate.uploadFailed": "Unggah gagal",
+        "coreUpdate.uploadPackage": "Unggah Paket",
+        "coreUpdate.whlFile": "Unggah file .whl"
+    }
+}

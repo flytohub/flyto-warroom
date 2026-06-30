@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "Nao foi possivel conectar ao servidor. Por favor, verifique se o backend esta rodando.",
+        "errors.somethingWentWrong": "Algo deu errado",
+        "errors.technicalDetails": "Detalhes tecnicos",
+        "errors.timeout": "Tempo limite da requisicao esgotado. Por favor, tente novamente.",
+        "errors.unexpectedError": "Ocorreu um erro inesperado"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "पासवर्ड भूल गए?",
+        "loginFormDefault.loginButton": "लॉगिन",
+        "loginFormDefault.passwordPlaceholder": "पासवर्ड दर्ज करें",
+        "loginFormDefault.usernamePlaceholder": "यूज़रनेम दर्ज करें"
+    }
+}

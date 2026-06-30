@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.autoForm",
+    "version": "1.0.0",
+    "translations": {
+        "autoForm.browsePath": "浏览路径",
+        "autoForm.hideAdvanced": "隐藏高端选项",
+        "autoForm.hidePassword": "隐藏密码",
+        "autoForm.multipleFilesSelected": "已选择 {count} 个文件",
+        "autoForm.selectFilePlaceholder": "选择文件...",
+        "autoForm.selectPlaceholder": "请选择...",
+        "autoForm.showAdvanced": "显示高端选项",
+        "autoForm.showPassword": "显示密码"
+    }
+}

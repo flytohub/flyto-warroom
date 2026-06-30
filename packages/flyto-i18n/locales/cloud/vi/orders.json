@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "Chấp nhận",
+        "orders.approve": "Phê duyệt",
+        "orders.budget": "Ngân sách",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "Hoàn thành",
+        "orders.createFailed": "Không thể tạo đơn hàng",
+        "orders.createOrder": "Tạo đơn hàng",
+        "orders.createOrderSubtitle": "Gửi yêu cầu dự án đến người bán này",
+        "orders.days": "ngày",
+        "orders.deadline": "Thời gian giao hàng",
+        "orders.decline": "Từ chối",
+        "orders.deliver": "Giao hàng",
+        "orders.description": "Mô tả",
+        "orders.descriptionPlaceholder": "Mô tả chi tiết yêu cầu dự án của bạn...",
+        "orders.payNow": "Thanh toán ngay",
+        "orders.requirements": "Yêu cầu bổ sung",
+        "orders.requirementsPlaceholder": "Bất kỳ yêu cầu cụ thể hoặc ghi chú...",
+        "orders.sendOrder": "Gửi yêu cầu đơn hàng",
+        "orders.sending": "Đang gửi...",
+        "orders.sendingTo": "Gửi đến",
+        "orders.title": "Tiêu đề dự án",
+        "orders.titlePlaceholder": "Bạn cần hỗ trợ gì?",
+        "orders.viewDetails": "Chi tiết",
+        "orders.waitingResponse": "Đang chờ phản hồi"
+    }
+}

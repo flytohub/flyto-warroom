@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "從 Word 文件（.docx）擷取文字和內容",
+        "modules.word.parse.label": "解析 Word 文件",
+        "modules.word.parse.output.images.description": "段落列表",
+        "modules.word.parse.output.metadata.description": "擷取的表格（陣列格式）",
+        "modules.word.parse.output.paragraphs.description": "文件的完整文字內容",
+        "modules.word.parse.output.tables.description": "文件的完整文字內容",
+        "modules.word.parse.output.text.description": "文件的完整文字內容",
+        "modules.word.to_pdf.description": "將 Word 文件（.docx）轉換為 PDF 檔案",
+        "modules.word.to_pdf.label": "Word 轉 PDF",
+        "modules.word.to_pdf.output.file_size.description": "產生的 PDF 檔案路徑",
+        "modules.word.to_pdf.output.method_used.description": "輸出檔案大小（位元組）",
+        "modules.word.to_pdf.output.output_path.description": "產生的 PDF 檔案路徑"
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.templateCategory",
+  "version": "1.0.0",
+  "translations": {
+    "templateCategory.ai": "",
+    "templateCategory.api": "",
+    "templateCategory.automation": "",
+    "templateCategory.dataProcessing": "",
+    "templateCategory.developer": "",
+    "templateCategory.file": "",
+    "templateCategory.media": "",
+    "templateCategory.monitoring": "",
+    "templateCategory.notification": "",
+    "templateCategory.productivity": "",
+    "templateCategory.socialMedia": "",
+    "templateCategory.webScraping": ""
+  }
+}

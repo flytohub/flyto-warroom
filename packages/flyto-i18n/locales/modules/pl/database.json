@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Wstaw dane do tabel bazy danych",
+        "modules.database.insert.label": "Wstawianie do bazy danych",
+        "modules.database.insert.output.inserted_count.description": "Liczba wstawionych wierszy",
+        "modules.database.insert.output.returning_data.description": "Liczba wstawionych wierszy",
+        "modules.database.query.description": "Wykonaj zapytania SQL na bazach danych PostgreSQL, MySQL lub SQLite",
+        "modules.database.query.label": "Zapytanie do bazy danych",
+        "modules.database.query.output.columns.description": "Wiersze wynikow zapytania",
+        "modules.database.query.output.row_count.description": "Wiersze wynikow zapytania",
+        "modules.database.query.output.rows.description": "Wiersze wynikow zapytania",
+        "modules.database.update.description": "Aktualizuj dane w tabelach bazy danych",
+        "modules.database.update.label": "Aktualizacja bazy danych",
+        "modules.database.update.output.updated_count.description": "Liczba zaktualizowanych wierszy"
+    }
+}

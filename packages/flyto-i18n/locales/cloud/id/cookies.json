@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Selalu aktif",
+        "cookies.lastUpdated": "Terakhir Diperbarui",
+        "cookies.optional": "Opsional",
+        "cookies.preferencesSaved": "Preferensi berhasil disimpan",
+        "cookies.savePreferences": "Simpan Preferensi",
+        "cookies.sections.manage.content": "Anda dapat mengontrol cookie opsional mana yang Anda izinkan. Cookie esensial tidak dapat dinonaktifkan karena diperlukan agar situs web berfungsi.",
+        "cookies.sections.manage.title": "Kelola Preferensi Anda",
+        "cookies.sections.types.analytics.content": "Cookie ini membantu kami memahami bagaimana pengunjung berinteraksi dengan situs web kami dengan mengumpulkan dan melaporkan informasi secara anonim. Ini membantu kami meningkatkan layanan kami.",
+        "cookies.sections.types.analytics.title": "Cookie Analitik",
+        "cookies.sections.types.essential.content": "Cookie ini diperlukan agar situs web berfungsi dengan baik. Mereka mengaktifkan fitur dasar seperti navigasi halaman dan akses ke area aman. Situs web tidak dapat berfungsi dengan baik tanpa cookie ini.",
+        "cookies.sections.types.essential.title": "Cookie Esensial",
+        "cookies.sections.types.functional.content": "Cookie ini mengaktifkan fitur yang dipersonalisasi seperti mengingat preferensi bahasa Anda, pengaturan tema, dan status login. Mereka meningkatkan pengalaman Anda tetapi tidak esensial.",
+        "cookies.sections.types.functional.title": "Cookie Fungsional",
+        "cookies.sections.types.title": "Jenis Cookie yang Kami Gunakan",
+        "cookies.sections.what.content": "Cookie adalah file teks kecil yang disimpan di perangkat Anda saat Anda mengunjungi situs web kami. Mereka membantu kami memberikan pengalaman yang lebih baik dengan mengingat preferensi Anda dan memahami bagaimana Anda menggunakan layanan kami.",
+        "cookies.sections.what.title": "Apa itu Cookie?",
+        "cookies.title": "Pengaturan Cookie"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "Usuń obiekt z zasobnika AWS S3",
+        "modules.aws.s3.delete.label": "Usuwanie obiektu S3",
+        "modules.aws.s3.delete.output.bucket.description": "Nazwa zasobnika S3",
+        "modules.aws.s3.delete.output.deleted.description": "Czy obiekt został pomyślnie usunięty",
+        "modules.aws.s3.delete.output.key.description": "Klucz usuniętego obiektu",
+        "modules.aws.s3.download.description": "Pobierz plik z zasobnika AWS S3 na lokalną ścieżkę",
+        "modules.aws.s3.download.label": "Pobieranie S3",
+        "modules.aws.s3.download.output.content_type.description": "Typ MIME pobranego pliku",
+        "modules.aws.s3.download.output.path.description": "Lokalna ścieżka pliku, gdzie zapisano plik",
+        "modules.aws.s3.download.output.size.description": "Rozmiar pliku w bajtach",
+        "modules.aws.s3.list.description": "Wyświetl obiekty w zasobniku AWS S3 z opcjonalnym filtrem prefiksu",
+        "modules.aws.s3.list.label": "Lista obiektów S3",
+        "modules.aws.s3.list.output.count.description": "Liczba zwróconych obiektów",
+        "modules.aws.s3.list.output.objects.description": "Lista obiektów S3",
+        "modules.aws.s3.list.output.truncated.description": "Czy wyniki są obcięte",
+        "modules.aws.s3.upload.description": "Prześlij plik lokalny do zasobnika AWS S3",
+        "modules.aws.s3.upload.label": "Przesyłanie S3",
+        "modules.aws.s3.upload.output.bucket.description": "Nazwa zasobnika S3",
+        "modules.aws.s3.upload.output.key.description": "Klucz obiektu S3",
+        "modules.aws.s3.upload.output.size.description": "Rozmiar pliku w bajtach",
+        "modules.aws.s3.upload.output.url.description": "Publiczny URL przesłanego obiektu"
+    }
+}

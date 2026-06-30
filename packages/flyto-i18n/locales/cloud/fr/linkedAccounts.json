@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.cannotUnlink": "Impossible de dissocier — vous avez besoin d'au moins une méthode de connexion",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.link": "Lier le compte",
+        "linkedAccounts.linkSuccess": "Compte Google lié avec succès",
+        "linkedAccounts.linked": "Connecté",
+        "linkedAccounts.notLinked": "Non connecté",
+        "linkedAccounts.subtitle": "Gérez vos méthodes de connexion connectées",
+        "linkedAccounts.title": "Comptes connectés",
+        "linkedAccounts.unlink": "Dissocier",
+        "linkedAccounts.unlinkConfirm": "Êtes-vous sûr de vouloir dissocier Google ?",
+        "linkedAccounts.unlinkSuccess": "Compte Google dissocié"
+    }
+}

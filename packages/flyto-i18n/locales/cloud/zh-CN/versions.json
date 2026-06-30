@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "比较",
+        "versions.current": "目前",
+        "versions.diff.comparing": "比较中",
+        "versions.diff.noChanges": "版本间无变更",
+        "versions.diff.selectPrompt": "选择两个版本进行比较",
+        "versions.diff.title": "变更内容",
+        "versions.diff.to": "至",
+        "versions.empty": "没有版本历史",
+        "versions.rollback": "回滚",
+        "versions.rollback.confirm": "回滚",
+        "versions.rollback.description": "回滚至 v{version} 将会创建一个包含该版本内容的新版本。目前版本将保留在历史记录中。",
+        "versions.rollback.targetVersion": "目标版本",
+        "versions.rollback.title": "回滚至版本",
+        "versions.rollback.warning": "这将创建一个新版本",
+        "versions.title": "版本历史"
+    }
+}

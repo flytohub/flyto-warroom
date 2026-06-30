@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Toujours actif",
+        "cookies.lastUpdated": "Derniere mise a jour",
+        "cookies.optional": "Optionnel",
+        "cookies.preferencesSaved": "Preferences enregistrees avec succes",
+        "cookies.savePreferences": "Enregistrer les preferences",
+        "cookies.sections.manage.content": "Vous pouvez controler quels cookies optionnels vous autorisez. Les cookies essentiels ne peuvent pas etre desactives car ils sont necessaires au fonctionnement du site.",
+        "cookies.sections.manage.title": "Gerer vos preferences",
+        "cookies.sections.types.analytics.content": "Ces cookies nous aident a comprendre comment les visiteurs interagissent avec notre site en collectant et rapportant des informations de maniere anonyme. Cela nous aide a ameliorer nos services.",
+        "cookies.sections.types.analytics.title": "Cookies analytiques",
+        "cookies.sections.types.essential.content": "Ces cookies sont necessaires au bon fonctionnement du site. Ils permettent des fonctionnalites de base comme la navigation et l'acces aux zones securisees. Le site ne peut pas fonctionner correctement sans ces cookies.",
+        "cookies.sections.types.essential.title": "Cookies essentiels",
+        "cookies.sections.types.functional.content": "Ces cookies permettent des fonctionnalites personnalisees comme la memorisation de votre langue preferee, les parametres de theme et l'etat de connexion. Ils ameliorent votre experience mais ne sont pas essentiels.",
+        "cookies.sections.types.functional.title": "Cookies fonctionnels",
+        "cookies.sections.types.title": "Types de cookies que nous utilisons",
+        "cookies.sections.what.content": "Les cookies sont de petits fichiers texte stockes sur votre appareil lorsque vous visitez notre site. Ils nous aident a vous offrir une meilleure experience en memorisant vos preferences et en comprenant comment vous utilisez nos services.",
+        "cookies.sections.what.title": "Que sont les cookies ?",
+        "cookies.title": "Parametres des cookies"
+    }
+}

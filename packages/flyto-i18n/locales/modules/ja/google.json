@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Googleカレンダーに新しいイベントを作成",
+        "modules.google.calendar.create_event.label": "カレンダーイベント作成",
+        "modules.google.calendar.create_event.output.end.description": "イベント終了時間",
+        "modules.google.calendar.create_event.output.event_id.description": "作成されたイベントID",
+        "modules.google.calendar.create_event.output.html_link.description": "Googleカレンダーでイベントを見るためのリンク",
+        "modules.google.calendar.create_event.output.start.description": "イベント開始時間",
+        "modules.google.calendar.create_event.output.summary.description": "イベントタイトル",
+        "modules.google.calendar.list_events.description": "Googleカレンダーから今後のイベントを一覧表示",
+        "modules.google.calendar.list_events.label": "カレンダーイベント一覧",
+        "modules.google.calendar.list_events.output.count.description": "返されたイベントの数",
+        "modules.google.calendar.list_events.output.events.description": "カレンダーイベントのリスト",
+        "modules.google.gmail.search.description": "Gmail検索クエリ構文を使ってGmailメッセージを検索",
+        "modules.google.gmail.search.label": "Gmail検索",
+        "modules.google.gmail.search.output.messages.description": "一致するメッセージのリスト",
+        "modules.google.gmail.search.output.total.description": "返されたメッセージの総数",
+        "modules.google.gmail.send.description": "Gmail APIを使ってメールを送信",
+        "modules.google.gmail.send.label": "Gmail送信",
+        "modules.google.gmail.send.output.message_id.description": "GmailメッセージID",
+        "modules.google.gmail.send.output.thread_id.description": "GmailスレッドID",
+        "modules.google.gmail.send.output.to.description": "受信者のメールアドレス"
+    }
+}

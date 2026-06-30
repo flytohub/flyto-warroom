@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "Devam Et",
+        "errorStrategy.continueDesc": "Hatayı kaydet ve sonraki adıma devam et",
+        "errorStrategy.retry": "Tekrar Dene",
+        "errorStrategy.retryDesc": "Yeniden deneme yapılandırmasına göre tekrar dene",
+        "errorStrategy.stop": "Durdur",
+        "errorStrategy.stopDesc": "İş akışını durdur ve başarısız olarak işaretle"
+    }
+}

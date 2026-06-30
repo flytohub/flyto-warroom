@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "网格查看",
+        "templateToolbar.listView": "列表查看",
+        "templateToolbar.searchLabel": "搜索模板",
+        "templateToolbar.searchPlaceholder": "搜索模板...",
+        "templateToolbar.sortLabel": "排序方式",
+        "templateToolbar.sortOptions.created": "最近创建",
+        "templateToolbar.sortOptions.name": "名称 A-Z",
+        "templateToolbar.sortOptions.status": "依状态",
+        "templateToolbar.sortOptions.updated": "最近更新",
+        "templateToolbar.viewMode": "查看模式"
+    }
+}

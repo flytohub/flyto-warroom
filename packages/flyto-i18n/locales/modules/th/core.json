@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "core",
+    "version": "1.0.0",
+    "translations": {
+        "modules.core.api.google_search.output.count.description": "จำนวนผลลัพธ์การค้นหา",
+        "modules.core.api.google_search.output.data.description": "ข้อมูลผลลัพธ์การค้นหา",
+        "modules.core.api.google_search.output.status.description": "สถานะการดำเนินการ",
+        "modules.core.api.google_search.output.total_results.description": "จำนวนผลลัพธ์ทั้งหมด",
+        "modules.core.api.http_get.output.body.description": "เนื้อหาการตอบกลับ",
+        "modules.core.api.http_get.output.headers.description": "ส่วนหัวการตอบกลับ",
+        "modules.core.api.http_get.output.json.description": "การตอบกลับ JSON (ถ้ามี)",
+        "modules.core.api.http_get.output.status_code.description": "รหัสสถานะ HTTP"
+    }
+}

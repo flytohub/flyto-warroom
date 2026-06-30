@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.replayMode",
+    "version": "1.0.0",
+    "translations": {
+        "replayMode.compare": "Comparer",
+        "replayMode.history": "Historique",
+        "replayMode.inspect": "Inspecter"
+    }
+}

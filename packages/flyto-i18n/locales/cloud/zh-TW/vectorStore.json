@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.vectorStore",
+    "version": "1.0.0",
+    "translations": {
+        "vectorStore.addMetadata": "新增欄位",
+        "vectorStore.collection": "集合",
+        "vectorStore.collectionName": "集合名稱",
+        "vectorStore.content": "文件內容",
+        "vectorStore.contentPlaceholder": "輸入文字或使用 {{變數}}...",
+        "vectorStore.createCollection": "建立新集合",
+        "vectorStore.deleteIds": "要刪除的文件 ID",
+        "vectorStore.documentId": "文件 ID（選填）",
+        "vectorStore.filters": "元資料篩選",
+        "vectorStore.metadata": "元資料",
+        "vectorStore.noMetadata": "無元資料欄位",
+        "vectorStore.query": "查詢",
+        "vectorStore.queryPlaceholder": "輸入搜尋查詢或使用 {{變數}}...",
+        "vectorStore.refreshCollections": "重新整理集合",
+        "vectorStore.scoreThreshold": "相似度門檻",
+        "vectorStore.scoreThresholdHint": "最低相似度分數 (0-1)",
+        "vectorStore.selectCollection": "選擇集合...",
+        "vectorStore.topK": "前 K 筆結果"
+    }
+}

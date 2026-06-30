@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.templateCategory",
+    "version": "1.0.0",
+    "translations": {
+        "templateCategory.automation": "Otomasyon",
+        "templateCategory.dataProcessing": "Veri İşleme",
+        "templateCategory.productivity": "Verimlilik",
+        "templateCategory.socialMedia": "Sosyal Medya",
+        "templateCategory.webScraping": "Web Kazıma",
+        "templateCategory.api": "API",
+        "templateCategory.media": "Medya",
+        "templateCategory.notification": "Bildirimler",
+        "templateCategory.ai": "Yapay Zeka",
+        "templateCategory.file": "Dosya",
+        "templateCategory.monitoring": "İzleme",
+        "templateCategory.developer": "Geliştirici Araçları"
+    }
+}

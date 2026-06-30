@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "pt-BR",
+  "category": "cloud.templateForm",
+  "version": "1.0.0",
+  "translations": {
+    "templateForm.category": "Categoria",
+    "templateForm.changeIcon": "Alterar Icone",
+    "templateForm.description": "Descricao",
+    "templateForm.descriptionPlaceholder": "O que este template faz? (opcional)",
+    "templateForm.editTemplate": "Editar Template",
+    "templateForm.iconUploadError": "Falha ao enviar icone. Por favor, tente novamente.",
+    "templateForm.namePlaceholder": "Minha Automacao Incrivel",
+    "templateForm.private": "Private",
+    "templateForm.public": "Public",
+    "templateForm.selectCategory": "Selecione uma categoria (opcional)",
+    "templateForm.templateColor": "Cor do modelo",
+    "templateForm.templateIcon": "Icone do Template",
+    "templateForm.templateName": "Nome do Template",
+    "templateForm.uploadIcon": "Enviar Icone",
+    "templateForm.visibility": "Visibility"
+  }
+}

@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.cronPreset",
+    "version": "1.0.0",
+    "translations": {
+        "cronPreset.daily9am": "रोज़ाना सुबह 9 बजे",
+        "cronPreset.everyMinute": "हर मिनट",
+        "cronPreset.hourly": "हर घंटे",
+        "cronPreset.weeklyMon": "साप्ताहिक सोमवार"
+    }
+}

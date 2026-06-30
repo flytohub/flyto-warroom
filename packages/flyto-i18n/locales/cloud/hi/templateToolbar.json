@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "ग्रिड दृश्य",
+        "templateToolbar.listView": "सूची दृश्य",
+        "templateToolbar.searchLabel": "टेम्पलेट्स खोजें",
+        "templateToolbar.searchPlaceholder": "टेम्पलेट्स खोजें...",
+        "templateToolbar.sortLabel": "टेम्पलेट्स क्रमबद्ध करें",
+        "templateToolbar.sortOptions.created": "हाल ही में बनाए गए",
+        "templateToolbar.sortOptions.name": "नाम A-Z",
+        "templateToolbar.sortOptions.status": "स्थिति के अनुसार",
+        "templateToolbar.sortOptions.updated": "हाल ही में अपडेट किए गए",
+        "templateToolbar.viewMode": "दृश्य मोड"
+    }
+}

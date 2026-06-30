@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "Scrape halaman web dan keluarkan data JSON terstruktur",
+        "modules.composite.browser.scrape_to_json.label": "Scrape Web ke JSON",
+        "modules.composite.data.csv_to_json.description": "Baca file CSV dan ubah ke format JSON",
+        "modules.composite.data.csv_to_json.label": "CSV ke JSON",
+        "modules.composite.data.json_transform_notify.description": "Transformasi data JSON dan kirim notifikasi dengan hasilnya",
+        "modules.composite.data.json_transform_notify.label": "Transformasi JSON dan Notifikasi",
+        "modules.composite.developer.api_to_notification.description": "Ambil data dari API mana saja dan kirim ke saluran notifikasi",
+        "modules.composite.developer.api_to_notification.label": "API ke Notifikasi",
+        "modules.composite.developer.github_daily_digest.description": "Ambil pembaruan repositori GitHub dan kirim notifikasi ringkasan harian",
+        "modules.composite.developer.github_daily_digest.label": "Ringkasan Harian GitHub",
+        "modules.composite.notification.multi_channel_alert.description": "Kirim peringatan ke beberapa saluran notifikasi secara bersamaan",
+        "modules.composite.notification.multi_channel_alert.label": "Peringatan Multi-Saluran",
+        "modules.composite.notification.scheduled_report.description": "Buat dan kirim laporan terjadwal ke saluran notifikasi",
+        "modules.composite.notification.scheduled_report.label": "Laporan Terjadwal",
+        "modules.composite.test.api_test.description": "Jalankan uji API dengan permintaan HTTP dan asersi",
+        "modules.composite.test.api_test.label": "Suite Uji API",
+        "modules.composite.test.e2e_flow.description": "Pengujian alur kerja end-to-end dengan otomatisasi browser",
+        "modules.composite.test.e2e_flow.label": "Uji Alur E2E",
+        "modules.composite.test.quality_gate.description": "Jalankan pemeriksaan kualitas dan batasi penerapan berdasarkan ambang batas",
+        "modules.composite.test.quality_gate.label": "Gerbang Kualitas",
+        "modules.composite.test.ui_review.description": "Pengujian regresi visual dan alur kerja tinjauan UI",
+        "modules.composite.test.ui_review.label": "Tinjauan UI",
+        "modules.composite.test.verify_fix.description": "Verifikasi perbaikan bug dengan pengujian sebelum/sesudah dan suite regresi",
+        "modules.composite.test.verify_fix.label": "Verifikasi Perbaikan"
+    }
+}

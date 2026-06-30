@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Insert data into database tables",
+        "modules.database.insert.label": "Database Insert",
+        "modules.database.insert.output.inserted_count.description": "Number of rows inserted",
+        "modules.database.insert.output.returning_data.description": "Number of rows inserted",
+        "modules.database.query.description": "Execute SQL queries on PostgreSQL, MySQL, or SQLite databases",
+        "modules.database.query.label": "Database Query",
+        "modules.database.query.output.columns.description": "Query result rows",
+        "modules.database.query.output.row_count.description": "Query result rows",
+        "modules.database.query.output.rows.description": "Query result rows",
+        "modules.database.update.description": "Update data in database tables",
+        "modules.database.update.label": "Database Update",
+        "modules.database.update.output.updated_count.description": "Number of rows updated"
+    }
+}

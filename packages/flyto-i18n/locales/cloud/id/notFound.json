@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "Silakan periksa URL dan coba lagi",
+        "notFound.contactSupport": "Hubungi Dukungan",
+        "notFound.goBack": "Kembali",
+        "notFound.goHome": "Pergi ke Beranda",
+        "notFound.helpText": "Butuh bantuan?",
+        "notFound.message": "Halaman yang Anda cari tidak ada atau telah dipindahkan.",
+        "notFound.myTemplates": "Template Saya",
+        "notFound.pageNotExist": "Halaman ini tidak ada",
+        "notFound.suggestion1": "Periksa URL untuk kesalahan ketik",
+        "notFound.suggestion2": "Kembali ke halaman sebelumnya",
+        "notFound.suggestion3": "Navigasi ke template Anda",
+        "notFound.suggestions": "Berikut yang dapat Anda lakukan:",
+        "notFound.title": "Halaman Tidak Ditemukan"
+    }
+}

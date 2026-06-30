@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Terakhir Diperbarui",
+        "privacy.sections.collection.content": "Kami mengumpulkan informasi yang Anda berikan langsung kepada kami, seperti ketika Anda membuat akun, menggunakan layanan kami, atau menghubungi kami untuk dukungan. Ini mungkin termasuk nama, alamat email, dan data penggunaan Anda untuk meningkatkan layanan kami.",
+        "privacy.sections.collection.title": "Informasi yang Kami Kumpulkan",
+        "privacy.sections.contact.content": "Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini atau praktik data kami, silakan hubungi kami di privacy{'@'}flytohub.com.",
+        "privacy.sections.contact.title": "Hubungi Kami",
+        "privacy.sections.rights.content": "Anda memiliki hak untuk mengakses, memperbaiki, atau menghapus informasi pribadi Anda. Anda juga dapat meminta portabilitas data atau keberatan terhadap aktivitas pemrosesan tertentu. Hubungi kami untuk menggunakan hak-hak ini.",
+        "privacy.sections.rights.title": "Hak Anda",
+        "privacy.sections.security.content": "Kami menerapkan langkah-langkah teknis dan organisasi yang sesuai untuk melindungi informasi pribadi Anda dari akses, perubahan, pengungkapan, atau penghancuran yang tidak sah.",
+        "privacy.sections.security.title": "Keamanan Data",
+        "privacy.sections.sharing.content": "Kami tidak menjual informasi pribadi Anda. Kami dapat membagikan informasi Anda dengan penyedia layanan pihak ketiga yang membantu kami dalam mengoperasikan platform kami, tunduk pada perjanjian kerahasiaan.",
+        "privacy.sections.sharing.title": "Berbagi Informasi",
+        "privacy.sections.usage.content": "Kami menggunakan informasi yang kami kumpulkan untuk menyediakan, memelihara, dan meningkatkan layanan kami, untuk berkomunikasi dengan Anda, dan untuk mempersonalisasi pengalaman Anda. Kami juga dapat menggunakan data agregat untuk tujuan analitik.",
+        "privacy.sections.usage.title": "Bagaimana Kami Menggunakan Informasi Anda",
+        "privacy.title": "Kebijakan Privasi"
+    }
+}

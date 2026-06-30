@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "verfügbar",
+        "coreUpdate.checkFailed": "Statusprüfung fehlgeschlagen",
+        "coreUpdate.downloadPage": "Von der offiziellen Seite herunterladen",
+        "coreUpdate.installedVersion": "Installierte Version",
+        "coreUpdate.invalidFile": "Bitte wählen Sie eine gültige .whl-Datei",
+        "coreUpdate.lastCheck": "Zuletzt geprüft",
+        "coreUpdate.notInstalled": "Nicht installiert",
+        "coreUpdate.refresh": "Nach Updates suchen",
+        "coreUpdate.title": "Kern-Engine",
+        "coreUpdate.upToDate": "Aktuell",
+        "coreUpdate.uploadFailed": "Upload fehlgeschlagen",
+        "coreUpdate.uploadPackage": "Paket hochladen",
+        "coreUpdate.whlFile": ".whl-Datei hochladen"
+    }
+}

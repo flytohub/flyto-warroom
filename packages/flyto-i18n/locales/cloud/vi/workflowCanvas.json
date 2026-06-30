@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "Trợ lý AI (Hỏi AI để được giúp đỡ)",
+        "workflowCanvas.controls.autoLayout": "Tự động sắp xếp",
+        "workflowCanvas.controls.fitView": "Phù hợp với màn hình",
+        "workflowCanvas.controls.zoomIn": "Phóng to",
+        "workflowCanvas.controls.zoomOut": "Thu nhỏ",
+        "workflowCanvas.deleteDialog.deleteAll": "Xóa tất cả",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "Xóa node này và tất cả {count} node con",
+        "workflowCanvas.deleteDialog.mergeToChild": "Gộp vào node con",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "Chỉ xóa node này và kết nối node cha với node con đầu tiên",
+        "workflowCanvas.deleteDialog.message": "Node này có {count} node con. Bạn muốn làm gì?",
+        "workflowCanvas.deleteDialog.title": "Xóa Node có node con",
+        "workflowCanvas.reconnect.cancel": "Hủy",
+        "workflowCanvas.reconnect.connect": "Kết nối",
+        "workflowCanvas.reconnect.dontConnect": "Không kết nối",
+        "workflowCanvas.stickyNoteCreated": "Ghi chú đã được tạo"
+    }
+}

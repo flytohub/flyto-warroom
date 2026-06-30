@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "Lütfen URL'yi kontrol edip tekrar deneyin",
+        "notFound.contactSupport": "Destek İle İletişim",
+        "notFound.goBack": "Geri Dön",
+        "notFound.goHome": "Ana Sayfaya Git",
+        "notFound.helpText": "Yardıma mı ihtiyacınız var?",
+        "notFound.message": "Aradığınız sayfa mevcut değil veya taşınmış.",
+        "notFound.myTemplates": "Şablonlarım",
+        "notFound.pageNotExist": "Bu sayfa mevcut değil",
+        "notFound.suggestion1": "URL'de yazım hatası olup olmadığını kontrol edin",
+        "notFound.suggestion2": "Önceki sayfaya geri dönün",
+        "notFound.suggestion3": "Şablonlarınıza gidin",
+        "notFound.suggestions": "Yapabilecekleriniz:",
+        "notFound.title": "Sayfa Bulunamadı"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "Clicca Esegui per avviare questo workflow",
+        "executionModal.execute": "Esegui",
+        "executionModal.executing": "Esecuzione workflow...",
+        "executionModal.executionComplete": "Esecuzione Completata",
+        "executionModal.executionFailed": "Esecuzione Fallita",
+        "executionModal.noParamsRequired": "Nessun parametro di input richiesto",
+        "executionModal.runAgain": "Esegui di Nuovo",
+        "executionModal.status.completed": "COMPLETATO",
+        "executionModal.status.failed": "FALLITO",
+        "executionModal.status.ready": "PRONTO",
+        "executionModal.status.running": "IN ESECUZIONE",
+        "executionModal.stop": "Ferma",
+        "executionModal.title": "Esegui Workflow"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "Lütfen sorunu açıklayın...",
+        "report.reasons.copyright": "Telif hakkı veya fikri mülkiyet ihlali",
+        "report.reasons.harmful": "Zararlı veya tehlikeli içerik",
+        "report.reasons.inappropriate": "Uygunsuz veya saldırgan içerik",
+        "report.reasons.misleading": "Yanlış veya yanıltıcı bilgi",
+        "report.reasons.other": "Diğer (lütfen belirtin)",
+        "report.reasons.spam": "Spam veya yanıltıcı",
+        "report.selectReason": "Lütfen bildirme nedeninizi seçin:",
+        "report.submit": "Rapor Gönder",
+        "report.title": "İçerik Bildir"
+    }
+}

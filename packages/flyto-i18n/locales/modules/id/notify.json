@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "notify",
+    "version": "1.0.0",
+    "translations": {
+        "modules.notify.send.description": "Kirim notifikasi ke Telegram, Discord, Slack, LINE, atau URL webhook lainnya",
+        "modules.notify.send.label": "Kirim Notifikasi",
+        "modules.notify.send.output.ok.description": "Apakah notifikasi berhasil dikirim",
+        "modules.notify.send.output.platform.description": "Platform terdeteksi (telegram, discord, slack, dll.)",
+        "modules.notify.send.output.response.description": "Respons dari webhook",
+        "modules.notify.send.output.status_code.description": "Kode status respons HTTP",
+        "modules.notify.send.params.chat_id.description": "ID chat Telegram (diperlukan untuk Telegram)",
+        "modules.notify.send.params.chat_id.label": "ID Chat",
+        "modules.notify.send.params.message.description": "Konten pesan notifikasi",
+        "modules.notify.send.params.message.label": "Pesan",
+        "modules.notify.send.params.title.description": "Judul opsional (untuk Discord, Slack, Teams)",
+        "modules.notify.send.params.title.label": "Judul",
+        "modules.notify.send.params.url.description": "URL Webhook (Telegram, Discord, Slack, atau kustom)",
+        "modules.notify.send.params.url.label": "URL Webhook"
+    }
+}

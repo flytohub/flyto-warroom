@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "training",
+    "version": "1.0.0",
+    "translations": {
+        "modules.training.practice.analyze.description": "Analizuj strukture strony internetowej do cwiczenia",
+        "modules.training.practice.analyze.label": "Analiza cwiczeniowa",
+        "modules.training.practice.analyze.output.status.description": "Analizuj strukture strony internetowej",
+        "modules.training.practice.analyze.output.structure.description": "Analizuj strukture strony internetowej",
+        "modules.training.practice.execute.description": "Wykonaj sesje cwiczeniowa",
+        "modules.training.practice.execute.label": "Wykonaj cwiczenie",
+        "modules.training.practice.execute.output.items_processed.description": "Wykonaj sesje cwiczeniowa",
+        "modules.training.practice.execute.output.status.description": "Wykonaj sesje cwiczeniowa",
+        "modules.training.practice.infer_schema.description": "Wnioskuj schemat danych ze strony internetowej",
+        "modules.training.practice.infer_schema.label": "Wnioskuj schemat cwiczeniowy",
+        "modules.training.practice.infer_schema.output.schema.description": "Wnioskuj schemat danych",
+        "modules.training.practice.infer_schema.output.status.description": "Wnioskuj schemat danych",
+        "modules.training.practice.stats.description": "Pobierz statystyki cwiczen",
+        "modules.training.practice.stats.label": "Statystyki cwiczen",
+        "modules.training.practice.stats.output.history.description": "Pobierz statystyki cwiczen",
+        "modules.training.practice.stats.output.success_rate.description": "Pobierz statystyki cwiczen",
+        "modules.training.practice.stats.output.successful_sessions.description": "Calkowita liczba sesji",
+        "modules.training.practice.stats.output.total_sessions.description": "Calkowita liczba sesji"
+    }
+}

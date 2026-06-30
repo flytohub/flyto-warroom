@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Excelファイル（xlsx、xls）からデータを読み取り",
+        "modules.excel.read.label": "Excel読み取り",
+        "modules.excel.read.output.data.description": "抽出されたデータ行",
+        "modules.excel.read.output.headers.description": "抽出されたデータ行",
+        "modules.excel.read.output.row_count.description": "抽出されたデータ行",
+        "modules.excel.read.output.sheet_names.description": "列ヘッダー",
+        "modules.excel.write.description": "Excelファイル（xlsx）にデータを書き込み",
+        "modules.excel.write.label": "Excel書き込み",
+        "modules.excel.write.output.path.description": "作成されたExcelファイルのパス",
+        "modules.excel.write.output.row_count.description": "作成されたExcelファイルのパス",
+        "modules.excel.write.output.size.description": "作成されたExcelファイルのパス"
+    }
+}

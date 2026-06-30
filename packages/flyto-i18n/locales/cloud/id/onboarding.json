@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.onboarding",
+    "version": "1.0.0",
+    "translations": {
+        "onboarding.finish": "Selesai",
+        "onboarding.next": "Berikutnya",
+        "onboarding.previous": "Sebelumnya",
+        "onboarding.skip": "Lewati"
+    }
+}

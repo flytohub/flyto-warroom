@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.observability",
+    "version": "1.0.0",
+    "translations": {
+        "observability.subtitle": "监控工作流程运行与性能",
+        "observability.tabs.alerts": "警报",
+        "observability.tabs.metrics": "指针",
+        "observability.tabs.traces": "追踪",
+        "observability.timeRange.24h": "过去 24 小时",
+        "observability.timeRange.30d": "过去 30 天",
+        "observability.timeRange.7d": "过去 7 天",
+        "observability.timeRange.90d": "过去 90 天",
+        "observability.title": "可观测性"
+    }
+}

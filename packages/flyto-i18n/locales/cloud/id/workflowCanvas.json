@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "Asisten AI (Minta bantuan AI)",
+        "workflowCanvas.controls.autoLayout": "Tata Letak Otomatis",
+        "workflowCanvas.controls.fitView": "Sesuaikan Tampilan",
+        "workflowCanvas.controls.zoomIn": "Perbesar",
+        "workflowCanvas.controls.zoomOut": "Perkecil",
+        "workflowCanvas.deleteDialog.deleteAll": "Hapus Semua",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "Hapus node ini dan semua {count} node anak",
+        "workflowCanvas.deleteDialog.mergeToChild": "Gabung ke Anak",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "Hapus hanya node ini dan hubungkan parent ke anak pertama",
+        "workflowCanvas.deleteDialog.message": "Node ini memiliki {count} node anak. Apa yang ingin Anda lakukan?",
+        "workflowCanvas.deleteDialog.title": "Hapus Node dengan Anak",
+        "workflowCanvas.reconnect.cancel": "Batal",
+        "workflowCanvas.reconnect.connect": "Hubungkan",
+        "workflowCanvas.reconnect.dontConnect": "Jangan Hubungkan",
+        "workflowCanvas.stickyNoteCreated": "Catatan tempel dibuat"
+    }
+}

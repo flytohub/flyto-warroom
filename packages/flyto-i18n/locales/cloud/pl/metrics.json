@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "pl",
+  "category": "cloud.metrics",
+  "version": "1.0.0",
+  "translations": {
+    "metrics.chart.failed": "Nieudane",
+    "metrics.chart.noData": "Brak dostepnych danych",
+    "metrics.chart.successful": "Udane",
+    "metrics.chart.title": "Trend wykonan",
+    "metrics.recentFailures.copy": "Copy",
+    "metrics.recentFailures.noData": "Brak ostatnich niepowodzen",
+    "metrics.recentFailures.title": "Ostatnie niepowodzenia",
+    "metrics.stats.avgDuration": "Sredni czas",
+    "metrics.stats.failed": "Nieudane",
+    "metrics.stats.successRate": "Wskaznik sukcesu",
+    "metrics.stats.totalExecutions": "Wszystkie wykonania",
+    "metrics.topWorkflows.executions": "wykonan",
+    "metrics.topWorkflows.noData": "Nie wykonano jeszcze zadnych przeplywow",
+    "metrics.topWorkflows.title": "Najpopularniejsze przeplywy",
+    "metrics.vsPrevious": "vs poprzedni"
+  }
+}

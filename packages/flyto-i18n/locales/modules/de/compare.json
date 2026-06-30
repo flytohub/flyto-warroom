@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "Erkennen, ob sich ein Wert über die Schwelle hinaus geändert hat (nach Menge oder Prozentsatz)",
+        "modules.compare.change.label": "Änderung erkennen",
+        "modules.compare.change.output.change_absolute.description": "Prozentuale Änderung (positiv = nach oben, negativ = nach unten)",
+        "modules.compare.change.output.change_percent.description": "Richtung der Änderung: ",
+        "modules.compare.change.output.changed.description": "Ob die Operation erfolgreich war",
+        "modules.compare.change.output.current.description": "Absolute Änderung (positiv = nach oben, negativ = nach unten)",
+        "modules.compare.change.output.direction.description": "Ob die Operation erfolgreich war",
+        "modules.compare.change.output.ok.description": "Ob die Operation erfolgreich war",
+        "modules.compare.change.output.previous.description": "Absolute Änderung (positiv = nach oben, negativ = nach unten)",
+        "modules.compare.change.output.summary.description": "Der aktuelle Wert",
+        "modules.compare.change.params.current.description": "Der aktuelle/neue Wert zum Vergleichen",
+        "modules.compare.change.params.current.label": "Aktueller Wert",
+        "modules.compare.change.params.direction.description": "Welche Änderungsrichtung erkannt werden soll",
+        "modules.compare.change.params.direction.label": "Schwelle",
+        "modules.compare.change.params.mode.description": "Der vorherige/alte Wert zum Vergleich",
+        "modules.compare.change.params.mode.label": "Vorheriger Wert",
+        "modules.compare.change.params.previous.description": "Der aktuelle/neue Wert zum Vergleichen",
+        "modules.compare.change.params.previous.label": "Aktueller Wert",
+        "modules.compare.change.params.threshold.description": "Minimale Änderung zum Auslösen (5 = 5% oder 5 Einheiten)",
+        "modules.compare.change.params.threshold.label": "Prozentuale Änderung"
+    }
+}

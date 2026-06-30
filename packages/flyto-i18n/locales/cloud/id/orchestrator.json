@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.orchestrator",
+    "version": "1.0.0",
+    "translations": {
+        "orchestrator.jobs.empty": "Tidak ada pekerjaan",
+        "orchestrator.jobs.title": "Pekerjaan",
+        "orchestrator.register.capabilities": "Kemampuan",
+        "orchestrator.register.machineName": "Nama Mesin",
+        "orchestrator.register.machineNamePlaceholder": "Masukkan nama mesin",
+        "orchestrator.register.name": "Nama Robot",
+        "orchestrator.register.namePlaceholder": "Masukkan nama robot",
+        "orchestrator.register.osType": "Tipe OS",
+        "orchestrator.register.submit": "Daftar",
+        "orchestrator.register.title": "Daftar Robot",
+        "orchestrator.robots.empty": "Tidak ada robot terdaftar",
+        "orchestrator.robots.emptyDesc": "Daftarkan robot untuk memulai",
+        "orchestrator.robots.lastSeen": "Terakhir Terlihat",
+        "orchestrator.robots.maxJobs": "Pekerjaan Maksimal",
+        "orchestrator.robots.platform": "Platform",
+        "orchestrator.robots.register": "Daftar Robot",
+        "orchestrator.robots.registerFirst": "Daftarkan robot pertama Anda",
+        "orchestrator.robots.runJob": "Jalankan Pekerjaan",
+        "orchestrator.robots.title": "Robot",
+        "orchestrator.stats.available": "Tersedia",
+        "orchestrator.stats.busy": "Sibuk",
+        "orchestrator.stats.offline": "Offline",
+        "orchestrator.stats.totalRobots": "Total Robot"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "联系销售",
+        "upgrade.debugFeatures": "调试与开发工具",
+        "upgrade.enterpriseHint": "需要企业功能？",
+        "upgrade.featureLocked": "此功能需要专业版订阅",
+        "upgrade.features.evidence": "运行证据截取与查看",
+        "upgrade.features.lineage": "数据血统追踪",
+        "upgrade.features.replay": "运行重播",
+        "upgrade.features.tests": "测试运行面板",
+        "upgrade.features.versions": "版本控制",
+        "upgrade.offlineLicense": "脱机授权",
+        "upgrade.subscription": "立即订阅",
+        "upgrade.subtitle": "解锁高端功能",
+        "upgrade.title": "升级至 Pro"
+    }
+}

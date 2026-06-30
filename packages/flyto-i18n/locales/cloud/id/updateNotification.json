@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "Tutup",
+        "updateNotification.downloadFailed": "Gagal mengunduh pembaruan",
+        "updateNotification.downloadUpdate": "Unduh Pembaruan",
+        "updateNotification.downloading": "Mengunduh Pembaruan",
+        "updateNotification.newVersionAvailable": "Versi Baru Tersedia",
+        "updateNotification.percentComplete": "{percent}% selesai",
+        "updateNotification.remindLater": "Ingatkan Nanti",
+        "updateNotification.restartLater": "Restart Nanti",
+        "updateNotification.restartNow": "Restart Sekarang",
+        "updateNotification.restartToInstall": "Restart aplikasi untuk menginstal pembaruan",
+        "updateNotification.unknownError": "Error tidak dikenal",
+        "updateNotification.updateDownloaded": "Pembaruan Terunduh",
+        "updateNotification.updateFailed": "Pembaruan Gagal",
+        "updateNotification.versionReady": "Versi {version} siap diperbarui"
+    }
+}

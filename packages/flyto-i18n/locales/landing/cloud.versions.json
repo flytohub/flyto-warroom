@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.versions",
+  "version": "1.0.0",
+  "translations": {
+    "versions.compare": "",
+    "versions.current": "",
+    "versions.diff.comparing": "",
+    "versions.diff.noChanges": "",
+    "versions.diff.selectPrompt": "",
+    "versions.diff.title": "",
+    "versions.diff.to": "",
+    "versions.empty": "",
+    "versions.rollback": "",
+    "versions.rollback.confirm": "",
+    "versions.rollback.description": "",
+    "versions.rollback.targetVersion": "",
+    "versions.rollback.title": "",
+    "versions.rollback.warning": "",
+    "versions.title": ""
+  }
+}

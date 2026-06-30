@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "Minta AI untuk memperbaiki",
+        "preview.emptyState.description": "Beralih ke mode Dev untuk menambahkan langkah workflow",
+        "preview.emptyState.hint": "Tidak ada pratinjau tersedia",
+        "preview.emptyState.title": "Tidak Ada Workflow yang Didefinisikan",
+        "preview.executionFailed": "Eksekusi Gagal",
+        "preview.fields": "field",
+        "preview.inputs": "Input",
+        "preview.noInputsRequired": "Tidak ada input yang diperlukan",
+        "preview.noWorkflowHint": "Tambahkan langkah workflow di mode Dev untuk mengaktifkan eksekusi",
+        "preview.output": "Keluaran",
+        "preview.ready": "Siap",
+        "preview.running": "Berjalan",
+        "preview.steps": "langkah",
+        "preview.untitledTemplate": "Template Tanpa Judul"
+    }
+}

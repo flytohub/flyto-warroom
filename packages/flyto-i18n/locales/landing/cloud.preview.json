@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.preview",
+  "version": "1.0.0",
+  "translations": {
+    "preview.askAIFix": "",
+    "preview.emptyState.description": "",
+    "preview.emptyState.hint": "",
+    "preview.emptyState.title": "",
+    "preview.executionFailed": "",
+    "preview.fields": "",
+    "preview.inputs": "",
+    "preview.noInputsRequired": "",
+    "preview.noWorkflowHint": "",
+    "preview.output": "",
+    "preview.ready": "",
+    "preview.running": "",
+    "preview.steps": "",
+    "preview.untitledTemplate": ""
+  }
+}

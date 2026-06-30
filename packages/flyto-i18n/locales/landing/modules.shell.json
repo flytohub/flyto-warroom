@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "shell",
+  "version": "1.0.0",
+  "translations": {
+    "modules.shell.exec.description": "",
+    "modules.shell.exec.label": "",
+    "modules.shell.exec.output.command.description": "",
+    "modules.shell.exec.output.cwd.description": "",
+    "modules.shell.exec.output.duration_ms.description": "",
+    "modules.shell.exec.output.exit_code.description": "",
+    "modules.shell.exec.output.ok.description": "",
+    "modules.shell.exec.output.stderr.description": "",
+    "modules.shell.exec.output.stdout.description": ""
+  }
+}

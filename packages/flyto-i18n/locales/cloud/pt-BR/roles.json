@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "Funcoes Integradas",
+        "roles.create": "Criar Funcao",
+        "roles.create.title": "Criar Funcao",
+        "roles.custom.empty": "Nenhuma funcao personalizada definida",
+        "roles.custom.title": "Funcoes Personalizadas",
+        "roles.delete.message": "Tem certeza que deseja excluir esta funcao? Usuarios com esta funcao serao atribuidos a funcao de membro padrao.",
+        "roles.delete.title": "Excluir Funcao",
+        "roles.description": "Gerenciar funcoes e permissoes de acesso",
+        "roles.edit.title": "Editar Funcao",
+        "roles.form.description": "Descricao",
+        "roles.form.name": "Nome da Funcao",
+        "roles.form.permissions": "Permissoes",
+        "roles.permissions": "permissoes",
+        "roles.title": "Funcoes e Permissoes",
+        "roles.users": "usuarios"
+    }
+}

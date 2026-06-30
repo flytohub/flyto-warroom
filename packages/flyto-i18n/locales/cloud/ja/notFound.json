@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "URLを確認して再度お試しください",
+        "notFound.contactSupport": "サポートに連絡",
+        "notFound.goBack": "戻る",
+        "notFound.goHome": "ホームへ",
+        "notFound.helpText": "お困りですか？",
+        "notFound.message": "お探しのページは存在しないか、移動されました。",
+        "notFound.myTemplates": "マイテンプレート",
+        "notFound.pageNotExist": "このページは存在しません",
+        "notFound.suggestion1": "URLに誤字がないか確認してください",
+        "notFound.suggestion2": "前のページに戻る",
+        "notFound.suggestion3": "テンプレートに移動する",
+        "notFound.suggestions": "次の操作を試してください：",
+        "notFound.title": "ページが見つかりません"
+    }
+}

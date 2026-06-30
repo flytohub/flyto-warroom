@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.switchCase",
+    "version": "1.0.0",
+    "translations": {
+        "switchCase.case1": "情況 1",
+        "switchCase.case2": "情況 2"
+    }
+}

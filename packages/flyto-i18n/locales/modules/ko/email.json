@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "IMAP 서버에서 이메일 읽기",
+        "modules.email.read.label": "이메일 읽기",
+        "modules.email.read.output.count.description": "이메일 객체 목록",
+        "modules.email.read.output.emails.description": "이메일 객체 목록",
+        "modules.email.send.description": "SMTP 서버를 통해 이메일 전송",
+        "modules.email.send.label": "이메일 전송",
+        "modules.email.send.output.message_id.description": "이메일 전송 성공 여부",
+        "modules.email.send.output.recipients.description": "이메일 전송 성공 여부",
+        "modules.email.send.output.sent.description": "이메일 전송 성공 여부"
+    }
+}

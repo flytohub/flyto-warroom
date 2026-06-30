@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.executionModal",
+  "version": "1.0.0",
+  "translations": {
+    "executionModal.clickToExecute": "",
+    "executionModal.execute": "",
+    "executionModal.executing": "",
+    "executionModal.executionComplete": "",
+    "executionModal.executionFailed": "",
+    "executionModal.noParamsRequired": "",
+    "executionModal.runAgain": "",
+    "executionModal.status.completed": "",
+    "executionModal.status.failed": "",
+    "executionModal.status.ready": "",
+    "executionModal.status.running": "",
+    "executionModal.stop": "",
+    "executionModal.title": ""
+  }
+}

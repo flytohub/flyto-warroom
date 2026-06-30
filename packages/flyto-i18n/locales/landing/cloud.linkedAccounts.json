@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.linkedAccounts",
+  "version": "1.0.0",
+  "translations": {
+    "linkedAccounts.cannotUnlink": "",
+    "linkedAccounts.google": "",
+    "linkedAccounts.link": "",
+    "linkedAccounts.linkSuccess": "",
+    "linkedAccounts.linked": "",
+    "linkedAccounts.notLinked": "",
+    "linkedAccounts.subtitle": "",
+    "linkedAccounts.title": "",
+    "linkedAccounts.unlink": "",
+    "linkedAccounts.unlinkConfirm": "",
+    "linkedAccounts.unlinkSuccess": ""
+  }
+}

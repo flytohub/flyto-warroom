@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.form",
+    "version": "1.0.0",
+    "translations": {
+        "form.advanced": "高端设置",
+        "form.moreOptions": "更多选项"
+    }
+}

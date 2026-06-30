@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "Alternativas",
+        "lineage.decision.evidence": "Evidencia",
+        "lineage.decision.reason": "Razón",
+        "lineage.loop.clickToCollapse": "Clic para contraer",
+        "lineage.steps": "Pasos",
+        "lineage.storyline.noSteps": "No hay pasos para mostrar",
+        "lineage.storyline.noStepsInLane": "No hay pasos en este carril",
+        "lineage.storyline.runHint": "Ejecute el flujo de trabajo para ver el historial de ejecución",
+        "lineage.storyline.title": "Línea de tiempo de ejecución"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "Protokolle löschen",
+        "terminal.closeTerminal": "Terminal schließen",
+        "terminal.connected": "VERBUNDEN",
+        "terminal.disableAutoScroll": "Auto-Scrollen deaktivieren",
+        "terminal.disconnected": "GETRENNT",
+        "terminal.enableAutoScroll": "Auto-Scrollen aktivieren",
+        "terminal.hideLogs": "{level}-Protokolle ausblenden",
+        "terminal.logsWillAppear": "Protokolle erscheinen hier, wenn das System Ausgaben erzeugt",
+        "terminal.searchPlaceholder": "Protokolle durchsuchen...",
+        "terminal.showLogs": "{level}-Protokolle anzeigen",
+        "terminal.title": "System-Terminal",
+        "terminal.waitingForLogs": "Warte auf Protokolle..."
+    }
+}

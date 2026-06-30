@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "เรียกใช้เทมเพลตจากคลังของคุณเป็นขั้นตอนการทำงาน",
+        "modules.template.invoke.label": "เรียกใช้เทมเพลต",
+        "modules.template.invoke.output.__event__.description": "ID ของรายการในคลัง (ซื้อ/ฟอร์ก/เป็นเจ้าของ)",
+        "modules.template.invoke.output.execution_time_ms.description": "ผลลัพธ์การเรียกใช้เทมเพลต",
+        "modules.template.invoke.output.result.description": "เวลาการเรียกใช้สูงสุดเป็นวินาที",
+        "modules.template.invoke.output.template_id.description": "เหตุการณ์สำหรับการจัดเส้นทาง (สำเร็จ/ผิดพลาด)",
+        "modules.template.invoke.ports.input": "เรียกใช้เทมเพลต",
+        "modules.template.invoke.ports.success": "อินพุต"
+    }
+}

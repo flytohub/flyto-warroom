@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "Header Name",
+        "schema.field.body": "Body",
+        "schema.field.body_matches": "Response",
+        "schema.field.full_page": "Full Page",
+        "schema.field.response": "Response",
+        "schema.field.screenshot_format": "Full Page",
+        "schema.field.url": "Record ID",
+        "schema.field.viewport_height": "Width",
+        "schema.field.viewport_width": "Width",
+        "schema.field.ssrf_protection": "SSRF Protection",
+        "schema.field.ssrf_protection.description": "Block requests to private/internal networks (localhost, 192.168.x.x, cloud metadata endpoints). Disable only for trusted internal targets."
+    }
+}

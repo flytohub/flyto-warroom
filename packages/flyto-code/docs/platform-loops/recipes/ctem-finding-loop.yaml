@@ -1,0 +1,36 @@
+id: ctem-finding-loop
+surface: exposure
+description: Verify CTEM findings connect to posture, attack paths, mitigations, and vendors.
+requires:
+  - frontend
+  - engine
+steps:
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/findings?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/attack-paths?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+assertions:
+  - assert: event_invalidates_query
+    event: scan.complete
+    invalidates: qk.ctem.priorities
+  - assert: event_invalidates_query
+    event: discovery.changes
+    invalidates: qk.exposure.monitoringEvents
+  - assert: event_invalidates_query
+    event: discovery.changes
+    invalidates: qk.assetMapKernel
+  - assert: event_invalidates_query
+    event: discovery.changes
+    invalidates: qk.pulse.feed
+  - assert: query_key_present
+    query_key: findings
+  - assert: api_path_present
+    path: /attack-paths
+  - assert: route_renders_without_error
+    step: 1
+  - assert: route_renders_without_error
+    step: 3

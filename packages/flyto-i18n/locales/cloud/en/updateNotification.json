@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "Close",
+        "updateNotification.downloadFailed": "Failed to download update",
+        "updateNotification.downloadUpdate": "Download Update",
+        "updateNotification.downloading": "Downloading Update",
+        "updateNotification.newVersionAvailable": "New Version Available",
+        "updateNotification.percentComplete": "{percent}% complete",
+        "updateNotification.remindLater": "Remind Later",
+        "updateNotification.restartLater": "Restart Later",
+        "updateNotification.restartNow": "Restart Now",
+        "updateNotification.restartToInstall": "Restart the application to install the update",
+        "updateNotification.unknownError": "Unknown error",
+        "updateNotification.updateDownloaded": "Update Downloaded",
+        "updateNotification.updateFailed": "Update Failed",
+        "updateNotification.versionReady": "Version {version} is ready to update"
+    }
+}

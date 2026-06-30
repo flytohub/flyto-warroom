@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.huggingface",
+    "version": "1.0.0",
+    "translations": {
+        "huggingface.browseMoreModels": "浏览更多模型",
+        "huggingface.chooseModel": "选择模型",
+        "huggingface.inferenceAPI": "推论 API",
+        "huggingface.installedModels": "已安装模型",
+        "huggingface.localExecution": "本地运行",
+        "huggingface.noModelsAvailable": "没有可用模型",
+        "huggingface.notInstalled": "未安装",
+        "huggingface.popularModels": "热门模型",
+        "huggingface.selectModel": "选择模型"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "Integrierte Rollen",
+        "roles.create": "Rolle erstellen",
+        "roles.create.title": "Rolle erstellen",
+        "roles.custom.empty": "Keine benutzerdefinierten Rollen definiert",
+        "roles.custom.title": "Benutzerdefinierte Rollen",
+        "roles.delete.message": "Sind Sie sicher, dass Sie diese Rolle löschen möchten? Benutzer mit dieser Rolle werden der Standard-Mitgliedsrolle zugewiesen.",
+        "roles.delete.title": "Rolle löschen",
+        "roles.description": "Rollen und Zugriffsberechtigungen verwalten",
+        "roles.edit.title": "Rolle bearbeiten",
+        "roles.form.description": "Beschreibung",
+        "roles.form.name": "Rollenname",
+        "roles.form.permissions": "Berechtigungen",
+        "roles.permissions": "Berechtigungen",
+        "roles.title": "Rollen & Berechtigungen",
+        "roles.users": "Benutzer"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "Preencher campos de formulario PDF com dados e opcionalmente inserir imagens",
+        "modules.pdf.fill_form.label": "Preencher Formulario PDF",
+        "modules.pdf.fill_form.output.fields_filled.description": "Caminho para o PDF preenchido",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Numero de imagens inseridas",
+        "modules.pdf.fill_form.output.images_inserted.description": "Caminho para o PDF preenchido",
+        "modules.pdf.fill_form.output.output_path.description": "Caminho para o PDF preenchido",
+        "modules.pdf.generate.description": "Gerar arquivos PDF a partir de conteudo HTML ou texto",
+        "modules.pdf.generate.label": "Gerar PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "Numero de paginas no PDF",
+        "modules.pdf.generate.output.output_path.description": "Caminho para o PDF gerado",
+        "modules.pdf.generate.output.page_count.description": "Caminho para o PDF gerado",
+        "modules.pdf.parse.description": "Extrair texto e metadados de arquivos PDF",
+        "modules.pdf.parse.label": "Analisar PDF",
+        "modules.pdf.parse.output.metadata.description": "Conteudo de texto extraido",
+        "modules.pdf.parse.output.page_count.description": "Conteudo de texto por pagina",
+        "modules.pdf.parse.output.pages.description": "Conteudo de texto extraido",
+        "modules.pdf.parse.output.text.description": "Conteudo de texto extraido",
+        "modules.pdf.to_word.description": "Converter arquivos PDF para documentos Word (.docx)",
+        "modules.pdf.to_word.label": "PDF para Word",
+        "modules.pdf.to_word.output.file_size.description": "Numero de paginas convertidas",
+        "modules.pdf.to_word.output.output_path.description": "Caminho para o documento Word gerado",
+        "modules.pdf.to_word.output.page_count.description": "Caminho para o documento Word gerado"
+    }
+}

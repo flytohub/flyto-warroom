@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "cloud.llmChain",
+  "version": "1.0.0",
+  "translations": {
+    "llmChain.advancedOptions": "Gelişmiş Seçenekler",
+    "llmChain.detectedVariables": "Algılanan değişkenler",
+    "llmChain.insertVariable": "Değişken ekle",
+    "llmChain.maxTokens": "Maksimum Token",
+    "llmChain.maxTokensHint": "Maksimum yanıt uzunluğu",
+    "llmChain.model": "Model",
+    "llmChain.systemPrompt": "Sistem İstemi",
+    "llmChain.systemPromptPlaceholder": "Yardımcı bir asistansınız...",
+    "llmChain.temperature": "Sıcaklık",
+    "llmChain.temperatureHint": "Yüksek = daha yaratıcı, Düşük = daha odaklı",
+    "llmChain.userPrompt": "Kullanıcı İstemi",
+    "llmChain.userPromptPlaceholder": "{{değişkenler}} ile isteminizi girin...",
+    "llmChain.variableHelp": "Önceki adımlardan veri almak için {{değişken}} kullanın"
+  }
+}

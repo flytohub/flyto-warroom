@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "Vue grille",
+        "templateToolbar.listView": "Vue liste",
+        "templateToolbar.searchLabel": "Rechercher des modeles",
+        "templateToolbar.searchPlaceholder": "Rechercher des modeles...",
+        "templateToolbar.sortLabel": "Trier les modeles par",
+        "templateToolbar.sortOptions.created": "Recemment crees",
+        "templateToolbar.sortOptions.name": "Nom A-Z",
+        "templateToolbar.sortOptions.status": "Par statut",
+        "templateToolbar.sortOptions.updated": "Recemment mis a jour",
+        "templateToolbar.viewMode": "Mode d'affichage"
+    }
+}

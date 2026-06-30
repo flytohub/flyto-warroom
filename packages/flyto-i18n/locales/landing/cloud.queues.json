@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.queues",
+  "version": "1.0.0",
+  "translations": {
+    "queues.addItem": "",
+    "queues.create.maxRetries": "",
+    "queues.create.name": "",
+    "queues.create.namePlaceholder": "",
+    "queues.create.selectWorkflow": "",
+    "queues.create.submit": "",
+    "queues.create.title": "",
+    "queues.create.workflow": "",
+    "queues.createFirst": "",
+    "queues.empty": "",
+    "queues.emptyDesc": "",
+    "queues.stats.completed": "",
+    "queues.stats.pending": "",
+    "queues.stats.processing": "",
+    "queues.stats.totalItems": "",
+    "queues.status.completed": "",
+    "queues.status.failed": "",
+    "queues.status.pending": "",
+    "queues.status.processing": "",
+    "queues.transactions.empty": "",
+    "queues.transactions.title": ""
+  }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "बनाएं",
+        "actionLabel.delete": "हटाएं",
+        "actionLabel.execute": "चलाएं",
+        "actionLabel.export": "एक्सपोर्ट करें",
+        "actionLabel.import": "इम्पोर्ट करें",
+        "actionLabel.logout": "लॉगआउट करें",
+        "actionLabel.update": "अपडेट करें"
+    }
+}

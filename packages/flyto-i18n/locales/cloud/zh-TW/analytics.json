@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.analytics",
+    "version": "1.0.0",
+    "translations": {
+        "analytics.declining": "下降中",
+        "analytics.eventBreakdown": "事件分析",
+        "analytics.frictionPoints": "摩擦點",
+        "analytics.healthScore": "健康分數",
+        "analytics.improving": "改善中",
+        "analytics.issues": "問題",
+        "analytics.noFriction": "無摩擦",
+        "analytics.overallHealth": "整體健康狀況",
+        "analytics.recommendations": "建議",
+        "analytics.stable": "穩定"
+    }
+}

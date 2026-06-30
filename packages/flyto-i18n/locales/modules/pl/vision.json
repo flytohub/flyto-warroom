@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "vision",
+    "version": "1.0.0",
+    "translations": {
+        "modules.vision.analyze.description": "Analizuj obrazy za pomocą OpenAI Vision API (GPT-4V)",
+        "modules.vision.analyze.label": "Analizuj obraz za pomocą AI",
+        "modules.vision.analyze.output.analysis.description": "Czy analiza powiodła się",
+        "modules.vision.analyze.output.model.description": "Dane analizy strukturalnej (jeśli output_format to structured/json)",
+        "modules.vision.analyze.output.ok.description": "Czy analiza powiodła się",
+        "modules.vision.analyze.output.structured.description": "Wynik analizy AI",
+        "modules.vision.analyze.output.tokens_used.description": "Model użyty do analizy",
+        "modules.vision.compare.description": "Porównaj dwa obrazy i zidentyfikuj różnice wizualne",
+        "modules.vision.compare.label": "Porównaj obrazy",
+        "modules.vision.compare.output.differences.description": "Procent podobieństwa (0-100)",
+        "modules.vision.compare.output.has_differences.description": "Czy porównanie powiodło się",
+        "modules.vision.compare.output.ok.description": "Czy porównanie powiodło się",
+        "modules.vision.compare.output.recommendation.description": "Podsumowanie wyników porównania",
+        "modules.vision.compare.output.similarity_score.description": "Czy znaleziono znaczące różnice",
+        "modules.vision.compare.output.summary.description": "Lista zidentyfikowanych różnic",
+        "modules.vision.compare.params.differences": "Differences",
+        "modules.vision.compare.params.focus_areas": "Focus Areas",
+        "modules.vision.compare.params.focus_areas.options.header": "Header",
+        "modules.vision.compare.params.focus_areas.options.main content": "Main Content"
+    }
+}

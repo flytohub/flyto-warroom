@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.errorWorkflow",
+    "version": "1.0.0",
+    "translations": {
+        "errorWorkflow.description": "Konfigurasi apa yang terjadi ketika workflow ini gagal",
+        "errorWorkflow.doNothing": "Tidak melakukan apa-apa",
+        "errorWorkflow.onFailure": "Saat Workflow Gagal",
+        "errorWorkflow.passContext": "Teruskan konteks kesalahan ke workflow kesalahan",
+        "errorWorkflow.passContextHint": "Termasuk pesan kesalahan, kategori, dan data workflow sumber",
+        "errorWorkflow.runWorkflow": "Jalankan workflow kesalahan",
+        "errorWorkflow.title": "Penanganan Kesalahan"
+    }
+}

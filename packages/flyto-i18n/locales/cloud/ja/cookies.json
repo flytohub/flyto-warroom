@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "常にオン",
+        "cookies.lastUpdated": "最終更新",
+        "cookies.optional": "任意",
+        "cookies.preferencesSaved": "設定が正常に保存されました",
+        "cookies.savePreferences": "設定を保存",
+        "cookies.sections.manage.content": "許可する任意のCookieを制御できます。必須Cookieはウェブサイトの機能に必要なため、無効にすることはできません。",
+        "cookies.sections.manage.title": "設定を管理",
+        "cookies.sections.types.analytics.content": "これらのCookieは、情報を匿名で収集・報告することで、訪問者がウェブサイトとどのように対話しているかを理解するのに役立ちます。これによりサービスを改善できます。",
+        "cookies.sections.types.analytics.title": "分析Cookie",
+        "cookies.sections.types.essential.content": "これらのCookieはウェブサイトが正常に機能するために必要です。ページナビゲーションやセキュアエリアへのアクセスなどの基本機能を有効にします。これらのCookieなしではウェブサイトは正常に機能しません。",
+        "cookies.sections.types.essential.title": "必須Cookie",
+        "cookies.sections.types.functional.content": "これらのCookieは、言語設定、テーマ設定、ログイン状態の記憶などのパーソナライズ機能を有効にします。エクスペリエンスを向上させますが、必須ではありません。",
+        "cookies.sections.types.functional.title": "機能Cookie",
+        "cookies.sections.types.title": "使用するCookieの種類",
+        "cookies.sections.what.content": "Cookieとは、ウェブサイトを訪問したときにデバイスに保存される小さなテキストファイルです。設定を記憶し、サービスの使用方法を理解することで、より良いエクスペリエンスを提供するのに役立ちます。",
+        "cookies.sections.what.title": "Cookieとは？",
+        "cookies.title": "Cookie設定"
+    }
+}

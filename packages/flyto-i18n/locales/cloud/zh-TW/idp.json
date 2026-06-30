@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.idp",
+    "version": "1.0.0",
+    "translations": {
+        "idp.actions.batch": "批次處理",
+        "idp.actions.export": "匯出",
+        "idp.actions.title": "操作",
+        "idp.actions.train": "訓練模型",
+        "idp.models.title": "模型",
+        "idp.queue.empty": "佇列中沒有文件",
+        "idp.queue.items": "項目",
+        "idp.queue.title": "處理佇列",
+        "idp.recent.empty": "沒有最近的文件",
+        "idp.recent.title": "最近文件",
+        "idp.results.fields": "擷取的欄位",
+        "idp.results.title": "結果",
+        "idp.stats.accuracy": "準確度",
+        "idp.stats.models": "模型",
+        "idp.stats.pending": "待處理",
+        "idp.stats.processed": "已處理",
+        "idp.upload.browse": "瀏覽",
+        "idp.upload.desc": "拖放或點擊上傳",
+        "idp.upload.formats": "支援：PDF、PNG、JPG",
+        "idp.upload.title": "上傳文件"
+    }
+}

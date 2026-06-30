@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "dns",
+  "version": "1.0.0",
+  "translations": {
+    "modules.dns.lookup.description": "",
+    "modules.dns.lookup.label": "",
+    "modules.dns.lookup.output.domain.description": "",
+    "modules.dns.lookup.output.record_type.description": "",
+    "modules.dns.lookup.output.records.description": "",
+    "modules.dns.lookup.output.ttl.description": "",
+    "modules.dns.lookup.params.domain.description": "",
+    "modules.dns.lookup.params.domain.label": "",
+    "modules.dns.lookup.params.record_type.description": "",
+    "modules.dns.lookup.params.record_type.label": "",
+    "modules.dns.lookup.params.timeout.description": "",
+    "modules.dns.lookup.params.timeout.label": ""
+  }
+}

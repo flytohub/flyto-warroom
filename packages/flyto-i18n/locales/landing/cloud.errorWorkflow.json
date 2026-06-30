@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.errorWorkflow",
+  "version": "1.0.0",
+  "translations": {
+    "errorWorkflow.description": "",
+    "errorWorkflow.doNothing": "",
+    "errorWorkflow.onFailure": "",
+    "errorWorkflow.passContext": "",
+    "errorWorkflow.passContextHint": "",
+    "errorWorkflow.runWorkflow": "",
+    "errorWorkflow.title": ""
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "Llenar campos de formulario PDF con datos e insertar imagenes opcionalmente",
+        "modules.pdf.fill_form.label": "Llenar formulario PDF",
+        "modules.pdf.fill_form.output.fields_filled.description": "Ruta al PDF llenado",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Numero de imagenes insertadas",
+        "modules.pdf.fill_form.output.images_inserted.description": "Ruta al PDF llenado",
+        "modules.pdf.fill_form.output.output_path.description": "Ruta al PDF llenado",
+        "modules.pdf.generate.description": "Generar archivos PDF desde contenido HTML o texto",
+        "modules.pdf.generate.label": "Generar PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "Numero de paginas en el PDF",
+        "modules.pdf.generate.output.output_path.description": "Ruta al PDF generado",
+        "modules.pdf.generate.output.page_count.description": "Ruta al PDF generado",
+        "modules.pdf.parse.description": "Extraer texto y metadatos de archivos PDF",
+        "modules.pdf.parse.label": "Parsear PDF",
+        "modules.pdf.parse.output.metadata.description": "Contenido de texto extraido",
+        "modules.pdf.parse.output.page_count.description": "Contenido de texto por pagina",
+        "modules.pdf.parse.output.pages.description": "Contenido de texto extraido",
+        "modules.pdf.parse.output.text.description": "Contenido de texto extraido",
+        "modules.pdf.to_word.description": "Convertir archivos PDF a documentos Word (.docx)",
+        "modules.pdf.to_word.label": "PDF a Word",
+        "modules.pdf.to_word.output.file_size.description": "Numero de paginas convertidas",
+        "modules.pdf.to_word.output.output_path.description": "Ruta al documento Word generado",
+        "modules.pdf.to_word.output.page_count.description": "Ruta al documento Word generado"
+    }
+}

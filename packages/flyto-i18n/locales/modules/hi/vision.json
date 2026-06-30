@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "vision",
+    "version": "1.0.0",
+    "translations": {
+        "modules.vision.analyze.description": "OpenAI Vision API (GPT-4V) का उपयोग करके इमेज का विश्लेषण करें",
+        "modules.vision.analyze.label": "AI के साथ इमेज विश्लेषण करें",
+        "modules.vision.analyze.output.analysis.description": "क्या विश्लेषण सफल हुआ",
+        "modules.vision.analyze.output.model.description": "संरचित विश्लेषण डेटा (यदि output_format structured/json है)",
+        "modules.vision.analyze.output.ok.description": "क्या विश्लेषण सफल हुआ",
+        "modules.vision.analyze.output.structured.description": "AI विश्लेषण परिणाम",
+        "modules.vision.analyze.output.tokens_used.description": "विश्लेषण के लिए उपयोग किया गया मॉडल",
+        "modules.vision.compare.description": "दो इमेज की तुलना करें और दृश्य अंतर पहचानें",
+        "modules.vision.compare.label": "इमेज तुलना करें",
+        "modules.vision.compare.output.differences.description": "समानता प्रतिशत (0-100)",
+        "modules.vision.compare.output.has_differences.description": "क्या तुलना सफल हुई",
+        "modules.vision.compare.output.ok.description": "क्या तुलना सफल हुई",
+        "modules.vision.compare.output.recommendation.description": "तुलना परिणामों का सारांश",
+        "modules.vision.compare.output.similarity_score.description": "क्या महत्वपूर्ण अंतर पाए गए",
+        "modules.vision.compare.output.summary.description": "पहचाने गए अंतरों की सूची",
+        "modules.vision.compare.params.differences": "अंतर",
+        "modules.vision.compare.params.focus_areas": "मुख्य क्षेत्र",
+        "modules.vision.compare.params.focus_areas.options.header": "हेडर",
+        "modules.vision.compare.params.focus_areas.options.main content": "मुख्य सामग्री"
+    }
+}

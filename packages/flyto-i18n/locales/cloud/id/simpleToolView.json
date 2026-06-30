@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "Lanjutan",
+        "simpleToolView.copy": "Salin",
+        "simpleToolView.download": "Unduh",
+        "simpleToolView.downloadFile": "Unduh File",
+        "simpleToolView.dropOrClick": "Letakkan file atau klik untuk mengunggah",
+        "simpleToolView.failed": "Gagal",
+        "simpleToolView.generating": "Menghasilkan...",
+        "simpleToolView.input": "Masukan",
+        "simpleToolView.moreRows": "+{count} baris lagi",
+        "simpleToolView.output": "Keluaran",
+        "simpleToolView.processing": "Memproses...",
+        "simpleToolView.resultWillAppear": "Hasil akan muncul di sini",
+        "simpleToolView.retry": "Coba Lagi",
+        "simpleToolView.selectOption": "Pilih opsi",
+        "simpleToolView.start": "Mulai",
+        "simpleToolView.viewSteps": "Lihat Langkah"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.confirmDialog",
+    "version": "1.0.0",
+    "translations": {
+        "confirmDialog.areYouSure": "Bạn có chắc không?"
+    }
+}

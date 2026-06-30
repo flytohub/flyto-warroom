@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.report",
+  "version": "1.0.0",
+  "translations": {
+    "report.otherPlaceholder": "",
+    "report.reasons.copyright": "",
+    "report.reasons.harmful": "",
+    "report.reasons.inappropriate": "",
+    "report.reasons.misleading": "",
+    "report.reasons.other": "",
+    "report.reasons.spam": "",
+    "report.selectReason": "",
+    "report.submit": "",
+    "report.title": ""
+  }
+}

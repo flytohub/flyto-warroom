@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.completionEffect",
+    "version": "1.0.0",
+    "translations": {
+        "completionEffect.defaultMessage": "Wszystkie kroki wykonane pomyslnie",
+        "completionEffect.defaultTitle": "Przeplyw ukonczony"
+    }
+}

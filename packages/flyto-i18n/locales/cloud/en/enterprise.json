@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.enterprise",
+    "version": "1.0.0",
+    "translations": {
+        "enterprise.actions.notSupported": "This action is not supported by the enterprise backend",
+        "enterprise.errors.actionFailed": "Action failed",
+        "enterprise.errors.loadFailed": "Failed to load enterprise data",
+        "enterprise.robotsOnline": "Robots Online",
+        "enterprise.subtitle": "Enterprise automation tools",
+        "enterprise.tabs.idp": "Document Processing",
+        "enterprise.tabs.mining": "Process Mining",
+        "enterprise.tabs.orchestrator": "Orchestrator",
+        "enterprise.tabs.queues": "Queues",
+        "enterprise.tabs.rpa": "RPA",
+        "enterprise.tabs.scheduler": "Scheduler",
+        "enterprise.tabs.stateMachine": "State Machine",
+        "enterprise.title": "Enterprise"
+    }
+}

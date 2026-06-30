@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.checkpointTooltip",
+    "version": "1.0.0",
+    "translations": {
+        "checkpointTooltip.clickToAdd": "Kliknij, aby dodac punkt kontrolny na polaczeniach",
+        "checkpointTooltip.clickToExit": "Kliknij, aby wyjsc z trybu punktu kontrolnego",
+        "checkpointTooltip.upgradeToUse": "Ulepsz, aby korzystac z punktu kontrolnego"
+    }
+}

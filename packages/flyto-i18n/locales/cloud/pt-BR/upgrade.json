@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "Contatar Vendas",
+        "upgrade.debugFeatures": "Desbloqueie recursos poderosos de depuracao e analise para melhorar o desenvolvimento de seus workflows.",
+        "upgrade.enterpriseHint": "Precisa de recursos empresariais?",
+        "upgrade.featureLocked": "Este recurso requer uma assinatura Pro",
+        "upgrade.features.evidence": "Captura de tela e DOM para cada etapa",
+        "upgrade.features.lineage": "Rastreamento de fluxo de dados e grafico de dependencias",
+        "upgrade.features.replay": "Reproduzir execucoes com entradas modificadas",
+        "upgrade.features.tests": "Suite de testes automatizados de workflow",
+        "upgrade.features.versions": "Bloqueio e controle de versao de modulos",
+        "upgrade.offlineLicense": "Comprar Licenca Offline - $199 unica vez",
+        "upgrade.subscription": "Assinar - $19/mes",
+        "upgrade.subtitle": "Obtenha acesso a ferramentas avancadas de depuracao",
+        "upgrade.title": "Desbloquear Recursos Pro"
+    }
+}

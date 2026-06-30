@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Last Updated",
+        "terms.sections.acceptance.content": "By accessing or using Flyto2 services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.",
+        "terms.sections.acceptance.title": "Acceptance of Terms",
+        "terms.sections.account.content": "You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must notify us immediately of any unauthorized use.",
+        "terms.sections.account.title": "User Accounts",
+        "terms.sections.intellectual.content": "All content, features, and functionality of Flyto2 are owned by us and are protected by international copyright, trademark, and other intellectual property laws.",
+        "terms.sections.intellectual.title": "Intellectual Property",
+        "terms.sections.limitation.content": "To the maximum extent permitted by law, Flyto2 shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of our services.",
+        "terms.sections.limitation.title": "Limitation of Liability",
+        "terms.sections.prohibited.content": "You may not use our services for any illegal purposes, to violate any laws, to infringe on intellectual property rights, or to transmit harmful code. We reserve the right to terminate accounts that violate these terms.",
+        "terms.sections.prohibited.title": "Prohibited Uses",
+        "terms.sections.services.content": "Flyto2 provides a workflow automation platform that allows users to create, manage, and execute automated workflows. We reserve the right to modify or discontinue services at any time.",
+        "terms.sections.services.title": "Description of Services",
+        "terms.sections.termination.content": "We may terminate or suspend your account and access to our services at our sole discretion, without prior notice, for conduct that we believe violates these terms or is harmful to other users.",
+        "terms.sections.termination.title": "Termination",
+        "terms.title": "Terms of Service"
+    }
+}

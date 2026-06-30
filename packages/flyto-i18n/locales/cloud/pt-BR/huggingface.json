@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.huggingface",
+    "version": "1.0.0",
+    "translations": {
+        "huggingface.browseMoreModels": "Ver Mais Modelos",
+        "huggingface.chooseModel": "Escolher Modelo",
+        "huggingface.inferenceAPI": "API de Inferencia",
+        "huggingface.installedModels": "Modelos Instalados",
+        "huggingface.localExecution": "Execucao Local",
+        "huggingface.noModelsAvailable": "Nenhum modelo disponivel",
+        "huggingface.notInstalled": "Nao Instalado",
+        "huggingface.popularModels": "Modelos Populares",
+        "huggingface.selectModel": "Selecionar Modelo"
+    }
+}

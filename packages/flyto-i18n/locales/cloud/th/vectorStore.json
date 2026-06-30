@@ -1,0 +1,26 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "th",
+  "category": "cloud.vectorStore",
+  "version": "1.0.0",
+  "translations": {
+    "vectorStore.addMetadata": "เพิ่มฟิลด์",
+    "vectorStore.collection": "Collection",
+    "vectorStore.collectionName": "ชื่อ collection",
+    "vectorStore.content": "เนื้อหาเอกสาร",
+    "vectorStore.contentPlaceholder": "กรอกข้อความหรือใช้ {{variable}}...",
+    "vectorStore.createCollection": "สร้าง collection ใหม่",
+    "vectorStore.deleteIds": "ID เอกสารที่จะลบ",
+    "vectorStore.documentId": "ID เอกสาร (ไม่บังคับ)",
+    "vectorStore.filters": "ตัวกรอง Metadata",
+    "vectorStore.metadata": "Metadata",
+    "vectorStore.noMetadata": "ไม่มีฟิลด์ metadata",
+    "vectorStore.query": "Query",
+    "vectorStore.queryPlaceholder": "กรอก query ค้นหาหรือใช้ {{variable}}...",
+    "vectorStore.refreshCollections": "รีเฟรช collections",
+    "vectorStore.scoreThreshold": "เกณฑ์คะแนน",
+    "vectorStore.scoreThresholdHint": "คะแนนความคล้ายคลึงขั้นต่ำ (0-1)",
+    "vectorStore.selectCollection": "เลือก collection...",
+    "vectorStore.topK": "ผลลัพธ์ Top K"
+  }
+}

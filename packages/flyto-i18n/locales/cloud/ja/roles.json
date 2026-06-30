@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "組み込みロール",
+        "roles.create": "ロールを作成",
+        "roles.create.title": "ロールを作成",
+        "roles.custom.empty": "カスタムロールが定義されていません",
+        "roles.custom.title": "カスタムロール",
+        "roles.delete.message": "このロールを削除してもよろしいですか？このロールを持つユーザーはデフォルトのメンバーロールに割り当てられます。",
+        "roles.delete.title": "ロールを削除",
+        "roles.description": "ロールとアクセス権限を管理",
+        "roles.edit.title": "ロールを編集",
+        "roles.form.description": "説明",
+        "roles.form.name": "ロール名",
+        "roles.form.permissions": "権限",
+        "roles.permissions": "権限",
+        "roles.title": "ロールと権限",
+        "roles.users": "ユーザー"
+    }
+}

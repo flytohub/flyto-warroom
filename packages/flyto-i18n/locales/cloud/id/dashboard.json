@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "Diterapkan",
+        "dashboard.evolution.events": "Acara",
+        "dashboard.evolution.executions": "Eksekusi",
+        "dashboard.evolution.flytoCan": "Terbang ke kaleng",
+        "dashboard.evolution.fromCheckpoints": "Dari pos pemeriksaan",
+        "dashboard.evolution.last30days": "30 hari terakhir",
+        "dashboard.evolution.last7days": "7 hari terakhir",
+        "dashboard.evolution.last90days": "90 hari terakhir",
+        "dashboard.evolution.moatDescription": "Deskripsi parit",
+        "dashboard.evolution.moatTitle": "Judul parit",
+        "dashboard.evolution.n8nCant": "N8n tidak bisa",
+        "dashboard.evolution.overallImprovement": "Peningkatan keseluruhan",
+        "dashboard.evolution.pending": "Tertunda",
+        "dashboard.evolution.reliability": "Keandalan",
+        "dashboard.evolution.subtitle": "Subjudul",
+        "dashboard.evolution.suggestionsApplied": "Saran diterapkan",
+        "dashboard.evolution.timeSaved": "Waktu tersimpan",
+        "dashboard.evolution.timeline": "Linimasa",
+        "dashboard.evolution.title": "Judul",
+        "dashboard.evolution.today": "Hari ini",
+        "dashboard.evolution.topImproved": "Peningkatan terbaik",
+        "dashboard.evolution.yesterday": "Kemarin",
+        "dashboard.title": "Dasbor"
+    }
+}

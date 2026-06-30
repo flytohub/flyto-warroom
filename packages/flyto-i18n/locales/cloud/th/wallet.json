@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "กระเป๋าเครดิต",
+        "wallet.availableCredits": "เครดิตที่ใช้ได้",
+        "wallet.topup": "เติมเงิน",
+        "wallet.topupTitle": "เติมเครดิต",
+        "wallet.topupSuccess": "เติมเครดิตสำเร็จ",
+        "wallet.topupCancelled": "ยกเลิกการเติมเงิน",
+        "wallet.history": "ประวัติธุรกรรม",
+        "wallet.noTransactions": "ยังไม่มีธุรกรรม",
+        "wallet.balanceAfter": "ยอดคงเหลือ",
+        "wallet.conversionNote": "1 เครดิต = $0.01 USD",
+        "wallet.proceedToPayment": "ดำเนินการชำระเงิน",
+        "wallet.confirmExecute": "ยืนยันการดำเนินการ",
+        "wallet.executionCost": "ค่าใช้จ่ายในการดำเนินการ",
+        "wallet.yourBalance": "ยอดคงเหลือของคุณ",
+        "wallet.insufficientCredits": "เครดิตไม่เพียงพอ",
+        "wallet.needMore": "ต้องการเครดิตอีก {amount}",
+        "wallet.topupNow": "เติมเงินตอนนี้",
+        "wallet.confirmAndExecute": "ยืนยันและดำเนินการ",
+        "wallet.lowBalanceWarning": "เครดิตของคุณใกล้หมด กรุณาเติมเงินเพื่อใช้งาน workflow ต่อไป"
+    }
+}

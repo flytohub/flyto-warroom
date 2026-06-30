@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "Jalur Navigasi",
+        "accessibility.clearInput": "Hapus input",
+        "accessibility.closeDialog": "Tutup dialog",
+        "accessibility.closeMenu": "Tutup menu",
+        "accessibility.closeModal": "Tutup modal",
+        "accessibility.copyToClipboard": "Salin ke clipboard",
+        "accessibility.imageEditingControls": "Kontrol pengeditan gambar",
+        "accessibility.notifications": "Notifikasi",
+        "accessibility.openMenu": "Buka menu",
+        "accessibility.rating": "Penilaian",
+        "accessibility.refreshList": "Segarkan daftar",
+        "accessibility.removeIcon": "Hapus ikon",
+        "accessibility.resetImage": "Atur ulang posisi dan zoom gambar",
+        "accessibility.revokeKey": "Cabut kunci",
+        "accessibility.rotateLeft": "Putar ke kiri 90 derajat",
+        "accessibility.rotateRight": "Putar ke kanan 90 derajat",
+        "accessibility.showInMarketplace": "Tampilkan di marketplace",
+        "accessibility.zoomIn": "Perbesar",
+        "accessibility.zoomOut": "Perkecil"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.rpa",
+    "version": "1.0.0",
+    "translations": {
+        "rpa.actions.disconnect": "Disconnect",
+        "rpa.actions.noAgent": "No agent connected",
+        "rpa.actions.record": "Record",
+        "rpa.agents.connect": "Connect Agent",
+        "rpa.agents.connectFirst": "Connect an agent to get started",
+        "rpa.agents.empty": "No agents connected",
+        "rpa.agents.title": "Agents",
+        "rpa.connect.codeExpires": "Code expires in",
+        "rpa.connect.step1": "Download the agent",
+        "rpa.connect.step2": "Run the agent on your machine",
+        "rpa.connect.step3": "Enter the code shown below",
+        "rpa.connect.title": "Connect Agent",
+        "rpa.connect.waiting": "Waiting for connection...",
+        "rpa.elements.empty": "No elements recorded",
+        "rpa.elements.title": "Elements",
+        "rpa.log.title": "Log",
+        "rpa.quickActions.title": "Quick Actions",
+        "rpa.recordings.empty": "No recordings",
+        "rpa.recordings.run": "Run",
+        "rpa.recordings.title": "Recordings",
+        "rpa.stats.agents": "Agents",
+        "rpa.stats.executions": "Executions",
+        "rpa.stats.recordings": "Recordings",
+        "rpa.stats.success": "Success Rate"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.purchases",
+    "version": "1.0.0",
+    "translations": {
+        "purchases.all": "所有购买",
+        "purchases.browseMarketplace": "浏览市集",
+        "purchases.completed": "已完成的购买",
+        "purchases.empty": "没有购买",
+        "purchases.emptyDescription": "您尚未有任何购买。",
+        "purchases.filterAll": "全部",
+        "purchases.filterCompleted": "已完成",
+        "purchases.filterRefunded": "已退款",
+        "purchases.loadMore": "加载更多",
+        "purchases.loading": "加载中...",
+        "purchases.noPurchases": "尚无购买纪录",
+        "purchases.noPurchasesDesc": "您购买的模板将显示在这里",
+        "purchases.purchasedOn": "购买日期",
+        "purchases.refundAmount": "退款金额",
+        "purchases.refundEligible": "符合退款资格",
+        "purchases.refundExpired": "退款期限已过",
+        "purchases.refunded": "已退款",
+        "purchases.refundedOn": "退款日期",
+        "purchases.requestRefund": "申请退款",
+        "purchases.subtitle": "查看已购买的模板并管理退款",
+        "purchases.title": "购买纪录",
+        "purchases.viewTemplate": "查看模板"
+    }
+}

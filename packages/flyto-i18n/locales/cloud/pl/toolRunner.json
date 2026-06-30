@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Zaawansowany",
+        "toolRunner.backToLibrary": "Powrot do biblioteki",
+        "toolRunner.copy": "Kopiuj",
+        "toolRunner.download": "Pobierz",
+        "toolRunner.editTool": "Edytuj",
+        "toolRunner.executionFailed": "Wykonanie nie powiodlo sie",
+        "toolRunner.executionLogs": "Logi wykonania",
+        "toolRunner.executionSuccess": "Wykonanie zakonczone",
+        "toolRunner.executionTimedOut": "Przekroczono limit czasu wykonania",
+        "toolRunner.flowSteps": "Kroki przeplywu",
+        "toolRunner.inputForm": "Formularz wejsciowy",
+        "toolRunner.loadFailed": "Nie udalo sie zaladowac narzedzia",
+        "toolRunner.noLogs": "Brak logow. Uruchom narzedzie, aby zobaczyc logi wykonania.",
+        "toolRunner.resolvedParams": "Rozwiazane parametry",
+        "toolRunner.results": "Wyniki",
+        "toolRunner.retry": "Ponow",
+        "toolRunner.runAgain": "Uruchom ponownie",
+        "toolRunner.runToSeeResults": "Uruchom narzedzie, aby zobaczyc wyniki tutaj",
+        "toolRunner.runTool": "Uruchom narzedzie",
+        "toolRunner.running": "Uruchamianie...",
+        "toolRunner.simpleMode": "Prosty",
+        "toolRunner.toolNotFound": "Nie znaleziono narzedzia",
+        "toolRunner.toolNotFoundError": "Nie znaleziono narzedzia"
+    }
+}

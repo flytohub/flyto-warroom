@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "Aggiunto",
+        "versionDiff.addedItems": "Elementi aggiunti",
+        "versionDiff.compare": "Confronta",
+        "versionDiff.computing": "Calcolando",
+        "versionDiff.current": "Corrente",
+        "versionDiff.from": "Da",
+        "versionDiff.modified": "Modificato",
+        "versionDiff.modifiedItems": "Elementi modificati",
+        "versionDiff.new": "Nuovo",
+        "versionDiff.noChanges": "Nessuna modifica",
+        "versionDiff.old": "Vecchio",
+        "versionDiff.removed": "Rimosso",
+        "versionDiff.removedItems": "Elementi rimossi",
+        "versionDiff.selectVersions": "Seleziona versioni",
+        "versionDiff.title": "Differenze di versione",
+        "versionDiff.to": "A"
+    }
+}

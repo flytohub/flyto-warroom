@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "Tambah waktu ke datetime",
+        "modules.datetime.add.label": "Tambah Waktu",
+        "modules.datetime.add.output.result.description": "Hasil operasi",
+        "modules.datetime.add.output.timestamp.description": "Hasil operasi",
+        "modules.datetime.format.description": "Format datetime ke string",
+        "modules.datetime.format.label": "Format TanggalWaktu",
+        "modules.datetime.format.output.result.description": "Hasil operasi",
+        "modules.datetime.format.output.timestamp.description": "Hasil operasi",
+        "modules.datetime.parse.description": "Parse string ke datetime",
+        "modules.datetime.parse.label": "Ubah TanggalWaktu",
+        "modules.datetime.parse.output.day.description": "Komponen tahun",
+        "modules.datetime.parse.output.hour.description": "Komponen bulan",
+        "modules.datetime.parse.output.minute.description": "Komponen hari",
+        "modules.datetime.parse.output.month.description": "Timestamp Unix",
+        "modules.datetime.parse.output.result.description": "Hasil operasi",
+        "modules.datetime.parse.output.second.description": "Komponen jam",
+        "modules.datetime.parse.output.timestamp.description": "Hasil operasi",
+        "modules.datetime.parse.output.year.description": "Hasil operasi",
+        "modules.datetime.subtract.description": "Kurangi waktu dari datetime",
+        "modules.datetime.subtract.label": "Kurangi Waktu",
+        "modules.datetime.subtract.output.result.description": "Hasil operasi",
+        "modules.datetime.subtract.output.timestamp.description": "Hasil operasi"
+    }
+}

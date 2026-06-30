@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "Wszystkie",
+        "toolLibrary.createFirstTool": "Utworz swoje pierwsze narzedzie",
+        "toolLibrary.createTool": "Utworz narzedzie",
+        "toolLibrary.deleteConfirm": "Usun narzedzie",
+        "toolLibrary.deleteMessage": "Czy na pewno chcesz usunac \"{name}\"? Tej akcji nie mozna cofnac.",
+        "toolLibrary.noDescription": "Brak opisu",
+        "toolLibrary.noTools": "Brak narzedzi",
+        "toolLibrary.noToolsDesc": "Utworz swoje pierwsze narzedzie, aby zautomatyzowac swoje przeplywy",
+        "toolLibrary.run": "Uruchom",
+        "toolLibrary.searchPlaceholder": "Szukaj narzedzi...",
+        "toolLibrary.steps": "krokow",
+        "toolLibrary.subtitle": "Zarzadzaj i uruchamiaj swoje narzedzia automatyzacji",
+        "toolLibrary.title": "Biblioteka narzedzi"
+    }
+}

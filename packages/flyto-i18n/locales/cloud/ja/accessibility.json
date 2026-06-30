@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "パンくずリスト",
+        "accessibility.clearInput": "入力をクリア",
+        "accessibility.closeDialog": "ダイアログを閉じる",
+        "accessibility.closeMenu": "メニューを閉じる",
+        "accessibility.closeModal": "モーダルを閉じる",
+        "accessibility.copyToClipboard": "クリップボードにコピー",
+        "accessibility.imageEditingControls": "画像編集コントロール",
+        "accessibility.notifications": "通知",
+        "accessibility.openMenu": "メニューを開く",
+        "accessibility.rating": "評価",
+        "accessibility.refreshList": "リストを更新",
+        "accessibility.removeIcon": "アイコンを削除",
+        "accessibility.resetImage": "画像の位置とズームをリセット",
+        "accessibility.revokeKey": "キーを取り消し",
+        "accessibility.rotateLeft": "左に90度回転",
+        "accessibility.rotateRight": "右に90度回転",
+        "accessibility.showInMarketplace": "マーケットプレイスに表示",
+        "accessibility.zoomIn": "拡大",
+        "accessibility.zoomOut": "縮小"
+    }
+}

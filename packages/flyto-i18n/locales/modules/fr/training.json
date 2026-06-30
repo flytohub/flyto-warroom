@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "training",
+    "version": "1.0.0",
+    "translations": {
+        "modules.training.practice.analyze.description": "Analyser la structure du site web pour la pratique",
+        "modules.training.practice.analyze.label": "Pratique Analyser",
+        "modules.training.practice.analyze.output.status.description": "Analyser la structure du site web",
+        "modules.training.practice.analyze.output.structure.description": "Analyser la structure du site web",
+        "modules.training.practice.execute.description": "Executer une session de pratique",
+        "modules.training.practice.execute.label": "Pratique Executer",
+        "modules.training.practice.execute.output.items_processed.description": "Executer une session de pratique",
+        "modules.training.practice.execute.output.status.description": "Executer une session de pratique",
+        "modules.training.practice.infer_schema.description": "Inferer le schema de donnees depuis le site web",
+        "modules.training.practice.infer_schema.label": "Pratique Inferer le schema",
+        "modules.training.practice.infer_schema.output.schema.description": "Inferer le schema de donnees",
+        "modules.training.practice.infer_schema.output.status.description": "Inferer le schema de donnees",
+        "modules.training.practice.stats.description": "Obtenir les statistiques de pratique",
+        "modules.training.practice.stats.label": "Statistiques de pratique",
+        "modules.training.practice.stats.output.history.description": "Obtenir les statistiques de pratique",
+        "modules.training.practice.stats.output.success_rate.description": "Obtenir les statistiques de pratique",
+        "modules.training.practice.stats.output.successful_sessions.description": "Le total des sessions",
+        "modules.training.practice.stats.output.total_sessions.description": "Le total des sessions"
+    }
+}

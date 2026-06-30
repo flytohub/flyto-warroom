@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.terminal",
+  "version": "1.0.0",
+  "translations": {
+    "terminal.clearLogs": "",
+    "terminal.closeTerminal": "",
+    "terminal.connected": "",
+    "terminal.disableAutoScroll": "",
+    "terminal.disconnected": "",
+    "terminal.enableAutoScroll": "",
+    "terminal.hideLogs": "",
+    "terminal.logsWillAppear": "",
+    "terminal.searchPlaceholder": "",
+    "terminal.showLogs": "",
+    "terminal.title": "",
+    "terminal.waitingForLogs": ""
+  }
+}

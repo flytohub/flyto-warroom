@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.vectorStore",
+    "version": "1.0.0",
+    "translations": {
+        "vectorStore.addMetadata": "フィールドを追加",
+        "vectorStore.collection": "コレクション",
+        "vectorStore.collectionName": "コレクション名",
+        "vectorStore.content": "ドキュメント内容",
+        "vectorStore.contentPlaceholder": "テキストを入力するか{{variable}}を使用...",
+        "vectorStore.createCollection": "新しいコレクションを作成",
+        "vectorStore.deleteIds": "削除するドキュメントID",
+        "vectorStore.documentId": "ドキュメントID（任意）",
+        "vectorStore.filters": "メタデータフィルター",
+        "vectorStore.metadata": "メタデータ",
+        "vectorStore.noMetadata": "メタデータフィールドがありません",
+        "vectorStore.query": "クエリ",
+        "vectorStore.queryPlaceholder": "検索クエリを入力するか{{variable}}を使用...",
+        "vectorStore.refreshCollections": "コレクションを更新",
+        "vectorStore.scoreThreshold": "スコアしきい値",
+        "vectorStore.scoreThresholdHint": "最小類似度スコア（0-1）",
+        "vectorStore.selectCollection": "コレクションを選択...",
+        "vectorStore.topK": "上位K件の結果"
+    }
+}

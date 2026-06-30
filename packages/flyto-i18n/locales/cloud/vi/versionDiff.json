@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "Đã thêm",
+        "versionDiff.addedItems": "Mục đã thêm",
+        "versionDiff.compare": "So sánh",
+        "versionDiff.computing": "Đang tính toán",
+        "versionDiff.current": "Hiện tại",
+        "versionDiff.from": "Từ",
+        "versionDiff.modified": "Đã sửa đổi",
+        "versionDiff.modifiedItems": "Mục đã sửa đổi",
+        "versionDiff.new": "Mới",
+        "versionDiff.noChanges": "Không có thay đổi",
+        "versionDiff.old": "Cũ",
+        "versionDiff.removed": "Đã xóa",
+        "versionDiff.removedItems": "Mục đã xóa",
+        "versionDiff.selectVersions": "Chọn phiên bản",
+        "versionDiff.title": "So sánh phiên bản",
+        "versionDiff.to": "Đến"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.errorWorkflow",
+    "version": "1.0.0",
+    "translations": {
+        "errorWorkflow.description": "Bu iş akışı başarısız olduğunda ne olacağını yapılandırın",
+        "errorWorkflow.doNothing": "Hiçbir şey yapma",
+        "errorWorkflow.onFailure": "İş Akışı Başarısızlığında",
+        "errorWorkflow.passContext": "Hata bağlamını hata iş akışına aktar",
+        "errorWorkflow.passContextHint": "Hata mesajı, kategorisi ve kaynak iş akışı verilerini içerir",
+        "errorWorkflow.runWorkflow": "Hata iş akışını çalıştır",
+        "errorWorkflow.title": "Hata İşleme"
+    }
+}

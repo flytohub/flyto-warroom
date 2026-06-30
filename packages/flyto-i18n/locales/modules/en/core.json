@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "core",
+    "version": "1.0.0",
+    "translations": {
+        "modules.core.api.google_search.output.count.description": "Operation status (success/error)",
+        "modules.core.api.google_search.output.data.description": "Operation status (success/error)",
+        "modules.core.api.google_search.output.status.description": "Operation status (success/error)",
+        "modules.core.api.google_search.output.total_results.description": "Use Google Custom Search API to search keywords",
+        "modules.core.api.http_get.output.body.description": "HTTP status code",
+        "modules.core.api.http_get.output.headers.description": "HTTP status code",
+        "modules.core.api.http_get.output.json.description": "Send HTTP GET request to any URL",
+        "modules.core.api.http_get.output.status_code.description": "HTTP status code"
+    }
+}

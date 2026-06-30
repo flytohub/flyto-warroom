@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "สร้างโปรเจกต์",
+        "projects.create.title": "สร้างโปรเจกต์",
+        "projects.delete.message": "คุณแน่ใจหรือไม่ว่าต้องการลบโปรเจกต์นี้? workflow ทั้งหมดในโปรเจกต์นี้จะถูกย้ายไปยังโปรเจกต์เริ่มต้น",
+        "projects.delete.title": "ลบโปรเจกต์",
+        "projects.description": "จัดระเบียบ workflow ของคุณเป็นโปรเจกต์",
+        "projects.edit.title": "แก้ไขโปรเจกต์",
+        "projects.empty.description": "สร้างโปรเจกต์แรกของคุณเพื่อจัดระเบียบ workflow",
+        "projects.empty.title": "ยังไม่มีโปรเจกต์",
+        "projects.form.color": "สี",
+        "projects.form.description": "คำอธิบาย",
+        "projects.form.name": "ชื่อโปรเจกต์",
+        "projects.form.namePlaceholder": "โปรเจกต์ของฉัน",
+        "projects.members": "สมาชิก",
+        "projects.title": "โปรเจกต์",
+        "projects.workflows": "workflow"
+    }
+}

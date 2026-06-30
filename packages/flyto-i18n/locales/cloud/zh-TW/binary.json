@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.binary",
+    "version": "1.0.0",
+    "translations": {
+        "binary.download": "下載檔案",
+        "binary.downloadToOpen": "下載檔案後開啟",
+        "binary.downloadToView": "下載檢視",
+        "binary.noPreview": "無法預覽",
+        "binary.pdfPreview": "PDF 文件",
+        "binary.previewError": "預覽載入失敗"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "notify",
+    "version": "1.0.0",
+    "translations": {
+        "modules.notify.send.description": "Telegram、Discord、Slack、LINE、または任意の webhook URL に通知を送信",
+        "modules.notify.send.label": "通知を送信",
+        "modules.notify.send.output.ok.description": "通知が正常に送信されたかどうか",
+        "modules.notify.send.output.platform.description": "検出されたプラットフォーム（telegram、discord、slack など）",
+        "modules.notify.send.output.response.description": "Webhook からの応答",
+        "modules.notify.send.output.status_code.description": "HTTP レスポンスステータスコード",
+        "modules.notify.send.params.chat_id.description": "Telegram チャット ID（Telegram の場合は必須）",
+        "modules.notify.send.params.chat_id.label": "チャット ID",
+        "modules.notify.send.params.message.description": "通知メッセージの内容",
+        "modules.notify.send.params.message.label": "メッセージ",
+        "modules.notify.send.params.title.description": "オプションのタイトル（Discord、Slack、Teams 用）",
+        "modules.notify.send.params.title.label": "タイトル",
+        "modules.notify.send.params.url.description": "Webhook URL（Telegram、Discord、Slack、またはカスタム）",
+        "modules.notify.send.params.url.label": "Webhook URL"
+    }
+}

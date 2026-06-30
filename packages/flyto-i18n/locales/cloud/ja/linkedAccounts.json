@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.cannotUnlink": "連携解除できません — 少なくとも1つのログイン方法が必要です",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.link": "アカウントを連携",
+        "linkedAccounts.linkSuccess": "Googleアカウントが正常に連携されました",
+        "linkedAccounts.linked": "連携済み",
+        "linkedAccounts.notLinked": "未連携",
+        "linkedAccounts.subtitle": "連携したログイン方法を管理",
+        "linkedAccounts.title": "連携アカウント",
+        "linkedAccounts.unlink": "連携解除",
+        "linkedAccounts.unlinkConfirm": "Googleの連携を解除してもよろしいですか？",
+        "linkedAccounts.unlinkSuccess": "Googleアカウントの連携を解除しました"
+    }
+}

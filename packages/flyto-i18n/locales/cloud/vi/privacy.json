@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Cập nhật lần cuối",
+        "privacy.sections.collection.content": "Chúng tôi thu thập thông tin bạn cung cấp trực tiếp cho chúng tôi, chẳng hạn như khi bạn tạo tài khoản, sử dụng dịch vụ của chúng tôi, hoặc liên hệ để được hỗ trợ. Điều này có thể bao gồm tên, địa chỉ email và dữ liệu sử dụng của bạn để cải thiện dịch vụ của chúng tôi.",
+        "privacy.sections.collection.title": "Thông tin chúng tôi thu thập",
+        "privacy.sections.contact.content": "Nếu bạn có bất kỳ câu hỏi nào về Chính sách bảo mật này hoặc thực tiễn dữ liệu của chúng tôi, vui lòng liên hệ với chúng tôi tại privacy{'@'}flytohub.com.",
+        "privacy.sections.contact.title": "Liên hệ với chúng tôi",
+        "privacy.sections.rights.content": "Bạn có quyền truy cập, chỉnh sửa hoặc xóa thông tin cá nhân của mình. Bạn cũng có thể yêu cầu chuyển dữ liệu hoặc phản đối một số hoạt động xử lý nhất định. Liên hệ với chúng tôi để thực hiện các quyền này.",
+        "privacy.sections.rights.title": "Quyền của bạn",
+        "privacy.sections.security.content": "Chúng tôi triển khai các biện pháp kỹ thuật và tổ chức phù hợp để bảo vệ thông tin cá nhân của bạn khỏi truy cập, thay đổi, tiết lộ hoặc phá hủy trái phép.",
+        "privacy.sections.security.title": "Bảo mật dữ liệu",
+        "privacy.sections.sharing.content": "Chúng tôi không bán thông tin cá nhân của bạn. Chúng tôi có thể chia sẻ thông tin của bạn với các nhà cung cấp dịch vụ bên thứ ba hỗ trợ chúng tôi vận hành nền tảng, tuân theo các thỏa thuận bảo mật.",
+        "privacy.sections.sharing.title": "Chia sẻ thông tin",
+        "privacy.sections.usage.content": "Chúng tôi sử dụng thông tin thu thập để cung cấp, duy trì và cải thiện dịch vụ của mình, để liên lạc với bạn và cá nhân hóa trải nghiệm của bạn. Chúng tôi cũng có thể sử dụng dữ liệu tổng hợp cho mục đích phân tích.",
+        "privacy.sections.usage.title": "Cách chúng tôi sử dụng thông tin của bạn",
+        "privacy.title": "Chính sách bảo mật"
+    }
+}

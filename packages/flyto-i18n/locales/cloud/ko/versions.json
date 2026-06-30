@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "비교",
+        "versions.current": "현재",
+        "versions.diff.comparing": "비교 중",
+        "versions.diff.noChanges": "버전 간 변경 사항이 없습니다",
+        "versions.diff.selectPrompt": "비교할 두 버전을 선택하세요",
+        "versions.diff.title": "변경 사항",
+        "versions.diff.to": "에서",
+        "versions.empty": "버전 기록이 없습니다",
+        "versions.rollback": "롤백",
+        "versions.rollback.confirm": "롤백",
+        "versions.rollback.description": "v{version}으로 롤백하면 해당 버전의 내용으로 새 버전이 생성됩니다. 현재 버전은 기록에 남습니다.",
+        "versions.rollback.targetVersion": "대상 버전",
+        "versions.rollback.title": "버전으로 롤백",
+        "versions.rollback.warning": "새 버전이 생성됩니다",
+        "versions.title": "버전 기록"
+    }
+}

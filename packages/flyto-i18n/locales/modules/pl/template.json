@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "Wykonaj szablon z biblioteki jako krok w procesie",
+        "modules.template.invoke.label": "Wywołaj szablon",
+        "modules.template.invoke.output.__event__.description": "ID elementu biblioteki (zakup/rozgałęzienie/posiadany)",
+        "modules.template.invoke.output.execution_time_ms.description": "Wynik wykonania szablonu",
+        "modules.template.invoke.output.result.description": "Maksymalny czas wykonania w sekundach",
+        "modules.template.invoke.output.template_id.description": "Zdarzenie do kierowania (sukces/błąd)",
+        "modules.template.invoke.ports.input": "Wywołaj szablon",
+        "modules.template.invoke.ports.success": "Wejście"
+    }
+}

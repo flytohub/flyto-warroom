@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "Analyze content readability",
+        "modules.analysis.html.analyze_readability.label": "HTML Readability",
+        "modules.analysis.html.extract_forms.description": "Extract form data from HTML",
+        "modules.analysis.html.extract_forms.label": "Extract Forms",
+        "modules.analysis.html.extract_metadata.description": "Extract metadata from HTML",
+        "modules.analysis.html.extract_metadata.label": "Extract Metadata",
+        "modules.analysis.html.extract_tables.description": "Extract table data from HTML",
+        "modules.analysis.html.extract_tables.label": "Extract Tables",
+        "modules.analysis.html.find_patterns.description": "Find repeating data patterns in HTML",
+        "modules.analysis.html.find_patterns.label": "Find Patterns",
+        "modules.analysis.html.structure.description": "Analyze HTML DOM structure",
+        "modules.analysis.html.structure.label": "HTML Structure"
+    }
+}

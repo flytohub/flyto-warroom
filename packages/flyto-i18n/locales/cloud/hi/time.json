@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.time",
+    "version": "1.0.0",
+    "translations": {
+        "time.days": "दिन",
+        "time.daysAgo": "{n} दिन पहले",
+        "time.hours": "घंटे",
+        "time.hoursAgo": "{n} घंटे पहले",
+        "time.justNow": "अभी-अभी",
+        "time.minutes": "मिनट",
+        "time.minutesAgo": "{n} मिनट पहले"
+    }
+}

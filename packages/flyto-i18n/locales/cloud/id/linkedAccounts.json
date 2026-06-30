@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.cannotUnlink": "Tidak dapat memutuskan — Anda memerlukan setidaknya satu metode login",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.link": "Hubungkan Akun",
+        "linkedAccounts.linkSuccess": "Akun Google berhasil terhubung",
+        "linkedAccounts.linked": "Terhubung",
+        "linkedAccounts.notLinked": "Tidak terhubung",
+        "linkedAccounts.subtitle": "Kelola metode login yang terhubung",
+        "linkedAccounts.title": "Akun Terhubung",
+        "linkedAccounts.unlink": "Putuskan",
+        "linkedAccounts.unlinkConfirm": "Apakah Anda yakin ingin memutuskan Google?",
+        "linkedAccounts.unlinkSuccess": "Akun Google terputus"
+    }
+}

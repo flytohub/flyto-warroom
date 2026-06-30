@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Daten aus Excel-Dateien lesen (xlsx, xls)",
+        "modules.excel.read.label": "Excel lesen",
+        "modules.excel.read.output.data.description": "Extrahierte Datenzeilen",
+        "modules.excel.read.output.headers.description": "Extrahierte Datenzeilen",
+        "modules.excel.read.output.row_count.description": "Extrahierte Datenzeilen",
+        "modules.excel.read.output.sheet_names.description": "Spaltenüberschriften",
+        "modules.excel.write.description": "Daten in Excel-Dateien schreiben (xlsx)",
+        "modules.excel.write.label": "Excel schreiben",
+        "modules.excel.write.output.path.description": "Pfad zur erstellten Excel-Datei",
+        "modules.excel.write.output.row_count.description": "Pfad zur erstellten Excel-Datei",
+        "modules.excel.write.output.size.description": "Pfad zur erstellten Excel-Datei"
+    }
+}

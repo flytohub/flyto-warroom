@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "श्रेणी",
+        "createModal.category.placeholder": "श्रेणी चुनें (वैकल्पिक)",
+        "createModal.closeDialog": "डायलॉग बंद करें",
+        "createModal.create": "टेम्पलेट बनाएं",
+        "createModal.creating": "बन रहा है...",
+        "createModal.description.label": "विवरण",
+        "createModal.description.placeholder": "यह टेम्पलेट क्या करता है? (वैकल्पिक)",
+        "createModal.errors.createFailed": "टेम्पलेट बनाने में विफल",
+        "createModal.errors.fileTooLarge": "इमेज 2MB से छोटी होनी चाहिए",
+        "createModal.errors.invalidFileType": "कृपया एक इमेज फ़ाइल चुनें",
+        "createModal.folder.label": "फ़ोल्डर",
+        "createModal.folder.placeholder": "डिफ़ॉल्ट (कोई फ़ोल्डर नहीं)",
+        "createModal.icon.change": "आइकन बदलें",
+        "createModal.icon.hint": "PNG, JPG, GIF 2MB तक",
+        "createModal.icon.label": "टेम्पलेट आइकन",
+        "createModal.icon.remove": "आइकन हटाएं",
+        "createModal.icon.upload": "आइकन अपलोड करें",
+        "createModal.name.label": "टेम्पलेट नाम",
+        "createModal.name.placeholder": "मेरा शानदार ऑटोमेशन",
+        "createModal.title": "नया टेम्पलेट"
+    }
+}

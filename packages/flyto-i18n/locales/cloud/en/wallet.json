@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Credits Wallet",
+        "wallet.availableCredits": "Available Credits",
+        "wallet.topup": "Add Credits",
+        "wallet.topupTitle": "Top Up Credits",
+        "wallet.topupSuccess": "Credits added successfully",
+        "wallet.topupCancelled": "Top-up cancelled",
+        "wallet.history": "Transaction History",
+        "wallet.noTransactions": "No transactions yet",
+        "wallet.balanceAfter": "Balance",
+        "wallet.conversionNote": "1 credit = $0.01 USD",
+        "wallet.proceedToPayment": "Proceed to Payment",
+        "wallet.confirmExecute": "Confirm Execution",
+        "wallet.executionCost": "Execution cost",
+        "wallet.yourBalance": "Your balance",
+        "wallet.insufficientCredits": "Insufficient credits",
+        "wallet.needMore": "You need {amount} more credits",
+        "wallet.topupNow": "Top Up Now",
+        "wallet.confirmAndExecute": "Confirm & Execute",
+        "wallet.lowBalanceWarning": "Your credits are running low. Top up to keep running workflows."
+    }
+}

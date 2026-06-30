@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "Wbudowane role",
+        "roles.create": "Utworz role",
+        "roles.create.title": "Utworz role",
+        "roles.custom.empty": "Brak zdefiniowanych rol niestandardowych",
+        "roles.custom.title": "Role niestandardowe",
+        "roles.delete.message": "Czy na pewno chcesz usunac te role? Uzytkownicy z ta rola zostana przypisani do domyslnej roli czlonka.",
+        "roles.delete.title": "Usun role",
+        "roles.description": "Zarzadzaj rolami i uprawnieniami dostepu",
+        "roles.edit.title": "Edytuj role",
+        "roles.form.description": "Opis",
+        "roles.form.name": "Nazwa roli",
+        "roles.form.permissions": "Uprawnienia",
+        "roles.permissions": "uprawnien",
+        "roles.title": "Role i uprawnienia",
+        "roles.users": "uzytkownikow"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.checkpointTooltip",
+    "version": "1.0.0",
+    "translations": {
+        "checkpointTooltip.clickToAdd": "연결에 체크포인트를 추가하려면 클릭",
+        "checkpointTooltip.clickToExit": "체크포인트 모드를 종료하려면 클릭",
+        "checkpointTooltip.upgradeToUse": "수동 체크포인트를 사용하려면 업그레이드"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Cập nhật lần cuối",
+        "terms.sections.acceptance.content": "Bằng việc truy cập hoặc sử dụng dịch vụ Flyto2, bạn đồng ý tuân thủ các Điều khoản dịch vụ này. Nếu bạn không đồng ý với các điều khoản này, vui lòng không sử dụng dịch vụ của chúng tôi.",
+        "terms.sections.acceptance.title": "Chấp nhận điều khoản",
+        "terms.sections.account.content": "Bạn chịu trách nhiệm bảo mật thông tin đăng nhập tài khoản và tất cả hoạt động xảy ra dưới tài khoản của bạn. Bạn phải thông báo ngay cho chúng tôi về bất kỳ sử dụng trái phép nào.",
+        "terms.sections.account.title": "Tài khoản người dùng",
+        "terms.sections.intellectual.content": "Tất cả nội dung, tính năng và chức năng của Flyto2 thuộc sở hữu của chúng tôi và được bảo vệ bởi luật bản quyền, thương hiệu và sở hữu trí tuệ quốc tế.",
+        "terms.sections.intellectual.title": "Sở hữu trí tuệ",
+        "terms.sections.limitation.content": "Trong phạm vi tối đa được pháp luật cho phép, Flyto2 không chịu trách nhiệm về bất kỳ thiệt hại gián tiếp, ngẫu nhiên, đặc biệt, hậu quả hoặc trừng phạt nào phát sinh từ việc bạn sử dụng dịch vụ của chúng tôi.",
+        "terms.sections.limitation.title": "Giới hạn trách nhiệm",
+        "terms.sections.prohibited.content": "Bạn không được sử dụng dịch vụ của chúng tôi cho mục đích bất hợp pháp, vi phạm pháp luật, xâm phạm quyền sở hữu trí tuệ hoặc truyền mã độc hại. Chúng tôi có quyền chấm dứt tài khoản vi phạm các điều khoản này.",
+        "terms.sections.prohibited.title": "Sử dụng bị cấm",
+        "terms.sections.services.content": "Flyto2 cung cấp nền tảng tự động hóa workflow cho phép người dùng tạo, quản lý và thực thi các workflow tự động. Chúng tôi có quyền sửa đổi hoặc ngừng dịch vụ bất kỳ lúc nào.",
+        "terms.sections.services.title": "Mô tả dịch vụ",
+        "terms.sections.termination.content": "Chúng tôi có thể chấm dứt hoặc tạm ngưng tài khoản và quyền truy cập dịch vụ của bạn theo quyết định riêng của chúng tôi, mà không cần thông báo trước, đối với hành vi mà chúng tôi cho là vi phạm các điều khoản này hoặc có hại cho người dùng khác.",
+        "terms.sections.termination.title": "Chấm dứt",
+        "terms.title": "Điều khoản dịch vụ"
+    }
+}

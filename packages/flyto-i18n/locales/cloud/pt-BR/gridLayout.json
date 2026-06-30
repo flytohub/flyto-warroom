@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.gridLayout",
+    "version": "1.0.0",
+    "translations": {
+        "gridLayout.fourColumns": "Quatro Colunas",
+        "gridLayout.singleColumn": "Uma Coluna",
+        "gridLayout.threeColumns": "Tres Colunas",
+        "gridLayout.twoColumns11": "Duas Colunas (1:1)",
+        "gridLayout.twoColumns12": "Duas Colunas (1:2)",
+        "gridLayout.twoColumns21": "Duas Colunas (2:1)"
+    }
+}

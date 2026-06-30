@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "training",
+    "version": "1.0.0",
+    "translations": {
+        "modules.training.practice.analyze.description": "Uygulama için web sitesi yapısını analiz et",
+        "modules.training.practice.analyze.label": "Uygulama Analizi",
+        "modules.training.practice.analyze.output.status.description": "Web sitesi yapısını analiz et",
+        "modules.training.practice.analyze.output.structure.description": "Web sitesi yapısını analiz et",
+        "modules.training.practice.execute.description": "Uygulama oturumunu yürüt",
+        "modules.training.practice.execute.label": "Uygulama Yürütme",
+        "modules.training.practice.execute.output.items_processed.description": "Uygulama oturumunu yürüt",
+        "modules.training.practice.execute.output.status.description": "Uygulama oturumunu yürüt",
+        "modules.training.practice.infer_schema.description": "Web sitesinden veri şemasını çıkar",
+        "modules.training.practice.infer_schema.label": "Uygulama Şema Çıkarımı",
+        "modules.training.practice.infer_schema.output.schema.description": "Veri şemasını çıkar",
+        "modules.training.practice.infer_schema.output.status.description": "Veri şemasını çıkar",
+        "modules.training.practice.stats.description": "Uygulama istatistiklerini al",
+        "modules.training.practice.stats.label": "Uygulama İstatistikleri",
+        "modules.training.practice.stats.output.history.description": "Uygulama istatistiklerini al",
+        "modules.training.practice.stats.output.success_rate.description": "Uygulama istatistiklerini al",
+        "modules.training.practice.stats.output.successful_sessions.description": "Toplam oturumlar",
+        "modules.training.practice.stats.output.total_sessions.description": "Toplam oturumlar"
+    }
+}

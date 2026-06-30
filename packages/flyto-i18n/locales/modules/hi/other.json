@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "हेडर नाम",
+        "schema.field.body": "बॉडी",
+        "schema.field.body_matches": "प्रतिक्रिया",
+        "schema.field.full_page": "पूर्ण पेज",
+        "schema.field.response": "प्रतिक्रिया",
+        "schema.field.screenshot_format": "पूर्ण पेज",
+        "schema.field.ssrf_protection": "SSRF सुरक्षा",
+        "schema.field.ssrf_protection.description": "निजी/आंतरिक नेटवर्क (localhost, 192.168.x.x, क्लाउड मेटाडेटा एंडपॉइंट) के अनुरोधों को ब्लॉक करें। केवल विश्वसनीय आंतरिक लक्ष्यों के लिए अक्षम करें।",
+        "schema.field.url": "URL",
+        "schema.field.viewport_height": "चौड़ाई",
+        "schema.field.viewport_width": "चौड़ाई"
+    }
+}

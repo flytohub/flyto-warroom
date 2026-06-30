@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "डेटाबेस टेबल में डेटा इन्सर्ट करें",
+        "modules.database.insert.label": "डेटाबेस इन्सर्ट",
+        "modules.database.insert.output.inserted_count.description": "इन्सर्ट की गई पंक्तियों की संख्या",
+        "modules.database.insert.output.returning_data.description": "इन्सर्ट की गई पंक्तियों की संख्या",
+        "modules.database.query.description": "PostgreSQL, MySQL, या SQLite डेटाबेस पर SQL क्वेरी निष्पादित करें",
+        "modules.database.query.label": "डेटाबेस क्वेरी",
+        "modules.database.query.output.columns.description": "क्वेरी परिणाम पंक्तियां",
+        "modules.database.query.output.row_count.description": "क्वेरी परिणाम पंक्तियां",
+        "modules.database.query.output.rows.description": "क्वेरी परिणाम पंक्तियां",
+        "modules.database.update.description": "डेटाबेस टेबल में डेटा अपडेट करें",
+        "modules.database.update.label": "डेटाबेस अपडेट",
+        "modules.database.update.output.updated_count.description": "अपडेट की गई पंक्तियों की संख्या"
+    }
+}

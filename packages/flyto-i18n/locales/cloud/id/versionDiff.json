@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "Ditambahkan",
+        "versionDiff.addedItems": "Item yang Ditambahkan",
+        "versionDiff.compare": "Bandingkan",
+        "versionDiff.computing": "Menghitung",
+        "versionDiff.current": "Saat Ini",
+        "versionDiff.from": "Dari",
+        "versionDiff.modified": "Dimodifikasi",
+        "versionDiff.modifiedItems": "Item yang Dimodifikasi",
+        "versionDiff.new": "Baru",
+        "versionDiff.noChanges": "Tidak Ada Perubahan",
+        "versionDiff.old": "Lama",
+        "versionDiff.removed": "Dihapus",
+        "versionDiff.removedItems": "Item yang Dihapus",
+        "versionDiff.selectVersions": "Pilih Versi",
+        "versionDiff.title": "Perbandingan Versi",
+        "versionDiff.to": "Ke"
+    }
+}

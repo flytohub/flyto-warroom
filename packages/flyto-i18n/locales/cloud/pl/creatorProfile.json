@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "Powrot do marketplace",
+        "creatorProfile.chatError": "Nie udalo sie rozpoczac czatu",
+        "creatorProfile.creatorTemplates": "Szablony tworcy",
+        "creatorProfile.editProfile": "Edytuj profil",
+        "creatorProfile.follow": "Obserwuj",
+        "creatorProfile.followError": "Nie udalo sie zaktualizowac statusu obserwowania",
+        "creatorProfile.followers": "Obserwujacy",
+        "creatorProfile.following": "Obserwowani",
+        "creatorProfile.loadMore": "Wczytaj wiecej",
+        "creatorProfile.noDescription": "Brak opisu",
+        "creatorProfile.noFollowers": "Brak obserwujacych",
+        "creatorProfile.noFollowing": "Nie obserwuje nikogo",
+        "creatorProfile.noTemplates": "Brak opublikowanych szablonow",
+        "creatorProfile.notFound": "Nie znaleziono tworcy",
+        "creatorProfile.notFoundDesc": "Szukany tworca nie istnieje lub zostal usuniety.",
+        "creatorProfile.templates": "Szablony"
+    }
+}

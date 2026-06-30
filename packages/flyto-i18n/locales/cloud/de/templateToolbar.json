@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "Rasteransicht",
+        "templateToolbar.listView": "Listenansicht",
+        "templateToolbar.searchLabel": "Vorlagen suchen",
+        "templateToolbar.searchPlaceholder": "Vorlagen suchen...",
+        "templateToolbar.sortLabel": "Vorlagen sortieren nach",
+        "templateToolbar.sortOptions.created": "Zuletzt erstellt",
+        "templateToolbar.sortOptions.name": "Name A-Z",
+        "templateToolbar.sortOptions.status": "Nach Status",
+        "templateToolbar.sortOptions.updated": "Zuletzt aktualisiert",
+        "templateToolbar.viewMode": "Ansichtsmodus"
+    }
+}

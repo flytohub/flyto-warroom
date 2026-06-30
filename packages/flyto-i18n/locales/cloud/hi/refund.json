@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "वापसी राशि",
+        "refund.cancelButton": "रद्द करें",
+        "refund.confirm": "वापसी की पुष्टि करें",
+        "refund.confirmButton": "वापसी की पुष्टि करें",
+        "refund.confirmTitle": "वापसी अनुरोध की पुष्टि करें",
+        "refund.contactSupport": "सहायता से संपर्क करें",
+        "refund.days": "वापसी के दिन",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "आप वापसी के लिए पात्र हैं",
+        "refund.expiredWindow": "30-दिन की वापसी अवधि समाप्त हो गई है",
+        "refund.failed": "वापसी का अनुरोध असफल रहा",
+        "refund.forksAffected": "निम्नलिखित फोर्क्स अनाथ हो जाएंगे (आपके संपादन सुरक्षित रहेंगे लेकिन स्रोत से अलग हो जाएंगे):",
+        "refund.forksWarning": "फोर्क्स चेतावनी",
+        "refund.notEligible": "वापसी के लिए पात्र नहीं",
+        "refund.processInfo": "वापसी प्रक्रिया जानकारी",
+        "refund.processing": "प्रोसेसिंग...",
+        "refund.success": "वापसी का अनुरोध सफलतापूर्वक किया गया",
+        "refund.template": "वापसी टेम्पलेट",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "चेतावनी विवरण"
+    }
+}

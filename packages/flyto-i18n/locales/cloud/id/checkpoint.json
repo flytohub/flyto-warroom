@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.checkpoint",
+    "version": "1.0.0",
+    "translations": {
+        "checkpoint.clickToRemove": "Klik untuk menghapus",
+        "checkpoint.disabled": "Checkpoint dinonaktifkan",
+        "checkpoint.humanCheckpoint": "Checkpoint Manusia"
+    }
+}

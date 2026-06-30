@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "PDF फ़ॉर्म फ़ील्ड्स को डेटा से भरें और वैकल्पिक रूप से इमेज इन्सर्ट करें",
+        "modules.pdf.fill_form.label": "PDF फ़ॉर्म भरें",
+        "modules.pdf.fill_form.output.fields_filled.description": "भरी गई PDF का पथ",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "इन्सर्ट की गई इमेज की संख्या",
+        "modules.pdf.fill_form.output.images_inserted.description": "भरी गई PDF का पथ",
+        "modules.pdf.fill_form.output.output_path.description": "भरी गई PDF का पथ",
+        "modules.pdf.generate.description": "HTML सामग्री या टेक्स्ट से PDF फ़ाइल जनरेट करें",
+        "modules.pdf.generate.label": "PDF जनरेट करें",
+        "modules.pdf.generate.output.file_size_bytes.description": "PDF में पेजों की संख्या",
+        "modules.pdf.generate.output.output_path.description": "जनरेट की गई PDF का पथ",
+        "modules.pdf.generate.output.page_count.description": "जनरेट की गई PDF का पथ",
+        "modules.pdf.parse.description": "PDF फ़ाइलों से टेक्स्ट और मेटाडेटा निकालें",
+        "modules.pdf.parse.label": "PDF पार्स करें",
+        "modules.pdf.parse.output.metadata.description": "निकाली गई टेक्स्ट सामग्री",
+        "modules.pdf.parse.output.page_count.description": "प्रति पेज टेक्स्ट सामग्री",
+        "modules.pdf.parse.output.pages.description": "निकाली गई टेक्स्ट सामग्री",
+        "modules.pdf.parse.output.text.description": "निकाली गई टेक्स्ट सामग्री",
+        "modules.pdf.to_word.description": "PDF फ़ाइलों को Word डॉक्यूमेंट (.docx) में बदलें",
+        "modules.pdf.to_word.label": "PDF से Word",
+        "modules.pdf.to_word.output.file_size.description": "कन्वर्ट किए गए पेजों की संख्या",
+        "modules.pdf.to_word.output.output_path.description": "जनरेट किए गए Word डॉक्यूमेंट का पथ",
+        "modules.pdf.to_word.output.page_count.description": "जनरेट किए गए Word डॉक्यूमेंट का पथ"
+    }
+}

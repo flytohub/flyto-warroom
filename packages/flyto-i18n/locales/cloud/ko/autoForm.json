@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.autoForm",
+    "version": "1.0.0",
+    "translations": {
+        "autoForm.browsePath": "경로 찾아보기",
+        "autoForm.hideAdvanced": "고급 숨기기",
+        "autoForm.hidePassword": "비밀번호 숨기기",
+        "autoForm.multipleFilesSelected": "{count}개 파일 선택됨",
+        "autoForm.selectFilePlaceholder": "파일 선택...",
+        "autoForm.selectPlaceholder": "선택...",
+        "autoForm.showAdvanced": "고급 표시",
+        "autoForm.showPassword": "비밀번호 표시"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.colorPicker",
+    "version": "1.0.0",
+    "translations": {
+        "colorPicker.custom": "Tùy chỉnh",
+        "colorPicker.popular": "Phổ biến",
+        "colorPicker.presets": "Cài đặt sẵn"
+    }
+}

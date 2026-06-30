@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "Trích xuất dữ liệu từ trang web và xuất ra dữ liệu JSON có cấu trúc",
+        "modules.composite.browser.scrape_to_json.label": "Trích xuất Web sang JSON",
+        "modules.composite.data.csv_to_json.description": "Đọc tệp CSV và chuyển đổi sang định dạng JSON",
+        "modules.composite.data.csv_to_json.label": "CSV sang JSON",
+        "modules.composite.data.json_transform_notify.description": "Chuyển đổi dữ liệu JSON và gửi thông báo với kết quả",
+        "modules.composite.data.json_transform_notify.label": "Chuyển đổi JSON và Thông báo",
+        "modules.composite.developer.api_to_notification.description": "Lấy dữ liệu từ bất kỳ API nào và gửi đến kênh thông báo",
+        "modules.composite.developer.api_to_notification.label": "API sang Thông báo",
+        "modules.composite.developer.github_daily_digest.description": "Lấy cập nhật kho GitHub và gửi thông báo tóm tắt hàng ngày",
+        "modules.composite.developer.github_daily_digest.label": "Tóm tắt Hàng ngày GitHub",
+        "modules.composite.notification.multi_channel_alert.description": "Gửi cảnh báo đến nhiều kênh thông báo cùng lúc",
+        "modules.composite.notification.multi_channel_alert.label": "Cảnh báo Đa Kênh",
+        "modules.composite.notification.scheduled_report.description": "Tạo và gửi báo cáo định kỳ đến các kênh thông báo",
+        "modules.composite.notification.scheduled_report.label": "Báo Cáo Định Kỳ",
+        "modules.composite.test.api_test.description": "Thực hiện kiểm tra API với yêu cầu HTTP và xác nhận",
+        "modules.composite.test.api_test.label": "Bộ Kiểm tra API",
+        "modules.composite.test.e2e_flow.description": "Kiểm tra luồng công việc từ đầu đến cuối với tự động hóa trình duyệt",
+        "modules.composite.test.e2e_flow.label": "Kiểm tra Luồng E2E",
+        "modules.composite.test.quality_gate.description": "Thực hiện kiểm tra chất lượng và chặn triển khai dựa trên ngưỡng",
+        "modules.composite.test.quality_gate.label": "Cổng Chất Lượng",
+        "modules.composite.test.ui_review.description": "Kiểm tra hồi quy trực quan và quy trình đánh giá giao diện",
+        "modules.composite.test.ui_review.label": "Đánh giá Giao diện",
+        "modules.composite.test.verify_fix.description": "Xác minh sửa lỗi với kiểm tra trước/sau và bộ kiểm tra hồi quy",
+        "modules.composite.test.verify_fix.label": "Xác minh Sửa lỗi"
+    }
+}

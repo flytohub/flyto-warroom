@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Markdown 내용에서 YAML frontmatter를 추출합니다",
+        "modules.markdown.parse_frontmatter.label": "Frontmatter 파싱",
+        "modules.markdown.parse_frontmatter.output.content.description": "frontmatter가 제거된 Markdown 내용",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "사전 형식으로 파싱된 frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.description": "frontmatter가 포함된 Markdown 내용",
+        "modules.markdown.parse_frontmatter.params.text.label": "Markdown 텍스트",
+        "modules.markdown.to_html.description": "Markdown 텍스트를 HTML로 변환합니다",
+        "modules.markdown.to_html.label": "Markdown을 HTML로",
+        "modules.markdown.to_html.output.html.description": "변환된 HTML 내용",
+        "modules.markdown.to_html.output.word_count.description": "입력 텍스트의 단어 수",
+        "modules.markdown.to_html.params.extensions.description": "활성화할 Markdown 확장 기능 (markdown 라이브러리에서만 사용)",
+        "modules.markdown.to_html.params.extensions.label": "확장 기능",
+        "modules.markdown.to_html.params.text.description": "변환할 Markdown 내용",
+        "modules.markdown.to_html.params.text.label": "Markdown 텍스트",
+        "modules.markdown.toc.description": "Markdown 제목에서 목차를 생성합니다",
+        "modules.markdown.toc.label": "목차 생성",
+        "modules.markdown.toc.output.toc.description": "레벨, 제목, 슬러그가 포함된 제목 목록",
+        "modules.markdown.toc.output.toc_markdown.description": "형식화된 Markdown 목차",
+        "modules.markdown.toc.params.max_depth.description": "포함할 최대 제목 깊이 (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "최대 깊이",
+        "modules.markdown.toc.params.text.description": "제목을 추출할 Markdown 내용",
+        "modules.markdown.toc.params.text.label": "Markdown 텍스트"
+    }
+}

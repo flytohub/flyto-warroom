@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.errorWorkflow",
+    "version": "1.0.0",
+    "translations": {
+        "errorWorkflow.description": "이 워크플로우가 실패했을 때 수행할 작업 설정",
+        "errorWorkflow.doNothing": "아무것도 하지 않음",
+        "errorWorkflow.onFailure": "워크플로우 실패 시",
+        "errorWorkflow.passContext": "오류 워크플로우에 오류 컨텍스트 전달",
+        "errorWorkflow.passContextHint": "오류 메시지, 카테고리 및 소스 워크플로우 데이터 포함",
+        "errorWorkflow.runWorkflow": "오류 워크플로우 실행",
+        "errorWorkflow.title": "오류 처리"
+    }
+}

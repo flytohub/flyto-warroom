@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.debugTab",
+    "version": "1.0.0",
+    "translations": {
+        "debugTab.context": "上下文",
+        "debugTab.output": "输出",
+        "debugTab.screenshot": "截屏"
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.breakpoint",
+  "version": "1.0.0",
+  "translations": {
+    "breakpoint.additionalInput": "",
+    "breakpoint.approve": "",
+    "breakpoint.comment": "",
+    "breakpoint.commentPlaceholder": "",
+    "breakpoint.contextSnapshot": "",
+    "breakpoint.createdAt": "",
+    "breakpoint.expires": "",
+    "breakpoint.humanCheckpoint": "",
+    "breakpoint.noBreakpoint": "",
+    "breakpoint.noPending": "",
+    "breakpoint.pendingApprovals": "",
+    "breakpoint.reject": "",
+    "breakpoint.step": "",
+    "breakpoint.waitingApproval": "",
+    "breakpoint.workflow": "",
+    "browserInteract.execute": "",
+    "browserInteract.noElements": "",
+    "browserInteract.pagePreview": "",
+    "browserInteract.selectHint": "",
+    "browserInteract.skip": "",
+    "browserInteract.title": ""
+  }
+}

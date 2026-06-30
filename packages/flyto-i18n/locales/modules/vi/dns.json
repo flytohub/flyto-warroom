@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "dns",
+    "version": "1.0.0",
+    "translations": {
+        "modules.dns.lookup.description": "Tra cứu DNS cho bản ghi tên miền",
+        "modules.dns.lookup.label": "Tra cứu DNS",
+        "modules.dns.lookup.output.domain.description": "Tên miền đã truy vấn",
+        "modules.dns.lookup.output.record_type.description": "Loại bản ghi đã truy vấn",
+        "modules.dns.lookup.output.records.description": "Bản ghi đã giải quyết",
+        "modules.dns.lookup.output.ttl.description": "Thời gian tồn tại (nếu có)",
+        "modules.dns.lookup.params.domain.description": "Tên miền cần tra cứu",
+        "modules.dns.lookup.params.domain.label": "Tên miền",
+        "modules.dns.lookup.params.record_type.description": "Loại bản ghi DNS cần truy vấn",
+        "modules.dns.lookup.params.record_type.label": "Loại bản ghi",
+        "modules.dns.lookup.params.timeout.description": "Thời gian chờ truy vấn tính bằng giây",
+        "modules.dns.lookup.params.timeout.label": "Thời gian chờ"
+    }
+}

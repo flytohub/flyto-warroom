@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Portafoglio crediti",
+        "wallet.availableCredits": "Crediti disponibili",
+        "wallet.topup": "Ricarica",
+        "wallet.topupTitle": "Ricarica crediti",
+        "wallet.topupSuccess": "Crediti aggiunti con successo",
+        "wallet.topupCancelled": "Ricarica annullata",
+        "wallet.history": "Cronologia transazioni",
+        "wallet.noTransactions": "Nessuna transazione ancora",
+        "wallet.balanceAfter": "Saldo",
+        "wallet.conversionNote": "1 credito = $0,01 USD",
+        "wallet.proceedToPayment": "Procedi al pagamento",
+        "wallet.confirmExecute": "Conferma esecuzione",
+        "wallet.executionCost": "Costo di esecuzione",
+        "wallet.yourBalance": "Il tuo saldo",
+        "wallet.insufficientCredits": "Crediti insufficienti",
+        "wallet.needMore": "Servono ancora {amount} crediti",
+        "wallet.topupNow": "Ricarica ora",
+        "wallet.confirmAndExecute": "Conferma ed esegui",
+        "wallet.lowBalanceWarning": "I crediti stanno per esaurirsi. Ricarica per continuare a eseguire i workflow."
+    }
+}

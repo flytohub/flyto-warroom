@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "Fill PDF form fields with data and optionally insert images",
+        "modules.pdf.fill_form.label": "Fill PDF Form",
+        "modules.pdf.fill_form.output.fields_filled.description": "Path to the filled PDF",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Number of images inserted",
+        "modules.pdf.fill_form.output.images_inserted.description": "Path to the filled PDF",
+        "modules.pdf.fill_form.output.output_path.description": "Path to the filled PDF",
+        "modules.pdf.generate.description": "Generate PDF files from HTML content or text",
+        "modules.pdf.generate.label": "Generate PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "Number of pages in the PDF",
+        "modules.pdf.generate.output.output_path.description": "Path to the generated PDF",
+        "modules.pdf.generate.output.page_count.description": "Path to the generated PDF",
+        "modules.pdf.parse.description": "Extract text and metadata from PDF files",
+        "modules.pdf.parse.label": "Parse PDF",
+        "modules.pdf.parse.output.metadata.description": "Extracted text content",
+        "modules.pdf.parse.output.page_count.description": "Text content per page",
+        "modules.pdf.parse.output.pages.description": "Extracted text content",
+        "modules.pdf.parse.output.text.description": "Extracted text content",
+        "modules.pdf.to_word.description": "Convert PDF files to Word documents (.docx)",
+        "modules.pdf.to_word.label": "PDF to Word",
+        "modules.pdf.to_word.output.file_size.description": "Number of pages converted",
+        "modules.pdf.to_word.output.output_path.description": "Path to the generated Word document",
+        "modules.pdf.to_word.output.page_count.description": "Path to the generated Word document"
+    }
+}

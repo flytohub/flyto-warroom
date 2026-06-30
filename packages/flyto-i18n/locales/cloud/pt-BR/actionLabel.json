@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "Criar",
+        "actionLabel.delete": "Excluir",
+        "actionLabel.execute": "Executar",
+        "actionLabel.export": "Exportar",
+        "actionLabel.import": "Importar",
+        "actionLabel.logout": "Sair",
+        "actionLabel.update": "Atualizar"
+    }
+}

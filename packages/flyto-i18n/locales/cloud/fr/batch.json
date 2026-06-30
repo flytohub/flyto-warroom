@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Supprimer",
+        "batch.deleteConfirm.message": "Etes-vous sur de vouloir supprimer {count} modeles ? Cette action est irreversible.",
+        "batch.deleteConfirm.title": "Supprimer {count} modeles",
+        "batch.deselectAll": "Tout deselectionner",
+        "batch.select": "Sélectionner",
+        "batch.selectAll": "Tout selectionner",
+        "batch.selected": "selectionne(s)"
+    }
+}

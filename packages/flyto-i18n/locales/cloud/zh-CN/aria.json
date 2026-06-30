@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.aria",
+    "version": "1.0.0",
+    "translations": {
+        "aria.subflowNavigation": "子流程菜单"
+    }
+}

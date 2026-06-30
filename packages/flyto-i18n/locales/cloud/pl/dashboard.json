@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "Zastosowane",
+        "dashboard.evolution.events": "Wydarzenia",
+        "dashboard.evolution.executions": "Wykonania",
+        "dashboard.evolution.flytoCan": "Lecieć do puszki",
+        "dashboard.evolution.fromCheckpoints": "Z punktów kontrolnych",
+        "dashboard.evolution.last30days": "Ostatnie 30 dni",
+        "dashboard.evolution.last7days": "Ostatnie 7 dni",
+        "dashboard.evolution.last90days": "Ostatnie 90 dni",
+        "dashboard.evolution.moatDescription": "Opis fosy",
+        "dashboard.evolution.moatTitle": "Tytuł fosy",
+        "dashboard.evolution.n8nCant": "N8n nie może",
+        "dashboard.evolution.overallImprovement": "Ogólna poprawa",
+        "dashboard.evolution.pending": "Oczekujące",
+        "dashboard.evolution.reliability": "Niezawodność",
+        "dashboard.evolution.subtitle": "Podtytuł",
+        "dashboard.evolution.suggestionsApplied": "Zastosowane sugestie",
+        "dashboard.evolution.timeSaved": "Zaoszczędzony czas",
+        "dashboard.evolution.timeline": "Oś czasu",
+        "dashboard.evolution.title": "Tytuł",
+        "dashboard.evolution.today": "Dzisiaj",
+        "dashboard.evolution.topImproved": "Najlepsze ulepszenia",
+        "dashboard.evolution.yesterday": "Wczoraj",
+        "dashboard.title": "Panel"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "문제를 설명해 주세요...",
+        "report.reasons.copyright": "저작권 또는 지적재산권 침해",
+        "report.reasons.harmful": "유해하거나 위험한 콘텐츠",
+        "report.reasons.inappropriate": "부적절하거나 불쾌한 콘텐츠",
+        "report.reasons.misleading": "허위 또는 오해의 소지가 있는 정보",
+        "report.reasons.other": "기타 (직접 입력)",
+        "report.reasons.spam": "스팸 또는 오해의 소지",
+        "report.selectReason": "신고 사유를 선택해 주세요:",
+        "report.submit": "신고 제출",
+        "report.title": "콘텐츠 신고"
+    }
+}

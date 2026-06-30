@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.variableSelector",
+    "version": "1.0.0",
+    "translations": {
+        "variableSelector.insert": "插入",
+        "variableSelector.noVariables": "沒有可用的變數",
+        "variableSelector.searchPlaceholder": "搜尋變數...",
+        "variableSelector.selected": "已選擇"
+    }
+}

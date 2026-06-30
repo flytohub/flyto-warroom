@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.footer",
+    "version": "1.0.0",
+    "translations": {
+        "footer.copyright": "© {year} Flyto2. 版权所有。",
+        "footer.description": "强大的可视化工作流程编辑器,集成数百种应用程序,让任何人都能轻松创建自动化任务。",
+        "footer.disclaimer": "本工具之自动化操作皆于用户设备上运行。用户应自行确认其操作符合目标网站之服务条款及适用法规。"
+    }
+}

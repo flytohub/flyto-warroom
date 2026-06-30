@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "AI um Korrektur bitten",
+        "preview.emptyState.description": "Wechseln Sie in den Dev-Modus, um Workflow-Schritte hinzuzufügen",
+        "preview.emptyState.hint": "Keine Vorschau verfügbar",
+        "preview.emptyState.title": "Kein Workflow definiert",
+        "preview.executionFailed": "Ausführung fehlgeschlagen",
+        "preview.fields": "Felder",
+        "preview.inputs": "Eingaben",
+        "preview.noInputsRequired": "Keine Eingaben erforderlich",
+        "preview.noWorkflowHint": "Fügen Sie Workflow-Schritte im Dev-Modus hinzu, um die Ausführung zu ermöglichen",
+        "preview.output": "Ausgabe",
+        "preview.ready": "Bereit",
+        "preview.running": "Läuft",
+        "preview.steps": "Schritte",
+        "preview.untitledTemplate": "Unbenannte Vorlage"
+    }
+}

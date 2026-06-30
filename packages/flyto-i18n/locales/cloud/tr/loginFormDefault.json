@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "Şifrenizi mi Unuttunuz?",
+        "loginFormDefault.loginButton": "Giriş",
+        "loginFormDefault.passwordPlaceholder": "Şifre girin",
+        "loginFormDefault.usernamePlaceholder": "Kullanıcı adı girin"
+    }
+}

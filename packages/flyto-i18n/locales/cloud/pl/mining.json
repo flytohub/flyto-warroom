@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.mining",
+    "version": "1.0.0",
+    "translations": {
+        "mining.bottlenecks.empty": "Nie znaleziono wąskich gardeł",
+        "mining.bottlenecks.title": "Wąskie gardła",
+        "mining.discovery.analyze": "Analizuj",
+        "mining.discovery.empty": "Brak danych do analizy",
+        "mining.discovery.selectWorkflow": "Wybierz przepływ pracy do analizy",
+        "mining.discovery.title": "Odkrywanie procesów",
+        "mining.quality.fitness": "Dopasowanie",
+        "mining.quality.generalization": "Uogólnienie",
+        "mining.quality.precision": "Precyzja",
+        "mining.stats.avgDuration": "Średni czas trwania",
+        "mining.stats.cases": "Przypadki",
+        "mining.stats.conformance": "Zgodność",
+        "mining.stats.variants": "Warianty",
+        "mining.suggestions.apply": "Zastosuj",
+        "mining.suggestions.empty": "Brak sugestii",
+        "mining.suggestions.title": "Sugestie",
+        "mining.variants.empty": "Brak wariantów",
+        "mining.variants.title": "Warianty procesów"
+    }
+}

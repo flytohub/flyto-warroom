@@ -1,0 +1,43 @@
+{
+  "$id": "https://schemas.flyto.dev/evidence-event.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "event_id": {
+      "type": "string"
+    },
+    "org_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "object"
+    },
+    "source": {
+      "type": "string"
+    },
+    "surface": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "event_id",
+    "org_id",
+    "surface",
+    "source",
+    "artifacts"
+  ],
+  "title": "Flyto evidence event",
+  "type": "object"
+}

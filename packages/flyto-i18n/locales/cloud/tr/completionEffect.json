@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.completionEffect",
+    "version": "1.0.0",
+    "translations": {
+        "completionEffect.defaultMessage": "Tüm adımlar başarıyla tamamlandı",
+        "completionEffect.defaultTitle": "İş Akışı Tamamlandı"
+    }
+}

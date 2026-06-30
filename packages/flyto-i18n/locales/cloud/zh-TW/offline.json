@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "返回模板",
+        "offline.currentlyOffline": "您目前處於離線模式",
+        "offline.languagePack.active": "使用中",
+        "offline.languagePack.currentLanguage": "目前語言",
+        "offline.languagePack.downloadHint": "從以下網址下載語言包",
+        "offline.languagePack.importButton": "匯入語言包",
+        "offline.languagePack.importFailed": "匯入語言包失敗",
+        "offline.languagePack.importSuccess": "成功匯入 {locale}（{count} 個鍵）",
+        "offline.languagePack.importedPacks": "已匯入的語言包",
+        "offline.languagePack.importing": "匯入中...",
+        "offline.languagePack.invalidFormat": "檔案格式無效，請選擇 flyto-i18n JSON 檔案",
+        "offline.languagePack.noTranslations": "檔案中沒有翻譯內容",
+        "offline.languagePack.subtitle": "匯入離線翻譯檔案",
+        "offline.languagePack.title": "語言包",
+        "offline.languagePack.use": "使用",
+        "offline.license": "授權",
+        "offline.settings": "離線設定"
+    }
+}

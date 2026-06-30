@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://flyto2.net/schemas/locale.schema.json",
+  "title": "Flyto2 i18n Locale File",
+  "description": "Schema for flyto-i18n translation files",
+  "type": "object",
+  "required": ["$schema", "locale", "category", "version", "translations"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Reference to this schema"
+    },
+    "locale": {
+      "type": "string",
+      "pattern": "^[a-z]{2}(-[A-Z]{2})?$",
+      "description": "Locale code (e.g., 'en', 'zh-TW', 'ja')"
+    },
+    "category": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_.]*$",
+      "description": "Translation category (e.g., 'browser', 'cloud.admin', 'common')"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version of this translation file"
+    },
+    "translations": {
+      "type": "object",
+      "description": "Key-value translation pairs",
+      "additionalProperties": {
+        "type": "string",
+        "maxLength": 500,
+        "minLength": 1
+      },
+      "propertyNames": {
+        "pattern": "^(modules|cloud|landing|common|app|schema|ai|code|console)\\.[a-zA-Z0-9_][a-zA-Z0-9_-]*(\\.[a-zA-Z0-9_][a-zA-Z0-9_-]*)*$"
+      }
+    }
+  },
+  "additionalProperties": false
+}

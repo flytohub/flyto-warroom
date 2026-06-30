@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.pluginType",
+    "version": "1.0.0",
+    "translations": {
+        "pluginType.audio": "Ses",
+        "pluginType.embedding": "Gömme",
+        "pluginType.languageModel": "Dil Modeli",
+        "pluginType.multimodal": "Çok Modlu",
+        "pluginType.vision": "Görüntü"
+    }
+}

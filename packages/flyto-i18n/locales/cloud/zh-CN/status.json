@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.status",
+    "version": "1.0.0",
+    "translations": {
+        "status.cancelled": "已取消",
+        "status.completed": "已完成",
+        "status.error": "错误",
+        "status.failed": "失败",
+        "status.pending": "待处理",
+        "status.running": "运行中",
+        "status.success": "成功"
+    }
+}

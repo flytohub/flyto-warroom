@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Kategori",
+        "createModal.category.placeholder": "Bir kategori seçin (isteğe bağlı)",
+        "createModal.closeDialog": "Diyaloğu kapat",
+        "createModal.create": "Şablon Oluştur",
+        "createModal.creating": "Oluşturuluyor...",
+        "createModal.description.label": "Açıklama",
+        "createModal.description.placeholder": "Bu şablon ne yapar? (isteğe bağlı)",
+        "createModal.errors.createFailed": "Şablon oluşturulamadı",
+        "createModal.errors.fileTooLarge": "Görsel 2MB'dan küçük olmalıdır",
+        "createModal.errors.invalidFileType": "Lütfen bir görsel dosyası seçin",
+        "createModal.folder.label": "Klasör",
+        "createModal.folder.placeholder": "Varsayılan (klasör yok)",
+        "createModal.icon.change": "Simgeyi Değiştir",
+        "createModal.icon.hint": "PNG, JPG, GIF 2MB'a kadar",
+        "createModal.icon.label": "Şablon Simgesi",
+        "createModal.icon.remove": "Simgeyi kaldır",
+        "createModal.icon.upload": "Simge Yükle",
+        "createModal.name.label": "Şablon Adı",
+        "createModal.name.placeholder": "Harika Otomasyonum",
+        "createModal.title": "Yeni Şablon"
+    }
+}

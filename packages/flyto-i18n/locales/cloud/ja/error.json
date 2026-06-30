@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "リプレイの開始に失敗しました",
+        "error.fixJsonFirst": "最初にJSONエラーを修正してください",
+        "error.imageTooLarge": "画像サイズが大きすぎます",
+        "error.invalidJsonContext": "コンテキストオーバーライドのJSONが無効です",
+        "error.noStepsToValidate": "検証するステップが見つかりません",
+        "error.replayFailed": "リプレイに失敗しました"
+    }
+}

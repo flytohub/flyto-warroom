@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "Lampirkan file",
+        "chat.messageUser": "Pesan",
+        "chat.messages": "Pesan",
+        "chat.noConversations": "Belum ada percakapan",
+        "chat.noMessages": "Belum ada pesan. Sapa dulu!",
+        "chat.online": "Online",
+        "chat.searchConversations": "Cari percakapan...",
+        "chat.selectConversation": "Pilih percakapan untuk mulai mengobrol",
+        "chat.send": "Kirim",
+        "chat.startChat": "Mulai Chat",
+        "chat.startChatFailed": "Gagal memulai chat",
+        "chat.typePlaceholder": "Ketik pesan...",
+        "chat.user": "Pengguna"
+    }
+}

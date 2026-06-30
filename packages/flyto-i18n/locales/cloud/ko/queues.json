@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "항목 추가",
+        "queues.create.maxRetries": "최대 재시도",
+        "queues.create.name": "큐 이름",
+        "queues.create.namePlaceholder": "큐 이름을 입력하세요",
+        "queues.create.selectWorkflow": "워크플로우 선택",
+        "queues.create.submit": "큐 생성",
+        "queues.create.title": "큐 생성",
+        "queues.create.workflow": "워크플로우",
+        "queues.createFirst": "첫 번째 큐를 생성하세요",
+        "queues.empty": "큐 없음",
+        "queues.emptyDesc": "시작하려면 큐를 생성하세요",
+        "queues.stats.completed": "완료됨",
+        "queues.stats.pending": "대기 중",
+        "queues.stats.processing": "처리 중",
+        "queues.stats.totalItems": "총 항목",
+        "queues.status.completed": "완료됨",
+        "queues.status.failed": "실패함",
+        "queues.status.pending": "대기 중",
+        "queues.status.processing": "처리 중",
+        "queues.transactions.empty": "거래 없음",
+        "queues.transactions.title": "거래"
+    }
+}

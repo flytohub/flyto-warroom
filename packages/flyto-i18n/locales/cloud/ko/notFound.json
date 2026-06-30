@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "URL을 확인하고 다시 시도하세요",
+        "notFound.contactSupport": "지원 문의",
+        "notFound.goBack": "뒤로 가기",
+        "notFound.goHome": "홈으로 이동",
+        "notFound.helpText": "도움이 필요하신가요?",
+        "notFound.message": "찾으시는 페이지가 존재하지 않거나 이동되었습니다.",
+        "notFound.myTemplates": "내 템플릿",
+        "notFound.pageNotExist": "이 페이지는 존재하지 않습니다",
+        "notFound.suggestion1": "URL에 오타가 있는지 확인하세요",
+        "notFound.suggestion2": "이전 페이지로 돌아가세요",
+        "notFound.suggestion3": "템플릿으로 이동하세요",
+        "notFound.suggestions": "다음을 시도해 보세요:",
+        "notFound.title": "페이지를 찾을 수 없음"
+    }
+}

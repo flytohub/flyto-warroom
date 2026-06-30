@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "th",
+  "category": "cloud.checkpoint",
+  "version": "1.0.0",
+  "translations": {
+    "checkpoint.clickToRemove": "คลิกเพื่อลบ",
+    "checkpoint.disabled": "ปิดใช้งาน Checkpoint",
+    "checkpoint.humanCheckpoint": "Human Checkpoint"
+  }
+}

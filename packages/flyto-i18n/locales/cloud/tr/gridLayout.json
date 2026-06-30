@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.gridLayout",
+    "version": "1.0.0",
+    "translations": {
+        "gridLayout.fourColumns": "Dört Sütun",
+        "gridLayout.singleColumn": "Tek Sütun",
+        "gridLayout.threeColumns": "Üç Sütun",
+        "gridLayout.twoColumns11": "İki Sütun (1:1)",
+        "gridLayout.twoColumns12": "İki Sütun (1:2)",
+        "gridLayout.twoColumns21": "İki Sütun (2:1)"
+    }
+}

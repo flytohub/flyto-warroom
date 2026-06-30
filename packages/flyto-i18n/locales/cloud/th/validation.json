@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "อนุญาตเฉพาะตัวอักษรและตัวเลข",
+        "validation.error": "ข้อผิดพลาดการตรวจสอบ",
+        "validation.failed": "การตรวจสอบล้มเหลว",
+        "validation.invalidEmail": "ที่อยู่อีเมลไม่ถูกต้อง",
+        "validation.maxLength": "สูงสุด {max} ตัวอักษร",
+        "validation.minLength": "อย่างน้อย {min} ตัวอักษร",
+        "validation.needsLowercase": "ต้องมีตัวอักษรพิมพ์เล็กอย่างน้อยหนึ่งตัว",
+        "validation.needsNumber": "ต้องมีตัวเลขอย่างน้อยหนึ่งตัว",
+        "validation.needsUppercase": "ต้องมีตัวอักษรพิมพ์ใหญ่อย่างน้อยหนึ่งตัว",
+        "validation.passwordHint": "อย่างน้อย 12 ตัวอักษร มีตัวพิมพ์ใหญ่ ตัวพิมพ์เล็ก และตัวเลข",
+        "validation.passwordMismatch": "รหัสผ่านไม่ตรงกัน",
+        "validation.required": "ฟิลด์นี้จำเป็น"
+    }
+}

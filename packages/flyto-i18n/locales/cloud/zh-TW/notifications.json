@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count} 天前",
+        "notifications.empty": "目前沒有通知",
+        "notifications.hoursAgo": "{count} 小時前",
+        "notifications.justNow": "剛剛",
+        "notifications.loadMore": "載入更多",
+        "notifications.markAllRead": "全部已讀",
+        "notifications.minutesAgo": "{count} 分鐘前",
+        "notifications.title": "通知"
+    }
+}

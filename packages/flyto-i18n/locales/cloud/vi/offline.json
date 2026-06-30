@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "Quay lại mẫu",
+        "offline.currentlyOffline": "Bạn đang làm việc offline",
+        "offline.languagePack.active": "Đang hoạt động",
+        "offline.languagePack.currentLanguage": "Ngôn ngữ hiện tại",
+        "offline.languagePack.downloadHint": "Tải gói ngôn ngữ từ",
+        "offline.languagePack.importButton": "Nhập gói ngôn ngữ",
+        "offline.languagePack.importFailed": "Nhập gói ngôn ngữ thất bại",
+        "offline.languagePack.importSuccess": "Đã nhập thành công {locale} ({count} khóa)",
+        "offline.languagePack.importedPacks": "Gói đã nhập",
+        "offline.languagePack.importing": "Đang nhập...",
+        "offline.languagePack.invalidFormat": "Định dạng tệp không hợp lệ. Cần tệp JSON flyto-i18n.",
+        "offline.languagePack.noTranslations": "Không tìm thấy bản dịch trong tệp",
+        "offline.languagePack.subtitle": "Nhập bản dịch để dùng offline",
+        "offline.languagePack.title": "Gói ngôn ngữ",
+        "offline.languagePack.use": "Sử dụng",
+        "offline.license": "Giấy phép",
+        "offline.settings": "Cài đặt Offline"
+    }
+}

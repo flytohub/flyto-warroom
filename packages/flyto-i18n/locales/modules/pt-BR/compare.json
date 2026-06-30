@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "Detectar se um valor mudou além do limite (por quantidade ou porcentagem)",
+        "modules.compare.change.label": "Detectar Mudança",
+        "modules.compare.change.output.change_absolute.description": "Mudança percentual (positivo = aumento, negativo = diminuição)",
+        "modules.compare.change.output.change_percent.description": "Direção da mudança: ",
+        "modules.compare.change.output.changed.description": "Se a operação foi bem-sucedida",
+        "modules.compare.change.output.current.description": "Mudança absoluta (positivo = aumento, negativo = diminuição)",
+        "modules.compare.change.output.direction.description": "Se a operação foi bem-sucedida",
+        "modules.compare.change.output.ok.description": "Se a operação foi bem-sucedida",
+        "modules.compare.change.output.previous.description": "Mudança absoluta (positivo = aumento, negativo = diminuição)",
+        "modules.compare.change.output.summary.description": "O valor atual",
+        "modules.compare.change.params.current.description": "O valor atual/novo para comparar",
+        "modules.compare.change.params.current.label": "Valor Atual",
+        "modules.compare.change.params.direction.description": "Qual direção de mudança detectar",
+        "modules.compare.change.params.direction.label": "Limite",
+        "modules.compare.change.params.mode.description": "O valor anterior/antigo para comparar",
+        "modules.compare.change.params.mode.label": "Valor Anterior",
+        "modules.compare.change.params.previous.description": "O valor atual/novo para comparar",
+        "modules.compare.change.params.previous.label": "Valor Atual",
+        "modules.compare.change.params.threshold.description": "Mudança mínima para acionar (5 = 5% ou 5 unidades)",
+        "modules.compare.change.params.threshold.label": "Mudança Percentual"
+    }
+}

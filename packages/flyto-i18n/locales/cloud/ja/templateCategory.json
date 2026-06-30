@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.templateCategory",
+    "version": "1.0.0",
+    "translations": {
+        "templateCategory.automation": "自動化",
+        "templateCategory.dataProcessing": "データ処理",
+        "templateCategory.productivity": "生産性",
+        "templateCategory.socialMedia": "ソーシャルメディア",
+        "templateCategory.webScraping": "Webスクレイピング",
+        "templateCategory.api": "API",
+        "templateCategory.media": "メディア",
+        "templateCategory.notification": "通知",
+        "templateCategory.ai": "AI",
+        "templateCategory.file": "ファイル",
+        "templateCategory.monitoring": "モニタリング",
+        "templateCategory.developer": "開発ツール"
+    }
+}

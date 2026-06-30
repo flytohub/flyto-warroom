@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Löschen",
+        "batch.deleteConfirm.message": "Sind Sie sicher, dass Sie {count} Vorlagen löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+        "batch.deleteConfirm.title": "{count} Vorlagen löschen",
+        "batch.deselectAll": "Alle abwählen",
+        "batch.select": "Auswählen",
+        "batch.selectAll": "Alle auswählen",
+        "batch.selected": "ausgewählt"
+    }
+}

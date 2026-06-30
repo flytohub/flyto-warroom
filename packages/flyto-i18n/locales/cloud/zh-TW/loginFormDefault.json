@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "忘記密碼？",
+        "loginFormDefault.loginButton": "登入",
+        "loginFormDefault.passwordPlaceholder": "輸入密碼",
+        "loginFormDefault.usernamePlaceholder": "輸入用戶名"
+    }
+}

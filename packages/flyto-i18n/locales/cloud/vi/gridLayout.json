@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.gridLayout",
+    "version": "1.0.0",
+    "translations": {
+        "gridLayout.fourColumns": "Bốn cột",
+        "gridLayout.singleColumn": "Một cột",
+        "gridLayout.threeColumns": "Ba cột",
+        "gridLayout.twoColumns11": "Hai cột (1:1)",
+        "gridLayout.twoColumns12": "Hai cột (1:2)",
+        "gridLayout.twoColumns21": "Hai cột (2:1)"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "只允许字母和数字",
+        "validation.error": "验证错误",
+        "validation.failed": "验证失败",
+        "validation.invalidEmail": "无效的电子邮件地址",
+        "validation.maxLength": "最多 {max} 个字符",
+        "validation.minLength": "至少需要 {min} 个字符",
+        "validation.needsLowercase": "需包含至少一个小写字母",
+        "validation.needsNumber": "需包含至少一个数字",
+        "validation.needsUppercase": "需包含至少一个大写字母",
+        "validation.passwordHint": "至少 8 字符，需含大小写英文及数字",
+        "validation.passwordMismatch": "两次密码输入不一致",
+        "validation.required": "此字段为必填"
+    }
+}

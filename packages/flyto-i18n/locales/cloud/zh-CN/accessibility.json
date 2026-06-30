@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "路径导览",
+        "accessibility.clearInput": "清除输入",
+        "accessibility.closeDialog": "关闭对话框",
+        "accessibility.closeMenu": "关闭菜单",
+        "accessibility.closeModal": "关闭窗口",
+        "accessibility.copyToClipboard": "拷贝到剪贴板",
+        "accessibility.imageEditingControls": "图片编辑控制项",
+        "accessibility.notifications": "通知",
+        "accessibility.openMenu": "打开菜单",
+        "accessibility.rating": "评分",
+        "accessibility.refreshList": "刷新列表",
+        "accessibility.removeIcon": "移除图标",
+        "accessibility.resetImage": "重设图片位置和缩放",
+        "accessibility.revokeKey": "撤销密钥",
+        "accessibility.rotateLeft": "向左旋转90度",
+        "accessibility.rotateRight": "向右旋转90度",
+        "accessibility.showInMarketplace": "显示在市集",
+        "accessibility.zoomIn": "放大",
+        "accessibility.zoomOut": "缩小"
+    }
+}

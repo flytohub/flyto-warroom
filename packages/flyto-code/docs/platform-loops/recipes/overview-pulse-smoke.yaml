@@ -1,0 +1,28 @@
+id: overview-pulse-smoke
+surface: overview
+description: Verify that dashboard and pulse data render from engine-backed org state.
+requires:
+  - frontend
+  - engine
+steps:
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/dashboard?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/pulse?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+assertions:
+  - assert: route_renders_without_error
+    step: 1
+  - assert: route_renders_without_error
+    step: 3
+  - assert: event_invalidates_query
+    event: scan.complete
+    invalidates: qk.pulse.feed
+  - assert: event_invalidates_query
+    event: discovery.changes
+    invalidates: qk.pulse.feed
+  - assert: query_key_present
+    query_key: pulse

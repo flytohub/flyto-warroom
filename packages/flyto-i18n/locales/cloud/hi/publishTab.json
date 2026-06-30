@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.publishTab",
+    "version": "1.0.0",
+    "translations": {
+        "publishTab.media": "मीडिया",
+        "publishTab.settings": "सेटिंग्स"
+    }
+}

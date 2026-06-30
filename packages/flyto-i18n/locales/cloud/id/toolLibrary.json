@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "Semua",
+        "toolLibrary.createFirstTool": "Buat Tool Pertama Anda",
+        "toolLibrary.createTool": "Buat Tool",
+        "toolLibrary.deleteConfirm": "Hapus Tool",
+        "toolLibrary.deleteMessage": "Apakah Anda yakin ingin menghapus \"{name}\"? Tindakan ini tidak dapat dibatalkan.",
+        "toolLibrary.noDescription": "Tidak ada deskripsi",
+        "toolLibrary.noTools": "Belum Ada Tool",
+        "toolLibrary.noToolsDesc": "Buat tool pertama Anda untuk mengotomatisasi workflow Anda",
+        "toolLibrary.run": "Jalankan",
+        "toolLibrary.searchPlaceholder": "Cari tool...",
+        "toolLibrary.steps": "langkah",
+        "toolLibrary.subtitle": "Kelola dan jalankan tool otomatisasi Anda",
+        "toolLibrary.title": "Perpustakaan Tool"
+    }
+}

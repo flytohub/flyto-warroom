@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "日時に時間を加算",
+        "modules.datetime.add.label": "時間を加算",
+        "modules.datetime.add.output.result.description": "操作結果",
+        "modules.datetime.add.output.timestamp.description": "操作結果",
+        "modules.datetime.format.description": "日時を文字列にフォーマット",
+        "modules.datetime.format.label": "日時フォーマット",
+        "modules.datetime.format.output.result.description": "操作結果",
+        "modules.datetime.format.output.timestamp.description": "操作結果",
+        "modules.datetime.parse.description": "文字列を日時にパース",
+        "modules.datetime.parse.label": "日時パース",
+        "modules.datetime.parse.output.day.description": "年の部分",
+        "modules.datetime.parse.output.hour.description": "月の部分",
+        "modules.datetime.parse.output.minute.description": "日の部分",
+        "modules.datetime.parse.output.month.description": "Unixタイムスタンプ",
+        "modules.datetime.parse.output.result.description": "操作結果",
+        "modules.datetime.parse.output.second.description": "時の部分",
+        "modules.datetime.parse.output.timestamp.description": "操作結果",
+        "modules.datetime.parse.output.year.description": "操作結果",
+        "modules.datetime.subtract.description": "日時から時間を減算",
+        "modules.datetime.subtract.label": "時間を減算",
+        "modules.datetime.subtract.output.result.description": "操作結果",
+        "modules.datetime.subtract.output.timestamp.description": "操作結果"
+    }
+}

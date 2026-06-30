@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "ตัวแปรที่มี",
+        "expression.editExpression": "แก้ไข Expression",
+        "expression.enterExpression": "ป้อน expression เพื่อดูตัวอย่าง",
+        "expression.expressionCode": "การแสดงออก",
+        "expression.openEditor": "เปิดตัวแก้ไข expression",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "ตัวอย่าง"
+    }
+}

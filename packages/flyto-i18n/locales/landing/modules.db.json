@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "db",
+  "version": "1.0.0",
+  "translations": {
+    "modules.db.mongodb.find.description": "",
+    "modules.db.mongodb.find.label": "",
+    "modules.db.mongodb.find.output.count.description": "",
+    "modules.db.mongodb.find.output.documents.description": "",
+    "modules.db.mongodb.insert.description": "",
+    "modules.db.mongodb.insert.label": "",
+    "modules.db.mongodb.insert.output.inserted_count.description": "",
+    "modules.db.mongodb.insert.output.inserted_ids.description": "",
+    "modules.db.mysql.query.description": "",
+    "modules.db.mysql.query.label": "",
+    "modules.db.mysql.query.output.columns.description": "",
+    "modules.db.mysql.query.output.row_count.description": "",
+    "modules.db.mysql.query.output.rows.description": "",
+    "modules.db.postgresql.query.description": "",
+    "modules.db.postgresql.query.label": "",
+    "modules.db.postgresql.query.output.columns.description": "",
+    "modules.db.postgresql.query.output.row_count.description": "",
+    "modules.db.postgresql.query.output.rows.description": "",
+    "modules.db.redis.get.description": "",
+    "modules.db.redis.get.label": "",
+    "modules.db.redis.get.output.exists.description": "",
+    "modules.db.redis.get.output.key.description": "",
+    "modules.db.redis.get.output.value.description": "",
+    "modules.db.redis.set.description": "",
+    "modules.db.redis.set.label": ""
+  }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "PDF 폼 필드에 데이터 채우기 및 선택적으로 이미지 삽입",
+        "modules.pdf.fill_form.label": "PDF 폼 채우기",
+        "modules.pdf.fill_form.output.fields_filled.description": "채워진 PDF 경로",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "삽입된 이미지 수",
+        "modules.pdf.fill_form.output.images_inserted.description": "채워진 PDF 경로",
+        "modules.pdf.fill_form.output.output_path.description": "채워진 PDF 경로",
+        "modules.pdf.generate.description": "HTML 콘텐츠 또는 텍스트에서 PDF 파일 생성",
+        "modules.pdf.generate.label": "PDF 생성",
+        "modules.pdf.generate.output.file_size_bytes.description": "PDF의 페이지 수",
+        "modules.pdf.generate.output.output_path.description": "생성된 PDF 경로",
+        "modules.pdf.generate.output.page_count.description": "생성된 PDF 경로",
+        "modules.pdf.parse.description": "PDF 파일에서 텍스트 및 메타데이터 추출",
+        "modules.pdf.parse.label": "PDF 파싱",
+        "modules.pdf.parse.output.metadata.description": "추출된 텍스트 콘텐츠",
+        "modules.pdf.parse.output.page_count.description": "페이지별 텍스트 콘텐츠",
+        "modules.pdf.parse.output.pages.description": "추출된 텍스트 콘텐츠",
+        "modules.pdf.parse.output.text.description": "추출된 텍스트 콘텐츠",
+        "modules.pdf.to_word.description": "PDF 파일을 Word 문서(.docx)로 변환",
+        "modules.pdf.to_word.label": "PDF를 Word로",
+        "modules.pdf.to_word.output.file_size.description": "변환된 페이지 수",
+        "modules.pdf.to_word.output.output_path.description": "생성된 Word 문서 경로",
+        "modules.pdf.to_word.output.page_count.description": "생성된 Word 문서 경로"
+    }
+}

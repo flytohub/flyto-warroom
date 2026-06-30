@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "IMAPサーバーからメールを読み取り",
+        "modules.email.read.label": "メール読み取り",
+        "modules.email.read.output.count.description": "メールオブジェクトのリスト",
+        "modules.email.read.output.emails.description": "メールオブジェクトのリスト",
+        "modules.email.send.description": "SMTPサーバー経由でメールを送信",
+        "modules.email.send.label": "メール送信",
+        "modules.email.send.output.message_id.description": "メールが正常に送信されたかどうか",
+        "modules.email.send.output.recipients.description": "メールが正常に送信されたかどうか",
+        "modules.email.send.output.sent.description": "メールが正常に送信されたかどうか"
+    }
+}

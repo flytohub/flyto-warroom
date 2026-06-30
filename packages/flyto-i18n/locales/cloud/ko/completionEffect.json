@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.completionEffect",
+    "version": "1.0.0",
+    "translations": {
+        "completionEffect.defaultMessage": "모든 단계가 성공적으로 실행되었습니다",
+        "completionEffect.defaultTitle": "워크플로우 완료"
+    }
+}

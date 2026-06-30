@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.binary",
+    "version": "1.0.0",
+    "translations": {
+        "binary.download": "다운로드",
+        "binary.downloadToOpen": "열기 위해 다운로드",
+        "binary.downloadToView": "보기 위해 다운로드",
+        "binary.noPreview": "미리보기를 제공하지 않음",
+        "binary.pdfPreview": "PDF 미리보기",
+        "binary.previewError": "미리보기 오류"
+    }
+}

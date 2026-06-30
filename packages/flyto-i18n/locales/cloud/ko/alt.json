@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.alt",
+    "version": "1.0.0",
+    "translations": {
+        "alt.avatar": "아바타",
+        "alt.flytoLogo": "Flyto2 로고",
+        "alt.preview": "미리보기",
+        "alt.result": "결과",
+        "alt.screenshot": "스크린샷",
+        "alt.stepScreenshot": "단계 스크린샷",
+        "alt.templateIcon": "템플릿 아이콘"
+    }
+}

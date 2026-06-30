@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "將資料插入資料庫表格",
+        "modules.database.insert.label": "資料庫插入",
+        "modules.database.insert.output.inserted_count.description": "插入的列數",
+        "modules.database.insert.output.returning_data.description": "插入的列數",
+        "modules.database.query.description": "在 PostgreSQL、MySQL 或 SQLite 資料庫執行 SQL 查詢",
+        "modules.database.query.label": "資料庫查詢",
+        "modules.database.query.output.columns.description": "查詢結果列",
+        "modules.database.query.output.row_count.description": "查詢結果列",
+        "modules.database.query.output.rows.description": "查詢結果列",
+        "modules.database.update.description": "更新資料庫表格中的資料",
+        "modules.database.update.label": "資料庫更新",
+        "modules.database.update.output.updated_count.description": "更新的列數"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "Extract text and content from Word documents (.docx)",
+        "modules.word.parse.label": "Parse Word Document",
+        "modules.word.parse.output.images.description": "List of paragraphs",
+        "modules.word.parse.output.metadata.description": "Extracted tables as arrays",
+        "modules.word.parse.output.paragraphs.description": "Full text content of the document",
+        "modules.word.parse.output.tables.description": "Full text content of the document",
+        "modules.word.parse.output.text.description": "Full text content of the document",
+        "modules.word.to_pdf.description": "Convert Word documents (.docx) to PDF files",
+        "modules.word.to_pdf.label": "Word to PDF",
+        "modules.word.to_pdf.output.file_size.description": "Path to the generated PDF file",
+        "modules.word.to_pdf.output.method_used.description": "Size of the output file in bytes",
+        "modules.word.to_pdf.output.output_path.description": "Path to the generated PDF file"
+    }
+}

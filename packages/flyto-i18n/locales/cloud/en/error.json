@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "Failed to start replay",
+        "error.fixJsonFirst": "Please fix JSON errors first",
+        "error.imageTooLarge": "Image file is too large",
+        "error.invalidJsonContext": "Invalid JSON in context overrides",
+        "error.noStepsToValidate": "No steps found to validate",
+        "error.replayFailed": "Replay failed"
+    }
+}

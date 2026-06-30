@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.alt",
+    "version": "1.0.0",
+    "translations": {
+        "alt.avatar": "Ảnh đại diện",
+        "alt.flytoLogo": "Logo Flyto2",
+        "alt.preview": "Xem trước",
+        "alt.result": "Kết quả",
+        "alt.screenshot": "Ảnh chụp màn hình",
+        "alt.stepScreenshot": "Ảnh chụp màn hình bước",
+        "alt.templateIcon": "Biểu tượng mẫu"
+    }
+}

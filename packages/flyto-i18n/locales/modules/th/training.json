@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "training",
+    "version": "1.0.0",
+    "translations": {
+        "modules.training.practice.analyze.description": "วิเคราะห์โครงสร้างเว็บไซต์สำหรับการฝึก",
+        "modules.training.practice.analyze.label": "ฝึกวิเคราะห์",
+        "modules.training.practice.analyze.output.status.description": "วิเคราะห์โครงสร้างเว็บไซต์",
+        "modules.training.practice.analyze.output.structure.description": "วิเคราะห์โครงสร้างเว็บไซต์",
+        "modules.training.practice.execute.description": "ดำเนินการเซสชันฝึก",
+        "modules.training.practice.execute.label": "ฝึกดำเนินการ",
+        "modules.training.practice.execute.output.items_processed.description": "ดำเนินการเซสชันฝึก",
+        "modules.training.practice.execute.output.status.description": "ดำเนินการเซสชันฝึก",
+        "modules.training.practice.infer_schema.description": "อนุมานสคีมาข้อมูลจากเว็บไซต์",
+        "modules.training.practice.infer_schema.label": "ฝึกอนุมานสคีมา",
+        "modules.training.practice.infer_schema.output.schema.description": "อนุมานสคีมาข้อมูล",
+        "modules.training.practice.infer_schema.output.status.description": "อนุมานสคีมาข้อมูล",
+        "modules.training.practice.stats.description": "รับสถิติการฝึก",
+        "modules.training.practice.stats.label": "สถิติการฝึก",
+        "modules.training.practice.stats.output.history.description": "รับสถิติการฝึก",
+        "modules.training.practice.stats.output.success_rate.description": "รับสถิติการฝึก",
+        "modules.training.practice.stats.output.successful_sessions.description": "เซสชันทั้งหมด",
+        "modules.training.practice.stats.output.total_sessions.description": "เซสชันทั้งหมด"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Excluir",
+        "batch.deleteConfirm.message": "Tem certeza que deseja excluir {count} templates? Esta acao nao pode ser desfeita.",
+        "batch.deleteConfirm.title": "Excluir {count} Templates",
+        "batch.deselectAll": "Desmarcar Todos",
+        "batch.select": "Selecionar",
+        "batch.selectAll": "Selecionar Todos",
+        "batch.selected": "selecionados"
+    }
+}

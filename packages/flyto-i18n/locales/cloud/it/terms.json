@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Ultimo Aggiornamento",
+        "terms.sections.acceptance.content": "Accedendo o utilizzando i servizi Flyto2, accetti di essere vincolato da questi Termini di Servizio. Se non accetti questi termini, ti preghiamo di non utilizzare i nostri servizi.",
+        "terms.sections.acceptance.title": "Accettazione dei Termini",
+        "terms.sections.account.content": "Sei responsabile del mantenimento della riservatezza delle credenziali del tuo account e di tutte le attivita che si verificano sotto il tuo account. Devi notificarci immediatamente qualsiasi uso non autorizzato.",
+        "terms.sections.account.title": "Account Utente",
+        "terms.sections.intellectual.content": "Tutti i contenuti, le funzionalita e le funzionalita di Flyto2 sono di nostra proprieta e sono protetti dalle leggi internazionali sul copyright, marchi e altre proprieta intellettuali.",
+        "terms.sections.intellectual.title": "Proprieta Intellettuale",
+        "terms.sections.limitation.content": "Nella misura massima consentita dalla legge, Flyto2 non sara responsabile per danni indiretti, incidentali, speciali, consequenziali o punitivi derivanti dall'utilizzo dei nostri servizi.",
+        "terms.sections.limitation.title": "Limitazione di Responsabilita",
+        "terms.sections.prohibited.content": "Non puoi utilizzare i nostri servizi per scopi illegali, per violare leggi, per violare diritti di proprieta intellettuale o per trasmettere codice dannoso. Ci riserviamo il diritto di terminare gli account che violano questi termini.",
+        "terms.sections.prohibited.title": "Usi Vietati",
+        "terms.sections.services.content": "Flyto2 fornisce una piattaforma di automazione workflow che consente agli utenti di creare, gestire ed eseguire workflow automatizzati. Ci riserviamo il diritto di modificare o interrompere i servizi in qualsiasi momento.",
+        "terms.sections.services.title": "Descrizione dei Servizi",
+        "terms.sections.termination.content": "Possiamo terminare o sospendere il tuo account e l'accesso ai nostri servizi a nostra esclusiva discrezione, senza preavviso, per condotte che riteniamo violino questi termini o siano dannose per altri utenti.",
+        "terms.sections.termination.title": "Terminazione",
+        "terms.title": "Termini di Servizio"
+    }
+}

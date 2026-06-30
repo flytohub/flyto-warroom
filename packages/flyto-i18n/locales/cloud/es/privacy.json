@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Ultima actualizacion",
+        "privacy.sections.collection.content": "Recopilamos informacion que nos proporcionas directamente, como cuando creas una cuenta, utilizas nuestros servicios o nos contactas para obtener soporte. Esto puede incluir tu nombre, direccion de correo electronico y datos de uso para mejorar nuestros servicios.",
+        "privacy.sections.collection.title": "Informacion que recopilamos",
+        "privacy.sections.contact.content": "Si tienes alguna pregunta sobre esta Politica de Privacidad o nuestras practicas de datos, contactanos en privacy{'@'}flytohub.com.",
+        "privacy.sections.contact.title": "Contactanos",
+        "privacy.sections.rights.content": "Tienes derecho a acceder, corregir o eliminar tu informacion personal. Tambien puedes solicitar la portabilidad de datos u oponerte a ciertas actividades de procesamiento. Contactanos para ejercer estos derechos.",
+        "privacy.sections.rights.title": "Tus derechos",
+        "privacy.sections.security.content": "Implementamos medidas tecnicas y organizativas apropiadas para proteger tu informacion personal contra el acceso no autorizado, alteracion, divulgacion o destruccion.",
+        "privacy.sections.security.title": "Seguridad de datos",
+        "privacy.sections.sharing.content": "No vendemos tu informacion personal. Podemos compartir tu informacion con proveedores de servicios externos que nos ayudan a operar nuestra plataforma, sujeto a acuerdos de confidencialidad.",
+        "privacy.sections.sharing.title": "Compartir informacion",
+        "privacy.sections.usage.content": "Utilizamos la informacion que recopilamos para proporcionar, mantener y mejorar nuestros servicios, para comunicarnos contigo y para personalizar tu experiencia. Tambien podemos usar datos agregados con fines analiticos.",
+        "privacy.sections.usage.title": "Como usamos tu informacion",
+        "privacy.title": "Politica de privacidad"
+    }
+}

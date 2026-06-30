@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "進階",
+        "toolRunner.backToLibrary": "返回工具庫",
+        "toolRunner.copy": "複製",
+        "toolRunner.download": "下載",
+        "toolRunner.editTool": "編輯",
+        "toolRunner.executionFailed": "執行失敗",
+        "toolRunner.executionLogs": "執行日誌",
+        "toolRunner.executionSuccess": "執行完成",
+        "toolRunner.executionTimedOut": "執行逾時",
+        "toolRunner.flowSteps": "流程步驟",
+        "toolRunner.inputForm": "輸入表單",
+        "toolRunner.loadFailed": "載入工具失敗",
+        "toolRunner.noLogs": "尚無日誌。執行工具後將顯示執行日誌。",
+        "toolRunner.resolvedParams": "參數預覽",
+        "toolRunner.results": "結果",
+        "toolRunner.retry": "重試",
+        "toolRunner.runAgain": "再次執行",
+        "toolRunner.runToSeeResults": "執行工具以查看結果",
+        "toolRunner.runTool": "執行工具",
+        "toolRunner.running": "執行中...",
+        "toolRunner.simpleMode": "簡易",
+        "toolRunner.toolNotFound": "找不到工具",
+        "toolRunner.toolNotFoundError": "找不到工具"
+    }
+}

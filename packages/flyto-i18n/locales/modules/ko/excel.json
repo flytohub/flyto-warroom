@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Excel 파일(xlsx, xls)에서 데이터 읽기",
+        "modules.excel.read.label": "Excel 읽기",
+        "modules.excel.read.output.data.description": "추출된 데이터 행",
+        "modules.excel.read.output.headers.description": "추출된 데이터 행",
+        "modules.excel.read.output.row_count.description": "추출된 데이터 행",
+        "modules.excel.read.output.sheet_names.description": "열 헤더",
+        "modules.excel.write.description": "Excel 파일(xlsx)에 데이터 쓰기",
+        "modules.excel.write.label": "Excel 쓰기",
+        "modules.excel.write.output.path.description": "생성된 Excel 파일 경로",
+        "modules.excel.write.output.row_count.description": "생성된 Excel 파일 경로",
+        "modules.excel.write.output.size.description": "생성된 Excel 파일 경로"
+    }
+}

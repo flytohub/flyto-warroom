@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "Eklendi",
+        "versionDiff.addedItems": "Eklenen Öğeler",
+        "versionDiff.compare": "Karşılaştır",
+        "versionDiff.computing": "Hesaplanıyor",
+        "versionDiff.current": "Mevcut",
+        "versionDiff.from": "-den",
+        "versionDiff.modified": "Değiştirildi",
+        "versionDiff.modifiedItems": "Değiştirilen Öğeler",
+        "versionDiff.new": "Yeni",
+        "versionDiff.noChanges": "Değişiklik Yok",
+        "versionDiff.old": "Eski",
+        "versionDiff.removed": "Kaldırıldı",
+        "versionDiff.removedItems": "Kaldırılan Öğeler",
+        "versionDiff.selectVersions": "Sürümleri Seçin",
+        "versionDiff.title": "Sürüm Karşılaştırması",
+        "versionDiff.to": "-e"
+    }
+}

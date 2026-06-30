@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Dompet Kredit",
+        "wallet.availableCredits": "Kredit tersedia",
+        "wallet.topup": "Isi ulang",
+        "wallet.topupTitle": "Isi ulang kredit",
+        "wallet.topupSuccess": "Kredit berhasil ditambahkan",
+        "wallet.topupCancelled": "Isi ulang dibatalkan",
+        "wallet.history": "Riwayat transaksi",
+        "wallet.noTransactions": "Belum ada transaksi",
+        "wallet.balanceAfter": "Saldo",
+        "wallet.conversionNote": "1 kredit = $0,01 USD",
+        "wallet.proceedToPayment": "Lanjut ke pembayaran",
+        "wallet.confirmExecute": "Konfirmasi eksekusi",
+        "wallet.executionCost": "Biaya eksekusi",
+        "wallet.yourBalance": "Saldo Anda",
+        "wallet.insufficientCredits": "Kredit tidak mencukupi",
+        "wallet.needMore": "Anda memerlukan {amount} kredit lagi",
+        "wallet.topupNow": "Isi ulang sekarang",
+        "wallet.confirmAndExecute": "Konfirmasi & jalankan",
+        "wallet.lowBalanceWarning": "Kredit Anda hampir habis. Isi ulang untuk terus menjalankan workflow."
+    }
+}

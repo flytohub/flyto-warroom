@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.toolCategory",
+    "version": "1.0.0",
+    "translations": {
+        "toolCategory.apiIntegration": "API एकीकरण",
+        "toolCategory.automation": "ऑटोमेशन",
+        "toolCategory.dataTransform": "डेटा परिवर्तन",
+        "toolCategory.fileOperations": "फाइल संचालन",
+        "toolCategory.imageProcessing": "छवि प्रोसेसिंग",
+        "toolCategory.other": "अन्य",
+        "toolCategory.textProcessing": "टेक्स्ट प्रोसेसिंग",
+        "toolCategory.webScraping": "वेब स्क्रैपिंग"
+    }
+}

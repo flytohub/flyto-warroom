@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.pluginCapability",
+    "version": "1.0.0",
+    "translations": {
+        "pluginCapability.imageClassification": "Classification d'images",
+        "pluginCapability.speechRecognition": "Reconnaissance vocale",
+        "pluginCapability.textClassification": "Classification de texte",
+        "pluginCapability.textEmbedding": "Embedding de texte",
+        "pluginCapability.textGeneration": "Generation de texte",
+        "pluginCapability.textToSpeech": "Synthese vocale"
+    }
+}

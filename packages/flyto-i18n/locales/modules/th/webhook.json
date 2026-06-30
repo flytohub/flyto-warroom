@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "webhook",
+    "version": "1.0.0",
+    "translations": {
+        "modules.webhook.trigger.description": "ส่งคำขอ HTTP POST ไปยัง webhook URL",
+        "modules.webhook.trigger.label": "ทริกเกอร์ Webhook",
+        "modules.webhook.trigger.output.headers.description": "รหัสสถานะการตอบกลับ HTTP",
+        "modules.webhook.trigger.output.response.description": "รหัสสถานะการตอบกลับ HTTP",
+        "modules.webhook.trigger.output.status_code.description": "รหัสสถานะการตอบกลับ HTTP"
+    }
+}

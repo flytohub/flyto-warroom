@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.llmChain",
+    "version": "1.0.0",
+    "translations": {
+        "llmChain.advancedOptions": "進階選項",
+        "llmChain.detectedVariables": "偵測到的變數",
+        "llmChain.insertVariable": "插入變數",
+        "llmChain.maxTokens": "最大 Token 數",
+        "llmChain.maxTokensHint": "回應的最大長度",
+        "llmChain.model": "模型",
+        "llmChain.systemPrompt": "系統提示詞",
+        "llmChain.systemPromptPlaceholder": "你是一位有幫助的助手...",
+        "llmChain.temperature": "溫度",
+        "llmChain.temperatureHint": "數值越高越有創意，越低越專注",
+        "llmChain.userPrompt": "使用者提示詞",
+        "llmChain.userPromptPlaceholder": "輸入包含 {{變數}} 的提示詞...",
+        "llmChain.variableHelp": "使用 {{變數}} 來引用前面步驟的資料"
+    }
+}

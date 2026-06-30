@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "라이브러리에서 템플릿을 워크플로 단계로 실행",
+        "modules.template.invoke.label": "템플릿 호출",
+        "modules.template.invoke.output.__event__.description": "라이브러리 항목의 ID (구매/포크/소유)",
+        "modules.template.invoke.output.execution_time_ms.description": "템플릿 실행 결과",
+        "modules.template.invoke.output.result.description": "최대 실행 시간(초)",
+        "modules.template.invoke.output.template_id.description": "라우팅 이벤트 (성공/오류)",
+        "modules.template.invoke.ports.input": "템플릿 호출",
+        "modules.template.invoke.ports.success": "입력"
+    }
+}

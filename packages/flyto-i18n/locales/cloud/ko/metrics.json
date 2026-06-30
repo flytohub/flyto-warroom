@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "ko",
+  "category": "cloud.metrics",
+  "version": "1.0.0",
+  "translations": {
+    "metrics.chart.failed": "실패",
+    "metrics.chart.noData": "데이터가 없습니다",
+    "metrics.chart.successful": "성공",
+    "metrics.chart.title": "실행 추이",
+    "metrics.recentFailures.copy": "Copy",
+    "metrics.recentFailures.noData": "최근 실패 없음",
+    "metrics.recentFailures.title": "최근 실패",
+    "metrics.stats.avgDuration": "평균 기간",
+    "metrics.stats.failed": "실패",
+    "metrics.stats.successRate": "성공률",
+    "metrics.stats.totalExecutions": "총 실행",
+    "metrics.topWorkflows.executions": "실행",
+    "metrics.topWorkflows.noData": "아직 실행된 워크플로우 없음",
+    "metrics.topWorkflows.title": "상위 워크플로우",
+    "metrics.vsPrevious": "이전 대비"
+  }
+}

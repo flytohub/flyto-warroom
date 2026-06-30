@@ -1,0 +1,50 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "esnext",
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+    "strict": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Path aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src-next/*"],
+      "@fuse/*": ["src-next/@fuse/*"],
+      "@auth/*": ["src-next/@auth/*"],
+      "@components/*": ["src-next/components/*"],
+      "@atoms/*": ["src-next/components/atoms/*"],
+      "@compounds/*": ["src-next/components/compounds/*"],
+      "@hooks/*": ["src-next/hooks/*"],
+      "@lib/*": ["src-next/lib/*"],
+      "@code/*": ["src-next/types/*"],
+      "@assets/*": ["public/*"],
+      "@i18n/*": ["../flyto-i18n/*"]
+    },
+    "ignoreDeprecations": "6.0"
+  },
+  "include": [
+    "src-next/hooks",
+    "src-next/lib",
+    "src-next/types",
+    "src-next/components/atoms",
+    "src-next/components/compounds"
+  ],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "**/__tests__"]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.privacy",
+  "version": "1.0.0",
+  "translations": {
+    "privacy.lastUpdated": "",
+    "privacy.sections.collection.content": "",
+    "privacy.sections.collection.title": "",
+    "privacy.sections.contact.content": "",
+    "privacy.sections.contact.title": "",
+    "privacy.sections.rights.content": "",
+    "privacy.sections.rights.title": "",
+    "privacy.sections.security.content": "",
+    "privacy.sections.security.title": "",
+    "privacy.sections.sharing.content": "",
+    "privacy.sections.sharing.title": "",
+    "privacy.sections.usage.content": "",
+    "privacy.sections.usage.title": "",
+    "privacy.title": ""
+  }
+}

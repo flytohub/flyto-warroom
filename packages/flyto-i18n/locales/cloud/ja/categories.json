@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.categories",
+    "version": "1.0.0",
+    "translations": {
+        "categories.ai": "AI",
+        "categories.api": "API",
+        "categories.array": "配列",
+        "categories.browser": "ブラウザ",
+        "categories.cloud": "クラウド",
+        "categories.code": "コード",
+        "categories.composite": "合成",
+        "categories.data": "データ",
+        "categories.datetime": "日付/時間",
+        "categories.element": "要素",
+        "categories.file": "ファイル",
+        "categories.flow": "フロー制御",
+        "categories.form": "フォーム入力",
+        "categories.http": "HTTP",
+        "categories.huggingface": "HuggingFace",
+        "categories.image": "画像",
+        "categories.llm": "LLM",
+        "categories.math": "数学",
+        "categories.my-templates": "マイテンプレート",
+        "categories.notification": "通知",
+        "categories.object": "オブジェクト",
+        "categories.other": "その他",
+        "categories.string": "文字列",
+        "categories.connector": "APIコネクタ",
+        "categories.utility": "ユーティリティ"
+    }
+}

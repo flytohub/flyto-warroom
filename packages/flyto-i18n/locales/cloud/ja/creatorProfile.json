@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "マーケットプレイスに戻る",
+        "creatorProfile.chatError": "チャットの開始に失敗しました",
+        "creatorProfile.creatorTemplates": "クリエイターのテンプレート",
+        "creatorProfile.editProfile": "プロフィールを編集",
+        "creatorProfile.follow": "フォロー",
+        "creatorProfile.followError": "フォロー状態の更新に失敗しました",
+        "creatorProfile.followers": "フォロワー",
+        "creatorProfile.following": "フォロー中",
+        "creatorProfile.loadMore": "もっと読み込む",
+        "creatorProfile.noDescription": "説明なし",
+        "creatorProfile.noFollowers": "まだフォロワーがいません",
+        "creatorProfile.noFollowing": "誰もフォローしていません",
+        "creatorProfile.noTemplates": "公開されたテンプレートはまだありません",
+        "creatorProfile.notFound": "クリエイターが見つかりません",
+        "creatorProfile.notFoundDesc": "お探しのクリエイターは存在しないか、削除されました。",
+        "creatorProfile.templates": "テンプレート"
+    }
+}

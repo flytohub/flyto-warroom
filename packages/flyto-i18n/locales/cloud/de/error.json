@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "Wiedergabe konnte nicht gestartet werden",
+        "error.fixJsonFirst": "Bitte beheben Sie zuerst die JSON-Fehler",
+        "error.imageTooLarge": "Bilddatei ist zu groß",
+        "error.invalidJsonContext": "Ungültiges JSON in den Kontext-Überschreibungen",
+        "error.noStepsToValidate": "Keine Schritte zum Validieren gefunden",
+        "error.replayFailed": "Wiedergabe fehlgeschlagen"
+    }
+}

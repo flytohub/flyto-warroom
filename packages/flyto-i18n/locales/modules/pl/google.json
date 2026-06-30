@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Utwórz nowe wydarzenie w Google Kalendarz",
+        "modules.google.calendar.create_event.label": "Kalendarz Utwórz Wydarzenie",
+        "modules.google.calendar.create_event.output.end.description": "Czas zakończenia wydarzenia",
+        "modules.google.calendar.create_event.output.event_id.description": "ID utworzonego wydarzenia",
+        "modules.google.calendar.create_event.output.html_link.description": "Link do wyświetlenia wydarzenia w Google Kalendarz",
+        "modules.google.calendar.create_event.output.start.description": "Czas rozpoczęcia wydarzenia",
+        "modules.google.calendar.create_event.output.summary.description": "Tytuł wydarzenia",
+        "modules.google.calendar.list_events.description": "Wyświetl nadchodzące wydarzenia z Google Kalendarz",
+        "modules.google.calendar.list_events.label": "Kalendarz Lista Wydarzeń",
+        "modules.google.calendar.list_events.output.count.description": "Liczba zwróconych wydarzeń",
+        "modules.google.calendar.list_events.output.events.description": "Lista wydarzeń kalendarza",
+        "modules.google.gmail.search.description": "Szukaj wiadomości Gmail używając składni zapytań Gmail",
+        "modules.google.gmail.search.label": "Gmail Szukaj",
+        "modules.google.gmail.search.output.messages.description": "Lista pasujących wiadomości",
+        "modules.google.gmail.search.output.total.description": "Łączna liczba zwróconych wiadomości",
+        "modules.google.gmail.send.description": "Wyślij e-mail za pomocą Gmail API",
+        "modules.google.gmail.send.label": "Gmail Wyślij",
+        "modules.google.gmail.send.output.message_id.description": "ID wiadomości Gmail",
+        "modules.google.gmail.send.output.thread_id.description": "ID wątku Gmail",
+        "modules.google.gmail.send.output.to.description": "Adres e-mail odbiorcy"
+    }
+}

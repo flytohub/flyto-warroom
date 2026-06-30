@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.observability",
+    "version": "1.0.0",
+    "translations": {
+        "observability.subtitle": "İş akışı çalıştırmalarını ve performansı izleyin",
+        "observability.tabs.alerts": "Uyarılar",
+        "observability.tabs.metrics": "Metrikler",
+        "observability.tabs.traces": "İzler",
+        "observability.timeRange.24h": "Son 24 saat",
+        "observability.timeRange.30d": "Son 30 gün",
+        "observability.timeRange.7d": "Son 7 gün",
+        "observability.timeRange.90d": "Son 90 gün",
+        "observability.title": "Gözlemlenebilirlik"
+    }
+}

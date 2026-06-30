@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "Rileva se un valore è cambiato oltre la soglia (per quantità o percentuale)",
+        "modules.compare.change.label": "Rileva Cambiamento",
+        "modules.compare.change.output.change_absolute.description": "Variazione percentuale (positivo = su, negativo = giù)",
+        "modules.compare.change.output.change_percent.description": "Direzione del cambiamento: ",
+        "modules.compare.change.output.changed.description": "Se l'operazione è riuscita",
+        "modules.compare.change.output.current.description": "Cambiamento assoluto (positivo = su, negativo = giù)",
+        "modules.compare.change.output.direction.description": "Se l'operazione è riuscita",
+        "modules.compare.change.output.ok.description": "Se l'operazione è riuscita",
+        "modules.compare.change.output.previous.description": "Cambiamento assoluto (positivo = su, negativo = giù)",
+        "modules.compare.change.output.summary.description": "Il valore attuale",
+        "modules.compare.change.params.current.description": "Il valore attuale/nuovo da confrontare",
+        "modules.compare.change.params.current.label": "Valore Attuale",
+        "modules.compare.change.params.direction.description": "Quale direzione del cambiamento rilevare",
+        "modules.compare.change.params.direction.label": "Soglia",
+        "modules.compare.change.params.mode.description": "Il valore precedente/vecchio da confrontare",
+        "modules.compare.change.params.mode.label": "Valore Precedente",
+        "modules.compare.change.params.previous.description": "Il valore attuale/nuovo da confrontare",
+        "modules.compare.change.params.previous.label": "Valore Attuale",
+        "modules.compare.change.params.threshold.description": "Cambiamento minimo per attivare (5 = 5% o 5 unità)",
+        "modules.compare.change.params.threshold.label": "Variazione Percentuale"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Guthaben-Wallet",
+        "wallet.availableCredits": "Verfügbares Guthaben",
+        "wallet.topup": "Aufladen",
+        "wallet.topupTitle": "Guthaben aufladen",
+        "wallet.topupSuccess": "Guthaben erfolgreich aufgeladen",
+        "wallet.topupCancelled": "Aufladung abgebrochen",
+        "wallet.history": "Transaktionsverlauf",
+        "wallet.noTransactions": "Noch keine Transaktionen",
+        "wallet.balanceAfter": "Kontostand",
+        "wallet.conversionNote": "1 Credit = 0,01 $ USD",
+        "wallet.proceedToPayment": "Zur Zahlung",
+        "wallet.confirmExecute": "Ausführung bestätigen",
+        "wallet.executionCost": "Ausführungskosten",
+        "wallet.yourBalance": "Ihr Kontostand",
+        "wallet.insufficientCredits": "Unzureichendes Guthaben",
+        "wallet.needMore": "Sie benötigen noch {amount} Credits",
+        "wallet.topupNow": "Jetzt aufladen",
+        "wallet.confirmAndExecute": "Bestätigen und ausführen",
+        "wallet.lowBalanceWarning": "Ihr Guthaben ist niedrig. Laden Sie auf, um Workflows weiter auszuführen."
+    }
+}

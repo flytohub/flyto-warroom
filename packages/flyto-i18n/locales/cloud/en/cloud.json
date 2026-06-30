@@ -1,0 +1,10 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "en",
+  "category": "cloud.cloud",
+  "version": "1.0.0",
+  "translations": {
+    "cloud.status.title": "Title",
+    "cloud.template.createSuccess": "Create Success"
+  }
+}

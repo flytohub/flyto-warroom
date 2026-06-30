@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Eliminar",
+        "batch.deleteConfirm.message": "¿Está seguro de que desea eliminar {count} plantillas? Esta acción no se puede deshacer.",
+        "batch.deleteConfirm.title": "Eliminar {count} plantillas",
+        "batch.deselectAll": "Deseleccionar todo",
+        "batch.select": "Seleccionar",
+        "batch.selectAll": "Seleccionar todo",
+        "batch.selected": "seleccionado(s)"
+    }
+}

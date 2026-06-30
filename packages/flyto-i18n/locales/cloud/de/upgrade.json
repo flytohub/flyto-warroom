@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "Vertrieb kontaktieren",
+        "upgrade.debugFeatures": "Schalten Sie leistungsstarke Debugging- und Analysefunktionen frei, um Ihre Workflow-Entwicklung zu verbessern.",
+        "upgrade.enterpriseHint": "Benötigen Sie Enterprise-Funktionen?",
+        "upgrade.featureLocked": "Diese Funktion erfordert ein Pro-Abonnement",
+        "upgrade.features.evidence": "Screenshot- und DOM-Erfassung für jeden Schritt",
+        "upgrade.features.lineage": "Datenfluss-Verfolgung und Abhängigkeitsgraph",
+        "upgrade.features.replay": "Ausführungen mit geänderten Eingaben wiederholen",
+        "upgrade.features.tests": "Automatisierte Workflow-Testsuite",
+        "upgrade.features.versions": "Modulversionssperre und -kontrolle",
+        "upgrade.offlineLicense": "Offline-Lizenz kaufen - 199$ einmalig",
+        "upgrade.subscription": "Abonnieren - 19$/Monat",
+        "upgrade.subtitle": "Erhalten Sie Zugang zu erweiterten Debugging-Tools",
+        "upgrade.title": "Pro-Funktionen freischalten"
+    }
+}

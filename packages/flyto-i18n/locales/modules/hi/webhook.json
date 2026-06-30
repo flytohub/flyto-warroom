@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "webhook",
+    "version": "1.0.0",
+    "translations": {
+        "modules.webhook.trigger.description": "वेबहुक URL पर HTTP POST अनुरोध भेजें",
+        "modules.webhook.trigger.label": "वेबहुक ट्रिगर करें",
+        "modules.webhook.trigger.output.headers.description": "HTTP प्रतिक्रिया स्थिति कोड",
+        "modules.webhook.trigger.output.response.description": "HTTP प्रतिक्रिया स्थिति कोड",
+        "modules.webhook.trigger.output.status_code.description": "HTTP प्रतिक्रिया स्थिति कोड"
+    }
+}

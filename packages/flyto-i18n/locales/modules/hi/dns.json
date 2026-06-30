@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "dns",
+    "version": "1.0.0",
+    "translations": {
+        "modules.dns.lookup.description": "डोमेन रिकॉर्ड्स के लिए DNS लुकअप",
+        "modules.dns.lookup.label": "DNS लुकअप",
+        "modules.dns.lookup.output.domain.description": "प्रश्न किया गया डोमेन",
+        "modules.dns.lookup.output.record_type.description": "प्रश्न किया गया रिकॉर्ड प्रकार",
+        "modules.dns.lookup.output.records.description": "समाधान किए गए रिकॉर्ड्स",
+        "modules.dns.lookup.output.ttl.description": "जीवनकाल (यदि उपलब्ध हो)",
+        "modules.dns.lookup.params.domain.description": "लुकअप के लिए डोमेन नाम",
+        "modules.dns.lookup.params.domain.label": "डोमेन",
+        "modules.dns.lookup.params.record_type.description": "प्रश्न के लिए DNS रिकॉर्ड प्रकार",
+        "modules.dns.lookup.params.record_type.label": "रिकॉर्ड प्रकार",
+        "modules.dns.lookup.params.timeout.description": "सेकंड में प्रश्न समय सीमा",
+        "modules.dns.lookup.params.timeout.label": "समय सीमा"
+    }
+}

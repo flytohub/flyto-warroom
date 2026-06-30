@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count} dni temu",
+        "notifications.empty": "Brak powiadomien",
+        "notifications.hoursAgo": "{count} godz. temu",
+        "notifications.justNow": "Przed chwila",
+        "notifications.loadMore": "Wczytaj wiecej",
+        "notifications.markAllRead": "Oznacz wszystkie jako przeczytane",
+        "notifications.minutesAgo": "{count} min. temu",
+        "notifications.title": "Powiadomienia"
+    }
+}

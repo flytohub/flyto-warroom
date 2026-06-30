@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "Eksekusi perintah shell dan tangkap output",
+        "modules.shell.exec.label": "Eksekusi Perintah Shell",
+        "modules.shell.exec.output.command.description": "Output standar",
+        "modules.shell.exec.output.cwd.description": "Output error standar",
+        "modules.shell.exec.output.duration_ms.description": "Perintah yang dieksekusi",
+        "modules.shell.exec.output.exit_code.description": "Apakah perintah berhasil dieksekusi (exit code 0)",
+        "modules.shell.exec.output.ok.description": "Apakah perintah berhasil dieksekusi (exit code 0)",
+        "modules.shell.exec.output.stderr.description": "Exit code perintah",
+        "modules.shell.exec.output.stdout.description": "Apakah perintah berhasil dieksekusi (exit code 0)"
+    }
+}

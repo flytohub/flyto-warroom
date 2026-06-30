@@ -1,0 +1,18 @@
+{
+  "artifacts": [
+    {
+      "kind": "json",
+      "path": "examples/evidence-event.json"
+    }
+  ],
+  "event_id": "evt_example_001",
+  "org_id": "org_example",
+  "project_id": "project_example",
+  "severity": "medium",
+  "signature": {
+    "alg": "ed25519",
+    "value": "example-signature-placeholder"
+  },
+  "source": "community.example_scanner",
+  "surface": "code"
+}

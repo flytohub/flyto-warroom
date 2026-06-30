@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "标头名称",
+        "schema.field.body": "内容",
+        "schema.field.body_matches": "回应",
+        "schema.field.full_page": "整页",
+        "schema.field.response": "回应",
+        "schema.field.screenshot_format": "整页",
+        "schema.field.ssrf_protection": "SSRF 防护",
+        "schema.field.ssrf_protection.description": "阻止对内部/私有网络的请求（localhost、192.168.x.x、云端 metadata 端点）。仅在访问受信任的内部目标时才关闭。",
+        "schema.field.url": "网址",
+        "schema.field.viewport_height": "宽度",
+        "schema.field.viewport_width": "宽度"
+    }
+}

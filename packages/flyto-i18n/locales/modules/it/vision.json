@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "vision",
+    "version": "1.0.0",
+    "translations": {
+        "modules.vision.analyze.description": "Analizza immagini usando OpenAI Vision API (GPT-4V)",
+        "modules.vision.analyze.label": "Analizza Immagine con AI",
+        "modules.vision.analyze.output.analysis.description": "Se l'analisi e riuscita",
+        "modules.vision.analyze.output.model.description": "Dati analisi strutturati (se output_format e structured/json)",
+        "modules.vision.analyze.output.ok.description": "Se l'analisi e riuscita",
+        "modules.vision.analyze.output.structured.description": "Il risultato dell'analisi AI",
+        "modules.vision.analyze.output.tokens_used.description": "Modello usato per l'analisi",
+        "modules.vision.compare.description": "Confronta due immagini e identifica differenze visive",
+        "modules.vision.compare.label": "Confronta Immagini",
+        "modules.vision.compare.output.differences.description": "Percentuale similarita (0-100)",
+        "modules.vision.compare.output.has_differences.description": "Se il confronto e riuscito",
+        "modules.vision.compare.output.ok.description": "Se il confronto e riuscito",
+        "modules.vision.compare.output.recommendation.description": "Riepilogo risultati confronto",
+        "modules.vision.compare.output.similarity_score.description": "Se sono state trovate differenze significative",
+        "modules.vision.compare.output.summary.description": "Lista delle differenze identificate",
+        "modules.vision.compare.params.differences": "Differenze",
+        "modules.vision.compare.params.focus_areas": "Aree di interesse",
+        "modules.vision.compare.params.focus_areas.options.header": "Intestazione",
+        "modules.vision.compare.params.focus_areas.options.main content": "Contenuto principale"
+    }
+}

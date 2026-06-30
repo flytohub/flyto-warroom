@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.evolution",
+    "version": "1.0.0",
+    "translations": {
+        "evolution.acceptSuggestion": "Aceptar sugerencia",
+        "evolution.analyzing": "Analizando",
+        "evolution.apply": "Aplicar",
+        "evolution.deepAnalysis": "Análisis profundo",
+        "evolution.details": "Detalles",
+        "evolution.dismissSuggestion": "Descartar sugerencia",
+        "evolution.error": "Error",
+        "evolution.highPriority": "Alta prioridad",
+        "evolution.insights": "Perspectivas",
+        "evolution.lastUpdated": "Última actualización",
+        "evolution.noSuggestions": "Sin sugerencias",
+        "evolution.noSuggestionsDesc": "No hay sugerencias disponibles",
+        "evolution.reasoning": "Razonamiento",
+        "evolution.refresh": "Actualizar",
+        "evolution.requestAnalysis": "Solicitar análisis",
+        "evolution.suggestionApplied": "Sugerencia aplicada",
+        "evolution.title": "Evolución",
+        "evolution.types.cost": "Costo",
+        "evolution.types.other": "Otro",
+        "evolution.types.performance": "Rendimiento",
+        "evolution.types.reliability": "Fiabilidad",
+        "evolution.types.security": "Seguridad",
+        "evolution.viewDetails": "Ver detalles"
+    }
+}

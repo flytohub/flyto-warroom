@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.moduleCard",
+    "version": "1.0.0",
+    "translations": {
+        "moduleCard.expert": "전문가",
+        "moduleCard.inputType": "입력: {type}",
+        "moduleCard.noDescription": "설명 없음",
+        "moduleCard.outputType": "출력: {type}"
+    }
+}

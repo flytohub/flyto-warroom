@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.enterprise",
+    "version": "1.0.0",
+    "translations": {
+        "enterprise.actions.notSupported": "Action not supported",
+        "enterprise.errors.actionFailed": "操作失敗",
+        "enterprise.errors.loadFailed": "Failed to load",
+        "enterprise.robotsOnline": "ロボットオンライン",
+        "enterprise.subtitle": "エンタープライズ自動化ツール",
+        "enterprise.tabs.idp": "ドキュメント処理",
+        "enterprise.tabs.mining": "プロセスマイニング",
+        "enterprise.tabs.orchestrator": "オーケストレーター",
+        "enterprise.tabs.queues": "キュー",
+        "enterprise.tabs.rpa": "RPA",
+        "enterprise.tabs.scheduler": "スケジューラー",
+        "enterprise.tabs.stateMachine": "ステートマシン",
+        "enterprise.title": "エンタープライズ"
+    }
+}

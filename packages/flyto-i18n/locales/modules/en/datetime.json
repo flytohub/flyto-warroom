@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "Add time to datetime",
+        "modules.datetime.add.label": "Add Time",
+        "modules.datetime.add.output.result.description": "The operation result",
+        "modules.datetime.add.output.timestamp.description": "The operation result",
+        "modules.datetime.format.description": "Format datetime to string",
+        "modules.datetime.format.label": "Format DateTime",
+        "modules.datetime.format.output.result.description": "The operation result",
+        "modules.datetime.format.output.timestamp.description": "The operation result",
+        "modules.datetime.parse.description": "Parse string to datetime",
+        "modules.datetime.parse.label": "Parse DateTime",
+        "modules.datetime.parse.output.day.description": "Year component",
+        "modules.datetime.parse.output.hour.description": "Month component",
+        "modules.datetime.parse.output.minute.description": "Day component",
+        "modules.datetime.parse.output.month.description": "Unix timestamp",
+        "modules.datetime.parse.output.result.description": "The operation result",
+        "modules.datetime.parse.output.second.description": "Hour component",
+        "modules.datetime.parse.output.timestamp.description": "The operation result",
+        "modules.datetime.parse.output.year.description": "The operation result",
+        "modules.datetime.subtract.description": "Subtract time from datetime",
+        "modules.datetime.subtract.label": "Subtract Time",
+        "modules.datetime.subtract.output.result.description": "The operation result",
+        "modules.datetime.subtract.output.timestamp.description": "The operation result"
+    }
+}

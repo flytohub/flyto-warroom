@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.mining",
+    "version": "1.0.0",
+    "translations": {
+        "mining.bottlenecks.empty": "ボトルネックが見つかりません",
+        "mining.bottlenecks.title": "ボトルネック",
+        "mining.discovery.analyze": "分析",
+        "mining.discovery.empty": "分析するデータがありません",
+        "mining.discovery.selectWorkflow": "分析するワークフローを選択",
+        "mining.discovery.title": "プロセスディスカバリー",
+        "mining.quality.fitness": "フィットネス",
+        "mining.quality.generalization": "一般化",
+        "mining.quality.precision": "精度",
+        "mining.stats.avgDuration": "平均時間",
+        "mining.stats.cases": "ケース",
+        "mining.stats.conformance": "コンフォーマンス",
+        "mining.stats.variants": "バリアント",
+        "mining.suggestions.apply": "適用",
+        "mining.suggestions.empty": "提案がありません",
+        "mining.suggestions.title": "提案",
+        "mining.variants.empty": "バリアントがありません",
+        "mining.variants.title": "プロセスバリアント"
+    }
+}

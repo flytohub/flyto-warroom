@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "เปิดใช้งานเสมอ",
+        "cookies.lastUpdated": "อัปเดตล่าสุด",
+        "cookies.optional": "ไม่บังคับ",
+        "cookies.preferencesSaved": "บันทึกการตั้งค่าสำเร็จ",
+        "cookies.savePreferences": "บันทึกการตั้งค่า",
+        "cookies.sections.manage.content": "คุณสามารถควบคุมคุกกี้ทางเลือกที่อนุญาตได้ คุกกี้ที่จำเป็นไม่สามารถปิดใช้งานได้เนื่องจากจำเป็นสำหรับการทำงานของเว็บไซต์",
+        "cookies.sections.manage.title": "จัดการการตั้งค่าของคุณ",
+        "cookies.sections.types.analytics.content": "คุกกี้เหล่านี้ช่วยให้เราเข้าใจว่าผู้เข้าชมโต้ตอบกับเว็บไซต์ของเราอย่างไรโดยการเก็บรวบรวมและรายงานข้อมูลแบบไม่ระบุตัวตน ซึ่งช่วยให้เราปรับปรุงบริการของเรา",
+        "cookies.sections.types.analytics.title": "คุกกี้วิเคราะห์",
+        "cookies.sections.types.essential.content": "คุกกี้เหล่านี้จำเป็นสำหรับการทำงานที่เหมาะสมของเว็บไซต์ ช่วยให้ฟีเจอร์พื้นฐานเช่นการนำทางหน้าและการเข้าถึงพื้นที่ที่ปลอดภัยทำงานได้ เว็บไซต์ไม่สามารถทำงานได้อย่างเหมาะสมหากไม่มีคุกกี้เหล่านี้",
+        "cookies.sections.types.essential.title": "คุกกี้ที่จำเป็น",
+        "cookies.sections.types.functional.content": "คุกกี้เหล่านี้เปิดใช้งานฟีเจอร์ส่วนบุคคลเช่นการจดจำการตั้งค่าภาษา การตั้งค่าธีม และสถานะการเข้าสู่ระบบ ช่วยเพิ่มประสบการณ์ของคุณแต่ไม่จำเป็น",
+        "cookies.sections.types.functional.title": "คุกกี้ฟังก์ชัน",
+        "cookies.sections.types.title": "ประเภทคุกกี้ที่เราใช้",
+        "cookies.sections.what.content": "คุกกี้คือไฟล์ข้อความขนาดเล็กที่จัดเก็บในอุปกรณ์ของคุณเมื่อคุณเยี่ยมชมเว็บไซต์ของเรา ช่วยให้เราให้บริการที่ดีขึ้นโดยจดจำการตั้งค่าของคุณและเข้าใจวิธีที่คุณใช้บริการของเรา",
+        "cookies.sections.what.title": "คุกกี้คืออะไร?",
+        "cookies.title": "การตั้งค่าคุกกี้"
+    }
+}

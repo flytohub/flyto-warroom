@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "Verbindung zum Server konnte nicht hergestellt werden. Bitte stellen Sie sicher, dass das Backend läuft.",
+        "errors.somethingWentWrong": "Etwas ist schiefgelaufen",
+        "errors.technicalDetails": "Technische Details",
+        "errors.timeout": "Anfrage-Zeitüberschreitung. Bitte versuchen Sie es erneut.",
+        "errors.unexpectedError": "Ein unerwarteter Fehler ist aufgetreten"
+    }
+}

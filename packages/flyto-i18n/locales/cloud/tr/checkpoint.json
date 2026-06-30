@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.checkpoint",
+    "version": "1.0.0",
+    "translations": {
+        "checkpoint.clickToRemove": "Kaldırmak için tıklayın",
+        "checkpoint.disabled": "Kontrol noktası devre dışı",
+        "checkpoint.humanCheckpoint": "İnsan Kontrol Noktası"
+    }
+}

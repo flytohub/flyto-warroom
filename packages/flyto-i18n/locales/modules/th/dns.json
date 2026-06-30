@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "dns",
+    "version": "1.0.0",
+    "translations": {
+        "modules.dns.lookup.description": "ค้นหา DNS สำหรับข้อมูลโดเมน",
+        "modules.dns.lookup.label": "ค้นหา DNS",
+        "modules.dns.lookup.output.domain.description": "โดเมนที่ค้นหา",
+        "modules.dns.lookup.output.record_type.description": "ประเภทของข้อมูลที่ค้นหา",
+        "modules.dns.lookup.output.records.description": "ข้อมูลที่ได้",
+        "modules.dns.lookup.output.ttl.description": "ระยะเวลาที่ข้อมูลมีชีวิต (ถ้ามี)",
+        "modules.dns.lookup.params.domain.description": "ชื่อโดเมนที่ต้องการค้นหา",
+        "modules.dns.lookup.params.domain.label": "โดเมน",
+        "modules.dns.lookup.params.record_type.description": "ประเภทของข้อมูล DNS ที่ต้องการค้นหา",
+        "modules.dns.lookup.params.record_type.label": "ประเภทของข้อมูล",
+        "modules.dns.lookup.params.timeout.description": "หมดเวลาการค้นหาในหน่วยวินาที",
+        "modules.dns.lookup.params.timeout.label": "หมดเวลา"
+    }
+}

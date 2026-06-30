@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "Dokumente aus MongoDB-Sammlung abfragen",
+        "modules.db.mongodb.find.label": "MongoDB-Suche",
+        "modules.db.mongodb.find.output.count.description": "Array von übereinstimmenden Dokumenten",
+        "modules.db.mongodb.find.output.documents.description": "Array von übereinstimmenden Dokumenten",
+        "modules.db.mongodb.insert.description": "Ein oder mehrere Dokumente in MongoDB-Sammlung einfügen",
+        "modules.db.mongodb.insert.label": "MongoDB-Einfügen",
+        "modules.db.mongodb.insert.output.inserted_count.description": "Anzahl der eingefügten Dokumente",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "Anzahl der eingefügten Dokumente",
+        "modules.db.mysql.query.description": "SQL-Abfrage auf MySQL-Datenbank ausführen und Ergebnisse zurückgeben",
+        "modules.db.mysql.query.label": "MySQL-Abfrage",
+        "modules.db.mysql.query.output.columns.description": "Array von Ergebniszeilen als Objekte",
+        "modules.db.mysql.query.output.row_count.description": "Array von Ergebniszeilen als Objekte",
+        "modules.db.mysql.query.output.rows.description": "Array von Ergebniszeilen als Objekte",
+        "modules.db.postgresql.query.description": "SQL-Abfrage auf PostgreSQL-Datenbank ausführen und Ergebnisse zurückgeben",
+        "modules.db.postgresql.query.label": "PostgreSQL-Abfrage",
+        "modules.db.postgresql.query.output.columns.description": "Array von Ergebniszeilen als Objekte",
+        "modules.db.postgresql.query.output.row_count.description": "Array von Ergebniszeilen als Objekte",
+        "modules.db.postgresql.query.output.rows.description": "Array von Ergebniszeilen als Objekte",
+        "modules.db.redis.get.description": "Wert aus Redis-Cache abrufen",
+        "modules.db.redis.get.label": "Redis abrufen",
+        "modules.db.redis.get.output.exists.description": "Der zurückgegebene Wert",
+        "modules.db.redis.get.output.key.description": "Der zurückgegebene Wert",
+        "modules.db.redis.get.output.value.description": "Der zurückgegebene Wert",
+        "modules.db.redis.set.description": "Wert in Redis-Cache setzen",
+        "modules.db.redis.set.label": "Redis setzen"
+    }
+}

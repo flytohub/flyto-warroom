@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Luôn bật",
+        "cookies.lastUpdated": "Cập nhật lần cuối",
+        "cookies.optional": "Tùy chọn",
+        "cookies.preferencesSaved": "Đã lưu tùy chọn thành công",
+        "cookies.savePreferences": "Lưu tùy chọn",
+        "cookies.sections.manage.content": "Bạn có thể kiểm soát những cookie tùy chọn nào bạn cho phép. Cookie thiết yếu không thể tắt vì chúng cần thiết để website hoạt động.",
+        "cookies.sections.manage.title": "Quản lý tùy chọn của bạn",
+        "cookies.sections.types.analytics.content": "Những cookie này giúp chúng tôi hiểu cách khách truy cập tương tác với website bằng cách thu thập và báo cáo thông tin ẩn danh. Điều này giúp chúng tôi cải thiện dịch vụ.",
+        "cookies.sections.types.analytics.title": "Cookie phân tích",
+        "cookies.sections.types.essential.content": "Những cookie này cần thiết để website hoạt động đúng. Chúng kích hoạt các tính năng cơ bản như điều hướng trang và truy cập các khu vực bảo mật. Website không thể hoạt động đúng mà không có những cookie này.",
+        "cookies.sections.types.essential.title": "Cookie thiết yếu",
+        "cookies.sections.types.functional.content": "Những cookie này cho phép các tính năng cá nhân hóa như ghi nhớ tùy chọn ngôn ngữ, cài đặt giao diện và trạng thái đăng nhập. Chúng nâng cao trải nghiệm của bạn nhưng không thiết yếu.",
+        "cookies.sections.types.functional.title": "Cookie chức năng",
+        "cookies.sections.types.title": "Các loại Cookie chúng tôi sử dụng",
+        "cookies.sections.what.content": "Cookie là các tệp văn bản nhỏ được lưu trữ trên thiết bị của bạn khi bạn truy cập website. Chúng giúp chúng tôi cung cấp trải nghiệm tốt hơn bằng cách ghi nhớ tùy chọn của bạn và hiểu cách bạn sử dụng dịch vụ của chúng tôi.",
+        "cookies.sections.what.title": "Cookie là gì?",
+        "cookies.title": "Cài đặt Cookie"
+    }
+}

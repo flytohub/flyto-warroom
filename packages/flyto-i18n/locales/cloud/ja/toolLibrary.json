@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "すべて",
+        "toolLibrary.createFirstTool": "最初のツールを作成",
+        "toolLibrary.createTool": "ツールを作成",
+        "toolLibrary.deleteConfirm": "ツールを削除",
+        "toolLibrary.deleteMessage": "「{name}」を削除してもよろしいですか？この操作は取り消せません。",
+        "toolLibrary.noDescription": "説明なし",
+        "toolLibrary.noTools": "ツールがありません",
+        "toolLibrary.noToolsDesc": "ワークフローを自動化する最初のツールを作成",
+        "toolLibrary.run": "実行",
+        "toolLibrary.searchPlaceholder": "ツールを検索...",
+        "toolLibrary.steps": "ステップ",
+        "toolLibrary.subtitle": "自動化ツールを管理・実行",
+        "toolLibrary.title": "ツールライブラリ"
+    }
+}

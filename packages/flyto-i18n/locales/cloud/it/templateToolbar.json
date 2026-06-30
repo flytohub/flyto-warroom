@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "Vista griglia",
+        "templateToolbar.listView": "Vista lista",
+        "templateToolbar.searchLabel": "Cerca template",
+        "templateToolbar.searchPlaceholder": "Cerca template...",
+        "templateToolbar.sortLabel": "Ordina template per",
+        "templateToolbar.sortOptions.created": "Creati di Recente",
+        "templateToolbar.sortOptions.name": "Nome A-Z",
+        "templateToolbar.sortOptions.status": "Per Stato",
+        "templateToolbar.sortOptions.updated": "Aggiornati di Recente",
+        "templateToolbar.viewMode": "Modalita visualizzazione"
+    }
+}

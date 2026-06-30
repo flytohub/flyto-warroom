@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "텍스트의 SHA-256 암호화 해시 계산",
+        "modules.hash.sha256.label": "SHA-256 해시",
+        "modules.hash.sha256.output.algorithm.description": "SHA-256 해시 (64개 16진수 문자)",
+        "modules.hash.sha256.output.hash.description": "텍스트 인코딩",
+        "modules.hash.sha256.params.encoding.description": "해시할 텍스트",
+        "modules.hash.sha256.params.encoding.label": "텍스트",
+        "modules.hash.sha256.params.text.description": "해시할 텍스트",
+        "modules.hash.sha256.params.text.label": "텍스트",
+        "modules.hash.sha512.description": "텍스트의 SHA-512 암호화 해시 계산",
+        "modules.hash.sha512.label": "SHA-512 해시",
+        "modules.hash.sha512.output.algorithm.description": "SHA-512 해시 (128개 16진수 문자)",
+        "modules.hash.sha512.output.hash.description": "텍스트 인코딩",
+        "modules.hash.sha512.params.encoding.description": "해시할 텍스트",
+        "modules.hash.sha512.params.encoding.label": "텍스트",
+        "modules.hash.sha512.params.text.description": "해시할 텍스트",
+        "modules.hash.sha512.params.text.label": "텍스트"
+    }
+}

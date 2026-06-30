@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "在日期时间加上时间",
+        "modules.datetime.add.label": "加上时间",
+        "modules.datetime.add.output.result.description": "结果日期时间",
+        "modules.datetime.add.output.timestamp.description": "Unix 时间戳记",
+        "modules.datetime.format.description": "将日期时间格式化为字符串",
+        "modules.datetime.format.label": "格式化日期时间",
+        "modules.datetime.format.output.result.description": "格式化后的字符串",
+        "modules.datetime.format.output.timestamp.description": "Unix 时间戳记",
+        "modules.datetime.parse.description": "将字符串解析为日期时间",
+        "modules.datetime.parse.label": "解析日期时间",
+        "modules.datetime.parse.output.day.description": "日",
+        "modules.datetime.parse.output.hour.description": "时",
+        "modules.datetime.parse.output.minute.description": "分",
+        "modules.datetime.parse.output.month.description": "月",
+        "modules.datetime.parse.output.result.description": "解析结果",
+        "modules.datetime.parse.output.second.description": "秒",
+        "modules.datetime.parse.output.timestamp.description": "Unix 时间戳记",
+        "modules.datetime.parse.output.year.description": "年",
+        "modules.datetime.subtract.description": "从日期时间减去时间",
+        "modules.datetime.subtract.label": "减去时间",
+        "modules.datetime.subtract.output.result.description": "结果日期时间",
+        "modules.datetime.subtract.output.timestamp.description": "Unix 时间戳记"
+    }
+}

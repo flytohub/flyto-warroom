@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "common",
+    "version": "1.0.0",
+    "translations": {
+        "common.params.description.description": "Description de ce flux d'erreur",
+        "common.params.description.label": "Description",
+        "common.ports.error": "Sortie",
+        "common.pleaseSelect": "Sélectionnez…"
+    }
+}

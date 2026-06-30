@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "Dodaj element",
+        "queues.create.maxRetries": "Maksymalna liczba prób",
+        "queues.create.name": "Nazwa kolejki",
+        "queues.create.namePlaceholder": "Wpisz nazwę kolejki",
+        "queues.create.selectWorkflow": "Wybierz przepływ pracy",
+        "queues.create.submit": "Utwórz kolejkę",
+        "queues.create.title": "Utwórz kolejkę",
+        "queues.create.workflow": "Przepływ pracy",
+        "queues.createFirst": "Utwórz swoją pierwszą kolejkę",
+        "queues.empty": "Brak kolejek",
+        "queues.emptyDesc": "Utwórz kolejkę, aby rozpocząć",
+        "queues.stats.completed": "Zakończone",
+        "queues.stats.pending": "Oczekujące",
+        "queues.stats.processing": "Przetwarzanie",
+        "queues.stats.totalItems": "Łączna liczba elementów",
+        "queues.status.completed": "Zakończone",
+        "queues.status.failed": "Niepowodzenie",
+        "queues.status.pending": "Oczekujące",
+        "queues.status.processing": "Przetwarzanie",
+        "queues.transactions.empty": "Brak transakcji",
+        "queues.transactions.title": "Transakcje"
+    }
+}

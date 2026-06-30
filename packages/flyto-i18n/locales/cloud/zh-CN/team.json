@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "没有最近活动",
+        "team.activity.title": "最近活动",
+        "team.contributors.created": "已创建",
+        "team.contributors.empty": "尚无贡献者",
+        "team.contributors.executed": "已运行",
+        "team.contributors.title": "贡献者",
+        "team.dashboard.subtitle": "团队活动概览",
+        "team.dashboard.title": "团队仪表板",
+        "team.stats.executions": "运行次数",
+        "team.stats.members": "成员",
+        "team.stats.templates": "模板",
+        "team.stats.workflows": "工作流程"
+    }
+}

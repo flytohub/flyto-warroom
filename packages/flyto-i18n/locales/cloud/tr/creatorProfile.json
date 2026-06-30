@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "Mağazaya Dön",
+        "creatorProfile.chatError": "Sohbet başlatılamadı",
+        "creatorProfile.creatorTemplates": "İçerik Üreticisinin Şablonları",
+        "creatorProfile.editProfile": "Profili Düzenle",
+        "creatorProfile.follow": "Takip Et",
+        "creatorProfile.followError": "Takip durumu güncellenemedi",
+        "creatorProfile.followers": "Takipçiler",
+        "creatorProfile.following": "Takip Edilen",
+        "creatorProfile.loadMore": "Daha Fazla Yükle",
+        "creatorProfile.noDescription": "Açıklama yok",
+        "creatorProfile.noFollowers": "Henüz takipçi yok",
+        "creatorProfile.noFollowing": "Kimseyi takip etmiyor",
+        "creatorProfile.noTemplates": "Henüz yayınlanmış şablon yok",
+        "creatorProfile.notFound": "İçerik Üreticisi Bulunamadı",
+        "creatorProfile.notFoundDesc": "Aradığınız içerik üreticisi mevcut değil veya kaldırılmış.",
+        "creatorProfile.templates": "Şablonlar"
+    }
+}

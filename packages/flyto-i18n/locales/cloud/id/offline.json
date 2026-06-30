@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "Kembali ke Template",
+        "offline.currentlyOffline": "Anda sedang bekerja offline",
+        "offline.languagePack.active": "Aktif",
+        "offline.languagePack.currentLanguage": "Bahasa Saat Ini",
+        "offline.languagePack.downloadHint": "Unduh paket bahasa dari",
+        "offline.languagePack.importButton": "Impor Paket Bahasa",
+        "offline.languagePack.importFailed": "Gagal mengimpor paket bahasa",
+        "offline.languagePack.importSuccess": "Berhasil mengimpor {locale} ({count} kunci)",
+        "offline.languagePack.importedPacks": "Paket yang Diimpor",
+        "offline.languagePack.importing": "Mengimpor...",
+        "offline.languagePack.invalidFormat": "Format file tidak valid. Diharapkan file JSON flyto-i18n.",
+        "offline.languagePack.noTranslations": "Tidak ada terjemahan ditemukan dalam file",
+        "offline.languagePack.subtitle": "Impor terjemahan untuk penggunaan offline",
+        "offline.languagePack.title": "Paket Bahasa",
+        "offline.languagePack.use": "Gunakan",
+        "offline.license": "Lisensi",
+        "offline.settings": "Pengaturan Offline"
+    }
+}

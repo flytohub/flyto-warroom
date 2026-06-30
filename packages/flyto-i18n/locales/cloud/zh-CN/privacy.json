@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "最后更新",
+        "privacy.sections.collection.content": "我们收集您直接提供给我们的信息，例如当您创建账号、使用我们的服务或联系客服时。这可能包括您的姓名、电子邮件地址和使用数据，以改善我们的服务。",
+        "privacy.sections.collection.title": "我们收集的信息",
+        "privacy.sections.contact.content": "如果您对本隐私权政策或我们的数据处理方式有任何疑问，请通过 privacy{'@'}flytohub.com 联系我们。",
+        "privacy.sections.contact.title": "联系我们",
+        "privacy.sections.rights.content": "您有权访问、更正或删除您的个人信息。您也可以要求数据可携性或反对某些处理活动。请联系我们以行使这些权利。",
+        "privacy.sections.rights.title": "您的权利",
+        "privacy.sections.security.content": "我们实施适当的技术和组织措施，以保护您的个人信息免受未经授权的访问、更改、披露或销毁。",
+        "privacy.sections.security.title": "数据安全",
+        "privacy.sections.sharing.content": "我们不会出售您的个人信息。我们可能会与协助我们营运平台的第三方服务提供商分享您的信息，但须遵守保密协议。",
+        "privacy.sections.sharing.title": "信息分享",
+        "privacy.sections.usage.content": "我们使用收集的信息来提供、维护和改善我们的服务，与您沟通，并个人化您的体验。我们也可能使用汇总数据进行分析。",
+        "privacy.sections.usage.title": "我们如何使用您的信息",
+        "privacy.title": "隐私权政策"
+    }
+}

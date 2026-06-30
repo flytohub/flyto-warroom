@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "Elimina un oggetto da un bucket AWS S3",
+        "modules.aws.s3.delete.label": "Elimina Oggetto S3",
+        "modules.aws.s3.delete.output.bucket.description": "Nome del bucket S3",
+        "modules.aws.s3.delete.output.deleted.description": "Se l'oggetto è stato eliminato con successo",
+        "modules.aws.s3.delete.output.key.description": "Chiave dell'oggetto eliminato",
+        "modules.aws.s3.download.description": "Scarica un file da un bucket AWS S3 a un percorso locale",
+        "modules.aws.s3.download.label": "Download S3",
+        "modules.aws.s3.download.output.content_type.description": "Tipo MIME del file scaricato",
+        "modules.aws.s3.download.output.path.description": "Percorso del file locale dove è stato salvato il file",
+        "modules.aws.s3.download.output.size.description": "Dimensione del file in byte",
+        "modules.aws.s3.list.description": "Elenca gli oggetti in un bucket AWS S3 con filtro prefisso opzionale",
+        "modules.aws.s3.list.label": "Elenco Oggetti S3",
+        "modules.aws.s3.list.output.count.description": "Numero di oggetti restituiti",
+        "modules.aws.s3.list.output.objects.description": "Elenco degli oggetti S3",
+        "modules.aws.s3.list.output.truncated.description": "Se i risultati sono troncati",
+        "modules.aws.s3.upload.description": "Carica un file locale su un bucket AWS S3",
+        "modules.aws.s3.upload.label": "Caricamento S3",
+        "modules.aws.s3.upload.output.bucket.description": "Nome del bucket S3",
+        "modules.aws.s3.upload.output.key.description": "Chiave dell'oggetto S3",
+        "modules.aws.s3.upload.output.size.description": "Dimensione del file in byte",
+        "modules.aws.s3.upload.output.url.description": "URL pubblico dell'oggetto caricato"
+    }
+}

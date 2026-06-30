@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "Kullanılabilir Değişkenler",
+        "expression.editExpression": "İfadeyi Düzenle",
+        "expression.enterExpression": "Önizleme için bir ifade girin",
+        "expression.expressionCode": "İfade",
+        "expression.openEditor": "İfade düzenleyicisini aç",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "Önizleme"
+    }
+}

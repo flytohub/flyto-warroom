@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "Tạo dự án",
+        "projects.create.title": "Tạo dự án",
+        "projects.delete.message": "Bạn có chắc chắn muốn xóa dự án này? Tất cả workflow trong dự án này sẽ được chuyển đến dự án mặc định.",
+        "projects.delete.title": "Xóa dự án",
+        "projects.description": "Sắp xếp workflow của bạn thành các dự án",
+        "projects.edit.title": "Chỉnh sửa dự án",
+        "projects.empty.description": "Tạo dự án đầu tiên để tổ chức workflow",
+        "projects.empty.title": "Chưa có dự án",
+        "projects.form.color": "Màu sắc",
+        "projects.form.description": "Mô tả",
+        "projects.form.name": "Tên dự án",
+        "projects.form.namePlaceholder": "Dự án của tôi",
+        "projects.members": "thành viên",
+        "projects.title": "Dự án",
+        "projects.workflows": "workflow"
+    }
+}

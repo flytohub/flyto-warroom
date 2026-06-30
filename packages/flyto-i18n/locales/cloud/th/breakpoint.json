@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "th",
+  "category": "cloud.breakpoint",
+  "version": "1.0.0",
+  "translations": {
+    "breakpoint.additionalInput": "Input เพิ่มเติม",
+    "breakpoint.approve": "อนุมัติ",
+    "breakpoint.comment": "ความคิดเห็น",
+    "breakpoint.commentPlaceholder": "เพิ่มความคิดเห็น...",
+    "breakpoint.contextSnapshot": "Context Snapshot",
+    "breakpoint.createdAt": "สร้างเมื่อ",
+    "breakpoint.expires": "หมดอายุ",
+    "breakpoint.humanCheckpoint": "Human Checkpoint",
+    "breakpoint.noBreakpoint": "ไม่มี breakpoints ที่ตั้งไว้",
+    "breakpoint.noPending": "ไม่มีการอนุมัติที่รอดำเนินการ",
+    "breakpoint.pendingApprovals": "การอนุมัติที่รอดำเนินการ",
+    "breakpoint.reject": "ปฏิเสธ",
+    "breakpoint.step": "ขั้นตอน",
+    "breakpoint.waitingApproval": "กำลังรอการอนุมัติ",
+    "breakpoint.workflow": "เวิร์กโฟลว์",
+    "browserInteract.execute": "ดำเนินการ",
+    "browserInteract.noElements": "ไม่พบองค์ประกอบที่โต้ตอบได้",
+    "browserInteract.pagePreview": "ตัวอย่างหน้า",
+    "browserInteract.selectHint": "เลือกองค์ประกอบเพื่อโต้ตอบ",
+    "browserInteract.skip": "ข้าม",
+    "browserInteract.title": "การโต้ตอบเบราว์เซอร์"
+  }
+}

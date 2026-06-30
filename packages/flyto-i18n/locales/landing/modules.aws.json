@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "aws",
+  "version": "1.0.0",
+  "translations": {
+    "modules.aws.s3.delete.description": "",
+    "modules.aws.s3.delete.label": "",
+    "modules.aws.s3.delete.output.bucket.description": "",
+    "modules.aws.s3.delete.output.deleted.description": "",
+    "modules.aws.s3.delete.output.key.description": "",
+    "modules.aws.s3.download.description": "",
+    "modules.aws.s3.download.label": "",
+    "modules.aws.s3.download.output.content_type.description": "",
+    "modules.aws.s3.download.output.path.description": "",
+    "modules.aws.s3.download.output.size.description": "",
+    "modules.aws.s3.list.description": "",
+    "modules.aws.s3.list.label": "",
+    "modules.aws.s3.list.output.count.description": "",
+    "modules.aws.s3.list.output.objects.description": "",
+    "modules.aws.s3.list.output.truncated.description": "",
+    "modules.aws.s3.upload.description": "",
+    "modules.aws.s3.upload.label": "",
+    "modules.aws.s3.upload.output.bucket.description": "",
+    "modules.aws.s3.upload.output.key.description": "",
+    "modules.aws.s3.upload.output.size.description": "",
+    "modules.aws.s3.upload.output.url.description": ""
+  }
+}

@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.env.*
+!install/.env.ce.example
+!install/.env.ee-sim.example
+packages/flyto-code/node_modules/
+packages/flyto-code/dist/
+packages/flyto-code/dist-next/
+packages/flyto-code/test-results/
+packages/flyto-code/reports/
+upstream-patches/

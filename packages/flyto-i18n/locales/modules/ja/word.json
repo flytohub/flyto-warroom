@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "Wordドキュメント（.docx）からテキストとコンテンツを抽出",
+        "modules.word.parse.label": "Wordドキュメント解析",
+        "modules.word.parse.output.images.description": "段落のリスト",
+        "modules.word.parse.output.metadata.description": "配列として抽出されたテーブル",
+        "modules.word.parse.output.paragraphs.description": "ドキュメントの全テキストコンテンツ",
+        "modules.word.parse.output.tables.description": "ドキュメントの全テキストコンテンツ",
+        "modules.word.parse.output.text.description": "ドキュメントの全テキストコンテンツ",
+        "modules.word.to_pdf.description": "Wordドキュメント（.docx）をPDFファイルに変換",
+        "modules.word.to_pdf.label": "Word → PDF",
+        "modules.word.to_pdf.output.file_size.description": "生成されたPDFファイルのパス",
+        "modules.word.to_pdf.output.method_used.description": "出力ファイルのサイズ（バイト）",
+        "modules.word.to_pdf.output.output_path.description": "生成されたPDFファイルのパス"
+    }
+}

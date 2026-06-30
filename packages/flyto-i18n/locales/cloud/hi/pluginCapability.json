@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.pluginCapability",
+    "version": "1.0.0",
+    "translations": {
+        "pluginCapability.imageClassification": "छवि वर्गीकरण",
+        "pluginCapability.speechRecognition": "वाक् पहचान",
+        "pluginCapability.textClassification": "टेक्स्ट वर्गीकरण",
+        "pluginCapability.textEmbedding": "टेक्स्ट एम्बेडिंग",
+        "pluginCapability.textGeneration": "टेक्स्ट जनरेशन",
+        "pluginCapability.textToSpeech": "टेक्स्ट से वाक्"
+    }
+}

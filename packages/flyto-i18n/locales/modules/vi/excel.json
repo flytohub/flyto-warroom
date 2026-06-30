@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Đọc dữ liệu từ tệp Excel (xlsx, xls)",
+        "modules.excel.read.label": "Đọc Excel",
+        "modules.excel.read.output.data.description": "Các hàng dữ liệu trích xuất",
+        "modules.excel.read.output.headers.description": "Các hàng dữ liệu trích xuất",
+        "modules.excel.read.output.row_count.description": "Các hàng dữ liệu trích xuất",
+        "modules.excel.read.output.sheet_names.description": "Tiêu đề cột",
+        "modules.excel.write.description": "Ghi dữ liệu vào tệp Excel (xlsx)",
+        "modules.excel.write.label": "Ghi Excel",
+        "modules.excel.write.output.path.description": "Đường dẫn đến tệp Excel đã tạo",
+        "modules.excel.write.output.row_count.description": "Đường dẫn đến tệp Excel đã tạo",
+        "modules.excel.write.output.size.description": "Đường dẫn đến tệp Excel đã tạo"
+    }
+}

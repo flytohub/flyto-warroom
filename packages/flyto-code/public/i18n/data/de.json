@@ -1,0 +1,1 @@
+{"locale": "de", "name": "German", "native": "Deutsch", "region": "DE", "version": "724de86b78e1", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "Beschreibung dieses Fehlerablaufs", "label": "Beschreibung"}}, "pleaseSelect": "Bitte auswählen…", "ports": {"error": "Ausgabe"}}}}

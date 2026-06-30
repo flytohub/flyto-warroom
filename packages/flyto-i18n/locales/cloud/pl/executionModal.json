@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "Kliknij Wykonaj, aby uruchomic ten przeplyw",
+        "executionModal.execute": "Wykonaj",
+        "executionModal.executing": "Wykonywanie przeplywu...",
+        "executionModal.executionComplete": "Wykonanie zakonczone",
+        "executionModal.executionFailed": "Wykonanie nie powiodlo sie",
+        "executionModal.noParamsRequired": "Nie sa wymagane parametry wejsciowe",
+        "executionModal.runAgain": "Uruchom ponownie",
+        "executionModal.status.completed": "ZAKONCZONE",
+        "executionModal.status.failed": "NIEPOWODZENIE",
+        "executionModal.status.ready": "GOTOWE",
+        "executionModal.status.running": "W TRAKCIE",
+        "executionModal.stop": "Zatrzymaj",
+        "executionModal.title": "Wykonaj przeplyw"
+    }
+}

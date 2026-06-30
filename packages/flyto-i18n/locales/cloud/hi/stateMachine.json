@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "अनुमोदन कार्यप्रवाह",
+        "stateMachine.create.blank": "खाली",
+        "stateMachine.create.descPlaceholder": "विवरण दर्ज करें",
+        "stateMachine.create.description": "विवरण",
+        "stateMachine.create.name": "नाम",
+        "stateMachine.create.namePlaceholder": "स्टेट मशीन का नाम दर्ज करें",
+        "stateMachine.create.order": "ऑर्डर प्रोसेसिंग",
+        "stateMachine.create.template": "टेम्पलेट",
+        "stateMachine.create.ticket": "सपोर्ट टिकट",
+        "stateMachine.create.title": "स्टेट मशीन बनाएं",
+        "stateMachine.diagram.select": "एक स्टेट मशीन चुनें",
+        "stateMachine.diagram.title": "स्टेट आरेख",
+        "stateMachine.instances.empty": "कोई उदाहरण नहीं",
+        "stateMachine.instances.history": "इतिहास",
+        "stateMachine.instances.title": "उदाहरण",
+        "stateMachine.instances.trigger": "ट्रिगर",
+        "stateMachine.list.empty": "कोई स्टेट मशीन नहीं",
+        "stateMachine.list.title": "स्टेट मशीनें",
+        "stateMachine.stats.activeInstances": "सक्रिय उदाहरण",
+        "stateMachine.stats.completed": "पूर्ण",
+        "stateMachine.stats.machines": "मशीनें",
+        "stateMachine.stats.transitions": "संक्रमण"
+    }
+}

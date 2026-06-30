@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "Bu iş akışını çalıştırmak için Çalıştır'a tıklayın",
+        "executionModal.execute": "Çalıştır",
+        "executionModal.executing": "İş akışı çalıştırılıyor...",
+        "executionModal.executionComplete": "Çalıştırma Tamamlandı",
+        "executionModal.executionFailed": "Çalıştırma Başarısız",
+        "executionModal.noParamsRequired": "Giriş parametresi gerekli değil",
+        "executionModal.runAgain": "Tekrar Çalıştır",
+        "executionModal.status.completed": "TAMAMLANDI",
+        "executionModal.status.failed": "BAŞARISIZ",
+        "executionModal.status.ready": "HAZIR",
+        "executionModal.status.running": "ÇALIŞIYOR",
+        "executionModal.stop": "Durdur",
+        "executionModal.title": "İş Akışını Çalıştır"
+    }
+}

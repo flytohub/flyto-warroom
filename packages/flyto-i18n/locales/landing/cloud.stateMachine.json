@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.stateMachine",
+  "version": "1.0.0",
+  "translations": {
+    "stateMachine.create.approval": "",
+    "stateMachine.create.blank": "",
+    "stateMachine.create.descPlaceholder": "",
+    "stateMachine.create.description": "",
+    "stateMachine.create.name": "",
+    "stateMachine.create.namePlaceholder": "",
+    "stateMachine.create.order": "",
+    "stateMachine.create.template": "",
+    "stateMachine.create.ticket": "",
+    "stateMachine.create.title": "",
+    "stateMachine.diagram.select": "",
+    "stateMachine.diagram.title": "",
+    "stateMachine.instances.empty": "",
+    "stateMachine.instances.history": "",
+    "stateMachine.instances.title": "",
+    "stateMachine.instances.trigger": "",
+    "stateMachine.list.empty": "",
+    "stateMachine.list.title": "",
+    "stateMachine.stats.activeInstances": "",
+    "stateMachine.stats.completed": "",
+    "stateMachine.stats.machines": "",
+    "stateMachine.stats.transitions": ""
+  }
+}

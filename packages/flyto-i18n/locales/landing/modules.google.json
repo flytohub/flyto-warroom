@@ -1,0 +1,28 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "google",
+  "version": "1.0.0",
+  "translations": {
+    "modules.google.calendar.create_event.description": "",
+    "modules.google.calendar.create_event.label": "",
+    "modules.google.calendar.create_event.output.end.description": "",
+    "modules.google.calendar.create_event.output.event_id.description": "",
+    "modules.google.calendar.create_event.output.html_link.description": "",
+    "modules.google.calendar.create_event.output.start.description": "",
+    "modules.google.calendar.create_event.output.summary.description": "",
+    "modules.google.calendar.list_events.description": "",
+    "modules.google.calendar.list_events.label": "",
+    "modules.google.calendar.list_events.output.count.description": "",
+    "modules.google.calendar.list_events.output.events.description": "",
+    "modules.google.gmail.search.description": "",
+    "modules.google.gmail.search.label": "",
+    "modules.google.gmail.search.output.messages.description": "",
+    "modules.google.gmail.search.output.total.description": "",
+    "modules.google.gmail.send.description": "",
+    "modules.google.gmail.send.label": "",
+    "modules.google.gmail.send.output.message_id.description": "",
+    "modules.google.gmail.send.output.thread_id.description": "",
+    "modules.google.gmail.send.output.to.description": ""
+  }
+}

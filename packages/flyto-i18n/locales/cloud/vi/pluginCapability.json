@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.pluginCapability",
+    "version": "1.0.0",
+    "translations": {
+        "pluginCapability.imageClassification": "Phân loại hình ảnh",
+        "pluginCapability.speechRecognition": "Nhận dạng giọng nói",
+        "pluginCapability.textClassification": "Phân loại văn bản",
+        "pluginCapability.textEmbedding": "Nhúng văn bản",
+        "pluginCapability.textGeneration": "Sinh văn bản",
+        "pluginCapability.textToSpeech": "Chuyển văn bản thành giọng nói"
+    }
+}

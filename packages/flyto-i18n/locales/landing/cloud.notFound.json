@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.notFound",
+  "version": "1.0.0",
+  "translations": {
+    "notFound.checkUrl": "",
+    "notFound.contactSupport": "",
+    "notFound.goBack": "",
+    "notFound.goHome": "",
+    "notFound.helpText": "",
+    "notFound.message": "",
+    "notFound.myTemplates": "",
+    "notFound.pageNotExist": "",
+    "notFound.suggestion1": "",
+    "notFound.suggestion2": "",
+    "notFound.suggestion3": "",
+    "notFound.suggestions": "",
+    "notFound.title": ""
+  }
+}

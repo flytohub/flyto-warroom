@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.completionEffect",
+    "version": "1.0.0",
+    "translations": {
+        "completionEffect.defaultMessage": "Toutes les etapes ont ete executees avec succes",
+        "completionEffect.defaultTitle": "Flux de travail termine"
+    }
+}

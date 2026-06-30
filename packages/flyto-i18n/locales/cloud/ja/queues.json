@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "アイテムを追加",
+        "queues.create.maxRetries": "最大リトライ回数",
+        "queues.create.name": "キュー名",
+        "queues.create.namePlaceholder": "キュー名を入力",
+        "queues.create.selectWorkflow": "ワークフローを選択",
+        "queues.create.submit": "キューを作成",
+        "queues.create.title": "キューを作成",
+        "queues.create.workflow": "ワークフロー",
+        "queues.createFirst": "最初のキューを作成",
+        "queues.empty": "キューがありません",
+        "queues.emptyDesc": "キューを作成して開始",
+        "queues.stats.completed": "完了",
+        "queues.stats.pending": "保留中",
+        "queues.stats.processing": "処理中",
+        "queues.stats.totalItems": "総アイテム数",
+        "queues.status.completed": "完了",
+        "queues.status.failed": "失敗",
+        "queues.status.pending": "保留中",
+        "queues.status.processing": "処理中",
+        "queues.transactions.empty": "取引がありません",
+        "queues.transactions.title": "取引"
+    }
+}

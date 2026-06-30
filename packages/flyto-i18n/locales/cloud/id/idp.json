@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.idp",
+    "version": "1.0.0",
+    "translations": {
+        "idp.actions.batch": "Proses Batch",
+        "idp.actions.export": "Ekspor",
+        "idp.actions.title": "Aksi",
+        "idp.actions.train": "Latih Model",
+        "idp.models.title": "Model",
+        "idp.queue.empty": "Tidak ada dokumen dalam antrean",
+        "idp.queue.items": "item",
+        "idp.queue.title": "Antrean Pemrosesan",
+        "idp.recent.empty": "Tidak ada dokumen terbaru",
+        "idp.recent.title": "Dokumen Terbaru",
+        "idp.results.fields": "Kolom yang Diekstrak",
+        "idp.results.title": "Hasil",
+        "idp.stats.accuracy": "Akurasi",
+        "idp.stats.models": "Model",
+        "idp.stats.pending": "Tertunda",
+        "idp.stats.processed": "Diproses",
+        "idp.upload.browse": "Telusuri",
+        "idp.upload.desc": "Seret & lepas atau klik untuk mengunggah",
+        "idp.upload.formats": "Didukung: PDF, PNG, JPG",
+        "idp.upload.title": "Unggah Dokumen"
+    }
+}

@@ -1,0 +1,557 @@
+# Copyright 2026 Flyto2. Licensed under Apache-2.0. See LICENSE.
+
+"""
+Base Module Class with Phase 2 execution support and Item-based execution.
+
+This module provides the BaseModule class that all atomic modules inherit from.
+It includes execution support, parameter validation, unified return helpers,
+and item-based execution support as per ITEM_PIPELINE_SPEC.md.
+
+Design Principles:
+- Single responsibility: Base class for module execution
+- Atomic: Modules are independent units
+- No hardcoding: Uses constants for defaults
+- Item-based: Support for processing items[] arrays
+"""
+import asyncio
+import logging
+import warnings
+from abc import ABC, abstractmethod
+from typing import Any, Dict, List, Optional, Type, Union, TYPE_CHECKING
+
+from ..constants import (
+    DEFAULT_MAX_RETRIES,
+    EXPONENTIAL_BACKOFF_BASE,
+    ErrorCode,
+    ErrorMessages,
+)
+from .validation import ModuleError as ModuleErrorData, validate_required, validate_type, validate_all
+from .result import ModuleResult
+from .errors import ModuleError, ValidationError
+
+if TYPE_CHECKING:
+    from .items import Item, ItemContext, NodeExecutionResult
+
+
+logger = logging.getLogger(__name__)
+
+
+class BaseModule(ABC):
+    """
+    Base class for all modules.
+
+    All modules must inherit from this class and implement:
+    - validate_params(): Validate input parameters
+    - execute(): Execute the module logic
+
+    For item-based execution, modules can optionally implement:
+    - execute_item(): Process single item (for execution_mode="items")
+    - execute_all(): Process all items at once (for execution_mode="all")
+
+    Execution Modes:
+    - "single": Traditional mode, processes params, returns single result
+    - "items": Processes each input item independently (1:1 or 1:N mapping)
+    - "all": Receives all items at once (for aggregate/sort/limit operations)
+
+    Attributes:
+        module_id: Unique module identifier
+        module_name: Human-readable module name
+        module_description: Module description
+        required_permission: Required permission for execution
+        execution_mode: Execution mode ("single", "items", or "all")
+        params: Input parameters
+        context: Execution context
+    """
+
+    # Module metadata
+    module_id: str = ""
+    module_name: str = ""
+    module_description: str = ""
+
+    # Permission requirements
+    required_permission: str = ""
+
+    # Item-based execution mode (see ITEM_PIPELINE_SPEC.md)
+    # - "single": Traditional mode, ignores input items, uses params only
+    # - "items": Process each input item independently
+    # - "all": Receive all items at once (for aggregate operations)
+    execution_mode: str = "single"
+
+    # When True, automatically validate params against registry params_schema
+    # before calling validate_params(). Subclasses can opt-in by setting this
+    # to True in their class definition.
+    auto_validate_schema: bool = False
+
+    def __init__(self, params: Dict[str, Any], context: Dict[str, Any]):
+        """
+        Initialize module with parameters and context.
+
+        Args:
+            params: Input parameters for the module
+            context: Execution context (shared state, browser instance, etc.)
+        """
+        self.params = params
+        self.context = context
+
+        if self.auto_validate_schema and self.module_id:
+            self._auto_validate_schema()
+
+        self.validate_params()
+
+    def _auto_validate_schema(self) -> None:
+        """Validate params against registry schema if available."""
+        from .registry import ModuleRegistry
+        from .validation import SchemaValidator
+
+        metadata = ModuleRegistry.get_metadata(self.module_id)
+        if not metadata:
+            return
+
+        params_schema = metadata.get('params_schema')
+        if not params_schema:
+            return
+
+        validator = SchemaValidator()
+        result = validator.validate(self.params, params_schema)
+        if not result.valid:
+            messages = "; ".join(
+                e.message for e in result.errors[:3]
+            )
+            raise ValueError(
+                f"Schema validation failed for {self.module_id}: {messages}"
+            )
+
+    @abstractmethod
+    def validate_params(self) -> None:
+        """Validate input parameters. Raise ValueError if invalid."""
+        pass
+
+    @abstractmethod
+    async def execute(self) -> Any:
+        """Execute module logic and return result."""
+        pass
+
+    # =========================================================================
+    # Item-Based Execution Methods (ITEM_PIPELINE_SPEC.md)
+    # =========================================================================
+
+    async def execute_item(
+        self,
+        item: "Item",
+        index: int,
+        context: "ItemContext"
+    ) -> "Item":
+        """
+        Process a single item (execution_mode="items").
+
+        Override this method for modules that process items independently.
+        The default implementation calls execute() and wraps the result.
+
+        Args:
+            item: Input item to process
+            index: Item index in the input array
+            context: Item execution context with access to all items
+
+        Returns:
+            Processed item (or multiple items for 1:N operations)
+
+        Example:
+            async def execute_item(self, item, index, context):
+                # Transform item data
+                transformed = self._apply_transform(item.json)
+                return Item(json=transformed, pairedItem=PairedItemInfo(item=index))
+        """
+        from .items import Item, PairedItemInfo
+
+        # Default behavior: inject item into params and call execute()
+        self.params['$item'] = item.json
+        self.params['$index'] = index
+
+        result = await self.execute()
+
+        # Wrap result as Item
+        if isinstance(result, Item):
+            return result
+        if isinstance(result, dict):
+            data = result.get('data', result) if result.get('ok', True) else {}
+            return Item(json=data, pairedItem=PairedItemInfo(item=index))
+        return Item(json={'value': result}, pairedItem=PairedItemInfo(item=index))
+
+    async def execute_all(
+        self,
+        items: List["Item"],
+        context: "ItemContext"
+    ) -> List["Item"]:
+        """
+        Process all items at once (execution_mode="all").
+
+        Override this method for modules that need to see all data at once,
+        such as aggregate, sort, limit, or merge operations.
+
+        Args:
+            items: All input items
+            context: Item execution context
+
+        Returns:
+            List of processed items
+
+        Example:
+            async def execute_all(self, items, context):
+                # Aggregate all items
+                field = self.params.get('field')
+                total = sum(item.json.get(field, 0) for item in items)
+                return [Item(json={'total': total, 'count': len(items)})]
+        """
+        from .items import Item, ItemContext as ItemCtx
+
+        # Default behavior: process items sequentially using execute_item
+        results = []
+        for i, item in enumerate(items):
+            item_ctx = ItemCtx(items=items, totalItems=len(items))
+            result = await self.execute_item(item, i, item_ctx)
+            if isinstance(result, list):
+                results.extend(result)
+            else:
+                results.append(result)
+        return results
+
+    async def run(self) -> Any:
+        """
+        Execute module with Phase 2 enhancements:
+        - Timeout support
+        - Retry logic
+        - Error handling
+
+        Returns:
+            Module execution result
+        """
+        # Defer import to avoid circular dependency
+        from .registry import ModuleRegistry
+
+        # Get module metadata for Phase 2 settings
+        metadata = ModuleRegistry.get_metadata(self.module_id) or {}
+
+        # SECURITY: single execution chokepoint. Every module — including those
+        # reached via flow.invoke / template.invoke / flow.subflow / foreach /
+        # composite sub-nodes / agent-chosen tools — runs through here, so a
+        # denied or insufficiently-permitted module fails closed regardless of
+        # how it was invoked. This is the backstop the nested-execution gadgets
+        # used to bypass the MCP-boundary capability checks.
+        from ..module_policy import enforce_module_policy
+        enforce_module_policy(self.module_id, metadata.get('required_permissions'))
+
+        timeout_ms = metadata.get('timeout_ms')
+        timeout = timeout_ms / 1000.0 if timeout_ms else None
+        retryable = metadata.get('retryable', False)
+        max_retries = metadata.get('max_retries', DEFAULT_MAX_RETRIES)
+
+        # Execute with appropriate strategy
+        if timeout:
+            return await self._execute_with_resilience(
+                timeout=timeout,
+                retryable=retryable,
+                max_retries=max_retries
+            )
+        elif retryable:
+            return await self._execute_with_resilience(
+                timeout=None,
+                retryable=True,
+                max_retries=max_retries
+            )
+        else:
+            return await self.execute()
+
+    async def _execute_with_resilience(
+        self,
+        timeout: Optional[int] = None,
+        retryable: bool = False,
+        max_retries: int = DEFAULT_MAX_RETRIES
+    ) -> Any:
+        """
+        Execute with timeout and/or retry support.
+
+        Args:
+            timeout: Timeout in seconds (None for no timeout)
+            retryable: Whether to retry on failure
+            max_retries: Maximum number of retry attempts
+
+        Returns:
+            Module execution result
+
+        Raises:
+            TimeoutError: If execution times out
+            Exception: If all retries are exhausted
+        """
+        attempts = max_retries if retryable else 1
+        last_exception: Optional[Exception] = None
+
+        for attempt in range(attempts):
+            try:
+                if timeout:
+                    return await asyncio.wait_for(
+                        self.execute(),
+                        timeout=timeout
+                    )
+                else:
+                    return await self.execute()
+
+            except asyncio.TimeoutError:
+                error_msg = ErrorMessages.format(
+                    ErrorMessages.TIMEOUT_ERROR,
+                    module_id=self.module_id,
+                    timeout=timeout
+                )
+                if attempt == attempts - 1:
+                    logger.error(f"{error_msg} (after {attempts} attempts)")
+                    raise TimeoutError(error_msg)
+                logger.warning(f"{error_msg}, retrying...")
+                last_exception = TimeoutError(error_msg)
+
+            except Exception as e:
+                last_exception = e
+                if attempt == attempts - 1:
+                    error_msg = ErrorMessages.format(
+                        ErrorMessages.RETRY_EXHAUSTED,
+                        module_id=self.module_id,
+                        attempts=attempts
+                    )
+                    logger.error(f"{error_msg}: {e}")
+                    raise Exception(f"{error_msg}: {e}") from e
+                logger.warning(f"Module {self.module_id} failed, retrying: {e}")
+
+            # Exponential backoff between retries
+            if attempt < attempts - 1:
+                backoff_time = EXPONENTIAL_BACKOFF_BASE ** attempt
+                await asyncio.sleep(backoff_time)
+
+        # Should not reach here
+        if last_exception:
+            raise last_exception
+        raise RuntimeError("Unexpected execution state")
+
+    def get_metadata(self) -> Dict[str, Any]:
+        """
+        Get module metadata.
+
+        Returns:
+            Dictionary containing module metadata
+        """
+        return {
+            "id": self.module_id,
+            "name": self.module_name,
+            "description": self.module_description,
+            "required_permission": self.required_permission
+        }
+
+    def get_param(self, name: str, default: Any = None) -> Any:
+        """
+        Get a parameter value with optional default.
+
+        Args:
+            name: Parameter name
+            default: Default value if not present
+
+        Returns:
+            Parameter value or default
+        """
+        return self.params.get(name, default)
+
+    def require_param(self, name: str) -> Any:
+        """
+        Get a required parameter value.
+
+        Args:
+            name: Parameter name
+
+        Returns:
+            Parameter value
+
+        Raises:
+            ValueError: If parameter is missing
+        """
+        if name not in self.params:
+            raise ValueError(
+                ErrorMessages.format(
+                    ErrorMessages.MISSING_REQUIRED_PARAM,
+                    param_name=name
+                )
+            )
+        return self.params[name]
+
+    # =========================================================================
+    # Unified Return Format Helpers
+    # =========================================================================
+
+    def success(self, data: Any = None, message: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Create a standard success result.
+
+        Usage:
+            return self.success({'title': 'Example'})
+            return self.success(data={'items': []}, message='Found 0 items')
+
+        Args:
+            data: Result data (any type)
+            message: Optional success message
+
+        Returns:
+            Standard success result dict with ok=True
+        """
+        result: Dict[str, Any] = {"ok": True}
+        if data is not None:
+            result["data"] = data
+        if message:
+            result["message"] = message
+        return result
+
+    def failure(
+        self,
+        code: str,
+        message: str,
+        field: Optional[str] = None,
+        hint: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Create a standard failure result.
+
+        Usage:
+            return self.failure(
+                ErrorCode.MISSING_PARAM,
+                "URL is required",
+                field="url",
+                hint="Please provide a valid URL"
+            )
+
+        Args:
+            code: Error code from ErrorCode class
+            message: Human-readable error message
+            field: Field that caused the error
+            hint: Suggestion for fixing the error
+
+        Returns:
+            Standard failure result dict with ok=False
+        """
+        return ModuleError(
+            code=code,
+            message=message,
+            field=field,
+            hint=hint
+        ).to_result()
+
+    def validate_params_v2(
+        self,
+        required: Optional[List[str]] = None,
+        types: Optional[Dict[str, Type]] = None
+    ) -> Optional[Dict[str, Any]]:
+        """
+        Validate parameters using the new validation system.
+
+        Usage:
+            error = self.validate_params_v2(
+                required=['url', 'method'],
+                types={'timeout': int, 'headers': dict}
+            )
+            if error:
+                return error
+
+        Args:
+            required: List of required parameter names
+            types: Dict mapping parameter names to expected types
+
+        Returns:
+            Failure result dict if validation fails, None if valid
+        """
+        errors = []
+
+        # Validate required parameters
+        if required:
+            for field in required:
+                error = validate_required(self.params, field)
+                if error:
+                    errors.append(error)
+
+        # Validate types
+        if types:
+            for field, expected_type in types.items():
+                error = validate_type(self.params, field, expected_type)
+                if error:
+                    errors.append(error)
+
+        # Return first error (or None if valid)
+        if errors:
+            return errors[0].to_result()
+
+        return None
+
+    # =========================================================================
+    # New Exception-Based Error Handling (Recommended)
+    # =========================================================================
+
+    def raise_validation_error(
+        self,
+        message: str,
+        field: Optional[str] = None,
+        hint: Optional[str] = None
+    ) -> None:
+        """
+        Raise a validation error.
+
+        This is the recommended way to report validation errors.
+        The runtime will catch this and convert to ModuleResult.failure().
+
+        Usage:
+            if not url:
+                self.raise_validation_error("URL is required", field="url")
+
+        Args:
+            message: Error message
+            field: Field that caused the error
+            hint: Suggestion for fixing the error
+
+        Raises:
+            ValidationError: Always raises
+        """
+        raise ValidationError(message, field=field, hint=hint)
+
+    def raise_error(
+        self,
+        error_class: type,
+        message: str,
+        **kwargs
+    ) -> None:
+        """
+        Raise a module error.
+
+        Usage:
+            from core.modules.errors import NetworkError, NotFoundError
+
+            self.raise_error(NetworkError, "Connection failed", url=url)
+            self.raise_error(NotFoundError, "File not found", path=path)
+
+        Args:
+            error_class: ModuleError subclass to raise
+            message: Error message
+            **kwargs: Additional error attributes
+
+        Raises:
+            ModuleError: The specified error
+        """
+        raise error_class(message, **kwargs)
+
+    def make_result(self, data: Any = None) -> ModuleResult:
+        """
+        Create a ModuleResult from data.
+
+        This is an alternative to returning raw dicts.
+        The runtime will accept ModuleResult directly.
+
+        Usage:
+            return self.make_result({"title": "Example"})
+
+        Args:
+            data: Result data
+
+        Returns:
+            ModuleResult with ok=True
+        """
+        return ModuleResult.success(data=data)

@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "IMAP sunucusundan e-postaları oku",
+        "modules.email.read.label": "E-posta Oku",
+        "modules.email.read.output.count.description": "E-posta nesneleri listesi",
+        "modules.email.read.output.emails.description": "E-posta nesneleri listesi",
+        "modules.email.send.description": "SMTP sunucusu üzerinden e-posta gönder",
+        "modules.email.send.label": "E-posta Gönder",
+        "modules.email.send.output.message_id.description": "E-posta başarıyla gönderildi mi",
+        "modules.email.send.output.recipients.description": "E-posta başarıyla gönderildi mi",
+        "modules.email.send.output.sent.description": "E-posta başarıyla gönderildi mi"
+    }
+}

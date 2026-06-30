@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.orchestrator",
+    "version": "1.0.0",
+    "translations": {
+        "orchestrator.jobs.empty": "ไม่มีงาน",
+        "orchestrator.jobs.title": "งาน",
+        "orchestrator.register.capabilities": "ความสามารถ",
+        "orchestrator.register.machineName": "ชื่อเครื่อง",
+        "orchestrator.register.machineNamePlaceholder": "กรอกชื่อเครื่อง",
+        "orchestrator.register.name": "ชื่อหุ่นยนต์",
+        "orchestrator.register.namePlaceholder": "กรอกชื่อหุ่นยนต์",
+        "orchestrator.register.osType": "ประเภท OS",
+        "orchestrator.register.submit": "ลงทะเบียน",
+        "orchestrator.register.title": "ลงทะเบียนหุ่นยนต์",
+        "orchestrator.robots.empty": "ยังไม่มีหุ่นยนต์ที่ลงทะเบียน",
+        "orchestrator.robots.emptyDesc": "ลงทะเบียนหุ่นยนต์เพื่อเริ่มต้น",
+        "orchestrator.robots.lastSeen": "เห็นล่าสุด",
+        "orchestrator.robots.maxJobs": "งานสูงสุด",
+        "orchestrator.robots.platform": "แพลตฟอร์ม",
+        "orchestrator.robots.register": "ลงทะเบียนหุ่นยนต์",
+        "orchestrator.robots.registerFirst": "ลงทะเบียนหุ่นยนต์ตัวแรกของคุณ",
+        "orchestrator.robots.runJob": "รันงาน",
+        "orchestrator.robots.title": "หุ่นยนต์",
+        "orchestrator.stats.available": "พร้อมใช้งาน",
+        "orchestrator.stats.busy": "ไม่ว่าง",
+        "orchestrator.stats.offline": "ออฟไลน์",
+        "orchestrator.stats.totalRobots": "หุ่นยนต์ทั้งหมด"
+    }
+}

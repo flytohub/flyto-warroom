@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "Continue",
+        "errorStrategy.continueDesc": "Log error and continue to next step",
+        "errorStrategy.retry": "Retry",
+        "errorStrategy.retryDesc": "Retry based on retry configuration",
+        "errorStrategy.stop": "Stop",
+        "errorStrategy.stopDesc": "Stop workflow and mark as failed"
+    }
+}

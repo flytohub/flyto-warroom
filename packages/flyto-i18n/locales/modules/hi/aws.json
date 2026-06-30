@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "AWS S3 बकेट से एक वस्तु हटाएं",
+        "modules.aws.s3.delete.label": "S3 वस्तु हटाएं",
+        "modules.aws.s3.delete.output.bucket.description": "S3 बकेट का नाम",
+        "modules.aws.s3.delete.output.deleted.description": "क्या वस्तु सफलतापूर्वक हटा दी गई",
+        "modules.aws.s3.delete.output.key.description": "हटाई गई वस्तु की कुंजी",
+        "modules.aws.s3.download.description": "AWS S3 बकेट से एक फ़ाइल को स्थानीय पथ पर डाउनलोड करें",
+        "modules.aws.s3.download.label": "S3 डाउनलोड",
+        "modules.aws.s3.download.output.content_type.description": "डाउनलोड की गई फ़ाइल का MIME प्रकार",
+        "modules.aws.s3.download.output.path.description": "स्थानीय फ़ाइल पथ जहाँ फ़ाइल सहेजी गई थी",
+        "modules.aws.s3.download.output.size.description": "फ़ाइल का आकार बाइट्स में",
+        "modules.aws.s3.list.description": "AWS S3 बकेट में वस्तुओं को सूचीबद्ध करें, वैकल्पिक उपसर्ग फ़िल्टर के साथ",
+        "modules.aws.s3.list.label": "S3 वस्तुएं सूचीबद्ध करें",
+        "modules.aws.s3.list.output.count.description": "लौटी गई वस्तुओं की संख्या",
+        "modules.aws.s3.list.output.objects.description": "S3 वस्तुओं की सूची",
+        "modules.aws.s3.list.output.truncated.description": "क्या परिणाम कटे हुए हैं",
+        "modules.aws.s3.upload.description": "AWS S3 बकेट में एक स्थानीय फ़ाइल अपलोड करें",
+        "modules.aws.s3.upload.label": "S3 अपलोड",
+        "modules.aws.s3.upload.output.bucket.description": "S3 बकेट का नाम",
+        "modules.aws.s3.upload.output.key.description": "S3 ऑब्जेक्ट कुंजी",
+        "modules.aws.s3.upload.output.size.description": "फ़ाइल का आकार बाइट्स में",
+        "modules.aws.s3.upload.output.url.description": "अपलोड की गई वस्तु का सार्वजनिक URL"
+    }
+}

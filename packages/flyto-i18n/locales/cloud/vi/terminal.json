@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "Xóa nhật ký",
+        "terminal.closeTerminal": "Đóng terminal",
+        "terminal.connected": "ĐÃ KẾT NỐI",
+        "terminal.disableAutoScroll": "Tắt cuộn tự động",
+        "terminal.disconnected": "NGẮT KẾT NỐI",
+        "terminal.enableAutoScroll": "Bật cuộn tự động",
+        "terminal.hideLogs": "Ẩn nhật ký {level}",
+        "terminal.logsWillAppear": "Nhật ký sẽ xuất hiện ở đây khi hệ thống tạo đầu ra",
+        "terminal.searchPlaceholder": "Tìm kiếm nhật ký...",
+        "terminal.showLogs": "Hiện nhật ký {level}",
+        "terminal.title": "Terminal hệ thống",
+        "terminal.waitingForLogs": "Đang chờ nhật ký..."
+    }
+}

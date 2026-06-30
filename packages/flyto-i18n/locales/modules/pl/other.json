@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "Nazwa naglowka",
+        "schema.field.body": "Tresc",
+        "schema.field.body_matches": "Odpowiedz",
+        "schema.field.full_page": "Pelna strona",
+        "schema.field.response": "Odpowiedz",
+        "schema.field.screenshot_format": "Pelna strona",
+        "schema.field.ssrf_protection": "Ochrona SSRF",
+        "schema.field.ssrf_protection.description": "Blokuje zapytania do sieci prywatnych/wewnętrznych (localhost, 192.168.x.x, endpointy metadanych chmury). Wyłącz tylko dla zaufanych celów wewnętrznych.",
+        "schema.field.url": "URL",
+        "schema.field.viewport_height": "Szerokosc",
+        "schema.field.viewport_width": "Szerokosc"
+    }
+}

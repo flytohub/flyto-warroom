@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.coreUpdate",
+  "version": "1.0.0",
+  "translations": {
+    "coreUpdate.available": "",
+    "coreUpdate.checkFailed": "",
+    "coreUpdate.downloadPage": "",
+    "coreUpdate.installedVersion": "",
+    "coreUpdate.invalidFile": "",
+    "coreUpdate.lastCheck": "",
+    "coreUpdate.notInstalled": "",
+    "coreUpdate.refresh": "",
+    "coreUpdate.title": "",
+    "coreUpdate.upToDate": "",
+    "coreUpdate.uploadFailed": "",
+    "coreUpdate.uploadPackage": "",
+    "coreUpdate.whlFile": ""
+  }
+}

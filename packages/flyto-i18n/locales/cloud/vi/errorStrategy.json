@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "Tiếp tục",
+        "errorStrategy.continueDesc": "Ghi lỗi và tiếp tục bước tiếp theo",
+        "errorStrategy.retry": "Thử lại",
+        "errorStrategy.retryDesc": "Thử lại dựa trên cấu hình thử lại",
+        "errorStrategy.stop": "Dừng",
+        "errorStrategy.stopDesc": "Dừng workflow và đánh dấu thất bại"
+    }
+}

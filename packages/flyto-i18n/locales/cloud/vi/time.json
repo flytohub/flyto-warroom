@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "vi",
+  "category": "cloud.time",
+  "version": "1.0.0",
+  "translations": {
+    "time.days": "days",
+    "time.daysAgo": "{n} ngày trước",
+    "time.hours": "hours",
+    "time.hoursAgo": "{n} giờ trước",
+    "time.justNow": "vừa xong",
+    "time.minutes": "minutes",
+    "time.minutesAgo": "{n} phút trước"
+  }
+}

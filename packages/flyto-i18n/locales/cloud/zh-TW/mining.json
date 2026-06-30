@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.mining",
+    "version": "1.0.0",
+    "translations": {
+        "mining.bottlenecks.empty": "沒有發現瓶頸",
+        "mining.bottlenecks.title": "瓶頸",
+        "mining.discovery.analyze": "分析",
+        "mining.discovery.empty": "沒有可分析的資料",
+        "mining.discovery.selectWorkflow": "選擇要分析的工作流",
+        "mining.discovery.title": "流程探索",
+        "mining.quality.fitness": "適配度",
+        "mining.quality.generalization": "泛化能力",
+        "mining.quality.precision": "精確度",
+        "mining.stats.avgDuration": "平均時長",
+        "mining.stats.cases": "案例",
+        "mining.stats.conformance": "符合度",
+        "mining.stats.variants": "變體",
+        "mining.suggestions.apply": "套用",
+        "mining.suggestions.empty": "沒有建議",
+        "mining.suggestions.title": "建議",
+        "mining.variants.empty": "沒有變體",
+        "mining.variants.title": "流程變體"
+    }
+}

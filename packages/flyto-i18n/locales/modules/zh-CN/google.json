@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "在 Google 行事历中创建新事件",
+        "modules.google.calendar.create_event.label": "行事历创建事件",
+        "modules.google.calendar.create_event.output.end.description": "事件结束时间",
+        "modules.google.calendar.create_event.output.event_id.description": "已创建的事件 ID",
+        "modules.google.calendar.create_event.output.html_link.description": "查看事件的 Google 行事历链接",
+        "modules.google.calendar.create_event.output.start.description": "事件开始时间",
+        "modules.google.calendar.create_event.output.summary.description": "事件标题",
+        "modules.google.calendar.list_events.description": "列出 Google 行事历中的即将举行的事件",
+        "modules.google.calendar.list_events.label": "行事历列出事件",
+        "modules.google.calendar.list_events.output.count.description": "返回的事件数量",
+        "modules.google.calendar.list_events.output.events.description": "行事历事件列表",
+        "modules.google.gmail.search.description": "使用 Gmail 搜索语法搜索 Gmail 消息",
+        "modules.google.gmail.search.label": "Gmail 搜索",
+        "modules.google.gmail.search.output.messages.description": "符合的消息列表",
+        "modules.google.gmail.search.output.total.description": "返回的消息总数",
+        "modules.google.gmail.send.description": "通过 Gmail API 发送电子邮件",
+        "modules.google.gmail.send.label": "Gmail 发送",
+        "modules.google.gmail.send.output.message_id.description": "Gmail 消息 ID",
+        "modules.google.gmail.send.output.thread_id.description": "Gmail 讨论串 ID",
+        "modules.google.gmail.send.output.to.description": "收件者电子邮件地址"
+    }
+}

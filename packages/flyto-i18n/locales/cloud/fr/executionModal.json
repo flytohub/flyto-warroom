@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "Cliquez sur Executer pour lancer ce flux de travail",
+        "executionModal.execute": "Executer",
+        "executionModal.executing": "Execution du flux de travail...",
+        "executionModal.executionComplete": "Execution terminee",
+        "executionModal.executionFailed": "Execution echouee",
+        "executionModal.noParamsRequired": "Aucun parametre d'entree requis",
+        "executionModal.runAgain": "Relancer",
+        "executionModal.status.completed": "TERMINE",
+        "executionModal.status.failed": "ECHEC",
+        "executionModal.status.ready": "PRET",
+        "executionModal.status.running": "EN COURS",
+        "executionModal.stop": "Arreter",
+        "executionModal.title": "Executer le flux de travail"
+    }
+}

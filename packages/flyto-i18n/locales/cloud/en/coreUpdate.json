@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "available",
+        "coreUpdate.checkFailed": "Failed to check status",
+        "coreUpdate.downloadPage": "Download from official site",
+        "coreUpdate.installedVersion": "Installed Version",
+        "coreUpdate.invalidFile": "Please select a valid .whl file",
+        "coreUpdate.lastCheck": "Last checked",
+        "coreUpdate.notInstalled": "Not installed",
+        "coreUpdate.refresh": "Check for updates",
+        "coreUpdate.title": "Core Engine",
+        "coreUpdate.upToDate": "Up to date",
+        "coreUpdate.uploadFailed": "Upload failed",
+        "coreUpdate.uploadPackage": "Upload Package",
+        "coreUpdate.whlFile": "Upload .whl file"
+    }
+}

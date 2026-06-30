@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "Nie mozna polaczyc sie z serwerem. Upewnij sie, ze backend jest uruchomiony.",
+        "errors.somethingWentWrong": "Cos poszlo nie tak",
+        "errors.technicalDetails": "Szczegoly techniczne",
+        "errors.timeout": "Przekroczono limit czasu zapytania. Sprobuj ponownie.",
+        "errors.unexpectedError": "Wystapil nieoczekiwany blad"
+    }
+}

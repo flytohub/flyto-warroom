@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "other",
+  "version": "1.0.0",
+  "translations": {
+    "schema.field.api_key_header": "",
+    "schema.field.body": "",
+    "schema.field.body_matches": "",
+    "schema.field.full_page": "",
+    "schema.field.response": "",
+    "schema.field.screenshot_format": "",
+    "schema.field.ssrf_protection": "",
+    "schema.field.ssrf_protection.description": "",
+    "schema.field.url": "",
+    "schema.field.viewport_height": "",
+    "schema.field.viewport_width": ""
+  }
+}

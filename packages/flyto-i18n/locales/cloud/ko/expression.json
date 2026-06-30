@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "사용 가능한 변수",
+        "expression.editExpression": "표현식 편집",
+        "expression.enterExpression": "미리보기를 보려면 표현식을 입력하세요",
+        "expression.expressionCode": "표현식",
+        "expression.openEditor": "표현식 편집기 열기",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "미리보기"
+    }
+}

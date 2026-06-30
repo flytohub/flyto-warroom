@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "Back to Templates",
+        "offline.currentlyOffline": "You are currently working offline",
+        "offline.languagePack.active": "Active",
+        "offline.languagePack.currentLanguage": "Current Language",
+        "offline.languagePack.downloadHint": "Download language packs from",
+        "offline.languagePack.importButton": "Import Language Pack",
+        "offline.languagePack.importFailed": "Failed to import language pack",
+        "offline.languagePack.importSuccess": "Successfully imported {locale} ({count} keys)",
+        "offline.languagePack.importedPacks": "Imported Packs",
+        "offline.languagePack.importing": "Importing...",
+        "offline.languagePack.invalidFormat": "Invalid file format. Expected flyto-i18n JSON file.",
+        "offline.languagePack.noTranslations": "No translations found in file",
+        "offline.languagePack.subtitle": "Import translations for offline use",
+        "offline.languagePack.title": "Language Pack",
+        "offline.languagePack.use": "Use",
+        "offline.license": "License",
+        "offline.settings": "Offline Settings"
+    }
+}

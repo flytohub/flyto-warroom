@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.evolution",
+    "version": "1.0.0",
+    "translations": {
+        "evolution.acceptSuggestion": "ยอมรับคำแนะนำ",
+        "evolution.analyzing": "กำลังวิเคราะห์",
+        "evolution.apply": "ใช้",
+        "evolution.deepAnalysis": "วิเคราะห์เชิงลึก",
+        "evolution.details": "รายละเอียด",
+        "evolution.dismissSuggestion": "ปฏิเสธคำแนะนำ",
+        "evolution.error": "ข้อผิดพลาด",
+        "evolution.highPriority": "ความสำคัญสูง",
+        "evolution.insights": "ข้อมูลเชิงลึก",
+        "evolution.lastUpdated": "อัปเดตล่าสุด",
+        "evolution.noSuggestions": "ไม่มีคำแนะนำ",
+        "evolution.noSuggestionsDesc": "ไม่มีคำแนะนำที่ใช้ได้",
+        "evolution.reasoning": "เหตุผล",
+        "evolution.refresh": "รีเฟรช",
+        "evolution.requestAnalysis": "ขอการวิเคราะห์",
+        "evolution.suggestionApplied": "ใช้คำแนะนำแล้ว",
+        "evolution.title": "วิวัฒนาการ",
+        "evolution.types.cost": "ค่าใช้จ่าย",
+        "evolution.types.other": "อื่นๆ",
+        "evolution.types.performance": "ประสิทธิภาพ",
+        "evolution.types.reliability": "ความน่าเชื่อถือ",
+        "evolution.types.security": "ความปลอดภัย",
+        "evolution.viewDetails": "ดูรายละเอียด"
+    }
+}

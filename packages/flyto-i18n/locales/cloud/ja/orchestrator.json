@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.orchestrator",
+    "version": "1.0.0",
+    "translations": {
+        "orchestrator.jobs.empty": "ジョブなし",
+        "orchestrator.jobs.title": "ジョブ",
+        "orchestrator.register.capabilities": "機能",
+        "orchestrator.register.machineName": "マシン名",
+        "orchestrator.register.machineNamePlaceholder": "マシン名を入力",
+        "orchestrator.register.name": "ロボット名",
+        "orchestrator.register.namePlaceholder": "ロボット名を入力",
+        "orchestrator.register.osType": "OSタイプ",
+        "orchestrator.register.submit": "登録",
+        "orchestrator.register.title": "ロボット登録",
+        "orchestrator.robots.empty": "登録されたロボットなし",
+        "orchestrator.robots.emptyDesc": "ロボットを登録して開始",
+        "orchestrator.robots.lastSeen": "最終確認",
+        "orchestrator.robots.maxJobs": "最大ジョブ数",
+        "orchestrator.robots.platform": "プラットフォーム",
+        "orchestrator.robots.register": "ロボット登録",
+        "orchestrator.robots.registerFirst": "最初のロボットを登録",
+        "orchestrator.robots.runJob": "ジョブ実行",
+        "orchestrator.robots.title": "ロボット",
+        "orchestrator.stats.available": "利用可能",
+        "orchestrator.stats.busy": "使用中",
+        "orchestrator.stats.offline": "オフライン",
+        "orchestrator.stats.totalRobots": "総ロボット数"
+    }
+}

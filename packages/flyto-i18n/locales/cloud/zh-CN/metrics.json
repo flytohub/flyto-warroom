@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "zh-CN",
+  "category": "cloud.metrics",
+  "version": "1.0.0",
+  "translations": {
+    "metrics.chart.failed": "失败",
+    "metrics.chart.noData": "没有可用数据",
+    "metrics.chart.successful": "成功",
+    "metrics.chart.title": "运行趋势",
+    "metrics.recentFailures.copy": "Copy",
+    "metrics.recentFailures.noData": "没有最近的失败记录",
+    "metrics.recentFailures.title": "最近失败",
+    "metrics.stats.avgDuration": "平均时长",
+    "metrics.stats.failed": "失败",
+    "metrics.stats.successRate": "成功率",
+    "metrics.stats.totalExecutions": "运行总数",
+    "metrics.topWorkflows.executions": "次运行",
+    "metrics.topWorkflows.noData": "尚未运行任何工作流程",
+    "metrics.topWorkflows.title": "热门工作流程",
+    "metrics.vsPrevious": "相较于前一期间"
+  }
+}

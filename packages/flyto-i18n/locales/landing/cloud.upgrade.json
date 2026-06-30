@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.upgrade",
+  "version": "1.0.0",
+  "translations": {
+    "upgrade.contactSales": "",
+    "upgrade.debugFeatures": "",
+    "upgrade.enterpriseHint": "",
+    "upgrade.featureLocked": "",
+    "upgrade.features.evidence": "",
+    "upgrade.features.lineage": "",
+    "upgrade.features.replay": "",
+    "upgrade.features.tests": "",
+    "upgrade.features.versions": "",
+    "upgrade.offlineLicense": "",
+    "upgrade.subscription": "",
+    "upgrade.subtitle": "",
+    "upgrade.title": ""
+  }
+}

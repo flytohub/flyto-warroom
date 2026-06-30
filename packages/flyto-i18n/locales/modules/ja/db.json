@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "MongoDBコレクションからドキュメントをクエリ",
+        "modules.db.mongodb.find.label": "MongoDB 検索",
+        "modules.db.mongodb.find.output.count.description": "一致するドキュメントの配列",
+        "modules.db.mongodb.find.output.documents.description": "一致するドキュメントの配列",
+        "modules.db.mongodb.insert.description": "MongoDBコレクションに1つ以上のドキュメントを挿入",
+        "modules.db.mongodb.insert.label": "MongoDB 挿入",
+        "modules.db.mongodb.insert.output.inserted_count.description": "挿入されたドキュメント数",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "挿入されたドキュメント数",
+        "modules.db.mysql.query.description": "MySQLデータベースでSQLクエリを実行して結果を返す",
+        "modules.db.mysql.query.label": "MySQL クエリ",
+        "modules.db.mysql.query.output.columns.description": "オブジェクトとしての結果行の配列",
+        "modules.db.mysql.query.output.row_count.description": "オブジェクトとしての結果行の配列",
+        "modules.db.mysql.query.output.rows.description": "オブジェクトとしての結果行の配列",
+        "modules.db.postgresql.query.description": "PostgreSQLデータベースでSQLクエリを実行して結果を返す",
+        "modules.db.postgresql.query.label": "PostgreSQL クエリ",
+        "modules.db.postgresql.query.output.columns.description": "オブジェクトとしての結果行の配列",
+        "modules.db.postgresql.query.output.row_count.description": "オブジェクトとしての結果行の配列",
+        "modules.db.postgresql.query.output.rows.description": "オブジェクトとしての結果行の配列",
+        "modules.db.redis.get.description": "Redisキャッシュから値を取得",
+        "modules.db.redis.get.label": "Redis 取得",
+        "modules.db.redis.get.output.exists.description": "返された値",
+        "modules.db.redis.get.output.key.description": "返された値",
+        "modules.db.redis.get.output.value.description": "返された値",
+        "modules.db.redis.set.description": "Redisキャッシュに値を設定",
+        "modules.db.redis.set.label": "Redis 設定"
+    }
+}

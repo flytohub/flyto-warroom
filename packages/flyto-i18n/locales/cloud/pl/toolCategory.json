@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.toolCategory",
+    "version": "1.0.0",
+    "translations": {
+        "toolCategory.apiIntegration": "Integracja API",
+        "toolCategory.automation": "Automatyzacja",
+        "toolCategory.dataTransform": "Transformacja danych",
+        "toolCategory.fileOperations": "Operacje plikowe",
+        "toolCategory.imageProcessing": "Przetwarzanie obrazow",
+        "toolCategory.other": "Inne",
+        "toolCategory.textProcessing": "Przetwarzanie tekstu",
+        "toolCategory.webScraping": "Web Scraping"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.colorPicker",
+    "version": "1.0.0",
+    "translations": {
+        "colorPicker.custom": "Niestandardowy",
+        "colorPicker.popular": "Popularne",
+        "colorPicker.presets": "Ustawienia wstępne"
+    }
+}

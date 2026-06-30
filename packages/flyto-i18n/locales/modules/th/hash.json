@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "คำนวณแฮช SHA-256 ของข้อความ",
+        "modules.hash.sha256.label": "แฮช SHA-256",
+        "modules.hash.sha256.output.algorithm.description": "แฮช SHA-256 (64 อักขระฐานสิบหก)",
+        "modules.hash.sha256.output.hash.description": "การเข้ารหัสข้อความ",
+        "modules.hash.sha256.params.encoding.description": "ข้อความที่จะแฮช",
+        "modules.hash.sha256.params.encoding.label": "ข้อความ",
+        "modules.hash.sha256.params.text.description": "ข้อความที่จะแฮช",
+        "modules.hash.sha256.params.text.label": "ข้อความ",
+        "modules.hash.sha512.description": "คำนวณแฮช SHA-512 ของข้อความ",
+        "modules.hash.sha512.label": "แฮช SHA-512",
+        "modules.hash.sha512.output.algorithm.description": "แฮช SHA-512 (128 อักขระฐานสิบหก)",
+        "modules.hash.sha512.output.hash.description": "การเข้ารหัสข้อความ",
+        "modules.hash.sha512.params.encoding.description": "ข้อความที่จะแฮช",
+        "modules.hash.sha512.params.encoding.label": "ข้อความ",
+        "modules.hash.sha512.params.text.description": "ข้อความที่จะแฮช",
+        "modules.hash.sha512.params.text.label": "ข้อความ"
+    }
+}

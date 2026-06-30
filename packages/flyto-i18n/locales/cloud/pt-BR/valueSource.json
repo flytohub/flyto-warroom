@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "pt-BR",
+  "category": "cloud.valueSource",
+  "version": "1.0.0",
+  "translations": {
+    "valueSource.booleanFalse": "Nao / Falso",
+    "valueSource.booleanTrue": "Sim / Verdadeiro",
+    "valueSource.browsePath": "Browse Path",
+    "valueSource.changeSource": "Alterar fonte do valor",
+    "valueSource.defaultPlaceholder": "Digite o valor...",
+    "valueSource.expressionHint": "Disponiveis: steps.{id}.result, ui.{field}, env.{var}",
+    "valueSource.expressionPlaceholder": "steps.step1.result ou ui.search_keyword",
+    "valueSource.noPreviousSteps": "Nenhuma etapa anterior disponivel",
+    "valueSource.noUIFields": "Nenhum campo de entrada de UI definido",
+    "valueSource.selectSourceType": "Selecione o tipo de fonte",
+    "valueSource.selectStepOutput": "Selecione a saida da etapa...",
+    "valueSource.selectText": "texto",
+    "valueSource.selectUIField": "Selecione o campo de UI...",
+    "valueSource.selectValue": "valor",
+    "valueSource.sources.expression.description": "Valor dinamico avancado",
+    "valueSource.sources.expression.label": "Expressao",
+    "valueSource.sources.previousStep.description": "Usar saida de etapa anterior",
+    "valueSource.sources.previousStep.label": "De Etapa Anterior",
+    "valueSource.sources.static.description": "Digite um valor fixo",
+    "valueSource.sources.static.label": "Valor Estatico",
+    "valueSource.sources.uiInput.description": "Vincular ao campo do formulario frontend",
+    "valueSource.sources.uiInput.label": "De Entrada de UI"
+  }
+}

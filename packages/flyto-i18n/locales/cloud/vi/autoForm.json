@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.autoForm",
+    "version": "1.0.0",
+    "translations": {
+        "autoForm.browsePath": "Duyệt đường dẫn",
+        "autoForm.hideAdvanced": "Ẩn nâng cao",
+        "autoForm.hidePassword": "Ẩn mật khẩu",
+        "autoForm.multipleFilesSelected": "Đã chọn {count} tệp",
+        "autoForm.selectFilePlaceholder": "Chọn tệp...",
+        "autoForm.selectPlaceholder": "Chọn...",
+        "autoForm.showAdvanced": "Hiện nâng cao",
+        "autoForm.showPassword": "Hiện mật khẩu"
+    }
+}

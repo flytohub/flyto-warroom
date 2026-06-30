@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "Zamknij",
+        "updateNotification.downloadFailed": "Nie udalo sie pobrac aktualizacji",
+        "updateNotification.downloadUpdate": "Pobierz aktualizacje",
+        "updateNotification.downloading": "Pobieranie aktualizacji",
+        "updateNotification.newVersionAvailable": "Nowa wersja dostepna",
+        "updateNotification.percentComplete": "{percent}% ukonczono",
+        "updateNotification.remindLater": "Przypomnij pozniej",
+        "updateNotification.restartLater": "Uruchom ponownie pozniej",
+        "updateNotification.restartNow": "Uruchom ponownie teraz",
+        "updateNotification.restartToInstall": "Uruchom ponownie aplikacje, aby zainstalowac aktualizacje",
+        "updateNotification.unknownError": "Nieznany blad",
+        "updateNotification.updateDownloaded": "Aktualizacja pobrana",
+        "updateNotification.updateFailed": "Aktualizacja nie powiodla sie",
+        "updateNotification.versionReady": "Wersja {version} jest gotowa do aktualizacji"
+    }
+}

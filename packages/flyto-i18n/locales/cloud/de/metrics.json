@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "de",
+  "category": "cloud.metrics",
+  "version": "1.0.0",
+  "translations": {
+    "metrics.chart.failed": "Fehlgeschlagen",
+    "metrics.chart.noData": "Keine Daten verfügbar",
+    "metrics.chart.successful": "Erfolgreich",
+    "metrics.chart.title": "Ausführungstrend",
+    "metrics.recentFailures.copy": "Copy",
+    "metrics.recentFailures.noData": "Keine kürzlichen Fehler",
+    "metrics.recentFailures.title": "Kürzliche Fehler",
+    "metrics.stats.avgDuration": "Durchschn. Dauer",
+    "metrics.stats.failed": "Fehlgeschlagen",
+    "metrics.stats.successRate": "Erfolgsrate",
+    "metrics.stats.totalExecutions": "Ausführungen gesamt",
+    "metrics.topWorkflows.executions": "Ausführungen",
+    "metrics.topWorkflows.noData": "Noch keine Workflows ausgeführt",
+    "metrics.topWorkflows.title": "Top-Workflows",
+    "metrics.vsPrevious": "vs. vorher"
+  }
+}

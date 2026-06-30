@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "Satış ile İletişime Geç",
+        "upgrade.debugFeatures": "İş akışı geliştirmenizi iyileştirmek için güçlü hata ayıklama ve analiz özelliklerinin kilidini açın.",
+        "upgrade.enterpriseHint": "Kurumsal özelliklere mi ihtiyacınız var?",
+        "upgrade.featureLocked": "Bu özellik Pro aboneliği gerektirir",
+        "upgrade.features.evidence": "Her adım için ekran görüntüsü ve DOM yakalama",
+        "upgrade.features.lineage": "Veri akışı takibi ve bağımlılık grafiği",
+        "upgrade.features.replay": "Değiştirilmiş girdilerle yürütmeleri tekrar oynat",
+        "upgrade.features.tests": "Otomatik iş akışı test paketi",
+        "upgrade.features.versions": "Modül sürümü kilitleme ve kontrolü",
+        "upgrade.offlineLicense": "Çevrimdışı Lisans Satın Al - Tek seferlik $199",
+        "upgrade.subscription": "Abone Ol - Aylık $19",
+        "upgrade.subtitle": "Gelişmiş hata ayıklama araçlarına erişim sağlayın",
+        "upgrade.title": "Pro Özelliklerin Kilidini Aç"
+    }
+}

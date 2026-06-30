@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.label": "Scrape Web to JSON",
+        "modules.composite.browser.scrape_to_json.description": "Scrape a webpage and output structured JSON data",
+        "modules.composite.data.csv_to_json.label": "CSV to JSON",
+        "modules.composite.data.csv_to_json.description": "Read a CSV file and convert it to JSON format",
+        "modules.composite.data.json_transform_notify.label": "JSON Transform and Notify",
+        "modules.composite.data.json_transform_notify.description": "Transform JSON data and send notification with results",
+        "modules.composite.developer.api_to_notification.label": "API to Notification",
+        "modules.composite.developer.api_to_notification.description": "Fetch data from any API and send it to a notification channel",
+        "modules.composite.developer.github_daily_digest.label": "GitHub Daily Digest",
+        "modules.composite.developer.github_daily_digest.description": "Fetch GitHub repository updates and send a daily digest notification",
+        "modules.composite.notification.multi_channel_alert.label": "Multi-Channel Alert",
+        "modules.composite.notification.multi_channel_alert.description": "Send alerts to multiple notification channels simultaneously",
+        "modules.composite.notification.scheduled_report.label": "Scheduled Report",
+        "modules.composite.notification.scheduled_report.description": "Generate and send scheduled reports to notification channels",
+        "modules.composite.test.e2e_flow.label": "E2E Flow Test",
+        "modules.composite.test.e2e_flow.description": "End-to-end workflow testing with browser automation",
+        "modules.composite.test.verify_fix.label": "Verify Fix",
+        "modules.composite.test.verify_fix.description": "Verify bug fixes with before/after testing and regression suites",
+        "modules.composite.test.ui_review.label": "UI Review",
+        "modules.composite.test.ui_review.description": "Visual regression testing and UI review workflow",
+        "modules.composite.test.quality_gate.label": "Quality Gate",
+        "modules.composite.test.quality_gate.description": "Run quality checks and gate deployments based on thresholds",
+        "modules.composite.test.api_test.label": "API Test Suite",
+        "modules.composite.test.api_test.description": "Run API tests with HTTP requests and assertions"
+    }
+}

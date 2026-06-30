@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "전체",
+        "toolLibrary.createFirstTool": "첫 번째 도구 만들기",
+        "toolLibrary.createTool": "도구 만들기",
+        "toolLibrary.deleteConfirm": "도구 삭제",
+        "toolLibrary.deleteMessage": "\"{name}\"을(를) 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+        "toolLibrary.noDescription": "설명 없음",
+        "toolLibrary.noTools": "아직 도구가 없습니다",
+        "toolLibrary.noToolsDesc": "워크플로를 자동화할 첫 번째 도구를 만드세요",
+        "toolLibrary.run": "실행",
+        "toolLibrary.searchPlaceholder": "도구 검색...",
+        "toolLibrary.steps": "단계",
+        "toolLibrary.subtitle": "자동화 도구 관리 및 실행",
+        "toolLibrary.title": "도구 라이브러리"
+    }
+}

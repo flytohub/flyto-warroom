@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "Consultar documentos de coleccion MongoDB",
+        "modules.db.mongodb.find.label": "MongoDB buscar",
+        "modules.db.mongodb.find.output.count.description": "Array de documentos coincidentes",
+        "modules.db.mongodb.find.output.documents.description": "Array de documentos coincidentes",
+        "modules.db.mongodb.insert.description": "Insertar uno o mas documentos en coleccion MongoDB",
+        "modules.db.mongodb.insert.label": "MongoDB insertar",
+        "modules.db.mongodb.insert.output.inserted_count.description": "Numero de documentos insertados",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "Numero de documentos insertados",
+        "modules.db.mysql.query.description": "Ejecutar una consulta SQL en base de datos MySQL y devolver resultados",
+        "modules.db.mysql.query.label": "Consulta MySQL",
+        "modules.db.mysql.query.output.columns.description": "Array de filas de resultado como objetos",
+        "modules.db.mysql.query.output.row_count.description": "Array de filas de resultado como objetos",
+        "modules.db.mysql.query.output.rows.description": "Array de filas de resultado como objetos",
+        "modules.db.postgresql.query.description": "Ejecutar una consulta SQL en base de datos PostgreSQL y devolver resultados",
+        "modules.db.postgresql.query.label": "Consulta PostgreSQL",
+        "modules.db.postgresql.query.output.columns.description": "Array de filas de resultado como objetos",
+        "modules.db.postgresql.query.output.row_count.description": "Array de filas de resultado como objetos",
+        "modules.db.postgresql.query.output.rows.description": "Array de filas de resultado como objetos",
+        "modules.db.redis.get.description": "Obtener un valor de cache Redis",
+        "modules.db.redis.get.label": "Redis obtener",
+        "modules.db.redis.get.output.exists.description": "El valor devuelto",
+        "modules.db.redis.get.output.key.description": "El valor devuelto",
+        "modules.db.redis.get.output.value.description": "El valor devuelto",
+        "modules.db.redis.set.description": "Establecer un valor en cache Redis",
+        "modules.db.redis.set.label": "Redis establecer"
+    }
+}

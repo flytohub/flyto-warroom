@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "Hitung hash kriptografi SHA-256 dari teks",
+        "modules.hash.sha256.label": "Hash SHA-256",
+        "modules.hash.sha256.output.algorithm.description": "Hash SHA-256 (64 karakter heksadesimal)",
+        "modules.hash.sha256.output.hash.description": "Pengkodean teks",
+        "modules.hash.sha256.params.encoding.description": "Teks untuk di-hash",
+        "modules.hash.sha256.params.encoding.label": "Teks",
+        "modules.hash.sha256.params.text.description": "Teks untuk di-hash",
+        "modules.hash.sha256.params.text.label": "Teks",
+        "modules.hash.sha512.description": "Hitung hash kriptografi SHA-512 dari teks",
+        "modules.hash.sha512.label": "Hash SHA-512",
+        "modules.hash.sha512.output.algorithm.description": "Hash SHA-512 (128 karakter heksadesimal)",
+        "modules.hash.sha512.output.hash.description": "Pengkodean teks",
+        "modules.hash.sha512.params.encoding.description": "Teks untuk di-hash",
+        "modules.hash.sha512.params.encoding.label": "Teks",
+        "modules.hash.sha512.params.text.description": "Teks untuk di-hash",
+        "modules.hash.sha512.params.text.label": "Teks"
+    }
+}

@@ -1,0 +1,1 @@
+{"locale": "es", "name": "Spanish", "native": "Español", "region": "ES", "version": "de41b33a781a", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "Descripción de este flujo de error", "label": "Descripción"}}, "pleaseSelect": "Selecciona…", "ports": {"error": "Salida"}}}}

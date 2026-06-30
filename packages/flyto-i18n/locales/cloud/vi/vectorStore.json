@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.vectorStore",
+    "version": "1.0.0",
+    "translations": {
+        "vectorStore.addMetadata": "Thêm trường",
+        "vectorStore.collection": "Bộ sưu tập",
+        "vectorStore.collectionName": "Tên bộ sưu tập",
+        "vectorStore.content": "Nội dung tài liệu",
+        "vectorStore.contentPlaceholder": "Nhập văn bản hoặc sử dụng {{variable}}...",
+        "vectorStore.createCollection": "Tạo bộ sưu tập mới",
+        "vectorStore.deleteIds": "ID tài liệu cần xóa",
+        "vectorStore.documentId": "ID tài liệu (tùy chọn)",
+        "vectorStore.filters": "Bộ lọc siêu dữ liệu",
+        "vectorStore.metadata": "Siêu dữ liệu",
+        "vectorStore.noMetadata": "Không có trường siêu dữ liệu",
+        "vectorStore.query": "Truy vấn",
+        "vectorStore.queryPlaceholder": "Nhập truy vấn tìm kiếm hoặc sử dụng {{variable}}...",
+        "vectorStore.refreshCollections": "Làm mới bộ sưu tập",
+        "vectorStore.scoreThreshold": "Ngưỡng điểm",
+        "vectorStore.scoreThresholdHint": "Điểm tương đồng tối thiểu (0-1)",
+        "vectorStore.selectCollection": "Chọn bộ sưu tập...",
+        "vectorStore.topK": "Top K kết quả"
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "notify",
+  "version": "1.0.0",
+  "translations": {
+    "modules.notify.send.description": "",
+    "modules.notify.send.label": "",
+    "modules.notify.send.output.ok.description": "",
+    "modules.notify.send.output.platform.description": "",
+    "modules.notify.send.output.response.description": "",
+    "modules.notify.send.output.status_code.description": "",
+    "modules.notify.send.params.chat_id.description": "",
+    "modules.notify.send.params.chat_id.label": "",
+    "modules.notify.send.params.message.description": "",
+    "modules.notify.send.params.message.label": "",
+    "modules.notify.send.params.title.description": "",
+    "modules.notify.send.params.title.label": "",
+    "modules.notify.send.params.url.description": "",
+    "modules.notify.send.params.url.label": ""
+  }
+}

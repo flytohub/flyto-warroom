@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.templateCategory",
+    "version": "1.0.0",
+    "translations": {
+        "templateCategory.automation": "ऑटोमेशन",
+        "templateCategory.dataProcessing": "डेटा प्रोसेसिंग",
+        "templateCategory.productivity": "उत्पादकता",
+        "templateCategory.socialMedia": "सोशल मीडिया",
+        "templateCategory.webScraping": "वेब स्क्रैपिंग",
+        "templateCategory.api": "API",
+        "templateCategory.media": "मीडिया",
+        "templateCategory.notification": "सूचनाएं",
+        "templateCategory.ai": "AI",
+        "templateCategory.file": "फ़ाइल",
+        "templateCategory.monitoring": "मॉनिटरिंग",
+        "templateCategory.developer": "डेवलपर टूल"
+    }
+}

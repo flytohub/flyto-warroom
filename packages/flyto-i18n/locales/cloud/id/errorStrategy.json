@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "Lanjutkan",
+        "errorStrategy.continueDesc": "Catat kesalahan dan lanjutkan ke langkah berikutnya",
+        "errorStrategy.retry": "Coba Lagi",
+        "errorStrategy.retryDesc": "Coba lagi berdasarkan konfigurasi retry",
+        "errorStrategy.stop": "Hentikan",
+        "errorStrategy.stopDesc": "Hentikan workflow dan tandai sebagai gagal"
+    }
+}

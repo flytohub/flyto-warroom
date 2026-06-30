@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "값이 임계값을 초과하여 변경되었는지 감지합니다 (양 또는 비율로)",
+        "modules.compare.change.label": "변경 감지",
+        "modules.compare.change.output.change_absolute.description": "변화 비율 (양수 = 증가, 음수 = 감소)",
+        "modules.compare.change.output.change_percent.description": "변화 방향: ",
+        "modules.compare.change.output.changed.description": "작업이 성공했는지 여부",
+        "modules.compare.change.output.current.description": "절대 변화 (양수 = 증가, 음수 = 감소)",
+        "modules.compare.change.output.direction.description": "작업이 성공했는지 여부",
+        "modules.compare.change.output.ok.description": "작업이 성공했는지 여부",
+        "modules.compare.change.output.previous.description": "절대 변화 (양수 = 증가, 음수 = 감소)",
+        "modules.compare.change.output.summary.description": "현재 값",
+        "modules.compare.change.params.current.description": "비교할 현재/새로운 값",
+        "modules.compare.change.params.current.label": "현재 값",
+        "modules.compare.change.params.direction.description": "감지할 변화 방향",
+        "modules.compare.change.params.direction.label": "임계값",
+        "modules.compare.change.params.mode.description": "비교할 이전/옛 값",
+        "modules.compare.change.params.mode.label": "이전 값",
+        "modules.compare.change.params.previous.description": "비교할 현재/새로운 값",
+        "modules.compare.change.params.previous.label": "현재 값",
+        "modules.compare.change.params.threshold.description": "트리거할 최소 변화 (5 = 5% 또는 5 단위)",
+        "modules.compare.change.params.threshold.label": "변화 비율"
+    }
+}

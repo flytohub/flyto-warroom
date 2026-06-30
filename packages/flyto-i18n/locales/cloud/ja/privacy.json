@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "最終更新日",
+        "privacy.sections.collection.content": "アカウント作成時、サービス利用時、サポートへのお問い合わせ時など、お客様から直接提供された情報を収集します。これには、お名前、メールアドレス、サービス向上のための利用データが含まれる場合があります。",
+        "privacy.sections.collection.title": "収集する情報",
+        "privacy.sections.contact.content": "このプライバシーポリシーまたはデータの取り扱いについてご質問がある場合は、privacy{'@'}flytohub.comまでお問い合わせください。",
+        "privacy.sections.contact.title": "お問い合わせ",
+        "privacy.sections.rights.content": "お客様は、個人情報へのアクセス、訂正、削除の権利を有しています。また、データポータビリティのリクエストや特定の処理活動への異議を申し立てることもできます。これらの権利を行使するにはお問い合わせください。",
+        "privacy.sections.rights.title": "お客様の権利",
+        "privacy.sections.security.content": "お客様の個人情報を不正アクセス、改ざん、開示、破壊から保護するため、適切な技術的・組織的対策を実施しています。",
+        "privacy.sections.security.title": "データセキュリティ",
+        "privacy.sections.sharing.content": "お客様の個人情報を販売することはありません。プラットフォームの運営を支援するサードパーティサービスプロバイダーと、機密保持契約に基づいて情報を共有する場合があります。",
+        "privacy.sections.sharing.title": "情報の共有",
+        "privacy.sections.usage.content": "収集した情報は、サービスの提供、維持、改善、お客様とのコミュニケーション、体験のパーソナライズに使用します。また、分析目的で集計データを使用する場合があります。",
+        "privacy.sections.usage.title": "情報の利用方法",
+        "privacy.title": "プライバシーポリシー"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "Ein Objekt aus einem AWS S3-Bucket löschen",
+        "modules.aws.s3.delete.label": "S3-Objekt löschen",
+        "modules.aws.s3.delete.output.bucket.description": "S3-Bucket-Name",
+        "modules.aws.s3.delete.output.deleted.description": "Ob das Objekt erfolgreich gelöscht wurde",
+        "modules.aws.s3.delete.output.key.description": "Gelöschter Objektschlüssel",
+        "modules.aws.s3.download.description": "Eine Datei von einem AWS S3-Bucket auf einen lokalen Pfad herunterladen",
+        "modules.aws.s3.download.label": "S3-Download",
+        "modules.aws.s3.download.output.content_type.description": "MIME-Typ der heruntergeladenen Datei",
+        "modules.aws.s3.download.output.path.description": "Lokaler Dateipfad, wo die Datei gespeichert wurde",
+        "modules.aws.s3.download.output.size.description": "Dateigröße in Bytes",
+        "modules.aws.s3.list.description": "Objekte in einem AWS S3-Bucket mit optionalem Präfix-Filter auflisten",
+        "modules.aws.s3.list.label": "S3-Objekte auflisten",
+        "modules.aws.s3.list.output.count.description": "Anzahl der zurückgegebenen Objekte",
+        "modules.aws.s3.list.output.objects.description": "Liste der S3-Objekte",
+        "modules.aws.s3.list.output.truncated.description": "Ob die Ergebnisse gekürzt sind",
+        "modules.aws.s3.upload.description": "Eine lokale Datei in einen AWS S3-Bucket hochladen",
+        "modules.aws.s3.upload.label": "S3-Upload",
+        "modules.aws.s3.upload.output.bucket.description": "S3-Bucket-Name",
+        "modules.aws.s3.upload.output.key.description": "S3-Objektschlüssel",
+        "modules.aws.s3.upload.output.size.description": "Dateigröße in Bytes",
+        "modules.aws.s3.upload.output.url.description": "Öffentliche URL des hochgeladenen Objekts"
+    }
+}

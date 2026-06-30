@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.mining",
+    "version": "1.0.0",
+    "translations": {
+        "mining.bottlenecks.empty": "没有发现瓶颈",
+        "mining.bottlenecks.title": "瓶颈",
+        "mining.discovery.analyze": "分析",
+        "mining.discovery.empty": "没有可分析的数据",
+        "mining.discovery.selectWorkflow": "选择要分析的工作流",
+        "mining.discovery.title": "流程探索",
+        "mining.quality.fitness": "适配度",
+        "mining.quality.generalization": "泛化能力",
+        "mining.quality.precision": "精确度",
+        "mining.stats.avgDuration": "平均时长",
+        "mining.stats.cases": "案例",
+        "mining.stats.conformance": "符合度",
+        "mining.stats.variants": "变体",
+        "mining.suggestions.apply": "套用",
+        "mining.suggestions.empty": "没有建议",
+        "mining.suggestions.title": "建议",
+        "mining.variants.empty": "没有变体",
+        "mining.variants.title": "流程变体"
+    }
+}

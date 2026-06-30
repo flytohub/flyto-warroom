@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "ดึงข้อมูลจากหน้าเว็บและส่งออกเป็นข้อมูล JSON ที่มีโครงสร้าง",
+        "modules.composite.browser.scrape_to_json.label": "ดึงข้อมูลเว็บเป็น JSON",
+        "modules.composite.data.csv_to_json.description": "อ่านไฟล์ CSV และแปลงเป็นรูปแบบ JSON",
+        "modules.composite.data.csv_to_json.label": "CSV เป็น JSON",
+        "modules.composite.data.json_transform_notify.description": "แปลงข้อมูล JSON และส่งการแจ้งเตือนพร้อมผลลัพธ์",
+        "modules.composite.data.json_transform_notify.label": "แปลง JSON และแจ้งเตือน",
+        "modules.composite.developer.api_to_notification.description": "ดึงข้อมูลจาก API และส่งไปยังช่องทางการแจ้งเตือน",
+        "modules.composite.developer.api_to_notification.label": "API เป็นการแจ้งเตือน",
+        "modules.composite.developer.github_daily_digest.description": "ดึงการอัปเดตจาก GitHub และส่งการแจ้งเตือนสรุปรายวัน",
+        "modules.composite.developer.github_daily_digest.label": "สรุปรายวัน GitHub",
+        "modules.composite.notification.multi_channel_alert.description": "ส่งการแจ้งเตือนไปยังหลายช่องทางพร้อมกัน",
+        "modules.composite.notification.multi_channel_alert.label": "แจ้งเตือนหลายช่องทาง",
+        "modules.composite.notification.scheduled_report.description": "สร้างและส่งรายงานตามกำหนดเวลาไปยังช่องทางการแจ้งเตือน",
+        "modules.composite.notification.scheduled_report.label": "รายงานตามกำหนดเวลา",
+        "modules.composite.test.api_test.description": "รันการทดสอบ API ด้วยคำขอ HTTP และการยืนยัน",
+        "modules.composite.test.api_test.label": "ชุดทดสอบ API",
+        "modules.composite.test.e2e_flow.description": "ทดสอบกระบวนการแบบครบวงจรด้วยการทำงานอัตโนมัติของเบราว์เซอร์",
+        "modules.composite.test.e2e_flow.label": "ทดสอบกระบวนการ E2E",
+        "modules.composite.test.quality_gate.description": "รันการตรวจสอบคุณภาพและควบคุมการปรับใช้ตามเกณฑ์",
+        "modules.composite.test.quality_gate.label": "เกณฑ์คุณภาพ",
+        "modules.composite.test.ui_review.description": "ทดสอบการถดถอยทางภาพและกระบวนการตรวจสอบ UI",
+        "modules.composite.test.ui_review.label": "ตรวจสอบ UI",
+        "modules.composite.test.verify_fix.description": "ตรวจสอบการแก้ไขบั๊กด้วยการทดสอบก่อน/หลังและชุดทดสอบการถดถอย",
+        "modules.composite.test.verify_fix.label": "ตรวจสอบการแก้ไข"
+    }
+}

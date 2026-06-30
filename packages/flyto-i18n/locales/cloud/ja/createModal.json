@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "カテゴリ",
+        "createModal.category.placeholder": "カテゴリを選択（任意）",
+        "createModal.closeDialog": "ダイアログを閉じる",
+        "createModal.create": "テンプレートを作成",
+        "createModal.creating": "作成中...",
+        "createModal.description.label": "説明",
+        "createModal.description.placeholder": "このテンプレートは何をしますか？（任意）",
+        "createModal.errors.createFailed": "テンプレートの作成に失敗しました",
+        "createModal.errors.fileTooLarge": "画像は2MB未満にしてください",
+        "createModal.errors.invalidFileType": "画像ファイルを選択してください",
+        "createModal.folder.label": "フォルダ",
+        "createModal.folder.placeholder": "デフォルト (フォルダなし)",
+        "createModal.icon.change": "アイコンを変更",
+        "createModal.icon.hint": "PNG、JPG、GIF（最大2MB）",
+        "createModal.icon.label": "テンプレートアイコン",
+        "createModal.icon.remove": "アイコンを削除",
+        "createModal.icon.upload": "アイコンをアップロード",
+        "createModal.name.label": "テンプレート名",
+        "createModal.name.placeholder": "素晴らしい自動化",
+        "createModal.title": "新規テンプレート"
+    }
+}

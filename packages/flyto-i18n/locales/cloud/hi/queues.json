@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "आइटम जोड़ें",
+        "queues.create.maxRetries": "अधिकतम पुनः प्रयास",
+        "queues.create.name": "क्यू नाम",
+        "queues.create.namePlaceholder": "क्यू नाम दर्ज करें",
+        "queues.create.selectWorkflow": "वर्कफ़्लो चुनें",
+        "queues.create.submit": "क्यू बनाएं",
+        "queues.create.title": "क्यू बनाएं",
+        "queues.create.workflow": "वर्कफ़्लो",
+        "queues.createFirst": "अपना पहला क्यू बनाएं",
+        "queues.empty": "कोई क्यू नहीं",
+        "queues.emptyDesc": "शुरू करने के लिए एक क्यू बनाएं",
+        "queues.stats.completed": "पूरा हुआ",
+        "queues.stats.pending": "लंबित",
+        "queues.stats.processing": "प्रक्रिया में",
+        "queues.stats.totalItems": "कुल आइटम",
+        "queues.status.completed": "पूरा हुआ",
+        "queues.status.failed": "असफल",
+        "queues.status.pending": "लंबित",
+        "queues.status.processing": "प्रक्रिया में",
+        "queues.transactions.empty": "कोई लेन-देन नहीं",
+        "queues.transactions.title": "लेन-देन"
+    }
+}

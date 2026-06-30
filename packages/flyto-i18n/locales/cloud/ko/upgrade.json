@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "영업팀 문의",
+        "upgrade.debugFeatures": "워크플로 개발을 개선하기 위한 강력한 디버깅 및 분석 기능을 잠금 해제하세요.",
+        "upgrade.enterpriseHint": "엔터프라이즈 기능이 필요하신가요?",
+        "upgrade.featureLocked": "이 기능을 사용하려면 Pro 구독이 필요합니다",
+        "upgrade.features.evidence": "모든 단계에 대한 스크린샷 및 DOM 캡처",
+        "upgrade.features.lineage": "데이터 흐름 추적 및 의존성 그래프",
+        "upgrade.features.replay": "수정된 입력으로 실행 재생",
+        "upgrade.features.tests": "자동화된 워크플로 테스트 스위트",
+        "upgrade.features.versions": "모듈 버전 잠금 및 제어",
+        "upgrade.offlineLicense": "오프라인 라이선스 구매 - $199 일회성",
+        "upgrade.subscription": "구독 - $19/월",
+        "upgrade.subtitle": "고급 디버깅 도구에 접근하세요",
+        "upgrade.title": "Pro 기능 잠금 해제"
+    }
+}

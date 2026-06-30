@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "slack",
+    "version": "1.0.0",
+    "translations": {
+        "modules.slack.send.description": "इनकमिंग वेबहुक के माध्यम से Slack चैनलों में संदेश भेजें",
+        "modules.slack.send.label": "Slack संदेश भेजें",
+        "modules.slack.send.output.sent.description": "क्या संदेश सफलतापूर्वक भेजा गया"
+    }
+}

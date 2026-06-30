@@ -1,0 +1,1 @@
+{"locale": "th", "name": "Thai", "native": "ไทย", "region": "TH", "version": "73f67b020200", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "คำอธิบายของขั้นตอนการทำงานที่ผิดพลาดนี้", "label": "คำอธิบาย"}}, "pleaseSelect": "กรุณาเลือก…", "ports": {"error": "ผลลัพธ์"}}}}

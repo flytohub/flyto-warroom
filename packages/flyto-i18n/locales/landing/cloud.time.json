@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.time",
+  "version": "1.0.0",
+  "translations": {
+    "time.days": "",
+    "time.daysAgo": "",
+    "time.hours": "",
+    "time.hoursAgo": "",
+    "time.justNow": "",
+    "time.minutes": "",
+    "time.minutesAgo": ""
+  }
+}

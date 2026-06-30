@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "Führen Sie eine Vorlage aus Ihrer Bibliothek als Workflow-Schritt aus",
+        "modules.template.invoke.label": "Vorlage aufrufen",
+        "modules.template.invoke.output.__event__.description": "ID des Bibliothekselements (Kauf/Fork/Besitz)",
+        "modules.template.invoke.output.execution_time_ms.description": "Vorlagenausführungsergebnis",
+        "modules.template.invoke.output.result.description": "Maximale Ausführungszeit in Sekunden",
+        "modules.template.invoke.output.template_id.description": "Ereignis für Routing (Erfolg/Fehler)",
+        "modules.template.invoke.ports.input": "Vorlage aufrufen",
+        "modules.template.invoke.ports.success": "Eingabe"
+    }
+}

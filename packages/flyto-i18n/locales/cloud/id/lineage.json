@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "Alternatif",
+        "lineage.decision.evidence": "Bukti",
+        "lineage.decision.reason": "Alasan",
+        "lineage.loop.clickToCollapse": "Klik untuk menciutkan",
+        "lineage.steps": "Langkah",
+        "lineage.storyline.noSteps": "Tidak ada langkah untuk ditampilkan",
+        "lineage.storyline.noStepsInLane": "Tidak ada langkah di jalur ini",
+        "lineage.storyline.runHint": "Jalankan workflow untuk melihat riwayat eksekusi",
+        "lineage.storyline.title": "Timeline Eksekusi"
+    }
+}

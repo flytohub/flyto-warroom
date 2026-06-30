@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "清除日誌",
+        "terminal.closeTerminal": "關閉終端機",
+        "terminal.connected": "已連線",
+        "terminal.disableAutoScroll": "停用自動捲動",
+        "terminal.disconnected": "已斷線",
+        "terminal.enableAutoScroll": "啟用自動捲動",
+        "terminal.hideLogs": "隱藏 {level} 日誌",
+        "terminal.logsWillAppear": "系統產生輸出時會顯示在這裡",
+        "terminal.searchPlaceholder": "搜尋日誌...",
+        "terminal.showLogs": "顯示 {level} 日誌",
+        "terminal.title": "系統終端機",
+        "terminal.waitingForLogs": "等待日誌..."
+    }
+}

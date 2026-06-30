@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Categorie",
+        "createModal.category.placeholder": "Selectionnez une categorie (optionnel)",
+        "createModal.closeDialog": "Fermer la boite de dialogue",
+        "createModal.create": "Creer le modele",
+        "createModal.creating": "Creation...",
+        "createModal.description.label": "Description",
+        "createModal.description.placeholder": "Que fait ce modele ? (optionnel)",
+        "createModal.errors.createFailed": "Echec de la creation du modele",
+        "createModal.errors.fileTooLarge": "L'image doit faire moins de 2 Mo",
+        "createModal.errors.invalidFileType": "Veuillez selectionner un fichier image",
+        "createModal.folder.label": "Dossier",
+        "createModal.folder.placeholder": "Par défaut (aucun dossier)",
+        "createModal.icon.change": "Changer l'icone",
+        "createModal.icon.hint": "PNG, JPG, GIF jusqu'a 2 Mo",
+        "createModal.icon.label": "Icone du modele",
+        "createModal.icon.remove": "Supprimer l'icone",
+        "createModal.icon.upload": "Telecharger l'icone",
+        "createModal.name.label": "Nom du modele",
+        "createModal.name.placeholder": "Mon automatisation geniale",
+        "createModal.title": "Nouveau modele"
+    }
+}

@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "Apenas letras e numeros permitidos",
+        "validation.error": "Erro de validacao",
+        "validation.failed": "Validacao falhou",
+        "validation.invalidEmail": "Endereco de e-mail invalido",
+        "validation.maxLength": "Maximo de {max} caracteres",
+        "validation.minLength": "Minimo de {min} caracteres",
+        "validation.needsLowercase": "Deve conter pelo menos uma letra minuscula",
+        "validation.needsNumber": "Deve conter pelo menos um numero",
+        "validation.needsUppercase": "Deve conter pelo menos uma letra maiuscula",
+        "validation.passwordHint": "Min 12 caracteres, com maiuscula, minuscula e numero",
+        "validation.passwordMismatch": "As senhas nao coincidem",
+        "validation.required": "Este campo e obrigatorio"
+    }
+}

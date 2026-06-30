@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Nâng cao",
+        "toolRunner.backToLibrary": "Quay lại thư viện",
+        "toolRunner.copy": "Sao chép",
+        "toolRunner.download": "Tải xuống",
+        "toolRunner.editTool": "Chỉnh sửa",
+        "toolRunner.executionFailed": "Thực thi thất bại",
+        "toolRunner.executionLogs": "Nhật ký thực thi",
+        "toolRunner.executionSuccess": "Thực thi hoàn thành",
+        "toolRunner.executionTimedOut": "Thực thi đã hết thời gian",
+        "toolRunner.flowSteps": "Các bước luồng",
+        "toolRunner.inputForm": "Form nhập",
+        "toolRunner.loadFailed": "Không thể tải công cụ",
+        "toolRunner.noLogs": "Chưa có nhật ký. Chạy công cụ để xem nhật ký thực thi.",
+        "toolRunner.resolvedParams": "Tham số đã giải quyết",
+        "toolRunner.results": "Kết quả",
+        "toolRunner.retry": "Thử lại",
+        "toolRunner.runAgain": "Chạy lại",
+        "toolRunner.runToSeeResults": "Chạy công cụ để xem kết quả ở đây",
+        "toolRunner.runTool": "Chạy công cụ",
+        "toolRunner.running": "Đang chạy...",
+        "toolRunner.simpleMode": "Đơn giản",
+        "toolRunner.toolNotFound": "Không tìm thấy công cụ",
+        "toolRunner.toolNotFoundError": "Không tìm thấy công cụ"
+    }
+}

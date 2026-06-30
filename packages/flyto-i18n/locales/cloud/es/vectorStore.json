@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.vectorStore",
+    "version": "1.0.0",
+    "translations": {
+        "vectorStore.addMetadata": "Agregar campo",
+        "vectorStore.collection": "Coleccion",
+        "vectorStore.collectionName": "Nombre de coleccion",
+        "vectorStore.content": "Contenido del documento",
+        "vectorStore.contentPlaceholder": "Ingresa texto o usa {{variable}}...",
+        "vectorStore.createCollection": "Crear nueva coleccion",
+        "vectorStore.deleteIds": "IDs de documentos a eliminar",
+        "vectorStore.documentId": "ID de documento (opcional)",
+        "vectorStore.filters": "Filtros de metadatos",
+        "vectorStore.metadata": "Metadatos",
+        "vectorStore.noMetadata": "Sin campos de metadatos",
+        "vectorStore.query": "Consulta",
+        "vectorStore.queryPlaceholder": "Ingresa consulta de busqueda o usa {{variable}}...",
+        "vectorStore.refreshCollections": "Actualizar colecciones",
+        "vectorStore.scoreThreshold": "Umbral de puntuacion",
+        "vectorStore.scoreThresholdHint": "Puntuacion minima de similitud (0-1)",
+        "vectorStore.selectCollection": "Seleccionar coleccion...",
+        "vectorStore.topK": "Top K resultados"
+    }
+}

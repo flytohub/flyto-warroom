@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "Isi field form PDF dengan data dan opsional sisipkan gambar",
+        "modules.pdf.fill_form.label": "Isi Form PDF",
+        "modules.pdf.fill_form.output.fields_filled.description": "Path ke PDF yang diisi",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Jumlah gambar yang disisipkan",
+        "modules.pdf.fill_form.output.images_inserted.description": "Path ke PDF yang diisi",
+        "modules.pdf.fill_form.output.output_path.description": "Path ke PDF yang diisi",
+        "modules.pdf.generate.description": "Hasilkan file PDF dari konten HTML atau teks",
+        "modules.pdf.generate.label": "Hasilkan PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "Jumlah halaman dalam PDF",
+        "modules.pdf.generate.output.output_path.description": "Path ke PDF yang dihasilkan",
+        "modules.pdf.generate.output.page_count.description": "Path ke PDF yang dihasilkan",
+        "modules.pdf.parse.description": "Ekstrak teks dan metadata dari file PDF",
+        "modules.pdf.parse.label": "Memproses PDF",
+        "modules.pdf.parse.output.metadata.description": "Konten teks yang diekstrak",
+        "modules.pdf.parse.output.page_count.description": "Konten teks per halaman",
+        "modules.pdf.parse.output.pages.description": "Konten teks yang diekstrak",
+        "modules.pdf.parse.output.text.description": "Konten teks yang diekstrak",
+        "modules.pdf.to_word.description": "Konversi file PDF ke dokumen Word (.docx)",
+        "modules.pdf.to_word.label": "PDF ke Word",
+        "modules.pdf.to_word.output.file_size.description": "Jumlah halaman yang dikonversi",
+        "modules.pdf.to_word.output.output_path.description": "Path ke dokumen Word yang dihasilkan",
+        "modules.pdf.to_word.output.page_count.description": "Path ke dokumen Word yang dihasilkan"
+    }
+}

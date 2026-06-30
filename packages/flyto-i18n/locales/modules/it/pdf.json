@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "Compila campi modulo PDF con dati e inserisci opzionalmente immagini",
+        "modules.pdf.fill_form.label": "Compila Modulo PDF",
+        "modules.pdf.fill_form.output.fields_filled.description": "Percorso del PDF compilato",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Numero di immagini inserite",
+        "modules.pdf.fill_form.output.images_inserted.description": "Percorso del PDF compilato",
+        "modules.pdf.fill_form.output.output_path.description": "Percorso del PDF compilato",
+        "modules.pdf.generate.description": "Genera file PDF da contenuto HTML o testo",
+        "modules.pdf.generate.label": "Genera PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "Numero di pagine nel PDF",
+        "modules.pdf.generate.output.output_path.description": "Percorso del PDF generato",
+        "modules.pdf.generate.output.page_count.description": "Percorso del PDF generato",
+        "modules.pdf.parse.description": "Estrai testo e metadati da file PDF",
+        "modules.pdf.parse.label": "Analizza PDF",
+        "modules.pdf.parse.output.metadata.description": "Contenuto testo estratto",
+        "modules.pdf.parse.output.page_count.description": "Contenuto testo per pagina",
+        "modules.pdf.parse.output.pages.description": "Contenuto testo estratto",
+        "modules.pdf.parse.output.text.description": "Contenuto testo estratto",
+        "modules.pdf.to_word.description": "Converti file PDF in documenti Word (.docx)",
+        "modules.pdf.to_word.label": "PDF a Word",
+        "modules.pdf.to_word.output.file_size.description": "Numero di pagine convertite",
+        "modules.pdf.to_word.output.output_path.description": "Percorso del documento Word generato",
+        "modules.pdf.to_word.output.page_count.description": "Percorso del documento Word generato"
+    }
+}

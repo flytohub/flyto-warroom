@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.bindings",
+    "version": "1.0.0",
+    "translations": {
+        "bindings.noBinding": "Tidak ada binding yang ditetapkan",
+        "bindings.waitingFor": "Menunggu: {source}"
+    }
+}

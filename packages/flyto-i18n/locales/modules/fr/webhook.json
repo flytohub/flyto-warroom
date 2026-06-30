@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "webhook",
+    "version": "1.0.0",
+    "translations": {
+        "modules.webhook.trigger.description": "Envoyer une requete HTTP POST a une URL webhook",
+        "modules.webhook.trigger.label": "Declencher le webhook",
+        "modules.webhook.trigger.output.headers.description": "Code de statut de reponse HTTP",
+        "modules.webhook.trigger.output.response.description": "Code de statut de reponse HTTP",
+        "modules.webhook.trigger.output.status_code.description": "Code de statut de reponse HTTP"
+    }
+}

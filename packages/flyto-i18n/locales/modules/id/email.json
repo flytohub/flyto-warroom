@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "Baca email dari server IMAP",
+        "modules.email.read.label": "Baca Email",
+        "modules.email.read.output.count.description": "Daftar objek email",
+        "modules.email.read.output.emails.description": "Daftar objek email",
+        "modules.email.send.description": "Kirim email via server SMTP",
+        "modules.email.send.label": "Kirim Email",
+        "modules.email.send.output.message_id.description": "Apakah email berhasil dikirim",
+        "modules.email.send.output.recipients.description": "Apakah email berhasil dikirim",
+        "modules.email.send.output.sent.description": "Apakah email berhasil dikirim"
+    }
+}

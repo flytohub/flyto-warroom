@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "อ่านข้อมูลจากไฟล์ Excel (xlsx, xls)",
+        "modules.excel.read.label": "อ่าน Excel",
+        "modules.excel.read.output.data.description": "แถวข้อมูลที่ดึงออกมา",
+        "modules.excel.read.output.headers.description": "แถวข้อมูลที่ดึงออกมา",
+        "modules.excel.read.output.row_count.description": "แถวข้อมูลที่ดึงออกมา",
+        "modules.excel.read.output.sheet_names.description": "หัวคอลัมน์",
+        "modules.excel.write.description": "เขียนข้อมูลลงไฟล์ Excel (xlsx)",
+        "modules.excel.write.label": "เขียน Excel",
+        "modules.excel.write.output.path.description": "พาธไปยังไฟล์ Excel ที่สร้าง",
+        "modules.excel.write.output.row_count.description": "พาธไปยังไฟล์ Excel ที่สร้าง",
+        "modules.excel.write.output.size.description": "พาธไปยังไฟล์ Excel ที่สร้าง"
+    }
+}

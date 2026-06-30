@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.status",
+    "version": "1.0.0",
+    "translations": {
+        "status.cancelled": "Đã hủy",
+        "status.completed": "Hoàn thành",
+        "status.error": "Lỗi",
+        "status.failed": "Thất bại",
+        "status.pending": "Đang chờ",
+        "status.running": "Đang chạy",
+        "status.success": "Thành công"
+    }
+}

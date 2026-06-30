@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.expression",
+  "version": "1.0.0",
+  "translations": {
+    "expression.availableVariables": "",
+    "expression.editExpression": "",
+    "expression.enterExpression": "",
+    "expression.expressionCode": "",
+    "expression.openEditor": "",
+    "expression.placeholder": "",
+    "expression.preview": ""
+  }
+}

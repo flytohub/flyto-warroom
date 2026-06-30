@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "core",
+    "version": "1.0.0",
+    "translations": {
+        "modules.core.api.google_search.output.count.description": "検索結果数",
+        "modules.core.api.google_search.output.data.description": "検索結果データ",
+        "modules.core.api.google_search.output.status.description": "操作ステータス",
+        "modules.core.api.google_search.output.total_results.description": "総結果数",
+        "modules.core.api.http_get.output.body.description": "レスポンスボディ",
+        "modules.core.api.http_get.output.headers.description": "レスポンスヘッダー",
+        "modules.core.api.http_get.output.json.description": "JSON レスポンス（該当する場合）",
+        "modules.core.api.http_get.output.status_code.description": "HTTP ステータスコード"
+    }
+}

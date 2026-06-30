@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "データベーステーブルにデータを挿入",
+        "modules.database.insert.label": "データベース挿入",
+        "modules.database.insert.output.inserted_count.description": "挿入された行数",
+        "modules.database.insert.output.returning_data.description": "挿入された行数",
+        "modules.database.query.description": "PostgreSQL、MySQL、またはSQLiteデータベースでSQLクエリを実行",
+        "modules.database.query.label": "データベースクエリ",
+        "modules.database.query.output.columns.description": "クエリ結果の行",
+        "modules.database.query.output.row_count.description": "クエリ結果の行",
+        "modules.database.query.output.rows.description": "クエリ結果の行",
+        "modules.database.update.description": "データベーステーブルのデータを更新",
+        "modules.database.update.label": "データベース更新",
+        "modules.database.update.output.updated_count.description": "更新された行数"
+    }
+}

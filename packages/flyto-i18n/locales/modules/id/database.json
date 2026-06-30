@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Sisipkan data ke tabel database",
+        "modules.database.insert.label": "Masukkan Database",
+        "modules.database.insert.output.inserted_count.description": "Jumlah baris yang disisipkan",
+        "modules.database.insert.output.returning_data.description": "Jumlah baris yang disisipkan",
+        "modules.database.query.description": "Eksekusi kueri SQL pada database PostgreSQL, MySQL, atau SQLite",
+        "modules.database.query.label": "Kueri Database",
+        "modules.database.query.output.columns.description": "Baris hasil kueri",
+        "modules.database.query.output.row_count.description": "Baris hasil kueri",
+        "modules.database.query.output.rows.description": "Baris hasil kueri",
+        "modules.database.update.description": "Perbarui data di tabel database",
+        "modules.database.update.label": "Perbarui Database",
+        "modules.database.update.output.updated_count.description": "Jumlah baris yang diperbarui"
+    }
+}

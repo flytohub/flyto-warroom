@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "email",
+  "version": "1.0.0",
+  "translations": {
+    "modules.email.read.description": "",
+    "modules.email.read.label": "",
+    "modules.email.read.output.count.description": "",
+    "modules.email.read.output.emails.description": "",
+    "modules.email.send.description": "",
+    "modules.email.send.label": "",
+    "modules.email.send.output.message_id.description": "",
+    "modules.email.send.output.recipients.description": "",
+    "modules.email.send.output.sent.description": ""
+  }
+}

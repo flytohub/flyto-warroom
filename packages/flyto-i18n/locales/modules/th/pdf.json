@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "กรอกฟิลด์ฟอร์ม PDF ด้วยข้อมูลและแทรกรูปภาพ (ไม่บังคับ)",
+        "modules.pdf.fill_form.label": "กรอกฟอร์ม PDF",
+        "modules.pdf.fill_form.output.fields_filled.description": "พาธไปยัง PDF ที่กรอกแล้ว",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "จำนวนรูปภาพที่แทรก",
+        "modules.pdf.fill_form.output.images_inserted.description": "พาธไปยัง PDF ที่กรอกแล้ว",
+        "modules.pdf.fill_form.output.output_path.description": "พาธไปยัง PDF ที่กรอกแล้ว",
+        "modules.pdf.generate.description": "สร้างไฟล์ PDF จากเนื้อหา HTML หรือข้อความ",
+        "modules.pdf.generate.label": "สร้าง PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "จำนวนหน้าใน PDF",
+        "modules.pdf.generate.output.output_path.description": "พาธไปยัง PDF ที่สร้าง",
+        "modules.pdf.generate.output.page_count.description": "พาธไปยัง PDF ที่สร้าง",
+        "modules.pdf.parse.description": "ดึงข้อความและ metadata จากไฟล์ PDF",
+        "modules.pdf.parse.label": "แปลง PDF",
+        "modules.pdf.parse.output.metadata.description": "เนื้อหาข้อความที่ดึง",
+        "modules.pdf.parse.output.page_count.description": "เนื้อหาข้อความต่อหน้า",
+        "modules.pdf.parse.output.pages.description": "เนื้อหาข้อความที่ดึง",
+        "modules.pdf.parse.output.text.description": "เนื้อหาข้อความที่ดึง",
+        "modules.pdf.to_word.description": "แปลงไฟล์ PDF เป็นเอกสาร Word (.docx)",
+        "modules.pdf.to_word.label": "PDF เป็น Word",
+        "modules.pdf.to_word.output.file_size.description": "จำนวนหน้าที่แปลง",
+        "modules.pdf.to_word.output.output_path.description": "พาธไปยังเอกสาร Word ที่สร้าง",
+        "modules.pdf.to_word.output.page_count.description": "พาธไปยังเอกสาร Word ที่สร้าง"
+    }
+}

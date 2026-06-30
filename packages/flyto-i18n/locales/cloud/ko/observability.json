@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.observability",
+    "version": "1.0.0",
+    "translations": {
+        "observability.subtitle": "워크플로우 실행 및 성능 모니터링",
+        "observability.tabs.alerts": "알림",
+        "observability.tabs.metrics": "메트릭",
+        "observability.tabs.traces": "트레이스",
+        "observability.timeRange.24h": "최근 24시간",
+        "observability.timeRange.30d": "최근 30일",
+        "observability.timeRange.7d": "최근 7일",
+        "observability.timeRange.90d": "최근 90일",
+        "observability.title": "관측 가능성"
+    }
+}

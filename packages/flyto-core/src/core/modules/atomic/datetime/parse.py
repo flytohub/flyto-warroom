@@ -1,0 +1,122 @@
+# Copyright 2026 Flyto2. Licensed under Apache-2.0. See LICENSE.
+
+"""
+Datetime Operations Modules
+
+Provides date and time manipulation capabilities.
+"""
+from typing import Any, Dict
+from ...base import BaseModule
+from ...registry import register_module
+from ...schema import compose, presets
+from datetime import datetime, timedelta
+import time
+
+
+@register_module(
+    module_id='datetime.parse',
+    version='1.0.0',
+    category='utility',
+    subcategory='datetime',
+    tags=['datetime', 'parse', 'date', 'time'],
+    label='Parse DateTime',
+    label_key='modules.datetime.parse.label',
+    description='Parse string to datetime',
+    description_key='modules.datetime.parse.description',
+    icon='Calendar',
+    color='#8B5CF6',
+
+    # Connection types
+    input_types=['string', 'text'],
+    output_types=['datetime', 'json'],
+
+
+    can_receive_from=['*'],
+    can_connect_to=['data.*', 'string.*', 'file.*', 'http.*', 'notify.*', 'flow.*', 'utility.*'],    # Phase 2: Execution settings
+    timeout_ms=5000,
+    retryable=False,
+    concurrent_safe=True,
+
+    # Phase 2: Security settings
+    requires_credentials=False,
+    handles_sensitive_data=False,
+    required_permissions=[],
+
+    # Schema-driven params
+    params_schema=compose(
+        presets.DATETIME_STRING(required=True),
+        presets.DATETIME_FORMAT(),
+    ),
+    output_schema={
+        'result': {'type': 'string', 'description': 'The operation result',
+                'description_key': 'modules.datetime.parse.output.result.description'},
+        'timestamp': {'type': 'number', 'description': 'Unix timestamp',
+                'description_key': 'modules.datetime.parse.output.timestamp.description'},
+        'year': {'type': 'number', 'description': 'Year component',
+                'description_key': 'modules.datetime.parse.output.year.description'},
+        'month': {'type': 'number', 'description': 'Month component',
+                'description_key': 'modules.datetime.parse.output.month.description'},
+        'day': {'type': 'number', 'description': 'Day component',
+                'description_key': 'modules.datetime.parse.output.day.description'},
+        'hour': {'type': 'number', 'description': 'Hour component',
+                'description_key': 'modules.datetime.parse.output.hour.description'},
+        'minute': {'type': 'number', 'description': 'Minute component',
+                'description_key': 'modules.datetime.parse.output.minute.description'},
+        'second': {'type': 'number', 'description': 'Second component',
+                'description_key': 'modules.datetime.parse.output.second.description'}
+    },
+    examples=[
+        {
+            'title': 'Parse ISO format',
+            'params': {
+                'datetime_string': '2024-01-15T10:30:00'
+            }
+        },
+        {
+            'title': 'Parse custom format',
+            'params': {
+                'datetime_string': 'January 15, 2024',
+                'format': '%B %d, %Y'
+            }
+        }
+    ],
+    author='Flyto Team',
+    license='MIT'
+)
+class DateTimeParseModule(BaseModule):
+    """DateTime Parse Module"""
+
+    def validate_params(self) -> None:
+        self.datetime_string = self.params.get('datetime_string')
+        self.format = self.params.get('format')
+
+        if not self.datetime_string:
+            raise ValueError("datetime_string is required")
+
+    async def execute(self) -> Any:
+        # Parse datetime
+        if self.format:
+            dt = datetime.strptime(self.datetime_string, self.format)
+        else:
+            # Try ISO format
+            try:
+                dt = datetime.fromisoformat(self.datetime_string.replace('Z', '+00:00'))
+            except (ValueError, AttributeError) as e:
+                raise ValueError(
+                    f"Invalid datetime format: '{self.datetime_string}'. "
+                    f"Expected ISO 8601 format (e.g., '2024-01-15T10:30:00Z'). "
+                    f"Error: {e}"
+                )
+
+        return {
+            "result": dt.isoformat(),
+            "timestamp": dt.timestamp(),
+            "year": dt.year,
+            "month": dt.month,
+            "day": dt.day,
+            "hour": dt.hour,
+            "minute": dt.minute,
+            "second": dt.second
+        }
+
+

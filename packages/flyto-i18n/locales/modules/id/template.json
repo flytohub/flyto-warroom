@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "Jalankan template dari perpustakaan Anda sebagai langkah alur kerja",
+        "modules.template.invoke.label": "Jalankan Template",
+        "modules.template.invoke.output.__event__.description": "ID item perpustakaan (pembelian/fork/milik)",
+        "modules.template.invoke.output.execution_time_ms.description": "Hasil eksekusi template",
+        "modules.template.invoke.output.result.description": "Waktu eksekusi maksimum dalam detik",
+        "modules.template.invoke.output.template_id.description": "Event untuk routing (berhasil/gagal)",
+        "modules.template.invoke.ports.input": "Jalankan Template",
+        "modules.template.invoke.ports.success": "Input"
+    }
+}

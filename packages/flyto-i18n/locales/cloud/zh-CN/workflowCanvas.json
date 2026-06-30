@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "AI 助手 (向 AI 寻求帮助)",
+        "workflowCanvas.controls.autoLayout": "自动排版",
+        "workflowCanvas.controls.fitView": "适应视图",
+        "workflowCanvas.controls.zoomIn": "放大",
+        "workflowCanvas.controls.zoomOut": "缩小",
+        "workflowCanvas.deleteDialog.deleteAll": "全部删除",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "删除此节点及所有 {count} 个子节点",
+        "workflowCanvas.deleteDialog.mergeToChild": "合并至子节点",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "仅删除此节点，并将父节点连接到第一个子节点",
+        "workflowCanvas.deleteDialog.message": "此节点有 {count} 个子节点。您想要怎么做？",
+        "workflowCanvas.deleteDialog.title": "删除有子节点的节点",
+        "workflowCanvas.reconnect.cancel": "取消",
+        "workflowCanvas.reconnect.connect": "连接",
+        "workflowCanvas.reconnect.dontConnect": "不连接",
+        "workflowCanvas.stickyNoteCreated": "便利贴已创建"
+    }
+}

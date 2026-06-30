@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "slack",
+    "version": "1.0.0",
+    "translations": {
+        "modules.slack.send.description": "수신 웹훅을 통해 Slack 채널에 메시지 전송",
+        "modules.slack.send.label": "Slack 메시지 전송",
+        "modules.slack.send.output.sent.description": "메시지 전송 성공 여부"
+    }
+}

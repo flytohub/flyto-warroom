@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.pluginStatus",
+    "version": "1.0.0",
+    "translations": {
+        "pluginStatus.downloading": "डाउनलोड हो रहा है",
+        "pluginStatus.installed": "इंस्टॉल किया गया",
+        "pluginStatus.loaded": "लोड किया गया",
+        "pluginStatus.loading": "लोड हो रहा है",
+        "pluginStatus.notInstalled": "इंस्टॉल नहीं है",
+        "pluginStatus.unloading": "अनलोड हो रहा है"
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.backoffType",
+    "version": "1.0.0",
+    "translations": {
+        "backoffType.exponential": "Üstel",
+        "backoffType.exponentialDesc": "gecikme_ms * 2^deneme (1000, 2000, 4000...)",
+        "backoffType.linear": "Doğrusal",
+        "backoffType.linearDesc": "gecikme_ms * deneme (1000, 2000, 3000...)",
+        "backoffType.none": "Yok",
+        "backoffType.noneDesc": "Yeniden denemeler arasında sabit gecikme"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.enterprise",
+    "version": "1.0.0",
+    "translations": {
+        "enterprise.actions.notSupported": "Action not supported",
+        "enterprise.errors.actionFailed": "작업 실패",
+        "enterprise.errors.loadFailed": "Failed to load",
+        "enterprise.robotsOnline": "로봇 온라인",
+        "enterprise.subtitle": "기업 자동화 도구",
+        "enterprise.tabs.idp": "문서 처리",
+        "enterprise.tabs.mining": "프로세스 마이닝",
+        "enterprise.tabs.orchestrator": "오케스트레이터",
+        "enterprise.tabs.queues": "큐",
+        "enterprise.tabs.rpa": "RPA",
+        "enterprise.tabs.scheduler": "스케줄러",
+        "enterprise.tabs.stateMachine": "상태 기계",
+        "enterprise.title": "기업"
+    }
+}

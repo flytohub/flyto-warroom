@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.status",
+    "version": "1.0.0",
+    "translations": {
+        "status.cancelled": "Annule",
+        "status.completed": "Termine",
+        "status.error": "Erreur",
+        "status.failed": "Echec",
+        "status.pending": "En attente",
+        "status.running": "En cours",
+        "status.success": "Succes"
+    }
+}

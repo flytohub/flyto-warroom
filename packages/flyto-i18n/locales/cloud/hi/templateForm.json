@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "hi",
+  "category": "cloud.templateForm",
+  "version": "1.0.0",
+  "translations": {
+    "templateForm.category": "श्रेणी",
+    "templateForm.changeIcon": "आइकन बदलें",
+    "templateForm.description": "विवरण",
+    "templateForm.descriptionPlaceholder": "यह टेम्पलेट क्या करता है? (वैकल्पिक)",
+    "templateForm.editTemplate": "टेम्पलेट संपादित करें",
+    "templateForm.iconUploadError": "आइकन अपलोड करने में विफल। कृपया पुनः प्रयास करें।",
+    "templateForm.namePlaceholder": "मेरा शानदार ऑटोमेशन",
+    "templateForm.private": "Private",
+    "templateForm.public": "Public",
+    "templateForm.selectCategory": "श्रेणी चुनें (वैकल्पिक)",
+    "templateForm.templateColor": "टेम्पलेट का रंग",
+    "templateForm.templateIcon": "टेम्पलेट आइकन",
+    "templateForm.templateName": "टेम्पलेट नाम",
+    "templateForm.uploadIcon": "आइकन अपलोड करें",
+    "templateForm.visibility": "Visibility"
+  }
+}

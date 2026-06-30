@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "检测数值是否超过门槛变动（依数量或百分比）",
+        "modules.compare.change.label": "检测变动",
+        "modules.compare.change.output.change_absolute.description": "百分比变动（正值 = 上升，负值 = 下降）",
+        "modules.compare.change.output.change_percent.description": "变动方向：",
+        "modules.compare.change.output.changed.description": "操作是否成功",
+        "modules.compare.change.output.current.description": "绝对变动（正值 = 上升，负值 = 下降）",
+        "modules.compare.change.output.direction.description": "操作是否成功",
+        "modules.compare.change.output.ok.description": "操作是否成功",
+        "modules.compare.change.output.previous.description": "绝对变动（正值 = 上升，负值 = 下降）",
+        "modules.compare.change.output.summary.description": "目前数值",
+        "modules.compare.change.params.current.description": "要比较的目前/新数值",
+        "modules.compare.change.params.current.label": "目前数值",
+        "modules.compare.change.params.direction.description": "要检测的变动方向",
+        "modules.compare.change.params.direction.label": "门槛值",
+        "modules.compare.change.params.mode.description": "要比较的先前/旧数值",
+        "modules.compare.change.params.mode.label": "先前数值",
+        "modules.compare.change.params.previous.description": "要比较的目前/新数值",
+        "modules.compare.change.params.previous.label": "目前数值",
+        "modules.compare.change.params.threshold.description": "触发的最小变动（5 = 5% 或 5 单位）",
+        "modules.compare.change.params.threshold.label": "百分比变动"
+    }
+}

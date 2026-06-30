@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count} วันที่แล้ว",
+        "notifications.empty": "ยังไม่มีการแจ้งเตือน",
+        "notifications.hoursAgo": "{count} ชม. ที่แล้ว",
+        "notifications.justNow": "เมื่อกี้",
+        "notifications.loadMore": "โหลดเพิ่มเติม",
+        "notifications.markAllRead": "ทำเครื่องหมายว่าอ่านแล้วทั้งหมด",
+        "notifications.minutesAgo": "{count} นาที ที่แล้ว",
+        "notifications.title": "การแจ้งเตือน"
+    }
+}

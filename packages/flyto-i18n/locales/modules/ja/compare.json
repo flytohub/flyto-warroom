@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "値がしきい値を超えて変化したかどうかを検出する（量またはパーセンテージで）",
+        "modules.compare.change.label": "変化を検出",
+        "modules.compare.change.output.change_absolute.description": "パーセンテージ変化（正 = 上昇、負 = 下降）",
+        "modules.compare.change.output.change_percent.description": "変化の方向：",
+        "modules.compare.change.output.changed.description": "操作が成功したかどうか",
+        "modules.compare.change.output.current.description": "絶対変化（正 = 上昇、負 = 下降）",
+        "modules.compare.change.output.direction.description": "操作が成功したかどうか",
+        "modules.compare.change.output.ok.description": "操作が成功したかどうか",
+        "modules.compare.change.output.previous.description": "絶対変化（正 = 上昇、負 = 下降）",
+        "modules.compare.change.output.summary.description": "現在の値",
+        "modules.compare.change.params.current.description": "比較する現在/新しい値",
+        "modules.compare.change.params.current.label": "現在の値",
+        "modules.compare.change.params.direction.description": "検出する変化の方向",
+        "modules.compare.change.params.direction.label": "しきい値",
+        "modules.compare.change.params.mode.description": "比較する以前/古い値",
+        "modules.compare.change.params.mode.label": "以前の値",
+        "modules.compare.change.params.previous.description": "比較する現在/新しい値",
+        "modules.compare.change.params.previous.label": "現在の値",
+        "modules.compare.change.params.threshold.description": "トリガーする最小変化（5 = 5% または 5 単位）",
+        "modules.compare.change.params.threshold.label": "パーセンテージ変化"
+    }
+}

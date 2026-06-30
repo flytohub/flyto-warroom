@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "Vui lòng kiểm tra URL và thử lại",
+        "notFound.contactSupport": "Liên hệ hỗ trợ",
+        "notFound.goBack": "Quay lại",
+        "notFound.goHome": "Về trang chủ",
+        "notFound.helpText": "Cần trợ giúp?",
+        "notFound.message": "Trang bạn đang tìm không tồn tại hoặc đã bị di chuyển.",
+        "notFound.myTemplates": "Mẫu của tôi",
+        "notFound.pageNotExist": "Trang này không tồn tại",
+        "notFound.suggestion1": "Kiểm tra URL xem có lỗi đánh máy không",
+        "notFound.suggestion2": "Quay lại trang trước",
+        "notFound.suggestion3": "Điều hướng đến mẫu của bạn",
+        "notFound.suggestions": "Đây là những gì bạn có thể làm:",
+        "notFound.title": "Không tìm thấy trang"
+    }
+}

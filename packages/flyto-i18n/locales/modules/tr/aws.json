@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "AWS S3 kovasından bir nesneyi silin",
+        "modules.aws.s3.delete.label": "S3 Nesnesini Sil",
+        "modules.aws.s3.delete.output.bucket.description": "S3 kova adı",
+        "modules.aws.s3.delete.output.deleted.description": "Nesnenin başarıyla silinip silinmediği",
+        "modules.aws.s3.delete.output.key.description": "Silinen nesne anahtarı",
+        "modules.aws.s3.download.description": "AWS S3 kovasından bir dosyayı yerel bir yola indirin",
+        "modules.aws.s3.download.label": "S3 İndirme",
+        "modules.aws.s3.download.output.content_type.description": "İndirilen dosyanın MIME türü",
+        "modules.aws.s3.download.output.path.description": "Dosyanın kaydedildiği yerel dosya yolu",
+        "modules.aws.s3.download.output.size.description": "Dosya boyutu bayt cinsinden",
+        "modules.aws.s3.list.description": "AWS S3 kovasındaki nesneleri isteğe bağlı ön ek filtresiyle listeleyin",
+        "modules.aws.s3.list.label": "S3 Nesneleri Listele",
+        "modules.aws.s3.list.output.count.description": "Dönen nesne sayısı",
+        "modules.aws.s3.list.output.objects.description": "S3 nesneleri listesi",
+        "modules.aws.s3.list.output.truncated.description": "Sonuçların kesilip kesilmediği",
+        "modules.aws.s3.upload.description": "Yerel bir dosyayı AWS S3 kovasına yükleyin",
+        "modules.aws.s3.upload.label": "S3 Yükleme",
+        "modules.aws.s3.upload.output.bucket.description": "S3 kova adı",
+        "modules.aws.s3.upload.output.key.description": "S3 nesne anahtarı",
+        "modules.aws.s3.upload.output.size.description": "Dosya boyutu bayt cinsinden",
+        "modules.aws.s3.upload.output.url.description": "Yüklenen nesnenin genel URL'si"
+    }
+}

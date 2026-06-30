@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Categoría",
+        "createModal.category.placeholder": "Seleccione una categoría (opcional)",
+        "createModal.closeDialog": "Cerrar diálogo",
+        "createModal.create": "Crear plantilla",
+        "createModal.creating": "Creando...",
+        "createModal.description.label": "Descripción",
+        "createModal.description.placeholder": "¿Qué hace esta plantilla? (opcional)",
+        "createModal.errors.createFailed": "Error al crear la plantilla",
+        "createModal.errors.fileTooLarge": "La imagen debe ser menor a 2MB",
+        "createModal.errors.invalidFileType": "Por favor seleccione un archivo de imagen",
+        "createModal.folder.label": "Carpeta",
+        "createModal.folder.placeholder": "Predeterminado (sin carpeta)",
+        "createModal.icon.change": "Cambiar ícono",
+        "createModal.icon.hint": "PNG, JPG, GIF hasta 2MB",
+        "createModal.icon.label": "Ícono de plantilla",
+        "createModal.icon.remove": "Eliminar ícono",
+        "createModal.icon.upload": "Cargar ícono",
+        "createModal.name.label": "Nombre de plantilla",
+        "createModal.name.placeholder": "Mi increíble automatización",
+        "createModal.title": "Nueva plantilla"
+    }
+}

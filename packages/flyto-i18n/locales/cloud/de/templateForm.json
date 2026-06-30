@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "de",
+  "category": "cloud.templateForm",
+  "version": "1.0.0",
+  "translations": {
+    "templateForm.category": "Kategorie",
+    "templateForm.changeIcon": "Symbol ändern",
+    "templateForm.description": "Beschreibung",
+    "templateForm.descriptionPlaceholder": "Was macht diese Vorlage? (optional)",
+    "templateForm.editTemplate": "Vorlage bearbeiten",
+    "templateForm.iconUploadError": "Symbol konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut.",
+    "templateForm.namePlaceholder": "Meine tolle Automatisierung",
+    "templateForm.private": "Private",
+    "templateForm.public": "Public",
+    "templateForm.selectCategory": "Kategorie auswählen (optional)",
+    "templateForm.templateColor": "Vorlagenfarbe",
+    "templateForm.templateIcon": "Vorlagen-Symbol",
+    "templateForm.templateName": "Vorlagenname",
+    "templateForm.uploadIcon": "Symbol hochladen",
+    "templateForm.visibility": "Visibility"
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "AIアシスタント（AIに質問）",
+        "workflowCanvas.controls.autoLayout": "自動レイアウト",
+        "workflowCanvas.controls.fitView": "表示を合わせる",
+        "workflowCanvas.controls.zoomIn": "拡大",
+        "workflowCanvas.controls.zoomOut": "縮小",
+        "workflowCanvas.deleteDialog.deleteAll": "すべて削除",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "このノードとすべての {count} 個の子ノードを削除",
+        "workflowCanvas.deleteDialog.mergeToChild": "子ノードにマージ",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "このノードのみ削除し、親ノードを最初の子ノードに接続",
+        "workflowCanvas.deleteDialog.message": "このノードには {count} 個の子ノードがあります。どうしますか？",
+        "workflowCanvas.deleteDialog.title": "子ノードを持つノードの削除",
+        "workflowCanvas.reconnect.cancel": "キャンセル",
+        "workflowCanvas.reconnect.connect": "接続",
+        "workflowCanvas.reconnect.dontConnect": "接続しない",
+        "workflowCanvas.stickyNoteCreated": "付箋が作成されました"
+    }
+}

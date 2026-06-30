@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "Thêm thời gian vào datetime",
+        "modules.datetime.add.label": "Thêm thời gian",
+        "modules.datetime.add.output.result.description": "Kết quả thao tác",
+        "modules.datetime.add.output.timestamp.description": "Kết quả thao tác",
+        "modules.datetime.format.description": "Định dạng datetime thành chuỗi",
+        "modules.datetime.format.label": "Định dạng DateTime",
+        "modules.datetime.format.output.result.description": "Kết quả thao tác",
+        "modules.datetime.format.output.timestamp.description": "Kết quả thao tác",
+        "modules.datetime.parse.description": "Phân tích chuỗi thành datetime",
+        "modules.datetime.parse.label": "Phân tích DateTime",
+        "modules.datetime.parse.output.day.description": "Thành phần năm",
+        "modules.datetime.parse.output.hour.description": "Thành phần tháng",
+        "modules.datetime.parse.output.minute.description": "Thành phần ngày",
+        "modules.datetime.parse.output.month.description": "Dấu thời gian Unix",
+        "modules.datetime.parse.output.result.description": "Kết quả thao tác",
+        "modules.datetime.parse.output.second.description": "Thành phần giờ",
+        "modules.datetime.parse.output.timestamp.description": "Kết quả thao tác",
+        "modules.datetime.parse.output.year.description": "Kết quả thao tác",
+        "modules.datetime.subtract.description": "Trừ thời gian từ datetime",
+        "modules.datetime.subtract.label": "Trừ thời gian",
+        "modules.datetime.subtract.output.result.description": "Kết quả thao tác",
+        "modules.datetime.subtract.output.timestamp.description": "Kết quả thao tác"
+    }
+}

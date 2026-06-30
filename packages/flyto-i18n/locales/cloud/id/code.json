@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "Variabel yang Tersedia",
+        "code.inputAllDesc": "Semua item dari langkah sebelumnya",
+        "code.inputFirstDesc": "Hanya item pertama",
+        "code.jsonDesc": "Data item saat ini (alias)",
+        "code.language": "Bahasa",
+        "code.localExecutionNotice": "Kode dijalankan secara lokal di mesin Anda untuk keamanan",
+        "code.sourceCode": "Kode Sumber"
+    }
+}

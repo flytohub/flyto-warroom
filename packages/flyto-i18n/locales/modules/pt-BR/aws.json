@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "Excluir um objeto de um bucket AWS S3",
+        "modules.aws.s3.delete.label": "Excluir Objeto S3",
+        "modules.aws.s3.delete.output.bucket.description": "Nome do bucket S3",
+        "modules.aws.s3.delete.output.deleted.description": "Se o objeto foi excluído com sucesso",
+        "modules.aws.s3.delete.output.key.description": "Chave do objeto excluído",
+        "modules.aws.s3.download.description": "Baixar um arquivo de um bucket AWS S3 para um caminho local",
+        "modules.aws.s3.download.label": "Download do S3",
+        "modules.aws.s3.download.output.content_type.description": "Tipo MIME do arquivo baixado",
+        "modules.aws.s3.download.output.path.description": "Caminho local onde o arquivo foi salvo",
+        "modules.aws.s3.download.output.size.description": "Tamanho do arquivo em bytes",
+        "modules.aws.s3.list.description": "Listar objetos em um bucket AWS S3 com filtro de prefixo opcional",
+        "modules.aws.s3.list.label": "Listar Objetos S3",
+        "modules.aws.s3.list.output.count.description": "Número de objetos retornados",
+        "modules.aws.s3.list.output.objects.description": "Lista de objetos S3",
+        "modules.aws.s3.list.output.truncated.description": "Se os resultados estão truncados",
+        "modules.aws.s3.upload.description": "Fazer upload de um arquivo local para um bucket AWS S3",
+        "modules.aws.s3.upload.label": "Upload para S3",
+        "modules.aws.s3.upload.output.bucket.description": "Nome do bucket S3",
+        "modules.aws.s3.upload.output.key.description": "Chave do objeto S3",
+        "modules.aws.s3.upload.output.size.description": "Tamanho do arquivo em bytes",
+        "modules.aws.s3.upload.output.url.description": "URL pública do objeto enviado"
+    }
+}

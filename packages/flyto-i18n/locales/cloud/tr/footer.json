@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.footer",
+    "version": "1.0.0",
+    "translations": {
+        "footer.copyright": "© 2025 Flyto2. Tüm hakları saklıdır.",
+        "footer.description": "Yüzlerce uygulamayı entegre eden, otomasyonu herkes için kolaylaştıran güçlü görsel iş akışı düzenleyicisi.",
+        "footer.disclaimer": "Tüm otomasyon görevleri kullanıcının kendi cihazında çalışır. Kullanıcılar, kullanımın hedef web sitelerinin hizmet şartlarına ve geçerli yasalara uygun olduğundan emin olmakla sorumludur."
+    }
+}

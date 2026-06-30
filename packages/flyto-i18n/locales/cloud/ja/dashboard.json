@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "適用済み",
+        "dashboard.evolution.events": "イベント",
+        "dashboard.evolution.executions": "実行",
+        "dashboard.evolution.flytoCan": "缶に飛ぶ",
+        "dashboard.evolution.fromCheckpoints": "チェックポイントから",
+        "dashboard.evolution.last30days": "過去30日間",
+        "dashboard.evolution.last7days": "過去7日間",
+        "dashboard.evolution.last90days": "過去90日間",
+        "dashboard.evolution.moatDescription": "堀の説明",
+        "dashboard.evolution.moatTitle": "堀のタイトル",
+        "dashboard.evolution.n8nCant": "N8nできない",
+        "dashboard.evolution.overallImprovement": "全体的な改善",
+        "dashboard.evolution.pending": "保留中",
+        "dashboard.evolution.reliability": "信頼性",
+        "dashboard.evolution.subtitle": "サブタイトル",
+        "dashboard.evolution.suggestionsApplied": "提案が適用された",
+        "dashboard.evolution.timeSaved": "節約された時間",
+        "dashboard.evolution.timeline": "タイムライン",
+        "dashboard.evolution.title": "タイトル",
+        "dashboard.evolution.today": "今日",
+        "dashboard.evolution.topImproved": "最も改善された",
+        "dashboard.evolution.yesterday": "昨日",
+        "dashboard.title": "ダッシュボード"
+    }
+}

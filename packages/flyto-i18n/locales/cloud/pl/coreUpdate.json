@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "dostepna",
+        "coreUpdate.checkFailed": "Nie udalo sie sprawdzic statusu",
+        "coreUpdate.downloadPage": "Pobierz z oficjalnej strony",
+        "coreUpdate.installedVersion": "Zainstalowana wersja",
+        "coreUpdate.invalidFile": "Wybierz prawidlowy plik .whl",
+        "coreUpdate.lastCheck": "Ostatnie sprawdzenie",
+        "coreUpdate.notInstalled": "Nie zainstalowano",
+        "coreUpdate.refresh": "Sprawdz aktualizacje",
+        "coreUpdate.title": "Silnik glowny",
+        "coreUpdate.upToDate": "Aktualny",
+        "coreUpdate.uploadFailed": "Przesylanie nie powiodlo sie",
+        "coreUpdate.uploadPackage": "Przeslij pakiet",
+        "coreUpdate.whlFile": "Przeslij plik .whl"
+    }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "ja",
+  "category": "cloud.templateForm",
+  "version": "1.0.0",
+  "translations": {
+    "templateForm.category": "カテゴリ",
+    "templateForm.changeIcon": "アイコンを変更",
+    "templateForm.description": "説明",
+    "templateForm.descriptionPlaceholder": "このテンプレートは何をしますか？（オプション）",
+    "templateForm.editTemplate": "テンプレートを編集",
+    "templateForm.iconUploadError": "アイコンのアップロードに失敗しました。再度お試しください。",
+    "templateForm.namePlaceholder": "素敵な自動化",
+    "templateForm.private": "Private",
+    "templateForm.public": "Public",
+    "templateForm.selectCategory": "カテゴリを選択（オプション）",
+    "templateForm.templateColor": "テンプレートの色",
+    "templateForm.templateIcon": "テンプレートアイコン",
+    "templateForm.templateName": "テンプレート名",
+    "templateForm.uploadIcon": "アイコンをアップロード",
+    "templateForm.visibility": "Visibility"
+  }
+}

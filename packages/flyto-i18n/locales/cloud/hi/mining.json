@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.mining",
+    "version": "1.0.0",
+    "translations": {
+        "mining.bottlenecks.empty": "कोई बाधा नहीं मिली",
+        "mining.bottlenecks.title": "बाधाएं",
+        "mining.discovery.analyze": "विश्लेषण करें",
+        "mining.discovery.empty": "विश्लेषण के लिए कोई डेटा नहीं",
+        "mining.discovery.selectWorkflow": "विश्लेषण के लिए एक वर्कफ़्लो चुनें",
+        "mining.discovery.title": "प्रक्रिया खोज",
+        "mining.quality.fitness": "फिटनेस",
+        "mining.quality.generalization": "सामान्यीकरण",
+        "mining.quality.precision": "सटीकता",
+        "mining.stats.avgDuration": "औसत अवधि",
+        "mining.stats.cases": "मामले",
+        "mining.stats.conformance": "अनुरूपता",
+        "mining.stats.variants": "प्रकार",
+        "mining.suggestions.apply": "लागू करें",
+        "mining.suggestions.empty": "कोई सुझाव नहीं",
+        "mining.suggestions.title": "सुझाव",
+        "mining.variants.empty": "कोई प्रकार नहीं",
+        "mining.variants.title": "प्रक्रिया प्रकार"
+    }
+}

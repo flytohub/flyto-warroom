@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.nodeOutput",
+    "version": "1.0.0",
+    "translations": {
+        "nodeOutput.diff": "ความแตกต่าง",
+        "nodeOutput.input": "ข้อมูลนำเข้า",
+        "nodeOutput.output": "ข้อมูลส่งออก",
+        "nodeOutput.table": "ตาราง",
+        "nodeOutput.text": "ข้อความ"
+    }
+}

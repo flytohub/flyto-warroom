@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "최종 업데이트",
+        "privacy.sections.collection.content": "당사는 계정 생성, 서비스 이용 또는 지원 문의 시 직접 제공하는 정보를 수집합니다. 여기에는 서비스 개선을 위한 이름, 이메일 주소 및 사용 데이터가 포함될 수 있습니다.",
+        "privacy.sections.collection.title": "수집하는 정보",
+        "privacy.sections.contact.content": "본 개인정보 처리방침 또는 데이터 처리에 관한 질문이 있으시면 privacy{'@'}flytohub.com으로 문의해 주세요.",
+        "privacy.sections.contact.title": "문의하기",
+        "privacy.sections.rights.content": "귀하는 개인 정보에 대한 접근, 수정 또는 삭제 권리가 있습니다. 데이터 이동성을 요청하거나 특정 처리 활동에 대해 이의를 제기할 수도 있습니다. 이러한 권리를 행사하려면 문의해 주세요.",
+        "privacy.sections.rights.title": "귀하의 권리",
+        "privacy.sections.security.content": "당사는 무단 접근, 변경, 공개 또는 파괴로부터 개인 정보를 보호하기 위해 적절한 기술적 및 조직적 조치를 시행합니다.",
+        "privacy.sections.security.title": "데이터 보안",
+        "privacy.sections.sharing.content": "당사는 귀하의 개인 정보를 판매하지 않습니다. 기밀 유지 계약에 따라 플랫폼 운영을 지원하는 제3자 서비스 제공업체와 정보를 공유할 수 있습니다.",
+        "privacy.sections.sharing.title": "정보 공유",
+        "privacy.sections.usage.content": "당사는 수집한 정보를 서비스 제공, 유지 및 개선, 귀하와의 소통, 경험 개인화에 사용합니다. 분석 목적으로 집계된 데이터를 사용할 수도 있습니다.",
+        "privacy.sections.usage.title": "정보 사용 방법",
+        "privacy.title": "개인정보 처리방침"
+    }
+}

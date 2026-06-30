@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.binary",
+    "version": "1.0.0",
+    "translations": {
+        "binary.download": "Herunterladen",
+        "binary.downloadToOpen": "Zum Öffnen herunterladen",
+        "binary.downloadToView": "Zum Ansehen herunterladen",
+        "binary.noPreview": "Keine Vorschau verfügbar",
+        "binary.pdfPreview": "PDF-Vorschau",
+        "binary.previewError": "Vorschaufehler"
+    }
+}

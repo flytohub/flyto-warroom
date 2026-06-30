@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Sempre attivi",
+        "cookies.lastUpdated": "Ultimo Aggiornamento",
+        "cookies.optional": "Opzionale",
+        "cookies.preferencesSaved": "Preferenze salvate con successo",
+        "cookies.savePreferences": "Salva Preferenze",
+        "cookies.sections.manage.content": "Puoi controllare quali cookie opzionali consentire. I cookie essenziali non possono essere disabilitati in quanto necessari per il funzionamento del sito web.",
+        "cookies.sections.manage.title": "Gestisci le Tue Preferenze",
+        "cookies.sections.types.analytics.content": "Questi cookie ci aiutano a capire come i visitatori interagiscono con il nostro sito web raccogliendo e riportando informazioni in modo anonimo. Questo ci aiuta a migliorare i nostri servizi.",
+        "cookies.sections.types.analytics.title": "Cookie Analitici",
+        "cookies.sections.types.essential.content": "Questi cookie sono necessari per il corretto funzionamento del sito web. Abilitano funzionalita di base come la navigazione delle pagine e l'accesso alle aree protette. Il sito web non puo funzionare correttamente senza questi cookie.",
+        "cookies.sections.types.essential.title": "Cookie Essenziali",
+        "cookies.sections.types.functional.content": "Questi cookie abilitano funzionalita personalizzate come ricordare le preferenze di lingua, le impostazioni del tema e lo stato di accesso. Migliorano la tua esperienza ma non sono essenziali.",
+        "cookies.sections.types.functional.title": "Cookie Funzionali",
+        "cookies.sections.types.title": "Tipi di Cookie che Utilizziamo",
+        "cookies.sections.what.content": "I cookie sono piccoli file di testo memorizzati sul tuo dispositivo quando visiti il nostro sito web. Ci aiutano a fornirti un'esperienza migliore ricordando le tue preferenze e comprendendo come utilizzi i nostri servizi.",
+        "cookies.sections.what.title": "Cosa Sono i Cookie?",
+        "cookies.title": "Impostazioni Cookie"
+    }
+}

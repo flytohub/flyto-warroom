@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "로그 지우기",
+        "terminal.closeTerminal": "터미널 닫기",
+        "terminal.connected": "연결됨",
+        "terminal.disableAutoScroll": "자동 스크롤 비활성화",
+        "terminal.disconnected": "연결 끊김",
+        "terminal.enableAutoScroll": "자동 스크롤 활성화",
+        "terminal.hideLogs": "{level} 로그 숨기기",
+        "terminal.logsWillAppear": "시스템에서 출력을 생성하면 로그가 여기에 표시됩니다",
+        "terminal.searchPlaceholder": "로그 검색...",
+        "terminal.showLogs": "{level} 로그 표시",
+        "terminal.title": "시스템 터미널",
+        "terminal.waitingForLogs": "로그 대기 중..."
+    }
+}

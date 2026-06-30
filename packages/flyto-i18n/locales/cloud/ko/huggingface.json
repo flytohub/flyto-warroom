@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.huggingface",
+    "version": "1.0.0",
+    "translations": {
+        "huggingface.browseMoreModels": "더 많은 모델 찾아보기",
+        "huggingface.chooseModel": "모델 선택",
+        "huggingface.inferenceAPI": "추론 API",
+        "huggingface.installedModels": "설치된 모델",
+        "huggingface.localExecution": "로컬 실행",
+        "huggingface.noModelsAvailable": "사용 가능한 모델이 없습니다",
+        "huggingface.notInstalled": "설치되지 않음",
+        "huggingface.popularModels": "인기 모델",
+        "huggingface.selectModel": "모델 선택"
+    }
+}

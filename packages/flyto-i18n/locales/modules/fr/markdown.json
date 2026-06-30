@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Extraire le frontmatter YAML du contenu Markdown",
+        "modules.markdown.parse_frontmatter.label": "Analyser le Frontmatter",
+        "modules.markdown.parse_frontmatter.output.content.description": "Contenu Markdown sans frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Frontmatter analysé sous forme de dictionnaire",
+        "modules.markdown.parse_frontmatter.params.text.description": "Contenu Markdown avec frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.label": "Texte Markdown",
+        "modules.markdown.to_html.description": "Convertir le texte Markdown en HTML",
+        "modules.markdown.to_html.label": "Markdown en HTML",
+        "modules.markdown.to_html.output.html.description": "Contenu HTML converti",
+        "modules.markdown.to_html.output.word_count.description": "Nombre de mots du texte d'entrée",
+        "modules.markdown.to_html.params.extensions.description": "Extensions Markdown à activer (utilisées uniquement avec la bibliothèque markdown)",
+        "modules.markdown.to_html.params.extensions.label": "Extensions",
+        "modules.markdown.to_html.params.text.description": "Contenu Markdown à convertir",
+        "modules.markdown.to_html.params.text.label": "Texte Markdown",
+        "modules.markdown.toc.description": "Générer une table des matières à partir des titres Markdown",
+        "modules.markdown.toc.label": "Générer la table des matières",
+        "modules.markdown.toc.output.toc.description": "Liste des titres avec niveau, titre et identifiant",
+        "modules.markdown.toc.output.toc_markdown.description": "Table des matières formatée en Markdown",
+        "modules.markdown.toc.params.max_depth.description": "Profondeur maximale des titres à inclure (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "Profondeur max",
+        "modules.markdown.toc.params.text.description": "Contenu Markdown pour extraire les titres",
+        "modules.markdown.toc.params.text.label": "Texte Markdown"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "削除",
+        "batch.deleteConfirm.message": "{count} 個のテンプレートを削除してもよろしいですか？この操作は取り消せません。",
+        "batch.deleteConfirm.title": "{count} 個のテンプレートを削除",
+        "batch.deselectAll": "すべて選択解除",
+        "batch.select": "選択",
+        "batch.selectAll": "すべて選択",
+        "batch.selected": "件選択中"
+    }
+}

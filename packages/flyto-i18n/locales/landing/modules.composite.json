@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "composite",
+  "version": "1.0.0",
+  "translations": {
+    "modules.composite.browser.scrape_to_json.description": "",
+    "modules.composite.browser.scrape_to_json.label": "",
+    "modules.composite.data.csv_to_json.description": "",
+    "modules.composite.data.csv_to_json.label": "",
+    "modules.composite.data.json_transform_notify.description": "",
+    "modules.composite.data.json_transform_notify.label": "",
+    "modules.composite.developer.api_to_notification.description": "",
+    "modules.composite.developer.api_to_notification.label": "",
+    "modules.composite.developer.github_daily_digest.description": "",
+    "modules.composite.developer.github_daily_digest.label": "",
+    "modules.composite.notification.multi_channel_alert.description": "",
+    "modules.composite.notification.multi_channel_alert.label": "",
+    "modules.composite.notification.scheduled_report.description": "",
+    "modules.composite.notification.scheduled_report.label": "",
+    "modules.composite.test.api_test.description": "",
+    "modules.composite.test.api_test.label": "",
+    "modules.composite.test.e2e_flow.description": "",
+    "modules.composite.test.e2e_flow.label": "",
+    "modules.composite.test.quality_gate.description": "",
+    "modules.composite.test.quality_gate.label": "",
+    "modules.composite.test.ui_review.description": "",
+    "modules.composite.test.ui_review.label": "",
+    "modules.composite.test.verify_fix.description": "",
+    "modules.composite.test.verify_fix.label": ""
+  }
+}

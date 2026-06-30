@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "pl",
+  "category": "cloud.valueSource",
+  "version": "1.0.0",
+  "translations": {
+    "valueSource.booleanFalse": "Nie / Falsz",
+    "valueSource.booleanTrue": "Tak / Prawda",
+    "valueSource.browsePath": "Browse Path",
+    "valueSource.changeSource": "Zmien zrodlo wartosci",
+    "valueSource.defaultPlaceholder": "Wprowadz wartosc...",
+    "valueSource.expressionHint": "Dostepne: steps.{id}.result, ui.{pole}, env.{zmienna}",
+    "valueSource.expressionPlaceholder": "steps.krok1.result lub ui.slowo_kluczowe",
+    "valueSource.noPreviousSteps": "Brak dostepnych poprzednich krokow",
+    "valueSource.noUIFields": "Nie zdefiniowano pol wejsciowych UI",
+    "valueSource.selectSourceType": "Wybierz typ zrodla",
+    "valueSource.selectStepOutput": "Wybierz wyjscie kroku...",
+    "valueSource.selectText": "tekst",
+    "valueSource.selectUIField": "Wybierz pole UI...",
+    "valueSource.selectValue": "wartość",
+    "valueSource.sources.expression.description": "Zaawansowana wartosc dynamiczna",
+    "valueSource.sources.expression.label": "Wyrazenie",
+    "valueSource.sources.previousStep.description": "Uzyj wyjscia z wczesniejszego kroku",
+    "valueSource.sources.previousStep.label": "Z poprzedniego kroku",
+    "valueSource.sources.static.description": "Wprowadz stala wartosc",
+    "valueSource.sources.static.label": "Wartosc statyczna",
+    "valueSource.sources.uiInput.description": "Polacz z polem formularza frontend",
+    "valueSource.sources.uiInput.label": "Z wejscia UI"
+  }
+}

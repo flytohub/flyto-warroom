@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Sempre ativo",
+        "cookies.lastUpdated": "Ultima Atualizacao",
+        "cookies.optional": "Opcional",
+        "cookies.preferencesSaved": "Preferencias salvas com sucesso",
+        "cookies.savePreferences": "Salvar Preferencias",
+        "cookies.sections.manage.content": "Voce pode controlar quais cookies opcionais permitir. Cookies essenciais nao podem ser desativados pois sao necessarios para o funcionamento do site.",
+        "cookies.sections.manage.title": "Gerenciar Suas Preferencias",
+        "cookies.sections.types.analytics.content": "Estes cookies nos ajudam a entender como os visitantes interagem com nosso site, coletando e reportando informacoes anonimamente. Isso nos ajuda a melhorar nossos servicos.",
+        "cookies.sections.types.analytics.title": "Cookies de Analise",
+        "cookies.sections.types.essential.content": "Estes cookies sao necessarios para o funcionamento adequado do site. Eles permitem recursos basicos como navegacao de paginas e acesso a areas seguras. O site nao funciona corretamente sem estes cookies.",
+        "cookies.sections.types.essential.title": "Cookies Essenciais",
+        "cookies.sections.types.functional.content": "Estes cookies permitem recursos personalizados como lembrar sua preferencia de idioma, configuracoes de tema e status de login. Eles melhoram sua experiencia mas nao sao essenciais.",
+        "cookies.sections.types.functional.title": "Cookies Funcionais",
+        "cookies.sections.types.title": "Tipos de Cookies que Usamos",
+        "cookies.sections.what.content": "Cookies sao pequenos arquivos de texto armazenados no seu dispositivo quando voce visita nosso site. Eles nos ajudam a oferecer uma experiencia melhor, lembrando suas preferencias e entendendo como voce usa nossos servicos.",
+        "cookies.sections.what.title": "O que sao Cookies?",
+        "cookies.title": "Configuracoes de Cookies"
+    }
+}

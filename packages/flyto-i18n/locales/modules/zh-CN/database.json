@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "将数据插入数据库表格",
+        "modules.database.insert.label": "数据库插入",
+        "modules.database.insert.output.inserted_count.description": "插入的列数",
+        "modules.database.insert.output.returning_data.description": "插入的列数",
+        "modules.database.query.description": "在 PostgreSQL、MySQL 或 SQLite 数据库运行 SQL 查找",
+        "modules.database.query.label": "数据库查找",
+        "modules.database.query.output.columns.description": "查找结果列",
+        "modules.database.query.output.row_count.description": "查找结果列",
+        "modules.database.query.output.rows.description": "查找结果列",
+        "modules.database.update.description": "更新数据库表格中的数据",
+        "modules.database.update.label": "数据库更新",
+        "modules.database.update.output.updated_count.description": "更新的列数"
+    }
+}

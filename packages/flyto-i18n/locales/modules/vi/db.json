@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "vi",
+  "category": "db",
+  "version": "1.0.0",
+  "translations": {
+    "modules.db.mongodb.find.description": "Truy vấn tài liệu từ collection MongoDB",
+    "modules.db.mongodb.find.label": "MongoDB Find",
+    "modules.db.mongodb.find.output.count.description": "Mảng các tài liệu khớp",
+    "modules.db.mongodb.find.output.documents.description": "Mảng các tài liệu khớp",
+    "modules.db.mongodb.insert.description": "Chèn một hoặc nhiều tài liệu vào collection MongoDB",
+    "modules.db.mongodb.insert.label": "MongoDB Insert",
+    "modules.db.mongodb.insert.output.inserted_count.description": "Số tài liệu đã chèn",
+    "modules.db.mongodb.insert.output.inserted_ids.description": "Số tài liệu đã chèn",
+    "modules.db.mysql.query.description": "Thực thi truy vấn SQL trên cơ sở dữ liệu MySQL và trả về kết quả",
+    "modules.db.mysql.query.label": "Truy vấn MySQL",
+    "modules.db.mysql.query.output.columns.description": "Mảng các hàng kết quả dưới dạng đối tượng",
+    "modules.db.mysql.query.output.row_count.description": "Mảng các hàng kết quả dưới dạng đối tượng",
+    "modules.db.mysql.query.output.rows.description": "Mảng các hàng kết quả dưới dạng đối tượng",
+    "modules.db.postgresql.query.description": "Thực thi truy vấn SQL trên cơ sở dữ liệu PostgreSQL và trả về kết quả",
+    "modules.db.postgresql.query.label": "Truy vấn PostgreSQL",
+    "modules.db.postgresql.query.output.columns.description": "Mảng các hàng kết quả dưới dạng đối tượng",
+    "modules.db.postgresql.query.output.row_count.description": "Mảng các hàng kết quả dưới dạng đối tượng",
+    "modules.db.postgresql.query.output.rows.description": "Mảng các hàng kết quả dưới dạng đối tượng",
+    "modules.db.redis.get.description": "Lấy giá trị từ cache Redis",
+    "modules.db.redis.get.label": "Redis Get",
+    "modules.db.redis.get.output.exists.description": "Giá trị trả về",
+    "modules.db.redis.get.output.key.description": "Giá trị trả về",
+    "modules.db.redis.get.output.value.description": "Giá trị trả về",
+    "modules.db.redis.set.description": "Đặt giá trị trong cache Redis",
+    "modules.db.redis.set.label": "Redis Set"
+  }
+}

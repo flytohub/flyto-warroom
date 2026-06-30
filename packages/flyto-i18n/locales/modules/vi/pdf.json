@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "Điền các trường form PDF với dữ liệu và tùy chọn chèn hình ảnh",
+        "modules.pdf.fill_form.label": "Điền form PDF",
+        "modules.pdf.fill_form.output.fields_filled.description": "Đường dẫn đến PDF đã điền",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Số hình ảnh đã chèn",
+        "modules.pdf.fill_form.output.images_inserted.description": "Đường dẫn đến PDF đã điền",
+        "modules.pdf.fill_form.output.output_path.description": "Đường dẫn đến PDF đã điền",
+        "modules.pdf.generate.description": "Tạo tệp PDF từ nội dung HTML hoặc văn bản",
+        "modules.pdf.generate.label": "Tạo PDF",
+        "modules.pdf.generate.output.file_size_bytes.description": "Số trang trong PDF",
+        "modules.pdf.generate.output.output_path.description": "Đường dẫn đến PDF đã tạo",
+        "modules.pdf.generate.output.page_count.description": "Đường dẫn đến PDF đã tạo",
+        "modules.pdf.parse.description": "Trích xuất văn bản và metadata từ tệp PDF",
+        "modules.pdf.parse.label": "Phân tích PDF",
+        "modules.pdf.parse.output.metadata.description": "Nội dung văn bản đã trích xuất",
+        "modules.pdf.parse.output.page_count.description": "Nội dung văn bản theo trang",
+        "modules.pdf.parse.output.pages.description": "Nội dung văn bản đã trích xuất",
+        "modules.pdf.parse.output.text.description": "Nội dung văn bản đã trích xuất",
+        "modules.pdf.to_word.description": "Chuyển đổi tệp PDF sang tài liệu Word (.docx)",
+        "modules.pdf.to_word.label": "PDF sang Word",
+        "modules.pdf.to_word.output.file_size.description": "Số trang đã chuyển đổi",
+        "modules.pdf.to_word.output.output_path.description": "Đường dẫn đến tài liệu Word đã tạo",
+        "modules.pdf.to_word.output.page_count.description": "Đường dẫn đến tài liệu Word đã tạo"
+    }
+}

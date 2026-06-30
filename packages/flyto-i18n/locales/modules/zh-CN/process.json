@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "列出所有运行中的背景进程",
+        "modules.process.list.label": "列出进程",
+        "modules.process.list.output.count.description": "操作成功",
+        "modules.process.list.output.ok.description": "操作成功",
+        "modules.process.list.output.processes.description": "操作成功",
+        "modules.process.list.output.running.description": "进程信息列表",
+        "modules.process.list.output.stopped.description": "进程总数",
+        "modules.process.start.description": "启动背景进程（服务器、服务等）",
+        "modules.process.start.label": "启动背景进程",
+        "modules.process.start.output.command.description": "供 process.stop 使用的内部进程识别码",
+        "modules.process.start.output.cwd.description": "进程名称",
+        "modules.process.start.output.initial_output.description": "进程启动的 ISO 时间戳记",
+        "modules.process.start.output.name.description": "进程 ID",
+        "modules.process.start.output.ok.description": "进程是否成功启动",
+        "modules.process.start.output.pid.description": "进程是否成功启动",
+        "modules.process.start.output.process_id.description": "进程是否成功启动",
+        "modules.process.start.output.started_at.description": "运行的命令",
+        "modules.process.stop.description": "停止运行中的背景进程",
+        "modules.process.stop.label": "停止进程",
+        "modules.process.stop.output.count.description": "已停止的进程信息列表",
+        "modules.process.stop.output.failed.description": "已停止的进程信息列表",
+        "modules.process.stop.output.ok.description": "所有进程是否成功停止",
+        "modules.process.stop.output.stopped.description": "所有进程是否成功停止"
+    }
+}

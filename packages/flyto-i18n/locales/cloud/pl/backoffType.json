@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.backoffType",
+    "version": "1.0.0",
+    "translations": {
+        "backoffType.exponential": "Wykladniczy",
+        "backoffType.exponentialDesc": "delay_ms * 2^proba (1000, 2000, 4000...)",
+        "backoffType.linear": "Liniowy",
+        "backoffType.linearDesc": "delay_ms * proba (1000, 2000, 3000...)",
+        "backoffType.none": "Brak",
+        "backoffType.noneDesc": "Stale opoznienie miedzy ponownymi probami"
+    }
+}

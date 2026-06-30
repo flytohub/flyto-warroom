@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.purchases",
+    "version": "1.0.0",
+    "translations": {
+        "purchases.all": "すべての購入",
+        "purchases.browseMarketplace": "Browse marketplace",
+        "purchases.completed": "完了した購入",
+        "purchases.empty": "購入なし",
+        "purchases.emptyDescription": "まだ購入はありません。",
+        "purchases.filterAll": "すべて",
+        "purchases.filterCompleted": "完了",
+        "purchases.filterRefunded": "返金済み",
+        "purchases.loadMore": "もっと見る",
+        "purchases.loading": "読み込み中...",
+        "purchases.noPurchases": "購入履歴がありません",
+        "purchases.noPurchasesDesc": "購入したテンプレートがここに表示されます",
+        "purchases.purchasedOn": "購入日",
+        "purchases.refundAmount": "返金額",
+        "purchases.refundEligible": "返金対象",
+        "purchases.refundExpired": "返金期限切れ",
+        "purchases.refunded": "返金済み",
+        "purchases.refundedOn": "返金日",
+        "purchases.requestRefund": "Request refund",
+        "purchases.subtitle": "Purchase details",
+        "purchases.title": "Purchases",
+        "purchases.viewTemplate": "View template"
+    }
+}

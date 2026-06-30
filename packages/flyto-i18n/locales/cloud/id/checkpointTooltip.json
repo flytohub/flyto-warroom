@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.checkpointTooltip",
+    "version": "1.0.0",
+    "translations": {
+        "checkpointTooltip.clickToAdd": "Klik untuk menambahkan checkpoint pada koneksi",
+        "checkpointTooltip.clickToExit": "Klik untuk keluar dari mode checkpoint",
+        "checkpointTooltip.upgradeToUse": "Tingkatkan untuk menggunakan Checkpoint Manusia"
+    }
+}

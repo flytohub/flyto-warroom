@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "Başlık Adı",
+        "schema.field.body": "Gövde",
+        "schema.field.body_matches": "Yanıt",
+        "schema.field.full_page": "Tam Sayfa",
+        "schema.field.response": "Yanıt",
+        "schema.field.screenshot_format": "Tam Sayfa",
+        "schema.field.ssrf_protection": "SSRF Koruması",
+        "schema.field.ssrf_protection.description": "Özel/iç ağlara (localhost, 192.168.x.x, bulut metadata uç noktaları) yapılan istekleri engeller. Yalnızca güvenilir iç hedefler için devre dışı bırakın.",
+        "schema.field.url": "Url",
+        "schema.field.viewport_height": "Genişlik",
+        "schema.field.viewport_width": "Genişlik"
+    }
+}

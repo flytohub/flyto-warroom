@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "ขั้นสูง",
+        "simpleToolView.copy": "คัดลอก",
+        "simpleToolView.download": "ดาวน์โหลด",
+        "simpleToolView.downloadFile": "ดาวน์โหลดไฟล์",
+        "simpleToolView.dropOrClick": "วางไฟล์หรือคลิกเพื่ออัปโหลด",
+        "simpleToolView.failed": "ล้มเหลว",
+        "simpleToolView.generating": "กำลังสร้าง...",
+        "simpleToolView.input": "ข้อมูลนำเข้า",
+        "simpleToolView.moreRows": "+{count} แถวเพิ่มเติม",
+        "simpleToolView.output": "ผลลัพธ์",
+        "simpleToolView.processing": "กำลังดำเนินการ...",
+        "simpleToolView.resultWillAppear": "ผลลัพธ์จะแสดงที่นี่",
+        "simpleToolView.retry": "ลองอีกครั้ง",
+        "simpleToolView.selectOption": "เลือกตัวเลือก",
+        "simpleToolView.start": "เริ่ม",
+        "simpleToolView.viewSteps": "ดูขั้นตอน"
+    }
+}

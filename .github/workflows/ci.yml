@@ -1,0 +1,42 @@
+name: Flyto Warroom CE
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Audit generated release boundary
+        run: python install/scripts/audit-release-tree.py .
+      - name: Validate public contracts
+        run: |
+          python packages/flyto-contracts/conformance/validate.py runner-callback packages/flyto-contracts/examples/runner-callback.json
+          python packages/flyto-contracts/conformance/validate.py evidence-event packages/flyto-contracts/examples/evidence-event.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: packages/flyto-code/package-lock.json
+      - name: Build frontend package
+        working-directory: packages/flyto-code
+        env:
+          VITE_ENGINE_URL: http://localhost:8080
+          VITE_AUTH_MODE: enterprise
+          VITE_AUTOMATION_URL: http://localhost:8080
+          VITE_CORTEX_URL: http://localhost:8080
+        run: |
+          npm ci --legacy-peer-deps
+          npm run build
+      - name: Export upstream patch preview
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin main
+          python scripts/export-upstream-patches.py --base origin/main --output upstream-patches

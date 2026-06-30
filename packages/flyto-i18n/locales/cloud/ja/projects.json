@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "プロジェクトを作成",
+        "projects.create.title": "プロジェクトを作成",
+        "projects.delete.message": "このプロジェクトを削除してもよろしいですか？このプロジェクト内のすべてのワークフローはデフォルトプロジェクトに移動されます。",
+        "projects.delete.title": "プロジェクトを削除",
+        "projects.description": "ワークフローをプロジェクトに整理",
+        "projects.edit.title": "プロジェクトを編集",
+        "projects.empty.description": "最初のプロジェクトを作成してワークフローを整理",
+        "projects.empty.title": "プロジェクトがありません",
+        "projects.form.color": "色",
+        "projects.form.description": "説明",
+        "projects.form.name": "プロジェクト名",
+        "projects.form.namePlaceholder": "マイプロジェクト",
+        "projects.members": "メンバー",
+        "projects.title": "プロジェクト",
+        "projects.workflows": "ワークフロー"
+    }
+}

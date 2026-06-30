@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "कृपया URL जांचें और पुनः प्रयास करें",
+        "notFound.contactSupport": "सहायता से संपर्क करें",
+        "notFound.goBack": "वापस जाएं",
+        "notFound.goHome": "होम पर जाएं",
+        "notFound.helpText": "मदद चाहिए?",
+        "notFound.message": "जिस पेज की आप तलाश कर रहे हैं वह मौजूद नहीं है या स्थानांतरित कर दिया गया है।",
+        "notFound.myTemplates": "मेरे टेम्पलेट",
+        "notFound.pageNotExist": "यह पेज मौजूद नहीं है",
+        "notFound.suggestion1": "किसी भी टाइपो के लिए URL जांचें",
+        "notFound.suggestion2": "पिछले पेज पर वापस जाएं",
+        "notFound.suggestion3": "अपने टेम्पलेट्स पर नेविगेट करें",
+        "notFound.suggestions": "आप यह कर सकते हैं:",
+        "notFound.title": "पेज नहीं मिला"
+    }
+}

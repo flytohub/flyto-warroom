@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Criar um novo evento no Google Calendar",
+        "modules.google.calendar.create_event.label": "Criar Evento no Calendário",
+        "modules.google.calendar.create_event.output.end.description": "Hora de término do evento",
+        "modules.google.calendar.create_event.output.event_id.description": "ID do evento criado",
+        "modules.google.calendar.create_event.output.html_link.description": "Link para ver o evento no Google Calendar",
+        "modules.google.calendar.create_event.output.start.description": "Hora de início do evento",
+        "modules.google.calendar.create_event.output.summary.description": "Título do evento",
+        "modules.google.calendar.list_events.description": "Listar eventos futuros do Google Calendar",
+        "modules.google.calendar.list_events.label": "Listar Eventos do Calendário",
+        "modules.google.calendar.list_events.output.count.description": "Número de eventos retornados",
+        "modules.google.calendar.list_events.output.events.description": "Lista de eventos do calendário",
+        "modules.google.gmail.search.description": "Buscar mensagens no Gmail usando a sintaxe de consulta do Gmail",
+        "modules.google.gmail.search.label": "Buscar no Gmail",
+        "modules.google.gmail.search.output.messages.description": "Lista de mensagens correspondentes",
+        "modules.google.gmail.search.output.total.description": "Número total de mensagens retornadas",
+        "modules.google.gmail.send.description": "Enviar um email via API do Gmail",
+        "modules.google.gmail.send.label": "Enviar Gmail",
+        "modules.google.gmail.send.output.message_id.description": "ID da mensagem do Gmail",
+        "modules.google.gmail.send.output.thread_id.description": "ID do thread do Gmail",
+        "modules.google.gmail.send.output.to.description": "Endereço de email do destinatário"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "수락",
+        "orders.approve": "승인",
+        "orders.budget": "예산",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "완료됨",
+        "orders.createFailed": "주문 생성 실패",
+        "orders.createOrder": "주문 생성",
+        "orders.createOrderSubtitle": "이 판매자에게 프로젝트 요청 보내기",
+        "orders.days": "일",
+        "orders.deadline": "배송 시간",
+        "orders.decline": "거절",
+        "orders.deliver": "배송",
+        "orders.description": "설명",
+        "orders.descriptionPlaceholder": "프로젝트 요구사항을 자세히 설명하세요...",
+        "orders.payNow": "지금 결제",
+        "orders.requirements": "추가 요구사항",
+        "orders.requirementsPlaceholder": "특정 요구사항이나 참고사항...",
+        "orders.sendOrder": "주문 요청 보내기",
+        "orders.sending": "보내는 중...",
+        "orders.sendingTo": "보내는 대상",
+        "orders.title": "프로젝트 제목",
+        "orders.titlePlaceholder": "무엇을 도와드릴까요?",
+        "orders.viewDetails": "상세",
+        "orders.waitingResponse": "응답 대기 중"
+    }
+}

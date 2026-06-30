@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "बिल्ट-इन भूमिकाएं",
+        "roles.create": "भूमिका बनाएं",
+        "roles.create.title": "भूमिका बनाएं",
+        "roles.custom.empty": "कोई कस्टम भूमिका परिभाषित नहीं",
+        "roles.custom.title": "कस्टम भूमिकाएं",
+        "roles.delete.message": "क्या आप वाकई इस भूमिका को हटाना चाहते हैं? इस भूमिका वाले उपयोगकर्ताओं को डिफ़ॉल्ट सदस्य भूमिका दी जाएगी।",
+        "roles.delete.title": "भूमिका हटाएं",
+        "roles.description": "भूमिकाएं और पहुंच अनुमतियां प्रबंधित करें",
+        "roles.edit.title": "भूमिका संपादित करें",
+        "roles.form.description": "विवरण",
+        "roles.form.name": "भूमिका का नाम",
+        "roles.form.permissions": "अनुमतियां",
+        "roles.permissions": "अनुमतियां",
+        "roles.title": "भूमिकाएं और अनुमतियां",
+        "roles.users": "उपयोगकर्ता"
+    }
+}

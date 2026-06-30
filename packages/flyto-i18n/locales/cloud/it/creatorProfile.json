@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "Torna al Marketplace",
+        "creatorProfile.chatError": "Impossibile avviare la chat",
+        "creatorProfile.creatorTemplates": "Template del Creatore",
+        "creatorProfile.editProfile": "Modifica Profilo",
+        "creatorProfile.follow": "Segui",
+        "creatorProfile.followError": "Impossibile aggiornare lo stato di follow",
+        "creatorProfile.followers": "Follower",
+        "creatorProfile.following": "Seguiti",
+        "creatorProfile.loadMore": "Carica Altri",
+        "creatorProfile.noDescription": "Nessuna descrizione",
+        "creatorProfile.noFollowers": "Nessun follower ancora",
+        "creatorProfile.noFollowing": "Non segue nessuno",
+        "creatorProfile.noTemplates": "Nessun template pubblicato ancora",
+        "creatorProfile.notFound": "Creatore Non Trovato",
+        "creatorProfile.notFoundDesc": "Il creatore che stai cercando non esiste o e stato rimosso.",
+        "creatorProfile.templates": "Template"
+    }
+}

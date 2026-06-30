@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.backoffType",
+  "version": "1.0.0",
+  "translations": {
+    "backoffType.exponential": "",
+    "backoffType.exponentialDesc": "",
+    "backoffType.linear": "",
+    "backoffType.linearDesc": "",
+    "backoffType.none": "",
+    "backoffType.noneDesc": ""
+  }
+}

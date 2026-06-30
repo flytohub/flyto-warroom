@@ -1,0 +1,46 @@
+{
+  "$id": "https://schemas.flyto.dev/runner-callback.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "finished_at": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "scanner_id": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "object"
+    },
+    "started_at": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "queued",
+        "running",
+        "succeeded",
+        "failed",
+        "canceled"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "run_id",
+    "scanner_id",
+    "status",
+    "artifacts"
+  ],
+  "title": "Flyto runner callback",
+  "type": "object"
+}

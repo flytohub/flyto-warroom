@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.dashboard",
+  "version": "1.0.0",
+  "translations": {
+    "dashboard.evolution.applied": "",
+    "dashboard.evolution.events": "",
+    "dashboard.evolution.executions": "",
+    "dashboard.evolution.flytoCan": "",
+    "dashboard.evolution.fromCheckpoints": "",
+    "dashboard.evolution.last30days": "",
+    "dashboard.evolution.last7days": "",
+    "dashboard.evolution.last90days": "",
+    "dashboard.evolution.moatDescription": "",
+    "dashboard.evolution.moatTitle": "",
+    "dashboard.evolution.n8nCant": "",
+    "dashboard.evolution.overallImprovement": "",
+    "dashboard.evolution.pending": "",
+    "dashboard.evolution.reliability": "",
+    "dashboard.evolution.subtitle": "",
+    "dashboard.evolution.suggestionsApplied": "",
+    "dashboard.evolution.timeSaved": "",
+    "dashboard.evolution.timeline": "",
+    "dashboard.evolution.title": "",
+    "dashboard.evolution.today": "",
+    "dashboard.evolution.topImproved": "",
+    "dashboard.evolution.yesterday": "",
+    "dashboard.title": ""
+  }
+}

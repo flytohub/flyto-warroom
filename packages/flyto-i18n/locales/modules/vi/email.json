@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "Đọc email từ máy chủ IMAP",
+        "modules.email.read.label": "Đọc Email",
+        "modules.email.read.output.count.description": "Danh sách các đối tượng email",
+        "modules.email.read.output.emails.description": "Danh sách các đối tượng email",
+        "modules.email.send.description": "Gửi email qua máy chủ SMTP",
+        "modules.email.send.label": "Gửi Email",
+        "modules.email.send.output.message_id.description": "Email có được gửi thành công không",
+        "modules.email.send.output.recipients.description": "Email có được gửi thành công không",
+        "modules.email.send.output.sent.description": "Email có được gửi thành công không"
+    }
+}

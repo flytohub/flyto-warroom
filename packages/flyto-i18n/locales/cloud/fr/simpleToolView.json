@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "Avance",
+        "simpleToolView.copy": "Copier",
+        "simpleToolView.download": "Telecharger",
+        "simpleToolView.downloadFile": "Telecharger le fichier",
+        "simpleToolView.dropOrClick": "Deposez un fichier ou cliquez pour telecharger",
+        "simpleToolView.failed": "Echec",
+        "simpleToolView.generating": "Generation...",
+        "simpleToolView.input": "Entree",
+        "simpleToolView.moreRows": "+{count} lignes supplementaires",
+        "simpleToolView.output": "Sortie",
+        "simpleToolView.processing": "Traitement...",
+        "simpleToolView.resultWillAppear": "Le resultat apparaitra ici",
+        "simpleToolView.retry": "Reessayer",
+        "simpleToolView.selectOption": "Selectionnez une option",
+        "simpleToolView.start": "Demarrer",
+        "simpleToolView.viewSteps": "Voir les etapes"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "สร้าง",
+        "actionLabel.delete": "ลบ",
+        "actionLabel.execute": "ดำเนินการ",
+        "actionLabel.export": "ส่งออก",
+        "actionLabel.import": "นำเข้า",
+        "actionLabel.logout": "ออกจากระบบ",
+        "actionLabel.update": "อัปเดต"
+    }
+}

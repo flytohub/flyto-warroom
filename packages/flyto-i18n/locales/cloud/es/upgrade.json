@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "Contactar ventas",
+        "upgrade.debugFeatures": "Desbloquea potentes funciones de depuracion y analisis para mejorar el desarrollo de tu flujo de trabajo.",
+        "upgrade.enterpriseHint": "Necesitas funciones empresariales?",
+        "upgrade.featureLocked": "Esta funcion requiere una suscripcion Pro",
+        "upgrade.features.evidence": "Captura de pantalla y DOM para cada paso",
+        "upgrade.features.lineage": "Seguimiento de flujo de datos y grafico de dependencias",
+        "upgrade.features.replay": "Reproducir ejecuciones con entradas modificadas",
+        "upgrade.features.tests": "Suite de pruebas automatizadas de flujos de trabajo",
+        "upgrade.features.versions": "Bloqueo y control de versiones de modulos",
+        "upgrade.offlineLicense": "Comprar licencia offline - $199 pago unico",
+        "upgrade.subscription": "Suscribirse - $19/mes",
+        "upgrade.subtitle": "Obtener acceso a herramientas avanzadas de depuracion",
+        "upgrade.title": "Desbloquear funciones Pro"
+    }
+}

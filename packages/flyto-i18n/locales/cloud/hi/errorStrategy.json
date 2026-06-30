@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "जारी रखें",
+        "errorStrategy.continueDesc": "त्रुटि लॉग करें और अगले स्टेप पर जाएं",
+        "errorStrategy.retry": "पुनः प्रयास करें",
+        "errorStrategy.retryDesc": "रिट्राई कॉन्फ़िगरेशन के आधार पर पुनः प्रयास करें",
+        "errorStrategy.stop": "बंद करें",
+        "errorStrategy.stopDesc": "वर्कफ़्लो बंद करें और विफल चिह्नित करें"
+    }
+}

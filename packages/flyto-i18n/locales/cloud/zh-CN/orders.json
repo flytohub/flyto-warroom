@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "接受",
+        "orders.approve": "确认完成",
+        "orders.budget": "预算",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "已完成",
+        "orders.createFailed": "创建订单失败",
+        "orders.createOrder": "创建订单",
+        "orders.createOrderSubtitle": "向此卖家发送项目请求",
+        "orders.days": "天",
+        "orders.deadline": "交付时间",
+        "orders.decline": "拒绝",
+        "orders.deliver": "交付",
+        "orders.description": "描述",
+        "orders.descriptionPlaceholder": "详细描述您的项目需求...",
+        "orders.payNow": "立即付款",
+        "orders.requirements": "额外需求",
+        "orders.requirementsPlaceholder": "任何特殊需求或备注...",
+        "orders.sendOrder": "发送订单请求",
+        "orders.sending": "发送中...",
+        "orders.sendingTo": "发送给",
+        "orders.title": "项目标题",
+        "orders.titlePlaceholder": "您需要什么帮助？",
+        "orders.viewDetails": "详情",
+        "orders.waitingResponse": "等待回应"
+    }
+}

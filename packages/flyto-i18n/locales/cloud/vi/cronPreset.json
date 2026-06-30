@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.cronPreset",
+    "version": "1.0.0",
+    "translations": {
+        "cronPreset.daily9am": "Hàng ngày 9 giờ sáng",
+        "cronPreset.everyMinute": "Mỗi phút",
+        "cronPreset.hourly": "Mỗi giờ",
+        "cronPreset.weeklyMon": "Hàng tuần thứ Hai"
+    }
+}

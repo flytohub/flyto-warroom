@@ -1,0 +1,36 @@
+id: darkweb-to-footprint-seed
+surface: darkweb
+description: Verify threat intel and leak exposure can seed footprint investigation.
+requires:
+  - frontend
+  - engine
+steps:
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/data-leaks?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/ioc-lookup?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+assertions:
+  - assert: query_key_present
+    query_key: leak-exposure
+  - assert: query_key_present
+    query_key: threat-actors
+  - assert: query_key_present
+    query_key: ioc-lookup
+  # A darkweb/threat-intel refresh must update the Footprint run-dialog seed
+  # suggestions, otherwise new leak/IOC context sits in the darkweb island
+  # until staleTime or a manual page refresh.
+  - assert: event_invalidates_query
+    event: threatintel.refresh
+    invalidates: qk.footprint.threatSeed
+  # Footprint closure must refresh the threat-seed context that darkweb signals feed.
+  - assert: event_invalidates_query
+    event: footprint.run.finalized
+    invalidates: qk.footprint.threatSeed
+  - assert: route_renders_without_error
+    step: 1
+  - assert: route_renders_without_error
+    step: 3

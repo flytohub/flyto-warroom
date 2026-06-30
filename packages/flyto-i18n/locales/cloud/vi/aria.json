@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.aria",
+    "version": "1.0.0",
+    "translations": {
+        "aria.subflowNavigation": "Điều hướng luồng con"
+    }
+}

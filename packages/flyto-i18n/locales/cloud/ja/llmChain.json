@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.llmChain",
+    "version": "1.0.0",
+    "translations": {
+        "llmChain.advancedOptions": "詳細オプション",
+        "llmChain.detectedVariables": "検出された変数",
+        "llmChain.insertVariable": "変数を挿入",
+        "llmChain.maxTokens": "最大トークン数",
+        "llmChain.maxTokensHint": "レスポンスの最大長",
+        "llmChain.model": "モデル",
+        "llmChain.systemPrompt": "システムプロンプト",
+        "llmChain.systemPromptPlaceholder": "あなたは親切なアシスタントです...",
+        "llmChain.temperature": "温度",
+        "llmChain.temperatureHint": "高い = より創造的、低い = より集中",
+        "llmChain.userPrompt": "ユーザープロンプト",
+        "llmChain.userPromptPlaceholder": "{{variables}}を使ってプロンプトを入力...",
+        "llmChain.variableHelp": "{{variable}}を使用して前のステップのデータを参照"
+    }
+}

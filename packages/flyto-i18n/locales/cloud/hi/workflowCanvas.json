@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "AI सहायक (AI से मदद मांगें)",
+        "workflowCanvas.controls.autoLayout": "स्वचालित लेआउट",
+        "workflowCanvas.controls.fitView": "दृश्य फिट करें",
+        "workflowCanvas.controls.zoomIn": "ज़ूम इन",
+        "workflowCanvas.controls.zoomOut": "ज़ूम आउट",
+        "workflowCanvas.deleteDialog.deleteAll": "सभी हटाएं",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "इस नोड और सभी {count} चाइल्ड नोड हटाएं",
+        "workflowCanvas.deleteDialog.mergeToChild": "चाइल्ड में मर्ज करें",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "केवल इस नोड को हटाएं और पैरेंट को पहले चाइल्ड से कनेक्ट करें",
+        "workflowCanvas.deleteDialog.message": "इस नोड में {count} चाइल्ड नोड हैं। आप क्या करना चाहते हैं?",
+        "workflowCanvas.deleteDialog.title": "चाइल्ड के साथ नोड हटाएं",
+        "workflowCanvas.reconnect.cancel": "रद्द करें",
+        "workflowCanvas.reconnect.connect": "कनेक्ट करें",
+        "workflowCanvas.reconnect.dontConnect": "कनेक्ट न करें",
+        "workflowCanvas.stickyNoteCreated": "स्टिकी नोट बनाया गया"
+    }
+}

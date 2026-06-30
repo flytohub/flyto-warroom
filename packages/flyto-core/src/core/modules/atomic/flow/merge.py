@@ -1,0 +1,233 @@
+# Copyright 2026 Flyto2. Licensed under Apache-2.0. See LICENSE.
+
+"""
+Merge Module - Combine multiple inputs into single output
+
+Workflow Spec v1.1:
+- Merge node with N inputs and single output
+- Strategies: first (first input wins), last (last wins), all (collect array)
+- Returns __event__ for engine routing
+"""
+from typing import Any, Dict, List
+from ...base import BaseModule
+from ...registry import register_module
+from ...schema import compose, presets
+from ...types import NodeType, EdgeType, DataType
+
+
+@register_module(
+    module_id='flow.merge',
+    version='1.0.0',
+    category='flow',
+    tags=['flow', 'merge', 'combine', 'join', 'control'],
+    label='Merge',
+    label_key='modules.flow.merge.label',
+    description='Merge multiple inputs into a single output',
+    description_key='modules.flow.merge.description',
+    icon='GitMerge',
+    color='#8B5CF6',
+
+
+    # Type definitions for connection validation
+    input_types=['control'],
+    output_types=['control'],
+
+    can_receive_from=['*'],  # Flow control accepts any input (routing construct)
+    can_connect_to=['*'],    # Workflow Spec v1.1
+    node_type=NodeType.MERGE,
+
+    input_ports=[
+        {
+            'id': 'input_1',
+            'label': 'Input 1',
+            'label_key': 'modules.flow.merge.ports.input_1',
+            'data_type': DataType.ANY.value,
+            'edge_type': EdgeType.CONTROL.value,
+            'max_connections': 1,
+            'required': False
+        },
+        {
+            'id': 'input_2',
+            'label': 'Input 2',
+            'label_key': 'modules.flow.merge.ports.input_2',
+            'data_type': DataType.ANY.value,
+            'edge_type': EdgeType.CONTROL.value,
+            'max_connections': 1,
+            'required': False
+        }
+    ],
+
+    output_ports=[
+        {
+            'id': 'output',
+            'label': 'Output',
+            'label_key': 'modules.flow.merge.ports.output',
+            'event': 'merged',
+            'color': '#10B981',
+            'edge_type': EdgeType.CONTROL.value
+        },
+        {
+            'id': 'error',
+            'label': 'Error',
+            'label_key': 'common.ports.error',
+            'event': 'error',
+            'color': '#EF4444',
+            'edge_type': EdgeType.CONTROL.value
+        }
+    ],
+
+    # Dynamic ports for additional inputs
+    dynamic_ports={
+        'input': {
+            'from_param': 'input_count',
+            'id_template': 'input_{index}',
+            'label_template': 'Input {index}',
+            'start_index': 1
+        }
+    },
+
+    retryable=False,
+    concurrent_safe=True,
+    requires_credentials=False,
+    handles_sensitive_data=False,
+    required_permissions=[],
+
+    # Schema-driven params
+    params_schema=compose(
+        presets.MERGE_STRATEGY(default='all'),
+        presets.PORT_COUNT(key='input_count', default=2),
+    ),
+
+    output_schema={
+        '__event__': {'type': 'string', 'description': 'Event for routing (merged/error)',
+                'description_key': 'modules.flow.merge.output.__event__.description'},
+        'merged_data': {'type': 'any', 'description': 'Merged data based on strategy',
+                'description_key': 'modules.flow.merge.output.merged_data.description'},
+        'input_count': {'type': 'integer', 'description': 'Number of inputs received',
+                'description_key': 'modules.flow.merge.output.input_count.description'},
+        'strategy': {'type': 'string', 'description': 'Strategy used for merging',
+                'description_key': 'modules.flow.merge.output.strategy.description'}
+    },
+
+    examples=[
+        {
+            'name': 'Merge all inputs',
+            'description': 'Collect all inputs into an array',
+            'params': {
+                'strategy': 'all',
+                'input_count': 3
+            }
+        },
+        {
+            'name': 'First input wins',
+            'description': 'Use the first input that arrives',
+            'params': {
+                'strategy': 'first',
+                'input_count': 2
+            }
+        }
+    ],
+    author='Flyto Team',
+    license='MIT',
+    timeout_ms=5000,
+)
+class MergeModule(BaseModule):
+    """
+    Merge Module (Spec v1.1)
+
+    Combines multiple inputs into a single output using configurable strategy.
+
+    Strategies:
+    - first: Use the first input received
+    - last: Use the last input received
+    - all: Collect all inputs into an array
+    """
+
+    module_name = "Merge"
+    module_description = "Merge multiple inputs into single output"
+    def validate_params(self) -> None:
+        self.strategy = self.params.get('strategy', 'all')
+        self.input_count = self.params.get('input_count', 2)
+
+        if self.strategy not in ('first', 'last', 'all'):
+            raise ValueError(f"Invalid strategy: {self.strategy}. Must be first, last, or all")
+
+        if not 2 <= self.input_count <= 10:
+            raise ValueError(f"input_count must be between 2 and 10, got {self.input_count}")
+
+    async def execute(self) -> Dict[str, Any]:
+        """
+        Merge inputs and return merged data.
+
+        Returns:
+            Dict with __event__ (merged/error) for engine routing
+        """
+        try:
+            inputs = self._collect_inputs()
+            if not inputs:
+                return self._build_no_inputs_error()
+            merged_data = self._apply_strategy(inputs)
+            return self._build_merged_result(merged_data, len(inputs))
+        except Exception as e:
+            return {
+                '__event__': 'error',
+                'outputs': {
+                    'error': {'message': str(e)}
+                },
+                '__error__': {
+                    'code': 'MERGE_ERROR',
+                    'message': str(e)
+                }
+            }
+
+    def _build_no_inputs_error(self) -> Dict[str, Any]:
+        return {
+            '__event__': 'error',
+            'outputs': {
+                'error': {'message': 'No inputs received'}
+            },
+            '__error__': {
+                'code': 'NO_INPUTS',
+                'message': 'No inputs received for merge'
+            }
+        }
+
+    def _build_merged_result(self, merged_data, input_count: int) -> Dict[str, Any]:
+        return {
+            '__event__': 'merged',
+            'outputs': {
+                'output': {
+                    'merged_data': merged_data,
+                    'input_count': input_count,
+                    'strategy': self.strategy
+                }
+            },
+            'merged_data': merged_data,
+            'input_count': input_count,
+            'strategy': self.strategy
+        }
+
+    def _collect_inputs(self) -> List[Any]:
+        """Collect all input values from context."""
+        inputs = []
+
+        for i in range(1, self.input_count + 1):
+            port_id = f'input_{i}'
+            value = self.context.get(port_id)
+            if value is not None:
+                inputs.append(value)
+
+        # Also check for generic 'input' key
+        if 'input' in self.context and self.context['input'] is not None:
+            inputs.append(self.context['input'])
+
+        return inputs
+
+    def _apply_strategy(self, inputs: List[Any]) -> Any:
+        """Apply merge strategy to inputs."""
+        if self.strategy == 'first':
+            return inputs[0] if inputs else None
+        elif self.strategy == 'last':
+            return inputs[-1] if inputs else None
+        else:  # 'all'
+            return inputs

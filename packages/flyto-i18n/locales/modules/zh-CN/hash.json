@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "计算文本的 SHA-256 加密哈希值",
+        "modules.hash.sha256.label": "SHA-256 哈希",
+        "modules.hash.sha256.output.algorithm.description": "SHA-256 哈希（64 个十六进位字符）",
+        "modules.hash.sha256.output.hash.description": "文本编码",
+        "modules.hash.sha256.params.encoding.description": "要哈希的文本",
+        "modules.hash.sha256.params.encoding.label": "文本",
+        "modules.hash.sha256.params.text.description": "要哈希的文本",
+        "modules.hash.sha256.params.text.label": "文本",
+        "modules.hash.sha512.description": "计算文本的 SHA-512 加密哈希值",
+        "modules.hash.sha512.label": "SHA-512 哈希",
+        "modules.hash.sha512.output.algorithm.description": "SHA-512 哈希（128 个十六进位字符）",
+        "modules.hash.sha512.output.hash.description": "文本编码",
+        "modules.hash.sha512.params.encoding.description": "要哈希的文本",
+        "modules.hash.sha512.params.encoding.label": "文本",
+        "modules.hash.sha512.params.text.description": "要哈希的文本",
+        "modules.hash.sha512.params.text.label": "文本"
+    }
+}

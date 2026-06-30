@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.orchestrator",
+    "version": "1.0.0",
+    "translations": {
+        "orchestrator.jobs.empty": "Keine Jobs",
+        "orchestrator.jobs.title": "Jobs",
+        "orchestrator.register.capabilities": "Fähigkeiten",
+        "orchestrator.register.machineName": "Rechnername",
+        "orchestrator.register.machineNamePlaceholder": "Rechnername eingeben",
+        "orchestrator.register.name": "Robotername",
+        "orchestrator.register.namePlaceholder": "Roboternamen eingeben",
+        "orchestrator.register.osType": "OS-Typ",
+        "orchestrator.register.submit": "Registrieren",
+        "orchestrator.register.title": "Roboter registrieren",
+        "orchestrator.robots.empty": "Keine Roboter registriert",
+        "orchestrator.robots.emptyDesc": "Registrieren Sie einen Roboter, um zu beginnen",
+        "orchestrator.robots.lastSeen": "Zuletzt gesehen",
+        "orchestrator.robots.maxJobs": "Maximale Jobs",
+        "orchestrator.robots.platform": "Plattform",
+        "orchestrator.robots.register": "Roboter registrieren",
+        "orchestrator.robots.registerFirst": "Registrieren Sie Ihren ersten Roboter",
+        "orchestrator.robots.runJob": "Job ausführen",
+        "orchestrator.robots.title": "Roboter",
+        "orchestrator.stats.available": "Verfügbar",
+        "orchestrator.stats.busy": "Beschäftigt",
+        "orchestrator.stats.offline": "Offline",
+        "orchestrator.stats.totalRobots": "Gesamtanzahl Roboter"
+    }
+}

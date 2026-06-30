@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "Analizuj czytelnosc tresci",
+        "modules.analysis.html.analyze_readability.label": "Czytelnosc HTML",
+        "modules.analysis.html.extract_forms.description": "Wyodrebnij dane formularzy z HTML",
+        "modules.analysis.html.extract_forms.label": "Wyodrebnij formularze",
+        "modules.analysis.html.extract_metadata.description": "Wyodrebnij metadane z HTML",
+        "modules.analysis.html.extract_metadata.label": "Wyodrebnij metadane",
+        "modules.analysis.html.extract_tables.description": "Wyodrebnij dane tabel z HTML",
+        "modules.analysis.html.extract_tables.label": "Wyodrebnij tabele",
+        "modules.analysis.html.find_patterns.description": "Znajdz powtarzajace sie wzorce danych w HTML",
+        "modules.analysis.html.find_patterns.label": "Znajdz wzorce",
+        "modules.analysis.html.structure.description": "Analizuj strukture DOM HTML",
+        "modules.analysis.html.structure.label": "Struktura HTML"
+    }
+}

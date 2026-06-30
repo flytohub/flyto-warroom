@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.cronPreset",
+    "version": "1.0.0",
+    "translations": {
+        "cronPreset.daily9am": "Harian jam 9 pagi",
+        "cronPreset.everyMinute": "Setiap menit",
+        "cronPreset.hourly": "Setiap jam",
+        "cronPreset.weeklyMon": "Mingguan Senin"
+    }
+}

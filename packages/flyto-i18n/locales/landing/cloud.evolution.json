@@ -1,0 +1,31 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.evolution",
+  "version": "1.0.0",
+  "translations": {
+    "evolution.acceptSuggestion": "",
+    "evolution.analyzing": "",
+    "evolution.apply": "",
+    "evolution.deepAnalysis": "",
+    "evolution.details": "",
+    "evolution.dismissSuggestion": "",
+    "evolution.error": "",
+    "evolution.highPriority": "",
+    "evolution.insights": "",
+    "evolution.lastUpdated": "",
+    "evolution.noSuggestions": "",
+    "evolution.noSuggestionsDesc": "",
+    "evolution.reasoning": "",
+    "evolution.refresh": "",
+    "evolution.requestAnalysis": "",
+    "evolution.suggestionApplied": "",
+    "evolution.title": "",
+    "evolution.types.cost": "",
+    "evolution.types.other": "",
+    "evolution.types.performance": "",
+    "evolution.types.reliability": "",
+    "evolution.types.security": "",
+    "evolution.viewDetails": ""
+  }
+}

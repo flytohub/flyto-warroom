@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "รันคำสั่ง shell และจับเอาต์พุต",
+        "modules.shell.exec.label": "รันคำสั่ง Shell",
+        "modules.shell.exec.output.command.description": "เอาต์พุตมาตรฐาน",
+        "modules.shell.exec.output.cwd.description": "เอาต์พุตข้อผิดพลาดมาตรฐาน",
+        "modules.shell.exec.output.duration_ms.description": "คำสั่งที่ดำเนินการ",
+        "modules.shell.exec.output.exit_code.description": "คำสั่งดำเนินการสำเร็จหรือไม่ (exit code 0)",
+        "modules.shell.exec.output.ok.description": "คำสั่งดำเนินการสำเร็จหรือไม่ (exit code 0)",
+        "modules.shell.exec.output.stderr.description": "รหัส exit ของคำสั่ง",
+        "modules.shell.exec.output.stdout.description": "คำสั่งดำเนินการสำเร็จหรือไม่ (exit code 0)"
+    }
+}

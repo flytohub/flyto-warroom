@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.checkpointTooltip",
+    "version": "1.0.0",
+    "translations": {
+        "checkpointTooltip.clickToAdd": "Cliquez pour ajouter un point de controle sur les connexions",
+        "checkpointTooltip.clickToExit": "Cliquez pour quitter le mode point de controle",
+        "checkpointTooltip.upgradeToUse": "Passez a la version superieure pour utiliser le point de controle humain"
+    }
+}

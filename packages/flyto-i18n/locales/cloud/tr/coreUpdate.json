@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "mevcut",
+        "coreUpdate.checkFailed": "Durum kontrolü başarısız",
+        "coreUpdate.downloadPage": "Resmi siteden indir",
+        "coreUpdate.installedVersion": "Yüklü Sürüm",
+        "coreUpdate.invalidFile": "Lütfen geçerli bir .whl dosyası seçin",
+        "coreUpdate.lastCheck": "Son kontrol",
+        "coreUpdate.notInstalled": "Yüklü değil",
+        "coreUpdate.refresh": "Güncellemeleri kontrol et",
+        "coreUpdate.title": "Çekirdek Motor",
+        "coreUpdate.upToDate": "Güncel",
+        "coreUpdate.uploadFailed": "Yükleme başarısız",
+        "coreUpdate.uploadPackage": "Paket Yükle",
+        "coreUpdate.whlFile": ".whl dosyası yükle"
+    }
+}

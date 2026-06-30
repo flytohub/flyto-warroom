@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "Vai trò có sẵn",
+        "roles.create": "Tạo vai trò",
+        "roles.create.title": "Tạo vai trò",
+        "roles.custom.empty": "Chưa định nghĩa vai trò tùy chỉnh",
+        "roles.custom.title": "Vai trò tùy chỉnh",
+        "roles.delete.message": "Bạn có chắc chắn muốn xóa vai trò này? Người dùng có vai trò này sẽ được gán vai trò thành viên mặc định.",
+        "roles.delete.title": "Xóa vai trò",
+        "roles.description": "Quản lý vai trò và quyền truy cập",
+        "roles.edit.title": "Chỉnh sửa vai trò",
+        "roles.form.description": "Mô tả",
+        "roles.form.name": "Tên vai trò",
+        "roles.form.permissions": "Quyền",
+        "roles.permissions": "quyền",
+        "roles.title": "Vai trò & Quyền",
+        "roles.users": "người dùng"
+    }
+}

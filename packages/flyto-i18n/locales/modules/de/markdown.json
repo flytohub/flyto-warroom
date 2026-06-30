@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "YAML-Frontmatter aus Markdown-Inhalt extrahieren",
+        "modules.markdown.parse_frontmatter.label": "Frontmatter parsen",
+        "modules.markdown.parse_frontmatter.output.content.description": "Markdown-Inhalt ohne Frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Geparstes Frontmatter als Wörterbuch",
+        "modules.markdown.parse_frontmatter.params.text.description": "Markdown-Inhalt mit Frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.label": "Markdown-Text",
+        "modules.markdown.to_html.description": "Markdown-Text in HTML umwandeln",
+        "modules.markdown.to_html.label": "Markdown zu HTML",
+        "modules.markdown.to_html.output.html.description": "Konvertierter HTML-Inhalt",
+        "modules.markdown.to_html.output.word_count.description": "Wortanzahl des Eingabetextes",
+        "modules.markdown.to_html.params.extensions.description": "Markdown-Erweiterungen aktivieren (nur mit der Markdown-Bibliothek verwendet)",
+        "modules.markdown.to_html.params.extensions.label": "Erweiterungen",
+        "modules.markdown.to_html.params.text.description": "Markdown-Inhalt zum Konvertieren",
+        "modules.markdown.to_html.params.text.label": "Markdown-Text",
+        "modules.markdown.toc.description": "Ein Inhaltsverzeichnis aus Markdown-Überschriften erstellen",
+        "modules.markdown.toc.label": "Inhaltsverzeichnis erstellen",
+        "modules.markdown.toc.output.toc.description": "Liste der Überschriften mit Ebene, Titel und Slug",
+        "modules.markdown.toc.output.toc_markdown.description": "Formatiertes Markdown-Inhaltsverzeichnis",
+        "modules.markdown.toc.params.max_depth.description": "Maximale Überschriftentiefe (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "Maximale Tiefe",
+        "modules.markdown.toc.params.text.description": "Markdown-Inhalt, um Überschriften zu extrahieren",
+        "modules.markdown.toc.params.text.label": "Markdown-Text"
+    }
+}

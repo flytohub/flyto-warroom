@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "en",
+  "category": "cloud.templateForm",
+  "version": "1.0.0",
+  "translations": {
+    "templateForm.category": "Category",
+    "templateForm.changeIcon": "Change",
+    "templateForm.description": "Description",
+    "templateForm.descriptionPlaceholder": "Enter template description",
+    "templateForm.editTemplate": "Edit Template",
+    "templateForm.iconUploadError": "Failed to upload icon. Please try again.",
+    "templateForm.namePlaceholder": "Enter template name",
+    "templateForm.private": "Private",
+    "templateForm.public": "Public",
+    "templateForm.selectCategory": "Select a category",
+    "templateForm.templateColor": "Template Color",
+    "templateForm.templateIcon": "Template Icon",
+    "templateForm.templateName": "Template Name",
+    "templateForm.uploadIcon": "Upload",
+    "templateForm.visibility": "Visibility"
+  }
+}

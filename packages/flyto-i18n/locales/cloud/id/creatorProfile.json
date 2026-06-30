@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "Kembali ke Marketplace",
+        "creatorProfile.chatError": "Gagal memulai chat",
+        "creatorProfile.creatorTemplates": "Template Kreator",
+        "creatorProfile.editProfile": "Edit Profil",
+        "creatorProfile.follow": "Ikuti",
+        "creatorProfile.followError": "Gagal memperbarui status ikuti",
+        "creatorProfile.followers": "Pengikut",
+        "creatorProfile.following": "Mengikuti",
+        "creatorProfile.loadMore": "Muat Lebih Banyak",
+        "creatorProfile.noDescription": "Tidak ada deskripsi",
+        "creatorProfile.noFollowers": "Belum ada pengikut",
+        "creatorProfile.noFollowing": "Tidak mengikuti siapa pun",
+        "creatorProfile.noTemplates": "Belum ada template yang dipublikasikan",
+        "creatorProfile.notFound": "Kreator Tidak Ditemukan",
+        "creatorProfile.notFoundDesc": "Kreator yang Anda cari tidak ada atau telah dihapus.",
+        "creatorProfile.templates": "Template"
+    }
+}

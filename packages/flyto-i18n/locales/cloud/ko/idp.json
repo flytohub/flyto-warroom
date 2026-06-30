@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.idp",
+    "version": "1.0.0",
+    "translations": {
+        "idp.actions.batch": "일괄 처리",
+        "idp.actions.export": "내보내기",
+        "idp.actions.title": "작업",
+        "idp.actions.train": "모델 학습",
+        "idp.models.title": "모델",
+        "idp.queue.empty": "대기열에 문서가 없습니다",
+        "idp.queue.items": "항목",
+        "idp.queue.title": "처리 대기열",
+        "idp.recent.empty": "최근 문서가 없습니다",
+        "idp.recent.title": "최근 문서",
+        "idp.results.fields": "추출된 필드",
+        "idp.results.title": "결과",
+        "idp.stats.accuracy": "정확도",
+        "idp.stats.models": "모델",
+        "idp.stats.pending": "대기 중",
+        "idp.stats.processed": "처리됨",
+        "idp.upload.browse": "찾아보기",
+        "idp.upload.desc": "드래그 앤 드롭하거나 클릭하여 업로드하세요",
+        "idp.upload.formats": "지원 형식: PDF, PNG, JPG",
+        "idp.upload.title": "문서 업로드"
+    }
+}

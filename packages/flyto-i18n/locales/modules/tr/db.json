@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "MongoDB koleksiyonundan belgeleri sorgula",
+        "modules.db.mongodb.find.label": "MongoDB Bul",
+        "modules.db.mongodb.find.output.count.description": "Eşleşen belge dizisi",
+        "modules.db.mongodb.find.output.documents.description": "Eşleşen belge dizisi",
+        "modules.db.mongodb.insert.description": "MongoDB koleksiyonuna bir veya daha fazla belge ekle",
+        "modules.db.mongodb.insert.label": "MongoDB Ekle",
+        "modules.db.mongodb.insert.output.inserted_count.description": "Eklenen belge sayısı",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "Eklenen belge sayısı",
+        "modules.db.mysql.query.description": "MySQL veritabanında SQL sorgusu çalıştır ve sonuçları döndür",
+        "modules.db.mysql.query.label": "MySQL Sorgusu",
+        "modules.db.mysql.query.output.columns.description": "Nesne olarak sonuç satırları dizisi",
+        "modules.db.mysql.query.output.row_count.description": "Nesne olarak sonuç satırları dizisi",
+        "modules.db.mysql.query.output.rows.description": "Nesne olarak sonuç satırları dizisi",
+        "modules.db.postgresql.query.description": "PostgreSQL veritabanında SQL sorgusu çalıştır ve sonuçları döndür",
+        "modules.db.postgresql.query.label": "PostgreSQL Sorgusu",
+        "modules.db.postgresql.query.output.columns.description": "Nesne olarak sonuç satırları dizisi",
+        "modules.db.postgresql.query.output.row_count.description": "Nesne olarak sonuç satırları dizisi",
+        "modules.db.postgresql.query.output.rows.description": "Nesne olarak sonuç satırları dizisi",
+        "modules.db.redis.get.description": "Redis önbelleğinden değer al",
+        "modules.db.redis.get.label": "Redis Al",
+        "modules.db.redis.get.output.exists.description": "Döndürülen değer",
+        "modules.db.redis.get.output.key.description": "Döndürülen değer",
+        "modules.db.redis.get.output.value.description": "Döndürülen değer",
+        "modules.db.redis.set.description": "Redis önbelleğinde değer ayarla",
+        "modules.db.redis.set.label": "Redis Ayarla"
+    }
+}

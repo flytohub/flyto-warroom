@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "讓 AI 修復",
+        "preview.emptyState.description": "切換至開發模式以新增工作流程步驟",
+        "preview.emptyState.hint": "沒有可用預覽",
+        "preview.emptyState.title": "尚未定義工作流程",
+        "preview.executionFailed": "執行失敗",
+        "preview.fields": "個欄位",
+        "preview.inputs": "輸入",
+        "preview.noInputsRequired": "無需輸入",
+        "preview.noWorkflowHint": "請在開發模式中新增工作流程步驟以啟用執行",
+        "preview.output": "輸出",
+        "preview.ready": "就緒",
+        "preview.running": "執行中",
+        "preview.steps": "個步驟",
+        "preview.untitledTemplate": "未命名模板"
+    }
+}

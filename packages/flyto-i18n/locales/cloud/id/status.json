@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.status",
+    "version": "1.0.0",
+    "translations": {
+        "status.cancelled": "Dibatalkan",
+        "status.completed": "Selesai",
+        "status.error": "Kesalahan",
+        "status.failed": "Gagal",
+        "status.pending": "Tertunda",
+        "status.running": "Berjalan",
+        "status.success": "Berhasil"
+    }
+}

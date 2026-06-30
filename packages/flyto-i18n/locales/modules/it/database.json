@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Inserisci dati nelle tabelle database",
+        "modules.database.insert.label": "Inserisci Database",
+        "modules.database.insert.output.inserted_count.description": "Numero di righe inserite",
+        "modules.database.insert.output.returning_data.description": "Numero di righe inserite",
+        "modules.database.query.description": "Esegui query SQL su database PostgreSQL, MySQL o SQLite",
+        "modules.database.query.label": "Query Database",
+        "modules.database.query.output.columns.description": "Righe risultato query",
+        "modules.database.query.output.row_count.description": "Righe risultato query",
+        "modules.database.query.output.rows.description": "Righe risultato query",
+        "modules.database.update.description": "Aggiorna dati nelle tabelle database",
+        "modules.database.update.label": "Aggiorna Database",
+        "modules.database.update.output.updated_count.description": "Numero di righe aggiornate"
+    }
+}

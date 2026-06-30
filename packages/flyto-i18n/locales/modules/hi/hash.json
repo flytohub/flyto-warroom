@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "पाठ का SHA-256 क्रिप्टोग्राफिक हैश गणना करें",
+        "modules.hash.sha256.label": "SHA-256 हैश",
+        "modules.hash.sha256.output.algorithm.description": "SHA-256 हैश (64 हेक्स वर्ण)",
+        "modules.hash.sha256.output.hash.description": "पाठ एन्कोडिंग",
+        "modules.hash.sha256.params.encoding.description": "हैश करने के लिए पाठ",
+        "modules.hash.sha256.params.encoding.label": "पाठ",
+        "modules.hash.sha256.params.text.description": "हैश करने के लिए पाठ",
+        "modules.hash.sha256.params.text.label": "पाठ",
+        "modules.hash.sha512.description": "पाठ का SHA-512 क्रिप्टोग्राफिक हैश गणना करें",
+        "modules.hash.sha512.label": "SHA-512 हैश",
+        "modules.hash.sha512.output.algorithm.description": "SHA-512 हैश (128 हेक्स वर्ण)",
+        "modules.hash.sha512.output.hash.description": "पाठ एन्कोडिंग",
+        "modules.hash.sha512.params.encoding.description": "हैश करने के लिए पाठ",
+        "modules.hash.sha512.params.encoding.label": "पाठ",
+        "modules.hash.sha512.params.text.description": "हैश करने के लिए पाठ",
+        "modules.hash.sha512.params.text.label": "पाठ"
+    }
+}

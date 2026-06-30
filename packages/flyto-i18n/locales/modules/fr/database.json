@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "Inserer des donnees dans les tables de base de donnees",
+        "modules.database.insert.label": "Insertion base de donnees",
+        "modules.database.insert.output.inserted_count.description": "Nombre de lignes inserees",
+        "modules.database.insert.output.returning_data.description": "Nombre de lignes inserees",
+        "modules.database.query.description": "Executer des requetes SQL sur des bases de donnees PostgreSQL, MySQL ou SQLite",
+        "modules.database.query.label": "Requete base de donnees",
+        "modules.database.query.output.columns.description": "Lignes de resultat de la requete",
+        "modules.database.query.output.row_count.description": "Lignes de resultat de la requete",
+        "modules.database.query.output.rows.description": "Lignes de resultat de la requete",
+        "modules.database.update.description": "Mettre a jour des donnees dans les tables de base de donnees",
+        "modules.database.update.label": "Mise a jour base de donnees",
+        "modules.database.update.output.updated_count.description": "Nombre de lignes mises a jour"
+    }
+}

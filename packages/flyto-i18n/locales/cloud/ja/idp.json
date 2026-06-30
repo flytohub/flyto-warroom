@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.idp",
+    "version": "1.0.0",
+    "translations": {
+        "idp.actions.batch": "バッチ処理",
+        "idp.actions.export": "エクスポート",
+        "idp.actions.title": "アクション",
+        "idp.actions.train": "モデルを訓練",
+        "idp.models.title": "モデル",
+        "idp.queue.empty": "キューにドキュメントがありません",
+        "idp.queue.items": "項目",
+        "idp.queue.title": "処理キュー",
+        "idp.recent.empty": "最近のドキュメントはありません",
+        "idp.recent.title": "最近のドキュメント",
+        "idp.results.fields": "抽出されたフィールド",
+        "idp.results.title": "結果",
+        "idp.stats.accuracy": "精度",
+        "idp.stats.models": "モデル",
+        "idp.stats.pending": "保留中",
+        "idp.stats.processed": "処理済み",
+        "idp.upload.browse": "ブラウズ",
+        "idp.upload.desc": "ドラッグ＆ドロップまたはクリックしてアップロード",
+        "idp.upload.formats": "対応形式: PDF, PNG, JPG",
+        "idp.upload.title": "ドキュメントをアップロード"
+    }
+}

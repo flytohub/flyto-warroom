@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.evolution",
+    "version": "1.0.0",
+    "translations": {
+        "evolution.acceptSuggestion": "Terima saran",
+        "evolution.analyzing": "Menganalisis",
+        "evolution.apply": "Terapkan",
+        "evolution.deepAnalysis": "Analisis mendalam",
+        "evolution.details": "Detail",
+        "evolution.dismissSuggestion": "Abaikan saran",
+        "evolution.error": "Kesalahan",
+        "evolution.highPriority": "Prioritas tinggi",
+        "evolution.insights": "Wawasan",
+        "evolution.lastUpdated": "Terakhir diperbarui",
+        "evolution.noSuggestions": "Tidak ada saran",
+        "evolution.noSuggestionsDesc": "Tidak ada saran yang tersedia",
+        "evolution.reasoning": "Penalaran",
+        "evolution.refresh": "Segarkan",
+        "evolution.requestAnalysis": "Minta analisis",
+        "evolution.suggestionApplied": "Saran diterapkan",
+        "evolution.title": "Evolusi",
+        "evolution.types.cost": "Biaya",
+        "evolution.types.other": "Lainnya",
+        "evolution.types.performance": "Kinerja",
+        "evolution.types.reliability": "Keandalan",
+        "evolution.types.security": "Keamanan",
+        "evolution.viewDetails": "Lihat detail"
+    }
+}

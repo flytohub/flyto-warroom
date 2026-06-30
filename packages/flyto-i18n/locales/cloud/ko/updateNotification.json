@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "닫기",
+        "updateNotification.downloadFailed": "업데이트 다운로드에 실패했습니다",
+        "updateNotification.downloadUpdate": "업데이트 다운로드",
+        "updateNotification.downloading": "업데이트 다운로드 중",
+        "updateNotification.newVersionAvailable": "새 버전 사용 가능",
+        "updateNotification.percentComplete": "{percent}% 완료",
+        "updateNotification.remindLater": "나중에 알림",
+        "updateNotification.restartLater": "나중에 재시작",
+        "updateNotification.restartNow": "지금 재시작",
+        "updateNotification.restartToInstall": "업데이트를 설치하려면 애플리케이션을 재시작하세요",
+        "updateNotification.unknownError": "알 수 없는 오류",
+        "updateNotification.updateDownloaded": "업데이트 다운로드됨",
+        "updateNotification.updateFailed": "업데이트 실패",
+        "updateNotification.versionReady": "버전 {version}이(가) 업데이트 준비되었습니다"
+    }
+}

@@ -1,0 +1,1340 @@
+{
+  "schema": "flyto-code.flyto2-module-matrix.v1",
+  "requiredMergeSignals": [
+    "unifiedCockpit",
+    "pulse",
+    "score",
+    "timeline",
+    "evidenceGraph",
+    "crossSurfaceCorrelation"
+  ],
+  "allowedContracts": [
+    "capability",
+    "surfaceRegistry",
+    "resourceKernel",
+    "eventEvidence",
+    "api",
+    "fusion"
+  ],
+  "domains": [
+    {
+      "id": "ctem_external_attack_surface",
+      "label": "CTEM / External Attack Surface",
+      "surface": "exposure",
+      "commercialSku": "flyto.ctem",
+      "modules": [
+        "footprint",
+        "domains",
+        "asset_map",
+        "asset_coverage",
+        "posture_overview",
+        "findings",
+        "ctem_actions",
+        "attack_paths",
+        "mitigations",
+        "pulse",
+        "scoring"
+      ],
+      "capabilityRoots": [
+        "external_attack_surface",
+        "ctem",
+        "attack_paths"
+      ],
+      "userVisibleFeatures": [
+        "footprint discovery",
+        "attack surface inventory",
+        "asset map",
+        "external posture",
+        "CTEM issue lifecycle",
+        "verify fixed",
+        "reopen",
+        "false positive",
+        "SLA",
+        "MTTR",
+        "mitigations",
+        "attack paths",
+        "pulse",
+        "scoring"
+      ],
+      "independentTests": [
+        "npm run audit:loops",
+        "npm run audit:product-surface-closure",
+        "npm run audit:sse-correspondence",
+        "npm run audit:ui-interactions -- --routes=footprint,findings,ctem_actions,attack_paths --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "footprint run evidence",
+        "CTEM lifecycle audit event",
+        "mitigation verification artifact",
+        "attack path scoring evidence"
+      ],
+      "apiContracts": [
+        "/footprint/graph",
+        "/attack-surface",
+        "/external-posture",
+        "/findings",
+        "/mitigations",
+        "/attack-paths"
+      ],
+      "eventContracts": [
+        "footprint.run.finalized",
+        "discovery.complete",
+        "discovery.changes"
+      ],
+      "fusionInputs": [
+        "asset identity",
+        "finding fingerprint",
+        "attack path edge",
+        "mitigation state"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "capability snapshot grants external_attack_surface and ctem pages",
+        "disableControl": "commercial gate hides pages and blocks action permissions fail-closed",
+        "deployBoundary": "surface registry routes and engine API contracts can ship without code/cloud modules",
+        "sellBoundary": "flyto.ctem entitlement SKU",
+        "evidenceBoundary": "CTEM evidence packs are emitted from event/evidence contract only"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "external_attack_surface",
+          "ctem",
+          "attack_paths"
+        ],
+        "surfaceRegistry": [
+          "overview",
+          "assets",
+          "exposure"
+        ],
+        "resourceKernel": [
+          "asset",
+          "domain",
+          "finding",
+          "mitigation",
+          "attack_path"
+        ],
+        "eventEvidence": [
+          "footprint.run.finalized",
+          "discovery.complete",
+          "discovery.changes",
+          "finding.lifecycle.updated"
+        ],
+        "api": [
+          "footprint",
+          "attack-surface",
+          "external-posture",
+          "findings",
+          "mitigations",
+          "attack-paths"
+        ],
+        "fusion": [
+          "asset_identity",
+          "finding_fingerprint",
+          "attack_path_correlation"
+        ]
+      }
+    },
+    {
+      "id": "darkweb_threat_intel",
+      "label": "Darkweb / Threat Intelligence",
+      "surface": "darkweb",
+      "commercialSku": "flyto.threat_intel",
+      "modules": [
+        "data_leaks",
+        "threat_actors",
+        "malware_families",
+        "ransomware_incidents",
+        "ioc_lookup",
+        "sensor_map",
+        "brand_protection",
+        "botshield",
+        "social_media",
+        "mobile_apps",
+        "newly_registered_domains",
+        "website_watermarking",
+        "detection_rules"
+      ],
+      "capabilityRoots": [
+        "threat_intel",
+        "brand_protection",
+        "darkweb"
+      ],
+      "userVisibleFeatures": [
+        "darkweb intel",
+        "stealer logs",
+        "credential exposure",
+        "leak exposure",
+        "phishing feeds",
+        "certphish",
+        "threat feed refresh",
+        "correlation",
+        "threat actors",
+        "malware families",
+        "ransomware incidents",
+        "IOC lookup",
+        "sensor map",
+        "brand protection",
+        "impersonation",
+        "typosquat",
+        "GitHub brand impersonation"
+      ],
+      "independentTests": [
+        "npm run audit:loops",
+        "npm run audit:sse-correspondence",
+        "npm run audit:ui-interactions -- --routes=threat_actors,malware_families,ransomware_incidents,data_leaks,ioc_lookup,sensor_map,brand_protection --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "threat feed refresh ledger",
+        "credential exposure evidence",
+        "IOC lookup evidence",
+        "brand impersonation evidence"
+      ],
+      "apiContracts": [
+        "/threat-intel",
+        "/leak-exposure",
+        "/ioc",
+        "/sensor-map",
+        "/brand-protection"
+      ],
+      "eventContracts": [
+        "threatintel.refresh",
+        "footprint.run.finalized",
+        "brand.impersonation.detected"
+      ],
+      "fusionInputs": [
+        "indicator",
+        "actor",
+        "malware_family",
+        "brand_asset",
+        "credential"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "threat_intel capability exposes darkweb and brand pages",
+        "disableControl": "entitlement removal hides pages, stops feed refresh actions, and keeps historical evidence read-only",
+        "deployBoundary": "feed adapters publish indicators through event/evidence contracts",
+        "sellBoundary": "flyto.threat_intel entitlement SKU",
+        "evidenceBoundary": "each feed refresh and correlation emits signed evidence"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "threat_intel",
+          "brand_protection",
+          "darkweb"
+        ],
+        "surfaceRegistry": [
+          "darkweb",
+          "exposure",
+          "overview"
+        ],
+        "resourceKernel": [
+          "indicator",
+          "credential",
+          "brand_asset",
+          "threat_actor",
+          "malware_family"
+        ],
+        "eventEvidence": [
+          "threatintel.refresh",
+          "brand.impersonation.detected",
+          "indicator.correlated"
+        ],
+        "api": [
+          "threat-intel",
+          "leak-exposure",
+          "ioc",
+          "sensor-map",
+          "brand-protection"
+        ],
+        "fusion": [
+          "indicator_to_asset",
+          "credential_to_identity",
+          "brand_to_domain"
+        ]
+      }
+    },
+    {
+      "id": "pentest_dast_redteam",
+      "label": "Pentest / DAST / Red Team",
+      "surface": "code_redteam",
+      "commercialSku": "flyto.redteam",
+      "modules": [
+        "pentest",
+        "product_verification",
+        "attack_paths",
+        "footprint",
+        "reports",
+        "va_report",
+        "timeline"
+      ],
+      "capabilityRoots": [
+        "pentest",
+        "red_team",
+        "product_verification"
+      ],
+      "userVisibleFeatures": [
+        "pentest projects",
+        "active DAST",
+        "scan approvals",
+        "attack-surface scan",
+        "red team workflows",
+        "safe authorization gate",
+        "evidence bundle",
+        "report output",
+        "replay timeline"
+      ],
+      "independentTests": [
+        "npm run audit:product-verification",
+        "npm run smoke:product-verification",
+        "npm run audit:ui-interactions -- --routes=pentest,product_verification --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "scan approval ledger",
+        "runner replay timeline",
+        "evidence bundle",
+        "report export"
+      ],
+      "apiContracts": [
+        "/pentests",
+        "/warroom-verification/runs",
+        "/reports",
+        "/attack-surface"
+      ],
+      "eventContracts": [
+        "campaign_execution.updated",
+        "runner.callback.received",
+        "evidence.pack.ready"
+      ],
+      "fusionInputs": [
+        "authorized_target",
+        "runner_execution",
+        "attack_path",
+        "evidence_signature"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "pentest and product_verification capabilities expose authorized workflows",
+        "disableControl": "capability removal blocks launch actions and hides routes while preserving completed reports",
+        "deployBoundary": "runner contracts consume authorized target envelopes and return evidence only",
+        "sellBoundary": "flyto.redteam entitlement SKU",
+        "evidenceBoundary": "authorization, replay, screenshot, DOM, and network artifacts share evidence pack schema"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "pentest",
+          "red_team",
+          "product_verification"
+        ],
+        "surfaceRegistry": [
+          "code_redteam",
+          "exposure",
+          "scoring_compliance"
+        ],
+        "resourceKernel": [
+          "authorized_target",
+          "campaign_execution",
+          "runner_execution",
+          "evidence_pack"
+        ],
+        "eventEvidence": [
+          "campaign_execution.updated",
+          "runner.callback.received",
+          "evidence.pack.ready"
+        ],
+        "api": [
+          "pentests",
+          "warroom-verification",
+          "reports",
+          "attack-surface"
+        ],
+        "fusion": [
+          "target_to_attack_path",
+          "execution_to_evidence",
+          "evidence_to_report"
+        ]
+      }
+    },
+    {
+      "id": "ai_governance",
+      "label": "AI / AI Governance",
+      "surface": "runtime_cloud_identity",
+      "commercialSku": "flyto.ai_governance",
+      "modules": [
+        "ai_security_center",
+        "agent_firewall_attack_lab",
+        "ai_governance",
+        "mcp",
+        "agent_firewall_activity",
+        "shadow_ai",
+        "ai_dlp",
+        "ai_evidence_reports"
+      ],
+      "capabilityRoots": [
+        "ai_governance",
+        "mcp_guardian",
+        "agent_firewall"
+      ],
+      "userVisibleFeatures": [
+        "AI quota",
+        "provider gate",
+        "no fake provider success",
+        "AI chat usage",
+        "AI report usage",
+        "AI pipeline usage",
+        "AI governance events",
+        "MCP guardian",
+        "MCP events",
+        "MCP policy",
+        "MCP simulation",
+        "MCP egress risk",
+        "deterministic fallback"
+      ],
+      "independentTests": [
+        "npm run audit:loops",
+        "npm run audit:enterprise-airgap",
+        "npm run audit:ui-interactions -- --routes=ai_governance,mcp,ai_security_center,agent_firewall_activity --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "AI provider gate decision",
+        "quota ledger event",
+        "MCP policy simulation evidence",
+        "deterministic fallback evidence"
+      ],
+      "apiContracts": [
+        "/mcp",
+        "/runtime-events",
+        "/ai-governance",
+        "/ai-evidence"
+      ],
+      "eventContracts": [
+        "activity.logged",
+        "mcp.policy.simulated",
+        "ai.provider.denied",
+        "ai.provider.used"
+      ],
+      "fusionInputs": [
+        "model_request",
+        "provider_decision",
+        "mcp_egress",
+        "policy_result"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "ai_governance and mcp_guardian capabilities expose governance surfaces",
+        "disableControl": "provider gate fails closed and deterministic fallback replaces authority decisions",
+        "deployBoundary": "AI and MCP providers are adapters behind policy/evidence contracts",
+        "sellBoundary": "flyto.ai_governance entitlement SKU",
+        "evidenceBoundary": "provider decisions, quota usage, and policy simulations emit auditable events"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "ai_governance",
+          "mcp_guardian",
+          "agent_firewall"
+        ],
+        "surfaceRegistry": [
+          "runtime_cloud_identity",
+          "operations_admin",
+          "scoring_compliance"
+        ],
+        "resourceKernel": [
+          "model_request",
+          "mcp_server",
+          "policy_decision",
+          "egress_risk"
+        ],
+        "eventEvidence": [
+          "activity.logged",
+          "mcp.policy.simulated",
+          "ai.provider.denied",
+          "ai.provider.used"
+        ],
+        "api": [
+          "mcp",
+          "runtime-events",
+          "ai-governance",
+          "ai-evidence"
+        ],
+        "fusion": [
+          "provider_to_policy",
+          "mcp_to_egress",
+          "ai_usage_to_score"
+        ]
+      }
+    },
+    {
+      "id": "code_security",
+      "label": "Code Security",
+      "surface": "code_redteam",
+      "commercialSku": "flyto.code_security",
+      "modules": [
+        "repos",
+        "issues",
+        "code-scans",
+        "architecture",
+        "autofix",
+        "scoring",
+        "product_verification"
+      ],
+      "capabilityRoots": [
+        "code_audit",
+        "autofix",
+        "repo_scanning"
+      ],
+      "userVisibleFeatures": [
+        "SAST",
+        "SCA",
+        "secrets",
+        "IaC",
+        "reachability",
+        "package extraction",
+        "repo scan lifecycle",
+        "scan upload",
+        "code findings",
+        "code score",
+        "AutoFix deterministic rules",
+        "AutoFix AI proposal gate",
+        "PR evidence",
+        "promotion evidence",
+        "approval evidence",
+        "rollback evidence"
+      ],
+      "independentTests": [
+        "npm run audit:product-surface-closure",
+        "npm run audit:decision-chain",
+        "npm run audit:ui-interactions -- --routes=repos,issues,code-scans,architecture,autofix --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "repo scan ledger",
+        "code finding evidence",
+        "AutoFix proposal gate evidence",
+        "promotion approval rollback ledger"
+      ],
+      "apiContracts": [
+        "/repos",
+        "/issues",
+        "/autofix/findings",
+        "/autofix/runs",
+        "/arch-map",
+        "/findings/${fingerprint}/verify"
+      ],
+      "eventContracts": [
+        "scan.complete",
+        "verify.terminal",
+        "autofix.proposal.created",
+        "autofix.promotion.updated"
+      ],
+      "fusionInputs": [
+        "repo",
+        "package",
+        "finding",
+        "fix_proposal",
+        "promotion"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "code_audit and autofix capabilities expose code modules and action rows",
+        "disableControl": "removing code entitlement hides pages and denies scan, upload, autofix, promotion, and rollback actions",
+        "deployBoundary": "repo scanners publish findings and packages through resource/event contracts",
+        "sellBoundary": "flyto.code_security entitlement SKU",
+        "evidenceBoundary": "scan, finding, autofix, PR, promotion, approval, and rollback evidence use shared evidence schema"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "code_audit",
+          "autofix",
+          "repo_scanning"
+        ],
+        "surfaceRegistry": [
+          "code_redteam",
+          "assets",
+          "scoring_compliance"
+        ],
+        "resourceKernel": [
+          "repo",
+          "package",
+          "finding",
+          "fix_proposal",
+          "promotion"
+        ],
+        "eventEvidence": [
+          "scan.complete",
+          "verify.terminal",
+          "autofix.proposal.created",
+          "autofix.promotion.updated"
+        ],
+        "api": [
+          "repos",
+          "issues",
+          "autofix",
+          "arch-map",
+          "findings"
+        ],
+        "fusion": [
+          "repo_to_asset",
+          "package_to_finding",
+          "finding_to_score",
+          "fix_to_promotion"
+        ]
+      }
+    },
+    {
+      "id": "cloud_container_identity",
+      "label": "Cloud / Container / Identity",
+      "surface": "runtime_cloud_identity",
+      "commercialSku": "flyto.cloud_identity",
+      "modules": [
+        "cloud_posture",
+        "cloud_findings",
+        "containers",
+        "identity",
+        "settings",
+        "audit_timeline"
+      ],
+      "capabilityRoots": [
+        "cspm",
+        "containers",
+        "identity"
+      ],
+      "userVisibleFeatures": [
+        "CSPM",
+        "AWS connector",
+        "GCP connector",
+        "Azure connector",
+        "Cloudflare connector",
+        "Kubernetes connector",
+        "Okta connector",
+        "cloud posture",
+        "cloud IAM analyzer",
+        "cloud IAM evaluator",
+        "container image",
+        "container workload",
+        "container posture",
+        "container findings",
+        "VM inventory",
+        "VM posture",
+        "live connector scan",
+        "project-scoped source separation",
+        "identity posture",
+        "identity access graph",
+        "OAuth apps",
+        "SSO",
+        "SAML",
+        "SCIM",
+        "RBAC",
+        "cross-org isolation"
+      ],
+      "independentTests": [
+        "npm run audit:product-surface-closure",
+        "npm run audit:authz-gates",
+        "npm run audit:ui-interactions -- --routes=cloud_posture,cloud_findings,containers,identity,settings --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "connector posture evidence",
+        "IAM analyzer evidence",
+        "container finding evidence",
+        "VM posture evidence",
+        "live connector scan evidence",
+        "identity access graph evidence"
+      ],
+      "apiContracts": [
+        "/cloud",
+        "/container-posture",
+        "/container-findings",
+        "/identity",
+        "/settings"
+      ],
+      "eventContracts": [
+        "cloud.posture.updated",
+        "container.scan.complete",
+        "identity.graph.updated",
+        "integration.expired"
+      ],
+      "fusionInputs": [
+        "cloud_account",
+        "vm",
+        "container_image",
+        "workload",
+        "identity_principal",
+        "oauth_app"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "cspm, containers, and identity capabilities expose connector and posture modules",
+        "disableControl": "entitlement removal hides pages, denies connector mutation, and preserves evidence read-only",
+        "deployBoundary": "cloud, container, and identity collectors publish through connector and resource contracts",
+        "sellBoundary": "flyto.cloud_identity entitlement SKU",
+        "evidenceBoundary": "posture, IAM, image, workload, and identity graph evidence are emitted per resource"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "cspm",
+          "containers",
+          "identity"
+        ],
+        "surfaceRegistry": [
+          "runtime_cloud_identity",
+          "code_redteam",
+          "operations_admin"
+        ],
+        "resourceKernel": [
+        "cloud_account",
+        "vm",
+        "container_image",
+          "workload",
+          "identity_principal",
+          "oauth_app"
+        ],
+        "eventEvidence": [
+          "cloud.posture.updated",
+          "container.scan.complete",
+          "identity.graph.updated",
+          "integration.expired"
+        ],
+        "api": [
+          "cloud",
+          "container-posture",
+          "container-findings",
+          "identity",
+          "settings"
+        ],
+        "fusion": [
+          "cloud_to_asset",
+          "vm_to_cloud_account",
+          "container_to_workload",
+          "workload_to_container_image",
+          "principal_to_rbac",
+          "oauth_to_identity"
+        ]
+      }
+    },
+    {
+      "id": "rbac_entitlement_billing",
+      "label": "RBAC / Entitlement / Billing",
+      "surface": "operations_admin",
+      "commercialSku": "flyto.enterprise_control",
+      "modules": [
+        "settings",
+        "org",
+        "operations",
+        "audit_timeline",
+        "dashboard"
+      ],
+      "capabilityRoots": [
+        "admin",
+        "rbac",
+        "billing"
+      ],
+      "userVisibleFeatures": [
+        "capability snapshot",
+        "commercial gates",
+        "RBAC additive permissions",
+        "action permissions",
+        "feature visibility",
+        "page visibility",
+        "billing webhooks",
+        "billing events",
+        "entitlement changes",
+        "fail-closed behavior",
+        "no hidden fail-open"
+      ],
+      "independentTests": [
+        "npm run audit:saas-contract",
+        "npm run audit:authz-gates",
+        "npm run audit:page-guards",
+        "npm run audit:ui-interactions -- --routes=settings,operations,dashboard --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "capability snapshot evidence",
+        "RBAC decision audit event",
+        "billing webhook ledger",
+        "entitlement change event"
+      ],
+      "apiContracts": [
+        "/me/capabilities",
+        "/settings",
+        "/events/scope",
+        "/billing/webhooks",
+        "/orgs"
+      ],
+      "eventContracts": [
+        "entitlement.changed",
+        "billing.webhook.received",
+        "activity.logged",
+        "permission.denied"
+      ],
+      "fusionInputs": [
+        "org",
+        "role",
+        "permission",
+        "entitlement",
+        "billing_event"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "enterprise_control capability exposes admin and entitlement pages",
+        "disableControl": "capability snapshot and action permissions fail closed when billing or RBAC state is absent",
+        "deployBoundary": "authorization and billing events are platform services with no page hard dependency",
+        "sellBoundary": "flyto.enterprise_control entitlement SKU",
+        "evidenceBoundary": "capability, billing, entitlement, and permission decisions emit audit events"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "admin",
+          "rbac",
+          "billing"
+        ],
+        "surfaceRegistry": [
+          "operations_admin",
+          "overview",
+          "scoring_compliance"
+        ],
+        "resourceKernel": [
+          "org",
+          "role",
+          "permission",
+          "entitlement",
+          "billing_event"
+        ],
+        "eventEvidence": [
+          "entitlement.changed",
+          "billing.webhook.received",
+          "activity.logged",
+          "permission.denied"
+        ],
+        "api": [
+          "me/capabilities",
+          "settings",
+          "events/scope",
+          "billing",
+          "orgs"
+        ],
+        "fusion": [
+          "entitlement_to_capability",
+          "permission_to_action",
+          "billing_to_tenant_state"
+        ]
+      }
+    },
+    {
+      "id": "scheduler_runner_evidence_sse",
+      "label": "Scheduler / Runner / Evidence / SSE",
+      "surface": "operations_admin",
+      "commercialSku": "flyto.verification_runtime",
+      "modules": [
+        "product_verification",
+        "operations",
+        "audit_timeline",
+        "timeline",
+        "reports",
+        "va_report"
+      ],
+      "capabilityRoots": [
+        "scheduler",
+        "runner",
+        "evidence"
+      ],
+      "userVisibleFeatures": [
+        "scanregistry",
+        "scanners.yaml",
+        "scheduler control plane",
+        "scheduler run ledger",
+        "runner execution",
+        "runner callback",
+        "campaign executions",
+        "evidence signature",
+        "screenshot",
+        "DOM snapshot",
+        "network log",
+        "replay result",
+        "evidence pack",
+        "SSE status",
+        "SSE artifacts",
+        "SSE signature",
+        "Product Verification"
+      ],
+      "independentTests": [
+        "npm run audit:product-verification",
+        "npm run audit:sse-correspondence",
+        "npm run smoke:product-verification",
+        "npm run audit:ui-interactions -- --routes=product_verification,operations,timeline,reports --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "scheduler run ledger",
+        "runner callback evidence",
+        "signed evidence pack",
+        "SSE artifact refresh evidence"
+      ],
+      "apiContracts": [
+        "/warroom-verification/runs",
+        "/events/scope",
+        "/reports",
+        "/audit"
+      ],
+      "eventContracts": [
+        "campaign_execution.updated",
+        "scheduler.run.updated",
+        "runner.callback.received",
+        "evidence.pack.ready"
+      ],
+      "fusionInputs": [
+        "scanner",
+        "scheduler_run",
+        "runner_execution",
+        "artifact",
+        "evidence_signature"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "scheduler, runner, and evidence capabilities expose the verification runtime",
+        "disableControl": "capability removal prevents new runs while evidence packs remain auditable",
+        "deployBoundary": "scheduler and runner exchange callbacks only through API and event/evidence contracts",
+        "sellBoundary": "flyto.verification_runtime entitlement SKU",
+        "evidenceBoundary": "screenshots, DOM snapshots, network logs, replay results, and signatures are evidence-pack artifacts"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "scheduler",
+          "runner",
+          "evidence"
+        ],
+        "surfaceRegistry": [
+          "operations_admin",
+          "code_redteam",
+          "scoring_compliance"
+        ],
+        "resourceKernel": [
+          "scanner",
+          "scheduler_run",
+          "runner_execution",
+          "artifact",
+          "evidence_pack"
+        ],
+        "eventEvidence": [
+          "campaign_execution.updated",
+          "scheduler.run.updated",
+          "runner.callback.received",
+          "evidence.pack.ready"
+        ],
+        "api": [
+          "warroom-verification",
+          "events/scope",
+          "reports",
+          "audit"
+        ],
+        "fusion": [
+          "scanner_to_run",
+          "run_to_artifact",
+          "artifact_to_evidence_graph",
+          "sse_to_cache"
+        ]
+      }
+    },
+    {
+      "id": "compliance_audit_enterprise",
+      "label": "Compliance / Audit / Enterprise Controls",
+      "surface": "scoring_compliance",
+      "commercialSku": "flyto.enterprise_compliance",
+      "modules": [
+        "audit_timeline",
+        "timeline",
+        "compliance",
+        "reports",
+        "va_report",
+        "settings",
+        "operations",
+        "ai_evidence_reports"
+      ],
+      "capabilityRoots": [
+        "compliance",
+        "audit",
+        "enterprise_controls"
+      ],
+      "userVisibleFeatures": [
+        "audit timeline",
+        "audit export",
+        "compliance evidence",
+        "report export",
+        "legal hold",
+        "data residency",
+        "data retention",
+        "offline license",
+        "enterprise airgap",
+        "deployment edition boundaries",
+        "notification channels",
+        "notification rules",
+        "notification deliveries",
+        "runtime API key ingestion",
+        "fusion",
+        "BYO integrations"
+      ],
+      "independentTests": [
+        "npm run audit:enterprise-airgap",
+        "npm run audit:edition-boundary",
+        "npm run compliance:ci",
+        "npm run release:evidence",
+        "npm run audit:ui-interactions -- --routes=audit_timeline,compliance,reports,settings,operations --viewports=desktop"
+      ],
+      "evidenceOutputs": [
+        "audit export",
+        "compliance evidence export",
+        "release evidence packet",
+        "notification delivery ledger"
+      ],
+      "apiContracts": [
+        "/audit",
+        "/compliance",
+        "/reports",
+        "/settings",
+        "/events/scope"
+      ],
+      "eventContracts": [
+        "activity.logged",
+        "compliance.evidence.exported",
+        "notification.delivered",
+        "license.offline.checked"
+      ],
+      "fusionInputs": [
+        "audit_event",
+        "compliance_control",
+        "report",
+        "notification_delivery",
+        "license_state"
+      ],
+      "standalone": {
+        "canEnable": true,
+        "canDisable": true,
+        "canTest": true,
+        "canDeploy": true,
+        "canSell": true,
+        "canEmitEvidence": true,
+        "enableControl": "compliance, audit, and enterprise_controls capabilities expose audit and reporting surfaces",
+        "disableControl": "edition and airgap gates fail closed without enterprise entitlement",
+        "deployBoundary": "enterprise controls bind through edition, retention, residency, and integration contracts",
+        "sellBoundary": "flyto.enterprise_compliance entitlement SKU",
+        "evidenceBoundary": "audit, compliance, report, notification, and release artifacts emit immutable evidence"
+      },
+      "merge": {
+        "unifiedCockpit": true,
+        "pulse": true,
+        "score": true,
+        "timeline": true,
+        "evidenceGraph": true,
+        "crossSurfaceCorrelation": true,
+        "contracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "coupling": {
+        "hardCouplingAllowed": false,
+        "allowedContracts": [
+          "capability",
+          "surfaceRegistry",
+          "resourceKernel",
+          "eventEvidence",
+          "api",
+          "fusion"
+        ]
+      },
+      "contracts": {
+        "capability": [
+          "compliance",
+          "audit",
+          "enterprise_controls"
+        ],
+        "surfaceRegistry": [
+          "scoring_compliance",
+          "operations_admin",
+          "overview"
+        ],
+        "resourceKernel": [
+          "audit_event",
+          "compliance_control",
+          "report",
+          "notification_delivery",
+          "license_state"
+        ],
+        "eventEvidence": [
+          "activity.logged",
+          "compliance.evidence.exported",
+          "notification.delivered",
+          "license.offline.checked"
+        ],
+        "api": [
+          "audit",
+          "compliance",
+          "reports",
+          "settings",
+          "events/scope"
+        ],
+        "fusion": [
+          "audit_to_evidence_graph",
+          "control_to_score",
+          "notification_to_timeline",
+          "integration_to_fusion"
+        ]
+      }
+    }
+  ]
+}

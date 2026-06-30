@@ -1,0 +1,20 @@
+name: Git Diff
+description: Show git diff with file change statistics
+
+args:
+  repo:
+    type: string
+    default: .
+    description: Path to git repository
+  ref:
+    type: string
+    default: HEAD
+    description: Reference to diff against (commit, branch, tag)
+
+steps:
+  - id: diff
+    module: git.diff
+    params:
+      repo_path: "{{repo}}"
+      ref1: "{{ref}}"
+      stat_only: true

@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "Pobierz stronę internetową i wyprowadź ustrukturyzowane dane JSON",
+        "modules.composite.browser.scrape_to_json.label": "Pobierz dane z sieci do JSON",
+        "modules.composite.data.csv_to_json.description": "Odczytaj plik CSV i przekształć go na format JSON",
+        "modules.composite.data.csv_to_json.label": "CSV do JSON",
+        "modules.composite.data.json_transform_notify.description": "Przekształć dane JSON i wyślij powiadomienie z wynikami",
+        "modules.composite.data.json_transform_notify.label": "Przekształć JSON i powiadom",
+        "modules.composite.developer.api_to_notification.description": "Pobierz dane z dowolnego API i wyślij je do kanału powiadomień",
+        "modules.composite.developer.api_to_notification.label": "API do powiadomienia",
+        "modules.composite.developer.github_daily_digest.description": "Pobierz aktualizacje repozytorium GitHub i wyślij codzienne powiadomienie",
+        "modules.composite.developer.github_daily_digest.label": "Codzienny przegląd GitHub",
+        "modules.composite.notification.multi_channel_alert.description": "Wyślij alerty do wielu kanałów powiadomień jednocześnie",
+        "modules.composite.notification.multi_channel_alert.label": "Alert wielokanałowy",
+        "modules.composite.notification.scheduled_report.description": "Generuj i wysyłaj zaplanowane raporty do kanałów powiadomień",
+        "modules.composite.notification.scheduled_report.label": "Raport zaplanowany",
+        "modules.composite.test.api_test.description": "Przeprowadź testy API z żądaniami HTTP i asercjami",
+        "modules.composite.test.api_test.label": "Zestaw testów API",
+        "modules.composite.test.e2e_flow.description": "Testowanie przepływu end-to-end z automatyzacją przeglądarki",
+        "modules.composite.test.e2e_flow.label": "Test przepływu E2E",
+        "modules.composite.test.quality_gate.description": "Przeprowadź kontrole jakości i zablokuj wdrożenia na podstawie progów",
+        "modules.composite.test.quality_gate.label": "Bramka jakości",
+        "modules.composite.test.ui_review.description": "Testowanie regresji wizualnej i przegląd interfejsu użytkownika",
+        "modules.composite.test.ui_review.label": "Przegląd UI",
+        "modules.composite.test.verify_fix.description": "Zweryfikuj poprawki błędów za pomocą testów przed/po i zestawów regresji",
+        "modules.composite.test.verify_fix.label": "Zweryfikuj poprawkę"
+    }
+}

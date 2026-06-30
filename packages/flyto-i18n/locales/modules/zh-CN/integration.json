@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "integration",
+    "version": "1.0.0",
+    "translations": {
+        "modules.integration.jira.create_issue.description": "在 Jira 创建新议题",
+        "modules.integration.jira.create_issue.label": "创建 Jira 议题",
+        "modules.integration.jira.search_issues.description": "使用 JQL 查找搜索议题",
+        "modules.integration.jira.search_issues.label": "搜索 Jira 议题",
+        "modules.integration.salesforce.create_record.description": "在 Salesforce 创建新记录",
+        "modules.integration.salesforce.create_record.label": "创建 Salesforce 记录",
+        "modules.integration.salesforce.query.description": "在 Salesforce 运行 SOQL 查找",
+        "modules.integration.salesforce.query.label": "Salesforce 查找",
+        "modules.integration.salesforce.update_record.description": "更新 Salesforce 中的现有记录",
+        "modules.integration.salesforce.update_record.label": "更新 Salesforce 记录",
+        "modules.integration.slack.list_channels.description": "列出 Slack 工作区的频道",
+        "modules.integration.slack.list_channels.label": "列出 Slack 频道",
+        "modules.integration.slack.list_channels.params.channels": "频道",
+        "modules.integration.slack.list_channels.params.channels.options.id": "Id",
+        "modules.integration.slack.list_channels.params.channels.options.is_private": "是否私人",
+        "modules.integration.slack.list_channels.params.channels.options.name": "名称",
+        "modules.integration.slack.list_channels.params.channels.options.num_members": "成员数",
+        "modules.integration.slack.send_message.description": "发送消息到 Slack 频道",
+        "modules.integration.slack.send_message.label": "发送 Slack 消息"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "作成",
+        "actionLabel.delete": "削除",
+        "actionLabel.execute": "実行",
+        "actionLabel.export": "エクスポート",
+        "actionLabel.import": "インポート",
+        "actionLabel.logout": "ログアウト",
+        "actionLabel.update": "更新"
+    }
+}

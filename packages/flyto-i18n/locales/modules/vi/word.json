@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "Trích xuất văn bản và nội dung từ tài liệu Word (.docx)",
+        "modules.word.parse.label": "Phân tích tài liệu Word",
+        "modules.word.parse.output.images.description": "Danh sách các đoạn văn",
+        "modules.word.parse.output.metadata.description": "Các bảng được trích xuất dưới dạng mảng",
+        "modules.word.parse.output.paragraphs.description": "Toàn bộ nội dung văn bản của tài liệu",
+        "modules.word.parse.output.tables.description": "Toàn bộ nội dung văn bản của tài liệu",
+        "modules.word.parse.output.text.description": "Toàn bộ nội dung văn bản của tài liệu",
+        "modules.word.to_pdf.description": "Chuyển đổi tài liệu Word (.docx) thành tệp PDF",
+        "modules.word.to_pdf.label": "Word sang PDF",
+        "modules.word.to_pdf.output.file_size.description": "Đường dẫn đến tệp PDF đã tạo",
+        "modules.word.to_pdf.output.method_used.description": "Kích thước tệp đầu ra tính bằng byte",
+        "modules.word.to_pdf.output.output_path.description": "Đường dẫn đến tệp PDF đã tạo"
+    }
+}

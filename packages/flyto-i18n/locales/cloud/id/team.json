@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "Tidak ada aktivitas terbaru",
+        "team.activity.title": "Aktivitas Terbaru",
+        "team.contributors.created": "Dibuat",
+        "team.contributors.empty": "Belum ada kontributor",
+        "team.contributors.executed": "Dieksekusi",
+        "team.contributors.title": "Kontributor",
+        "team.dashboard.subtitle": "Gambaran aktivitas tim Anda",
+        "team.dashboard.title": "Dashboard Tim",
+        "team.stats.executions": "Eksekusi",
+        "team.stats.members": "Anggota",
+        "team.stats.templates": "Template",
+        "team.stats.workflows": "Workflow"
+    }
+}

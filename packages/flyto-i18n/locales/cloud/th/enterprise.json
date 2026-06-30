@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.enterprise",
+    "version": "1.0.0",
+    "translations": {
+        "enterprise.actions.notSupported": "Action not supported",
+        "enterprise.errors.actionFailed": "ดำเนินการล้มเหลว",
+        "enterprise.errors.loadFailed": "Failed to load",
+        "enterprise.robotsOnline": "หุ่นยนต์ออนไลน์",
+        "enterprise.subtitle": "เครื่องมืออัตโนมัติสำหรับองค์กร",
+        "enterprise.tabs.idp": "การประมวลผลเอกสาร",
+        "enterprise.tabs.mining": "การทำเหมืองกระบวนการ",
+        "enterprise.tabs.orchestrator": "ตัวจัดการ",
+        "enterprise.tabs.queues": "คิว",
+        "enterprise.tabs.rpa": "RPA",
+        "enterprise.tabs.scheduler": "ตัวตั้งเวลา",
+        "enterprise.tabs.stateMachine": "เครื่องสถานะ",
+        "enterprise.title": "องค์กร"
+    }
+}

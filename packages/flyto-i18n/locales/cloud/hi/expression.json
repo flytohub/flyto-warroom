@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "उपलब्ध वेरिएबल",
+        "expression.editExpression": "एक्सप्रेशन संपादित करें",
+        "expression.enterExpression": "प्रीव्यू देखने के लिए एक्सप्रेशन दर्ज करें",
+        "expression.expressionCode": "एक्सप्रेशन",
+        "expression.openEditor": "एक्सप्रेशन एडिटर खोलें",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "प्रीव्यू"
+    }
+}

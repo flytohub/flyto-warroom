@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.pluginCapability",
+    "version": "1.0.0",
+    "translations": {
+        "pluginCapability.imageClassification": "Görsel Sınıflandırma",
+        "pluginCapability.speechRecognition": "Konuşma Tanıma",
+        "pluginCapability.textClassification": "Metin Sınıflandırma",
+        "pluginCapability.textEmbedding": "Metin Gömme",
+        "pluginCapability.textGeneration": "Metin Üretimi",
+        "pluginCapability.textToSpeech": "Metinden Konuşmaya"
+    }
+}

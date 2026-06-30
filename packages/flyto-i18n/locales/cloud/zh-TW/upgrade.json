@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "聯繫銷售",
+        "upgrade.debugFeatures": "偵錯與開發工具",
+        "upgrade.enterpriseHint": "需要企業功能？",
+        "upgrade.featureLocked": "此功能需要專業版訂閱",
+        "upgrade.features.evidence": "執行證據擷取與檢視",
+        "upgrade.features.lineage": "資料血統追蹤",
+        "upgrade.features.replay": "執行重播",
+        "upgrade.features.tests": "測試執行面板",
+        "upgrade.features.versions": "版本控制",
+        "upgrade.offlineLicense": "離線授權",
+        "upgrade.subscription": "立即訂閱",
+        "upgrade.subtitle": "解鎖進階功能",
+        "upgrade.title": "升級至 Pro"
+    }
+}

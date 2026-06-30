@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "common",
+    "version": "1.0.0",
+    "translations": {
+        "common.params.description.description": "Mô tả về quy trình lỗi này",
+        "common.params.description.label": "Mô tả",
+        "common.ports.error": "Đầu ra",
+        "common.pleaseSelect": "Vui lòng chọn…"
+    }
+}

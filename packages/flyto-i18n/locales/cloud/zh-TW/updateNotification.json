@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "關閉",
+        "updateNotification.downloadFailed": "下載更新失敗",
+        "updateNotification.downloadUpdate": "下載更新",
+        "updateNotification.downloading": "下載更新中",
+        "updateNotification.newVersionAvailable": "新版本可用",
+        "updateNotification.percentComplete": "{percent}% 完成",
+        "updateNotification.remindLater": "稍後提醒",
+        "updateNotification.restartLater": "稍後重啟",
+        "updateNotification.restartNow": "立即重啟",
+        "updateNotification.restartToInstall": "重新啟動應用程式以安裝更新",
+        "updateNotification.unknownError": "未知錯誤",
+        "updateNotification.updateDownloaded": "更新已下載",
+        "updateNotification.updateFailed": "更新失敗",
+        "updateNotification.versionReady": "版本 {version} 已準備好更新"
+    }
+}

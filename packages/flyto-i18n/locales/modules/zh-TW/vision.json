@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "vision",
+    "version": "1.0.0",
+    "translations": {
+        "modules.vision.analyze.description": "使用 OpenAI Vision API（GPT-4V）分析圖片",
+        "modules.vision.analyze.label": "AI 圖片分析",
+        "modules.vision.analyze.output.analysis.description": "分析是否成功",
+        "modules.vision.analyze.output.model.description": "結構化分析資料（如果 output_format 是 structured/json）",
+        "modules.vision.analyze.output.ok.description": "分析是否成功",
+        "modules.vision.analyze.output.structured.description": "AI 分析結果",
+        "modules.vision.analyze.output.tokens_used.description": "用於分析的模型",
+        "modules.vision.compare.description": "比較兩張圖片並識別視覺差異",
+        "modules.vision.compare.label": "比較圖片",
+        "modules.vision.compare.output.differences.description": "相似度百分比（0-100）",
+        "modules.vision.compare.output.has_differences.description": "比較是否成功",
+        "modules.vision.compare.output.ok.description": "比較是否成功",
+        "modules.vision.compare.output.recommendation.description": "比較結果摘要",
+        "modules.vision.compare.output.similarity_score.description": "是否發現顯著差異",
+        "modules.vision.compare.output.summary.description": "識別到的差異列表",
+        "modules.vision.compare.params.differences": "差異",
+        "modules.vision.compare.params.focus_areas": "重點區域",
+        "modules.vision.compare.params.focus_areas.options.header": "標題列",
+        "modules.vision.compare.params.focus_areas.options.main content": "主要內容"
+    }
+}

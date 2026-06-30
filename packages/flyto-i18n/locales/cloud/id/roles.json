@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "Role Bawaan",
+        "roles.create": "Buat Role",
+        "roles.create.title": "Buat Role",
+        "roles.custom.empty": "Tidak ada role kustom yang didefinisikan",
+        "roles.custom.title": "Role Kustom",
+        "roles.delete.message": "Apakah Anda yakin ingin menghapus role ini? Pengguna dengan role ini akan ditetapkan ke role anggota default.",
+        "roles.delete.title": "Hapus Role",
+        "roles.description": "Kelola role dan izin akses",
+        "roles.edit.title": "Edit Peran",
+        "roles.form.description": "Deskripsi",
+        "roles.form.name": "Nama Role",
+        "roles.form.permissions": "Izin",
+        "roles.permissions": "izin",
+        "roles.title": "Role & Izin",
+        "roles.users": "pengguna"
+    }
+}

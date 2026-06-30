@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.pluginType",
+    "version": "1.0.0",
+    "translations": {
+        "pluginType.audio": "Âm thanh",
+        "pluginType.embedding": "Nhúng",
+        "pluginType.languageModel": "Mô hình ngôn ngữ",
+        "pluginType.multimodal": "Đa phương thức",
+        "pluginType.vision": "Thị giác"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "Lupa Kata Sandi?",
+        "loginFormDefault.loginButton": "Masuk",
+        "loginFormDefault.passwordPlaceholder": "Masukkan kata sandi",
+        "loginFormDefault.usernamePlaceholder": "Masukkan nama pengguna"
+    }
+}

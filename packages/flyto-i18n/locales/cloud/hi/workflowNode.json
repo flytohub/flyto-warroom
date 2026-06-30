@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.workflowNode",
+    "version": "1.0.0",
+    "translations": {
+        "workflowNode.defaultNodeLabel": "नोड"
+    }
+}

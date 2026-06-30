@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "ดำเนินการต่อ",
+        "errorStrategy.continueDesc": "บันทึกข้อผิดพลาดและดำเนินการขั้นตอนถัดไป",
+        "errorStrategy.retry": "ลองใหม่",
+        "errorStrategy.retryDesc": "ลองใหม่ตามการตั้งค่า retry",
+        "errorStrategy.stop": "หยุด",
+        "errorStrategy.stopDesc": "หยุด workflow และทำเครื่องหมายว่าล้มเหลว"
+    }
+}

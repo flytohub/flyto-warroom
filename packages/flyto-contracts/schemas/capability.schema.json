@@ -1,0 +1,38 @@
+{
+  "$id": "https://schemas.flyto.dev/capability.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "actions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "commercial": {
+      "type": "object"
+    },
+    "dependencies": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "id": {
+      "type": "string"
+    },
+    "surface": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "surface",
+    "actions"
+  ],
+  "title": "Flyto capability contract",
+  "type": "object"
+}

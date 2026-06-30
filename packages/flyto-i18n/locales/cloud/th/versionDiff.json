@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "เพิ่ม",
+        "versionDiff.addedItems": "รายการที่เพิ่ม",
+        "versionDiff.compare": "เปรียบเทียบ",
+        "versionDiff.computing": "กำลังคำนวณ",
+        "versionDiff.current": "ปัจจุบัน",
+        "versionDiff.from": "จาก",
+        "versionDiff.modified": "แก้ไข",
+        "versionDiff.modifiedItems": "รายการที่แก้ไข",
+        "versionDiff.new": "ใหม่",
+        "versionDiff.noChanges": "ไม่มีการเปลี่ยนแปลง",
+        "versionDiff.old": "เก่า",
+        "versionDiff.removed": "ลบ",
+        "versionDiff.removedItems": "รายการที่ลบ",
+        "versionDiff.selectVersions": "เลือกเวอร์ชัน",
+        "versionDiff.title": "เปรียบเทียบเวอร์ชัน",
+        "versionDiff.to": "ถึง"
+    }
+}

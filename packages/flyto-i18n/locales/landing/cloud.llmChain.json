@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.llmChain",
+  "version": "1.0.0",
+  "translations": {
+    "llmChain.advancedOptions": "",
+    "llmChain.detectedVariables": "",
+    "llmChain.insertVariable": "",
+    "llmChain.maxTokens": "",
+    "llmChain.maxTokensHint": "",
+    "llmChain.model": "",
+    "llmChain.systemPrompt": "",
+    "llmChain.systemPromptPlaceholder": "",
+    "llmChain.temperature": "",
+    "llmChain.temperatureHint": "",
+    "llmChain.userPrompt": "",
+    "llmChain.userPromptPlaceholder": "",
+    "llmChain.variableHelp": ""
+  }
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "Input Tambahan",
+        "breakpoint.approve": "Setujui",
+        "breakpoint.comment": "Komentar",
+        "breakpoint.commentPlaceholder": "Tambahkan komentar...",
+        "breakpoint.contextSnapshot": "Snapshot Konteks",
+        "breakpoint.createdAt": "Dibuat Pada",
+        "breakpoint.expires": "Kedaluwarsa",
+        "breakpoint.humanCheckpoint": "Checkpoint Manusia",
+        "breakpoint.noBreakpoint": "Tidak ada breakpoint yang ditetapkan",
+        "breakpoint.noPending": "Tidak ada persetujuan tertunda",
+        "breakpoint.pendingApprovals": "Persetujuan Tertunda",
+        "breakpoint.reject": "Tolak",
+        "breakpoint.step": "Langkah",
+        "breakpoint.waitingApproval": "Menunggu persetujuan",
+        "breakpoint.workflow": "Alur Kerja",
+        "browserInteract.execute": "Jalankan",
+        "browserInteract.noElements": "Tidak ada elemen interaktif terdeteksi",
+        "browserInteract.pagePreview": "Pratinjau Halaman",
+        "browserInteract.selectHint": "Pilih elemen untuk berinteraksi",
+        "browserInteract.skip": "Lewati",
+        "browserInteract.title": "Interaksi Browser"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "Dostepne zmienne",
+        "expression.editExpression": "Edytuj wyrazenie",
+        "expression.enterExpression": "Wprowadz wyrazenie, aby zobaczyc podglad",
+        "expression.expressionCode": "Wyrazenie",
+        "expression.openEditor": "Otworz edytor wyrazen",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "Podglad"
+    }
+}

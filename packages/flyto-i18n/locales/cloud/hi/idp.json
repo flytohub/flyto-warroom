@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.idp",
+    "version": "1.0.0",
+    "translations": {
+        "idp.actions.batch": "बैच प्रोसेस",
+        "idp.actions.export": "निर्यात",
+        "idp.actions.title": "क्रियाएँ",
+        "idp.actions.train": "मॉडल प्रशिक्षित करें",
+        "idp.models.title": "मॉडल",
+        "idp.queue.empty": "कतार में कोई दस्तावेज़ नहीं",
+        "idp.queue.items": "आइटम",
+        "idp.queue.title": "प्रोसेसिंग कतार",
+        "idp.recent.empty": "कोई हाल के दस्तावेज़ नहीं",
+        "idp.recent.title": "हाल के दस्तावेज़",
+        "idp.results.fields": "निकाले गए फ़ील्ड",
+        "idp.results.title": "परिणाम",
+        "idp.stats.accuracy": "सटीकता",
+        "idp.stats.models": "मॉडल",
+        "idp.stats.pending": "लंबित",
+        "idp.stats.processed": "प्रोसेस्ड",
+        "idp.upload.browse": "ब्राउज़ करें",
+        "idp.upload.desc": "खींचें और छोड़ें या अपलोड करने के लिए क्लिक करें",
+        "idp.upload.formats": "समर्थित: PDF, PNG, JPG",
+        "idp.upload.title": "दस्तावेज़ अपलोड करें"
+    }
+}

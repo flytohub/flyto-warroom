@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.workflowCanvas",
+  "version": "1.0.0",
+  "translations": {
+    "workflowCanvas.controls.aiAssistant": "",
+    "workflowCanvas.controls.autoLayout": "",
+    "workflowCanvas.controls.fitView": "",
+    "workflowCanvas.controls.zoomIn": "",
+    "workflowCanvas.controls.zoomOut": "",
+    "workflowCanvas.deleteDialog.deleteAll": "",
+    "workflowCanvas.deleteDialog.deleteAllDesc": "",
+    "workflowCanvas.deleteDialog.mergeToChild": "",
+    "workflowCanvas.deleteDialog.mergeToChildDesc": "",
+    "workflowCanvas.deleteDialog.message": "",
+    "workflowCanvas.deleteDialog.title": "",
+    "workflowCanvas.reconnect.cancel": "",
+    "workflowCanvas.reconnect.connect": "",
+    "workflowCanvas.reconnect.dontConnect": "",
+    "workflowCanvas.stickyNoteCreated": ""
+  }
+}

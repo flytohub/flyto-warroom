@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "从 Word 文档（.docx）截取文本和内容",
+        "modules.word.parse.label": "解析 Word 文档",
+        "modules.word.parse.output.images.description": "段落列表",
+        "modules.word.parse.output.metadata.description": "截取的表格（数组格式）",
+        "modules.word.parse.output.paragraphs.description": "文档的完整文本内容",
+        "modules.word.parse.output.tables.description": "文档的完整文本内容",
+        "modules.word.parse.output.text.description": "文档的完整文本内容",
+        "modules.word.to_pdf.description": "将 Word 文档（.docx）转换为 PDF 文件",
+        "modules.word.to_pdf.label": "Word 转 PDF",
+        "modules.word.to_pdf.output.file_size.description": "产生的 PDF 文件路径",
+        "modules.word.to_pdf.output.method_used.description": "输出文件大小（字节）",
+        "modules.word.to_pdf.output.output_path.description": "产生的 PDF 文件路径"
+    }
+}

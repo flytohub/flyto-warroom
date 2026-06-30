@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "webhook",
+    "version": "1.0.0",
+    "translations": {
+        "modules.webhook.trigger.description": "Gửi yêu cầu HTTP POST đến URL webhook",
+        "modules.webhook.trigger.label": "Kích hoạt Webhook",
+        "modules.webhook.trigger.output.headers.description": "Mã trạng thái phản hồi HTTP",
+        "modules.webhook.trigger.output.response.description": "Mã trạng thái phản hồi HTTP",
+        "modules.webhook.trigger.output.status_code.description": "Mã trạng thái phản hồi HTTP"
+    }
+}

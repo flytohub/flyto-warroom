@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.evolution",
+    "version": "1.0.0",
+    "translations": {
+        "evolution.acceptSuggestion": "提案を受け入れる",
+        "evolution.analyzing": "分析中",
+        "evolution.apply": "適用",
+        "evolution.deepAnalysis": "詳細分析",
+        "evolution.details": "詳細",
+        "evolution.dismissSuggestion": "提案を却下",
+        "evolution.error": "エラー",
+        "evolution.highPriority": "高優先度",
+        "evolution.insights": "洞察",
+        "evolution.lastUpdated": "最終更新",
+        "evolution.noSuggestions": "提案なし",
+        "evolution.noSuggestionsDesc": "利用可能な提案はありません",
+        "evolution.reasoning": "理由",
+        "evolution.refresh": "更新",
+        "evolution.requestAnalysis": "分析を依頼",
+        "evolution.suggestionApplied": "提案を適用済み",
+        "evolution.title": "進化",
+        "evolution.types.cost": "コスト",
+        "evolution.types.other": "その他",
+        "evolution.types.performance": "パフォーマンス",
+        "evolution.types.reliability": "信頼性",
+        "evolution.types.security": "セキュリティ",
+        "evolution.viewDetails": "詳細を見る"
+    }
+}

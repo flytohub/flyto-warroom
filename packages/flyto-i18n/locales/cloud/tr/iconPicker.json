@@ -1,0 +1,11 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "cloud.iconPicker",
+  "version": "1.0.0",
+  "translations": {
+    "iconPicker.iconColor": "Icon Renk",
+    "iconPicker.noResults": "No results",
+    "iconPicker.searchPlaceholder": "Ara icons..."
+  }
+}

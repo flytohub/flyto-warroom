@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "PDF form alanlarını verilerle doldur ve isteğe bağlı olarak görüntü ekle",
+        "modules.pdf.fill_form.label": "PDF Formu Doldur",
+        "modules.pdf.fill_form.output.fields_filled.description": "Doldurulan PDF'in yolu",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "Eklenen görüntü sayısı",
+        "modules.pdf.fill_form.output.images_inserted.description": "Doldurulan PDF'in yolu",
+        "modules.pdf.fill_form.output.output_path.description": "Doldurulan PDF'in yolu",
+        "modules.pdf.generate.description": "HTML içeriğinden veya metinden PDF dosyaları oluştur",
+        "modules.pdf.generate.label": "PDF Oluştur",
+        "modules.pdf.generate.output.file_size_bytes.description": "PDF'teki sayfa sayısı",
+        "modules.pdf.generate.output.output_path.description": "Oluşturulan PDF'in yolu",
+        "modules.pdf.generate.output.page_count.description": "Oluşturulan PDF'in yolu",
+        "modules.pdf.parse.description": "PDF dosyalarından metin ve meta verileri çıkar",
+        "modules.pdf.parse.label": "PDF Ayrıştır",
+        "modules.pdf.parse.output.metadata.description": "Çıkarılan metin içeriği",
+        "modules.pdf.parse.output.page_count.description": "Sayfa başına metin içeriği",
+        "modules.pdf.parse.output.pages.description": "Çıkarılan metin içeriği",
+        "modules.pdf.parse.output.text.description": "Çıkarılan metin içeriği",
+        "modules.pdf.to_word.description": "PDF dosyalarını Word belgelerine (.docx) dönüştür",
+        "modules.pdf.to_word.label": "PDF'den Word'e",
+        "modules.pdf.to_word.output.file_size.description": "Dönüştürülen sayfa sayısı",
+        "modules.pdf.to_word.output.output_path.description": "Oluşturulan Word belgesinin yolu",
+        "modules.pdf.to_word.output.page_count.description": "Oluşturulan Word belgesinin yolu"
+    }
+}

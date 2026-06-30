@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.mining",
+    "version": "1.0.0",
+    "translations": {
+        "mining.bottlenecks.empty": "Aucun goulot d'étranglement trouvé",
+        "mining.bottlenecks.title": "Goulots d'étranglement",
+        "mining.discovery.analyze": "Analyser",
+        "mining.discovery.empty": "Aucune donnée à analyser",
+        "mining.discovery.selectWorkflow": "Sélectionnez un flux de travail à analyser",
+        "mining.discovery.title": "Découverte de processus",
+        "mining.quality.fitness": "Ajustement",
+        "mining.quality.generalization": "Généralisation",
+        "mining.quality.precision": "Précision",
+        "mining.stats.avgDuration": "Durée moy.",
+        "mining.stats.cases": "Cas",
+        "mining.stats.conformance": "Conformité",
+        "mining.stats.variants": "Variantes",
+        "mining.suggestions.apply": "Appliquer",
+        "mining.suggestions.empty": "Aucune suggestion",
+        "mining.suggestions.title": "Suggestions",
+        "mining.variants.empty": "Aucune variante",
+        "mining.variants.title": "Variantes de processus"
+    }
+}

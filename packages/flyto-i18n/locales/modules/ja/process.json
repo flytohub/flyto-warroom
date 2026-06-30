@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "実行中のすべてのバックグラウンドプロセスを一覧表示",
+        "modules.process.list.label": "プロセス一覧",
+        "modules.process.list.output.count.description": "操作成功",
+        "modules.process.list.output.ok.description": "操作成功",
+        "modules.process.list.output.processes.description": "操作成功",
+        "modules.process.list.output.running.description": "プロセス情報のリスト",
+        "modules.process.list.output.stopped.description": "プロセスの総数",
+        "modules.process.start.description": "バックグラウンドプロセス（サーバー、サービスなど）を開始",
+        "modules.process.start.label": "バックグラウンドプロセス開始",
+        "modules.process.start.output.command.description": "process.stop用の内部プロセス識別子",
+        "modules.process.start.output.cwd.description": "プロセス名",
+        "modules.process.start.output.initial_output.description": "プロセス開始のISOタイムスタンプ",
+        "modules.process.start.output.name.description": "プロセスID",
+        "modules.process.start.output.ok.description": "プロセスが正常に開始したかどうか",
+        "modules.process.start.output.pid.description": "プロセスが正常に開始したかどうか",
+        "modules.process.start.output.process_id.description": "プロセスが正常に開始したかどうか",
+        "modules.process.start.output.started_at.description": "実行されたコマンド",
+        "modules.process.stop.description": "実行中のバックグラウンドプロセスを停止",
+        "modules.process.stop.label": "プロセス停止",
+        "modules.process.stop.output.count.description": "停止したプロセス情報のリスト",
+        "modules.process.stop.output.failed.description": "停止したプロセス情報のリスト",
+        "modules.process.stop.output.ok.description": "すべてのプロセスが正常に停止したかどうか",
+        "modules.process.stop.output.stopped.description": "すべてのプロセスが正常に停止したかどうか"
+    }
+}

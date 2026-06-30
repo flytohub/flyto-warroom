@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "Fermer",
+        "updateNotification.downloadFailed": "Echec du telechargement de la mise a jour",
+        "updateNotification.downloadUpdate": "Telecharger la mise a jour",
+        "updateNotification.downloading": "Telechargement de la mise a jour",
+        "updateNotification.newVersionAvailable": "Nouvelle version disponible",
+        "updateNotification.percentComplete": "{percent}% termine",
+        "updateNotification.remindLater": "Rappeler plus tard",
+        "updateNotification.restartLater": "Redemarrer plus tard",
+        "updateNotification.restartNow": "Redemarrer maintenant",
+        "updateNotification.restartToInstall": "Redemarrez l'application pour installer la mise a jour",
+        "updateNotification.unknownError": "Erreur inconnue",
+        "updateNotification.updateDownloaded": "Mise a jour telechargee",
+        "updateNotification.updateFailed": "Echec de la mise a jour",
+        "updateNotification.versionReady": "La version {version} est prete a etre installee"
+    }
+}

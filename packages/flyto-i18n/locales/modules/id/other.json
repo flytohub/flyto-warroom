@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "Nama Header",
+        "schema.field.body": "Isi",
+        "schema.field.body_matches": "Respons",
+        "schema.field.full_page": "Halaman Penuh",
+        "schema.field.response": "Respons",
+        "schema.field.screenshot_format": "Halaman Penuh",
+        "schema.field.ssrf_protection": "Perlindungan SSRF",
+        "schema.field.ssrf_protection.description": "Blokir permintaan ke jaringan privat/internal (localhost, 192.168.x.x, endpoint metadata cloud). Nonaktifkan hanya untuk target internal tepercaya.",
+        "schema.field.url": "URL",
+        "schema.field.viewport_height": "Lebar",
+        "schema.field.viewport_width": "Lebar"
+    }
+}

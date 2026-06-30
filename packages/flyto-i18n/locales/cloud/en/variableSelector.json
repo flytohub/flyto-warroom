@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.variableSelector",
+    "version": "1.0.0",
+    "translations": {
+        "variableSelector.insert": "Insert",
+        "variableSelector.noVariables": "No variables available",
+        "variableSelector.searchPlaceholder": "Search variables...",
+        "variableSelector.selected": "Selected"
+    }
+}

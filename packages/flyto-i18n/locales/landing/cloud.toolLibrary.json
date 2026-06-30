@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.toolLibrary",
+  "version": "1.0.0",
+  "translations": {
+    "toolLibrary.allTools": "",
+    "toolLibrary.createFirstTool": "",
+    "toolLibrary.createTool": "",
+    "toolLibrary.deleteConfirm": "",
+    "toolLibrary.deleteMessage": "",
+    "toolLibrary.noDescription": "",
+    "toolLibrary.noTools": "",
+    "toolLibrary.noToolsDesc": "",
+    "toolLibrary.run": "",
+    "toolLibrary.searchPlaceholder": "",
+    "toolLibrary.steps": "",
+    "toolLibrary.subtitle": "",
+    "toolLibrary.title": ""
+  }
+}

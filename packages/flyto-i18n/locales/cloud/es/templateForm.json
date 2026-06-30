@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "es",
+  "category": "cloud.templateForm",
+  "version": "1.0.0",
+  "translations": {
+    "templateForm.category": "Categoria",
+    "templateForm.changeIcon": "Cambiar icono",
+    "templateForm.description": "Descripcion",
+    "templateForm.descriptionPlaceholder": "Que hace esta plantilla? (opcional)",
+    "templateForm.editTemplate": "Editar plantilla",
+    "templateForm.iconUploadError": "Error al subir el icono. Por favor intenta de nuevo.",
+    "templateForm.namePlaceholder": "Mi automatizacion increible",
+    "templateForm.private": "Private",
+    "templateForm.public": "Public",
+    "templateForm.selectCategory": "Selecciona una categoria (opcional)",
+    "templateForm.templateColor": "Color de la plantilla",
+    "templateForm.templateIcon": "Icono de plantilla",
+    "templateForm.templateName": "Nombre de la plantilla",
+    "templateForm.uploadIcon": "Subir icono",
+    "templateForm.visibility": "Visibility"
+  }
+}

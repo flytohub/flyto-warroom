@@ -1,0 +1,15 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "cloud.alt",
+  "version": "1.0.0",
+  "translations": {
+    "alt.avatar": "Avatar",
+    "alt.flytoLogo": "Flyto2 Logosu",
+    "alt.preview": "Önizleme",
+    "alt.result": "Sonuç",
+    "alt.screenshot": "Ekran Görüntüsü",
+    "alt.stepScreenshot": "Adım Ekran Görüntüsü",
+    "alt.templateIcon": "Şablon simgesi"
+  }
+}

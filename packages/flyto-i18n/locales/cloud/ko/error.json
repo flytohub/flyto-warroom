@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "재생 시작 실패",
+        "error.fixJsonFirst": "먼저 JSON 오류를 수정하세요",
+        "error.imageTooLarge": "이미지 파일이 너무 큽니다",
+        "error.invalidJsonContext": "컨텍스트 재정의의 JSON이 유효하지 않습니다",
+        "error.noStepsToValidate": "검증할 단계를 찾을 수 없습니다",
+        "error.replayFailed": "재생 실패"
+    }
+}

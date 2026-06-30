@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "Kabul Et",
+        "orders.approve": "Onayla",
+        "orders.budget": "Bütçe",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "Tamamlandı",
+        "orders.createFailed": "Sipariş oluşturulamadı",
+        "orders.createOrder": "Sipariş Oluştur",
+        "orders.createOrderSubtitle": "Bu satıcıya proje talebi gönderin",
+        "orders.days": "gün",
+        "orders.deadline": "Teslim Süresi",
+        "orders.decline": "Reddet",
+        "orders.deliver": "Teslim Et",
+        "orders.description": "Açıklama",
+        "orders.descriptionPlaceholder": "Proje gereksinimlerinizi ayrıntılı olarak açıklayın...",
+        "orders.payNow": "Şimdi Öde",
+        "orders.requirements": "Ek Gereksinimler",
+        "orders.requirementsPlaceholder": "Özel gereksinimler veya notlar...",
+        "orders.sendOrder": "Sipariş Talebi Gönder",
+        "orders.sending": "Gönderiliyor...",
+        "orders.sendingTo": "Gönderilen",
+        "orders.title": "Proje Başlığı",
+        "orders.titlePlaceholder": "Hangi konuda yardıma ihtiyacınız var?",
+        "orders.viewDetails": "Detaylar",
+        "orders.waitingResponse": "Yanıt bekleniyor"
+    }
+}

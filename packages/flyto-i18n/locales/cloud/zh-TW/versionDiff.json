@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "新增",
+        "versionDiff.addedItems": "新增項目",
+        "versionDiff.compare": "比較",
+        "versionDiff.computing": "正在計算差異...",
+        "versionDiff.current": "目前",
+        "versionDiff.from": "從",
+        "versionDiff.modified": "修改",
+        "versionDiff.modifiedItems": "修改項目",
+        "versionDiff.new": "新值",
+        "versionDiff.noChanges": "這兩個版本之間沒有差異",
+        "versionDiff.old": "舊值",
+        "versionDiff.removed": "移除",
+        "versionDiff.removedItems": "移除項目",
+        "versionDiff.selectVersions": "選擇兩個版本進行比較",
+        "versionDiff.title": "版本差異",
+        "versionDiff.to": "到"
+    }
+}

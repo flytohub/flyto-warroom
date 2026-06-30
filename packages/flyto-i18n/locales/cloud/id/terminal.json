@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "Hapus log",
+        "terminal.closeTerminal": "Tutup terminal",
+        "terminal.connected": "TERHUBUNG",
+        "terminal.disableAutoScroll": "Nonaktifkan scroll otomatis",
+        "terminal.disconnected": "TERPUTUS",
+        "terminal.enableAutoScroll": "Aktifkan scroll otomatis",
+        "terminal.hideLogs": "Sembunyikan log {level}",
+        "terminal.logsWillAppear": "Log akan muncul di sini ketika sistem menghasilkan output",
+        "terminal.searchPlaceholder": "Cari log...",
+        "terminal.showLogs": "Tampilkan log {level}",
+        "terminal.title": "Terminal Sistem",
+        "terminal.waitingForLogs": "Menunggu log..."
+    }
+}

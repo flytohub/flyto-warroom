@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "分析内容可读性",
+        "modules.analysis.html.analyze_readability.label": "HTML 可读性",
+        "modules.analysis.html.extract_forms.description": "从 HTML 截取表单数据",
+        "modules.analysis.html.extract_forms.label": "截取表单",
+        "modules.analysis.html.extract_metadata.description": "从 HTML 截取中继数据",
+        "modules.analysis.html.extract_metadata.label": "截取中继数据",
+        "modules.analysis.html.extract_tables.description": "从 HTML 截取表格数据",
+        "modules.analysis.html.extract_tables.label": "截取表格",
+        "modules.analysis.html.find_patterns.description": "在 HTML 中寻找重复的数据模式",
+        "modules.analysis.html.find_patterns.label": "寻找模式",
+        "modules.analysis.html.structure.description": "分析 HTML DOM 结构",
+        "modules.analysis.html.structure.label": "HTML 结构"
+    }
+}

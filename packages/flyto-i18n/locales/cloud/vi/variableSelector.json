@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.variableSelector",
+    "version": "1.0.0",
+    "translations": {
+        "variableSelector.insert": "Chèn",
+        "variableSelector.noVariables": "Không có biến khả dụng",
+        "variableSelector.searchPlaceholder": "Tìm kiếm biến...",
+        "variableSelector.selected": "Đã chọn"
+    }
+}

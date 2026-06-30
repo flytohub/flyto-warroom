@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "Verfügbare Variablen",
+        "expression.editExpression": "Ausdruck bearbeiten",
+        "expression.enterExpression": "Geben Sie einen Ausdruck ein, um die Vorschau zu sehen",
+        "expression.expressionCode": "Ausdruck",
+        "expression.openEditor": "Ausdruckseditor öffnen",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "Vorschau"
+    }
+}

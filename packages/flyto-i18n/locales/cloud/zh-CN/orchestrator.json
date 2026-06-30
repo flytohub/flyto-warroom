@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.orchestrator",
+    "version": "1.0.0",
+    "translations": {
+        "orchestrator.jobs.empty": "没有任务",
+        "orchestrator.jobs.title": "任务",
+        "orchestrator.register.capabilities": "功能",
+        "orchestrator.register.machineName": "机器名称",
+        "orchestrator.register.machineNamePlaceholder": "输入机器名称",
+        "orchestrator.register.name": "机器人名称",
+        "orchestrator.register.namePlaceholder": "输入机器人名称",
+        "orchestrator.register.osType": "操作系统类型",
+        "orchestrator.register.submit": "注册",
+        "orchestrator.register.title": "注册机器人",
+        "orchestrator.robots.empty": "没有已注册的机器人",
+        "orchestrator.robots.emptyDesc": "注册机器人开始使用",
+        "orchestrator.robots.lastSeen": "最后上线",
+        "orchestrator.robots.maxJobs": "最大任务数",
+        "orchestrator.robots.platform": "平台",
+        "orchestrator.robots.register": "注册机器人",
+        "orchestrator.robots.registerFirst": "注册您的第一个机器人",
+        "orchestrator.robots.runJob": "运行任务",
+        "orchestrator.robots.title": "机器人",
+        "orchestrator.stats.available": "可用",
+        "orchestrator.stats.busy": "忙碌",
+        "orchestrator.stats.offline": "脱机",
+        "orchestrator.stats.totalRobots": "机器人总数"
+    }
+}

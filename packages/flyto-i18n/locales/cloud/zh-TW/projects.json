@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "建立專案",
+        "projects.create.title": "建立專案",
+        "projects.delete.message": "確定要刪除此專案嗎？此專案中的所有工作流程將移至預設專案。",
+        "projects.delete.title": "刪除專案",
+        "projects.description": "將工作流程整理至專案中",
+        "projects.edit.title": "編輯專案",
+        "projects.empty.description": "建立您的第一個專案來組織工作流程",
+        "projects.empty.title": "尚無專案",
+        "projects.form.color": "顏色",
+        "projects.form.description": "描述",
+        "projects.form.name": "專案名稱",
+        "projects.form.namePlaceholder": "我的專案",
+        "projects.members": "位成員",
+        "projects.title": "專案",
+        "projects.workflows": "個工作流程"
+    }
+}

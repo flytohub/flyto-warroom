@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "Skontaktuj sie ze sprzedaza",
+        "upgrade.debugFeatures": "Odblokuj potezne funkcje debugowania i analizy, aby ulepszych rozwoj swoich przeplywow.",
+        "upgrade.enterpriseHint": "Potrzebujesz funkcji enterprise?",
+        "upgrade.featureLocked": "Ta funkcja wymaga subskrypcji Pro",
+        "upgrade.features.evidence": "Zrzuty ekranu i przechwytywanie DOM dla kazdego kroku",
+        "upgrade.features.lineage": "Sledzenie przeplywu danych i graf zaleznosci",
+        "upgrade.features.replay": "Odtwarzanie wykonan ze zmodyfikowanymi wejsciami",
+        "upgrade.features.tests": "Automatyczny zestaw testow przeplywow",
+        "upgrade.features.versions": "Blokowanie i kontrola wersji modulow",
+        "upgrade.offlineLicense": "Kup licencje offline - 199 USD jednorazowo",
+        "upgrade.subscription": "Subskrybuj - 19 USD/miesiac",
+        "upgrade.subtitle": "Uzyskaj dostep do zaawansowanych narzedzi debugowania",
+        "upgrade.title": "Odblokuj funkcje Pro"
+    }
+}

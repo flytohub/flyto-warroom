@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.enterprise",
+    "version": "1.0.0",
+    "translations": {
+        "enterprise.actions.notSupported": "Action not supported",
+        "enterprise.errors.actionFailed": "Aksi gagal",
+        "enterprise.errors.loadFailed": "Failed to load",
+        "enterprise.robotsOnline": "Robot Online",
+        "enterprise.subtitle": "Alat otomatisasi perusahaan",
+        "enterprise.tabs.idp": "Pemrosesan Dokumen",
+        "enterprise.tabs.mining": "Penambangan Proses",
+        "enterprise.tabs.orchestrator": "Orkestrator",
+        "enterprise.tabs.queues": "Antrian",
+        "enterprise.tabs.rpa": "RPA",
+        "enterprise.tabs.scheduler": "Penjadwal",
+        "enterprise.tabs.stateMachine": "Mesin Status",
+        "enterprise.title": "Perusahaan"
+    }
+}

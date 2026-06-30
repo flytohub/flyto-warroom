@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "서버에 연결할 수 없습니다. 백엔드가 실행 중인지 확인하세요.",
+        "errors.somethingWentWrong": "문제가 발생했습니다",
+        "errors.technicalDetails": "기술적 상세",
+        "errors.timeout": "요청 시간이 초과되었습니다. 다시 시도하세요.",
+        "errors.unexpectedError": "예기치 않은 오류가 발생했습니다"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "Importo del rimborso",
+        "refund.cancelButton": "Annulla",
+        "refund.confirm": "Conferma rimborso",
+        "refund.confirmButton": "Conferma Rimborso",
+        "refund.confirmTitle": "Conferma Richiesta di Rimborso",
+        "refund.contactSupport": "Contatta il supporto",
+        "refund.days": "Giorni di rimborso",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "Lei è idoneo per un rimborso",
+        "refund.expiredWindow": "La finestra di rimborso di 30 giorni è scaduta",
+        "refund.failed": "Richiesta di rimborso fallita",
+        "refund.forksAffected": "I seguenti fork saranno orfani (le sue modifiche saranno conservate ma scollegate dalla fonte):",
+        "refund.forksWarning": "Avviso sui fork",
+        "refund.notEligible": "Non idoneo al rimborso",
+        "refund.processInfo": "Informazioni sul processo di rimborso",
+        "refund.processing": "Elaborazione in corso...",
+        "refund.success": "Rimborso richiesto con successo",
+        "refund.template": "Modello di rimborso",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "Descrizione dell'avviso"
+    }
+}

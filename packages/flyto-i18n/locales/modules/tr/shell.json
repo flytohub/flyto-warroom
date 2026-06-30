@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "Kabuk komutu çalıştır ve çıktıyı yakala",
+        "modules.shell.exec.label": "Kabuk Komutu Çalıştır",
+        "modules.shell.exec.output.command.description": "Standart çıktı",
+        "modules.shell.exec.output.cwd.description": "Standart hata çıktısı",
+        "modules.shell.exec.output.duration_ms.description": "Çalıştırılan komut",
+        "modules.shell.exec.output.exit_code.description": "Komut başarıyla çalıştı mı (çıkış kodu 0)",
+        "modules.shell.exec.output.ok.description": "Komut başarıyla çalıştı mı (çıkış kodu 0)",
+        "modules.shell.exec.output.stderr.description": "Komut çıkış kodu",
+        "modules.shell.exec.output.stdout.description": "Komut başarıyla çalıştı mı (çıkış kodu 0)"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "प्रोजेक्ट बनाएं",
+        "projects.create.title": "प्रोजेक्ट बनाएं",
+        "projects.delete.message": "क्या आप वाकई इस प्रोजेक्ट को हटाना चाहते हैं? इस प्रोजेक्ट के सभी वर्कफ़्लो डिफ़ॉल्ट प्रोजेक्ट में स्थानांतरित हो जाएंगे।",
+        "projects.delete.title": "प्रोजेक्ट हटाएं",
+        "projects.description": "अपने वर्कफ़्लो को प्रोजेक्ट में व्यवस्थित करें",
+        "projects.edit.title": "प्रोजेक्ट संपादित करें",
+        "projects.empty.description": "वर्कफ़्लो व्यवस्थित करने के लिए अपना पहला प्रोजेक्ट बनाएं",
+        "projects.empty.title": "अभी तक कोई प्रोजेक्ट नहीं",
+        "projects.form.color": "रंग",
+        "projects.form.description": "विवरण",
+        "projects.form.name": "प्रोजेक्ट का नाम",
+        "projects.form.namePlaceholder": "मेरा प्रोजेक्ट",
+        "projects.members": "सदस्य",
+        "projects.title": "प्रोजेक्ट",
+        "projects.workflows": "वर्कफ़्लो"
+    }
+}

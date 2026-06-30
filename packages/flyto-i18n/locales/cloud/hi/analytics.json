@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.analytics",
+    "version": "1.0.0",
+    "translations": {
+        "analytics.declining": "घट रहा है",
+        "analytics.eventBreakdown": "इवेंट विवरण",
+        "analytics.frictionPoints": "घर्षण बिंदु",
+        "analytics.healthScore": "स्वास्थ्य स्कोर",
+        "analytics.improving": "सुधर रहा है",
+        "analytics.issues": "समस्याएँ",
+        "analytics.noFriction": "कोई घर्षण नहीं",
+        "analytics.overallHealth": "कुल मिलाकर स्वास्थ्य",
+        "analytics.recommendations": "सिफारिशें",
+        "analytics.stable": "स्थिर"
+    }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.pluginType",
+  "version": "1.0.0",
+  "translations": {
+    "pluginType.audio": "",
+    "pluginType.embedding": "",
+    "pluginType.languageModel": "",
+    "pluginType.multimodal": "",
+    "pluginType.vision": ""
+  }
+}

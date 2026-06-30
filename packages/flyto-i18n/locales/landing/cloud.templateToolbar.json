@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.templateToolbar",
+  "version": "1.0.0",
+  "translations": {
+    "templateToolbar.gridView": "",
+    "templateToolbar.listView": "",
+    "templateToolbar.searchLabel": "",
+    "templateToolbar.searchPlaceholder": "",
+    "templateToolbar.sortLabel": "",
+    "templateToolbar.sortOptions.created": "",
+    "templateToolbar.sortOptions.name": "",
+    "templateToolbar.sortOptions.status": "",
+    "templateToolbar.sortOptions.updated": "",
+    "templateToolbar.viewMode": ""
+  }
+}

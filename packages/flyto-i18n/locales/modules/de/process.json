@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Alle laufenden Hintergrundprozesse auflisten",
+        "modules.process.list.label": "Prozesse auflisten",
+        "modules.process.list.output.count.description": "Operationserfolg",
+        "modules.process.list.output.ok.description": "Operationserfolg",
+        "modules.process.list.output.processes.description": "Operationserfolg",
+        "modules.process.list.output.running.description": "Liste von Prozessinformationen",
+        "modules.process.list.output.stopped.description": "Gesamtanzahl der Prozesse",
+        "modules.process.start.description": "Hintergrundprozess starten (Server, Dienst usw.)",
+        "modules.process.start.label": "Hintergrundprozess starten",
+        "modules.process.start.output.command.description": "Interne Prozesskennung für process.stop",
+        "modules.process.start.output.cwd.description": "Prozessname",
+        "modules.process.start.output.initial_output.description": "ISO-Zeitstempel wann Prozess gestartet wurde",
+        "modules.process.start.output.name.description": "Prozess-ID",
+        "modules.process.start.output.ok.description": "Ob Prozess erfolgreich gestartet wurde",
+        "modules.process.start.output.pid.description": "Ob Prozess erfolgreich gestartet wurde",
+        "modules.process.start.output.process_id.description": "Ob Prozess erfolgreich gestartet wurde",
+        "modules.process.start.output.started_at.description": "Der ausgeführte Befehl",
+        "modules.process.stop.description": "Laufenden Hintergrundprozess stoppen",
+        "modules.process.stop.label": "Prozess stoppen",
+        "modules.process.stop.output.count.description": "Liste der gestoppten Prozessinfos",
+        "modules.process.stop.output.failed.description": "Liste der gestoppten Prozessinfos",
+        "modules.process.stop.output.ok.description": "Ob alle Prozesse erfolgreich gestoppt wurden",
+        "modules.process.stop.output.stopped.description": "Ob alle Prozesse erfolgreich gestoppt wurden"
+    }
+}

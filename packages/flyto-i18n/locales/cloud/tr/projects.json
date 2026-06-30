@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "Proje Oluştur",
+        "projects.create.title": "Proje Oluştur",
+        "projects.delete.message": "Bu projeyi silmek istediğinizden emin misiniz? Bu projedeki tüm iş akışları varsayılan projeye taşınacak.",
+        "projects.delete.title": "Projeyi Sil",
+        "projects.description": "İş akışlarınızı projelere organize edin",
+        "projects.edit.title": "Projeyi Düzenle",
+        "projects.empty.description": "İş akışlarını organize etmek için ilk projenizi oluşturun",
+        "projects.empty.title": "Henüz Proje Yok",
+        "projects.form.color": "Renk",
+        "projects.form.description": "Açıklama",
+        "projects.form.name": "Proje Adı",
+        "projects.form.namePlaceholder": "Projem",
+        "projects.members": "üye",
+        "projects.title": "Projeler",
+        "projects.workflows": "iş akışı"
+    }
+}

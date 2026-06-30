@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "将模板从你的数据库中运行为工作流程步骤",
+        "modules.template.invoke.label": "运行模板",
+        "modules.template.invoke.output.__event__.description": "数据库项目的 ID（购买/分叉/拥有）",
+        "modules.template.invoke.output.execution_time_ms.description": "模板运行结果",
+        "modules.template.invoke.output.result.description": "最大运行时间（秒）",
+        "modules.template.invoke.output.template_id.description": "路由事件（成功/错误）",
+        "modules.template.invoke.ports.input": "运行模板",
+        "modules.template.invoke.ports.success": "输入"
+    }
+}

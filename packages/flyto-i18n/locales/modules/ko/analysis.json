@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "콘텐츠 가독성 분석",
+        "modules.analysis.html.analyze_readability.label": "HTML 가독성",
+        "modules.analysis.html.extract_forms.description": "HTML에서 폼 데이터 추출",
+        "modules.analysis.html.extract_forms.label": "폼 추출",
+        "modules.analysis.html.extract_metadata.description": "HTML에서 메타데이터 추출",
+        "modules.analysis.html.extract_metadata.label": "메타데이터 추출",
+        "modules.analysis.html.extract_tables.description": "HTML에서 테이블 데이터 추출",
+        "modules.analysis.html.extract_tables.label": "테이블 추출",
+        "modules.analysis.html.find_patterns.description": "HTML에서 반복되는 데이터 패턴 찾기",
+        "modules.analysis.html.find_patterns.label": "패턴 찾기",
+        "modules.analysis.html.structure.description": "HTML DOM 구조 분석",
+        "modules.analysis.html.structure.label": "HTML 구조"
+    }
+}

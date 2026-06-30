@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.workflowCanvas",
+    "version": "1.0.0",
+    "translations": {
+        "workflowCanvas.controls.aiAssistant": "KI-Assistent (Fragen Sie die KI um Hilfe)",
+        "workflowCanvas.controls.autoLayout": "Automatisches Layout",
+        "workflowCanvas.controls.fitView": "Ansicht anpassen",
+        "workflowCanvas.controls.zoomIn": "Vergrößern",
+        "workflowCanvas.controls.zoomOut": "Verkleinern",
+        "workflowCanvas.deleteDialog.deleteAll": "Alle löschen",
+        "workflowCanvas.deleteDialog.deleteAllDesc": "Diesen Knoten und alle {count} untergeordneten Knoten löschen",
+        "workflowCanvas.deleteDialog.mergeToChild": "Mit Kind zusammenführen",
+        "workflowCanvas.deleteDialog.mergeToChildDesc": "Nur diesen Knoten löschen und übergeordneten mit erstem untergeordneten verbinden",
+        "workflowCanvas.deleteDialog.message": "Dieser Knoten hat {count} untergeordnete(n) Knoten. Was möchten Sie tun?",
+        "workflowCanvas.deleteDialog.title": "Knoten mit untergeordneten Knoten löschen",
+        "workflowCanvas.reconnect.cancel": "Abbrechen",
+        "workflowCanvas.reconnect.connect": "Verbinden",
+        "workflowCanvas.reconnect.dontConnect": "Nicht verbinden",
+        "workflowCanvas.stickyNoteCreated": "Notizzettel erstellt"
+    }
+}

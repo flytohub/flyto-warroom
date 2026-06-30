@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Excel फ़ाइलों (xlsx, xls) से डेटा पढ़ें",
+        "modules.excel.read.label": "Excel पढ़ें",
+        "modules.excel.read.output.data.description": "निकाली गई डेटा पंक्तियां",
+        "modules.excel.read.output.headers.description": "निकाली गई डेटा पंक्तियां",
+        "modules.excel.read.output.row_count.description": "निकाली गई डेटा पंक्तियां",
+        "modules.excel.read.output.sheet_names.description": "कॉलम हेडर्स",
+        "modules.excel.write.description": "Excel फ़ाइलों (xlsx) में डेटा लिखें",
+        "modules.excel.write.label": "Excel लिखें",
+        "modules.excel.write.output.path.description": "बनाई गई Excel फ़ाइल का पथ",
+        "modules.excel.write.output.row_count.description": "बनाई गई Excel फ़ाइल का पथ",
+        "modules.excel.write.output.size.description": "बनाई गई Excel फ़ाइल का पथ"
+    }
+}

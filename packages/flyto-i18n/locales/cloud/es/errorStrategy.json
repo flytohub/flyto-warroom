@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.errorStrategy",
+    "version": "1.0.0",
+    "translations": {
+        "errorStrategy.continue": "Continuar",
+        "errorStrategy.continueDesc": "Registrar error y continuar al siguiente paso",
+        "errorStrategy.retry": "Reintentar",
+        "errorStrategy.retryDesc": "Reintentar según la configuración de reintentos",
+        "errorStrategy.stop": "Detener",
+        "errorStrategy.stopDesc": "Detener flujo de trabajo y marcar como fallido"
+    }
+}

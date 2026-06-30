@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "比較",
+        "versions.current": "現在",
+        "versions.diff.comparing": "比較中",
+        "versions.diff.noChanges": "バージョン間に変更はありません",
+        "versions.diff.selectPrompt": "比較する2つのバージョンを選択してください",
+        "versions.diff.title": "変更点",
+        "versions.diff.to": "から",
+        "versions.empty": "バージョン履歴がありません",
+        "versions.rollback": "ロールバック",
+        "versions.rollback.confirm": "ロールバック",
+        "versions.rollback.description": "v{version}にロールバックすると、そのバージョンの内容で新しいバージョンが作成されます。現在のバージョンは履歴に残ります。",
+        "versions.rollback.targetVersion": "対象バージョン",
+        "versions.rollback.title": "バージョンにロールバック",
+        "versions.rollback.warning": "新しいバージョンが作成されます",
+        "versions.title": "バージョン履歴"
+    }
+}

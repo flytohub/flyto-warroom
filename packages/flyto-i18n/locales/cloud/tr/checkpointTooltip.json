@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.checkpointTooltip",
+    "version": "1.0.0",
+    "translations": {
+        "checkpointTooltip.clickToAdd": "Bağlantılara kontrol noktası eklemek için tıklayın",
+        "checkpointTooltip.clickToExit": "Kontrol noktası modundan çıkmak için tıklayın",
+        "checkpointTooltip.upgradeToUse": "İnsan Kontrol Noktası kullanmak için yükseltin"
+    }
+}

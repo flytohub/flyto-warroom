@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "최종 업데이트",
+        "terms.sections.acceptance.content": "Flyto2 서비스에 접속하거나 사용함으로써 귀하는 본 서비스 약관에 동의하게 됩니다. 본 약관에 동의하지 않으시면 서비스를 이용하지 마십시오.",
+        "terms.sections.acceptance.title": "약관 동의",
+        "terms.sections.account.content": "귀하는 계정 자격 증명의 기밀을 유지하고 계정에서 발생하는 모든 활동에 대한 책임이 있습니다. 무단 사용이 발생하면 즉시 알려주셔야 합니다.",
+        "terms.sections.account.title": "사용자 계정",
+        "terms.sections.intellectual.content": "Flyto2의 모든 콘텐츠, 기능 및 기능성은 당사 소유이며 국제 저작권, 상표 및 기타 지적재산권법에 의해 보호됩니다.",
+        "terms.sections.intellectual.title": "지적재산권",
+        "terms.sections.limitation.content": "법률이 허용하는 최대 범위 내에서 Flyto2는 서비스 사용으로 인한 간접적, 우발적, 특별, 결과적 또는 징벌적 손해에 대해 책임지지 않습니다.",
+        "terms.sections.limitation.title": "책임 제한",
+        "terms.sections.prohibited.content": "불법적인 목적, 법률 위반, 지적재산권 침해, 유해한 코드 전송을 위해 서비스를 사용할 수 없습니다. 당사는 본 약관을 위반하는 계정을 종료할 권리를 보유합니다.",
+        "terms.sections.prohibited.title": "금지된 사용",
+        "terms.sections.services.content": "Flyto2는 사용자가 자동화된 워크플로를 생성, 관리 및 실행할 수 있는 워크플로 자동화 플랫폼을 제공합니다. 당사는 언제든지 서비스를 수정하거나 중단할 권리를 보유합니다.",
+        "terms.sections.services.title": "서비스 설명",
+        "terms.sections.termination.content": "당사는 본 약관을 위반하거나 다른 사용자에게 해로운 행위에 대해 사전 통지 없이 당사의 단독 재량으로 귀하의 계정 및 서비스 접근을 종료하거나 중단할 수 있습니다.",
+        "terms.sections.termination.title": "종료",
+        "terms.title": "서비스 약관"
+    }
+}

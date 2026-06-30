@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "Element hinzufügen",
+        "queues.create.maxRetries": "Maximale Versuche",
+        "queues.create.name": "Warteschlangenname",
+        "queues.create.namePlaceholder": "Warteschlangennamen eingeben",
+        "queues.create.selectWorkflow": "Workflow auswählen",
+        "queues.create.submit": "Warteschlange erstellen",
+        "queues.create.title": "Warteschlange erstellen",
+        "queues.create.workflow": "Workflow",
+        "queues.createFirst": "Erstellen Sie Ihre erste Warteschlange",
+        "queues.empty": "Keine Warteschlangen",
+        "queues.emptyDesc": "Erstellen Sie eine Warteschlange, um zu beginnen",
+        "queues.stats.completed": "Abgeschlossen",
+        "queues.stats.pending": "Ausstehend",
+        "queues.stats.processing": "In Bearbeitung",
+        "queues.stats.totalItems": "Gesamtanzahl",
+        "queues.status.completed": "Abgeschlossen",
+        "queues.status.failed": "Fehlgeschlagen",
+        "queues.status.pending": "Ausstehend",
+        "queues.status.processing": "In Bearbeitung",
+        "queues.transactions.empty": "Keine Transaktionen",
+        "queues.transactions.title": "Transaktionen"
+    }
+}

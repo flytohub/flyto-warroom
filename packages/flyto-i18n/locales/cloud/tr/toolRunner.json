@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Gelişmiş",
+        "toolRunner.backToLibrary": "Kütüphaneye Dön",
+        "toolRunner.copy": "Kopyala",
+        "toolRunner.download": "İndir",
+        "toolRunner.editTool": "Düzenle",
+        "toolRunner.executionFailed": "Yürütme Başarısız",
+        "toolRunner.executionLogs": "Yürütme Kayıtları",
+        "toolRunner.executionSuccess": "Yürütme Tamamlandı",
+        "toolRunner.executionTimedOut": "Yürütme zaman aşımına uğradı",
+        "toolRunner.flowSteps": "Akış Adımları",
+        "toolRunner.inputForm": "Girdi Formu",
+        "toolRunner.loadFailed": "Araç yüklenemedi",
+        "toolRunner.noLogs": "Henüz kayıt yok. Yürütme kayıtlarını görmek için aracı çalıştırın.",
+        "toolRunner.resolvedParams": "Çözümlenen Parametreler",
+        "toolRunner.results": "Sonuçlar",
+        "toolRunner.retry": "Tekrar Dene",
+        "toolRunner.runAgain": "Tekrar Çalıştır",
+        "toolRunner.runToSeeResults": "Sonuçları burada görmek için aracı çalıştırın",
+        "toolRunner.runTool": "Aracı Çalıştır",
+        "toolRunner.running": "Çalışıyor...",
+        "toolRunner.simpleMode": "Basit",
+        "toolRunner.toolNotFound": "Araç Bulunamadı",
+        "toolRunner.toolNotFoundError": "Araç bulunamadı"
+    }
+}

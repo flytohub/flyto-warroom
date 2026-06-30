@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "ไม่สามารถเชื่อมต่อกับเซิร์ฟเวอร์ได้ กรุณาตรวจสอบว่า backend กำลังทำงานอยู่",
+        "errors.somethingWentWrong": "เกิดข้อผิดพลาด",
+        "errors.technicalDetails": "รายละเอียดทางเทคนิค",
+        "errors.timeout": "คำขอหมดเวลา กรุณาลองอีกครั้ง",
+        "errors.unexpectedError": "เกิดข้อผิดพลาดที่ไม่คาดคิด"
+    }
+}

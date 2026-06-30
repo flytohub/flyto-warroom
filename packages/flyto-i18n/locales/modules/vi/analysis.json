@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "Phân tích khả năng đọc nội dung",
+        "modules.analysis.html.analyze_readability.label": "Khả năng đọc HTML",
+        "modules.analysis.html.extract_forms.description": "Trích xuất dữ liệu form từ HTML",
+        "modules.analysis.html.extract_forms.label": "Trích xuất Forms",
+        "modules.analysis.html.extract_metadata.description": "Trích xuất metadata từ HTML",
+        "modules.analysis.html.extract_metadata.label": "Trích xuất Metadata",
+        "modules.analysis.html.extract_tables.description": "Trích xuất dữ liệu bảng từ HTML",
+        "modules.analysis.html.extract_tables.label": "Trích xuất bảng",
+        "modules.analysis.html.find_patterns.description": "Tìm các mẫu dữ liệu lặp lại trong HTML",
+        "modules.analysis.html.find_patterns.label": "Tìm mẫu",
+        "modules.analysis.html.structure.description": "Phân tích cấu trúc DOM HTML",
+        "modules.analysis.html.structure.label": "Cấu trúc HTML"
+    }
+}

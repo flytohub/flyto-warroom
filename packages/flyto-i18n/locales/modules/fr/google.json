@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Créer un nouvel événement dans Google Agenda",
+        "modules.google.calendar.create_event.label": "Créer un événement dans le calendrier",
+        "modules.google.calendar.create_event.output.end.description": "Heure de fin de l'événement",
+        "modules.google.calendar.create_event.output.event_id.description": "ID de l'événement créé",
+        "modules.google.calendar.create_event.output.html_link.description": "Lien pour voir l'événement dans Google Agenda",
+        "modules.google.calendar.create_event.output.start.description": "Heure de début de l'événement",
+        "modules.google.calendar.create_event.output.summary.description": "Titre de l'événement",
+        "modules.google.calendar.list_events.description": "Lister les événements à venir de Google Agenda",
+        "modules.google.calendar.list_events.label": "Lister les événements du calendrier",
+        "modules.google.calendar.list_events.output.count.description": "Nombre d'événements retournés",
+        "modules.google.calendar.list_events.output.events.description": "Liste des événements du calendrier",
+        "modules.google.gmail.search.description": "Rechercher des messages Gmail en utilisant la syntaxe de requête de recherche Gmail",
+        "modules.google.gmail.search.label": "Recherche Gmail",
+        "modules.google.gmail.search.output.messages.description": "Liste des messages correspondants",
+        "modules.google.gmail.search.output.total.description": "Nombre total de messages retournés",
+        "modules.google.gmail.send.description": "Envoyer un email via l'API Gmail",
+        "modules.google.gmail.send.label": "Envoyer avec Gmail",
+        "modules.google.gmail.send.output.message_id.description": "ID du message Gmail",
+        "modules.google.gmail.send.output.thread_id.description": "ID du fil de discussion Gmail",
+        "modules.google.gmail.send.output.to.description": "Adresse email du destinataire"
+    }
+}

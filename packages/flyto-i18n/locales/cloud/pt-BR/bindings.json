@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.bindings",
+    "version": "1.0.0",
+    "translations": {
+        "bindings.noBinding": "Nenhuma vinculacao definida",
+        "bindings.waitingFor": "Aguardando: {source}"
+    }
+}

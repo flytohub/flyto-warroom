@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "रिप्ले शुरू करने में विफल",
+        "error.fixJsonFirst": "कृपया पहले JSON त्रुटियां ठीक करें",
+        "error.imageTooLarge": "इमेज फ़ाइल बहुत बड़ी है",
+        "error.invalidJsonContext": "कॉन्टेक्स्ट ओवरराइड में अमान्य JSON",
+        "error.noStepsToValidate": "वैलिडेट करने के लिए कोई स्टेप नहीं मिले",
+        "error.replayFailed": "रिप्ले विफल"
+    }
+}

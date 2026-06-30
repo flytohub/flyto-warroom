@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "카테고리",
+        "createModal.category.placeholder": "카테고리 선택 (선택사항)",
+        "createModal.closeDialog": "대화상자 닫기",
+        "createModal.create": "템플릿 생성",
+        "createModal.creating": "생성 중...",
+        "createModal.description.label": "설명",
+        "createModal.description.placeholder": "이 템플릿은 무엇을 하나요? (선택사항)",
+        "createModal.errors.createFailed": "템플릿 생성 실패",
+        "createModal.errors.fileTooLarge": "이미지는 2MB 미만이어야 합니다",
+        "createModal.errors.invalidFileType": "이미지 파일을 선택하세요",
+        "createModal.folder.label": "폴더",
+        "createModal.folder.placeholder": "기본 (폴더 없음)",
+        "createModal.icon.change": "아이콘 변경",
+        "createModal.icon.hint": "PNG, JPG, GIF 최대 2MB",
+        "createModal.icon.label": "템플릿 아이콘",
+        "createModal.icon.remove": "아이콘 제거",
+        "createModal.icon.upload": "아이콘 업로드",
+        "createModal.name.label": "템플릿 이름",
+        "createModal.name.placeholder": "나의 멋진 자동화",
+        "createModal.title": "새 템플릿"
+    }
+}

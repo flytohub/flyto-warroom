@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.pluginType",
+    "version": "1.0.0",
+    "translations": {
+        "pluginType.audio": "音频",
+        "pluginType.embedding": "嵌入",
+        "pluginType.languageModel": "语言模型",
+        "pluginType.multimodal": "多模态",
+        "pluginType.vision": "视觉"
+    }
+}

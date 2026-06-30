@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "analysis",
+    "version": "1.0.0",
+    "translations": {
+        "modules.analysis.html.analyze_readability.description": "Analisis keterbacaan konten",
+        "modules.analysis.html.analyze_readability.label": "Keterbacaan HTML",
+        "modules.analysis.html.extract_forms.description": "Ekstrak data form dari HTML",
+        "modules.analysis.html.extract_forms.label": "Ekstrak Form",
+        "modules.analysis.html.extract_metadata.description": "Ekstrak metadata dari HTML",
+        "modules.analysis.html.extract_metadata.label": "Ekstrak Metadata",
+        "modules.analysis.html.extract_tables.description": "Ekstrak data tabel dari HTML",
+        "modules.analysis.html.extract_tables.label": "Ekstrak Tabel",
+        "modules.analysis.html.find_patterns.description": "Temukan pola data berulang di HTML",
+        "modules.analysis.html.find_patterns.label": "Temukan Pola",
+        "modules.analysis.html.structure.description": "Analisis struktur DOM HTML",
+        "modules.analysis.html.structure.label": "Struktur HTML"
+    }
+}

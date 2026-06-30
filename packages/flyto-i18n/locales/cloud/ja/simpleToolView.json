@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "詳細",
+        "simpleToolView.copy": "コピー",
+        "simpleToolView.download": "ダウンロード",
+        "simpleToolView.downloadFile": "ファイルをダウンロード",
+        "simpleToolView.dropOrClick": "ファイルをドロップまたはクリックしてアップロード",
+        "simpleToolView.failed": "失敗",
+        "simpleToolView.generating": "生成中...",
+        "simpleToolView.input": "入力",
+        "simpleToolView.moreRows": "+{count}行",
+        "simpleToolView.output": "出力",
+        "simpleToolView.processing": "処理中...",
+        "simpleToolView.resultWillAppear": "結果はここに表示されます",
+        "simpleToolView.retry": "再試行",
+        "simpleToolView.selectOption": "オプションを選択",
+        "simpleToolView.start": "開始",
+        "simpleToolView.viewSteps": "ステップを表示"
+    }
+}

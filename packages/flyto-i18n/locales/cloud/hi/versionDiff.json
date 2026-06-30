@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.versionDiff",
+    "version": "1.0.0",
+    "translations": {
+        "versionDiff.added": "जोड़ा गया",
+        "versionDiff.addedItems": "जोड़े गए आइटम",
+        "versionDiff.compare": "तुलना करें",
+        "versionDiff.computing": "गणना हो रही है",
+        "versionDiff.current": "वर्तमान",
+        "versionDiff.from": "से",
+        "versionDiff.modified": "संशोधित",
+        "versionDiff.modifiedItems": "संशोधित आइटम",
+        "versionDiff.new": "नया",
+        "versionDiff.noChanges": "कोई परिवर्तन नहीं",
+        "versionDiff.old": "पुराना",
+        "versionDiff.removed": "हटाया गया",
+        "versionDiff.removedItems": "हटाए गए आइटम",
+        "versionDiff.selectVersions": "संस्करण चुनें",
+        "versionDiff.title": "संस्करण तुलना",
+        "versionDiff.to": "तक"
+    }
+}

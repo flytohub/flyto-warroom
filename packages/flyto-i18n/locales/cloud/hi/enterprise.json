@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.enterprise",
+    "version": "1.0.0",
+    "translations": {
+        "enterprise.actions.notSupported": "Action not supported",
+        "enterprise.errors.actionFailed": "क्रिया विफल",
+        "enterprise.errors.loadFailed": "Failed to load",
+        "enterprise.robotsOnline": "रोबोट्स ऑनलाइन",
+        "enterprise.subtitle": "उद्यम स्वचालन उपकरण",
+        "enterprise.tabs.idp": "दस्तावेज़ प्रसंस्करण",
+        "enterprise.tabs.mining": "प्रक्रिया माइनिंग",
+        "enterprise.tabs.orchestrator": "ऑर्केस्ट्रेटर",
+        "enterprise.tabs.queues": "कतारें",
+        "enterprise.tabs.rpa": "RPA",
+        "enterprise.tabs.scheduler": "अनुसूचक",
+        "enterprise.tabs.stateMachine": "स्टेट मशीन",
+        "enterprise.title": "उद्यम"
+    }
+}

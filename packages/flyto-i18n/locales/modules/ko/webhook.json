@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "webhook",
+    "version": "1.0.0",
+    "translations": {
+        "modules.webhook.trigger.description": "웹훅 URL로 HTTP POST 요청 전송",
+        "modules.webhook.trigger.label": "웹훅 트리거",
+        "modules.webhook.trigger.output.headers.description": "HTTP 응답 상태 코드",
+        "modules.webhook.trigger.output.response.description": "HTTP 응답 상태 코드",
+        "modules.webhook.trigger.output.status_code.description": "HTTP 응답 상태 코드"
+    }
+}

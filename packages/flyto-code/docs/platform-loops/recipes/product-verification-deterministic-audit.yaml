@@ -1,0 +1,39 @@
+id: product-verification-deterministic-audit
+surface: code_redteam
+description: Verify the deterministic Product Verification page is wired to engine Warroom runs, cache invalidation, and evidence-backed replay controls.
+requires:
+  - frontend
+  - engine
+steps:
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/product-verification?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+  - module: api.request
+    method: GET
+    url: "{{engineUrl}}/api/v1/code/orgs/{{orgId}}/warroom-verification/runs"
+assertions:
+  - assert: route_renders_without_error
+    step: 1
+  - assert: query_key_present
+    query_key: warroom-verification-runs
+  - assert: api_path_present
+    path: /warroom-verification/runs
+  - assert: event_invalidates_query
+    event: campaign_execution.updated
+    invalidates: qk.warroomVerification.runs
+  - assert: dom_contains
+    step: 2
+    text: Evidence Pack
+  - assert: dom_contains
+    step: 2
+    text: Replay Timeline
+  - assert: dom_contains
+    step: 2
+    text: Network/API
+  - assert: dom_contains
+    step: 2
+    text: RBAC matrix
+  - assert: http_status
+    step: 3
+    status: 200

@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.wallet",
+  "version": "1.0.0",
+  "translations": {
+    "wallet.availableCredits": "",
+    "wallet.balanceAfter": "",
+    "wallet.confirmAndExecute": "",
+    "wallet.confirmExecute": "",
+    "wallet.conversionNote": "",
+    "wallet.executionCost": "",
+    "wallet.history": "",
+    "wallet.insufficientCredits": "",
+    "wallet.lowBalanceWarning": "",
+    "wallet.needMore": "",
+    "wallet.noTransactions": "",
+    "wallet.proceedToPayment": "",
+    "wallet.title": "",
+    "wallet.topup": "",
+    "wallet.topupCancelled": "",
+    "wallet.topupNow": "",
+    "wallet.topupSuccess": "",
+    "wallet.topupTitle": "",
+    "wallet.yourBalance": ""
+  }
+}

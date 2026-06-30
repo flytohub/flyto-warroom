@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "Valor do reembolso",
+        "refund.cancelButton": "Cancelar",
+        "refund.confirm": "Confirmar reembolso",
+        "refund.confirmButton": "Confirmar Reembolso",
+        "refund.confirmTitle": "Confirmar Pedido de Reembolso",
+        "refund.contactSupport": "Contatar suporte",
+        "refund.days": "Dias para reembolso",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "Você está elegível para um reembolso",
+        "refund.expiredWindow": "O período de reembolso de 30 dias expirou",
+        "refund.failed": "Falha ao solicitar reembolso",
+        "refund.forksAffected": "Os seguintes forks ficarão órfãos (suas edições serão preservadas, mas desconectadas da fonte):",
+        "refund.forksWarning": "Aviso de forks",
+        "refund.notEligible": "Não elegível para reembolso",
+        "refund.processInfo": "Informações do processo de reembolso",
+        "refund.processing": "Processando...",
+        "refund.success": "Reembolso solicitado com sucesso",
+        "refund.template": "Modelo de reembolso",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "Descrição do aviso"
+    }
+}

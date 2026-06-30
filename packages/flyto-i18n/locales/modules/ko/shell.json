@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "셸 명령 실행 및 출력 캡처",
+        "modules.shell.exec.label": "셸 명령 실행",
+        "modules.shell.exec.output.command.description": "표준 출력",
+        "modules.shell.exec.output.cwd.description": "표준 오류 출력",
+        "modules.shell.exec.output.duration_ms.description": "실행된 명령",
+        "modules.shell.exec.output.exit_code.description": "명령 실행 성공 여부 (종료 코드 0)",
+        "modules.shell.exec.output.ok.description": "명령 실행 성공 여부 (종료 코드 0)",
+        "modules.shell.exec.output.stderr.description": "명령 종료 코드",
+        "modules.shell.exec.output.stdout.description": "명령 실행 성공 여부 (종료 코드 0)"
+    }
+}

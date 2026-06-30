@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.huggingface",
+    "version": "1.0.0",
+    "translations": {
+        "huggingface.browseMoreModels": "その他のモデルを閲覧",
+        "huggingface.chooseModel": "モデルを選択",
+        "huggingface.inferenceAPI": "推論API",
+        "huggingface.installedModels": "インストール済みモデル",
+        "huggingface.localExecution": "ローカル実行",
+        "huggingface.noModelsAvailable": "利用可能なモデルがありません",
+        "huggingface.notInstalled": "未インストール",
+        "huggingface.popularModels": "人気のモデル",
+        "huggingface.selectModel": "モデルを選択"
+    }
+}

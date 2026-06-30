@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Listar todos los procesos en segundo plano en ejecucion",
+        "modules.process.list.label": "Listar procesos",
+        "modules.process.list.output.count.description": "Exito de la operacion",
+        "modules.process.list.output.ok.description": "Exito de la operacion",
+        "modules.process.list.output.processes.description": "Exito de la operacion",
+        "modules.process.list.output.running.description": "Lista de informacion de procesos",
+        "modules.process.list.output.stopped.description": "Numero total de procesos",
+        "modules.process.start.description": "Iniciar un proceso en segundo plano (servidor, servicio, etc.)",
+        "modules.process.start.label": "Iniciar proceso en segundo plano",
+        "modules.process.start.output.command.description": "Identificador interno de proceso para process.stop",
+        "modules.process.start.output.cwd.description": "Nombre del proceso",
+        "modules.process.start.output.initial_output.description": "Marca de tiempo ISO cuando inicio el proceso",
+        "modules.process.start.output.name.description": "ID del proceso",
+        "modules.process.start.output.ok.description": "Si el proceso inicio exitosamente",
+        "modules.process.start.output.pid.description": "Si el proceso inicio exitosamente",
+        "modules.process.start.output.process_id.description": "Si el proceso inicio exitosamente",
+        "modules.process.start.output.started_at.description": "El comando ejecutado",
+        "modules.process.stop.description": "Detener un proceso en segundo plano en ejecucion",
+        "modules.process.stop.label": "Detener proceso",
+        "modules.process.stop.output.count.description": "Lista de informacion de procesos detenidos",
+        "modules.process.stop.output.failed.description": "Lista de informacion de procesos detenidos",
+        "modules.process.stop.output.ok.description": "Si todos los procesos fueron detenidos exitosamente",
+        "modules.process.stop.output.stopped.description": "Si todos los procesos fueron detenidos exitosamente"
+    }
+}

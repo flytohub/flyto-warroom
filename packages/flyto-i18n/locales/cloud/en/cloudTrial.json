@@ -1,0 +1,14 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "en",
+  "category": "cloud.cloudTrial",
+  "version": "1.0.0",
+  "translations": {
+    "cloudTrial.daysRemaining": "Days Remaining",
+    "cloudTrial.expired": "Expired",
+    "cloudTrial.navBadge": "Nav Badge",
+    "cloudTrial.planLabel": "Plan Label",
+    "cloudTrial.trialActive": "Trial Active",
+    "cloudTrial.upgrade": "Upgrade"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "zh-TW",
+  "category": "cloud.categories",
+  "version": "1.0.0",
+  "translations": {
+    "categories.ai": "人工智慧",
+    "categories.api": "API",
+    "categories.array": "陣列",
+    "categories.browser": "瀏覽器",
+    "categories.cloud": "雲端",
+    "categories.code": "程式碼",
+    "categories.composite": "複合模組",
+    "categories.connector": "API 連接器",
+    "categories.data": "資料處理",
+    "categories.datetime": "日期時間",
+    "categories.element": "元素操作",
+    "categories.file": "檔案",
+    "categories.flow": "流程控制",
+    "categories.form": "表單輸入",
+    "categories.http": "HTTP",
+    "categories.huggingface": "HuggingFace",
+    "categories.image": "圖片",
+    "categories.llm": "語言模型",
+    "categories.math": "數學",
+    "categories.my-templates": "我的模板",
+    "categories.notification": "通知",
+    "categories.object": "物件",
+    "categories.other": "其他",
+    "categories.string": "字串",
+    "categories.utility": "工具"
+  }
+}

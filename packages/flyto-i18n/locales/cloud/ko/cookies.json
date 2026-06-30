@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "항상 사용",
+        "cookies.lastUpdated": "최종 업데이트",
+        "cookies.optional": "선택사항",
+        "cookies.preferencesSaved": "환경설정이 성공적으로 저장되었습니다",
+        "cookies.savePreferences": "환경설정 저장",
+        "cookies.sections.manage.content": "어떤 선택적 쿠키를 허용할지 제어할 수 있습니다. 필수 쿠키는 웹사이트 작동에 필요하므로 비활성화할 수 없습니다.",
+        "cookies.sections.manage.title": "환경설정 관리",
+        "cookies.sections.types.analytics.content": "이 쿠키는 정보를 익명으로 수집하고 보고하여 방문자가 웹사이트와 어떻게 상호작용하는지 이해하는 데 도움을 줍니다. 이를 통해 서비스를 개선할 수 있습니다.",
+        "cookies.sections.types.analytics.title": "분석 쿠키",
+        "cookies.sections.types.essential.content": "이 쿠키는 웹사이트가 제대로 작동하는 데 필요합니다. 페이지 탐색 및 보안 영역 접근과 같은 기본 기능을 활성화합니다. 이 쿠키 없이는 웹사이트가 제대로 작동할 수 없습니다.",
+        "cookies.sections.types.essential.title": "필수 쿠키",
+        "cookies.sections.types.functional.content": "이 쿠키는 언어 환경설정, 테마 설정 및 로그인 상태를 기억하는 등의 개인화된 기능을 활성화합니다. 사용자 경험을 향상시키지만 필수는 아닙니다.",
+        "cookies.sections.types.functional.title": "기능성 쿠키",
+        "cookies.sections.types.title": "사용하는 쿠키 유형",
+        "cookies.sections.what.content": "쿠키는 웹사이트를 방문할 때 기기에 저장되는 작은 텍스트 파일입니다. 사용자의 환경설정을 기억하고 서비스 사용 방식을 이해하여 더 나은 경험을 제공하는 데 도움을 줍니다.",
+        "cookies.sections.what.title": "쿠키란?",
+        "cookies.title": "쿠키 설정"
+    }
+}

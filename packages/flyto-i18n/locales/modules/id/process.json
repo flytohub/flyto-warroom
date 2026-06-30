@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Daftar semua proses background yang berjalan",
+        "modules.process.list.label": "Daftar Proses",
+        "modules.process.list.output.count.description": "Operasi berhasil",
+        "modules.process.list.output.ok.description": "Operasi berhasil",
+        "modules.process.list.output.processes.description": "Operasi berhasil",
+        "modules.process.list.output.running.description": "Daftar informasi proses",
+        "modules.process.list.output.stopped.description": "Total jumlah proses",
+        "modules.process.start.description": "Mulai proses background (server, layanan, dll.)",
+        "modules.process.start.label": "Mulai Proses Background",
+        "modules.process.start.output.command.description": "Identifier proses internal untuk process.stop",
+        "modules.process.start.output.cwd.description": "Nama proses",
+        "modules.process.start.output.initial_output.description": "Timestamp ISO saat proses dimulai",
+        "modules.process.start.output.name.description": "ID Proses",
+        "modules.process.start.output.ok.description": "Apakah proses berhasil dimulai",
+        "modules.process.start.output.pid.description": "Apakah proses berhasil dimulai",
+        "modules.process.start.output.process_id.description": "Apakah proses berhasil dimulai",
+        "modules.process.start.output.started_at.description": "Perintah yang dieksekusi",
+        "modules.process.stop.description": "Hentikan proses background yang berjalan",
+        "modules.process.stop.label": "Hentikan Proses",
+        "modules.process.stop.output.count.description": "Daftar info proses yang dihentikan",
+        "modules.process.stop.output.failed.description": "Daftar info proses yang dihentikan",
+        "modules.process.stop.output.ok.description": "Apakah semua proses berhasil dihentikan",
+        "modules.process.stop.output.stopped.description": "Apakah semua proses berhasil dihentikan"
+    }
+}

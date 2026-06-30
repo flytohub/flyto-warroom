@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script>
+            // Prevent FOUC: apply dark/light class before first paint
+            (function(){
+                var m = localStorage.getItem('flyto-theme-mode');
+                if (!m) m = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                document.documentElement.classList.add(m);
+                if (m === 'dark') document.documentElement.style.colorScheme = 'dark';
+            })();
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
+        <meta name="theme-color" content="#000000">
+        <base href="/">
+        <link rel="shortcut icon" href="/favicon.ico">
+
+        <!-- Resource hints — operator perf request 2026-05-22
+             "頁面不覺得慢". `preconnect` warms the TLS handshake to
+             Google Fonts before the stylesheet request lands;
+             `dns-prefetch` is the fallback for browsers that don't
+             honour preconnect. `crossorigin` is required on the
+             fonts.gstatic preconnect (CORS-enabled font file fetch). -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <!-- Material Icons load via `media="print" onload` so they
+             don't block first paint. The two icon families together
+             add ~120KB of render-blocking CSS; deferring them moves
+             LCP earlier without losing icon coverage (icons fade
+             in once CSS lands ~200ms later). -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" media="print" onload="this.media='all'">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" media="print" onload="this.media='all'">
+
+        <noscript id="emotion-insertion-point"></noscript>
+        <title>Flyto2 Warroom</title>
+
+        <!--
+          Crawler discouragement during the /explore lockdown
+          (2026-05-18). robots.txt at the host root issues
+          Disallow: /, but `noindex,nofollow` on the document
+          backstops bots that ignore robots. Generic OG card so
+          shared sign-in links still preview cleanly.
+        -->
+        <meta name="robots" content="noindex,nofollow">
+        <meta name="description" content="Flyto2 Warroom — Sign-in required.">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Flyto2">
+        <meta property="og:title" content="Flyto2 Warroom">
+        <meta property="og:description" content="Sign in to access Flyto2 Warroom.">
+        <meta name="twitter:card" content="summary">
+
+        <style>
+            body #fuse-splash-screen {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background-color: #121212;
+                color: #E0E0E0;
+                z-index: 999999;
+                pointer-events: none;
+                opacity: 1;
+                visibility: visible;
+                transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+            }
+            body #fuse-splash-screen img { width: 120px; max-width: 120px; }
+            #spinner {
+                display: flex; align-items: center; justify-content: space-between;
+                margin-top: 40px; width: 56px;
+            }
+            #spinner > div {
+                width: 12px; height: 12px; background-color: #7c3aed;
+                border-radius: 100%; display: inline-block;
+                animation: fuse-bouncedelay 1s infinite ease-in-out both;
+            }
+            #spinner .bounce1 { animation-delay: -0.32s; }
+            #spinner .bounce2 { animation-delay: -0.16s; }
+            @keyframes fuse-bouncedelay {
+                0%, 80%, 100% { transform: scale(0); }
+                40% { transform: scale(1.0); }
+            }
+        </style>
+    </head>
+    <body id="root">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="app" class="flex">
+        <div id="fuse-splash-screen">
+            <div class="logo">
+                <img width="128" src="/favicon.svg" alt="Flyto2 Warroom">
+            </div>
+            <div id="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src-next/index.tsx"></script>
+    </body>
+</html>

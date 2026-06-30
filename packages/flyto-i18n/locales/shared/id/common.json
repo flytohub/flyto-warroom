@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "common",
+    "version": "1.0.0",
+    "translations": {
+        "common.params.description.description": "Deskripsi alur kerja kesalahan ini",
+        "common.params.description.label": "Deskripsi",
+        "common.ports.error": "Output",
+        "common.pleaseSelect": "Silakan pilih…"
+    }
+}

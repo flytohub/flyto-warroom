@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.observability",
+    "version": "1.0.0",
+    "translations": {
+        "observability.subtitle": "Monitoruj wykonania przeplywow i wydajnosc",
+        "observability.tabs.alerts": "Alerty",
+        "observability.tabs.metrics": "Metryki",
+        "observability.tabs.traces": "Sledzenie",
+        "observability.timeRange.24h": "Ostatnie 24 godziny",
+        "observability.timeRange.30d": "Ostatnie 30 dni",
+        "observability.timeRange.7d": "Ostatnie 7 dni",
+        "observability.timeRange.90d": "Ostatnie 90 dni",
+        "observability.title": "Obserwowalnosc"
+    }
+}

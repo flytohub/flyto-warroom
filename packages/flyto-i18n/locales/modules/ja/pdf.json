@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "pdf",
+    "version": "1.0.0",
+    "translations": {
+        "modules.pdf.fill_form.description": "PDFフォームフィールドにデータを入力し、オプションで画像を挿入",
+        "modules.pdf.fill_form.label": "PDFフォーム入力",
+        "modules.pdf.fill_form.output.fields_filled.description": "入力済みPDFのパス",
+        "modules.pdf.fill_form.output.file_size_bytes.description": "挿入された画像の数",
+        "modules.pdf.fill_form.output.images_inserted.description": "入力済みPDFのパス",
+        "modules.pdf.fill_form.output.output_path.description": "入力済みPDFのパス",
+        "modules.pdf.generate.description": "HTMLコンテンツまたはテキストからPDFファイルを生成",
+        "modules.pdf.generate.label": "PDF生成",
+        "modules.pdf.generate.output.file_size_bytes.description": "PDFのページ数",
+        "modules.pdf.generate.output.output_path.description": "生成されたPDFのパス",
+        "modules.pdf.generate.output.page_count.description": "生成されたPDFのパス",
+        "modules.pdf.parse.description": "PDFファイルからテキストとメタデータを抽出",
+        "modules.pdf.parse.label": "PDFパース",
+        "modules.pdf.parse.output.metadata.description": "抽出されたテキストコンテンツ",
+        "modules.pdf.parse.output.page_count.description": "ページごとのテキストコンテンツ",
+        "modules.pdf.parse.output.pages.description": "抽出されたテキストコンテンツ",
+        "modules.pdf.parse.output.text.description": "抽出されたテキストコンテンツ",
+        "modules.pdf.to_word.description": "PDFファイルをWordドキュメント（.docx）に変換",
+        "modules.pdf.to_word.label": "PDF → Word",
+        "modules.pdf.to_word.output.file_size.description": "変換されたページ数",
+        "modules.pdf.to_word.output.output_path.description": "生成されたWordドキュメントのパス",
+        "modules.pdf.to_word.output.page_count.description": "生成されたWordドキュメントのパス"
+    }
+}

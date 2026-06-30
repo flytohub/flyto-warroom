@@ -1,0 +1,20 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "pt-BR",
+  "category": "cloud.team",
+  "version": "1.0.0",
+  "translations": {
+    "team.activity.empty": "Nenhuma atividade recente",
+    "team.activity.title": "Atividade Recente",
+    "team.contributors.created": "Criado",
+    "team.contributors.empty": "Nenhum colaborador ainda",
+    "team.contributors.executed": "Executado",
+    "team.contributors.title": "Colaboradores",
+    "team.dashboard.subtitle": "Visao geral da atividade da sua equipe",
+    "team.dashboard.title": "Painel da Equipe",
+    "team.stats.executions": "Execucoes",
+    "team.stats.members": "Membros",
+    "team.stats.templates": "Templates",
+    "team.stats.workflows": "Fluxos de trabalho"
+  }
+}

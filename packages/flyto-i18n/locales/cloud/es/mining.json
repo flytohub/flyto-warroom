@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.mining",
+    "version": "1.0.0",
+    "translations": {
+        "mining.bottlenecks.empty": "No se encontraron cuellos de botella",
+        "mining.bottlenecks.title": "Cuellos de botella",
+        "mining.discovery.analyze": "Analizar",
+        "mining.discovery.empty": "No hay datos para analizar",
+        "mining.discovery.selectWorkflow": "Selecciona un flujo de trabajo para analizar",
+        "mining.discovery.title": "Descubrimiento de procesos",
+        "mining.quality.fitness": "Ajuste",
+        "mining.quality.generalization": "Generalización",
+        "mining.quality.precision": "Precisión",
+        "mining.stats.avgDuration": "Duración promedio",
+        "mining.stats.cases": "Casos",
+        "mining.stats.conformance": "Conformidad",
+        "mining.stats.variants": "Variantes",
+        "mining.suggestions.apply": "Aplicar",
+        "mining.suggestions.empty": "No hay sugerencias",
+        "mining.suggestions.title": "Sugerencias",
+        "mining.variants.empty": "No hay variantes",
+        "mining.variants.title": "Variantes de proceso"
+    }
+}

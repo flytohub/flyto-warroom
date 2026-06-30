@@ -1,0 +1,19 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "zh-TW",
+  "category": "cloud.linkedAccounts",
+  "version": "1.0.0",
+  "translations": {
+    "linkedAccounts.cannotUnlink": "無法解除綁定 — 您至少需要一種登入方式",
+    "linkedAccounts.google": "Google",
+    "linkedAccounts.link": "綁定帳號",
+    "linkedAccounts.linkSuccess": "Google 帳號綁定成功",
+    "linkedAccounts.linked": "已連結",
+    "linkedAccounts.notLinked": "未連結",
+    "linkedAccounts.subtitle": "管理您的登入方式",
+    "linkedAccounts.title": "連結帳號",
+    "linkedAccounts.unlink": "解除綁定",
+    "linkedAccounts.unlinkConfirm": "確定要解除 Google 綁定嗎？",
+    "linkedAccounts.unlinkSuccess": "Google 帳號已解除綁定"
+  }
+}

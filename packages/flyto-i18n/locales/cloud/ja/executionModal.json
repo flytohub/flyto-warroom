@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "実行をクリックしてこのワークフローを実行",
+        "executionModal.execute": "実行",
+        "executionModal.executing": "ワークフローを実行中...",
+        "executionModal.executionComplete": "実行完了",
+        "executionModal.executionFailed": "実行失敗",
+        "executionModal.noParamsRequired": "入力パラメータは不要です",
+        "executionModal.runAgain": "再実行",
+        "executionModal.status.completed": "完了",
+        "executionModal.status.failed": "失敗",
+        "executionModal.status.ready": "準備完了",
+        "executionModal.status.running": "実行中",
+        "executionModal.stop": "停止",
+        "executionModal.title": "ワークフローを実行"
+    }
+}

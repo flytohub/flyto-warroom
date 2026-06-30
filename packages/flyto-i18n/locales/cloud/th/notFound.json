@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "กรุณาตรวจสอบ URL และลองอีกครั้ง",
+        "notFound.contactSupport": "ติดต่อฝ่ายสนับสนุน",
+        "notFound.goBack": "กลับ",
+        "notFound.goHome": "ไปหน้าหลัก",
+        "notFound.helpText": "ต้องการความช่วยเหลือ?",
+        "notFound.message": "หน้าที่คุณกำลังค้นหาไม่มีอยู่หรือถูกย้ายแล้ว",
+        "notFound.myTemplates": "เทมเพลตของฉัน",
+        "notFound.pageNotExist": "หน้านี้ไม่มีอยู่",
+        "notFound.suggestion1": "ตรวจสอบ URL ว่าพิมพ์ผิดหรือไม่",
+        "notFound.suggestion2": "กลับไปหน้าก่อนหน้า",
+        "notFound.suggestion3": "นำทางไปยังเทมเพลตของคุณ",
+        "notFound.suggestions": "สิ่งที่คุณสามารถทำได้:",
+        "notFound.title": "ไม่พบหน้า"
+    }
+}

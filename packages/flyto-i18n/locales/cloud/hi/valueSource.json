@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "hi",
+  "category": "cloud.valueSource",
+  "version": "1.0.0",
+  "translations": {
+    "valueSource.booleanFalse": "नहीं / False",
+    "valueSource.booleanTrue": "हाँ / True",
+    "valueSource.browsePath": "Browse Path",
+    "valueSource.changeSource": "मान स्रोत बदलें",
+    "valueSource.defaultPlaceholder": "मान दर्ज करें...",
+    "valueSource.expressionHint": "उपलब्ध: steps.{id}.result, ui.{field}, env.{var}",
+    "valueSource.expressionPlaceholder": "steps.step1.result या ui.search_keyword",
+    "valueSource.noPreviousSteps": "कोई पिछले चरण उपलब्ध नहीं",
+    "valueSource.noUIFields": "कोई UI इनपुट फ़ील्ड परिभाषित नहीं",
+    "valueSource.selectSourceType": "स्रोत प्रकार चुनें",
+    "valueSource.selectStepOutput": "चरण आउटपुट चुनें...",
+    "valueSource.selectText": "टेक्स्ट",
+    "valueSource.selectUIField": "UI फ़ील्ड चुनें...",
+    "valueSource.selectValue": "मान",
+    "valueSource.sources.expression.description": "उन्नत डायनामिक मान",
+    "valueSource.sources.expression.label": "एक्सप्रेशन",
+    "valueSource.sources.previousStep.description": "पिछले चरण से आउटपुट का उपयोग करें",
+    "valueSource.sources.previousStep.label": "पिछले चरण से",
+    "valueSource.sources.static.description": "एक निश्चित मान दर्ज करें",
+    "valueSource.sources.static.label": "स्थिर मान",
+    "valueSource.sources.uiInput.description": "फ्रंटएंड फॉर्म फ़ील्ड से लिंक करें",
+    "valueSource.sources.uiInput.label": "UI इनपुट से"
+  }
+}

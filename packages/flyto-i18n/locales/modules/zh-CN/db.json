@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "从 MongoDB 集合查找文档",
+        "modules.db.mongodb.find.label": "MongoDB 查找",
+        "modules.db.mongodb.find.output.count.description": "符合条件的文档数量",
+        "modules.db.mongodb.find.output.documents.description": "符合条件的文档数组",
+        "modules.db.mongodb.insert.description": "将一个或多个文档插入 MongoDB 集合",
+        "modules.db.mongodb.insert.label": "MongoDB 插入",
+        "modules.db.mongodb.insert.output.inserted_count.description": "插入的文档数量",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "插入的文档 ID 列表",
+        "modules.db.mysql.query.description": "在 MySQL 数据库运行 SQL 查找并回传结果",
+        "modules.db.mysql.query.label": "MySQL 查找",
+        "modules.db.mysql.query.output.columns.description": "字段名称列表",
+        "modules.db.mysql.query.output.row_count.description": "结果列数",
+        "modules.db.mysql.query.output.rows.description": "结果列对象数组",
+        "modules.db.postgresql.query.description": "在 PostgreSQL 数据库运行 SQL 查找并回传结果",
+        "modules.db.postgresql.query.label": "PostgreSQL 查找",
+        "modules.db.postgresql.query.output.columns.description": "字段名称列表",
+        "modules.db.postgresql.query.output.row_count.description": "结果列数",
+        "modules.db.postgresql.query.output.rows.description": "结果列对象数组",
+        "modules.db.redis.get.description": "从 Redis 缓存取得值",
+        "modules.db.redis.get.label": "Redis 取得",
+        "modules.db.redis.get.output.exists.description": "键是否存在",
+        "modules.db.redis.get.output.key.description": "查找的键",
+        "modules.db.redis.get.output.value.description": "回传的值",
+        "modules.db.redis.set.description": "在 Redis 缓存设置值",
+        "modules.db.redis.set.label": "Redis 设置"
+    }
+}

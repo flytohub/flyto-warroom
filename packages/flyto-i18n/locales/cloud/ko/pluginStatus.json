@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.pluginStatus",
+    "version": "1.0.0",
+    "translations": {
+        "pluginStatus.downloading": "다운로드 중",
+        "pluginStatus.installed": "설치됨",
+        "pluginStatus.loaded": "로드됨",
+        "pluginStatus.loading": "로딩 중",
+        "pluginStatus.notInstalled": "설치되지 않음",
+        "pluginStatus.unloading": "언로드 중"
+    }
+}

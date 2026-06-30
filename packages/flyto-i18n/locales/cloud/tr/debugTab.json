@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.debugTab",
+    "version": "1.0.0",
+    "translations": {
+        "debugTab.context": "Bağlam",
+        "debugTab.output": "Çıkış",
+        "debugTab.screenshot": "Ekran Görüntüsü"
+    }
+}

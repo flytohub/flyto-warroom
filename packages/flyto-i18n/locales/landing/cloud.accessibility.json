@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.accessibility",
+  "version": "1.0.0",
+  "translations": {
+    "accessibility.breadcrumb": "",
+    "accessibility.clearInput": "",
+    "accessibility.closeDialog": "",
+    "accessibility.closeMenu": "",
+    "accessibility.closeModal": "",
+    "accessibility.copyToClipboard": "",
+    "accessibility.imageEditingControls": "",
+    "accessibility.notifications": "",
+    "accessibility.openMenu": "",
+    "accessibility.rating": "",
+    "accessibility.refreshList": "",
+    "accessibility.removeIcon": "",
+    "accessibility.resetImage": "",
+    "accessibility.revokeKey": "",
+    "accessibility.rotateLeft": "",
+    "accessibility.rotateRight": "",
+    "accessibility.showInMarketplace": "",
+    "accessibility.zoomIn": "",
+    "accessibility.zoomOut": ""
+  }
+}

@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Neues Ereignis im Google Kalender erstellen",
+        "modules.google.calendar.create_event.label": "Kalender Ereignis erstellen",
+        "modules.google.calendar.create_event.output.end.description": "Ereignisende",
+        "modules.google.calendar.create_event.output.event_id.description": "Erstellte Ereignis-ID",
+        "modules.google.calendar.create_event.output.html_link.description": "Link zur Ansicht des Ereignisses im Google Kalender",
+        "modules.google.calendar.create_event.output.start.description": "Ereignisbeginn",
+        "modules.google.calendar.create_event.output.summary.description": "Ereignistitel",
+        "modules.google.calendar.list_events.description": "Bevorstehende Ereignisse aus dem Google Kalender auflisten",
+        "modules.google.calendar.list_events.label": "Kalender Ereignisse auflisten",
+        "modules.google.calendar.list_events.output.count.description": "Anzahl der zurückgegebenen Ereignisse",
+        "modules.google.calendar.list_events.output.events.description": "Liste der Kalenderereignisse",
+        "modules.google.gmail.search.description": "Gmail-Nachrichten mit der Gmail-Suchsyntax durchsuchen",
+        "modules.google.gmail.search.label": "Gmail-Suche",
+        "modules.google.gmail.search.output.messages.description": "Liste der passenden Nachrichten",
+        "modules.google.gmail.search.output.total.description": "Gesamtanzahl der zurückgegebenen Nachrichten",
+        "modules.google.gmail.send.description": "E-Mail über die Gmail API senden",
+        "modules.google.gmail.send.label": "Gmail senden",
+        "modules.google.gmail.send.output.message_id.description": "Gmail-Nachrichten-ID",
+        "modules.google.gmail.send.output.thread_id.description": "Gmail-Thread-ID",
+        "modules.google.gmail.send.output.to.description": "E-Mail-Adresse des Empfängers"
+    }
+}

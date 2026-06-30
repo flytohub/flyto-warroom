@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "ตัวแปรที่มี",
+        "code.inputAllDesc": "รายการทั้งหมดจากขั้นตอนก่อนหน้า",
+        "code.inputFirstDesc": "รายการแรกเท่านั้น",
+        "code.jsonDesc": "ข้อมูลรายการปัจจุบัน (alias)",
+        "code.language": "ภาษา",
+        "code.localExecutionNotice": "โค้ดทำงานในเครื่องของคุณเพื่อความปลอดภัย",
+        "code.sourceCode": "ซอร์สโค้ด"
+    }
+}

@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "환불 금액",
+        "refund.cancelButton": "취소",
+        "refund.confirm": "환불 확인",
+        "refund.confirmButton": "환불 확인",
+        "refund.confirmTitle": "환불 요청 확인",
+        "refund.contactSupport": "지원팀에 문의",
+        "refund.days": "환불 처리일",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "환불 받을 수 있습니다",
+        "refund.expiredWindow": "30일 환불 기간이 만료되었습니다",
+        "refund.failed": "환불 요청에 실패했습니다",
+        "refund.forksAffected": "다음 포크가 고아 상태가 됩니다 (편집 내용은 보존되지만 원본과 연결이 끊어집니다):",
+        "refund.forksWarning": "포크 경고",
+        "refund.notEligible": "환불 불가",
+        "refund.processInfo": "환불 절차 정보",
+        "refund.processing": "처리 중...",
+        "refund.success": "환불 요청이 성공적으로 접수되었습니다",
+        "refund.template": "환불 템플릿",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "경고 설명"
+    }
+}

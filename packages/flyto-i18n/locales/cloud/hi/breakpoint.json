@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "अतिरिक्त इनपुट",
+        "breakpoint.approve": "स्वीकृत करें",
+        "breakpoint.comment": "टिप्पणी",
+        "breakpoint.commentPlaceholder": "टिप्पणी जोड़ें...",
+        "breakpoint.contextSnapshot": "कॉन्टेक्स्ट स्नैपशॉट",
+        "breakpoint.createdAt": "बनाया गया",
+        "breakpoint.expires": "समाप्ति",
+        "breakpoint.humanCheckpoint": "ह्यूमन चेकपॉइंट",
+        "breakpoint.noBreakpoint": "कोई ब्रेकपॉइंट सेट नहीं",
+        "breakpoint.noPending": "कोई लंबित अनुमोदन नहीं",
+        "breakpoint.pendingApprovals": "लंबित अनुमोदन",
+        "breakpoint.reject": "अस्वीकार करें",
+        "breakpoint.step": "स्टेप",
+        "breakpoint.waitingApproval": "अनुमोदन की प्रतीक्षा",
+        "breakpoint.workflow": "वर्कफ़्लो",
+        "browserInteract.execute": "चलाएँ",
+        "browserInteract.noElements": "कोई इंटरैक्टिव तत्व नहीं मिला",
+        "browserInteract.pagePreview": "पेज पूर्वावलोकन",
+        "browserInteract.selectHint": "इंटरैक्ट करने के लिए एक तत्व चुनें",
+        "browserInteract.skip": "छोड़ें",
+        "browserInteract.title": "ब्राउज़र इंटरैक्शन"
+    }
+}

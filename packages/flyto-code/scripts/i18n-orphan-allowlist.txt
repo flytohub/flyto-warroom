@@ -1,0 +1,90 @@
+# i18n orphan allowlist — keys referenced in src-next/ that are not yet
+# in flyto-i18n/dist/code/en.json.
+#
+# These represent the baseline set of missing translations as of 2026-05-31.
+# Keys NOT in this list will fail CI if they are added to code without a
+# corresponding translation entry. To add a new feature key: add it to
+# flyto-i18n first (en.json + zh-TW.json + zh-CN.json), rebuild dist,
+# copy to public/i18n/, THEN use it in code.
+#
+# To remove a key from the allowlist once it has been translated:
+#   1. Add the key to flyto-i18n/locales/code/{en,zh-TW,zh-CN}/code.json
+#   2. Run: cd flyto-i18n && python3 scripts/build-dist.py
+#   3. Copy: cp -r dist/code/* ../flyto-code/public/i18n/code/
+#   4. Remove the line from this file
+
+# Cloud CSPM / Operations / Cloud-project feature keys (deferred 2026-06-03).
+# These features (Cloud posture/findings/connect, Operations health panels,
+# the cloud project type, a few dashboard/findings strings) shipped UI ahead
+# of their flyto-i18n translations — main CI went red ~2026-06-02 on the
+# drift, blocking every PR. English fallback is shown via tOr() meanwhile.
+# Remove each line as it lands in flyto-i18n (the team is translating in
+# batches; the prior pass cleared 88 keys). See the
+# project_flyto_code_main_ci_red_i18n memory.
+cloud.col.account
+cloud.col.avgScore
+cloud.col.check
+cloud.col.provider
+cloud.col.region
+cloud.col.resource
+cloud.col.resources
+cloud.col.severity
+cloud.connect.arnInvalid
+cloud.connect.awsOnly
+cloud.connect.connect
+cloud.connect.connecting
+cloud.connect.externalId
+cloud.connect.failed
+cloud.connect.help
+cloud.connect.regen
+cloud.connect.region
+cloud.connect.roleArn
+cloud.connect.success
+cloud.connect.title
+cloud.findings.empty
+cloud.findings.emptyTitle
+cloud.findings.subtitle
+cloud.findings.title
+cloud.posture.accounts
+cloud.posture.byAccount
+cloud.posture.connect
+cloud.posture.empty
+cloud.posture.emptyTitle
+cloud.posture.noScore
+cloud.posture.resources
+cloud.posture.score
+cloud.posture.scored
+cloud.posture.subtitle
+cloud.posture.title
+dashboard.addDomain
+dashboard.connectRepos
+dashboard.getStartedDesc
+findings.emptyTitle
+ops.connectors.none
+ops.connectors.reconnect
+ops.connectors.reposReachable
+ops.connectors.title
+ops.freshness.lastScan
+ops.freshness.none
+ops.freshness.running
+ops.freshness.scanned
+ops.freshness.title
+ops.freshness.upToDate
+ops.sla.breaches
+ops.sla.empty
+ops.sla.emptyTitle
+ops.sla.title
+ops.subtitle
+ops.system.critical
+ops.system.degraded
+ops.system.ok
+ops.system.title
+ops.title
+# (projects.type.cloud* + projects.feature.cspm*/cloud* translated in
+#  flyto-i18n 2026-06-03 — removed from allowlist.)
+
+# Documentation example, not a real key (2026-06-10): code.key appears only
+# inside lib/engine/__tests__/i18nHardcodedCJK.test.ts as the literal example
+# string tOr('code.key','English fallback') used in the test's guidance text.
+# It is not a user-facing translation and cannot be a real i18n entry.
+code.key

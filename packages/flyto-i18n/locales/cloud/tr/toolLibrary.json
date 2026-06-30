@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "Tümü",
+        "toolLibrary.createFirstTool": "İlk Aracınızı Oluşturun",
+        "toolLibrary.createTool": "Araç Oluştur",
+        "toolLibrary.deleteConfirm": "Aracı Sil",
+        "toolLibrary.deleteMessage": "\"{name}\" silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+        "toolLibrary.noDescription": "Açıklama yok",
+        "toolLibrary.noTools": "Henüz Araç Yok",
+        "toolLibrary.noToolsDesc": "İş akışlarınızı otomatikleştirmek için ilk aracınızı oluşturun",
+        "toolLibrary.run": "Çalıştır",
+        "toolLibrary.searchPlaceholder": "Araç ara...",
+        "toolLibrary.steps": "adım",
+        "toolLibrary.subtitle": "Otomasyon araçlarınızı yönetin ve çalıştırın",
+        "toolLibrary.title": "Araç Kütüphanesi"
+    }
+}

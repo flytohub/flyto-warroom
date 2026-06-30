@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.projects",
+  "version": "1.0.0",
+  "translations": {
+    "projects.create": "",
+    "projects.create.title": "",
+    "projects.delete.message": "",
+    "projects.delete.title": "",
+    "projects.description": "",
+    "projects.edit.title": "",
+    "projects.empty.description": "",
+    "projects.empty.title": "",
+    "projects.form.color": "",
+    "projects.form.description": "",
+    "projects.form.name": "",
+    "projects.form.namePlaceholder": "",
+    "projects.members": "",
+    "projects.title": "",
+    "projects.workflows": ""
+  }
+}

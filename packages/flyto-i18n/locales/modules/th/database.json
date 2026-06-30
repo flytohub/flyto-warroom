@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "database",
+    "version": "1.0.0",
+    "translations": {
+        "modules.database.insert.description": "เพิ่มข้อมูลลงในตารางฐานข้อมูล",
+        "modules.database.insert.label": "เพิ่มข้อมูลฐานข้อมูล",
+        "modules.database.insert.output.inserted_count.description": "จำนวนแถวที่เพิ่ม",
+        "modules.database.insert.output.returning_data.description": "จำนวนแถวที่เพิ่ม",
+        "modules.database.query.description": "รันคำสั่ง SQL บนฐานข้อมูล PostgreSQL, MySQL หรือ SQLite",
+        "modules.database.query.label": "คิวรีฐานข้อมูล",
+        "modules.database.query.output.columns.description": "แถวผลลัพธ์จากคิวรี",
+        "modules.database.query.output.row_count.description": "แถวผลลัพธ์จากคิวรี",
+        "modules.database.query.output.rows.description": "แถวผลลัพธ์จากคิวรี",
+        "modules.database.update.description": "อัปเดตข้อมูลในตารางฐานข้อมูล",
+        "modules.database.update.label": "อัปเดตฐานข้อมูล",
+        "modules.database.update.output.updated_count.description": "จำนวนแถวที่อัปเดต"
+    }
+}

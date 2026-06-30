@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.observability",
+  "version": "1.0.0",
+  "translations": {
+    "observability.subtitle": "",
+    "observability.tabs.alerts": "",
+    "observability.tabs.metrics": "",
+    "observability.tabs.traces": "",
+    "observability.timeRange.24h": "",
+    "observability.timeRange.30d": "",
+    "observability.timeRange.7d": "",
+    "observability.timeRange.90d": "",
+    "observability.title": ""
+  }
+}

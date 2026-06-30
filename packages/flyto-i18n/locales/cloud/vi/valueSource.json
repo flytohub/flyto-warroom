@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "vi",
+  "category": "cloud.valueSource",
+  "version": "1.0.0",
+  "translations": {
+    "valueSource.booleanFalse": "Không / Sai",
+    "valueSource.booleanTrue": "Có / Đúng",
+    "valueSource.browsePath": "Browse Path",
+    "valueSource.changeSource": "Thay đổi nguồn giá trị",
+    "valueSource.defaultPlaceholder": "Nhập giá trị...",
+    "valueSource.expressionHint": "Có sẵn: steps.{id}.result, ui.{field}, env.{var}",
+    "valueSource.expressionPlaceholder": "steps.step1.result hoặc ui.search_keyword",
+    "valueSource.noPreviousSteps": "Không có bước trước khả dụng",
+    "valueSource.noUIFields": "Chưa định nghĩa trường nhập UI",
+    "valueSource.selectSourceType": "Chọn loại nguồn",
+    "valueSource.selectStepOutput": "Chọn đầu ra bước...",
+    "valueSource.selectText": "văn bản",
+    "valueSource.selectUIField": "Chọn trường UI...",
+    "valueSource.selectValue": "giá trị",
+    "valueSource.sources.expression.description": "Giá trị động nâng cao",
+    "valueSource.sources.expression.label": "Biểu thức",
+    "valueSource.sources.previousStep.description": "Sử dụng đầu ra từ bước trước",
+    "valueSource.sources.previousStep.label": "Từ bước trước",
+    "valueSource.sources.static.description": "Nhập giá trị cố định",
+    "valueSource.sources.static.label": "Giá trị tĩnh",
+    "valueSource.sources.uiInput.description": "Liên kết đến trường form frontend",
+    "valueSource.sources.uiInput.label": "Từ đầu vào UI"
+  }
+}

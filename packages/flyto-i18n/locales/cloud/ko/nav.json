@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.nav",
+    "version": "1.0.0",
+    "translations": {
+        "nav.marketplace": "마켓플레이스",
+        "nav.tools": "도구"
+    }
+}

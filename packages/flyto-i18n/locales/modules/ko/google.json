@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Google 캘린더에 새 이벤트 생성",
+        "modules.google.calendar.create_event.label": "캘린더 이벤트 생성",
+        "modules.google.calendar.create_event.output.end.description": "이벤트 종료 시간",
+        "modules.google.calendar.create_event.output.event_id.description": "생성된 이벤트 ID",
+        "modules.google.calendar.create_event.output.html_link.description": "Google 캘린더에서 이벤트를 보는 링크",
+        "modules.google.calendar.create_event.output.start.description": "이벤트 시작 시간",
+        "modules.google.calendar.create_event.output.summary.description": "이벤트 제목",
+        "modules.google.calendar.list_events.description": "Google 캘린더에서 다가오는 이벤트 목록",
+        "modules.google.calendar.list_events.label": "캘린더 이벤트 목록",
+        "modules.google.calendar.list_events.output.count.description": "반환된 이벤트 수",
+        "modules.google.calendar.list_events.output.events.description": "캘린더 이벤트 목록",
+        "modules.google.gmail.search.description": "Gmail 검색 쿼리 문법을 사용하여 Gmail 메시지 검색",
+        "modules.google.gmail.search.label": "Gmail 검색",
+        "modules.google.gmail.search.output.messages.description": "일치하는 메시지 목록",
+        "modules.google.gmail.search.output.total.description": "반환된 메시지 총 수",
+        "modules.google.gmail.send.description": "Gmail API를 통해 이메일 보내기",
+        "modules.google.gmail.send.label": "Gmail 보내기",
+        "modules.google.gmail.send.output.message_id.description": "Gmail 메시지 ID",
+        "modules.google.gmail.send.output.thread_id.description": "Gmail 스레드 ID",
+        "modules.google.gmail.send.output.to.description": "받는 사람 이메일 주소"
+    }
+}

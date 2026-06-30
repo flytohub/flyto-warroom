@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Lister tous les processus en arriere-plan en cours d'execution",
+        "modules.process.list.label": "Lister les processus",
+        "modules.process.list.output.count.description": "Succes de l'operation",
+        "modules.process.list.output.ok.description": "Succes de l'operation",
+        "modules.process.list.output.processes.description": "Succes de l'operation",
+        "modules.process.list.output.running.description": "Liste des informations de processus",
+        "modules.process.list.output.stopped.description": "Nombre total de processus",
+        "modules.process.start.description": "Demarrer un processus en arriere-plan (serveur, service, etc.)",
+        "modules.process.start.label": "Demarrer un processus en arriere-plan",
+        "modules.process.start.output.command.description": "Identifiant interne du processus pour process.stop",
+        "modules.process.start.output.cwd.description": "Nom du processus",
+        "modules.process.start.output.initial_output.description": "Horodatage ISO du demarrage du processus",
+        "modules.process.start.output.name.description": "ID du processus",
+        "modules.process.start.output.ok.description": "Si le processus a demarre avec succes",
+        "modules.process.start.output.pid.description": "Si le processus a demarre avec succes",
+        "modules.process.start.output.process_id.description": "Si le processus a demarre avec succes",
+        "modules.process.start.output.started_at.description": "La commande executee",
+        "modules.process.stop.description": "Arreter un processus en arriere-plan en cours d'execution",
+        "modules.process.stop.label": "Arreter le processus",
+        "modules.process.stop.output.count.description": "Liste des informations des processus arretes",
+        "modules.process.stop.output.failed.description": "Liste des informations des processus arretes",
+        "modules.process.stop.output.ok.description": "Si tous les processus ont ete arretes avec succes",
+        "modules.process.stop.output.stopped.description": "Si tous les processus ont ete arretes avec succes"
+    }
+}

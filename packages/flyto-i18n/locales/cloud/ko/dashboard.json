@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.dashboard",
+    "version": "1.0.0",
+    "translations": {
+        "dashboard.evolution.applied": "적용됨",
+        "dashboard.evolution.events": "이벤트",
+        "dashboard.evolution.executions": "실행",
+        "dashboard.evolution.flytoCan": "캔으로 이동",
+        "dashboard.evolution.fromCheckpoints": "체크포인트에서",
+        "dashboard.evolution.last30days": "최근 30일",
+        "dashboard.evolution.last7days": "최근 7일",
+        "dashboard.evolution.last90days": "최근 90일",
+        "dashboard.evolution.moatDescription": "해자 설명",
+        "dashboard.evolution.moatTitle": "해자 제목",
+        "dashboard.evolution.n8nCant": "N8n 불가",
+        "dashboard.evolution.overallImprovement": "전반적 개선",
+        "dashboard.evolution.pending": "대기 중",
+        "dashboard.evolution.reliability": "신뢰성",
+        "dashboard.evolution.subtitle": "부제목",
+        "dashboard.evolution.suggestionsApplied": "적용된 제안",
+        "dashboard.evolution.timeSaved": "절약된 시간",
+        "dashboard.evolution.timeline": "타임라인",
+        "dashboard.evolution.title": "제목",
+        "dashboard.evolution.today": "오늘",
+        "dashboard.evolution.topImproved": "최고 개선",
+        "dashboard.evolution.yesterday": "어제",
+        "dashboard.title": "대시보드"
+    }
+}

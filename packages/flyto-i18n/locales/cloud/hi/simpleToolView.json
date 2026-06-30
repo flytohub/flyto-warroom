@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "उन्नत",
+        "simpleToolView.copy": "कॉपी करें",
+        "simpleToolView.download": "डाउनलोड करें",
+        "simpleToolView.downloadFile": "फाइल डाउनलोड करें",
+        "simpleToolView.dropOrClick": "फाइल ड्रॉप करें या अपलोड करने के लिए क्लिक करें",
+        "simpleToolView.failed": "विफल",
+        "simpleToolView.generating": "जनरेट हो रहा है...",
+        "simpleToolView.input": "इनपुट",
+        "simpleToolView.moreRows": "+{count} और पंक्तियां",
+        "simpleToolView.output": "आउटपुट",
+        "simpleToolView.processing": "प्रोसेस हो रहा है...",
+        "simpleToolView.resultWillAppear": "परिणाम यहां दिखाई देगा",
+        "simpleToolView.retry": "पुनः प्रयास करें",
+        "simpleToolView.selectOption": "एक विकल्प चुनें",
+        "simpleToolView.start": "शुरू करें",
+        "simpleToolView.viewSteps": "चरण देखें"
+    }
+}

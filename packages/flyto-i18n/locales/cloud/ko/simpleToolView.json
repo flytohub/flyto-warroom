@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "고급",
+        "simpleToolView.copy": "복사",
+        "simpleToolView.download": "다운로드",
+        "simpleToolView.downloadFile": "파일 다운로드",
+        "simpleToolView.dropOrClick": "파일을 드롭하거나 클릭하여 업로드",
+        "simpleToolView.failed": "실패",
+        "simpleToolView.generating": "생성 중...",
+        "simpleToolView.input": "입력",
+        "simpleToolView.moreRows": "+{count}개 행 더 보기",
+        "simpleToolView.output": "출력",
+        "simpleToolView.processing": "처리 중...",
+        "simpleToolView.resultWillAppear": "결과가 여기에 표시됩니다",
+        "simpleToolView.retry": "다시 시도",
+        "simpleToolView.selectOption": "옵션 선택",
+        "simpleToolView.start": "시작",
+        "simpleToolView.viewSteps": "단계 보기"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "Confronta",
+        "versions.current": "Corrente",
+        "versions.diff.comparing": "Confronto",
+        "versions.diff.noChanges": "Nessuna modifica tra le versioni",
+        "versions.diff.selectPrompt": "Seleziona due versioni da confrontare",
+        "versions.diff.title": "Modifiche",
+        "versions.diff.to": "a",
+        "versions.empty": "Nessuno storico versioni",
+        "versions.rollback": "Ripristina",
+        "versions.rollback.confirm": "Ripristina",
+        "versions.rollback.description": "Il ripristino alla v{version} creera una nuova versione con il contenuto di quella versione. La versione corrente rimarra nello storico.",
+        "versions.rollback.targetVersion": "Versione Destinazione",
+        "versions.rollback.title": "Ripristina a Versione",
+        "versions.rollback.warning": "Questo creera una nuova versione",
+        "versions.title": "Storico Versioni"
+    }
+}

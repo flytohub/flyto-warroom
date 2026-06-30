@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "dns",
+    "version": "1.0.0",
+    "translations": {
+        "modules.dns.lookup.description": "도메인 레코드에 대한 DNS 조회",
+        "modules.dns.lookup.label": "DNS 조회",
+        "modules.dns.lookup.output.domain.description": "조회된 도메인",
+        "modules.dns.lookup.output.record_type.description": "조회된 레코드 유형",
+        "modules.dns.lookup.output.records.description": "해결된 레코드",
+        "modules.dns.lookup.output.ttl.description": "TTL (사용 가능한 경우)",
+        "modules.dns.lookup.params.domain.description": "조회할 도메인 이름",
+        "modules.dns.lookup.params.domain.label": "도메인",
+        "modules.dns.lookup.params.record_type.description": "조회할 DNS 레코드 유형",
+        "modules.dns.lookup.params.record_type.label": "레코드 유형",
+        "modules.dns.lookup.params.timeout.description": "초 단위의 조회 시간 초과",
+        "modules.dns.lookup.params.timeout.label": "시간 초과"
+    }
+}

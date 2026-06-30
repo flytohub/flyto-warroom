@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.footer",
+    "version": "1.0.0",
+    "translations": {
+        "footer.copyright": "© 2025 Flyto2. Todos los derechos reservados.",
+        "footer.description": "Potente editor visual de flujos de trabajo que integra cientos de aplicaciones, haciendo la automatización fácil para todos.",
+        "footer.disclaimer": "Todas las tareas de automatización se ejecutan en el propio dispositivo del usuario. Los usuarios son responsables de asegurarse de que su uso cumpla con los términos de servicio de los sitios web objetivo y las leyes aplicables."
+    }
+}

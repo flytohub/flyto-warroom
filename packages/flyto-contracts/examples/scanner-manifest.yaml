@@ -1,0 +1,14 @@
+id: community.example_scanner
+name: Community Example Scanner
+version: 0.1.0
+surfaces:
+  - code
+  - container
+capabilities:
+  - code.scan
+  - evidence.write
+evidence_contracts:
+  - flyto.evidence_event.v1
+runner:
+  mode: callback
+  callback_schema: schemas/runner-callback.schema.json

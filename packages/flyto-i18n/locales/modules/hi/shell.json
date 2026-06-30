@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "शेल कमांड निष्पादित करें और आउटपुट कैप्चर करें",
+        "modules.shell.exec.label": "शेल कमांड निष्पादित करें",
+        "modules.shell.exec.output.command.description": "मानक आउटपुट",
+        "modules.shell.exec.output.cwd.description": "मानक त्रुटि आउटपुट",
+        "modules.shell.exec.output.duration_ms.description": "निष्पादित कमांड",
+        "modules.shell.exec.output.exit_code.description": "क्या कमांड सफलतापूर्वक निष्पादित हुई (एग्जिट कोड 0)",
+        "modules.shell.exec.output.ok.description": "क्या कमांड सफलतापूर्वक निष्पादित हुई (एग्जिट कोड 0)",
+        "modules.shell.exec.output.stderr.description": "कमांड एग्जिट कोड",
+        "modules.shell.exec.output.stdout.description": "क्या कमांड सफलतापूर्वक निष्पादित हुई (एग्जिट कोड 0)"
+    }
+}

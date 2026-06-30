@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "返金額",
+        "refund.cancelButton": "キャンセル",
+        "refund.confirm": "返金を確認",
+        "refund.confirmButton": "返金を確認",
+        "refund.confirmTitle": "返金リクエストを確認",
+        "refund.contactSupport": "サポートに連絡",
+        "refund.days": "返金日数",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "返金の対象です",
+        "refund.expiredWindow": "30日間の返金期間が終了しました",
+        "refund.failed": "返金リクエストに失敗しました",
+        "refund.forksAffected": "以下のフォークは孤立します（編集内容は保存されますが、元のソースから切り離されます）：",
+        "refund.forksWarning": "フォークの警告",
+        "refund.notEligible": "返金対象外",
+        "refund.processInfo": "返金手続き情報",
+        "refund.processing": "処理中...",
+        "refund.success": "返金リクエストが成功しました",
+        "refund.template": "返金テンプレート",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "警告説明"
+    }
+}

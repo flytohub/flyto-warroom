@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.templateCategory",
+    "version": "1.0.0",
+    "translations": {
+        "templateCategory.automation": "자동화",
+        "templateCategory.dataProcessing": "데이터 처리",
+        "templateCategory.productivity": "생산성",
+        "templateCategory.socialMedia": "소셜 미디어",
+        "templateCategory.webScraping": "웹 스크래핑",
+        "templateCategory.api": "API",
+        "templateCategory.media": "미디어",
+        "templateCategory.notification": "알림",
+        "templateCategory.ai": "AI",
+        "templateCategory.file": "파일",
+        "templateCategory.monitoring": "모니터링",
+        "templateCategory.developer": "개발 도구"
+    }
+}

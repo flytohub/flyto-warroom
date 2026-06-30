@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "So sánh",
+        "versions.current": "Hiện tại",
+        "versions.diff.comparing": "Đang so sánh",
+        "versions.diff.noChanges": "Không có thay đổi giữa các phiên bản",
+        "versions.diff.selectPrompt": "Chọn hai phiên bản để so sánh",
+        "versions.diff.title": "Thay đổi",
+        "versions.diff.to": "đến",
+        "versions.empty": "Không có lịch sử phiên bản",
+        "versions.rollback": "Khôi phục",
+        "versions.rollback.confirm": "Khôi phục",
+        "versions.rollback.description": "Khôi phục về v{version} sẽ tạo phiên bản mới với nội dung từ phiên bản đó. Phiên bản hiện tại sẽ được giữ trong lịch sử.",
+        "versions.rollback.targetVersion": "Phiên bản đích",
+        "versions.rollback.title": "Khôi phục về phiên bản",
+        "versions.rollback.warning": "Điều này sẽ tạo phiên bản mới",
+        "versions.title": "Lịch sử phiên bản"
+    }
+}

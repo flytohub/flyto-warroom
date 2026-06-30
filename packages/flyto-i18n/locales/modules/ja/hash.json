@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "hash",
+    "version": "1.0.0",
+    "translations": {
+        "modules.hash.sha256.description": "テキストのSHA-256暗号ハッシュを計算",
+        "modules.hash.sha256.label": "SHA-256ハッシュ",
+        "modules.hash.sha256.output.algorithm.description": "SHA-256ハッシュ（64桁の16進数）",
+        "modules.hash.sha256.output.hash.description": "テキストエンコーディング",
+        "modules.hash.sha256.params.encoding.description": "ハッシュするテキスト",
+        "modules.hash.sha256.params.encoding.label": "テキスト",
+        "modules.hash.sha256.params.text.description": "ハッシュするテキスト",
+        "modules.hash.sha256.params.text.label": "テキスト",
+        "modules.hash.sha512.description": "テキストのSHA-512暗号ハッシュを計算",
+        "modules.hash.sha512.label": "SHA-512ハッシュ",
+        "modules.hash.sha512.output.algorithm.description": "SHA-512ハッシュ（128桁の16進数）",
+        "modules.hash.sha512.output.hash.description": "テキストエンコーディング",
+        "modules.hash.sha512.params.encoding.description": "ハッシュするテキスト",
+        "modules.hash.sha512.params.encoding.label": "テキスト",
+        "modules.hash.sha512.params.text.description": "ハッシュするテキスト",
+        "modules.hash.sha512.params.text.label": "テキスト"
+    }
+}

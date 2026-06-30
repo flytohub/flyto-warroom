@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.onboarding",
+    "version": "1.0.0",
+    "translations": {
+        "onboarding.finish": "समाप्त करें",
+        "onboarding.next": "अगला",
+        "onboarding.previous": "पिछला",
+        "onboarding.skip": "छोड़ें"
+    }
+}

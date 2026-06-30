@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "全部",
+        "toolLibrary.createFirstTool": "建立第一個工具",
+        "toolLibrary.createTool": "建立工具",
+        "toolLibrary.deleteConfirm": "刪除工具",
+        "toolLibrary.deleteMessage": "確定要刪除「{name}」嗎？此操作無法復原。",
+        "toolLibrary.noDescription": "無描述",
+        "toolLibrary.noTools": "尚無工具",
+        "toolLibrary.noToolsDesc": "建立你的第一個工具來自動化工作流程",
+        "toolLibrary.run": "執行",
+        "toolLibrary.searchPlaceholder": "搜尋工具...",
+        "toolLibrary.steps": "步驟",
+        "toolLibrary.subtitle": "管理和執行你的自動化工具",
+        "toolLibrary.title": "工具庫"
+    }
+}

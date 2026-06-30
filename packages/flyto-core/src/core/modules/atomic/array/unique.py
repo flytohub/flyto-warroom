@@ -1,0 +1,111 @@
+# Copyright 2026 Flyto2. Licensed under Apache-2.0. See LICENSE.
+
+"""
+Array Operation Modules
+Array data manipulation and transformation
+"""
+
+from typing import Any, Dict
+from ...base import BaseModule
+from ...registry import register_module
+from ...schema import compose, presets
+from ...errors import ValidationError, InvalidTypeError
+
+
+@register_module(
+    module_id='array.unique',
+    version='1.0.0',
+    category='atomic',
+    subcategory='array',
+    tags=['array', 'unique', 'dedupe', 'atomic'],
+    label='Array Unique',
+    label_key='modules.array.unique.label',
+    description='Remove duplicate values from array',
+    description_key='modules.array.unique.description',
+    icon='Layers',
+    color='#10B981',
+
+
+    # Type definitions for connection validation
+    input_types=['array'],
+    output_types=['array'],
+
+    can_receive_from=['*'],
+    can_connect_to=['*'],    # Phase 2: Execution settings
+    # No timeout - instant array operation
+    retryable=False,  # Logic errors won't fix themselves
+    concurrent_safe=True,  # Stateless operation
+
+    # Phase 2: Security settings
+    requires_credentials=False,
+    handles_sensitive_data=False,
+    required_permissions=[],
+
+    # Schema-driven params
+    params_schema=compose(
+        presets.INPUT_ARRAY(required=True),
+        presets.PRESERVE_ORDER(default=True),
+    ),
+    output_schema={
+        'unique': {
+            'type': 'array',
+            'description': 'Array with unique values'
+        ,
+                'description_key': 'modules.array.unique.output.unique.description'},
+        'count': {
+            'type': 'number',
+            'description': 'Number of unique items'
+        ,
+                'description_key': 'modules.array.unique.output.count.description'},
+        'duplicates_removed': {
+            'type': 'number',
+            'description': 'Number of duplicates removed'
+        ,
+                'description_key': 'modules.array.unique.output.duplicates_removed.description'}
+    },
+    examples=[
+        {
+            'title': 'Remove duplicates',
+            'title_key': 'modules.array.unique.examples.simple.title',
+            'params': {
+                'array': [1, 2, 2, 3, 4, 3, 5],
+                'preserve_order': True
+            }
+        }
+    ],
+    author='Flyto Team',
+    license='MIT',
+    timeout_ms=5000,
+)
+async def array_unique(context):
+    """Remove duplicate values from array"""
+    params = context['params']
+    array = params['array']
+    preserve_order = params.get('preserve_order', True)
+
+    original_count = len(array)
+
+    if preserve_order:
+        seen = set()
+        unique = []
+        for item in array:
+            # Handle unhashable types
+            try:
+                if item not in seen:
+                    seen.add(item)
+                    unique.append(item)
+            except TypeError:
+                # For unhashable types, do linear search
+                if item not in unique:
+                    unique.append(item)
+    else:
+        unique = list(set(array))
+
+    return {
+        'ok': True,
+        'data': {
+            'unique': unique,
+            'count': len(unique),
+            'duplicates_removed': original_count - len(unique)
+        }
+    }

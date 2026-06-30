@@ -1,0 +1,21 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "vi",
+  "category": "cloud.llmChain",
+  "version": "1.0.0",
+  "translations": {
+    "llmChain.advancedOptions": "Tùy chọn nâng cao",
+    "llmChain.detectedVariables": "Biến phát hiện được",
+    "llmChain.insertVariable": "Chèn biến",
+    "llmChain.maxTokens": "Số token tối đa",
+    "llmChain.maxTokensHint": "Độ dài tối đa của phản hồi",
+    "llmChain.model": "Mô hình",
+    "llmChain.systemPrompt": "System Prompt",
+    "llmChain.systemPromptPlaceholder": "Bạn là một trợ lý hữu ích...",
+    "llmChain.temperature": "Nhiệt độ",
+    "llmChain.temperatureHint": "Cao hơn = sáng tạo hơn, Thấp hơn = tập trung hơn",
+    "llmChain.userPrompt": "Người dùng Prompt",
+    "llmChain.userPromptPlaceholder": "Nhập prompt với {{variables}}...",
+    "llmChain.variableHelp": "Sử dụng {{variable}} để tham chiếu dữ liệu từ các bước trước"
+  }
+}

@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "notify",
+    "version": "1.0.0",
+    "translations": {
+        "modules.notify.send.description": "Send notification to Telegram, Discord, Slack, LINE, or any webhook URL",
+        "modules.notify.send.label": "Send Notification",
+        "modules.notify.send.output.ok.description": "Whether notification was sent successfully",
+        "modules.notify.send.output.platform.description": "Detected platform (telegram, discord, slack, etc.)",
+        "modules.notify.send.output.response.description": "Response from the webhook",
+        "modules.notify.send.output.status_code.description": "HTTP response status code",
+        "modules.notify.send.params.chat_id.description": "Telegram chat ID (required for Telegram)",
+        "modules.notify.send.params.chat_id.label": "Chat ID",
+        "modules.notify.send.params.message.description": "Notification message content",
+        "modules.notify.send.params.message.label": "Message",
+        "modules.notify.send.params.title.description": "Optional title (for Discord, Slack, Teams)",
+        "modules.notify.send.params.title.label": "Title",
+        "modules.notify.send.params.url.description": "Webhook URL (Telegram, Discord, Slack, or custom)",
+        "modules.notify.send.params.url.label": "Webhook URL"
+    }
+}

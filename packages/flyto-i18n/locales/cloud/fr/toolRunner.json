@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "Avance",
+        "toolRunner.backToLibrary": "Retour a la bibliotheque",
+        "toolRunner.copy": "Copier",
+        "toolRunner.download": "Telecharger",
+        "toolRunner.editTool": "Modifier",
+        "toolRunner.executionFailed": "Echec de l'execution",
+        "toolRunner.executionLogs": "Journaux d'execution",
+        "toolRunner.executionSuccess": "Execution terminee",
+        "toolRunner.executionTimedOut": "Delai d'execution depasse",
+        "toolRunner.flowSteps": "Etapes du flux",
+        "toolRunner.inputForm": "Formulaire d'entree",
+        "toolRunner.loadFailed": "Echec du chargement de l'outil",
+        "toolRunner.noLogs": "Aucun journal pour le moment. Executez l'outil pour voir les journaux.",
+        "toolRunner.resolvedParams": "Parametres resolus",
+        "toolRunner.results": "Resultats",
+        "toolRunner.retry": "Reessayer",
+        "toolRunner.runAgain": "Executer a nouveau",
+        "toolRunner.runToSeeResults": "Executez l'outil pour voir les resultats ici",
+        "toolRunner.runTool": "Executer l'outil",
+        "toolRunner.running": "Execution...",
+        "toolRunner.simpleMode": "Simple",
+        "toolRunner.toolNotFound": "Outil non trouve",
+        "toolRunner.toolNotFoundError": "Outil non trouve"
+    }
+}

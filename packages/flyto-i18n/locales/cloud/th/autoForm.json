@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.autoForm",
+    "version": "1.0.0",
+    "translations": {
+        "autoForm.browsePath": "เรียกดูเส้นทาง",
+        "autoForm.hideAdvanced": "ซ่อนขั้นสูง",
+        "autoForm.hidePassword": "ซ่อนรหัสผ่าน",
+        "autoForm.multipleFilesSelected": "เลือก {count} ไฟล์แล้ว",
+        "autoForm.selectFilePlaceholder": "เลือกไฟล์...",
+        "autoForm.selectPlaceholder": "เลือก...",
+        "autoForm.showAdvanced": "แสดงขั้นสูง",
+        "autoForm.showPassword": "แสดงรหัสผ่าน"
+    }
+}

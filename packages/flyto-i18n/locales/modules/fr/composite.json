@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "Extraire une page web et produire des données JSON structurées",
+        "modules.composite.browser.scrape_to_json.label": "Extraire le Web vers JSON",
+        "modules.composite.data.csv_to_json.description": "Lire un fichier CSV et le convertir au format JSON",
+        "modules.composite.data.csv_to_json.label": "CSV vers JSON",
+        "modules.composite.data.json_transform_notify.description": "Transformer des données JSON et envoyer une notification avec les résultats",
+        "modules.composite.data.json_transform_notify.label": "Transformation JSON et Notification",
+        "modules.composite.developer.api_to_notification.description": "Récupérer des données depuis n'importe quelle API et les envoyer à un canal de notification",
+        "modules.composite.developer.api_to_notification.label": "API vers Notification",
+        "modules.composite.developer.github_daily_digest.description": "Récupérer les mises à jour des dépôts GitHub et envoyer une notification de résumé quotidien",
+        "modules.composite.developer.github_daily_digest.label": "Résumé Quotidien GitHub",
+        "modules.composite.notification.multi_channel_alert.description": "Envoyer des alertes à plusieurs canaux de notification simultanément",
+        "modules.composite.notification.multi_channel_alert.label": "Alerte Multi-Canaux",
+        "modules.composite.notification.scheduled_report.description": "Générer et envoyer des rapports programmés aux canaux de notification",
+        "modules.composite.notification.scheduled_report.label": "Rapport Programmé",
+        "modules.composite.test.api_test.description": "Exécuter des tests API avec des requêtes HTTP et des assertions",
+        "modules.composite.test.api_test.label": "Suite de Tests API",
+        "modules.composite.test.e2e_flow.description": "Test de flux de travail de bout en bout avec automatisation du navigateur",
+        "modules.composite.test.e2e_flow.label": "Test de Flux E2E",
+        "modules.composite.test.quality_gate.description": "Exécuter des contrôles de qualité et bloquer les déploiements selon des seuils",
+        "modules.composite.test.quality_gate.label": "Barrière de Qualité",
+        "modules.composite.test.ui_review.description": "Test de régression visuelle et flux de travail de revue de l'UI",
+        "modules.composite.test.ui_review.label": "Revue de l'UI",
+        "modules.composite.test.verify_fix.description": "Vérifier les corrections de bugs avec des tests avant/après et des suites de régression",
+        "modules.composite.test.verify_fix.label": "Vérifier la Correction"
+    }
+}

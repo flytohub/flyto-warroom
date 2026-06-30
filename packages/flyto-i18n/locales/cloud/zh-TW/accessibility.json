@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "路徑導覽",
+        "accessibility.clearInput": "清除輸入",
+        "accessibility.closeDialog": "關閉對話框",
+        "accessibility.closeMenu": "關閉選單",
+        "accessibility.closeModal": "關閉視窗",
+        "accessibility.copyToClipboard": "複製到剪貼簿",
+        "accessibility.imageEditingControls": "圖片編輯控制項",
+        "accessibility.notifications": "通知",
+        "accessibility.openMenu": "開啟選單",
+        "accessibility.rating": "評分",
+        "accessibility.refreshList": "重新整理列表",
+        "accessibility.removeIcon": "移除圖示",
+        "accessibility.resetImage": "重設圖片位置和縮放",
+        "accessibility.revokeKey": "撤銷金鑰",
+        "accessibility.rotateLeft": "向左旋轉90度",
+        "accessibility.rotateRight": "向右旋轉90度",
+        "accessibility.showInMarketplace": "顯示在市集",
+        "accessibility.zoomIn": "放大",
+        "accessibility.zoomOut": "縮小"
+    }
+}

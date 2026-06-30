@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.toolCategory",
+    "version": "1.0.0",
+    "translations": {
+        "toolCategory.apiIntegration": "การรวม API",
+        "toolCategory.automation": "อัตโนมัติ",
+        "toolCategory.dataTransform": "แปลงข้อมูล",
+        "toolCategory.fileOperations": "การดำเนินการไฟล์",
+        "toolCategory.imageProcessing": "ประมวลผลรูปภาพ",
+        "toolCategory.other": "อื่นๆ",
+        "toolCategory.textProcessing": "ประมวลผลข้อความ",
+        "toolCategory.webScraping": "การดึงข้อมูลจากเว็บ"
+    }
+}

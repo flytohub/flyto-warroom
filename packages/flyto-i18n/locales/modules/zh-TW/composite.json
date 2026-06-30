@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "抓取網頁並輸出結構化的 JSON 資料",
+        "modules.composite.browser.scrape_to_json.label": "網頁抓取到 JSON",
+        "modules.composite.data.csv_to_json.description": "讀取 CSV 檔案並轉換為 JSON 格式",
+        "modules.composite.data.csv_to_json.label": "CSV 轉 JSON",
+        "modules.composite.data.json_transform_notify.description": "轉換 JSON 資料並發送結果通知",
+        "modules.composite.data.json_transform_notify.label": "JSON 轉換並通知",
+        "modules.composite.developer.api_to_notification.description": "從任何 API 獲取資料並發送到通知頻道",
+        "modules.composite.developer.api_to_notification.label": "API 到通知",
+        "modules.composite.developer.github_daily_digest.description": "獲取 GitHub 儲存庫更新並發送每日摘要通知",
+        "modules.composite.developer.github_daily_digest.label": "GitHub 每日摘要",
+        "modules.composite.notification.multi_channel_alert.description": "同時向多個通知頻道發送警報",
+        "modules.composite.notification.multi_channel_alert.label": "多頻道警報",
+        "modules.composite.notification.scheduled_report.description": "生成並發送排程報告到通知頻道",
+        "modules.composite.notification.scheduled_report.label": "排程報告",
+        "modules.composite.test.api_test.description": "使用 HTTP 請求和斷言運行 API 測試",
+        "modules.composite.test.api_test.label": "API 測試套件",
+        "modules.composite.test.e2e_flow.description": "使用瀏覽器自動化進行端到端工作流程測試",
+        "modules.composite.test.e2e_flow.label": "端到端流程測試",
+        "modules.composite.test.quality_gate.description": "執行品質檢查並根據門檻限制部署",
+        "modules.composite.test.quality_gate.label": "品質門檻",
+        "modules.composite.test.ui_review.description": "視覺回歸測試和 UI 審查工作流程",
+        "modules.composite.test.ui_review.label": "UI 審查",
+        "modules.composite.test.verify_fix.description": "通過前後測試和回歸套件驗證錯誤修正",
+        "modules.composite.test.verify_fix.label": "驗證修正"
+    }
+}

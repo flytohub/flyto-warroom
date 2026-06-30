@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "notify",
+    "version": "1.0.0",
+    "translations": {
+        "modules.notify.send.description": "Telegram, Discord, Slack, LINE 또는 웹훅 URL로 알림 보내기",
+        "modules.notify.send.label": "알림 보내기",
+        "modules.notify.send.output.ok.description": "알림이 성공적으로 전송되었는지 여부",
+        "modules.notify.send.output.platform.description": "감지된 플랫폼 (telegram, discord, slack 등)",
+        "modules.notify.send.output.response.description": "웹훅의 응답",
+        "modules.notify.send.output.status_code.description": "HTTP 응답 상태 코드",
+        "modules.notify.send.params.chat_id.description": "Telegram 채팅 ID (Telegram에 필요)",
+        "modules.notify.send.params.chat_id.label": "채팅 ID",
+        "modules.notify.send.params.message.description": "알림 메시지 내용",
+        "modules.notify.send.params.message.label": "메시지",
+        "modules.notify.send.params.title.description": "선택적 제목 (Discord, Slack, Teams용)",
+        "modules.notify.send.params.title.label": "제목",
+        "modules.notify.send.params.url.description": "웹훅 URL (Telegram, Discord, Slack 또는 사용자 정의)",
+        "modules.notify.send.params.url.label": "웹훅 URL"
+    }
+}

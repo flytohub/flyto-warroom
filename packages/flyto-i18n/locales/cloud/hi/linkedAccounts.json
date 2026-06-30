@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.cannotUnlink": "अनलिंक नहीं कर सकते — आपको कम से कम एक लॉगिन तरीका चाहिए",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.link": "अकाउंट लिंक करें",
+        "linkedAccounts.linkSuccess": "Google अकाउंट सफलतापूर्वक लिंक किया गया",
+        "linkedAccounts.linked": "लिंक किया गया",
+        "linkedAccounts.notLinked": "लिंक नहीं किया गया",
+        "linkedAccounts.subtitle": "अपने कनेक्टेड लॉगिन तरीकों को प्रबंधित करें",
+        "linkedAccounts.title": "कनेक्टेड अकाउंट्स",
+        "linkedAccounts.unlink": "अनलिंक करें",
+        "linkedAccounts.unlinkConfirm": "क्या आप वाकई Google को अनलिंक करना चाहते हैं?",
+        "linkedAccounts.unlinkSuccess": "Google अकाउंट अनलिंक किया गया"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Last Updated",
+        "privacy.sections.collection.content": "We collect information you provide directly to us, such as when you create an account, use our services, or contact us for support. This may include your name, email address, and usage data to improve our services.",
+        "privacy.sections.collection.title": "Information We Collect",
+        "privacy.sections.contact.content": "If you have any questions about this Privacy Policy or our data practices, please contact us at privacy{'@'}flytohub.com.",
+        "privacy.sections.contact.title": "Contact Us",
+        "privacy.sections.rights.content": "You have the right to access, correct, or delete your personal information. You may also request data portability or object to certain processing activities. Contact us to exercise these rights.",
+        "privacy.sections.rights.title": "Your Rights",
+        "privacy.sections.security.content": "We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.",
+        "privacy.sections.security.title": "Data Security",
+        "privacy.sections.sharing.content": "We do not sell your personal information. We may share your information with third-party service providers who assist us in operating our platform, subject to confidentiality agreements.",
+        "privacy.sections.sharing.title": "Information Sharing",
+        "privacy.sections.usage.content": "We use the information we collect to provide, maintain, and improve our services, to communicate with you, and to personalize your experience. We may also use aggregated data for analytics purposes.",
+        "privacy.sections.usage.title": "How We Use Your Information",
+        "privacy.title": "Privacy Policy"
+    }
+}

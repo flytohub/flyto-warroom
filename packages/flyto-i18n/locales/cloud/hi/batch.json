@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "हटाएं",
+        "batch.deleteConfirm.message": "क्या आप वाकई {count} टेम्पलेट हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।",
+        "batch.deleteConfirm.title": "{count} टेम्पलेट हटाएं",
+        "batch.deselectAll": "सभी अचयनित करें",
+        "batch.select": "चुनें",
+        "batch.selectAll": "सभी चुनें",
+        "batch.selected": "चयनित"
+    }
+}

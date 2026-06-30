@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "markdown",
+  "version": "1.0.0",
+  "translations": {
+    "modules.markdown.parse_frontmatter.description": "",
+    "modules.markdown.parse_frontmatter.label": "",
+    "modules.markdown.parse_frontmatter.output.content.description": "",
+    "modules.markdown.parse_frontmatter.output.frontmatter.description": "",
+    "modules.markdown.parse_frontmatter.params.text.description": "",
+    "modules.markdown.parse_frontmatter.params.text.label": "",
+    "modules.markdown.to_html.description": "",
+    "modules.markdown.to_html.label": "",
+    "modules.markdown.to_html.output.html.description": "",
+    "modules.markdown.to_html.output.word_count.description": "",
+    "modules.markdown.to_html.params.extensions.description": "",
+    "modules.markdown.to_html.params.extensions.label": "",
+    "modules.markdown.to_html.params.text.description": "",
+    "modules.markdown.to_html.params.text.label": "",
+    "modules.markdown.toc.description": "",
+    "modules.markdown.toc.label": "",
+    "modules.markdown.toc.output.toc.description": "",
+    "modules.markdown.toc.output.toc_markdown.description": "",
+    "modules.markdown.toc.params.max_depth.description": "",
+    "modules.markdown.toc.params.max_depth.label": "",
+    "modules.markdown.toc.params.text.description": "",
+    "modules.markdown.toc.params.text.label": ""
+  }
+}

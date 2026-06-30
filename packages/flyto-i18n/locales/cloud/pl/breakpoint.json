@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "Dodatkowe wejscie",
+        "breakpoint.approve": "Zatwierdz",
+        "breakpoint.comment": "Komentarz",
+        "breakpoint.commentPlaceholder": "Dodaj komentarz...",
+        "breakpoint.contextSnapshot": "Migawka kontekstu",
+        "breakpoint.createdAt": "Utworzono",
+        "breakpoint.expires": "Wygasa",
+        "breakpoint.humanCheckpoint": "Punkt kontrolny",
+        "breakpoint.noBreakpoint": "Brak ustawionych punktow kontrolnych",
+        "breakpoint.noPending": "Brak oczekujacych zatwierdzen",
+        "breakpoint.pendingApprovals": "Oczekujace zatwierdzenia",
+        "breakpoint.reject": "Odrzuc",
+        "breakpoint.step": "Krok",
+        "breakpoint.waitingApproval": "Oczekiwanie na zatwierdzenie",
+        "breakpoint.workflow": "Przeplyw",
+        "browserInteract.execute": "Wykonaj",
+        "browserInteract.noElements": "Nie wykryto elementów interaktywnych",
+        "browserInteract.pagePreview": "Podgląd Strony",
+        "browserInteract.selectHint": "Wybierz element do interakcji",
+        "browserInteract.skip": "Pomiń",
+        "browserInteract.title": "Interakcja z Przeglądarką"
+    }
+}

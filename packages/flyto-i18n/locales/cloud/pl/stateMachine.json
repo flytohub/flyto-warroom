@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "Przepływ zatwierdzeń",
+        "stateMachine.create.blank": "Pusty",
+        "stateMachine.create.descPlaceholder": "Wprowadź opis",
+        "stateMachine.create.description": "Opis",
+        "stateMachine.create.name": "Nazwa",
+        "stateMachine.create.namePlaceholder": "Wprowadź nazwę maszyny stanów",
+        "stateMachine.create.order": "Przetwarzanie zamówień",
+        "stateMachine.create.template": "Szablon",
+        "stateMachine.create.ticket": "Zgłoszenie wsparcia",
+        "stateMachine.create.title": "Utwórz maszynę stanów",
+        "stateMachine.diagram.select": "Wybierz maszynę stanów",
+        "stateMachine.diagram.title": "Diagram stanów",
+        "stateMachine.instances.empty": "Brak instancji",
+        "stateMachine.instances.history": "Historia",
+        "stateMachine.instances.title": "Instancje",
+        "stateMachine.instances.trigger": "Wyzwalacz",
+        "stateMachine.list.empty": "Brak maszyn stanów",
+        "stateMachine.list.title": "Maszyny stanów",
+        "stateMachine.stats.activeInstances": "Aktywne instancje",
+        "stateMachine.stats.completed": "Zakończone",
+        "stateMachine.stats.machines": "Maszyny",
+        "stateMachine.stats.transitions": "Przejścia"
+    }
+}

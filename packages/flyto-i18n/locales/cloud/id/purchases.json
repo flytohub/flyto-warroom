@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.purchases",
+    "version": "1.0.0",
+    "translations": {
+        "purchases.all": "Semua pembelian",
+        "purchases.browseMarketplace": "Browse marketplace",
+        "purchases.completed": "Pembelian selesai",
+        "purchases.empty": "Tidak ada pembelian",
+        "purchases.emptyDescription": "Anda belum memiliki pembelian.",
+        "purchases.filterAll": "Semua",
+        "purchases.filterCompleted": "Selesai",
+        "purchases.filterRefunded": "Dikembalikan",
+        "purchases.loadMore": "Muat Lebih Banyak",
+        "purchases.loading": "Memuat...",
+        "purchases.noPurchases": "Belum ada pembelian",
+        "purchases.noPurchasesDesc": "Template yang Anda beli akan muncul di sini",
+        "purchases.purchasedOn": "Dibeli pada",
+        "purchases.refundAmount": "Jumlah pengembalian",
+        "purchases.refundEligible": "Bisa dikembalikan",
+        "purchases.refundExpired": "Pengembalian kedaluwarsa",
+        "purchases.refunded": "Telah dikembalikan",
+        "purchases.refundedOn": "Dikembalikan pada",
+        "purchases.requestRefund": "Request refund",
+        "purchases.subtitle": "Purchase details",
+        "purchases.title": "Purchases",
+        "purchases.viewTemplate": "View template"
+    }
+}

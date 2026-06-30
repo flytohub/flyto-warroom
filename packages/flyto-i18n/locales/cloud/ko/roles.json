@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "기본 역할",
+        "roles.create": "역할 만들기",
+        "roles.create.title": "역할 만들기",
+        "roles.custom.empty": "정의된 사용자 지정 역할이 없습니다",
+        "roles.custom.title": "사용자 지정 역할",
+        "roles.delete.message": "이 역할을 삭제하시겠습니까? 이 역할을 가진 사용자에게는 기본 멤버 역할이 할당됩니다.",
+        "roles.delete.title": "역할 삭제",
+        "roles.description": "역할 및 접근 권한 관리",
+        "roles.edit.title": "역할 편집",
+        "roles.form.description": "설명",
+        "roles.form.name": "역할 이름",
+        "roles.form.permissions": "권한",
+        "roles.permissions": "권한",
+        "roles.title": "역할 및 권한",
+        "roles.users": "사용자"
+    }
+}

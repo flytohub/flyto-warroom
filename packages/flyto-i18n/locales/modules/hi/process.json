@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "सभी चल रही बैकग्राउंड प्रक्रियाएं सूचीबद्ध करें",
+        "modules.process.list.label": "प्रक्रियाएं सूचीबद्ध करें",
+        "modules.process.list.output.count.description": "ऑपरेशन सफलता",
+        "modules.process.list.output.ok.description": "ऑपरेशन सफलता",
+        "modules.process.list.output.processes.description": "ऑपरेशन सफलता",
+        "modules.process.list.output.running.description": "प्रक्रिया जानकारी की सूची",
+        "modules.process.list.output.stopped.description": "कुल प्रक्रियाओं की संख्या",
+        "modules.process.start.description": "बैकग्राउंड प्रक्रिया शुरू करें (सर्वर, सेवा, आदि)",
+        "modules.process.start.label": "बैकग्राउंड प्रक्रिया शुरू करें",
+        "modules.process.start.output.command.description": "process.stop के लिए आंतरिक प्रक्रिया पहचानकर्ता",
+        "modules.process.start.output.cwd.description": "प्रक्रिया नाम",
+        "modules.process.start.output.initial_output.description": "प्रक्रिया शुरू होने का ISO टाइमस्टैम्प",
+        "modules.process.start.output.name.description": "प्रक्रिया ID",
+        "modules.process.start.output.ok.description": "क्या प्रक्रिया सफलतापूर्वक शुरू हुई",
+        "modules.process.start.output.pid.description": "क्या प्रक्रिया सफलतापूर्वक शुरू हुई",
+        "modules.process.start.output.process_id.description": "क्या प्रक्रिया सफलतापूर्वक शुरू हुई",
+        "modules.process.start.output.started_at.description": "निष्पादित कमांड",
+        "modules.process.stop.description": "चल रही बैकग्राउंड प्रक्रिया रोकें",
+        "modules.process.stop.label": "प्रक्रिया रोकें",
+        "modules.process.stop.output.count.description": "रोकी गई प्रक्रिया जानकारी की सूची",
+        "modules.process.stop.output.failed.description": "रोकी गई प्रक्रिया जानकारी की सूची",
+        "modules.process.stop.output.ok.description": "क्या सभी प्रक्रियाएं सफलतापूर्वक रोकी गईं",
+        "modules.process.stop.output.stopped.description": "क्या सभी प्रक्रियाएं सफलतापूर्वक रोकी गईं"
+    }
+}

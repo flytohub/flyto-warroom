@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "営業に連絡",
+        "upgrade.debugFeatures": "強力なデバッグと分析機能をアンロックしてワークフロー開発を改善しましょう。",
+        "upgrade.enterpriseHint": "エンタープライズ機能が必要ですか？",
+        "upgrade.featureLocked": "この機能にはProサブスクリプションが必要です",
+        "upgrade.features.evidence": "すべてのステップでスクリーンショットとDOMキャプチャ",
+        "upgrade.features.lineage": "データフロー追跡と依存関係グラフ",
+        "upgrade.features.replay": "変更した入力で実行をリプレイ",
+        "upgrade.features.tests": "自動ワークフローテストスイート",
+        "upgrade.features.versions": "モジュールバージョンのロックと制御",
+        "upgrade.offlineLicense": "オフラインライセンスを購入 - $199（一括）",
+        "upgrade.subscription": "サブスクリプション - $19/月",
+        "upgrade.subtitle": "高度なデバッグツールにアクセス",
+        "upgrade.title": "Pro機能をアンロック"
+    }
+}

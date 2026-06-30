@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.alt",
+    "version": "1.0.0",
+    "translations": {
+        "alt.avatar": "รูปโปรไฟล์",
+        "alt.flytoLogo": "โลโก้ Flyto2",
+        "alt.preview": "ตัวอย่าง",
+        "alt.result": "ผลลัพธ์",
+        "alt.screenshot": "ภาพหน้าจอ",
+        "alt.stepScreenshot": "ภาพหน้าจอขั้นตอน",
+        "alt.templateIcon": "ไอคอนเทมเพลต"
+    }
+}

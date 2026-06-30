@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "सभी",
+        "toolLibrary.createFirstTool": "अपना पहला टूल बनाएं",
+        "toolLibrary.createTool": "टूल बनाएं",
+        "toolLibrary.deleteConfirm": "टूल हटाएं",
+        "toolLibrary.deleteMessage": "क्या आप वाकई \"{name}\" हटाना चाहते हैं? यह क्रिया पूर्ववत नहीं की जा सकती।",
+        "toolLibrary.noDescription": "कोई विवरण नहीं",
+        "toolLibrary.noTools": "अभी तक कोई टूल नहीं",
+        "toolLibrary.noToolsDesc": "अपने वर्कफ़्लो को स्वचालित करने के लिए अपना पहला टूल बनाएं",
+        "toolLibrary.run": "चलाएं",
+        "toolLibrary.searchPlaceholder": "टूल खोजें...",
+        "toolLibrary.steps": "चरण",
+        "toolLibrary.subtitle": "अपने ऑटोमेशन टूल प्रबंधित और चलाएं",
+        "toolLibrary.title": "टूल लाइब्रेरी"
+    }
+}

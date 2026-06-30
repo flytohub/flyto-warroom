@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "Word belgelerinden (.docx) metin ve içerik çıkar",
+        "modules.word.parse.label": "Word Belgesini Ayrıştır",
+        "modules.word.parse.output.images.description": "Paragraf listesi",
+        "modules.word.parse.output.metadata.description": "Dizi olarak çıkarılan tablolar",
+        "modules.word.parse.output.paragraphs.description": "Belgenin tam metin içeriği",
+        "modules.word.parse.output.tables.description": "Belgenin tam metin içeriği",
+        "modules.word.parse.output.text.description": "Belgenin tam metin içeriği",
+        "modules.word.to_pdf.description": "Word belgelerini (.docx) PDF dosyalarına dönüştür",
+        "modules.word.to_pdf.label": "Word'den PDF'e",
+        "modules.word.to_pdf.output.file_size.description": "Oluşturulan PDF dosyasının yolu",
+        "modules.word.to_pdf.output.method_used.description": "Çıktı dosyasının bayt cinsinden boyutu",
+        "modules.word.to_pdf.output.output_path.description": "Oluşturulan PDF dosyasının yolu"
+    }
+}

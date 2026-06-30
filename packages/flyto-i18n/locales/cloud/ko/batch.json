@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "삭제",
+        "batch.deleteConfirm.message": "{count}개의 템플릿을 삭제하시겠습니까? 이 작업은 취소할 수 없습니다.",
+        "batch.deleteConfirm.title": "{count}개 템플릿 삭제",
+        "batch.deselectAll": "전체 선택 해제",
+        "batch.select": "선택",
+        "batch.selectAll": "전체 선택",
+        "batch.selected": "선택됨"
+    }
+}

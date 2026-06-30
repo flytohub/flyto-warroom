@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "代替案",
+        "lineage.decision.evidence": "根拠",
+        "lineage.decision.reason": "理由",
+        "lineage.loop.clickToCollapse": "クリックして折りたたむ",
+        "lineage.steps": "ステップ",
+        "lineage.storyline.noSteps": "表示するステップがありません",
+        "lineage.storyline.noStepsInLane": "このレーンにステップがありません",
+        "lineage.storyline.runHint": "実行履歴を見るにはワークフローを実行してください",
+        "lineage.storyline.title": "実行タイムライン"
+    }
+}

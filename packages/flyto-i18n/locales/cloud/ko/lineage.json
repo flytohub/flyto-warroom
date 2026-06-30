@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "대안",
+        "lineage.decision.evidence": "증거",
+        "lineage.decision.reason": "이유",
+        "lineage.loop.clickToCollapse": "접으려면 클릭",
+        "lineage.steps": "단계",
+        "lineage.storyline.noSteps": "표시할 단계가 없습니다",
+        "lineage.storyline.noStepsInLane": "이 레인에 단계가 없습니다",
+        "lineage.storyline.runHint": "실행 기록을 보려면 워크플로우를 실행하세요",
+        "lineage.storyline.title": "실행 타임라인"
+    }
+}

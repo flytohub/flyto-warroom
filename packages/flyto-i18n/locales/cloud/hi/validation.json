@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "केवल अक्षर और संख्याएं अनुमत",
+        "validation.error": "वैलिडेशन त्रुटि",
+        "validation.failed": "वैलिडेशन विफल",
+        "validation.invalidEmail": "अमान्य ईमेल पता",
+        "validation.maxLength": "अधिकतम {max} अक्षर",
+        "validation.minLength": "न्यूनतम {min} अक्षर",
+        "validation.needsLowercase": "कम से कम एक लोअरकेस अक्षर होना चाहिए",
+        "validation.needsNumber": "कम से कम एक संख्या होनी चाहिए",
+        "validation.needsUppercase": "कम से कम एक अपरकेस अक्षर होना चाहिए",
+        "validation.passwordHint": "न्यूनतम 12 अक्षर, अपरकेस, लोअरकेस और संख्या के साथ",
+        "validation.passwordMismatch": "पासवर्ड मेल नहीं खाते",
+        "validation.required": "यह फ़ील्ड आवश्यक है"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "從 IMAP 伺服器讀取電子郵件",
+        "modules.email.read.label": "讀取電子郵件",
+        "modules.email.read.output.count.description": "電子郵件物件列表",
+        "modules.email.read.output.emails.description": "電子郵件物件列表",
+        "modules.email.send.description": "透過 SMTP 伺服器發送電子郵件",
+        "modules.email.send.label": "發送電子郵件",
+        "modules.email.send.output.message_id.description": "郵件是否成功發送",
+        "modules.email.send.output.recipients.description": "郵件是否成功發送",
+        "modules.email.send.output.sent.description": "郵件是否成功發送"
+    }
+}

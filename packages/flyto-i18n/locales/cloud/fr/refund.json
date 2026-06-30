@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "Montant du remboursement",
+        "refund.cancelButton": "Annuler",
+        "refund.confirm": "Confirmer le remboursement",
+        "refund.confirmButton": "Confirmer le remboursement",
+        "refund.confirmTitle": "Confirmer la demande de remboursement",
+        "refund.contactSupport": "Contacter le support",
+        "refund.days": "Jours de remboursement",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "Vous êtes éligible à un remboursement",
+        "refund.expiredWindow": "La période de remboursement de 30 jours a expiré",
+        "refund.failed": "Échec de la demande de remboursement",
+        "refund.forksAffected": "Les forks suivants seront orphelins (vos modifications seront préservées mais déconnectées de la source) :",
+        "refund.forksWarning": "Avertissement sur les forks",
+        "refund.notEligible": "Non éligible au remboursement",
+        "refund.processInfo": "Informations sur le processus de remboursement",
+        "refund.processing": "Traitement en cours...",
+        "refund.success": "Remboursement demandé avec succès",
+        "refund.template": "Modèle de remboursement",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "Description de l'avertissement"
+    }
+}

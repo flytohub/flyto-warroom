@@ -1,0 +1,17 @@
+{
+  "artifacts": [
+    {
+      "kind": "evidence_event",
+      "path": "examples/evidence-event.json"
+    }
+  ],
+  "finished_at": "2026-06-30T00:01:00Z",
+  "run_id": "run_example_001",
+  "scanner_id": "community.example_scanner",
+  "signature": {
+    "alg": "ed25519",
+    "value": "example-signature-placeholder"
+  },
+  "started_at": "2026-06-30T00:00:00Z",
+  "status": "succeeded"
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "サーバーに接続できません。バックエンドが稼働していることを確認してください。",
+        "errors.somethingWentWrong": "問題が発生しました",
+        "errors.technicalDetails": "技術的な詳細",
+        "errors.timeout": "リクエストがタイムアウトしました。もう一度お試しください。",
+        "errors.unexpectedError": "予期しないエラーが発生しました"
+    }
+}

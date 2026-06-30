@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.iconPicker",
+    "version": "1.0.0",
+    "translations": {
+        "iconPicker.iconColor": "Color del ícono",
+        "iconPicker.noResults": "Sin resultados",
+        "iconPicker.searchPlaceholder": "Buscar íconos..."
+    }
+}

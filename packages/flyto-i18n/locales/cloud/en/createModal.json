@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Category",
+        "createModal.category.placeholder": "Select a category (optional)",
+        "createModal.closeDialog": "Close dialog",
+        "createModal.create": "Create Template",
+        "createModal.creating": "Creating...",
+        "createModal.description.label": "Description",
+        "createModal.description.placeholder": "What does this template do? (optional)",
+        "createModal.folder.label": "Folder",
+        "createModal.folder.placeholder": "Default (no folder)",
+        "createModal.errors.createFailed": "Failed to create template",
+        "createModal.errors.fileTooLarge": "Image must be smaller than 2MB",
+        "createModal.errors.invalidFileType": "Please select an image file",
+        "createModal.icon.change": "Change Icon",
+        "createModal.icon.hint": "PNG, JPG, GIF up to 2MB",
+        "createModal.icon.label": "Template Icon",
+        "createModal.icon.remove": "Remove icon",
+        "createModal.icon.upload": "Upload Icon",
+        "createModal.name.label": "Template Name",
+        "createModal.name.placeholder": "My Awesome Automation",
+        "createModal.title": "New Template"
+    }
+}

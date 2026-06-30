@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "เวิร์กโฟลว์การอนุมัติ",
+        "stateMachine.create.blank": "ว่างเปล่า",
+        "stateMachine.create.descPlaceholder": "กรอกคำอธิบาย",
+        "stateMachine.create.description": "คำอธิบาย",
+        "stateMachine.create.name": "ชื่อ",
+        "stateMachine.create.namePlaceholder": "กรอกชื่อสถานะเครื่อง",
+        "stateMachine.create.order": "การประมวลผลคำสั่งซื้อ",
+        "stateMachine.create.template": "แม่แบบ",
+        "stateMachine.create.ticket": "ตั๋วสนับสนุน",
+        "stateMachine.create.title": "สร้างสถานะเครื่อง",
+        "stateMachine.diagram.select": "เลือกสถานะเครื่อง",
+        "stateMachine.diagram.title": "แผนภาพสถานะ",
+        "stateMachine.instances.empty": "ไม่มีอินสแตนซ์",
+        "stateMachine.instances.history": "ประวัติ",
+        "stateMachine.instances.title": "อินสแตนซ์",
+        "stateMachine.instances.trigger": "ทริกเกอร์",
+        "stateMachine.list.empty": "ไม่มีสถานะเครื่อง",
+        "stateMachine.list.title": "สถานะเครื่อง",
+        "stateMachine.stats.activeInstances": "อินสแตนซ์ที่ใช้งานอยู่",
+        "stateMachine.stats.completed": "เสร็จสมบูรณ์",
+        "stateMachine.stats.machines": "เครื่อง",
+        "stateMachine.stats.transitions": "การเปลี่ยนผ่าน"
+    }
+}

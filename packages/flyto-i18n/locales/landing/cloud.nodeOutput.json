@@ -1,0 +1,13 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.nodeOutput",
+  "version": "1.0.0",
+  "translations": {
+    "nodeOutput.diff": "",
+    "nodeOutput.input": "",
+    "nodeOutput.output": "",
+    "nodeOutput.table": "",
+    "nodeOutput.text": ""
+  }
+}

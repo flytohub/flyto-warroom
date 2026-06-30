@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Sil",
+        "batch.deleteConfirm.message": "{count} şablonu silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+        "batch.deleteConfirm.title": "{count} Şablonu Sil",
+        "batch.deselectAll": "Tüm Seçimi Kaldır",
+        "batch.select": "Seç",
+        "batch.selectAll": "Tümünü Seç",
+        "batch.selected": "seçildi"
+    }
+}

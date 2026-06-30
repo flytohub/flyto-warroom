@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "마켓플레이스로 돌아가기",
+        "creatorProfile.chatError": "채팅 시작 실패",
+        "creatorProfile.creatorTemplates": "크리에이터의 템플릿",
+        "creatorProfile.editProfile": "프로필 편집",
+        "creatorProfile.follow": "팔로우",
+        "creatorProfile.followError": "팔로우 상태 업데이트 실패",
+        "creatorProfile.followers": "팔로워",
+        "creatorProfile.following": "팔로잉",
+        "creatorProfile.loadMore": "더 보기",
+        "creatorProfile.noDescription": "설명 없음",
+        "creatorProfile.noFollowers": "아직 팔로워가 없습니다",
+        "creatorProfile.noFollowing": "아무도 팔로우하지 않음",
+        "creatorProfile.noTemplates": "아직 게시된 템플릿이 없습니다",
+        "creatorProfile.notFound": "크리에이터를 찾을 수 없음",
+        "creatorProfile.notFoundDesc": "찾고 계신 크리에이터가 존재하지 않거나 삭제되었습니다.",
+        "creatorProfile.templates": "템플릿"
+    }
+}

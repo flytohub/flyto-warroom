@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Google Takvim'de yeni bir etkinlik oluştur",
+        "modules.google.calendar.create_event.label": "Takvim Etkinlik Oluştur",
+        "modules.google.calendar.create_event.output.end.description": "Etkinlik bitiş saati",
+        "modules.google.calendar.create_event.output.event_id.description": "Oluşturulan etkinlik kimliği",
+        "modules.google.calendar.create_event.output.html_link.description": "Google Takvim'de etkinliği görüntüleme bağlantısı",
+        "modules.google.calendar.create_event.output.start.description": "Etkinlik başlangıç saati",
+        "modules.google.calendar.create_event.output.summary.description": "Etkinlik başlığı",
+        "modules.google.calendar.list_events.description": "Google Takvim'den yaklaşan etkinlikleri listele",
+        "modules.google.calendar.list_events.label": "Takvim Etkinlikleri Listele",
+        "modules.google.calendar.list_events.output.count.description": "Dönen etkinlik sayısı",
+        "modules.google.calendar.list_events.output.events.description": "Takvim etkinliklerinin listesi",
+        "modules.google.gmail.search.description": "Gmail arama sorgusu ile Gmail mesajlarını ara",
+        "modules.google.gmail.search.label": "Gmail Ara",
+        "modules.google.gmail.search.output.messages.description": "Eşleşen mesajların listesi",
+        "modules.google.gmail.search.output.total.description": "Dönen toplam mesaj sayısı",
+        "modules.google.gmail.send.description": "Gmail API ile bir e-posta gönder",
+        "modules.google.gmail.send.label": "Gmail Gönder",
+        "modules.google.gmail.send.output.message_id.description": "Gmail mesaj kimliği",
+        "modules.google.gmail.send.output.thread_id.description": "Gmail konu kimliği",
+        "modules.google.gmail.send.output.to.description": "Alıcı e-posta adresi"
+    }
+}

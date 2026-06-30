@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "Agregar elemento",
+        "queues.create.maxRetries": "Máximos reintentos",
+        "queues.create.name": "Nombre de la cola",
+        "queues.create.namePlaceholder": "Ingresa el nombre de la cola",
+        "queues.create.selectWorkflow": "Seleccionar flujo de trabajo",
+        "queues.create.submit": "Crear cola",
+        "queues.create.title": "Crear cola",
+        "queues.create.workflow": "Flujo de trabajo",
+        "queues.createFirst": "Crea tu primera cola",
+        "queues.empty": "No hay colas",
+        "queues.emptyDesc": "Crea una cola para comenzar",
+        "queues.stats.completed": "Completado",
+        "queues.stats.pending": "Pendiente",
+        "queues.stats.processing": "Procesando",
+        "queues.stats.totalItems": "Total de elementos",
+        "queues.status.completed": "Completado",
+        "queues.status.failed": "Fallido",
+        "queues.status.pending": "Pendiente",
+        "queues.status.processing": "Procesando",
+        "queues.transactions.empty": "No hay transacciones",
+        "queues.transactions.title": "Transacciones"
+    }
+}

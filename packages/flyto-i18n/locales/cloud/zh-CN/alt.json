@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.alt",
+    "version": "1.0.0",
+    "translations": {
+        "alt.avatar": "头像",
+        "alt.flytoLogo": "Flyto2 标志",
+        "alt.preview": "预览",
+        "alt.result": "结果",
+        "alt.screenshot": "截屏",
+        "alt.stepScreenshot": "步骤截屏",
+        "alt.templateIcon": "模板图标"
+    }
+}

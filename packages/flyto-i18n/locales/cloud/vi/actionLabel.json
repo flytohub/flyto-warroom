@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "Tạo mới",
+        "actionLabel.delete": "Xóa",
+        "actionLabel.execute": "Thực thi",
+        "actionLabel.export": "Xuất",
+        "actionLabel.import": "Nhập",
+        "actionLabel.logout": "Đăng xuất",
+        "actionLabel.update": "Cập nhật"
+    }
+}

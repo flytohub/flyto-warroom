@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "उपलब्ध वेरिएबल",
+        "code.inputAllDesc": "पिछले स्टेप से सभी आइटम",
+        "code.inputFirstDesc": "केवल पहला आइटम",
+        "code.jsonDesc": "वर्तमान आइटम डेटा (उपनाम)",
+        "code.language": "भाषा",
+        "code.localExecutionNotice": "सुरक्षा के लिए कोड आपकी मशीन पर लोकली चलता है",
+        "code.sourceCode": "सोर्स कोड"
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "vi",
+  "category": "cloud.queues",
+  "version": "1.0.0",
+  "translations": {
+    "queues.addItem": "Thêm Item",
+    "queues.create.maxRetries": "Max Retries",
+    "queues.create.name": "Queue Tên",
+    "queues.create.namePlaceholder": "Enter queue Tên",
+    "queues.create.selectWorkflow": "Chọn Quy trình",
+    "queues.create.submit": "Tạo Queue",
+    "queues.create.title": "Tạo Queue",
+    "queues.create.workflow": "Quy trình",
+    "queues.createFirst": "Tạo your first queue",
+    "queues.empty": "No queues",
+    "queues.emptyDesc": "Tạo a queue to get started",
+    "queues.stats.completed": "Hoàn thành",
+    "queues.stats.pending": "Đang chờ",
+    "queues.stats.processing": "Processing",
+    "queues.stats.totalItems": "Tổng Items",
+    "queues.status.completed": "Hoàn thành",
+    "queues.status.failed": "Thất bại",
+    "queues.status.pending": "Đang chờ",
+    "queues.status.processing": "Processing",
+    "queues.transactions.empty": "No transactions",
+    "queues.transactions.title": "Transactions"
+  }
+}

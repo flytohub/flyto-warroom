@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "Genehmigungs-Workflow",
+        "stateMachine.create.blank": "Leer",
+        "stateMachine.create.descPlaceholder": "Beschreibung eingeben",
+        "stateMachine.create.description": "Beschreibung",
+        "stateMachine.create.name": "Name",
+        "stateMachine.create.namePlaceholder": "Name der Zustandsmaschine eingeben",
+        "stateMachine.create.order": "Bestellabwicklung",
+        "stateMachine.create.template": "Vorlage",
+        "stateMachine.create.ticket": "Support-Ticket",
+        "stateMachine.create.title": "Zustandsmaschine erstellen",
+        "stateMachine.diagram.select": "Zustandsmaschine auswählen",
+        "stateMachine.diagram.title": "Zustandsdiagramm",
+        "stateMachine.instances.empty": "Keine Instanzen",
+        "stateMachine.instances.history": "Verlauf",
+        "stateMachine.instances.title": "Instanzen",
+        "stateMachine.instances.trigger": "Auslösen",
+        "stateMachine.list.empty": "Keine Zustandsmaschinen",
+        "stateMachine.list.title": "Zustandsmaschinen",
+        "stateMachine.stats.activeInstances": "Aktive Instanzen",
+        "stateMachine.stats.completed": "Abgeschlossen",
+        "stateMachine.stats.machines": "Maschinen",
+        "stateMachine.stats.transitions": "Übergänge"
+    }
+}

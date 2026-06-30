@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "Nie udalo sie rozpoczac odtwarzania",
+        "error.fixJsonFirst": "Najpierw napraw bledy JSON",
+        "error.imageTooLarge": "Plik obrazu jest za duzy",
+        "error.invalidJsonContext": "Nieprawidlowy JSON w nadpisaniach kontekstu",
+        "error.noStepsToValidate": "Nie znaleziono krokow do walidacji",
+        "error.replayFailed": "Odtwarzanie nie powiodlo sie"
+    }
+}

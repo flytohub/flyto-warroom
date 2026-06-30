@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "最近のアクティビティがありません",
+        "team.activity.title": "最近のアクティビティ",
+        "team.contributors.created": "作成",
+        "team.contributors.empty": "まだコントリビューターがいません",
+        "team.contributors.executed": "実行",
+        "team.contributors.title": "コントリビューター",
+        "team.dashboard.subtitle": "チームアクティビティの概要",
+        "team.dashboard.title": "チームダッシュボード",
+        "team.stats.executions": "実行",
+        "team.stats.members": "メンバー",
+        "team.stats.templates": "テンプレート",
+        "team.stats.workflows": "ワークフロー"
+    }
+}

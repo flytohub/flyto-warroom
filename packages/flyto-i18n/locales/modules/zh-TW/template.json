@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "將範本從你的資料庫中執行為工作流程步驟",
+        "modules.template.invoke.label": "執行範本",
+        "modules.template.invoke.output.__event__.description": "資料庫項目的 ID（購買/分叉/擁有）",
+        "modules.template.invoke.output.execution_time_ms.description": "範本執行結果",
+        "modules.template.invoke.output.result.description": "最大執行時間（秒）",
+        "modules.template.invoke.output.template_id.description": "路由事件（成功/錯誤）",
+        "modules.template.invoke.ports.input": "執行範本",
+        "modules.template.invoke.ports.success": "輸入"
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.nodeOutput",
+    "version": "1.0.0",
+    "translations": {
+        "nodeOutput.diff": "Fark",
+        "nodeOutput.input": "Girdi",
+        "nodeOutput.output": "Çıktı",
+        "nodeOutput.table": "Tablo",
+        "nodeOutput.text": "Metin"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Odczytaj dane z plikow Excel (xlsx, xls)",
+        "modules.excel.read.label": "Odczytaj Excel",
+        "modules.excel.read.output.data.description": "Wyodrebnione wiersze danych",
+        "modules.excel.read.output.headers.description": "Wyodrebnione wiersze danych",
+        "modules.excel.read.output.row_count.description": "Wyodrebnione wiersze danych",
+        "modules.excel.read.output.sheet_names.description": "Naglowki kolumn",
+        "modules.excel.write.description": "Zapisz dane do plikow Excel (xlsx)",
+        "modules.excel.write.label": "Zapisz Excel",
+        "modules.excel.write.output.path.description": "Sciezka do utworzonego pliku Excel",
+        "modules.excel.write.output.row_count.description": "Sciezka do utworzonego pliku Excel",
+        "modules.excel.write.output.size.description": "Sciezka do utworzonego pliku Excel"
+    }
+}

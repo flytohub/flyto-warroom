@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "process",
+    "version": "1.0.0",
+    "translations": {
+        "modules.process.list.description": "Wylistuj wszystkie dzialajace procesy w tle",
+        "modules.process.list.label": "Lista procesow",
+        "modules.process.list.output.count.description": "Sukces operacji",
+        "modules.process.list.output.ok.description": "Sukces operacji",
+        "modules.process.list.output.processes.description": "Sukces operacji",
+        "modules.process.list.output.running.description": "Lista informacji o procesach",
+        "modules.process.list.output.stopped.description": "Calkowita liczba procesow",
+        "modules.process.start.description": "Uruchom proces w tle (serwer, usluga, itp.)",
+        "modules.process.start.label": "Uruchom proces w tle",
+        "modules.process.start.output.command.description": "Wewnetrzny identyfikator procesu dla process.stop",
+        "modules.process.start.output.cwd.description": "Nazwa procesu",
+        "modules.process.start.output.initial_output.description": "Znacznik czasu ISO kiedy proces sie uruchomil",
+        "modules.process.start.output.name.description": "ID procesu",
+        "modules.process.start.output.ok.description": "Czy proces uruchomil sie pomyslnie",
+        "modules.process.start.output.pid.description": "Czy proces uruchomil sie pomyslnie",
+        "modules.process.start.output.process_id.description": "Czy proces uruchomil sie pomyslnie",
+        "modules.process.start.output.started_at.description": "Wykonane polecenie",
+        "modules.process.stop.description": "Zatrzymaj dzialajacy proces w tle",
+        "modules.process.stop.label": "Zatrzymaj proces",
+        "modules.process.stop.output.count.description": "Lista informacji o zatrzymanych procesach",
+        "modules.process.stop.output.failed.description": "Lista informacji o zatrzymanych procesach",
+        "modules.process.stop.output.ok.description": "Czy wszystkie procesy zostaly zatrzymane pomyslnie",
+        "modules.process.stop.output.stopped.description": "Czy wszystkie procesy zostaly zatrzymane pomyslnie"
+    }
+}

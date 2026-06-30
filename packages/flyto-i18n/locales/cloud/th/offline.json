@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.offline",
+    "version": "1.0.0",
+    "translations": {
+        "offline.backToTemplates": "กลับไปที่เทมเพลต",
+        "offline.currentlyOffline": "คุณกำลังทำงานแบบออฟไลน์",
+        "offline.languagePack.active": "ใช้งานอยู่",
+        "offline.languagePack.currentLanguage": "ภาษาปัจจุบัน",
+        "offline.languagePack.downloadHint": "ดาวน์โหลด language packs จาก",
+        "offline.languagePack.importButton": "นำเข้า Language Pack",
+        "offline.languagePack.importFailed": "ไม่สามารถนำเข้า language pack ได้",
+        "offline.languagePack.importSuccess": "นำเข้า {locale} สำเร็จ ({count} keys)",
+        "offline.languagePack.importedPacks": "Packs ที่นำเข้า",
+        "offline.languagePack.importing": "กำลังนำเข้า...",
+        "offline.languagePack.invalidFormat": "รูปแบบไฟล์ไม่ถูกต้อง ต้องการไฟล์ flyto-i18n JSON",
+        "offline.languagePack.noTranslations": "ไม่พบการแปลในไฟล์",
+        "offline.languagePack.subtitle": "นำเข้าการแปลสำหรับใช้งานออฟไลน์",
+        "offline.languagePack.title": "ภาษาPack",
+        "offline.languagePack.use": "ใช้",
+        "offline.license": "ใบอนุญาต",
+        "offline.settings": "การตั้งค่าออฟไลน์"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "생성",
+        "actionLabel.delete": "삭제",
+        "actionLabel.execute": "실행",
+        "actionLabel.export": "내보내기",
+        "actionLabel.import": "가져오기",
+        "actionLabel.logout": "로그아웃",
+        "actionLabel.update": "업데이트"
+    }
+}

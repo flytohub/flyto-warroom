@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.pluginCapability",
+    "version": "1.0.0",
+    "translations": {
+        "pluginCapability.imageClassification": "圖像分類",
+        "pluginCapability.speechRecognition": "語音識別",
+        "pluginCapability.textClassification": "文字分類",
+        "pluginCapability.textEmbedding": "文字嵌入",
+        "pluginCapability.textGeneration": "文字生成",
+        "pluginCapability.textToSpeech": "文字轉語音"
+    }
+}

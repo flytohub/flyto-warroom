@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.orchestrator",
+    "version": "1.0.0",
+    "translations": {
+        "orchestrator.jobs.empty": "कोई काम नहीं",
+        "orchestrator.jobs.title": "काम",
+        "orchestrator.register.capabilities": "क्षमताएं",
+        "orchestrator.register.machineName": "मशीन का नाम",
+        "orchestrator.register.machineNamePlaceholder": "मशीन का नाम दर्ज करें",
+        "orchestrator.register.name": "रोबोट का नाम",
+        "orchestrator.register.namePlaceholder": "रोबोट का नाम दर्ज करें",
+        "orchestrator.register.osType": "OS प्रकार",
+        "orchestrator.register.submit": "रजिस्टर करें",
+        "orchestrator.register.title": "रोबोट रजिस्टर करें",
+        "orchestrator.robots.empty": "कोई रोबोट पंजीकृत नहीं",
+        "orchestrator.robots.emptyDesc": "शुरू करने के लिए एक रोबोट पंजीकृत करें",
+        "orchestrator.robots.lastSeen": "अंतिम बार देखा गया",
+        "orchestrator.robots.maxJobs": "अधिकतम काम",
+        "orchestrator.robots.platform": "प्लेटफ़ॉर्म",
+        "orchestrator.robots.register": "रोबोट रजिस्टर करें",
+        "orchestrator.robots.registerFirst": "अपना पहला रोबोट रजिस्टर करें",
+        "orchestrator.robots.runJob": "काम चलाएं",
+        "orchestrator.robots.title": "रोबोट",
+        "orchestrator.stats.available": "उपलब्ध",
+        "orchestrator.stats.busy": "व्यस्त",
+        "orchestrator.stats.offline": "ऑफ़लाइन",
+        "orchestrator.stats.totalRobots": "कुल रोबोट"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.moduleCard",
+    "version": "1.0.0",
+    "translations": {
+        "moduleCard.expert": "専門家",
+        "moduleCard.inputType": "入力: {type}",
+        "moduleCard.noDescription": "説明なし",
+        "moduleCard.outputType": "出力: {type}"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.huggingface",
+    "version": "1.0.0",
+    "translations": {
+        "huggingface.browseMoreModels": "Jelajahi Model Lainnya",
+        "huggingface.chooseModel": "Pilih Model",
+        "huggingface.inferenceAPI": "Inference API",
+        "huggingface.installedModels": "Model Terinstal",
+        "huggingface.localExecution": "Eksekusi Lokal",
+        "huggingface.noModelsAvailable": "Tidak ada model tersedia",
+        "huggingface.notInstalled": "Tidak Terinstal",
+        "huggingface.popularModels": "Model Populer",
+        "huggingface.selectModel": "Pilih Model"
+    }
+}

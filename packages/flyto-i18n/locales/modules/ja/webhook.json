@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "webhook",
+    "version": "1.0.0",
+    "translations": {
+        "modules.webhook.trigger.description": "Webhook URLにHTTP POSTリクエストを送信",
+        "modules.webhook.trigger.label": "Webhookトリガー",
+        "modules.webhook.trigger.output.headers.description": "HTTPレスポンスステータスコード",
+        "modules.webhook.trigger.output.response.description": "HTTPレスポンスステータスコード",
+        "modules.webhook.trigger.output.status_code.description": "HTTPレスポンスステータスコード"
+    }
+}

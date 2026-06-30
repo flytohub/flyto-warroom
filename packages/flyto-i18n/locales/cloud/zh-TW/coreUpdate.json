@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "可用",
+        "coreUpdate.checkFailed": "檢查狀態失敗",
+        "coreUpdate.downloadPage": "從官網下載",
+        "coreUpdate.installedVersion": "已安裝版本",
+        "coreUpdate.invalidFile": "請選擇有效的 .whl 檔案",
+        "coreUpdate.lastCheck": "上次檢查",
+        "coreUpdate.notInstalled": "尚未安裝",
+        "coreUpdate.refresh": "檢查更新",
+        "coreUpdate.title": "核心引擎",
+        "coreUpdate.upToDate": "已是最新版本",
+        "coreUpdate.uploadFailed": "上傳失敗",
+        "coreUpdate.uploadPackage": "上傳套件",
+        "coreUpdate.whlFile": "上傳 .whl 檔案"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "最後更新",
+        "terms.sections.acceptance.content": "存取或使用 Flyto2 服務即表示您同意受本服務條款約束。如果您不同意這些條款，請勿使用我們的服務。",
+        "terms.sections.acceptance.title": "條款接受",
+        "terms.sections.account.content": "您有責任維護帳號憑證的機密性，並對帳號下發生的所有活動負責。您必須立即通知我們任何未經授權的使用。",
+        "terms.sections.account.title": "使用者帳號",
+        "terms.sections.intellectual.content": "Flyto2 的所有內容、功能和功能性均歸我們所有，並受國際著作權、商標和其他智慧財產權法律保護。",
+        "terms.sections.intellectual.title": "智慧財產權",
+        "terms.sections.limitation.content": "在法律允許的最大範圍內，Flyto2 不對因使用我們服務而產生的任何間接、附帶、特殊、後果性或懲罰性損害承擔責任。",
+        "terms.sections.limitation.title": "責任限制",
+        "terms.sections.prohibited.content": "您不得將我們的服務用於任何非法目的、違反任何法律、侵犯智慧財產權或傳輸有害程式碼。我們保留終止違反這些條款的帳號的權利。",
+        "terms.sections.prohibited.title": "禁止行為",
+        "terms.sections.services.content": "Flyto2 提供工作流程自動化平台，讓使用者可以建立、管理和執行自動化工作流程。我們保留隨時修改或終止服務的權利。",
+        "terms.sections.services.title": "服務說明",
+        "terms.sections.termination.content": "我們可能會自行決定終止或暫停您的帳號和服務存取權，無需事先通知，如果我們認為您的行為違反這些條款或對其他使用者有害。",
+        "terms.sections.termination.title": "終止",
+        "terms.title": "服務條款"
+    }
+}

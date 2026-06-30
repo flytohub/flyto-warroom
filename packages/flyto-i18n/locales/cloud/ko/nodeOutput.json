@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.nodeOutput",
+    "version": "1.0.0",
+    "translations": {
+        "nodeOutput.diff": "차이",
+        "nodeOutput.input": "입력",
+        "nodeOutput.output": "출력",
+        "nodeOutput.table": "테이블",
+        "nodeOutput.text": "텍스트"
+    }
+}

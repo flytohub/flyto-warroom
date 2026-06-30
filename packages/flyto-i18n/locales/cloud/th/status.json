@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.status",
+    "version": "1.0.0",
+    "translations": {
+        "status.cancelled": "ยกเลิกแล้ว",
+        "status.completed": "เสร็จสิ้น",
+        "status.error": "ข้อผิดพลาด",
+        "status.failed": "ล้มเหลว",
+        "status.pending": "รอดำเนินการ",
+        "status.running": "กำลังทำงาน",
+        "status.success": "สำเร็จ"
+    }
+}

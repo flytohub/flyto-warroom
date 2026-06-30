@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "Détecter si une valeur a changé au-delà du seuil (par montant ou pourcentage)",
+        "modules.compare.change.label": "Détecter le changement",
+        "modules.compare.change.output.change_absolute.description": "Changement en pourcentage (positif = augmentation, négatif = diminution)",
+        "modules.compare.change.output.change_percent.description": "Direction du changement : ",
+        "modules.compare.change.output.changed.description": "Si l'opération a réussi",
+        "modules.compare.change.output.current.description": "Changement absolu (positif = augmentation, négatif = diminution)",
+        "modules.compare.change.output.direction.description": "Si l'opération a réussi",
+        "modules.compare.change.output.ok.description": "Si l'opération a réussi",
+        "modules.compare.change.output.previous.description": "Changement absolu (positif = augmentation, négatif = diminution)",
+        "modules.compare.change.output.summary.description": "La valeur actuelle",
+        "modules.compare.change.params.current.description": "La valeur actuelle/nouvelle à comparer",
+        "modules.compare.change.params.current.label": "Valeur actuelle",
+        "modules.compare.change.params.direction.description": "Quelle direction de changement détecter",
+        "modules.compare.change.params.direction.label": "Seuil",
+        "modules.compare.change.params.mode.description": "La valeur précédente/ancienne à comparer",
+        "modules.compare.change.params.mode.label": "Valeur précédente",
+        "modules.compare.change.params.previous.description": "La valeur actuelle/nouvelle à comparer",
+        "modules.compare.change.params.previous.label": "Valeur actuelle",
+        "modules.compare.change.params.threshold.description": "Changement minimum pour déclencher (5 = 5% ou 5 unités)",
+        "modules.compare.change.params.threshold.label": "Changement en pourcentage"
+    }
+}

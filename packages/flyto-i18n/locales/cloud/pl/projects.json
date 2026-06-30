@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "Utworz projekt",
+        "projects.create.title": "Utworz projekt",
+        "projects.delete.message": "Czy na pewno chcesz usunac ten projekt? Wszystkie przeplywy w tym projekcie zostana przeniesione do domyslnego projektu.",
+        "projects.delete.title": "Usun projekt",
+        "projects.description": "Organizuj swoje przeplywy w projekty",
+        "projects.edit.title": "Edytuj projekt",
+        "projects.empty.description": "Utworz swoj pierwszy projekt, aby zorganizowac przeplywy",
+        "projects.empty.title": "Brak projektow",
+        "projects.form.color": "Kolor",
+        "projects.form.description": "Opis",
+        "projects.form.name": "Nazwa projektu",
+        "projects.form.namePlaceholder": "Moj projekt",
+        "projects.members": "czlonkow",
+        "projects.title": "Projekty",
+        "projects.workflows": "przeplywow"
+    }
+}

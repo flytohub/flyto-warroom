@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.toolRunner",
+    "version": "1.0.0",
+    "translations": {
+        "toolRunner.advancedMode": "詳細",
+        "toolRunner.backToLibrary": "ライブラリに戻る",
+        "toolRunner.copy": "コピー",
+        "toolRunner.download": "ダウンロード",
+        "toolRunner.editTool": "編集",
+        "toolRunner.executionFailed": "実行失敗",
+        "toolRunner.executionLogs": "実行ログ",
+        "toolRunner.executionSuccess": "実行完了",
+        "toolRunner.executionTimedOut": "実行がタイムアウトしました",
+        "toolRunner.flowSteps": "フローステップ",
+        "toolRunner.inputForm": "入力フォーム",
+        "toolRunner.loadFailed": "ツールの読み込みに失敗しました",
+        "toolRunner.noLogs": "まだログがありません。ツールを実行して実行ログを確認してください。",
+        "toolRunner.resolvedParams": "解決済みパラメータ",
+        "toolRunner.results": "結果",
+        "toolRunner.retry": "再試行",
+        "toolRunner.runAgain": "再実行",
+        "toolRunner.runToSeeResults": "ツールを実行して結果を確認",
+        "toolRunner.runTool": "ツールを実行",
+        "toolRunner.running": "実行中...",
+        "toolRunner.simpleMode": "シンプル",
+        "toolRunner.toolNotFound": "ツールが見つかりません",
+        "toolRunner.toolNotFoundError": "ツールが見つかりません"
+    }
+}

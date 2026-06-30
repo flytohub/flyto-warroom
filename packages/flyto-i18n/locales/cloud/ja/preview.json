@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "AIに修正を依頼",
+        "preview.emptyState.description": "開発モードに切り替えてワークフローステップを追加",
+        "preview.emptyState.hint": "プレビューはありません",
+        "preview.emptyState.title": "ワークフローが定義されていません",
+        "preview.executionFailed": "実行失敗",
+        "preview.fields": "フィールド",
+        "preview.inputs": "入力",
+        "preview.noInputsRequired": "入力は不要です",
+        "preview.noWorkflowHint": "開発モードでワークフローステップを追加して実行を有効にする",
+        "preview.output": "出力",
+        "preview.ready": "準備完了",
+        "preview.running": "実行中",
+        "preview.steps": "ステップ",
+        "preview.untitledTemplate": "無題のテンプレート"
+    }
+}

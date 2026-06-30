@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.cannotUnlink": "연결 해제 불가 — 최소한 하나의 로그인 방법이 필요합니다",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.link": "계정 연결",
+        "linkedAccounts.linkSuccess": "Google 계정이 성공적으로 연결되었습니다",
+        "linkedAccounts.linked": "연결됨",
+        "linkedAccounts.notLinked": "연결되지 않음",
+        "linkedAccounts.subtitle": "연결된 로그인 방법 관리",
+        "linkedAccounts.title": "연결된 계정",
+        "linkedAccounts.unlink": "연결 해제",
+        "linkedAccounts.unlinkConfirm": "Google 연결을 해제하시겠습니까?",
+        "linkedAccounts.unlinkSuccess": "Google 계정 연결 해제됨"
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "Bir web sayfasını kazıyın ve yapılandırılmış JSON verisi olarak çıktısını alın",
+        "modules.composite.browser.scrape_to_json.label": "Web'i JSON'a Kazı",
+        "modules.composite.data.csv_to_json.description": "Bir CSV dosyasını okuyun ve JSON formatına dönüştürün",
+        "modules.composite.data.csv_to_json.label": "CSV'den JSON'a",
+        "modules.composite.data.json_transform_notify.description": "JSON verisini dönüştürün ve sonuçlarla bildirim gönderin",
+        "modules.composite.data.json_transform_notify.label": "JSON Dönüştür ve Bildir",
+        "modules.composite.developer.api_to_notification.description": "Herhangi bir API'den veri alın ve bir bildirim kanalına gönderin",
+        "modules.composite.developer.api_to_notification.label": "API'den Bildirime",
+        "modules.composite.developer.github_daily_digest.description": "GitHub depo güncellemelerini alın ve günlük özet bildirimi gönderin",
+        "modules.composite.developer.github_daily_digest.label": "GitHub Günlük Özeti",
+        "modules.composite.notification.multi_channel_alert.description": "Aynı anda birden fazla bildirim kanalına uyarılar gönderin",
+        "modules.composite.notification.multi_channel_alert.label": "Çok Kanallı Uyarı",
+        "modules.composite.notification.scheduled_report.description": "Zamanlanmış raporlar oluşturun ve bildirim kanallarına gönderin",
+        "modules.composite.notification.scheduled_report.label": "Zamanlanmış Rapor",
+        "modules.composite.test.api_test.description": "HTTP istekleri ve doğrulamalar ile API testleri çalıştırın",
+        "modules.composite.test.api_test.label": "API Test Paketi",
+        "modules.composite.test.e2e_flow.description": "Tarayıcı otomasyonu ile uçtan uca iş akışı testi",
+        "modules.composite.test.e2e_flow.label": "Uçtan Uca Akış Testi",
+        "modules.composite.test.quality_gate.description": "Kalite kontrolleri çalıştırın ve eşiklere göre dağıtımları engelleyin",
+        "modules.composite.test.quality_gate.label": "Kalite Kapısı",
+        "modules.composite.test.ui_review.description": "Görsel regresyon testi ve UI inceleme iş akışı",
+        "modules.composite.test.ui_review.label": "UI İncelemesi",
+        "modules.composite.test.verify_fix.description": "Hata düzeltmelerini öncesi/sonrası testleri ve regresyon paketleri ile doğrulayın",
+        "modules.composite.test.verify_fix.label": "Düzeltmeyi Doğrula"
+    }
+}

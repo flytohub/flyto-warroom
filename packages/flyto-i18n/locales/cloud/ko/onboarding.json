@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.onboarding",
+    "version": "1.0.0",
+    "translations": {
+        "onboarding.finish": "완료",
+        "onboarding.next": "다음",
+        "onboarding.previous": "이전",
+        "onboarding.skip": "건너뛰기"
+    }
+}

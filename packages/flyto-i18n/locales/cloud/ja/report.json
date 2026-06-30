@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "問題を説明してください...",
+        "report.reasons.copyright": "著作権または知的財産権の侵害",
+        "report.reasons.harmful": "有害または危険なコンテンツ",
+        "report.reasons.inappropriate": "不適切または攻撃的なコンテンツ",
+        "report.reasons.misleading": "虚偽または誤解を招く情報",
+        "report.reasons.other": "その他（詳細を記入）",
+        "report.reasons.spam": "スパムまたは誤解を招くもの",
+        "report.selectReason": "報告理由を選択してください：",
+        "report.submit": "報告を送信",
+        "report.title": "コンテンツを報告"
+    }
+}

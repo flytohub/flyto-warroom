@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "database",
+  "version": "1.0.0",
+  "translations": {
+    "modules.database.insert.description": "",
+    "modules.database.insert.label": "",
+    "modules.database.insert.output.inserted_count.description": "",
+    "modules.database.insert.output.returning_data.description": "",
+    "modules.database.query.description": "",
+    "modules.database.query.label": "",
+    "modules.database.query.output.columns.description": "",
+    "modules.database.query.output.row_count.description": "",
+    "modules.database.query.output.rows.description": "",
+    "modules.database.update.description": "",
+    "modules.database.update.label": "",
+    "modules.database.update.output.updated_count.description": ""
+  }
+}

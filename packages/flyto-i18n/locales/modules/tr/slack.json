@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "slack",
+    "version": "1.0.0",
+    "translations": {
+        "modules.slack.send.description": "Gelen webhook üzerinden Slack kanallarına mesaj gönder",
+        "modules.slack.send.label": "Slack Mesajı Gönder",
+        "modules.slack.send.output.sent.description": "Mesaj başarıyla gönderildi mi"
+    }
+}

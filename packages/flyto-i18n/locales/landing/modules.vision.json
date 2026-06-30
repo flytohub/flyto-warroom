@@ -1,0 +1,27 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "vision",
+  "version": "1.0.0",
+  "translations": {
+    "modules.vision.analyze.description": "",
+    "modules.vision.analyze.label": "",
+    "modules.vision.analyze.output.analysis.description": "",
+    "modules.vision.analyze.output.model.description": "",
+    "modules.vision.analyze.output.ok.description": "",
+    "modules.vision.analyze.output.structured.description": "",
+    "modules.vision.analyze.output.tokens_used.description": "",
+    "modules.vision.compare.description": "",
+    "modules.vision.compare.label": "",
+    "modules.vision.compare.output.differences.description": "",
+    "modules.vision.compare.output.has_differences.description": "",
+    "modules.vision.compare.output.ok.description": "",
+    "modules.vision.compare.output.recommendation.description": "",
+    "modules.vision.compare.output.similarity_score.description": "",
+    "modules.vision.compare.output.summary.description": "",
+    "modules.vision.compare.params.differences": "",
+    "modules.vision.compare.params.focus_areas": "",
+    "modules.vision.compare.params.focus_areas.options.header": "",
+    "modules.vision.compare.params.focus_areas.options.main content": ""
+  }
+}

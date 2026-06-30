@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "ライブラリからテンプレートをワークフローステップとして実行する",
+        "modules.template.invoke.label": "テンプレートを呼び出す",
+        "modules.template.invoke.output.__event__.description": "ライブラリアイテムのID（購入/フォーク/所有）",
+        "modules.template.invoke.output.execution_time_ms.description": "テンプレート実行結果",
+        "modules.template.invoke.output.result.description": "最大実行時間（秒）",
+        "modules.template.invoke.output.template_id.description": "ルーティング用イベント（成功/エラー）",
+        "modules.template.invoke.ports.input": "テンプレートを呼び出す",
+        "modules.template.invoke.ports.success": "入力"
+    }
+}

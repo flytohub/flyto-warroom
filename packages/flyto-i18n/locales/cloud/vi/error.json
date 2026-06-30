@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "Bắt đầu phát lại thất bại",
+        "error.fixJsonFirst": "Vui lòng sửa lỗi JSON trước",
+        "error.imageTooLarge": "Tệp hình ảnh quá lớn",
+        "error.invalidJsonContext": "JSON không hợp lệ trong ghi đè ngữ cảnh",
+        "error.noStepsToValidate": "Không tìm thấy bước để xác nhận",
+        "error.replayFailed": "Phát lại thất bại"
+    }
+}

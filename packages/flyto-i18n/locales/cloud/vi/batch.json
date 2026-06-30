@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Xóa",
+        "batch.deleteConfirm.message": "Bạn có chắc muốn xóa {count} mẫu? Hành động này không thể hoàn tác.",
+        "batch.deleteConfirm.title": "Xóa {count} mẫu",
+        "batch.deselectAll": "Bỏ chọn tất cả",
+        "batch.select": "Chọn",
+        "batch.selectAll": "Chọn tất cả",
+        "batch.selected": "đã chọn"
+    }
+}

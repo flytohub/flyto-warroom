@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.orders",
+  "version": "1.0.0",
+  "translations": {
+    "orders.accept": "",
+    "orders.approve": "",
+    "orders.budget": "",
+    "orders.budgetPlaceholder": "",
+    "orders.completed": "",
+    "orders.createFailed": "",
+    "orders.createOrder": "",
+    "orders.createOrderSubtitle": "",
+    "orders.days": "",
+    "orders.deadline": "",
+    "orders.decline": "",
+    "orders.deliver": "",
+    "orders.description": "",
+    "orders.descriptionPlaceholder": "",
+    "orders.payNow": "",
+    "orders.requirements": "",
+    "orders.requirementsPlaceholder": "",
+    "orders.sendOrder": "",
+    "orders.sending": "",
+    "orders.sendingTo": "",
+    "orders.title": "",
+    "orders.titlePlaceholder": "",
+    "orders.viewDetails": "",
+    "orders.waitingResponse": ""
+  }
+}

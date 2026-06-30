@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "シェルコマンドを実行して出力をキャプチャ",
+        "modules.shell.exec.label": "シェルコマンド実行",
+        "modules.shell.exec.output.command.description": "標準出力",
+        "modules.shell.exec.output.cwd.description": "標準エラー出力",
+        "modules.shell.exec.output.duration_ms.description": "実行されたコマンド",
+        "modules.shell.exec.output.exit_code.description": "コマンドが正常に実行されたかどうか（終了コード0）",
+        "modules.shell.exec.output.ok.description": "コマンドが正常に実行されたかどうか（終了コード0）",
+        "modules.shell.exec.output.stderr.description": "コマンド終了コード",
+        "modules.shell.exec.output.stdout.description": "コマンドが正常に実行されたかどうか（終了コード0）"
+    }
+}

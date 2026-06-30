@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "มุมมองตาราง",
+        "templateToolbar.listView": "มุมมองรายการ",
+        "templateToolbar.searchLabel": "ค้นหาเทมเพลต",
+        "templateToolbar.searchPlaceholder": "ค้นหาเทมเพลต...",
+        "templateToolbar.sortLabel": "เรียงเทมเพลตตาม",
+        "templateToolbar.sortOptions.created": "สร้างล่าสุด",
+        "templateToolbar.sortOptions.name": "ชื่อ A-Z",
+        "templateToolbar.sortOptions.status": "ตามสถานะ",
+        "templateToolbar.sortOptions.updated": "อัปเดตล่าสุด",
+        "templateToolbar.viewMode": "โหมดมุมมอง"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "integration",
+    "version": "1.0.0",
+    "translations": {
+        "modules.integration.jira.create_issue.description": "Jira에 새 이슈 생성",
+        "modules.integration.jira.create_issue.label": "Jira 이슈 생성",
+        "modules.integration.jira.search_issues.description": "JQL 쿼리를 사용하여 이슈 검색",
+        "modules.integration.jira.search_issues.label": "Jira 이슈 검색",
+        "modules.integration.salesforce.create_record.description": "Salesforce에 새 레코드 생성",
+        "modules.integration.salesforce.create_record.label": "Salesforce 레코드 생성",
+        "modules.integration.salesforce.query.description": "Salesforce에서 SOQL 쿼리 실행",
+        "modules.integration.salesforce.query.label": "Salesforce 쿼리",
+        "modules.integration.salesforce.update_record.description": "Salesforce의 기존 레코드 업데이트",
+        "modules.integration.salesforce.update_record.label": "Salesforce 레코드 업데이트",
+        "modules.integration.slack.list_channels.description": "Slack 워크스페이스의 채널 목록 가져오기",
+        "modules.integration.slack.list_channels.label": "Slack 채널 목록",
+        "modules.integration.slack.list_channels.params.channels": "채널",
+        "modules.integration.slack.list_channels.params.channels.options.id": "Id",
+        "modules.integration.slack.list_channels.params.channels.options.is_private": "비공개 여부",
+        "modules.integration.slack.list_channels.params.channels.options.name": "이름",
+        "modules.integration.slack.list_channels.params.channels.options.num_members": "멤버 수",
+        "modules.integration.slack.send_message.description": "Slack 채널에 메시지 전송",
+        "modules.integration.slack.send_message.label": "Slack 메시지 전송"
+    }
+}

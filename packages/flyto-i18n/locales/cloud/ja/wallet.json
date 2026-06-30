@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "クレジットウォレット",
+        "wallet.availableCredits": "利用可能なクレジット",
+        "wallet.topup": "チャージ",
+        "wallet.topupTitle": "クレジットをチャージ",
+        "wallet.topupSuccess": "チャージが完了しました",
+        "wallet.topupCancelled": "チャージがキャンセルされました",
+        "wallet.history": "取引履歴",
+        "wallet.noTransactions": "取引履歴はまだありません",
+        "wallet.balanceAfter": "残高",
+        "wallet.conversionNote": "1 credit = $0.01 USD",
+        "wallet.proceedToPayment": "支払いに進む",
+        "wallet.confirmExecute": "実行を確認",
+        "wallet.executionCost": "実行コスト",
+        "wallet.yourBalance": "残高",
+        "wallet.insufficientCredits": "クレジット不足",
+        "wallet.needMore": "あと {amount} クレジット必要です",
+        "wallet.topupNow": "今すぐチャージ",
+        "wallet.confirmAndExecute": "確認して実行",
+        "wallet.lowBalanceWarning": "クレジット残高が不足しています。ワークフローを継続するにはチャージしてください。"
+    }
+}

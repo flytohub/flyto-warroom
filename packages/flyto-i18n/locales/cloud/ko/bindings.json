@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.bindings",
+    "version": "1.0.0",
+    "translations": {
+        "bindings.noBinding": "바인딩이 설정되지 않음",
+        "bindings.waitingFor": "대기 중: {source}"
+    }
+}

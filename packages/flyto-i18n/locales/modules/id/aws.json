@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "Hapus objek dari bucket AWS S3",
+        "modules.aws.s3.delete.label": "Hapus Objek S3",
+        "modules.aws.s3.delete.output.bucket.description": "Nama bucket S3",
+        "modules.aws.s3.delete.output.deleted.description": "Apakah objek berhasil dihapus",
+        "modules.aws.s3.delete.output.key.description": "Kunci objek yang dihapus",
+        "modules.aws.s3.download.description": "Unduh file dari bucket AWS S3 ke jalur lokal",
+        "modules.aws.s3.download.label": "Unduh S3",
+        "modules.aws.s3.download.output.content_type.description": "Jenis MIME dari file yang diunduh",
+        "modules.aws.s3.download.output.path.description": "Jalur file lokal tempat file disimpan",
+        "modules.aws.s3.download.output.size.description": "Ukuran file dalam byte",
+        "modules.aws.s3.list.description": "Daftar objek dalam bucket AWS S3 dengan filter awalan opsional",
+        "modules.aws.s3.list.label": "Daftar Objek S3",
+        "modules.aws.s3.list.output.count.description": "Jumlah objek yang dikembalikan",
+        "modules.aws.s3.list.output.objects.description": "Daftar objek S3",
+        "modules.aws.s3.list.output.truncated.description": "Apakah hasilnya terpotong",
+        "modules.aws.s3.upload.description": "Unggah file lokal ke bucket AWS S3",
+        "modules.aws.s3.upload.label": "Unggah S3",
+        "modules.aws.s3.upload.output.bucket.description": "Nama bucket S3",
+        "modules.aws.s3.upload.output.key.description": "Kunci objek S3",
+        "modules.aws.s3.upload.output.size.description": "Ukuran file dalam byte",
+        "modules.aws.s3.upload.output.url.description": "URL publik dari objek yang diunggah"
+    }
+}

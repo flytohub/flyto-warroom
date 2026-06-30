@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "標頭名稱",
+        "schema.field.body": "內容",
+        "schema.field.body_matches": "回應",
+        "schema.field.full_page": "整頁",
+        "schema.field.response": "回應",
+        "schema.field.screenshot_format": "整頁",
+        "schema.field.url": "網址",
+        "schema.field.viewport_height": "寬度",
+        "schema.field.viewport_width": "寬度",
+        "schema.field.ssrf_protection": "SSRF 防護",
+        "schema.field.ssrf_protection.description": "封鎖對內部/私有網路的請求（localhost、192.168.x.x、雲端 metadata 端點）。僅在存取受信任的內部目標時才關閉。"
+    }
+}

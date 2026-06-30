@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "ब्रेडक्रंब",
+        "accessibility.clearInput": "इनपुट साफ़ करें",
+        "accessibility.closeDialog": "डायलॉग बंद करें",
+        "accessibility.closeMenu": "मेनू बंद करें",
+        "accessibility.closeModal": "मोडल बंद करें",
+        "accessibility.copyToClipboard": "क्लिपबोर्ड पर कॉपी करें",
+        "accessibility.imageEditingControls": "इमेज एडिटिंग कंट्रोल",
+        "accessibility.notifications": "सूचनाएं",
+        "accessibility.openMenu": "मेनू खोलें",
+        "accessibility.rating": "रेटिंग",
+        "accessibility.refreshList": "सूची रिफ्रेश करें",
+        "accessibility.removeIcon": "आइकन हटाएं",
+        "accessibility.resetImage": "इमेज की स्थिति और ज़ूम रीसेट करें",
+        "accessibility.revokeKey": "की रद्द करें",
+        "accessibility.rotateLeft": "बाएं 90 डिग्री घुमाएं",
+        "accessibility.rotateRight": "दाएं 90 डिग्री घुमाएं",
+        "accessibility.showInMarketplace": "मार्केटप्लेस में दिखाएं",
+        "accessibility.zoomIn": "ज़ूम इन करें",
+        "accessibility.zoomOut": "ज़ूम आउट करें"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Estrai frontmatter YAML dal contenuto Markdown",
+        "modules.markdown.parse_frontmatter.label": "Analizza Frontmatter",
+        "modules.markdown.parse_frontmatter.output.content.description": "Contenuto Markdown senza frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Frontmatter analizzato come dizionario",
+        "modules.markdown.parse_frontmatter.params.text.description": "Contenuto Markdown con frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.label": "Testo Markdown",
+        "modules.markdown.to_html.description": "Converti testo Markdown in HTML",
+        "modules.markdown.to_html.label": "Markdown a HTML",
+        "modules.markdown.to_html.output.html.description": "Contenuto HTML convertito",
+        "modules.markdown.to_html.output.word_count.description": "Conteggio parole del testo di input",
+        "modules.markdown.to_html.params.extensions.description": "Estensioni Markdown da abilitare (usate solo con la libreria markdown)",
+        "modules.markdown.to_html.params.extensions.label": "Estensioni",
+        "modules.markdown.to_html.params.text.description": "Contenuto Markdown da convertire",
+        "modules.markdown.to_html.params.text.label": "Testo Markdown",
+        "modules.markdown.toc.description": "Genera un indice dai titoli Markdown",
+        "modules.markdown.toc.label": "Genera Indice",
+        "modules.markdown.toc.output.toc.description": "Elenco di titoli con livello, titolo e slug",
+        "modules.markdown.toc.output.toc_markdown.description": "Indice formattato in Markdown",
+        "modules.markdown.toc.params.max_depth.description": "Profondità massima dei titoli da includere (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "Profondità Massima",
+        "modules.markdown.toc.params.text.description": "Contenuto Markdown da cui estrarre i titoli",
+        "modules.markdown.toc.params.text.label": "Testo Markdown"
+    }
+}

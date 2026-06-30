@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Danh mục",
+        "createModal.category.placeholder": "Chọn danh mục (tùy chọn)",
+        "createModal.closeDialog": "Đóng hộp thoại",
+        "createModal.create": "Tạo mẫu",
+        "createModal.creating": "Đang tạo...",
+        "createModal.description.label": "Mô tả",
+        "createModal.description.placeholder": "Mẫu này làm gì? (tùy chọn)",
+        "createModal.errors.createFailed": "Tạo mẫu thất bại",
+        "createModal.errors.fileTooLarge": "Hình ảnh phải nhỏ hơn 2MB",
+        "createModal.errors.invalidFileType": "Vui lòng chọn tệp hình ảnh",
+        "createModal.folder.label": "Thư mục",
+        "createModal.folder.placeholder": "Mặc định (không có thư mục)",
+        "createModal.icon.change": "Đổi biểu tượng",
+        "createModal.icon.hint": "PNG, JPG, GIF tối đa 2MB",
+        "createModal.icon.label": "Biểu tượng mẫu",
+        "createModal.icon.remove": "Xóa biểu tượng",
+        "createModal.icon.upload": "Tải biểu tượng",
+        "createModal.name.label": "Tên mẫu",
+        "createModal.name.placeholder": "Tự động hóa tuyệt vời của tôi",
+        "createModal.title": "Mẫu mới"
+    }
+}

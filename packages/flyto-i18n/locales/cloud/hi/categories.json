@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.categories",
+    "version": "1.0.0",
+    "translations": {
+        "categories.ai": "AI",
+        "categories.api": "API",
+        "categories.array": "एरे",
+        "categories.browser": "ब्राउज़र",
+        "categories.cloud": "क्लाउड",
+        "categories.code": "कोड",
+        "categories.composite": "संयोजन",
+        "categories.data": "डेटा",
+        "categories.datetime": "तारीख/समय",
+        "categories.element": "तत्व",
+        "categories.file": "फाइल",
+        "categories.flow": "प्रवाह नियंत्रण",
+        "categories.form": "फॉर्म इनपुट",
+        "categories.http": "HTTP",
+        "categories.huggingface": "HuggingFace",
+        "categories.image": "छवि",
+        "categories.llm": "LLM",
+        "categories.math": "गणित",
+        "categories.my-templates": "मेरे टेम्पलेट्स",
+        "categories.notification": "सूचना",
+        "categories.object": "ऑब्जेक्ट",
+        "categories.other": "अन्य",
+        "categories.string": "स्ट्रिंग",
+        "categories.connector": "API कनेक्टर",
+        "categories.utility": "उपयोगिता"
+    }
+}

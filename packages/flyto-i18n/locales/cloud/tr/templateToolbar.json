@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "Izgara görünümü",
+        "templateToolbar.listView": "Liste görünümü",
+        "templateToolbar.searchLabel": "Şablon ara",
+        "templateToolbar.searchPlaceholder": "Şablon ara...",
+        "templateToolbar.sortLabel": "Şablonları sırala",
+        "templateToolbar.sortOptions.created": "Son Oluşturulan",
+        "templateToolbar.sortOptions.name": "Ad A-Z",
+        "templateToolbar.sortOptions.status": "Duruma Göre",
+        "templateToolbar.sortOptions.updated": "Son Güncellenen",
+        "templateToolbar.viewMode": "Görünüm modu"
+    }
+}

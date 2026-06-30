@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.terms",
+    "version": "1.0.0",
+    "translations": {
+        "terms.lastUpdated": "Son Güncelleme",
+        "terms.sections.acceptance.content": "Flyto2 hizmetlerine erişerek veya kullanarak bu Hizmet Şartlarına bağlı olmayı kabul edersiniz. Bu şartları kabul etmiyorsanız, lütfen hizmetlerimizi kullanmayın.",
+        "terms.sections.acceptance.title": "Şartların Kabulü",
+        "terms.sections.account.content": "Hesap kimlik bilgilerinizin gizliliğini korumaktan ve hesabınız altında gerçekleşen tüm faaliyetlerden sorumlusunuz. Yetkisiz kullanım durumunda bizi derhal bilgilendirmelisiniz.",
+        "terms.sections.account.title": "Kullanıcı Hesapları",
+        "terms.sections.intellectual.content": "Flyto2'nin tüm içeriği, özellikleri ve işlevselliği bize aittir ve uluslararası telif hakkı, ticari marka ve diğer fikri mülkiyet yasaları tarafından korunmaktadır.",
+        "terms.sections.intellectual.title": "Fikri Mülkiyet",
+        "terms.sections.limitation.content": "Yasaların izin verdiği azami ölçüde, Flyto2 hizmetlerimizi kullanmanızdan kaynaklanan dolaylı, arızi, özel, sonuçsal veya cezai zararlardan sorumlu tutulamaz.",
+        "terms.sections.limitation.title": "Sorumluluk Sınırlaması",
+        "terms.sections.prohibited.content": "Hizmetlerimizi yasadışı amaçlarla, herhangi bir yasayı ihlal etmek için, fikri mülkiyet haklarını ihlal etmek için veya zararlı kod iletmek için kullanamazsınız. Bu şartları ihlal eden hesapları sonlandırma hakkımızı saklı tutarız.",
+        "terms.sections.prohibited.title": "Yasaklanan Kullanımlar",
+        "terms.sections.services.content": "Flyto2, kullanıcıların otomatik iş akışları oluşturmasına, yönetmesine ve yürütmesine olanak tanıyan bir iş akışı otomasyon platformu sağlar. Hizmetleri herhangi bir zamanda değiştirme veya durdurma hakkımızı saklı tutarız.",
+        "terms.sections.services.title": "Hizmet Açıklaması",
+        "terms.sections.termination.content": "Bu şartları ihlal ettiğine veya diğer kullanıcılara zararlı olduğuna inandığımız davranışlar için, önceden haber vermeksizin, tamamen kendi takdirimize bağlı olarak hesabınızı ve hizmetlerimize erişiminizi sonlandırabilir veya askıya alabiliriz.",
+        "terms.sections.termination.title": "Sonlandırma",
+        "terms.title": "Hizmet Şartları"
+    }
+}

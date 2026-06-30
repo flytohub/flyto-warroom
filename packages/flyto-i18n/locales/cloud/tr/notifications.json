@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count} gün önce",
+        "notifications.empty": "Henüz bildirim yok",
+        "notifications.hoursAgo": "{count} saat önce",
+        "notifications.justNow": "Az önce",
+        "notifications.loadMore": "Daha fazla yükle",
+        "notifications.markAllRead": "Tümünü okundu işaretle",
+        "notifications.minutesAgo": "{count} dk önce",
+        "notifications.title": "Bildirimler"
+    }
+}

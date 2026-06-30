@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "Solo se permiten letras y numeros",
+        "validation.error": "Error de validacion",
+        "validation.failed": "Validacion fallida",
+        "validation.invalidEmail": "Direccion de correo electronico invalida",
+        "validation.maxLength": "Maximo {max} caracteres",
+        "validation.minLength": "Minimo {min} caracteres",
+        "validation.needsLowercase": "Debe contener al menos una letra minuscula",
+        "validation.needsNumber": "Debe contener al menos un numero",
+        "validation.needsUppercase": "Debe contener al menos una letra mayuscula",
+        "validation.passwordHint": "Minimo 12 caracteres, con mayuscula, minuscula y numero",
+        "validation.passwordMismatch": "Las contrasenas no coinciden",
+        "validation.required": "Este campo es obligatorio"
+    }
+}

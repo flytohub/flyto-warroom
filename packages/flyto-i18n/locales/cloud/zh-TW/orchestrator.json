@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.orchestrator",
+    "version": "1.0.0",
+    "translations": {
+        "orchestrator.jobs.empty": "沒有任務",
+        "orchestrator.jobs.title": "任務",
+        "orchestrator.register.capabilities": "功能",
+        "orchestrator.register.machineName": "機器名稱",
+        "orchestrator.register.machineNamePlaceholder": "輸入機器名稱",
+        "orchestrator.register.name": "機器人名稱",
+        "orchestrator.register.namePlaceholder": "輸入機器人名稱",
+        "orchestrator.register.osType": "作業系統類型",
+        "orchestrator.register.submit": "註冊",
+        "orchestrator.register.title": "註冊機器人",
+        "orchestrator.robots.empty": "沒有已註冊的機器人",
+        "orchestrator.robots.emptyDesc": "註冊機器人開始使用",
+        "orchestrator.robots.lastSeen": "最後上線",
+        "orchestrator.robots.maxJobs": "最大任務數",
+        "orchestrator.robots.platform": "平台",
+        "orchestrator.robots.register": "註冊機器人",
+        "orchestrator.robots.registerFirst": "註冊您的第一個機器人",
+        "orchestrator.robots.runJob": "執行任務",
+        "orchestrator.robots.title": "機器人",
+        "orchestrator.stats.available": "可用",
+        "orchestrator.stats.busy": "忙碌",
+        "orchestrator.stats.offline": "離線",
+        "orchestrator.stats.totalRobots": "機器人總數"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Buat acara baru di Google Calendar",
+        "modules.google.calendar.create_event.label": "Buat Acara Kalender",
+        "modules.google.calendar.create_event.output.end.description": "Waktu berakhir acara",
+        "modules.google.calendar.create_event.output.event_id.description": "ID acara yang dibuat",
+        "modules.google.calendar.create_event.output.html_link.description": "Tautan untuk melihat acara di Google Calendar",
+        "modules.google.calendar.create_event.output.start.description": "Waktu mulai acara",
+        "modules.google.calendar.create_event.output.summary.description": "Judul acara",
+        "modules.google.calendar.list_events.description": "Daftar acara mendatang dari Google Calendar",
+        "modules.google.calendar.list_events.label": "Daftar Acara Kalender",
+        "modules.google.calendar.list_events.output.count.description": "Jumlah acara yang dikembalikan",
+        "modules.google.calendar.list_events.output.events.description": "Daftar acara kalender",
+        "modules.google.gmail.search.description": "Cari pesan Gmail menggunakan sintaks kueri pencarian Gmail",
+        "modules.google.gmail.search.label": "Cari Gmail",
+        "modules.google.gmail.search.output.messages.description": "Daftar pesan yang cocok",
+        "modules.google.gmail.search.output.total.description": "Jumlah total pesan yang dikembalikan",
+        "modules.google.gmail.send.description": "Kirim email melalui Gmail API",
+        "modules.google.gmail.send.label": "Kirim Gmail",
+        "modules.google.gmail.send.output.message_id.description": "ID pesan Gmail",
+        "modules.google.gmail.send.output.thread_id.description": "ID thread Gmail",
+        "modules.google.gmail.send.output.to.description": "Alamat email penerima"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "利用可能な変数",
+        "expression.editExpression": "式を編集",
+        "expression.enterExpression": "プレビューを表示するには式を入力してください",
+        "expression.expressionCode": "式",
+        "expression.openEditor": "式エディタを開く",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "プレビュー"
+    }
+}

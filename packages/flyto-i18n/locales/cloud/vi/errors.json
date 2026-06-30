@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "Không thể kết nối đến máy chủ. Vui lòng đảm bảo backend đang chạy.",
+        "errors.somethingWentWrong": "Đã xảy ra lỗi",
+        "errors.technicalDetails": "Chi tiết kỹ thuật",
+        "errors.timeout": "Yêu cầu đã hết thời gian. Vui lòng thử lại.",
+        "errors.unexpectedError": "Đã xảy ra lỗi không mong muốn"
+    }
+}

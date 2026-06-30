@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.cannotUnlink": "Verknüpfung kann nicht aufgehoben werden — Sie benötigen mindestens eine Anmeldemethode",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.link": "Konto verknüpfen",
+        "linkedAccounts.linkSuccess": "Google-Konto erfolgreich verknüpft",
+        "linkedAccounts.linked": "Verbunden",
+        "linkedAccounts.notLinked": "Nicht verbunden",
+        "linkedAccounts.subtitle": "Verwalten Sie Ihre verbundenen Anmeldemethoden",
+        "linkedAccounts.title": "Verbundene Konten",
+        "linkedAccounts.unlink": "Verknüpfung aufheben",
+        "linkedAccounts.unlinkConfirm": "Möchten Sie die Verknüpfung mit Google wirklich aufheben?",
+        "linkedAccounts.unlinkSuccess": "Google-Konto-Verknüpfung aufgehoben"
+    }
+}

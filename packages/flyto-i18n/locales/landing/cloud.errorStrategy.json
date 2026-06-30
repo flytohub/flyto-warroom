@@ -1,0 +1,14 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.errorStrategy",
+  "version": "1.0.0",
+  "translations": {
+    "errorStrategy.continue": "",
+    "errorStrategy.continueDesc": "",
+    "errorStrategy.retry": "",
+    "errorStrategy.retryDesc": "",
+    "errorStrategy.stop": "",
+    "errorStrategy.stopDesc": ""
+  }
+}

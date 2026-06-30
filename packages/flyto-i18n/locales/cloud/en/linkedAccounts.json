@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.title": "Connected Accounts",
+        "linkedAccounts.subtitle": "Manage your connected login methods",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.linked": "Linked",
+        "linkedAccounts.notLinked": "Not linked",
+        "linkedAccounts.link": "Link Account",
+        "linkedAccounts.unlink": "Unlink",
+        "linkedAccounts.unlinkConfirm": "Are you sure you want to unlink Google?",
+        "linkedAccounts.cannotUnlink": "Cannot unlink — you need at least one login method",
+        "linkedAccounts.linkSuccess": "Google account linked successfully",
+        "linkedAccounts.unlinkSuccess": "Google account unlinked"
+    }
+}

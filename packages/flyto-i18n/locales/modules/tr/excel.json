@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Excel dosyalarından veri oku (xlsx, xls)",
+        "modules.excel.read.label": "Excel Oku",
+        "modules.excel.read.output.data.description": "Çıkarılan veri satırları",
+        "modules.excel.read.output.headers.description": "Çıkarılan veri satırları",
+        "modules.excel.read.output.row_count.description": "Çıkarılan veri satırları",
+        "modules.excel.read.output.sheet_names.description": "Sütun başlıkları",
+        "modules.excel.write.description": "Excel dosyalarına veri yaz (xlsx)",
+        "modules.excel.write.label": "Excel Yaz",
+        "modules.excel.write.output.path.description": "Oluşturulan Excel dosyasının yolu",
+        "modules.excel.write.output.row_count.description": "Oluşturulan Excel dosyasının yolu",
+        "modules.excel.write.output.size.description": "Oluşturulan Excel dosyasının yolu"
+    }
+}

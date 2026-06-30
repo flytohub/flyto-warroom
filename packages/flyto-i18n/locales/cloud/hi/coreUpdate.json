@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "उपलब्ध",
+        "coreUpdate.checkFailed": "स्थिति जांचने में विफल",
+        "coreUpdate.downloadPage": "आधिकारिक साइट से डाउनलोड करें",
+        "coreUpdate.installedVersion": "इंस्टॉल वर्ज़न",
+        "coreUpdate.invalidFile": "कृपया एक वैध .whl फ़ाइल चुनें",
+        "coreUpdate.lastCheck": "अंतिम जांच",
+        "coreUpdate.notInstalled": "इंस्टॉल नहीं है",
+        "coreUpdate.refresh": "अपडेट जांचें",
+        "coreUpdate.title": "कोर इंजन",
+        "coreUpdate.upToDate": "अप टू डेट",
+        "coreUpdate.uploadFailed": "अपलोड विफल",
+        "coreUpdate.uploadPackage": "पैकेज अपलोड करें",
+        "coreUpdate.whlFile": ".whl फ़ाइल अपलोड करें"
+    }
+}

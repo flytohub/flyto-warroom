@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.creatorProfile",
+    "version": "1.0.0",
+    "translations": {
+        "creatorProfile.backToMarketplace": "Quay lại Marketplace",
+        "creatorProfile.chatError": "Bắt đầu trò chuyện thất bại",
+        "creatorProfile.creatorTemplates": "Mẫu của người tạo",
+        "creatorProfile.editProfile": "Sửa hồ sơ",
+        "creatorProfile.follow": "Theo dõi",
+        "creatorProfile.followError": "Cập nhật trạng thái theo dõi thất bại",
+        "creatorProfile.followers": "Người theo dõi",
+        "creatorProfile.following": "Đang theo dõi",
+        "creatorProfile.loadMore": "Tải thêm",
+        "creatorProfile.noDescription": "Không có mô tả",
+        "creatorProfile.noFollowers": "Chưa có người theo dõi",
+        "creatorProfile.noFollowing": "Chưa theo dõi ai",
+        "creatorProfile.noTemplates": "Chưa xuất bản mẫu nào",
+        "creatorProfile.notFound": "Không tìm thấy người tạo",
+        "creatorProfile.notFoundDesc": "Người tạo bạn đang tìm không tồn tại hoặc đã bị xóa.",
+        "creatorProfile.templates": "Mẫu"
+    }
+}

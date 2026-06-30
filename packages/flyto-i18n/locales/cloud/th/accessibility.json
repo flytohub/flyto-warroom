@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "เส้นทางนำทาง",
+        "accessibility.clearInput": "ล้างข้อมูล",
+        "accessibility.closeDialog": "ปิดกล่องโต้ตอบ",
+        "accessibility.closeMenu": "ปิดเมนู",
+        "accessibility.closeModal": "ปิดหน้าต่าง",
+        "accessibility.copyToClipboard": "คัดลอกไปยังคลิปบอร์ด",
+        "accessibility.imageEditingControls": "ตัวควบคุมการแก้ไขรูปภาพ",
+        "accessibility.notifications": "การแจ้งเตือน",
+        "accessibility.openMenu": "เปิดเมนู",
+        "accessibility.rating": "คะแนน",
+        "accessibility.refreshList": "รีเฟรชรายการ",
+        "accessibility.removeIcon": "ลบไอคอน",
+        "accessibility.resetImage": "รีเซ็ตตำแหน่งและการซูมของรูปภาพ",
+        "accessibility.revokeKey": "เพิกถอนคีย์",
+        "accessibility.rotateLeft": "หมุนซ้าย 90 องศา",
+        "accessibility.rotateRight": "หมุนขวา 90 องศา",
+        "accessibility.showInMarketplace": "แสดงใน Marketplace",
+        "accessibility.zoomIn": "ซูมเข้า",
+        "accessibility.zoomOut": "ซูมออก"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.purchases",
+    "version": "1.0.0",
+    "translations": {
+        "purchases.all": "सभी खरीदारी",
+        "purchases.browseMarketplace": "Browse marketplace",
+        "purchases.completed": "पूर्ण खरीदारी",
+        "purchases.empty": "कोई खरीदारी नहीं",
+        "purchases.emptyDescription": "आपकी अभी तक कोई खरीदारी नहीं है।",
+        "purchases.filterAll": "सभी",
+        "purchases.filterCompleted": "पूरा हुआ",
+        "purchases.filterRefunded": "वापसी की गई",
+        "purchases.loadMore": "और लोड करें",
+        "purchases.loading": "लोड हो रहा है...",
+        "purchases.noPurchases": "अभी तक कोई खरीद नहीं",
+        "purchases.noPurchasesDesc": "आपके द्वारा खरीदे गए टेम्प्लेट यहां दिखेंगे",
+        "purchases.purchasedOn": "खरीदा गया",
+        "purchases.refundAmount": "वापसी राशि",
+        "purchases.refundEligible": "वापसी के लिए योग्य",
+        "purchases.refundExpired": "वापसी की अवधि समाप्त",
+        "purchases.refunded": "वापसी की गई",
+        "purchases.refundedOn": "वापसी की गई तिथि",
+        "purchases.requestRefund": "Request refund",
+        "purchases.subtitle": "Purchase details",
+        "purchases.title": "Purchases",
+        "purchases.viewTemplate": "View template"
+    }
+}

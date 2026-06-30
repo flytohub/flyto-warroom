@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "Ostatnia aktualizacja",
+        "privacy.sections.collection.content": "Zbieramy informacje, ktore przekazujesz nam bezposrednio, na przyklad podczas tworzenia konta, korzystania z naszych uslug lub kontaktu z nami w sprawie wsparcia. Moze to obejmowac Twoje imie i nazwisko, adres e-mail oraz dane o uzyciu w celu ulepszenia naszych uslug.",
+        "privacy.sections.collection.title": "Informacje, ktore zbieramy",
+        "privacy.sections.contact.content": "Jesli masz pytania dotyczace niniejszej Polityki Prywatnosci lub naszych praktyk dotyczacych danych, prosimy o kontakt pod adresem privacy{'@'}flytohub.com.",
+        "privacy.sections.contact.title": "Kontakt",
+        "privacy.sections.rights.content": "Masz prawo do dostepu, poprawiania lub usuwania swoich danych osobowych. Mozesz rowniez zazadac przenosnosci danych lub sprzeciwic sie okreslonym czynnosciom przetwarzania. Skontaktuj sie z nami, aby skorzystac z tych praw.",
+        "privacy.sections.rights.title": "Twoje prawa",
+        "privacy.sections.security.content": "Wdrazamy odpowiednie srodki techniczne i organizacyjne w celu ochrony Twoich danych osobowych przed nieautoryzowanym dostepem, zmiana, ujawnieniem lub zniszczeniem.",
+        "privacy.sections.security.title": "Bezpieczenstwo danych",
+        "privacy.sections.sharing.content": "Nie sprzedajemy Twoich danych osobowych. Mozemy udostepniac Twoje informacje zewnetrznym uslugodawcom, ktorzy pomagaja nam w prowadzeniu naszej platformy, z zastrzezeniem umow o zachowaniu poufnosci.",
+        "privacy.sections.sharing.title": "Udostepnianie informacji",
+        "privacy.sections.usage.content": "Wykorzystujemy zebrane informacje do swiadczenia, utrzymywania i ulepszania naszych uslug, do komunikacji z Toba oraz do personalizacji Twojego doswiadczenia. Mozemy rowniez wykorzystywac zagregowane dane do celow analitycznych.",
+        "privacy.sections.usage.title": "Jak wykorzystujemy Twoje informacje",
+        "privacy.title": "Polityka prywatnosci"
+    }
+}

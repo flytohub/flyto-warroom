@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "ファイルを添付",
+        "chat.messageUser": "メッセージ",
+        "chat.messages": "メッセージ",
+        "chat.noConversations": "会話がまだありません",
+        "chat.noMessages": "メッセージがまだありません。挨拶しましょう！",
+        "chat.online": "オンライン",
+        "chat.searchConversations": "会話を検索...",
+        "chat.selectConversation": "チャットを開始するには会話を選択してください",
+        "chat.send": "送信",
+        "chat.startChat": "チャットを開始",
+        "chat.startChatFailed": "チャットの開始に失敗しました",
+        "chat.typePlaceholder": "メッセージを入力...",
+        "chat.user": "ユーザー"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.errorWorkflow",
+    "version": "1.0.0",
+    "translations": {
+        "errorWorkflow.description": "Configure o que acontece quando este workflow falha",
+        "errorWorkflow.doNothing": "Nao fazer nada",
+        "errorWorkflow.onFailure": "Em Falha do Workflow",
+        "errorWorkflow.passContext": "Passar contexto de erro para workflow de erro",
+        "errorWorkflow.passContextHint": "Inclui mensagem de erro, categoria e dados do workflow de origem",
+        "errorWorkflow.runWorkflow": "Executar workflow de erro",
+        "errorWorkflow.title": "Tratamento de Erros"
+    }
+}

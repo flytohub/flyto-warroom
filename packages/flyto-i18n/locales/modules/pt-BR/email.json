@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "Ler emails do servidor IMAP",
+        "modules.email.read.label": "Ler Email",
+        "modules.email.read.output.count.description": "Lista de objetos de email",
+        "modules.email.read.output.emails.description": "Lista de objetos de email",
+        "modules.email.send.description": "Enviar email via servidor SMTP",
+        "modules.email.send.label": "Enviar Email",
+        "modules.email.send.output.message_id.description": "Se o email foi enviado com sucesso",
+        "modules.email.send.output.recipients.description": "Se o email foi enviado com sucesso",
+        "modules.email.send.output.sent.description": "Se o email foi enviado com sucesso"
+    }
+}

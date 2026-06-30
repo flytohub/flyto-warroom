@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "ดึง YAML frontmatter จากเนื้อหา Markdown",
+        "modules.markdown.parse_frontmatter.label": "แยกวิเคราะห์ Frontmatter",
+        "modules.markdown.parse_frontmatter.output.content.description": "เนื้อหา Markdown ที่ไม่มี frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "frontmatter ที่แยกวิเคราะห์แล้วในรูปแบบพจนานุกรม",
+        "modules.markdown.parse_frontmatter.params.text.description": "เนื้อหา Markdown ที่มี frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.label": "ข้อความ Markdown",
+        "modules.markdown.to_html.description": "แปลงข้อความ Markdown เป็น HTML",
+        "modules.markdown.to_html.label": "Markdown เป็น HTML",
+        "modules.markdown.to_html.output.html.description": "เนื้อหา HTML ที่แปลงแล้ว",
+        "modules.markdown.to_html.output.word_count.description": "จำนวนคำของข้อความที่ป้อน",
+        "modules.markdown.to_html.params.extensions.description": "ส่วนขยาย Markdown ที่จะเปิดใช้งาน (ใช้กับไลบรารี markdown เท่านั้น)",
+        "modules.markdown.to_html.params.extensions.label": "ส่วนขยาย",
+        "modules.markdown.to_html.params.text.description": "เนื้อหา Markdown ที่จะแปลง",
+        "modules.markdown.to_html.params.text.label": "ข้อความ Markdown",
+        "modules.markdown.toc.description": "สร้างสารบัญจากหัวข้อใน Markdown",
+        "modules.markdown.toc.label": "สร้างสารบัญ",
+        "modules.markdown.toc.output.toc.description": "รายการหัวข้อพร้อมระดับ ชื่อ และ slug",
+        "modules.markdown.toc.output.toc_markdown.description": "สารบัญในรูปแบบ Markdown",
+        "modules.markdown.toc.params.max_depth.description": "ความลึกของหัวข้อสูงสุดที่รวม (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "ความลึกสูงสุด",
+        "modules.markdown.toc.params.text.description": "เนื้อหา Markdown ที่จะดึงหัวข้อออกมา",
+        "modules.markdown.toc.params.text.label": "ข้อความ Markdown"
+    }
+}

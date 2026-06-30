@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.toolCategory",
+    "version": "1.0.0",
+    "translations": {
+        "toolCategory.apiIntegration": "Tích hợp API",
+        "toolCategory.automation": "Tự động hóa",
+        "toolCategory.dataTransform": "Chuyển đổi dữ liệu",
+        "toolCategory.fileOperations": "Thao tác tệp",
+        "toolCategory.imageProcessing": "Xử lý hình ảnh",
+        "toolCategory.other": "Khác",
+        "toolCategory.textProcessing": "Xử lý văn bản",
+        "toolCategory.webScraping": "Thu thập dữ liệu web"
+    }
+}

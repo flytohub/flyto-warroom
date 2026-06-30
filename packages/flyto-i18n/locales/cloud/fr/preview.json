@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "Demander à l'IA de corriger",
+        "preview.emptyState.description": "Passez en mode Dev pour ajouter des etapes de workflow",
+        "preview.emptyState.hint": "Aucun apercu disponible",
+        "preview.emptyState.title": "Aucun workflow defini",
+        "preview.executionFailed": "Echec de l'execution",
+        "preview.fields": "champs",
+        "preview.inputs": "Entrees",
+        "preview.noInputsRequired": "Aucune entree requise",
+        "preview.noWorkflowHint": "Ajoutez des etapes de workflow en mode Dev pour activer l'execution",
+        "preview.output": "Sortie",
+        "preview.ready": "Pret",
+        "preview.running": "En cours",
+        "preview.steps": "etapes",
+        "preview.untitledTemplate": "Modele sans titre"
+    }
+}

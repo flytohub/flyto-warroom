@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "ล้างบันทึก",
+        "terminal.closeTerminal": "ปิดเทอร์มินัล",
+        "terminal.connected": "เชื่อมต่อแล้ว",
+        "terminal.disableAutoScroll": "ปิดการเลื่อนอัตโนมัติ",
+        "terminal.disconnected": "ตัดการเชื่อมต่อ",
+        "terminal.enableAutoScroll": "เปิดการเลื่อนอัตโนมัติ",
+        "terminal.hideLogs": "ซ่อนบันทึก {level}",
+        "terminal.logsWillAppear": "บันทึกจะแสดงที่นี่เมื่อระบบสร้างผลลัพธ์",
+        "terminal.searchPlaceholder": "ค้นหาบันทึก...",
+        "terminal.showLogs": "แสดงบันทึก {level}",
+        "terminal.title": "เทอร์มินัลระบบ",
+        "terminal.waitingForLogs": "กำลังรอบันทึก..."
+    }
+}

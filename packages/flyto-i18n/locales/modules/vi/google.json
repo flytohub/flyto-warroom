@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Tạo sự kiện mới trong Google Calendar",
+        "modules.google.calendar.create_event.label": "Tạo sự kiện Lịch",
+        "modules.google.calendar.create_event.output.end.description": "Thời gian kết thúc sự kiện",
+        "modules.google.calendar.create_event.output.event_id.description": "ID sự kiện đã tạo",
+        "modules.google.calendar.create_event.output.html_link.description": "Liên kết để xem sự kiện trong Google Calendar",
+        "modules.google.calendar.create_event.output.start.description": "Thời gian bắt đầu sự kiện",
+        "modules.google.calendar.create_event.output.summary.description": "Tiêu đề sự kiện",
+        "modules.google.calendar.list_events.description": "Liệt kê sự kiện sắp tới từ Google Calendar",
+        "modules.google.calendar.list_events.label": "Danh sách sự kiện Lịch",
+        "modules.google.calendar.list_events.output.count.description": "Số lượng sự kiện trả về",
+        "modules.google.calendar.list_events.output.events.description": "Danh sách sự kiện lịch",
+        "modules.google.gmail.search.description": "Tìm kiếm tin nhắn Gmail bằng cú pháp tìm kiếm Gmail",
+        "modules.google.gmail.search.label": "Tìm kiếm Gmail",
+        "modules.google.gmail.search.output.messages.description": "Danh sách tin nhắn phù hợp",
+        "modules.google.gmail.search.output.total.description": "Tổng số tin nhắn trả về",
+        "modules.google.gmail.send.description": "Gửi email qua Gmail API",
+        "modules.google.gmail.send.label": "Gửi Gmail",
+        "modules.google.gmail.send.output.message_id.description": "ID tin nhắn Gmail",
+        "modules.google.gmail.send.output.thread_id.description": "ID chuỗi Gmail",
+        "modules.google.gmail.send.output.to.description": "Địa chỉ email người nhận"
+    }
+}

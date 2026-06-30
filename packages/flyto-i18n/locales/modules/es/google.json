@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "google",
+    "version": "1.0.0",
+    "translations": {
+        "modules.google.calendar.create_event.description": "Crear un nuevo evento en Google Calendar",
+        "modules.google.calendar.create_event.label": "Crear Evento en Calendario",
+        "modules.google.calendar.create_event.output.end.description": "Hora de finalización del evento",
+        "modules.google.calendar.create_event.output.event_id.description": "ID del evento creado",
+        "modules.google.calendar.create_event.output.html_link.description": "Enlace para ver el evento en Google Calendar",
+        "modules.google.calendar.create_event.output.start.description": "Hora de inicio del evento",
+        "modules.google.calendar.create_event.output.summary.description": "Título del evento",
+        "modules.google.calendar.list_events.description": "Listar próximos eventos de Google Calendar",
+        "modules.google.calendar.list_events.label": "Listar Eventos del Calendario",
+        "modules.google.calendar.list_events.output.count.description": "Número de eventos devueltos",
+        "modules.google.calendar.list_events.output.events.description": "Lista de eventos del calendario",
+        "modules.google.gmail.search.description": "Buscar mensajes de Gmail usando la sintaxis de búsqueda de Gmail",
+        "modules.google.gmail.search.label": "Buscar en Gmail",
+        "modules.google.gmail.search.output.messages.description": "Lista de mensajes coincidentes",
+        "modules.google.gmail.search.output.total.description": "Número total de mensajes devueltos",
+        "modules.google.gmail.send.description": "Enviar un correo electrónico a través de la API de Gmail",
+        "modules.google.gmail.send.label": "Enviar Gmail",
+        "modules.google.gmail.send.output.message_id.description": "ID del mensaje de Gmail",
+        "modules.google.gmail.send.output.thread_id.description": "ID del hilo de Gmail",
+        "modules.google.gmail.send.output.to.description": "Dirección de correo del destinatario"
+    }
+}

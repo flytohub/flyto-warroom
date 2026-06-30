@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "Hanya huruf dan angka yang diperbolehkan",
+        "validation.error": "Kesalahan validasi",
+        "validation.failed": "Validasi gagal",
+        "validation.invalidEmail": "Alamat email tidak valid",
+        "validation.maxLength": "Maksimum {max} karakter",
+        "validation.minLength": "Minimum {min} karakter",
+        "validation.needsLowercase": "Harus mengandung setidaknya satu huruf kecil",
+        "validation.needsNumber": "Harus mengandung setidaknya satu angka",
+        "validation.needsUppercase": "Harus mengandung setidaknya satu huruf besar",
+        "validation.passwordHint": "Min 12 karakter, dengan huruf besar, huruf kecil, dan angka",
+        "validation.passwordMismatch": "Kata sandi tidak cocok",
+        "validation.required": "Field ini wajib diisi"
+    }
+}

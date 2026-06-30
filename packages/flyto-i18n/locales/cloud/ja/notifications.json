@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count}日前",
+        "notifications.empty": "通知はまだありません",
+        "notifications.hoursAgo": "{count}時間前",
+        "notifications.justNow": "たった今",
+        "notifications.loadMore": "もっと見る",
+        "notifications.markAllRead": "すべて既読にする",
+        "notifications.minutesAgo": "{count}分前",
+        "notifications.title": "通知"
+    }
+}

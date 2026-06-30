@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.idp",
+    "version": "1.0.0",
+    "translations": {
+        "idp.actions.batch": "Processo em Lote",
+        "idp.actions.export": "Exportar",
+        "idp.actions.title": "Ações",
+        "idp.actions.train": "Treinar Modelo",
+        "idp.models.title": "Modelos",
+        "idp.queue.empty": "Nenhum documento na fila",
+        "idp.queue.items": "itens",
+        "idp.queue.title": "Fila de Processamento",
+        "idp.recent.empty": "Nenhum documento recente",
+        "idp.recent.title": "Documentos Recentes",
+        "idp.results.fields": "Campos Extraídos",
+        "idp.results.title": "Resultados",
+        "idp.stats.accuracy": "Precisão",
+        "idp.stats.models": "Modelos",
+        "idp.stats.pending": "Pendente",
+        "idp.stats.processed": "Processado",
+        "idp.upload.browse": "Procurar",
+        "idp.upload.desc": "Arraste e solte ou clique para enviar",
+        "idp.upload.formats": "Suportados: PDF, PNG, JPG",
+        "idp.upload.title": "Enviar Documento"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.idp",
+    "version": "1.0.0",
+    "translations": {
+        "idp.actions.batch": "Stapelverarbeitung",
+        "idp.actions.export": "Exportieren",
+        "idp.actions.title": "Aktionen",
+        "idp.actions.train": "Modell trainieren",
+        "idp.models.title": "Modelle",
+        "idp.queue.empty": "Keine Dokumente in der Warteschlange",
+        "idp.queue.items": "Elemente",
+        "idp.queue.title": "Verarbeitungswarteschlange",
+        "idp.recent.empty": "Keine kürzlichen Dokumente",
+        "idp.recent.title": "Kürzliche Dokumente",
+        "idp.results.fields": "Extrahierte Felder",
+        "idp.results.title": "Ergebnisse",
+        "idp.stats.accuracy": "Genauigkeit",
+        "idp.stats.models": "Modelle",
+        "idp.stats.pending": "Ausstehend",
+        "idp.stats.processed": "Verarbeitet",
+        "idp.upload.browse": "Durchsuchen",
+        "idp.upload.desc": "Ziehen & ablegen oder klicken zum Hochladen",
+        "idp.upload.formats": "Unterstützt: PDF, PNG, JPG",
+        "idp.upload.title": "Dokument hochladen"
+    }
+}

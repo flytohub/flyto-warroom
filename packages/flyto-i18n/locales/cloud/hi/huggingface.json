@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.huggingface",
+    "version": "1.0.0",
+    "translations": {
+        "huggingface.browseMoreModels": "और मॉडल ब्राउज़ करें",
+        "huggingface.chooseModel": "मॉडल चुनें",
+        "huggingface.inferenceAPI": "इनफरेंस API",
+        "huggingface.installedModels": "इंस्टॉल किए गए मॉडल",
+        "huggingface.localExecution": "लोकल एक्जीक्यूशन",
+        "huggingface.noModelsAvailable": "कोई मॉडल उपलब्ध नहीं",
+        "huggingface.notInstalled": "इंस्टॉल नहीं है",
+        "huggingface.popularModels": "लोकप्रिय मॉडल",
+        "huggingface.selectModel": "मॉडल चुनें"
+    }
+}

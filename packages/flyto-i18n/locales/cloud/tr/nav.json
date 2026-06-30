@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.nav",
+    "version": "1.0.0",
+    "translations": {
+        "nav.marketplace": "Mağaza",
+        "nav.tools": "Araçlar"
+    }
+}

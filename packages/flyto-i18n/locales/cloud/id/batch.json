@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.batch",
+    "version": "1.0.0",
+    "translations": {
+        "batch.delete": "Hapus",
+        "batch.deleteConfirm.message": "Apakah Anda yakin ingin menghapus {count} template? Tindakan ini tidak dapat dibatalkan.",
+        "batch.deleteConfirm.title": "Hapus {count} Template",
+        "batch.deselectAll": "Batalkan Semua Pilihan",
+        "batch.select": "Pilih",
+        "batch.selectAll": "Pilih Semua",
+        "batch.selected": "dipilih"
+    }
+}

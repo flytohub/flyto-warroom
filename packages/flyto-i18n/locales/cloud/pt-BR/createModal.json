@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.createModal",
+    "version": "1.0.0",
+    "translations": {
+        "createModal.category.label": "Categoria",
+        "createModal.category.placeholder": "Selecione uma categoria (opcional)",
+        "createModal.closeDialog": "Fechar dialogo",
+        "createModal.create": "Criar Template",
+        "createModal.creating": "Criando...",
+        "createModal.description.label": "Descricao",
+        "createModal.description.placeholder": "O que este template faz? (opcional)",
+        "createModal.errors.createFailed": "Falha ao criar template",
+        "createModal.errors.fileTooLarge": "Imagem deve ter menos de 2MB",
+        "createModal.errors.invalidFileType": "Por favor, selecione um arquivo de imagem",
+        "createModal.folder.label": "Pasta",
+        "createModal.folder.placeholder": "Padrão (sem pasta)",
+        "createModal.icon.change": "Alterar Icone",
+        "createModal.icon.hint": "PNG, JPG, GIF ate 2MB",
+        "createModal.icon.label": "Icone do Template",
+        "createModal.icon.remove": "Remover icone",
+        "createModal.icon.upload": "Enviar Icone",
+        "createModal.name.label": "Nome do Template",
+        "createModal.name.placeholder": "Minha Automacao Incrivel",
+        "createModal.title": "Novo Template"
+    }
+}

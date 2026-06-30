@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.upgrade",
+    "version": "1.0.0",
+    "translations": {
+        "upgrade.contactSales": "बिक्री से संपर्क करें",
+        "upgrade.debugFeatures": "अपने वर्कफ़्लो विकास को बेहतर बनाने के लिए शक्तिशाली डीबगिंग और विश्लेषण सुविधाएं अनलॉक करें।",
+        "upgrade.enterpriseHint": "एंटरप्राइज़ सुविधाएं चाहिए?",
+        "upgrade.featureLocked": "इस सुविधा के लिए Pro सदस्यता आवश्यक है",
+        "upgrade.features.evidence": "हर चरण के लिए स्क्रीनशॉट और DOM कैप्चर",
+        "upgrade.features.lineage": "डेटा फ्लो ट्रैकिंग और डिपेंडेंसी ग्राफ",
+        "upgrade.features.replay": "संशोधित इनपुट के साथ निष्पादन को रीप्ले करें",
+        "upgrade.features.tests": "स्वचालित वर्कफ़्लो टेस्टिंग सूट",
+        "upgrade.features.versions": "मॉड्यूल संस्करण लॉकिंग और नियंत्रण",
+        "upgrade.offlineLicense": "ऑफलाइन लाइसेंस खरीदें - $199 एकमुश्त",
+        "upgrade.subscription": "सदस्यता लें - $19/माह",
+        "upgrade.subtitle": "उन्नत डीबगिंग टूल तक पहुंच प्राप्त करें",
+        "upgrade.title": "Pro सुविधाएं अनलॉक करें"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "slack",
+    "version": "1.0.0",
+    "translations": {
+        "modules.slack.send.description": "Enviar mensagens para canais Slack via incoming webhook",
+        "modules.slack.send.label": "Enviar Mensagem Slack",
+        "modules.slack.send.output.sent.description": "Se a mensagem foi enviada com sucesso"
+    }
+}

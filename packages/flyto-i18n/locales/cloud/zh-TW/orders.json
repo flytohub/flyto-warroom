@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "接受",
+        "orders.approve": "確認完成",
+        "orders.budget": "預算",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "已完成",
+        "orders.createFailed": "建立訂單失敗",
+        "orders.createOrder": "建立訂單",
+        "orders.createOrderSubtitle": "向此賣家發送專案請求",
+        "orders.days": "天",
+        "orders.deadline": "交付時間",
+        "orders.decline": "拒絕",
+        "orders.deliver": "交付",
+        "orders.description": "描述",
+        "orders.descriptionPlaceholder": "詳細描述您的專案需求...",
+        "orders.payNow": "立即付款",
+        "orders.requirements": "額外需求",
+        "orders.requirementsPlaceholder": "任何特殊需求或備註...",
+        "orders.sendOrder": "發送訂單請求",
+        "orders.sending": "發送中...",
+        "orders.sendingTo": "發送給",
+        "orders.title": "專案標題",
+        "orders.titlePlaceholder": "您需要什麼幫助？",
+        "orders.viewDetails": "詳情",
+        "orders.waitingResponse": "等待回應"
+    }
+}

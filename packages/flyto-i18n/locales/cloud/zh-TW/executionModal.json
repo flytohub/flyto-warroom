@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "點擊執行來運行此工作流程",
+        "executionModal.execute": "執行",
+        "executionModal.executing": "正在執行工作流程...",
+        "executionModal.executionComplete": "執行完成",
+        "executionModal.executionFailed": "執行失敗",
+        "executionModal.noParamsRequired": "無需輸入參數",
+        "executionModal.runAgain": "再次執行",
+        "executionModal.status.completed": "已完成",
+        "executionModal.status.failed": "失敗",
+        "executionModal.status.ready": "準備就緒",
+        "executionModal.status.running": "執行中",
+        "executionModal.stop": "停止",
+        "executionModal.title": "執行工作流程"
+    }
+}

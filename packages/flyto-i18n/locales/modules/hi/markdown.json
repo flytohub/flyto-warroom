@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Markdown सामग्री से YAML फ्रंटमैटर निकालें",
+        "modules.markdown.parse_frontmatter.label": "फ्रंटमैटर पार्स करें",
+        "modules.markdown.parse_frontmatter.output.content.description": "फ्रंटमैटर के बिना Markdown सामग्री",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "डिक्शनरी के रूप में पार्स किया गया फ्रंटमैटर",
+        "modules.markdown.parse_frontmatter.params.text.description": "फ्रंटमैटर के साथ Markdown सामग्री",
+        "modules.markdown.parse_frontmatter.params.text.label": "Markdown पाठ",
+        "modules.markdown.to_html.description": "Markdown पाठ को HTML में बदलें",
+        "modules.markdown.to_html.label": "Markdown से HTML",
+        "modules.markdown.to_html.output.html.description": "बदला हुआ HTML सामग्री",
+        "modules.markdown.to_html.output.word_count.description": "इनपुट पाठ की शब्द गणना",
+        "modules.markdown.to_html.params.extensions.description": "Markdown विस्तार सक्षम करने के लिए (केवल markdown लाइब्रेरी के साथ उपयोग किया जाता है)",
+        "modules.markdown.to_html.params.extensions.label": "विस्तार",
+        "modules.markdown.to_html.params.text.description": "बदलने के लिए Markdown सामग्री",
+        "modules.markdown.to_html.params.text.label": "Markdown पाठ",
+        "modules.markdown.toc.description": "Markdown शीर्षकों से सामग्री की तालिका बनाएं",
+        "modules.markdown.toc.label": "सामग्री की तालिका बनाएं",
+        "modules.markdown.toc.output.toc.description": "स्तर, शीर्षक, और स्लग के साथ शीर्षकों की सूची",
+        "modules.markdown.toc.output.toc_markdown.description": "स्वरूपित Markdown सामग्री की तालिका",
+        "modules.markdown.toc.params.max_depth.description": "शामिल करने के लिए अधिकतम शीर्षक गहराई (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "अधिकतम गहराई",
+        "modules.markdown.toc.params.text.description": "शीर्षक निकालने के लिए Markdown सामग्री",
+        "modules.markdown.toc.params.text.label": "Markdown पाठ"
+    }
+}

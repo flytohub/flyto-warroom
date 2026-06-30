@@ -1,0 +1,85 @@
+# Copyright 2026 Flyto2. Licensed under Apache-2.0. See LICENSE.
+
+"""
+String Titlecase Module
+Convert string to title case
+"""
+from typing import Any, Dict
+
+from ...registry import register_module
+from ...schema import compose, presets
+from ...errors import ValidationError
+
+
+@register_module(
+    module_id='string.titlecase',
+    version='1.0.0',
+    category='string',
+    subcategory='transform',
+    tags=['string', 'titlecase', 'case'],
+    label='Title Case String',
+    label_key='modules.string.titlecase.label',
+    description='Convert string to title case',
+    description_key='modules.string.titlecase.description',
+    icon='Type',
+    color='#8B5CF6',
+
+    # Connection types
+    input_types=['string'],
+    output_types=['string'],
+
+    can_receive_from=['*'],
+    can_connect_to=['*'],
+
+    # Execution settings
+    timeout_ms=5000,
+    retryable=False,
+    concurrent_safe=True,
+
+    # Security settings
+    requires_credentials=False,
+    handles_sensitive_data=False,
+    required_permissions=[],
+
+    # Schema-driven params
+    params_schema=compose(
+        presets.INPUT_TEXT(required=True),
+    ),
+    output_schema={
+        'result': {
+            'type': 'string',
+            'description': 'Title case converted string'
+        ,
+                'description_key': 'modules.string.titlecase.output.result.description'}
+    },
+    examples=[
+        {
+            'title': 'Convert to title case',
+            'params': {
+                'text': 'hello world from flyto'
+            }
+        },
+        {
+            'title': 'Format name',
+            'params': {
+                'text': 'john doe'
+            }
+        }
+    ],
+    author='Flyto Team',
+    license='MIT'
+)
+async def string_titlecase(context: Dict[str, Any]) -> Dict[str, Any]:
+    """Convert string to title case."""
+    params = context['params']
+    text = params.get('text')
+
+    if text is None:
+        raise ValidationError("Missing required parameter: text", field="text")
+
+    return {
+        'ok': True,
+        'data': {
+            'result': str(text).title()
+        }
+    }

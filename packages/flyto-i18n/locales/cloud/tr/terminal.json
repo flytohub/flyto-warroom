@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "Kayıtları temizle",
+        "terminal.closeTerminal": "Terminali kapat",
+        "terminal.connected": "BAĞLI",
+        "terminal.disableAutoScroll": "Otomatik kaydırmayı devre dışı bırak",
+        "terminal.disconnected": "BAĞLANTI KESİLDİ",
+        "terminal.enableAutoScroll": "Otomatik kaydırmayı etkinleştir",
+        "terminal.hideLogs": "{level} kayıtlarını gizle",
+        "terminal.logsWillAppear": "Sistem çıktı ürettiğinde kayıtlar burada görünecek",
+        "terminal.searchPlaceholder": "Kayıt ara...",
+        "terminal.showLogs": "{level} kayıtlarını göster",
+        "terminal.title": "Sistem Terminali",
+        "terminal.waitingForLogs": "Kayıtlar bekleniyor..."
+    }
+}

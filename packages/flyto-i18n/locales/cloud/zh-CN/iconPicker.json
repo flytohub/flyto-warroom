@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.iconPicker",
+    "version": "1.0.0",
+    "translations": {
+        "iconPicker.iconColor": "图标颜色",
+        "iconPicker.noResults": "没有结果",
+        "iconPicker.searchPlaceholder": "搜索图标..."
+    }
+}

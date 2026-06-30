@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Extrair frontmatter YAML do conteúdo Markdown",
+        "modules.markdown.parse_frontmatter.label": "Analisar Frontmatter",
+        "modules.markdown.parse_frontmatter.output.content.description": "Conteúdo Markdown sem frontmatter",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Frontmatter analisado como um dicionário",
+        "modules.markdown.parse_frontmatter.params.text.description": "Conteúdo Markdown com frontmatter",
+        "modules.markdown.parse_frontmatter.params.text.label": "Texto Markdown",
+        "modules.markdown.to_html.description": "Converter texto Markdown para HTML",
+        "modules.markdown.to_html.label": "Markdown para HTML",
+        "modules.markdown.to_html.output.html.description": "Conteúdo HTML convertido",
+        "modules.markdown.to_html.output.word_count.description": "Contagem de palavras do texto de entrada",
+        "modules.markdown.to_html.params.extensions.description": "Extensões Markdown para habilitar (usadas apenas com a biblioteca markdown)",
+        "modules.markdown.to_html.params.extensions.label": "Extensões",
+        "modules.markdown.to_html.params.text.description": "Conteúdo Markdown para converter",
+        "modules.markdown.to_html.params.text.label": "Texto Markdown",
+        "modules.markdown.toc.description": "Gerar um sumário a partir dos cabeçalhos do Markdown",
+        "modules.markdown.toc.label": "Gerar Sumário",
+        "modules.markdown.toc.output.toc.description": "Lista de cabeçalhos com nível, título e slug",
+        "modules.markdown.toc.output.toc_markdown.description": "Sumário formatado em Markdown",
+        "modules.markdown.toc.params.max_depth.description": "Profundidade máxima do cabeçalho a incluir (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "Profundidade Máxima",
+        "modules.markdown.toc.params.text.description": "Conteúdo Markdown para extrair cabeçalhos",
+        "modules.markdown.toc.params.text.label": "Texto Markdown"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "ทั้งหมด",
+        "toolLibrary.createFirstTool": "สร้างเครื่องมือแรกของคุณ",
+        "toolLibrary.createTool": "สร้างเครื่องมือ",
+        "toolLibrary.deleteConfirm": "ลบเครื่องมือ",
+        "toolLibrary.deleteMessage": "คุณแน่ใจหรือไม่ว่าต้องการลบ \"{name}\"? การดำเนินการนี้ไม่สามารถยกเลิกได้",
+        "toolLibrary.noDescription": "ไม่มีคำอธิบาย",
+        "toolLibrary.noTools": "ยังไม่มีเครื่องมือ",
+        "toolLibrary.noToolsDesc": "สร้างเครื่องมือแรกของคุณเพื่อทำให้ workflow เป็นอัตโนมัติ",
+        "toolLibrary.run": "รัน",
+        "toolLibrary.searchPlaceholder": "ค้นหาเครื่องมือ...",
+        "toolLibrary.steps": "ขั้นตอน",
+        "toolLibrary.subtitle": "จัดการและรันเครื่องมืออัตโนมัติของคุณ",
+        "toolLibrary.title": "คลังเครื่องมือ"
+    }
+}

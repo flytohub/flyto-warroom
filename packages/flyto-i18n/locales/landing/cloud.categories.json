@@ -1,0 +1,33 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.categories",
+  "version": "1.0.0",
+  "translations": {
+    "categories.ai": "",
+    "categories.api": "",
+    "categories.array": "",
+    "categories.browser": "",
+    "categories.cloud": "",
+    "categories.code": "",
+    "categories.composite": "",
+    "categories.connector": "",
+    "categories.data": "",
+    "categories.datetime": "",
+    "categories.element": "",
+    "categories.file": "",
+    "categories.flow": "",
+    "categories.form": "",
+    "categories.http": "",
+    "categories.huggingface": "",
+    "categories.image": "",
+    "categories.llm": "",
+    "categories.math": "",
+    "categories.my-templates": "",
+    "categories.notification": "",
+    "categories.object": "",
+    "categories.other": "",
+    "categories.string": "",
+    "categories.utility": ""
+  }
+}

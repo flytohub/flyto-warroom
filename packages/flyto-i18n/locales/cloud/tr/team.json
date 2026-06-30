@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.team",
+    "version": "1.0.0",
+    "translations": {
+        "team.activity.empty": "Son aktivite yok",
+        "team.activity.title": "Son Aktivite",
+        "team.contributors.created": "Oluşturdu",
+        "team.contributors.empty": "Henüz katkıda bulunan yok",
+        "team.contributors.executed": "Yürüttü",
+        "team.contributors.title": "Katkıda Bulunanlar",
+        "team.dashboard.subtitle": "Ekibinizin aktivitesine genel bakış",
+        "team.dashboard.title": "Ekip Paneli",
+        "team.stats.executions": "Yürütmeler",
+        "team.stats.members": "Üyeler",
+        "team.stats.templates": "Şablonlar",
+        "team.stats.workflows": "İş Akışları"
+    }
+}

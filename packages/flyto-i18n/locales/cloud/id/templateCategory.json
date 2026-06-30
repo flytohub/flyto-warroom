@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.templateCategory",
+    "version": "1.0.0",
+    "translations": {
+        "templateCategory.ai": "AI",
+        "templateCategory.api": "API",
+        "templateCategory.automation": "Otomatisasi",
+        "templateCategory.dataProcessing": "Pemrosesan Data",
+        "templateCategory.developer": "Alat Pengembang",
+        "templateCategory.file": "Berkas",
+        "templateCategory.media": "Media",
+        "templateCategory.monitoring": "Pemantauan",
+        "templateCategory.notification": "Notifikasi",
+        "templateCategory.productivity": "Produktivitas",
+        "templateCategory.socialMedia": "Media Sosial",
+        "templateCategory.webScraping": "Web Scraping"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "Kullanılabilir Değişkenler",
+        "code.inputAllDesc": "Önceki adımdaki tüm öğeler",
+        "code.inputFirstDesc": "Yalnızca ilk öğe",
+        "code.jsonDesc": "Geçerli öğe verisi (takma ad)",
+        "code.language": "Dil",
+        "code.localExecutionNotice": "Güvenlik için kod yerel makinenizde çalışır",
+        "code.sourceCode": "Kaynak Kod"
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.code",
+  "version": "1.0.0",
+  "translations": {
+    "code.availableVariables": "",
+    "code.inputAllDesc": "",
+    "code.inputFirstDesc": "",
+    "code.jsonDesc": "",
+    "code.language": "",
+    "code.localExecutionNotice": "",
+    "code.sourceCode": ""
+  }
+}

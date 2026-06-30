@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "datetime",
+    "version": "1.0.0",
+    "translations": {
+        "modules.datetime.add.description": "दिनांक/समय में समय जोड़ें",
+        "modules.datetime.add.label": "समय जोड़ें",
+        "modules.datetime.add.output.result.description": "ऑपरेशन परिणाम",
+        "modules.datetime.add.output.timestamp.description": "ऑपरेशन परिणाम",
+        "modules.datetime.format.description": "दिनांक/समय को स्ट्रिंग में फ़ॉर्मेट करें",
+        "modules.datetime.format.label": "दिनांक/समय फ़ॉर्मेट करें",
+        "modules.datetime.format.output.result.description": "ऑपरेशन परिणाम",
+        "modules.datetime.format.output.timestamp.description": "ऑपरेशन परिणाम",
+        "modules.datetime.parse.description": "स्ट्रिंग को दिनांक/समय में पार्स करें",
+        "modules.datetime.parse.label": "दिनांक/समय पार्स करें",
+        "modules.datetime.parse.output.day.description": "वर्ष घटक",
+        "modules.datetime.parse.output.hour.description": "माह घटक",
+        "modules.datetime.parse.output.minute.description": "दिन घटक",
+        "modules.datetime.parse.output.month.description": "Unix टाइमस्टैम्प",
+        "modules.datetime.parse.output.result.description": "ऑपरेशन परिणाम",
+        "modules.datetime.parse.output.second.description": "घंटा घटक",
+        "modules.datetime.parse.output.timestamp.description": "ऑपरेशन परिणाम",
+        "modules.datetime.parse.output.year.description": "ऑपरेशन परिणाम",
+        "modules.datetime.subtract.description": "दिनांक/समय से समय घटाएं",
+        "modules.datetime.subtract.label": "समय घटाएं",
+        "modules.datetime.subtract.output.result.description": "ऑपरेशन परिणाम",
+        "modules.datetime.subtract.output.timestamp.description": "ऑपरेशन परिणाम"
+    }
+}

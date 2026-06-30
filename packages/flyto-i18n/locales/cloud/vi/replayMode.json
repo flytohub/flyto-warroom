@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.replayMode",
+    "version": "1.0.0",
+    "translations": {
+        "replayMode.compare": "So sánh",
+        "replayMode.history": "Lịch sử",
+        "replayMode.inspect": "Kiểm tra"
+    }
+}

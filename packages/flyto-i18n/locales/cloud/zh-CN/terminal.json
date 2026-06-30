@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "清除日志",
+        "terminal.closeTerminal": "关闭终端机",
+        "terminal.connected": "已连接",
+        "terminal.disableAutoScroll": "停用自动卷动",
+        "terminal.disconnected": "已断线",
+        "terminal.enableAutoScroll": "激活自动卷动",
+        "terminal.hideLogs": "隐藏 {level} 日志",
+        "terminal.logsWillAppear": "系统产生输出时会显示在这里",
+        "terminal.searchPlaceholder": "搜索日志...",
+        "terminal.showLogs": "显示 {level} 日志",
+        "terminal.title": "系统终端机",
+        "terminal.waitingForLogs": "等待日志..."
+    }
+}

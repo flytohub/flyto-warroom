@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.actionLabel",
+    "version": "1.0.0",
+    "translations": {
+        "actionLabel.create": "Buat",
+        "actionLabel.delete": "Hapus",
+        "actionLabel.execute": "Jalankan",
+        "actionLabel.export": "Ekspor",
+        "actionLabel.import": "Impor",
+        "actionLabel.logout": "Keluar",
+        "actionLabel.update": "Perbarui"
+    }
+}

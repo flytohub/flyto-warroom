@@ -1,0 +1,70 @@
+/* =========================================================================
+   @flyto/design-tokens — shared @keyframes
+
+   Imported by any consumer that uses the flyto-prefixed animation names.
+   Cortex imports this once in styles/animations.css; Cloud imports from
+   its main.js.
+   ========================================================================= */
+
+@keyframes flyto-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes flyto-fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes flyto-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Slow floating-blob motion — used on dashboard hero backgrounds. */
+@keyframes flyto-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(50px, -50px) scale(1.1); }
+  66%      { transform: translate(-50px, 50px) scale(0.9); }
+}
+
+/* Shimmer skeleton — moves a bright band left-to-right across a dim bg. */
+@keyframes flyto-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Border-flow — for selected node / focused card. Requires 300% background-size. */
+@keyframes flyto-border-flow {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Running-pulse — two-stop ring around a running node / syncing connector. */
+@keyframes flyto-running-pulse {
+  0%, 100% { box-shadow: 0 0 0 2px var(--flyto-pulse-color, rgba(139, 92, 246, 0.3)); }
+  50%      { box-shadow: 0 0 0 4px var(--flyto-pulse-color, rgba(139, 92, 246, 0.4)); }
+}
+
+/* Ripple ring — one-shot, used on click / confirmation events. */
+@keyframes flyto-ripple {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.3); opacity: 0; }
+}
+
+/* Gradient shift — for decorative text / borders. */
+@keyframes flyto-gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes flyto-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes flyto-badge-pop {
+  0%   { transform: translateX(-50%) scale(0); opacity: 0; }
+  100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}

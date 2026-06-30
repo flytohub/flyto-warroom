@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.preview",
+    "version": "1.0.0",
+    "translations": {
+        "preview.askAIFix": "Ask AI to fix",
+        "preview.emptyState.description": "Switch to Dev mode to add workflow steps",
+        "preview.emptyState.hint": "No preview available",
+        "preview.emptyState.title": "No Workflow Defined",
+        "preview.executionFailed": "Execution Failed",
+        "preview.fields": "fields",
+        "preview.inputs": "Inputs",
+        "preview.noInputsRequired": "No inputs required",
+        "preview.noWorkflowHint": "Add workflow steps in Dev mode to enable execution",
+        "preview.output": "Output",
+        "preview.ready": "Ready",
+        "preview.running": "Running",
+        "preview.steps": "steps",
+        "preview.untitledTemplate": "Untitled Template"
+    }
+}

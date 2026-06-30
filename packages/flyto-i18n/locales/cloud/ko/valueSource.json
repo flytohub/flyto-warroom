@@ -1,0 +1,30 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "ko",
+  "category": "cloud.valueSource",
+  "version": "1.0.0",
+  "translations": {
+    "valueSource.booleanFalse": "아니오 / 거짓",
+    "valueSource.booleanTrue": "예 / 참",
+    "valueSource.browsePath": "Browse Path",
+    "valueSource.changeSource": "값 소스 변경",
+    "valueSource.defaultPlaceholder": "값 입력...",
+    "valueSource.expressionHint": "사용 가능: steps.{id}.result, ui.{field}, env.{var}",
+    "valueSource.expressionPlaceholder": "steps.step1.result 또는 ui.search_keyword",
+    "valueSource.noPreviousSteps": "사용 가능한 이전 단계가 없습니다",
+    "valueSource.noUIFields": "정의된 UI 입력 필드가 없습니다",
+    "valueSource.selectSourceType": "소스 유형 선택",
+    "valueSource.selectStepOutput": "단계 출력 선택...",
+    "valueSource.selectText": "텍스트",
+    "valueSource.selectUIField": "UI 필드 선택...",
+    "valueSource.selectValue": "값",
+    "valueSource.sources.expression.description": "고급 동적 값",
+    "valueSource.sources.expression.label": "표현식",
+    "valueSource.sources.previousStep.description": "이전 단계의 출력 사용",
+    "valueSource.sources.previousStep.label": "이전 단계에서",
+    "valueSource.sources.static.description": "고정 값 입력",
+    "valueSource.sources.static.label": "정적 값",
+    "valueSource.sources.uiInput.description": "프런트엔드 폼 필드에 연결",
+    "valueSource.sources.uiInput.label": "UI 입력에서"
+  }
+}

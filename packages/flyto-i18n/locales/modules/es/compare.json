@@ -1,0 +1,28 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "compare",
+    "version": "1.0.0",
+    "translations": {
+        "modules.compare.change.description": "Detectar si un valor ha cambiado más allá del umbral (por cantidad o porcentaje)",
+        "modules.compare.change.label": "Detectar Cambio",
+        "modules.compare.change.output.change_absolute.description": "Cambio porcentual (positivo = sube, negativo = baja)",
+        "modules.compare.change.output.change_percent.description": "Dirección del cambio:",
+        "modules.compare.change.output.changed.description": "Si la operación tuvo éxito",
+        "modules.compare.change.output.current.description": "Cambio absoluto (positivo = sube, negativo = baja)",
+        "modules.compare.change.output.direction.description": "Si la operación tuvo éxito",
+        "modules.compare.change.output.ok.description": "Si la operación tuvo éxito",
+        "modules.compare.change.output.previous.description": "Cambio absoluto (positivo = sube, negativo = baja)",
+        "modules.compare.change.output.summary.description": "El valor actual",
+        "modules.compare.change.params.current.description": "El valor actual/nuevo para comparar",
+        "modules.compare.change.params.current.label": "Valor Actual",
+        "modules.compare.change.params.direction.description": "Qué dirección del cambio detectar",
+        "modules.compare.change.params.direction.label": "Umbral",
+        "modules.compare.change.params.mode.description": "El valor anterior/viejo para comparar",
+        "modules.compare.change.params.mode.label": "Valor Anterior",
+        "modules.compare.change.params.previous.description": "El valor actual/nuevo para comparar",
+        "modules.compare.change.params.previous.label": "Valor Actual",
+        "modules.compare.change.params.threshold.description": "Cambio mínimo para activar (5 = 5% o 5 unidades)",
+        "modules.compare.change.params.threshold.label": "Cambio Porcentual"
+    }
+}

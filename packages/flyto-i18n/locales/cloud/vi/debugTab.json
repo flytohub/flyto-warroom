@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.debugTab",
+    "version": "1.0.0",
+    "translations": {
+        "debugTab.context": "Ngữ cảnh",
+        "debugTab.output": "Đầu ra",
+        "debugTab.screenshot": "Ảnh chụp màn hình"
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.errorWorkflow",
+    "version": "1.0.0",
+    "translations": {
+        "errorWorkflow.description": "Skonfiguruj, co sie stanie, gdy ten przeplyw sie nie powiedzie",
+        "errorWorkflow.doNothing": "Nic nie rob",
+        "errorWorkflow.onFailure": "W przypadku niepowodzenia przeplywu",
+        "errorWorkflow.passContext": "Przekaz kontekst bledu do przeplywu bledow",
+        "errorWorkflow.passContextHint": "Zawiera komunikat bledu, kategorie i dane przeplywu zrodlowego",
+        "errorWorkflow.runWorkflow": "Uruchom przeplyw bledow",
+        "errorWorkflow.title": "Obsluga bledow"
+    }
+}

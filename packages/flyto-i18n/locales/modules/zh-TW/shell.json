@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "shell",
+    "version": "1.0.0",
+    "translations": {
+        "modules.shell.exec.description": "執行 shell 命令並擷取輸出",
+        "modules.shell.exec.label": "執行 Shell 命令",
+        "modules.shell.exec.output.command.description": "標準輸出",
+        "modules.shell.exec.output.cwd.description": "標準錯誤輸出",
+        "modules.shell.exec.output.duration_ms.description": "執行的命令",
+        "modules.shell.exec.output.exit_code.description": "命令是否成功執行（結束代碼 0）",
+        "modules.shell.exec.output.ok.description": "命令是否成功執行（結束代碼 0）",
+        "modules.shell.exec.output.stderr.description": "命令結束代碼",
+        "modules.shell.exec.output.stdout.description": "命令是否成功執行（結束代碼 0）"
+    }
+}

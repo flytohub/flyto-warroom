@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.breakpoint",
+    "version": "1.0.0",
+    "translations": {
+        "breakpoint.additionalInput": "额外输入",
+        "breakpoint.approve": "批准",
+        "breakpoint.comment": "备注",
+        "breakpoint.commentPlaceholder": "添加备注...",
+        "breakpoint.contextSnapshot": "上下文快照",
+        "breakpoint.createdAt": "创建时间",
+        "breakpoint.expires": "到期时间",
+        "breakpoint.humanCheckpoint": "人工检查点",
+        "breakpoint.noBreakpoint": "未设置中断点",
+        "breakpoint.noPending": "没有待审核项目",
+        "breakpoint.pendingApprovals": "待审核",
+        "breakpoint.reject": "拒绝",
+        "breakpoint.step": "步骤",
+        "breakpoint.waitingApproval": "等待审核中",
+        "breakpoint.workflow": "工作流程",
+        "browserInteract.title": "浏览器交互",
+        "browserInteract.pagePreview": "页面预览",
+        "browserInteract.noElements": "未侦测到交互元素",
+        "browserInteract.selectHint": "选择一个元素进行交互",
+        "browserInteract.skip": "跳过",
+        "browserInteract.execute": "运行"
+    }
+}

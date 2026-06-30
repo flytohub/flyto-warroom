@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.nodeOutput",
+    "version": "1.0.0",
+    "translations": {
+        "nodeOutput.diff": "अंतर",
+        "nodeOutput.input": "इनपुट",
+        "nodeOutput.output": "आउटपुट",
+        "nodeOutput.table": "तालिका",
+        "nodeOutput.text": "पाठ"
+    }
+}

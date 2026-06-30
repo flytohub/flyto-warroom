@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "审批工作流",
+        "stateMachine.create.blank": "空白",
+        "stateMachine.create.descPlaceholder": "输入描述",
+        "stateMachine.create.description": "描述",
+        "stateMachine.create.name": "名称",
+        "stateMachine.create.namePlaceholder": "输入状态机名称",
+        "stateMachine.create.order": "订单处理",
+        "stateMachine.create.template": "模板",
+        "stateMachine.create.ticket": "支持工单",
+        "stateMachine.create.title": "创建状态机",
+        "stateMachine.diagram.select": "选择状态机",
+        "stateMachine.diagram.title": "状态图",
+        "stateMachine.instances.empty": "没有实例",
+        "stateMachine.instances.history": "历史纪录",
+        "stateMachine.instances.title": "实例",
+        "stateMachine.instances.trigger": "触发",
+        "stateMachine.list.empty": "没有状态机",
+        "stateMachine.list.title": "状态机",
+        "stateMachine.stats.activeInstances": "激活中实例",
+        "stateMachine.stats.completed": "已完成",
+        "stateMachine.stats.machines": "状态机",
+        "stateMachine.stats.transitions": "状态转换"
+    }
+}

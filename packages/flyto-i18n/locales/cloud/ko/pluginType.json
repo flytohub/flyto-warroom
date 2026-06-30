@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.pluginType",
+    "version": "1.0.0",
+    "translations": {
+        "pluginType.audio": "오디오",
+        "pluginType.embedding": "임베딩",
+        "pluginType.languageModel": "언어 모델",
+        "pluginType.multimodal": "멀티모달",
+        "pluginType.vision": "비전"
+    }
+}

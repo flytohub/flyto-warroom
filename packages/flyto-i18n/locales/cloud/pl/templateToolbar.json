@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "Widok siatki",
+        "templateToolbar.listView": "Widok listy",
+        "templateToolbar.searchLabel": "Szukaj szablonow",
+        "templateToolbar.searchPlaceholder": "Szukaj szablonow...",
+        "templateToolbar.sortLabel": "Sortuj szablony wedlug",
+        "templateToolbar.sortOptions.created": "Ostatnio utworzone",
+        "templateToolbar.sortOptions.name": "Nazwa A-Z",
+        "templateToolbar.sortOptions.status": "Wedlug statusu",
+        "templateToolbar.sortOptions.updated": "Ostatnio zaktualizowane",
+        "templateToolbar.viewMode": "Tryb widoku"
+    }
+}

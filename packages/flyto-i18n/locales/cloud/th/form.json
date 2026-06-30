@@ -1,0 +1,10 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.form",
+    "version": "1.0.0",
+    "translations": {
+        "form.advanced": "ขั้นสูง",
+        "form.moreOptions": "ตัวเลือกเพิ่มเติม"
+    }
+}

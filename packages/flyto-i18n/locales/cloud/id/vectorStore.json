@@ -1,0 +1,26 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.vectorStore",
+    "version": "1.0.0",
+    "translations": {
+        "vectorStore.addMetadata": "Tambah field",
+        "vectorStore.collection": "Koleksi",
+        "vectorStore.collectionName": "Nama koleksi",
+        "vectorStore.content": "Konten Dokumen",
+        "vectorStore.contentPlaceholder": "Masukkan teks atau gunakan {{variable}}...",
+        "vectorStore.createCollection": "Buat koleksi baru",
+        "vectorStore.deleteIds": "ID Dokumen untuk dihapus",
+        "vectorStore.documentId": "ID Dokumen (opsional)",
+        "vectorStore.filters": "Filter Metadata",
+        "vectorStore.metadata": "Metadata",
+        "vectorStore.noMetadata": "Tidak ada field metadata",
+        "vectorStore.query": "Kueri",
+        "vectorStore.queryPlaceholder": "Masukkan query pencarian atau gunakan {{variable}}...",
+        "vectorStore.refreshCollections": "Muat ulang koleksi",
+        "vectorStore.scoreThreshold": "Ambang Skor",
+        "vectorStore.scoreThresholdHint": "Skor kemiripan minimum (0-1)",
+        "vectorStore.selectCollection": "Pilih koleksi...",
+        "vectorStore.topK": "Hasil Top K"
+    }
+}

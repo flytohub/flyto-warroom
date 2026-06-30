@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.projects",
+    "version": "1.0.0",
+    "translations": {
+        "projects.create": "Crear proyecto",
+        "projects.create.title": "Crear proyecto",
+        "projects.delete.message": "Estas seguro de que deseas eliminar este proyecto? Todos los flujos de trabajo en este proyecto se moveran al proyecto predeterminado.",
+        "projects.delete.title": "Eliminar proyecto",
+        "projects.description": "Organiza tus flujos de trabajo en proyectos",
+        "projects.edit.title": "Editar proyecto",
+        "projects.empty.description": "Crea tu primer proyecto para organizar flujos de trabajo",
+        "projects.empty.title": "Sin proyectos aun",
+        "projects.form.color": "Color",
+        "projects.form.description": "Descripcion",
+        "projects.form.name": "Nombre del proyecto",
+        "projects.form.namePlaceholder": "Mi proyecto",
+        "projects.members": "miembros",
+        "projects.title": "Proyectos",
+        "projects.workflows": "flujos de trabajo"
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.toolLibrary",
+    "version": "1.0.0",
+    "translations": {
+        "toolLibrary.allTools": "Todos",
+        "toolLibrary.createFirstTool": "Crie Sua Primeira Ferramenta",
+        "toolLibrary.createTool": "Criar Ferramenta",
+        "toolLibrary.deleteConfirm": "Excluir Ferramenta",
+        "toolLibrary.deleteMessage": "Tem certeza que deseja excluir \"{name}\"? Esta acao nao pode ser desfeita.",
+        "toolLibrary.noDescription": "Sem descricao",
+        "toolLibrary.noTools": "Nenhuma Ferramenta Ainda",
+        "toolLibrary.noToolsDesc": "Crie sua primeira ferramenta para automatizar seus workflows",
+        "toolLibrary.run": "Executar",
+        "toolLibrary.searchPlaceholder": "Pesquisar ferramentas...",
+        "toolLibrary.steps": "etapas",
+        "toolLibrary.subtitle": "Gerencie e execute suas ferramentas de automacao",
+        "toolLibrary.title": "Biblioteca de Ferramentas"
+    }
+}

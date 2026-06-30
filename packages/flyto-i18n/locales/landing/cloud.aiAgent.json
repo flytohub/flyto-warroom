@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.aiAgent",
+  "version": "1.0.0",
+  "translations": {
+    "aiAgent.fromInput": "",
+    "aiAgent.manual": "",
+    "aiAgent.promptPath": "",
+    "aiAgent.promptPathHint": "",
+    "aiAgent.promptSource": "",
+    "aiAgent.selectVariable": "",
+    "aiAgent.shellInfo": "",
+    "aiAgent.shellInfoDesc": "",
+    "aiAgent.task": "",
+    "aiAgent.taskPlaceholder": ""
+  }
+}

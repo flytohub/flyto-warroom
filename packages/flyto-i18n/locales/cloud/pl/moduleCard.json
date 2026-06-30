@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.moduleCard",
+    "version": "1.0.0",
+    "translations": {
+        "moduleCard.expert": "Ekspert",
+        "moduleCard.inputType": "Wejscie: {type}",
+        "moduleCard.noDescription": "Brak opisu",
+        "moduleCard.outputType": "Wyjscie: {type}"
+    }
+}

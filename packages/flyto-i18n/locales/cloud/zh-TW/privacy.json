@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.privacy",
+    "version": "1.0.0",
+    "translations": {
+        "privacy.lastUpdated": "最後更新",
+        "privacy.sections.collection.content": "我們收集您直接提供給我們的資訊，例如當您建立帳號、使用我們的服務或聯繫客服時。這可能包括您的姓名、電子郵件地址和使用數據，以改善我們的服務。",
+        "privacy.sections.collection.title": "我們收集的資訊",
+        "privacy.sections.contact.content": "如果您對本隱私權政策或我們的資料處理方式有任何疑問，請透過 privacy{'@'}flytohub.com 聯繫我們。",
+        "privacy.sections.contact.title": "聯絡我們",
+        "privacy.sections.rights.content": "您有權存取、更正或刪除您的個人資訊。您也可以要求資料可攜性或反對某些處理活動。請聯繫我們以行使這些權利。",
+        "privacy.sections.rights.title": "您的權利",
+        "privacy.sections.security.content": "我們實施適當的技術和組織措施，以保護您的個人資訊免受未經授權的存取、更改、披露或銷毀。",
+        "privacy.sections.security.title": "資料安全",
+        "privacy.sections.sharing.content": "我們不會出售您的個人資訊。我們可能會與協助我們營運平台的第三方服務提供商分享您的資訊，但須遵守保密協議。",
+        "privacy.sections.sharing.title": "資訊分享",
+        "privacy.sections.usage.content": "我們使用收集的資訊來提供、維護和改善我們的服務，與您溝通，並個人化您的體驗。我們也可能使用匯總數據進行分析。",
+        "privacy.sections.usage.title": "我們如何使用您的資訊",
+        "privacy.title": "隱私權政策"
+    }
+}

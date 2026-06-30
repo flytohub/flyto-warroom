@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "Tên Header",
+        "schema.field.body": "Nội dung",
+        "schema.field.body_matches": "Phản hồi",
+        "schema.field.full_page": "Toàn trang",
+        "schema.field.response": "Phản hồi",
+        "schema.field.screenshot_format": "Toàn trang",
+        "schema.field.ssrf_protection": "Bảo vệ SSRF",
+        "schema.field.ssrf_protection.description": "Chặn yêu cầu đến mạng nội bộ/riêng tư (localhost, 192.168.x.x, cloud metadata endpoint). Chỉ tắt cho các mục tiêu nội bộ đáng tin cậy.",
+        "schema.field.url": "Url",
+        "schema.field.viewport_height": "Chiều rộng",
+        "schema.field.viewport_width": "Chiều rộng"
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "cloud.queues",
+  "version": "1.0.0",
+  "translations": {
+    "queues.addItem": "Ekle Item",
+    "queues.create.maxRetries": "Max Retries",
+    "queues.create.name": "Queue Ad",
+    "queues.create.namePlaceholder": "Enter queue Ad",
+    "queues.create.selectWorkflow": "Seç İş akışı",
+    "queues.create.submit": "Oluştur Queue",
+    "queues.create.title": "Oluştur Queue",
+    "queues.create.workflow": "İş akışı",
+    "queues.createFirst": "Oluştur your first queue",
+    "queues.empty": "No queues",
+    "queues.emptyDesc": "Oluştur a queue to get started",
+    "queues.stats.completed": "Tamamlandı",
+    "queues.stats.pending": "Beklemede",
+    "queues.stats.processing": "Processing",
+    "queues.stats.totalItems": "Toplam Items",
+    "queues.status.completed": "Tamamlandı",
+    "queues.status.failed": "Başarısız",
+    "queues.status.pending": "Beklemede",
+    "queues.status.processing": "Processing",
+    "queues.transactions.empty": "No transactions",
+    "queues.transactions.title": "Transactions"
+  }
+}

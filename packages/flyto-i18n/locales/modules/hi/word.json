@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "word",
+    "version": "1.0.0",
+    "translations": {
+        "modules.word.parse.description": "Word डॉक्यूमेंट (.docx) से टेक्स्ट और सामग्री निकालें",
+        "modules.word.parse.label": "Word डॉक्यूमेंट पार्स करें",
+        "modules.word.parse.output.images.description": "पैराग्राफ की सूची",
+        "modules.word.parse.output.metadata.description": "सरणियों के रूप में निकाली गई टेबल",
+        "modules.word.parse.output.paragraphs.description": "डॉक्यूमेंट की पूर्ण टेक्स्ट सामग्री",
+        "modules.word.parse.output.tables.description": "डॉक्यूमेंट की पूर्ण टेक्स्ट सामग्री",
+        "modules.word.parse.output.text.description": "डॉक्यूमेंट की पूर्ण टेक्स्ट सामग्री",
+        "modules.word.to_pdf.description": "Word डॉक्यूमेंट (.docx) को PDF फ़ाइलों में बदलें",
+        "modules.word.to_pdf.label": "Word से PDF",
+        "modules.word.to_pdf.output.file_size.description": "जनरेट की गई PDF फ़ाइल का पथ",
+        "modules.word.to_pdf.output.method_used.description": "बाइट्स में आउटपुट फ़ाइल का आकार",
+        "modules.word.to_pdf.output.output_path.description": "जनरेट की गई PDF फ़ाइल का पथ"
+    }
+}

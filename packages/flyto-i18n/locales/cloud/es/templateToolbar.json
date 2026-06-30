@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.templateToolbar",
+    "version": "1.0.0",
+    "translations": {
+        "templateToolbar.gridView": "Vista de cuadricula",
+        "templateToolbar.listView": "Vista de lista",
+        "templateToolbar.searchLabel": "Buscar plantillas",
+        "templateToolbar.searchPlaceholder": "Buscar plantillas...",
+        "templateToolbar.sortLabel": "Ordenar plantillas por",
+        "templateToolbar.sortOptions.created": "Creados recientemente",
+        "templateToolbar.sortOptions.name": "Nombre A-Z",
+        "templateToolbar.sortOptions.status": "Por estado",
+        "templateToolbar.sortOptions.updated": "Actualizados recientemente",
+        "templateToolbar.viewMode": "Modo de vista"
+    }
+}

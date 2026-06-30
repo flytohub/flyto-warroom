@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "Refund amount",
+        "refund.cancelButton": "Anuluj",
+        "refund.confirm": "Potwierdź refund",
+        "refund.confirmButton": "Potwierdź zwrot",
+        "refund.confirmTitle": "Potwierdź żądanie zwrotu",
+        "refund.contactSupport": "Kontakt Wsparcie",
+        "refund.days": "Refund days",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "Masz prawo do zwrotu",
+        "refund.expiredWindow": "30-dniowy okres zwrotu wygasł",
+        "refund.failed": "Nie udało się zażądać zwrotu",
+        "refund.forksAffected": "Następujące forki zostaną osierocone (Twoje edycje zostaną zachowane, ale odłączone od źródła):",
+        "refund.forksWarning": "Forks warning",
+        "refund.notEligible": "Not eligible for refund",
+        "refund.processInfo": "Refund process info",
+        "refund.processing": "Przetwarzanie...",
+        "refund.success": "Żądanie zwrotu zakończone sukcesem",
+        "refund.template": "Refund Szablon",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "Warning Opis"
+    }
+}

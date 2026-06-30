@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "cloud.autoForm",
+    "version": "1.0.0",
+    "translations": {
+        "autoForm.browsePath": "Navegar caminho",
+        "autoForm.hideAdvanced": "Ocultar Avancado",
+        "autoForm.hidePassword": "Ocultar senha",
+        "autoForm.multipleFilesSelected": "{count} arquivos selecionados",
+        "autoForm.selectFilePlaceholder": "Selecionar arquivo...",
+        "autoForm.selectPlaceholder": "Selecionar...",
+        "autoForm.showAdvanced": "Mostrar Avancado",
+        "autoForm.showPassword": "Mostrar senha"
+    }
+}

@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.notifications",
+    "version": "1.0.0",
+    "translations": {
+        "notifications.daysAgo": "{count} hari yang lalu",
+        "notifications.empty": "Belum ada notifikasi",
+        "notifications.hoursAgo": "{count} jam yang lalu",
+        "notifications.justNow": "Baru saja",
+        "notifications.loadMore": "Muat lebih banyak",
+        "notifications.markAllRead": "Tandai semua dibaca",
+        "notifications.minutesAgo": "{count} menit yang lalu",
+        "notifications.title": "Notifikasi"
+    }
+}

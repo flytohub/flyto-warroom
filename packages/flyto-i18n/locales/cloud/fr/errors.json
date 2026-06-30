@@ -1,0 +1,13 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.errors",
+    "version": "1.0.0",
+    "translations": {
+        "errors.networkError": "Impossible de se connecter au serveur. Veuillez vous assurer que le backend fonctionne.",
+        "errors.somethingWentWrong": "Une erreur s'est produite",
+        "errors.technicalDetails": "Details techniques",
+        "errors.timeout": "Delai de la requete depasse. Veuillez reessayer.",
+        "errors.unexpectedError": "Une erreur inattendue s'est produite"
+    }
+}

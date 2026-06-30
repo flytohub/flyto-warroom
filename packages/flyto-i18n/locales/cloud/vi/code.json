@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.code",
+    "version": "1.0.0",
+    "translations": {
+        "code.availableVariables": "Biến khả dụng",
+        "code.inputAllDesc": "Tất cả mục từ bước trước",
+        "code.inputFirstDesc": "Chỉ mục đầu tiên",
+        "code.jsonDesc": "Dữ liệu mục hiện tại (bí danh)",
+        "code.language": "Ngôn ngữ",
+        "code.localExecutionNotice": "Mã chạy cục bộ trên máy của bạn để đảm bảo bảo mật",
+        "code.sourceCode": "Mã nguồn"
+    }
+}

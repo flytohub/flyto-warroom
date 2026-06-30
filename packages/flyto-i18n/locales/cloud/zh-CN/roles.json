@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "内置角色",
+        "roles.create": "创建角色",
+        "roles.create.title": "创建角色",
+        "roles.custom.empty": "尚未定义自定义角色",
+        "roles.custom.title": "自定义角色",
+        "roles.delete.message": "确定要删除此角色吗？拥有此角色的用户将被指派为缺省成员角色。",
+        "roles.delete.title": "删除角色",
+        "roles.description": "管理角色与访问权限",
+        "roles.edit.title": "编辑角色",
+        "roles.form.description": "描述",
+        "roles.form.name": "角色名称",
+        "roles.form.permissions": "权限",
+        "roles.permissions": "项权限",
+        "roles.title": "角色与权限",
+        "roles.users": "位用户"
+    }
+}

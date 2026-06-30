@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "附加檔案",
+        "chat.messageUser": "傳送訊息",
+        "chat.messages": "訊息",
+        "chat.noConversations": "還沒有對話",
+        "chat.noMessages": "還沒有訊息，打個招呼吧！",
+        "chat.online": "在線",
+        "chat.searchConversations": "搜尋對話...",
+        "chat.selectConversation": "選擇對話開始聊天",
+        "chat.send": "發送",
+        "chat.startChat": "開始聊天",
+        "chat.startChatFailed": "無法開始聊天",
+        "chat.typePlaceholder": "輸入訊息...",
+        "chat.user": "用戶"
+    }
+}

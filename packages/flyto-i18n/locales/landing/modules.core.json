@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "core",
+  "version": "1.0.0",
+  "translations": {
+    "modules.core.api.google_search.output.count.description": "",
+    "modules.core.api.google_search.output.data.description": "",
+    "modules.core.api.google_search.output.status.description": "",
+    "modules.core.api.google_search.output.total_results.description": "",
+    "modules.core.api.http_get.output.body.description": "",
+    "modules.core.api.http_get.output.headers.description": "",
+    "modules.core.api.http_get.output.json.description": "",
+    "modules.core.api.http_get.output.status_code.description": ""
+  }
+}

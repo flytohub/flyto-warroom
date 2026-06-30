@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "審批工作流",
+        "stateMachine.create.blank": "空白",
+        "stateMachine.create.descPlaceholder": "輸入描述",
+        "stateMachine.create.description": "描述",
+        "stateMachine.create.name": "名稱",
+        "stateMachine.create.namePlaceholder": "輸入狀態機名稱",
+        "stateMachine.create.order": "訂單處理",
+        "stateMachine.create.template": "範本",
+        "stateMachine.create.ticket": "支援工單",
+        "stateMachine.create.title": "建立狀態機",
+        "stateMachine.diagram.select": "選擇狀態機",
+        "stateMachine.diagram.title": "狀態圖",
+        "stateMachine.instances.empty": "沒有實例",
+        "stateMachine.instances.history": "歷史紀錄",
+        "stateMachine.instances.title": "實例",
+        "stateMachine.instances.trigger": "觸發",
+        "stateMachine.list.empty": "沒有狀態機",
+        "stateMachine.list.title": "狀態機",
+        "stateMachine.stats.activeInstances": "啟用中實例",
+        "stateMachine.stats.completed": "已完成",
+        "stateMachine.stats.machines": "狀態機",
+        "stateMachine.stats.transitions": "狀態轉換"
+    }
+}

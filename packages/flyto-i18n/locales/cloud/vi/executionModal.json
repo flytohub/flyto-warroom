@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.executionModal",
+    "version": "1.0.0",
+    "translations": {
+        "executionModal.clickToExecute": "Nhấn Thực thi để chạy workflow này",
+        "executionModal.execute": "Thực thi",
+        "executionModal.executing": "Đang thực thi workflow...",
+        "executionModal.executionComplete": "Thực thi hoàn thành",
+        "executionModal.executionFailed": "Thực thi thất bại",
+        "executionModal.noParamsRequired": "Không cần tham số đầu vào",
+        "executionModal.runAgain": "Chạy lại",
+        "executionModal.status.completed": "ĐÃ HOÀN THÀNH",
+        "executionModal.status.failed": "THẤT BẠI",
+        "executionModal.status.ready": "SẴN SÀNG",
+        "executionModal.status.running": "ĐANG CHẠY",
+        "executionModal.stop": "Dừng",
+        "executionModal.title": "Thực thi Workflow"
+    }
+}

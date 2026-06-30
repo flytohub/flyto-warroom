@@ -1,0 +1,16 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.notifications",
+  "version": "1.0.0",
+  "translations": {
+    "notifications.daysAgo": "",
+    "notifications.empty": "",
+    "notifications.hoursAgo": "",
+    "notifications.justNow": "",
+    "notifications.loadMore": "",
+    "notifications.markAllRead": "",
+    "notifications.minutesAgo": "",
+    "notifications.title": ""
+  }
+}

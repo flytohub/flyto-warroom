@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.coreUpdate",
+    "version": "1.0.0",
+    "translations": {
+        "coreUpdate.available": "có sẵn",
+        "coreUpdate.checkFailed": "Kiểm tra trạng thái thất bại",
+        "coreUpdate.downloadPage": "Tải từ trang chính thức",
+        "coreUpdate.installedVersion": "Phiên bản đã cài",
+        "coreUpdate.invalidFile": "Vui lòng chọn tệp .whl hợp lệ",
+        "coreUpdate.lastCheck": "Kiểm tra lần cuối",
+        "coreUpdate.notInstalled": "Chưa cài đặt",
+        "coreUpdate.refresh": "Kiểm tra cập nhật",
+        "coreUpdate.title": "Engine lõi",
+        "coreUpdate.upToDate": "Đã cập nhật",
+        "coreUpdate.uploadFailed": "Tải lên thất bại",
+        "coreUpdate.uploadPackage": "Tải lên gói",
+        "coreUpdate.whlFile": "Tải lên tệp .whl"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "高端模式",
+        "simpleToolView.copy": "拷贝",
+        "simpleToolView.download": "下载",
+        "simpleToolView.downloadFile": "下载文件",
+        "simpleToolView.dropOrClick": "拖曳文件或点击上传",
+        "simpleToolView.failed": "失败",
+        "simpleToolView.generating": "生成中...",
+        "simpleToolView.input": "输入",
+        "simpleToolView.moreRows": "还有 {count} 列",
+        "simpleToolView.output": "输出",
+        "simpleToolView.processing": "处理中...",
+        "simpleToolView.resultWillAppear": "结果将显示在这里",
+        "simpleToolView.retry": "重试",
+        "simpleToolView.selectOption": "选择选项",
+        "simpleToolView.start": "开始",
+        "simpleToolView.viewSteps": "查看步骤"
+    }
+}

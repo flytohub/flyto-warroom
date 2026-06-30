@@ -1,0 +1,11 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.footer",
+    "version": "1.0.0",
+    "translations": {
+        "footer.copyright": "© 2025 Flyto2. All rights reserved.",
+        "footer.description": "数百のアプリケーションを統合する強力なビジュアルワークフローエディタで、誰でも簡単に自動化を実現できます。",
+        "footer.disclaimer": "すべての自動化タスクはユーザー自身のデバイスで実行されます。ユーザーは、使用が対象ウェブサイトの利用規約および適用される法律に準拠していることを確認する責任があります。"
+    }
+}

@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.stateMachine",
+    "version": "1.0.0",
+    "translations": {
+        "stateMachine.create.approval": "승인 워크플로",
+        "stateMachine.create.blank": "빈 상태",
+        "stateMachine.create.descPlaceholder": "설명을 입력하세요",
+        "stateMachine.create.description": "설명",
+        "stateMachine.create.name": "이름",
+        "stateMachine.create.namePlaceholder": "상태 머신 이름을 입력하세요",
+        "stateMachine.create.order": "주문 처리",
+        "stateMachine.create.template": "템플릿",
+        "stateMachine.create.ticket": "지원 티켓",
+        "stateMachine.create.title": "상태 머신 생성",
+        "stateMachine.diagram.select": "상태 머신을 선택하세요",
+        "stateMachine.diagram.title": "상태 다이어그램",
+        "stateMachine.instances.empty": "인스턴스 없음",
+        "stateMachine.instances.history": "기록",
+        "stateMachine.instances.title": "인스턴스",
+        "stateMachine.instances.trigger": "트리거",
+        "stateMachine.list.empty": "상태 머신 없음",
+        "stateMachine.list.title": "상태 머신",
+        "stateMachine.stats.activeInstances": "활성 인스턴스",
+        "stateMachine.stats.completed": "완료됨",
+        "stateMachine.stats.machines": "머신",
+        "stateMachine.stats.transitions": "전환"
+    }
+}

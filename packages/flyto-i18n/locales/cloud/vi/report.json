@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "Vui lòng mô tả vấn đề...",
+        "report.reasons.copyright": "Vi phạm bản quyền hoặc sở hữu trí tuệ",
+        "report.reasons.harmful": "Nội dung có hại hoặc nguy hiểm",
+        "report.reasons.inappropriate": "Nội dung không phù hợp hoặc xúc phạm",
+        "report.reasons.misleading": "Thông tin sai sự thật hoặc gây hiểu lầm",
+        "report.reasons.other": "Khác (vui lòng ghi rõ)",
+        "report.reasons.spam": "Spam hoặc gây hiểu lầm",
+        "report.selectReason": "Vui lòng chọn lý do báo cáo:",
+        "report.submit": "Gửi báo cáo",
+        "report.title": "Báo cáo nội dung"
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.report",
+    "version": "1.0.0",
+    "translations": {
+        "report.otherPlaceholder": "請描述問題...",
+        "report.reasons.copyright": "侵犯版權或智慧財產權",
+        "report.reasons.harmful": "有害或危險內容",
+        "report.reasons.inappropriate": "不當或冒犯性內容",
+        "report.reasons.misleading": "虛假或誤導性資訊",
+        "report.reasons.other": "其他（請說明）",
+        "report.reasons.spam": "垃圾訊息或誤導",
+        "report.selectReason": "請選擇檢舉原因：",
+        "report.submit": "提交檢舉",
+        "report.title": "檢舉內容"
+    }
+}

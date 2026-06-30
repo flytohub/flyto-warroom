@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.pluginCapability",
+    "version": "1.0.0",
+    "translations": {
+        "pluginCapability.imageClassification": "Klasifikasi Gambar",
+        "pluginCapability.speechRecognition": "Pengenalan Suara",
+        "pluginCapability.textClassification": "Klasifikasi Teks",
+        "pluginCapability.textEmbedding": "Embedding Teks",
+        "pluginCapability.textGeneration": "Generasi Teks",
+        "pluginCapability.textToSpeech": "Teks ke Suara"
+    }
+}

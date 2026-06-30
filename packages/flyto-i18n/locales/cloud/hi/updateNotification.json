@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "बंद करें",
+        "updateNotification.downloadFailed": "अपडेट डाउनलोड करने में विफल",
+        "updateNotification.downloadUpdate": "अपडेट डाउनलोड करें",
+        "updateNotification.downloading": "अपडेट डाउनलोड हो रहा है",
+        "updateNotification.newVersionAvailable": "नया संस्करण उपलब्ध",
+        "updateNotification.percentComplete": "{percent}% पूर्ण",
+        "updateNotification.remindLater": "बाद में याद दिलाएं",
+        "updateNotification.restartLater": "बाद में रीस्टार्ट करें",
+        "updateNotification.restartNow": "अभी रीस्टार्ट करें",
+        "updateNotification.restartToInstall": "अपडेट इंस्टॉल करने के लिए एप्लिकेशन रीस्टार्ट करें",
+        "updateNotification.unknownError": "अज्ञात त्रुटि",
+        "updateNotification.updateDownloaded": "अपडेट डाउनलोड हुआ",
+        "updateNotification.updateFailed": "अपडेट विफल",
+        "updateNotification.versionReady": "संस्करण {version} अपडेट के लिए तैयार है"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "cloud.loginFormDefault",
+    "version": "1.0.0",
+    "translations": {
+        "loginFormDefault.forgotPassword": "パスワードをお忘れですか？",
+        "loginFormDefault.loginButton": "ログイン",
+        "loginFormDefault.passwordPlaceholder": "パスワードを入力",
+        "loginFormDefault.usernamePlaceholder": "ユーザー名を入力"
+    }
+}

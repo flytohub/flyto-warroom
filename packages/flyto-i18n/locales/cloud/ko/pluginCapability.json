@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.pluginCapability",
+    "version": "1.0.0",
+    "translations": {
+        "pluginCapability.imageClassification": "이미지 분류",
+        "pluginCapability.speechRecognition": "음성 인식",
+        "pluginCapability.textClassification": "텍스트 분류",
+        "pluginCapability.textEmbedding": "텍스트 임베딩",
+        "pluginCapability.textGeneration": "텍스트 생성",
+        "pluginCapability.textToSpeech": "텍스트 음성 변환"
+    }
+}

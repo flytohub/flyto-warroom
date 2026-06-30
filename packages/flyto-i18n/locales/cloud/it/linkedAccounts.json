@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "cloud.linkedAccounts",
+    "version": "1.0.0",
+    "translations": {
+        "linkedAccounts.cannotUnlink": "Impossibile scollegare — è necessario almeno un metodo di accesso",
+        "linkedAccounts.google": "Google",
+        "linkedAccounts.link": "Collega Account",
+        "linkedAccounts.linkSuccess": "Account Google collegato con successo",
+        "linkedAccounts.linked": "Collegato",
+        "linkedAccounts.notLinked": "Non collegato",
+        "linkedAccounts.subtitle": "Gestisci i tuoi metodi di accesso collegati",
+        "linkedAccounts.title": "Account Collegati",
+        "linkedAccounts.unlink": "Scollega",
+        "linkedAccounts.unlinkConfirm": "Sei sicuro di voler scollegare Google?",
+        "linkedAccounts.unlinkSuccess": "Account Google scollegato"
+    }
+}

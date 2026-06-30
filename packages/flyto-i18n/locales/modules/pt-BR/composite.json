@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pt-BR",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "Raspar uma página da web e gerar dados JSON estruturados",
+        "modules.composite.browser.scrape_to_json.label": "Raspar Web para JSON",
+        "modules.composite.data.csv_to_json.description": "Ler um arquivo CSV e convertê-lo para o formato JSON",
+        "modules.composite.data.csv_to_json.label": "CSV para JSON",
+        "modules.composite.data.json_transform_notify.description": "Transformar dados JSON e enviar notificação com os resultados",
+        "modules.composite.data.json_transform_notify.label": "Transformar JSON e Notificar",
+        "modules.composite.developer.api_to_notification.description": "Buscar dados de qualquer API e enviá-los para um canal de notificação",
+        "modules.composite.developer.api_to_notification.label": "API para Notificação",
+        "modules.composite.developer.github_daily_digest.description": "Buscar atualizações de repositórios do GitHub e enviar uma notificação de resumo diário",
+        "modules.composite.developer.github_daily_digest.label": "Resumo Diário do GitHub",
+        "modules.composite.notification.multi_channel_alert.description": "Enviar alertas para múltiplos canais de notificação simultaneamente",
+        "modules.composite.notification.multi_channel_alert.label": "Alerta Multi-Canal",
+        "modules.composite.notification.scheduled_report.description": "Gerar e enviar relatórios agendados para canais de notificação",
+        "modules.composite.notification.scheduled_report.label": "Relatório Agendado",
+        "modules.composite.test.api_test.description": "Executar testes de API com requisições HTTP e asserções",
+        "modules.composite.test.api_test.label": "Suíte de Teste de API",
+        "modules.composite.test.e2e_flow.description": "Teste de fluxo de trabalho de ponta a ponta com automação de navegador",
+        "modules.composite.test.e2e_flow.label": "Teste de Fluxo E2E",
+        "modules.composite.test.quality_gate.description": "Executar verificações de qualidade e controlar implantações com base em limites",
+        "modules.composite.test.quality_gate.label": "Portão de Qualidade",
+        "modules.composite.test.ui_review.description": "Teste de regressão visual e fluxo de revisão de UI",
+        "modules.composite.test.ui_review.label": "Revisão de UI",
+        "modules.composite.test.verify_fix.description": "Verificar correções de bugs com testes antes/depois e suítes de regressão",
+        "modules.composite.test.verify_fix.label": "Verificar Correção"
+    }
+}

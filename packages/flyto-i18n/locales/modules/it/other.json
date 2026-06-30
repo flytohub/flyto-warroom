@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "other",
+    "version": "1.0.0",
+    "translations": {
+        "schema.field.api_key_header": "Nome Header",
+        "schema.field.body": "Corpo",
+        "schema.field.body_matches": "Risposta",
+        "schema.field.full_page": "Pagina Intera",
+        "schema.field.response": "Risposta",
+        "schema.field.screenshot_format": "Pagina Intera",
+        "schema.field.ssrf_protection": "Protezione SSRF",
+        "schema.field.ssrf_protection.description": "Blocca le richieste verso reti private/interne (localhost, 192.168.x.x, endpoint di metadati cloud). Disattiva solo per destinazioni interne affidabili.",
+        "schema.field.url": "Url",
+        "schema.field.viewport_height": "Larghezza",
+        "schema.field.viewport_width": "Larghezza"
+    }
+}

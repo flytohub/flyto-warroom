@@ -1,0 +1,23 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "tr",
+  "category": "cloud.templateForm",
+  "version": "1.0.0",
+  "translations": {
+    "templateForm.category": "Kategori",
+    "templateForm.changeIcon": "Simgeyi Değiştir",
+    "templateForm.description": "Açıklama",
+    "templateForm.descriptionPlaceholder": "Bu şablon ne yapar? (isteğe bağlı)",
+    "templateForm.editTemplate": "Şablonu Düzenle",
+    "templateForm.iconUploadError": "Simge yüklenemedi. Lütfen tekrar deneyin.",
+    "templateForm.namePlaceholder": "Harika Otomasyonum",
+    "templateForm.private": "Private",
+    "templateForm.public": "Public",
+    "templateForm.selectCategory": "Bir kategori seçin (isteğe bağlı)",
+    "templateForm.templateColor": "Şablon Rengi",
+    "templateForm.templateIcon": "Şablon Simgesi",
+    "templateForm.templateName": "Şablon Adı",
+    "templateForm.uploadIcon": "Simge Yükle",
+    "templateForm.visibility": "Visibility"
+  }
+}

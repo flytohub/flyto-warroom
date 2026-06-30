@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "composite",
+    "version": "1.0.0",
+    "translations": {
+        "modules.composite.browser.scrape_to_json.description": "Eine Webseite scrapen und strukturierte JSON-Daten ausgeben",
+        "modules.composite.browser.scrape_to_json.label": "Web zu JSON scrapen",
+        "modules.composite.data.csv_to_json.description": "Eine CSV-Datei lesen und in JSON-Format umwandeln",
+        "modules.composite.data.csv_to_json.label": "CSV zu JSON",
+        "modules.composite.data.json_transform_notify.description": "JSON-Daten transformieren und Benachrichtigung mit Ergebnissen senden",
+        "modules.composite.data.json_transform_notify.label": "JSON transformieren und benachrichtigen",
+        "modules.composite.developer.api_to_notification.description": "Daten von einer API abrufen und an einen Benachrichtigungskanal senden",
+        "modules.composite.developer.api_to_notification.label": "API zu Benachrichtigung",
+        "modules.composite.developer.github_daily_digest.description": "GitHub-Repository-Updates abrufen und eine tägliche Übersicht senden",
+        "modules.composite.developer.github_daily_digest.label": "GitHub Tagesübersicht",
+        "modules.composite.notification.multi_channel_alert.description": "Alarme gleichzeitig an mehrere Benachrichtigungskanäle senden",
+        "modules.composite.notification.multi_channel_alert.label": "Multi-Kanal-Alarm",
+        "modules.composite.notification.scheduled_report.description": "Geplante Berichte erstellen und an Benachrichtigungskanäle senden",
+        "modules.composite.notification.scheduled_report.label": "Geplanter Bericht",
+        "modules.composite.test.api_test.description": "API-Tests mit HTTP-Anfragen und Überprüfungen durchführen",
+        "modules.composite.test.api_test.label": "API-Test-Suite",
+        "modules.composite.test.e2e_flow.description": "End-to-End-Workflow-Tests mit Browser-Automatisierung",
+        "modules.composite.test.e2e_flow.label": "E2E-Flow-Test",
+        "modules.composite.test.quality_gate.description": "Qualitätsprüfungen durchführen und Bereitstellungen basierend auf Schwellenwerten blockieren",
+        "modules.composite.test.quality_gate.label": "Qualitätsschranke",
+        "modules.composite.test.ui_review.description": "Visuelle Regressionstests und UI-Überprüfungs-Workflow",
+        "modules.composite.test.ui_review.label": "UI-Überprüfung",
+        "modules.composite.test.verify_fix.description": "Fehlerbehebungen mit Vorher/Nachher-Tests und Regressionssuiten überprüfen",
+        "modules.composite.test.verify_fix.label": "Fix überprüfen"
+    }
+}

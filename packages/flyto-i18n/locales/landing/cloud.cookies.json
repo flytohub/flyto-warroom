@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.cookies",
+  "version": "1.0.0",
+  "translations": {
+    "cookies.alwaysOn": "",
+    "cookies.lastUpdated": "",
+    "cookies.optional": "",
+    "cookies.preferencesSaved": "",
+    "cookies.savePreferences": "",
+    "cookies.sections.manage.content": "",
+    "cookies.sections.manage.title": "",
+    "cookies.sections.types.analytics.content": "",
+    "cookies.sections.types.analytics.title": "",
+    "cookies.sections.types.essential.content": "",
+    "cookies.sections.types.essential.title": "",
+    "cookies.sections.types.functional.content": "",
+    "cookies.sections.types.functional.title": "",
+    "cookies.sections.types.title": "",
+    "cookies.sections.what.content": "",
+    "cookies.sections.what.title": "",
+    "cookies.title": ""
+  }
+}

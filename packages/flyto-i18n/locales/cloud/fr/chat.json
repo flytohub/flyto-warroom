@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "fr",
+    "category": "cloud.chat",
+    "version": "1.0.0",
+    "translations": {
+        "chat.attachFile": "Joindre un fichier",
+        "chat.messageUser": "Message",
+        "chat.messages": "Messages",
+        "chat.noConversations": "Aucune conversation pour le moment",
+        "chat.noMessages": "Aucun message pour le moment. Dites bonjour !",
+        "chat.online": "En ligne",
+        "chat.searchConversations": "Rechercher des conversations...",
+        "chat.selectConversation": "Selectionnez une conversation pour commencer a discuter",
+        "chat.send": "Envoyer",
+        "chat.startChat": "Demarrer une discussion",
+        "chat.startChatFailed": "Echec du demarrage de la discussion",
+        "chat.typePlaceholder": "Tapez un message...",
+        "chat.user": "Utilisateur"
+    }
+}

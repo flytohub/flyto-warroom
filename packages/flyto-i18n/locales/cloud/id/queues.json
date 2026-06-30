@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.queues",
+    "version": "1.0.0",
+    "translations": {
+        "queues.addItem": "Tambah Item",
+        "queues.create.maxRetries": "Maksimal Percobaan Ulang",
+        "queues.create.name": "Nama Antrian",
+        "queues.create.namePlaceholder": "Masukkan nama antrian",
+        "queues.create.selectWorkflow": "Pilih alur kerja",
+        "queues.create.submit": "Buat Antrian",
+        "queues.create.title": "Buat Antrian",
+        "queues.create.workflow": "Alur Kerja",
+        "queues.createFirst": "Buat antrian pertama Anda",
+        "queues.empty": "Tidak ada antrian",
+        "queues.emptyDesc": "Buat antrian untuk memulai",
+        "queues.stats.completed": "Selesai",
+        "queues.stats.pending": "Tertunda",
+        "queues.stats.processing": "Sedang Diproses",
+        "queues.stats.totalItems": "Total Item",
+        "queues.status.completed": "Selesai",
+        "queues.status.failed": "Gagal",
+        "queues.status.pending": "Tertunda",
+        "queues.status.processing": "Sedang Diproses",
+        "queues.transactions.empty": "Tidak ada transaksi",
+        "queues.transactions.title": "Transaksi"
+    }
+}

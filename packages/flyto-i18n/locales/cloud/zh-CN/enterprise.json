@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.enterprise",
+    "version": "1.0.0",
+    "translations": {
+        "enterprise.actions.notSupported": "企业后端不支持此操作",
+        "enterprise.errors.actionFailed": "操作失败",
+        "enterprise.errors.loadFailed": "加载企业数据失败",
+        "enterprise.robotsOnline": "在线机器人",
+        "enterprise.subtitle": "企业自动化工具",
+        "enterprise.tabs.idp": "文档处理",
+        "enterprise.tabs.mining": "流程挖掘",
+        "enterprise.tabs.orchestrator": "协调器",
+        "enterprise.tabs.queues": "队列",
+        "enterprise.tabs.rpa": "RPA",
+        "enterprise.tabs.scheduler": "调度器",
+        "enterprise.tabs.stateMachine": "状态机",
+        "enterprise.title": "企业版"
+    }
+}

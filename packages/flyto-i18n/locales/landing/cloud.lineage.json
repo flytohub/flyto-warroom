@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.lineage",
+  "version": "1.0.0",
+  "translations": {
+    "lineage.decision.alternatives": "",
+    "lineage.decision.evidence": "",
+    "lineage.decision.reason": "",
+    "lineage.loop.clickToCollapse": "",
+    "lineage.steps": "",
+    "lineage.storyline.noSteps": "",
+    "lineage.storyline.noStepsInLane": "",
+    "lineage.storyline.runHint": "",
+    "lineage.storyline.title": ""
+  }
+}

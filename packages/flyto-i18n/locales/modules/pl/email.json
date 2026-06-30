@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "email",
+    "version": "1.0.0",
+    "translations": {
+        "modules.email.read.description": "Odczytaj e-maile z serwera IMAP",
+        "modules.email.read.label": "Odczytaj e-mail",
+        "modules.email.read.output.count.description": "Lista obiektow e-mail",
+        "modules.email.read.output.emails.description": "Lista obiektow e-mail",
+        "modules.email.send.description": "Wyslij e-mail przez serwer SMTP",
+        "modules.email.send.label": "Wyslij e-mail",
+        "modules.email.send.output.message_id.description": "Czy e-mail zostal wyslany pomyslnie",
+        "modules.email.send.output.recipients.description": "Czy e-mail zostal wyslany pomyslnie",
+        "modules.email.send.output.sent.description": "Czy e-mail zostal wyslany pomyslnie"
+    }
+}

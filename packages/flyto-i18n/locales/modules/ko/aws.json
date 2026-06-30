@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "aws",
+    "version": "1.0.0",
+    "translations": {
+        "modules.aws.s3.delete.description": "AWS S3 버킷에서 객체를 삭제합니다",
+        "modules.aws.s3.delete.label": "S3 객체 삭제",
+        "modules.aws.s3.delete.output.bucket.description": "S3 버킷 이름",
+        "modules.aws.s3.delete.output.deleted.description": "객체가 성공적으로 삭제되었는지 여부",
+        "modules.aws.s3.delete.output.key.description": "삭제된 객체 키",
+        "modules.aws.s3.download.description": "AWS S3 버킷에서 로컬 경로로 파일을 다운로드합니다",
+        "modules.aws.s3.download.label": "S3 다운로드",
+        "modules.aws.s3.download.output.content_type.description": "다운로드된 파일의 MIME 유형",
+        "modules.aws.s3.download.output.path.description": "파일이 저장된 로컬 파일 경로",
+        "modules.aws.s3.download.output.size.description": "파일 크기 (바이트)",
+        "modules.aws.s3.list.description": "AWS S3 버킷의 객체를 선택적 접두사 필터로 나열합니다",
+        "modules.aws.s3.list.label": "S3 객체 목록",
+        "modules.aws.s3.list.output.count.description": "반환된 객체 수",
+        "modules.aws.s3.list.output.objects.description": "S3 객체 목록",
+        "modules.aws.s3.list.output.truncated.description": "결과가 잘렸는지 여부",
+        "modules.aws.s3.upload.description": "로컬 파일을 AWS S3 버킷에 업로드합니다",
+        "modules.aws.s3.upload.label": "S3 업로드",
+        "modules.aws.s3.upload.output.bucket.description": "S3 버킷 이름",
+        "modules.aws.s3.upload.output.key.description": "S3 객체 키",
+        "modules.aws.s3.upload.output.size.description": "파일 크기 (바이트)",
+        "modules.aws.s3.upload.output.url.description": "업로드된 객체의 공개 URL"
+    }
+}

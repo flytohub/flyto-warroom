@@ -1,0 +1,25 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.cookies",
+    "version": "1.0.0",
+    "translations": {
+        "cookies.alwaysOn": "Immer aktiv",
+        "cookies.lastUpdated": "Zuletzt aktualisiert",
+        "cookies.optional": "Optional",
+        "cookies.preferencesSaved": "Einstellungen erfolgreich gespeichert",
+        "cookies.savePreferences": "Einstellungen speichern",
+        "cookies.sections.manage.content": "Sie können steuern, welche optionalen Cookies Sie zulassen. Essentielle Cookies können nicht deaktiviert werden, da sie für die Funktion der Website erforderlich sind.",
+        "cookies.sections.manage.title": "Verwalten Sie Ihre Einstellungen",
+        "cookies.sections.types.analytics.content": "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie Informationen anonym sammeln und melden. Dies hilft uns, unsere Dienste zu verbessern.",
+        "cookies.sections.types.analytics.title": "Analyse-Cookies",
+        "cookies.sections.types.essential.content": "Diese Cookies sind für die ordnungsgemäße Funktion der Website erforderlich. Sie ermöglichen grundlegende Funktionen wie Seitennavigation und Zugang zu sicheren Bereichen. Die Website kann ohne diese Cookies nicht ordnungsgemäß funktionieren.",
+        "cookies.sections.types.essential.title": "Essentielle Cookies",
+        "cookies.sections.types.functional.content": "Diese Cookies ermöglichen personalisierte Funktionen wie das Speichern Ihrer Spracheinstellung, Theme-Einstellungen und Anmeldestatus. Sie verbessern Ihr Erlebnis, sind aber nicht essentiell.",
+        "cookies.sections.types.functional.title": "Funktionale Cookies",
+        "cookies.sections.types.title": "Arten von Cookies, die wir verwenden",
+        "cookies.sections.what.content": "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, wenn Sie unsere Website besuchen. Sie helfen uns, Ihnen ein besseres Erlebnis zu bieten, indem sie Ihre Einstellungen speichern und uns helfen zu verstehen, wie Sie unsere Dienste nutzen.",
+        "cookies.sections.what.title": "Was sind Cookies?",
+        "cookies.title": "Cookie-Einstellungen"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "vision",
+    "version": "1.0.0",
+    "translations": {
+        "modules.vision.analyze.description": "OpenAI Vision API(GPT-4V)를 사용하여 이미지 분석",
+        "modules.vision.analyze.label": "AI로 이미지 분석",
+        "modules.vision.analyze.output.analysis.description": "분석 성공 여부",
+        "modules.vision.analyze.output.model.description": "구조화된 분석 데이터 (output_format이 structured/json인 경우)",
+        "modules.vision.analyze.output.ok.description": "분석 성공 여부",
+        "modules.vision.analyze.output.structured.description": "AI 분석 결과",
+        "modules.vision.analyze.output.tokens_used.description": "분석에 사용된 모델",
+        "modules.vision.compare.description": "두 이미지를 비교하여 시각적 차이 식별",
+        "modules.vision.compare.label": "이미지 비교",
+        "modules.vision.compare.output.differences.description": "유사도 백분율 (0-100)",
+        "modules.vision.compare.output.has_differences.description": "비교 성공 여부",
+        "modules.vision.compare.output.ok.description": "비교 성공 여부",
+        "modules.vision.compare.output.recommendation.description": "비교 결과 요약",
+        "modules.vision.compare.output.similarity_score.description": "중요한 차이점 발견 여부",
+        "modules.vision.compare.output.summary.description": "식별된 차이점 목록",
+        "modules.vision.compare.params.differences": "차이점",
+        "modules.vision.compare.params.focus_areas": "중점 영역",
+        "modules.vision.compare.params.focus_areas.options.header": "헤더",
+        "modules.vision.compare.params.focus_areas.options.main content": "주요 내용"
+    }
+}

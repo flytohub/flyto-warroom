@@ -1,0 +1,9 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.outputs",
+    "version": "1.0.0",
+    "translations": {
+        "outputs.title": "輸出"
+    }
+}

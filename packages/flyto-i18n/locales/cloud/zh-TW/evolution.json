@@ -1,0 +1,31 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.evolution",
+    "version": "1.0.0",
+    "translations": {
+        "evolution.acceptSuggestion": "接受建議",
+        "evolution.analyzing": "分析中",
+        "evolution.apply": "套用",
+        "evolution.deepAnalysis": "深入分析",
+        "evolution.details": "詳細資訊",
+        "evolution.dismissSuggestion": "忽略建議",
+        "evolution.error": "錯誤",
+        "evolution.highPriority": "高優先順序",
+        "evolution.insights": "洞察",
+        "evolution.lastUpdated": "最後更新",
+        "evolution.noSuggestions": "沒有建議",
+        "evolution.noSuggestionsDesc": "目前沒有可用的建議",
+        "evolution.reasoning": "推理",
+        "evolution.refresh": "重新整理",
+        "evolution.requestAnalysis": "請求分析",
+        "evolution.suggestionApplied": "建議已套用",
+        "evolution.title": "演化",
+        "evolution.types.cost": "成本",
+        "evolution.types.other": "其他",
+        "evolution.types.performance": "效能",
+        "evolution.types.reliability": "可靠性",
+        "evolution.types.security": "安全性",
+        "evolution.viewDetails": "查看詳細資訊"
+    }
+}

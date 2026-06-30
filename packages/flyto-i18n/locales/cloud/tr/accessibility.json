@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "İçerik haritası",
+        "accessibility.clearInput": "Girişi temizle",
+        "accessibility.closeDialog": "Diyaloğu kapat",
+        "accessibility.closeMenu": "Menüyü kapat",
+        "accessibility.closeModal": "Modalı kapat",
+        "accessibility.copyToClipboard": "Panoya kopyala",
+        "accessibility.imageEditingControls": "Görsel düzenleme kontrolleri",
+        "accessibility.notifications": "Bildirimler",
+        "accessibility.openMenu": "Menüyü aç",
+        "accessibility.rating": "Değerlendirme",
+        "accessibility.refreshList": "Listeyi yenile",
+        "accessibility.removeIcon": "Simgeyi kaldır",
+        "accessibility.resetImage": "Görsel konumunu ve yakınlaştırmayı sıfırla",
+        "accessibility.revokeKey": "Anahtarı iptal et",
+        "accessibility.rotateLeft": "90 derece sola döndür",
+        "accessibility.rotateRight": "90 derece sağa döndür",
+        "accessibility.showInMarketplace": "Mağazada göster",
+        "accessibility.zoomIn": "Yakınlaştır",
+        "accessibility.zoomOut": "Uzaklaştır"
+    }
+}

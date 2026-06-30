@@ -1,0 +1,29 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "de",
+    "category": "cloud.refund",
+    "version": "1.0.0",
+    "translations": {
+        "refund.amount": "Erstattungsbetrag",
+        "refund.cancelButton": "Abbrechen",
+        "refund.confirm": "Erstattung bestätigen",
+        "refund.confirmButton": "Rückerstattung bestätigen",
+        "refund.confirmTitle": "Rückerstattungsanfrage bestätigen",
+        "refund.contactSupport": "Support kontaktieren",
+        "refund.days": "Erstattungstage",
+        "refund.daysRemaining": "Days remaining",
+        "refund.eligible": "Sie sind für eine Rückerstattung berechtigt",
+        "refund.expiredWindow": "Das 30-tägige Rückerstattungsfenster ist abgelaufen",
+        "refund.failed": "Rückerstattungsanfrage fehlgeschlagen",
+        "refund.forksAffected": "Die folgenden Forks werden verwaist (Ihre Änderungen bleiben erhalten, sind aber nicht mehr mit der Quelle verbunden):",
+        "refund.forksWarning": "Gabelungswarnung",
+        "refund.notEligible": "Nicht erstattungsfähig",
+        "refund.processInfo": "Informationen zum Erstattungsprozess",
+        "refund.processing": "Wird bearbeitet...",
+        "refund.success": "Rückerstattung erfolgreich angefordert",
+        "refund.template": "Erstattungsvorlage",
+        "refund.title": "Refund",
+        "refund.warning": "Refund warning",
+        "refund.warningDescription": "Warnungsbeschreibung"
+    }
+}

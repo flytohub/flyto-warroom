@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "template",
+    "version": "1.0.0",
+    "translations": {
+        "modules.template.invoke.description": "Ejecuta una plantilla de tu biblioteca como un paso de flujo de trabajo",
+        "modules.template.invoke.label": "Invocar Plantilla",
+        "modules.template.invoke.output.__event__.description": "ID del elemento de la biblioteca (compra/fork/propio)",
+        "modules.template.invoke.output.execution_time_ms.description": "Resultado de ejecución de la plantilla",
+        "modules.template.invoke.output.result.description": "Tiempo máximo de ejecución en segundos",
+        "modules.template.invoke.output.template_id.description": "Evento para enrutamiento (éxito/error)",
+        "modules.template.invoke.ports.input": "Invocar Plantilla",
+        "modules.template.invoke.ports.success": "Entrada"
+    }
+}

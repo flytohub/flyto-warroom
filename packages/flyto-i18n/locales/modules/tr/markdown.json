@@ -1,0 +1,30 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "markdown",
+    "version": "1.0.0",
+    "translations": {
+        "modules.markdown.parse_frontmatter.description": "Markdown içeriğinden YAML ön maddeyi çıkar",
+        "modules.markdown.parse_frontmatter.label": "Ön Maddeyi Ayrıştır",
+        "modules.markdown.parse_frontmatter.output.content.description": "Ön madde olmadan Markdown içeriği",
+        "modules.markdown.parse_frontmatter.output.frontmatter.description": "Sözlük olarak ayrıştırılmış ön madde",
+        "modules.markdown.parse_frontmatter.params.text.description": "Ön madde içeren Markdown içeriği",
+        "modules.markdown.parse_frontmatter.params.text.label": "Markdown Metni",
+        "modules.markdown.to_html.description": "Markdown metnini HTML'ye dönüştür",
+        "modules.markdown.to_html.label": "Markdown'dan HTML'ye",
+        "modules.markdown.to_html.output.html.description": "Dönüştürülmüş HTML içeriği",
+        "modules.markdown.to_html.output.word_count.description": "Girdi metninin kelime sayısı",
+        "modules.markdown.to_html.params.extensions.description": "Etkinleştirilecek Markdown uzantıları (sadece markdown kütüphanesi ile kullanılır)",
+        "modules.markdown.to_html.params.extensions.label": "Uzantılar",
+        "modules.markdown.to_html.params.text.description": "Dönüştürülecek Markdown içeriği",
+        "modules.markdown.to_html.params.text.label": "Markdown Metni",
+        "modules.markdown.toc.description": "Markdown başlıklarından içindekiler tablosu oluştur",
+        "modules.markdown.toc.label": "İçindekiler Tablosu Oluştur",
+        "modules.markdown.toc.output.toc.description": "Seviye, başlık ve slug ile başlık listesi",
+        "modules.markdown.toc.output.toc_markdown.description": "Biçimlendirilmiş Markdown içindekiler tablosu",
+        "modules.markdown.toc.params.max_depth.description": "Dahil edilecek maksimum başlık derinliği (1-6)",
+        "modules.markdown.toc.params.max_depth.label": "Maksimum Derinlik",
+        "modules.markdown.toc.params.text.description": "Başlıkları çıkarmak için Markdown içeriği",
+        "modules.markdown.toc.params.text.label": "Markdown Metni"
+    }
+}

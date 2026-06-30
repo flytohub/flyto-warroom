@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "th",
+    "category": "cloud.updateNotification",
+    "version": "1.0.0",
+    "translations": {
+        "updateNotification.close": "ปิด",
+        "updateNotification.downloadFailed": "ไม่สามารถดาวน์โหลดการอัปเดตได้",
+        "updateNotification.downloadUpdate": "ดาวน์โหลดการอัปเดต",
+        "updateNotification.downloading": "กำลังดาวน์โหลดการอัปเดต",
+        "updateNotification.newVersionAvailable": "มีเวอร์ชันใหม่",
+        "updateNotification.percentComplete": "เสร็จสิ้น {percent}%",
+        "updateNotification.remindLater": "เตือนภายหลัง",
+        "updateNotification.restartLater": "รีสตาร์ทภายหลัง",
+        "updateNotification.restartNow": "รีสตาร์ทเดี๋ยวนี้",
+        "updateNotification.restartToInstall": "รีสตาร์ทแอปพลิเคชันเพื่อติดตั้งการอัปเดต",
+        "updateNotification.unknownError": "ข้อผิดพลาดที่ไม่ทราบ",
+        "updateNotification.updateDownloaded": "ดาวน์โหลดการอัปเดตแล้ว",
+        "updateNotification.updateFailed": "การอัปเดตล้มเหลว",
+        "updateNotification.versionReady": "เวอร์ชัน {version} พร้อมอัปเดต"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ja",
+    "category": "vision",
+    "version": "1.0.0",
+    "translations": {
+        "modules.vision.analyze.description": "OpenAI Vision API（GPT-4V）を使用して画像を分析",
+        "modules.vision.analyze.label": "AIで画像を分析",
+        "modules.vision.analyze.output.analysis.description": "分析が成功したかどうか",
+        "modules.vision.analyze.output.model.description": "構造化された分析データ（output_formatがstructured/jsonの場合）",
+        "modules.vision.analyze.output.ok.description": "分析が成功したかどうか",
+        "modules.vision.analyze.output.structured.description": "AI分析結果",
+        "modules.vision.analyze.output.tokens_used.description": "分析に使用されたモデル",
+        "modules.vision.compare.description": "2つの画像を比較して視覚的な違いを特定",
+        "modules.vision.compare.label": "画像比較",
+        "modules.vision.compare.output.differences.description": "類似度パーセンテージ（0-100）",
+        "modules.vision.compare.output.has_differences.description": "比較が成功したかどうか",
+        "modules.vision.compare.output.ok.description": "比較が成功したかどうか",
+        "modules.vision.compare.output.recommendation.description": "比較結果のサマリー",
+        "modules.vision.compare.output.similarity_score.description": "重要な違いが見つかったかどうか",
+        "modules.vision.compare.output.summary.description": "特定された違いのリスト",
+        "modules.vision.compare.params.differences": "差異",
+        "modules.vision.compare.params.focus_areas": "注目エリア",
+        "modules.vision.compare.params.focus_areas.options.header": "ヘッダー",
+        "modules.vision.compare.params.focus_areas.options.main content": "メインコンテンツ"
+    }
+}

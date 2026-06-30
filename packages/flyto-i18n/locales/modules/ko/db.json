@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "MongoDB 컬렉션에서 문서 쿼리",
+        "modules.db.mongodb.find.label": "MongoDB 찾기",
+        "modules.db.mongodb.find.output.count.description": "일치하는 문서 배열",
+        "modules.db.mongodb.find.output.documents.description": "일치하는 문서 배열",
+        "modules.db.mongodb.insert.description": "MongoDB 컬렉션에 하나 이상의 문서 삽입",
+        "modules.db.mongodb.insert.label": "MongoDB 삽입",
+        "modules.db.mongodb.insert.output.inserted_count.description": "삽입된 문서 수",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "삽입된 문서 수",
+        "modules.db.mysql.query.description": "MySQL 데이터베이스에서 SQL 쿼리 실행 및 결과 반환",
+        "modules.db.mysql.query.label": "MySQL 쿼리",
+        "modules.db.mysql.query.output.columns.description": "객체 형태의 결과 행 배열",
+        "modules.db.mysql.query.output.row_count.description": "객체 형태의 결과 행 배열",
+        "modules.db.mysql.query.output.rows.description": "객체 형태의 결과 행 배열",
+        "modules.db.postgresql.query.description": "PostgreSQL 데이터베이스에서 SQL 쿼리 실행 및 결과 반환",
+        "modules.db.postgresql.query.label": "PostgreSQL 쿼리",
+        "modules.db.postgresql.query.output.columns.description": "객체 형태의 결과 행 배열",
+        "modules.db.postgresql.query.output.row_count.description": "객체 형태의 결과 행 배열",
+        "modules.db.postgresql.query.output.rows.description": "객체 형태의 결과 행 배열",
+        "modules.db.redis.get.description": "Redis 캐시에서 값 가져오기",
+        "modules.db.redis.get.label": "Redis 가져오기",
+        "modules.db.redis.get.output.exists.description": "반환된 값",
+        "modules.db.redis.get.output.key.description": "반환된 값",
+        "modules.db.redis.get.output.value.description": "반환된 값",
+        "modules.db.redis.set.description": "Redis 캐시에 값 설정",
+        "modules.db.redis.set.label": "Redis 설정"
+    }
+}

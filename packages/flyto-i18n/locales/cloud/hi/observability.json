@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "hi",
+    "category": "cloud.observability",
+    "version": "1.0.0",
+    "translations": {
+        "observability.subtitle": "वर्कफ़्लो निष्पादन और प्रदर्शन की निगरानी करें",
+        "observability.tabs.alerts": "अलर्ट",
+        "observability.tabs.metrics": "मेट्रिक्स",
+        "observability.tabs.traces": "ट्रेस",
+        "observability.timeRange.24h": "पिछले 24 घंटे",
+        "observability.timeRange.30d": "पिछले 30 दिन",
+        "observability.timeRange.7d": "पिछले 7 दिन",
+        "observability.timeRange.90d": "पिछले 90 दिन",
+        "observability.title": "ऑब्जर्वेबिलिटी"
+    }
+}

@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.accessibility",
+    "version": "1.0.0",
+    "translations": {
+        "accessibility.breadcrumb": "Đường dẫn",
+        "accessibility.clearInput": "Xóa nội dung",
+        "accessibility.closeDialog": "Đóng hộp thoại",
+        "accessibility.closeMenu": "Đóng menu",
+        "accessibility.closeModal": "Đóng cửa sổ",
+        "accessibility.copyToClipboard": "Sao chép vào clipboard",
+        "accessibility.imageEditingControls": "Điều khiển chỉnh sửa hình ảnh",
+        "accessibility.notifications": "Thông báo",
+        "accessibility.openMenu": "Mở menu",
+        "accessibility.rating": "Đánh giá",
+        "accessibility.refreshList": "Làm mới danh sách",
+        "accessibility.removeIcon": "Xóa biểu tượng",
+        "accessibility.resetImage": "Đặt lại vị trí và thu phóng hình ảnh",
+        "accessibility.revokeKey": "Thu hồi khóa",
+        "accessibility.rotateLeft": "Xoay trái 90 độ",
+        "accessibility.rotateRight": "Xoay phải 90 độ",
+        "accessibility.showInMarketplace": "Hiển thị trên marketplace",
+        "accessibility.zoomIn": "Phóng to",
+        "accessibility.zoomOut": "Thu nhỏ"
+    }
+}

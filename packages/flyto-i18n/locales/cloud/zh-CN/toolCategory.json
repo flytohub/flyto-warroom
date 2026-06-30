@@ -1,0 +1,16 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "cloud.toolCategory",
+    "version": "1.0.0",
+    "translations": {
+        "toolCategory.apiIntegration": "API 集成",
+        "toolCategory.automation": "自动化",
+        "toolCategory.dataTransform": "数据转换",
+        "toolCategory.fileOperations": "文件操作",
+        "toolCategory.imageProcessing": "图片处理",
+        "toolCategory.other": "其他",
+        "toolCategory.textProcessing": "文本处理",
+        "toolCategory.webScraping": "网页爬虫"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "pl",
+    "category": "cloud.lineage",
+    "version": "1.0.0",
+    "translations": {
+        "lineage.decision.alternatives": "Alternatywy",
+        "lineage.decision.evidence": "Dowody",
+        "lineage.decision.reason": "Powod",
+        "lineage.loop.clickToCollapse": "Kliknij, aby zwinac",
+        "lineage.steps": "Kroki",
+        "lineage.storyline.noSteps": "Brak krokow do wyswietlenia",
+        "lineage.storyline.noStepsInLane": "Brak krokow na tej sciezce",
+        "lineage.storyline.runHint": "Uruchom przeplyw, aby zobaczyc historie wykonania",
+        "lineage.storyline.title": "Os czasu wykonania"
+    }
+}

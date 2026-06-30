@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.categories",
+    "version": "1.0.0",
+    "translations": {
+        "categories.ai": "AI",
+        "categories.api": "API",
+        "categories.array": "배열",
+        "categories.browser": "브라우저",
+        "categories.cloud": "클라우드",
+        "categories.code": "코드",
+        "categories.composite": "복합",
+        "categories.data": "데이터",
+        "categories.datetime": "날짜/시간",
+        "categories.element": "요소",
+        "categories.file": "파일",
+        "categories.flow": "흐름 제어",
+        "categories.form": "폼 입력",
+        "categories.http": "HTTP",
+        "categories.huggingface": "HuggingFace",
+        "categories.image": "이미지",
+        "categories.llm": "LLM",
+        "categories.math": "수학",
+        "categories.my-templates": "내 템플릿",
+        "categories.notification": "알림",
+        "categories.object": "객체",
+        "categories.other": "기타",
+        "categories.string": "문자열",
+        "categories.connector": "API 커넥터",
+        "categories.utility": "유틸리티"
+    }
+}

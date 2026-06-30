@@ -1,0 +1,24 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.simpleToolView",
+    "version": "1.0.0",
+    "translations": {
+        "simpleToolView.advancedMode": "Gelişmiş",
+        "simpleToolView.copy": "Kopyala",
+        "simpleToolView.download": "İndir",
+        "simpleToolView.downloadFile": "Dosyayı İndir",
+        "simpleToolView.dropOrClick": "Dosyayı bırakın veya yüklemek için tıklayın",
+        "simpleToolView.failed": "Başarısız",
+        "simpleToolView.generating": "Oluşturuluyor...",
+        "simpleToolView.input": "Girdi",
+        "simpleToolView.moreRows": "+{count} satır daha",
+        "simpleToolView.output": "Çıktı",
+        "simpleToolView.processing": "İşleniyor...",
+        "simpleToolView.resultWillAppear": "Sonuç burada görünecek",
+        "simpleToolView.retry": "Tekrar Dene",
+        "simpleToolView.selectOption": "Bir seçenek seçin",
+        "simpleToolView.start": "Başla",
+        "simpleToolView.viewSteps": "Adımları Görüntüle"
+    }
+}

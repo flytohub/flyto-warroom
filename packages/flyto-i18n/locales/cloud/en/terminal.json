@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "en",
+    "category": "cloud.terminal",
+    "version": "1.0.0",
+    "translations": {
+        "terminal.clearLogs": "Clear logs",
+        "terminal.closeTerminal": "Close terminal",
+        "terminal.connected": "CONNECTED",
+        "terminal.disableAutoScroll": "Disable auto scroll",
+        "terminal.disconnected": "DISCONNECTED",
+        "terminal.enableAutoScroll": "Enable auto scroll",
+        "terminal.hideLogs": "Hide {level} logs",
+        "terminal.logsWillAppear": "Logs will appear here when the system generates output",
+        "terminal.searchPlaceholder": "Search logs...",
+        "terminal.showLogs": "Show {level} logs",
+        "terminal.title": "System Terminal",
+        "terminal.waitingForLogs": "Waiting for logs..."
+    }
+}

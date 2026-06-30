@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "Chỉ cho phép chữ cái và số",
+        "validation.error": "Lỗi xác thực",
+        "validation.failed": "Xác thực thất bại",
+        "validation.invalidEmail": "Địa chỉ email không hợp lệ",
+        "validation.maxLength": "Tối đa {max} ký tự",
+        "validation.minLength": "Tối thiểu {min} ký tự",
+        "validation.needsLowercase": "Phải chứa ít nhất một chữ cái thường",
+        "validation.needsNumber": "Phải chứa ít nhất một số",
+        "validation.needsUppercase": "Phải chứa ít nhất một chữ cái hoa",
+        "validation.passwordHint": "Tối thiểu 12 ký tự, với chữ hoa, chữ thường và số",
+        "validation.passwordMismatch": "Mật khẩu không khớp",
+        "validation.required": "Trường này là bắt buộc"
+    }
+}

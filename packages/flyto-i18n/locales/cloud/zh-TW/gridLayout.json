@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.gridLayout",
+    "version": "1.0.0",
+    "translations": {
+        "gridLayout.fourColumns": "四欄",
+        "gridLayout.singleColumn": "單欄",
+        "gridLayout.threeColumns": "三欄",
+        "gridLayout.twoColumns11": "兩欄 (1:1)",
+        "gridLayout.twoColumns12": "兩欄 (1:2)",
+        "gridLayout.twoColumns21": "兩欄 (2:1)"
+    }
+}

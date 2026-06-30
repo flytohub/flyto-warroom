@@ -1,0 +1,22 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-CN",
+    "category": "notify",
+    "version": "1.0.0",
+    "translations": {
+        "modules.notify.send.description": "发送通知到 Telegram、Discord、Slack、LINE 或任何 webhook URL",
+        "modules.notify.send.label": "发送通知",
+        "modules.notify.send.output.ok.description": "通知是否成功发送",
+        "modules.notify.send.output.platform.description": "侦测到的平台（telegram、discord、slack 等）",
+        "modules.notify.send.output.response.description": "Webhook 的回应内容",
+        "modules.notify.send.output.status_code.description": "HTTP 回应状态码",
+        "modules.notify.send.params.chat_id.description": "Telegram 聊天 ID（Telegram 必需）",
+        "modules.notify.send.params.chat_id.label": "聊天 ID",
+        "modules.notify.send.params.message.description": "通知消息内容",
+        "modules.notify.send.params.message.label": "消息",
+        "modules.notify.send.params.title.description": "选填标题（适用于 Discord、Slack、Teams）",
+        "modules.notify.send.params.title.label": "标题",
+        "modules.notify.send.params.url.description": "Webhook URL（Telegram、Discord、Slack 或自定义）",
+        "modules.notify.send.params.url.label": "Webhook URL"
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.versions",
+    "version": "1.0.0",
+    "translations": {
+        "versions.compare": "Karşılaştır",
+        "versions.current": "Mevcut",
+        "versions.diff.comparing": "Karşılaştırılıyor",
+        "versions.diff.noChanges": "Sürümler arasında değişiklik yok",
+        "versions.diff.selectPrompt": "Karşılaştırmak için iki sürüm seçin",
+        "versions.diff.title": "Değişiklikler",
+        "versions.diff.to": "ile",
+        "versions.empty": "Sürüm geçmişi yok",
+        "versions.rollback": "Geri Al",
+        "versions.rollback.confirm": "Geri Al",
+        "versions.rollback.description": "v{version} sürümüne geri almak, o sürümün içeriğiyle yeni bir sürüm oluşturacak. Mevcut sürüm geçmişte kalacak.",
+        "versions.rollback.targetVersion": "Hedef Sürüm",
+        "versions.rollback.title": "Sürüme Geri Al",
+        "versions.rollback.warning": "Bu yeni bir sürüm oluşturacak",
+        "versions.title": "Sürüm Geçmişi"
+    }
+}

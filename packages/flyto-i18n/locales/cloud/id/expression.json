@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.expression",
+    "version": "1.0.0",
+    "translations": {
+        "expression.availableVariables": "Variabel yang Tersedia",
+        "expression.editExpression": "Edit Ekspresi",
+        "expression.enterExpression": "Masukkan ekspresi untuk melihat pratinjau",
+        "expression.expressionCode": "Ekspresi",
+        "expression.openEditor": "Buka editor ekspresi",
+        "expression.placeholder": "${ui.inputs.name}",
+        "expression.preview": "Pratinjau"
+    }
+}

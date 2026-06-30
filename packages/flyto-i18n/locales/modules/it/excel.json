@@ -1,0 +1,19 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "it",
+    "category": "excel",
+    "version": "1.0.0",
+    "translations": {
+        "modules.excel.read.description": "Leggi dati da file Excel (xlsx, xls)",
+        "modules.excel.read.label": "Leggi Excel",
+        "modules.excel.read.output.data.description": "Righe dati estratte",
+        "modules.excel.read.output.headers.description": "Righe dati estratte",
+        "modules.excel.read.output.row_count.description": "Righe dati estratte",
+        "modules.excel.read.output.sheet_names.description": "Intestazioni colonne",
+        "modules.excel.write.description": "Scrivi dati su file Excel (xlsx)",
+        "modules.excel.write.label": "Scrivi Excel",
+        "modules.excel.write.output.path.description": "Percorso del file Excel creato",
+        "modules.excel.write.output.row_count.description": "Percorso del file Excel creato",
+        "modules.excel.write.output.size.description": "Percorso del file Excel creato"
+    }
+}

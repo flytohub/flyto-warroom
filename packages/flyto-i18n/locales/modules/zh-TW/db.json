@@ -1,0 +1,33 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "db",
+    "version": "1.0.0",
+    "translations": {
+        "modules.db.mongodb.find.description": "從 MongoDB 集合查詢文件",
+        "modules.db.mongodb.find.label": "MongoDB 查詢",
+        "modules.db.mongodb.find.output.count.description": "符合條件的文件數量",
+        "modules.db.mongodb.find.output.documents.description": "符合條件的文件陣列",
+        "modules.db.mongodb.insert.description": "將一個或多個文件插入 MongoDB 集合",
+        "modules.db.mongodb.insert.label": "MongoDB 插入",
+        "modules.db.mongodb.insert.output.inserted_count.description": "插入的文件數量",
+        "modules.db.mongodb.insert.output.inserted_ids.description": "插入的文件 ID 列表",
+        "modules.db.mysql.query.description": "在 MySQL 資料庫執行 SQL 查詢並回傳結果",
+        "modules.db.mysql.query.label": "MySQL 查詢",
+        "modules.db.mysql.query.output.columns.description": "欄位名稱列表",
+        "modules.db.mysql.query.output.row_count.description": "結果列數",
+        "modules.db.mysql.query.output.rows.description": "結果列物件陣列",
+        "modules.db.postgresql.query.description": "在 PostgreSQL 資料庫執行 SQL 查詢並回傳結果",
+        "modules.db.postgresql.query.label": "PostgreSQL 查詢",
+        "modules.db.postgresql.query.output.columns.description": "欄位名稱列表",
+        "modules.db.postgresql.query.output.row_count.description": "結果列數",
+        "modules.db.postgresql.query.output.rows.description": "結果列物件陣列",
+        "modules.db.redis.get.description": "從 Redis 快取取得值",
+        "modules.db.redis.get.label": "Redis 取得",
+        "modules.db.redis.get.output.exists.description": "鍵是否存在",
+        "modules.db.redis.get.output.key.description": "查詢的鍵",
+        "modules.db.redis.get.output.value.description": "回傳的值",
+        "modules.db.redis.set.description": "在 Redis 快取設定值",
+        "modules.db.redis.set.label": "Redis 設定"
+    }
+}

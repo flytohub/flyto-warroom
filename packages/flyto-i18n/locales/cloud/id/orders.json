@@ -1,0 +1,32 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "id",
+    "category": "cloud.orders",
+    "version": "1.0.0",
+    "translations": {
+        "orders.accept": "Terima",
+        "orders.approve": "Setujui",
+        "orders.budget": "Anggaran",
+        "orders.budgetPlaceholder": "0.00",
+        "orders.completed": "Selesai",
+        "orders.createFailed": "Gagal membuat pesanan",
+        "orders.createOrder": "Buat Pesanan",
+        "orders.createOrderSubtitle": "Kirim permintaan proyek ke penjual ini",
+        "orders.days": "hari",
+        "orders.deadline": "Waktu Pengiriman",
+        "orders.decline": "Tolak",
+        "orders.deliver": "Kirim",
+        "orders.description": "Deskripsi",
+        "orders.descriptionPlaceholder": "Jelaskan kebutuhan proyek Anda secara detail...",
+        "orders.payNow": "Bayar Sekarang",
+        "orders.requirements": "Persyaratan Tambahan",
+        "orders.requirementsPlaceholder": "Persyaratan atau catatan khusus...",
+        "orders.sendOrder": "Kirim Permintaan Pesanan",
+        "orders.sending": "Mengirim...",
+        "orders.sendingTo": "Mengirim ke",
+        "orders.title": "Judul Proyek",
+        "orders.titlePlaceholder": "Apa yang Anda butuhkan bantuannya?",
+        "orders.viewDetails": "Detail",
+        "orders.waitingResponse": "Menunggu respons"
+    }
+}

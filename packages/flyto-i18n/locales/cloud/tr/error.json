@@ -1,0 +1,14 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "tr",
+    "category": "cloud.error",
+    "version": "1.0.0",
+    "translations": {
+        "error.failedToStartReplay": "Tekrar başlatılamadı",
+        "error.fixJsonFirst": "Lütfen önce JSON hatalarını düzeltin",
+        "error.imageTooLarge": "Görsel dosyası çok büyük",
+        "error.invalidJsonContext": "Bağlam geçersiz kılmalarında geçersiz JSON",
+        "error.noStepsToValidate": "Doğrulanacak adım bulunamadı",
+        "error.replayFailed": "Tekrar başarısız oldu"
+    }
+}

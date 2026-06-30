@@ -1,0 +1,27 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "vi",
+    "category": "cloud.wallet",
+    "version": "1.0.0",
+    "translations": {
+        "wallet.title": "Ví tín dụng",
+        "wallet.availableCredits": "Tín dụng khả dụng",
+        "wallet.topup": "Nạp tiền",
+        "wallet.topupTitle": "Nạp tín dụng",
+        "wallet.topupSuccess": "Nạp tín dụng thành công",
+        "wallet.topupCancelled": "Đã hủy nạp tiền",
+        "wallet.history": "Lịch sử giao dịch",
+        "wallet.noTransactions": "Chưa có giao dịch nào",
+        "wallet.balanceAfter": "Số dư",
+        "wallet.conversionNote": "1 tín dụng = $0,01 USD",
+        "wallet.proceedToPayment": "Tiến hành thanh toán",
+        "wallet.confirmExecute": "Xác nhận thực thi",
+        "wallet.executionCost": "Chi phí thực thi",
+        "wallet.yourBalance": "Số dư của bạn",
+        "wallet.insufficientCredits": "Không đủ tín dụng",
+        "wallet.needMore": "Cần thêm {amount} tín dụng",
+        "wallet.topupNow": "Nạp ngay",
+        "wallet.confirmAndExecute": "Xác nhận và thực thi",
+        "wallet.lowBalanceWarning": "Tín dụng sắp hết. Hãy nạp thêm để tiếp tục chạy workflow."
+    }
+}

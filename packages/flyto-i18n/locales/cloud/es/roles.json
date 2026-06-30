@@ -1,0 +1,23 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "es",
+    "category": "cloud.roles",
+    "version": "1.0.0",
+    "translations": {
+        "roles.builtin.title": "Roles integrados",
+        "roles.create": "Crear rol",
+        "roles.create.title": "Crear rol",
+        "roles.custom.empty": "No hay roles personalizados definidos",
+        "roles.custom.title": "Roles personalizados",
+        "roles.delete.message": "Estas seguro de que deseas eliminar este rol? Los usuarios con este rol seran asignados al rol de miembro predeterminado.",
+        "roles.delete.title": "Eliminar rol",
+        "roles.description": "Administrar roles y permisos de acceso",
+        "roles.edit.title": "Editar rol",
+        "roles.form.description": "Descripcion",
+        "roles.form.name": "Nombre del rol",
+        "roles.form.permissions": "Permisos",
+        "roles.permissions": "permisos",
+        "roles.title": "Roles y permisos",
+        "roles.users": "usuarios"
+    }
+}

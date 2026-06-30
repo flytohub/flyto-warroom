@@ -1,0 +1,23 @@
+{
+  "$schema": "../../schema/locale.schema.json",
+  "locale": "landing",
+  "category": "cloud.roles",
+  "version": "1.0.0",
+  "translations": {
+    "roles.builtin.title": "",
+    "roles.create": "",
+    "roles.create.title": "",
+    "roles.custom.empty": "",
+    "roles.custom.title": "",
+    "roles.delete.message": "",
+    "roles.delete.title": "",
+    "roles.description": "",
+    "roles.edit.title": "",
+    "roles.form.description": "",
+    "roles.form.name": "",
+    "roles.form.permissions": "",
+    "roles.permissions": "",
+    "roles.title": "",
+    "roles.users": ""
+  }
+}

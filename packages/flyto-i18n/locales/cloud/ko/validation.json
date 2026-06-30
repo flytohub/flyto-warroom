@@ -1,0 +1,20 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "ko",
+    "category": "cloud.validation",
+    "version": "1.0.0",
+    "translations": {
+        "validation.alphanumeric": "문자와 숫자만 허용됩니다",
+        "validation.error": "유효성 검사 오류",
+        "validation.failed": "유효성 검사 실패",
+        "validation.invalidEmail": "유효하지 않은 이메일 주소",
+        "validation.maxLength": "최대 {max}자",
+        "validation.minLength": "최소 {min}자",
+        "validation.needsLowercase": "소문자를 하나 이상 포함해야 합니다",
+        "validation.needsNumber": "숫자를 하나 이상 포함해야 합니다",
+        "validation.needsUppercase": "대문자를 하나 이상 포함해야 합니다",
+        "validation.passwordHint": "최소 12자, 대문자, 소문자, 숫자 포함",
+        "validation.passwordMismatch": "비밀번호가 일치하지 않습니다",
+        "validation.required": "이 필드는 필수입니다"
+    }
+}

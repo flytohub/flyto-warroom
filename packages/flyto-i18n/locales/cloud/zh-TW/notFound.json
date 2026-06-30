@@ -1,0 +1,21 @@
+{
+    "$schema": "../../../schema/locale.schema.json",
+    "locale": "zh-TW",
+    "category": "cloud.notFound",
+    "version": "1.0.0",
+    "translations": {
+        "notFound.checkUrl": "請檢查網址後再試一次",
+        "notFound.contactSupport": "聯繫客服",
+        "notFound.goBack": "返回",
+        "notFound.goHome": "回到首頁",
+        "notFound.helpText": "需要幫助？",
+        "notFound.message": "您要找的頁面不存在或已被移動。",
+        "notFound.myTemplates": "我的模板",
+        "notFound.pageNotExist": "此頁面不存在",
+        "notFound.suggestion1": "檢查網址是否有拼寫錯誤",
+        "notFound.suggestion2": "返回上一頁",
+        "notFound.suggestion3": "前往您的模板頁面",
+        "notFound.suggestions": "您可以嘗試：",
+        "notFound.title": "找不到頁面"
+    }
+}

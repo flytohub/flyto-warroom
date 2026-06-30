@@ -1,0 +1,24 @@
+{
+  "$schema": "../../../schema/locale.schema.json",
+  "locale": "pt-BR",
+  "category": "cloud.aiAgent",
+  "version": "1.0.0",
+  "translations": {
+    "aiAgent.apiKey": "Api Key",
+    "aiAgent.apiKeyHint": "Api Key Hint",
+    "aiAgent.apiKeyPlaceholder": "Api Key Placeholder",
+    "aiAgent.fromInput": "Da Entrada",
+    "aiAgent.manual": "Manual",
+    "aiAgent.promptPath": "Caminho de Entrada",
+    "aiAgent.promptPathHint": "Expressao para obter prompt do no anterior",
+    "aiAgent.promptSource": "Fonte do Prompt",
+    "aiAgent.selectVariable": "Selecionar variavel",
+    "aiAgent.shellInfo": "Informacoes do Shell",
+    "aiAgent.shellInfoDesc": "Visualizar ambiente do shell e contexto de execucao",
+    "aiAgent.systemPrompt": "System Prompt",
+    "aiAgent.systemPromptPlaceholder": "System Prompt Placeholder",
+    "aiAgent.task": "Tarefa",
+    "aiAgent.taskPlaceholder": "Descreva o que o agente deve realizar...",
+    "aiAgent.temperature": "Temperature"
+  }
+}
