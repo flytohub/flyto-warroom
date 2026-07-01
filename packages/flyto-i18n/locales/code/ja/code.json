@@ -8389,7 +8389,12 @@
     "dashboard.humanUrgentCount": "{n}件の緊急",
     "dashboard.humanSignalCount": "{n}件の信号",
     "dashboard.humanResourceCount": "{n}件のリソース",
-    "dashboard.humanAutofixCount": "{n}件のAutoFix"
+    "dashboard.humanAutofixCount": "{n}件のAutoFix",
+    "code.warroom.budgetIncidentsLoading": "キャンペーン予算インシデントを読み込み中...",
+    "code.warroom.budgetPoliciesLoading": "キャンペーン予算ポリシーを読み込み中...",
+    "code.warroom.budgetIncidentsLoadFailed": "キャンペーン予算インシデントを読み込めませんでした。",
+    "code.warroom.budgetPoliciesLoadFailed": "キャンペーン予算ポリシーを読み込めませんでした。",
+    "code.warroom.budgetLoadHint": "ページを更新するか、エンジンの応答後にもう一度試してください。"
   },
   "version": "1.0.0"
 }

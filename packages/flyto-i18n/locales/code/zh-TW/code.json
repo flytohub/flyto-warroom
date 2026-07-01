@@ -8389,7 +8389,12 @@
     "dashboard.humanUrgentCount": "{n} 個緊急",
     "dashboard.humanSignalCount": "{n} 個訊號",
     "dashboard.humanResourceCount": "{n} 個資源",
-    "dashboard.humanAutofixCount": "{n} 個 AutoFix"
+    "dashboard.humanAutofixCount": "{n} 個 AutoFix",
+    "code.warroom.budgetIncidentsLoading": "正在載入行動預算事件...",
+    "code.warroom.budgetPoliciesLoading": "正在載入行動預算政策...",
+    "code.warroom.budgetIncidentsLoadFailed": "無法載入行動預算事件。",
+    "code.warroom.budgetPoliciesLoadFailed": "無法載入行動預算政策。",
+    "code.warroom.budgetLoadHint": "請重新整理頁面，或待引擎回應後再試一次。"
   },
   "version": "1.0.0"
 }

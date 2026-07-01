@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "Navegador bloqueou a aba do relatório — permita popups para este site",
     "vaReport.previewTitle": "Visualização do relatório de VA",
     "warroom.tabFindings": "Descobertas",
-    "warroom.tabOverview": "Visão geral"
+    "warroom.tabOverview": "Visão geral",
+    "code.warroom.budgetIncidentsLoading": "Carregando incidentes de orçamento da campanha...",
+    "code.warroom.budgetPoliciesLoading": "Carregando políticas de orçamento da campanha...",
+    "code.warroom.budgetIncidentsLoadFailed": "Não foi possível carregar os incidentes de orçamento da campanha.",
+    "code.warroom.budgetPoliciesLoadFailed": "Não foi possível carregar as políticas de orçamento da campanha.",
+    "code.warroom.budgetLoadHint": "Atualize a página ou tente novamente quando o engine responder."
   },
   "version": "1.0.0"
 }

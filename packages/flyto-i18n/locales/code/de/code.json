@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "Browser hat die Bericht-Registerkarte blockiert — erlaube Popups für diese Website",
     "vaReport.previewTitle": "VA-Bericht-Vorschau",
     "warroom.tabFindings": "Befunde",
-    "warroom.tabOverview": "Übersicht"
+    "warroom.tabOverview": "Übersicht",
+    "code.warroom.budgetIncidentsLoading": "Kampagnenbudget-Vorfälle werden geladen...",
+    "code.warroom.budgetPoliciesLoading": "Kampagnenbudget-Richtlinien werden geladen...",
+    "code.warroom.budgetIncidentsLoadFailed": "Kampagnenbudget-Vorfälle konnten nicht geladen werden.",
+    "code.warroom.budgetPoliciesLoadFailed": "Kampagnenbudget-Richtlinien konnten nicht geladen werden.",
+    "code.warroom.budgetLoadHint": "Aktualisieren Sie die Seite oder versuchen Sie es erneut, nachdem die Engine antwortet."
   },
   "version": "1.0.0"
 }

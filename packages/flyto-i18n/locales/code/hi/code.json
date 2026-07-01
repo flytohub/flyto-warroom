@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "ब्राउज़र ने रिपोर्ट टैब को ब्लॉक किया — इस साइट के लिए पॉप-अप की अनुमति दें",
     "vaReport.previewTitle": "VA रिपोर्ट पूर्वावलोकन",
     "warroom.tabFindings": "निष्कर्ष",
-    "warroom.tabOverview": "अवलोकन"
+    "warroom.tabOverview": "अवलोकन",
+    "code.warroom.budgetIncidentsLoading": "कैंपेन बजट घटनाएं लोड हो रही हैं...",
+    "code.warroom.budgetPoliciesLoading": "कैंपेन बजट नीतियां लोड हो रही हैं...",
+    "code.warroom.budgetIncidentsLoadFailed": "कैंपेन बजट घटनाएं लोड नहीं हो सकीं।",
+    "code.warroom.budgetPoliciesLoadFailed": "कैंपेन बजट नीतियां लोड नहीं हो सकीं।",
+    "code.warroom.budgetLoadHint": "पेज रीफ्रेश करें या इंजन के जवाब देने के बाद फिर कोशिश करें।"
   },
   "version": "1.0.0"
 }

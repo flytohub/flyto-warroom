@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "Trình duyệt đã chặn tab báo cáo — cho phép cửa sổ popup cho trang web này",
     "vaReport.previewTitle": "Xem trước báo cáo VA",
     "warroom.tabFindings": "Phát hiện",
-    "warroom.tabOverview": "Tổng quan"
+    "warroom.tabOverview": "Tổng quan",
+    "code.warroom.budgetIncidentsLoading": "Đang tải sự cố ngân sách chiến dịch...",
+    "code.warroom.budgetPoliciesLoading": "Đang tải chính sách ngân sách chiến dịch...",
+    "code.warroom.budgetIncidentsLoadFailed": "Không thể tải sự cố ngân sách chiến dịch.",
+    "code.warroom.budgetPoliciesLoadFailed": "Không thể tải chính sách ngân sách chiến dịch.",
+    "code.warroom.budgetLoadHint": "Làm mới trang hoặc thử lại sau khi engine phản hồi."
   },
   "version": "1.0.0"
 }

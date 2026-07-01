@@ -8389,7 +8389,12 @@
     "dashboard.humanUrgentCount": "{n} urgent",
     "dashboard.humanSignalCount": "{n} signals",
     "dashboard.humanResourceCount": "{n} resources",
-    "dashboard.humanAutofixCount": "{n} AutoFix"
+    "dashboard.humanAutofixCount": "{n} AutoFix",
+    "code.warroom.budgetIncidentsLoading": "Loading campaign budget incidents...",
+    "code.warroom.budgetPoliciesLoading": "Loading campaign budget policies...",
+    "code.warroom.budgetIncidentsLoadFailed": "Could not load campaign budget incidents.",
+    "code.warroom.budgetPoliciesLoadFailed": "Could not load campaign budget policies.",
+    "code.warroom.budgetLoadHint": "Refresh the page or try again after the engine responds."
   },
   "version": "1.0.0"
 }

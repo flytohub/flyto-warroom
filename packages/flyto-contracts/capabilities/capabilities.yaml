@@ -264,6 +264,21 @@ pages:
   compliance:            { requires: [compliance] }            # ex warroom_compliance
 
 # ─────────────────────────────────────────────────────────────────────
+# ACTION REGISTRY — non-role action vocabulary used by UI capability
+# gates and commercial/enterprise control planes. Role permissions below
+# decide who can exercise a grant; this registry keeps open-core builds
+# self-contained when the private engine module catalog is not present.
+# ─────────────────────────────────────────────────────────────────────
+commercial_actions:
+  - report.build
+  - report.export
+  - ai.report
+
+system_actions:
+  - system:rbac:read
+  - system:rbac:write
+
+# ─────────────────────────────────────────────────────────────────────
 # ROLES — per-action capability matrix. `role.permissions` is what a
 # given role can DO. Owner is implicitly "all"; this file enumerates
 # the lower tiers so the diff is obvious in review.

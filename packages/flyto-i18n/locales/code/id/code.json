@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "Browser memblokir tab laporan — izinkan popup untuk situs ini",
     "vaReport.previewTitle": "Pratinjau laporan VA",
     "warroom.tabFindings": "Temuan",
-    "warroom.tabOverview": "Ikhtisar"
+    "warroom.tabOverview": "Ikhtisar",
+    "code.warroom.budgetIncidentsLoading": "Memuat insiden anggaran kampanye...",
+    "code.warroom.budgetPoliciesLoading": "Memuat kebijakan anggaran kampanye...",
+    "code.warroom.budgetIncidentsLoadFailed": "Tidak dapat memuat insiden anggaran kampanye.",
+    "code.warroom.budgetPoliciesLoadFailed": "Tidak dapat memuat kebijakan anggaran kampanye.",
+    "code.warroom.budgetLoadHint": "Muat ulang halaman atau coba lagi setelah engine merespons."
   },
   "version": "1.0.0"
 }
