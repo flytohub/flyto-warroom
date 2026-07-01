@@ -19,6 +19,18 @@ frontend images with the same per-service tags used by Docker Hub
 tags directly from the published image repository, while maintainers can rebuild
 the same tags locally from the private workspace before starting compose.
 
+Local image builds target the current Docker host. Official Docker Hub service
+tags are published separately as multi-arch manifest lists for `linux/amd64` and
+`linux/arm64`:
+
+```sh
+sh /tmp/flyto2-warroom-ce/install/scripts/publish-multiarch-images.sh --push /Users/chester/flytohub
+python3 /tmp/flyto2-warroom-ce/install/scripts/verify-docker-images.py --write-digests
+```
+
+Run the publish path only from the source workspace after the Docker build
+boundary audit passes.
+
 ## Start CE Locally
 
 ```sh
@@ -32,7 +44,8 @@ password SHA-256 hash, generates local-only Postgres/JWT/runner/verification
 secrets, and writes `install/.env` with owner-only permissions.
 
 `verify-images` checks that every public Docker Hub service tag in
-`OPEN_CORE_MANIFEST.json` has a valid manifest and matches the published digest.
+`OPEN_CORE_MANIFEST.json` has a valid manifest, matches the published digest,
+and includes the required `linux/amd64` plus `linux/arm64` platforms.
 `preflight` verifies that local secrets are not blank/placeholders and that
 compose can resolve the final image set.
 

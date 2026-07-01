@@ -31,6 +31,16 @@ This repository publishes Flyto2 Warroom CE services as separate tags:
 - `brand-vision-ce` - brand/image analysis helper
 - `pdf-ce` - report PDF service
 
+Official service tags are Docker manifest lists for:
+
+- `linux/amd64`
+- `linux/arm64`
+
+Per-architecture inputs are published as suffix tags such as
+`engine-ce-amd64`, `engine-ce-arm64`, `code-ce-amd64`, and `code-ce-arm64`.
+Most users should pull the unsuffixed service tag and let Docker choose the
+right platform.
+
 Versioned tags are also published for reproducible installs, for example:
 
 - `engine-ce-20260630-84db98a`
@@ -113,10 +123,9 @@ services.
 
 ## Architecture Note
 
-This image set is currently published as linux/arm64 images from the local
-release pipeline. Check GitHub release notes and image digests before production
-use. linux/amd64 and multi-arch publishing should be enabled before a broader
-public launch.
+Official service tags are multi-arch manifest lists, not ARM64-only images.
+Check GitHub release notes, platform coverage, and image digests before
+production use.
 
 ## Verify Image Digests
 
@@ -124,6 +133,9 @@ public launch.
 git clone https://github.com/flytohub/flyto-warroom.git
 python3 flyto-warroom/install/scripts/verify-docker-images.py --manifest flyto-warroom/OPEN_CORE_MANIFEST.json
 ```
+
+The verifier checks tag reachability, manifest-list digest, and required
+`linux/amd64` plus `linux/arm64` platform coverage.
 
 ## License
 

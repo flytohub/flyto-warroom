@@ -153,6 +153,11 @@ connector credentials, and live remediation workers are not exported.
 
 Published repository: `docker.io/chesterhsu/flyto-warroom`
 
+Official service tags are multi-arch Docker manifest lists for `linux/amd64`
+and `linux/arm64`. Docker should select the correct platform automatically on
+Intel/AMD servers, Apple Silicon Macs, and ARM64 Linux hosts. Per-architecture
+input tags use `-amd64` and `-arm64` suffixes for release traceability.
+
 | Service | Tag |
 | --- | --- |
 | Engine API | `engine-ce` |
@@ -192,6 +197,7 @@ connector, signature, or cloud service check fails. See
 | Reset local database | `make ce-reset-db` |
 | Verify release tree | `make verify` |
 | Verify image digests | `make verify-images` |
+| Publish multi-arch images | `make publish-multiarch-images` |
 
 See `docs/local-install.md` for setup and reset details. See
 `docs/enterprise-simulation.md` for local enterprise-gate simulation.

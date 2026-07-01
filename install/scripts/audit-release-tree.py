@@ -23,15 +23,25 @@ REQUIRED = [
     "install/.env.ee-sim.example",
     "install/scripts/hash-local-password.py",
     "install/scripts/setup-ce.py",
+    "install/scripts/build-cloud-bundle-fixture.py",
     "install/scripts/preflight.py",
     "install/scripts/verify-docker-images.py",
+    "install/scripts/publish-multiarch-images.sh",
+    "install/scripts/audit-docker-build-boundary.py",
     "install/scripts/mint-ee-sim-jwt.py",
     "install/scripts/seed-demo-workspace.py",
     "install/demo-workspace.json",
+    "install/fixtures/cloud-bundle/bundle-template.yaml",
+    "install/fixtures/cloud-bundle/recipes/flyto2-ui-smoke.yaml",
+    "install/fixtures/cloud-bundle/recipes/flyto2-ui-login-smoke.yaml",
+    "install/fixtures/cloud-bundle/recipes/warroom-deterministic-audit.yaml",
+    "install/tests/test_cloud_bundle_fixture.py",
     "docs/local-install.md",
     "docs/README.md",
     "docs/enterprise-simulation.md",
     "docs/enterprise-cloud-bridge.md",
+    "docs/edition-profiles.md",
+    "docs/cloud-bundle-producer.md",
     "docs/feature-matrix.md",
     "docs/public-roadmap.md",
     "docs/autofix-whitepaper.md",
@@ -106,6 +116,18 @@ REQUIRED_MARKERS = {
         "Premium actions must fail closed",
         "Contribution Boundary",
     ],
+    "docs/edition-profiles.md": [
+        "flyto.editions.v1",
+        "warroom_saas",
+        "auth_mode=none_local_loopback",
+        "Premium actions fail closed",
+    ],
+    "docs/cloud-bundle-producer.md": [
+        "flyto.warroom.bundle.v1",
+        "FLYTO_WARROOM_IMPORT_DIR",
+        "A dropped bundle is never executed directly",
+        "trigger_type=mcp",
+    ],
     "docs/public-roadmap.md": [
         "Shipped In CE",
         "Enterprise Cloud Bridge",
@@ -120,6 +142,16 @@ REQUIRED_MARKERS = {
         "false-positive handling policy",
         "Verification Loop",
         "fabricated percentage",
+    ],
+    "docs/docker-hub-overview.md": [
+        "linux/amd64",
+        "linux/arm64",
+        "manifest lists",
+    ],
+    "docs/official-builds.md": [
+        "linux/amd64",
+        "linux/arm64",
+        "manifest-list digest",
     ],
     "docs/demo-seed-workspace.md": [
         "code",
@@ -153,6 +185,23 @@ def main() -> int:
     for rel in REQUIRED:
         if not (ROOT / rel).exists():
             blockers.append(f"missing required release file: {rel}")
+    manifest_path = ROOT / "OPEN_CORE_MANIFEST.json"
+    if manifest_path.exists():
+        try:
+            manifest = json.loads(text(manifest_path))
+        except json.JSONDecodeError as exc:
+            blockers.append(f"OPEN_CORE_MANIFEST.json invalid JSON: {exc}")
+        else:
+            release = manifest.get("release", {})
+            platforms = set(release.get("public_image_platforms", []))
+            for platform in ("linux/amd64", "linux/arm64"):
+                if platform not in platforms:
+                    blockers.append(f"OPEN_CORE_MANIFEST.json missing public image platform: {platform}")
+            arch_tags = release.get("public_image_arch_tags", {})
+            suffixes = set(arch_tags.get("suffixes", [])) if isinstance(arch_tags, dict) else set()
+            for suffix in ("amd64", "arm64"):
+                if suffix not in suffixes:
+                    blockers.append(f"OPEN_CORE_MANIFEST.json missing public image arch suffix: {suffix}")
     for pattern in PRIVATE_GLOBS:
         for match in ROOT.glob(pattern):
             if match.is_file() and not is_local_artifact(match):
