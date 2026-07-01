@@ -84,8 +84,25 @@ function summarizeRun(run) {
   }
 }
 
+function summarizeAnnotations(jobId) {
+  if (!jobId) return { ok: false, error: 'job id missing' }
+  const result = tryGhApi(`/repos/${repo}/check-runs/${jobId}/annotations`)
+  if (!result.ok) return result
+  return {
+    ok: true,
+    data: (Array.isArray(result.data) ? result.data : []).map((annotation) => ({
+      path: annotation.path,
+      level: annotation.annotation_level,
+      message: annotation.message,
+      startLine: annotation.start_line,
+      endLine: annotation.end_line,
+    })),
+  }
+}
+
 function summarizeJob(job) {
   return {
+    id: job.id,
     name: job.name,
     status: job.status,
     conclusion: job.conclusion,
@@ -97,6 +114,7 @@ function summarizeJob(job) {
     runnerGroupName: job.runner_group_name,
     labels: job.labels || [],
     steps: Array.isArray(job.steps) ? job.steps.length : 0,
+    annotations: summarizeAnnotations(job.id),
   }
 }
 
