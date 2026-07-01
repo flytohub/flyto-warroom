@@ -36,6 +36,27 @@ Premium actions must fail closed when any gate fails:
 - unsigned or invalid evidence result
 - tenant/org mismatch
 
+## License Gate Contract
+
+The edition and license contract is deliberately split so CE remains useful and
+Enterprise remains sellable without becoming a separate product:
+
+| Gate | CE behavior | Enterprise behavior | Failure mode |
+| --- | --- | --- | --- |
+| Edition | `community` / Apache-2.0 profile, local auth, local storage, rules-only AI fallback | `enterprise_cloud`, `self_hosted_online`, or `enterprise_airgap` profile | Block unsupported actions and return an explanatory gate reason |
+| License | No commercial license is required for CE baseline workflows | Offline license or cloud entitlement is required for premium jobs | No job dispatch, no optimistic success, no unsigned evidence |
+| Capability snapshot | Public pages/actions come from the CE capabilities contract | Same shape with Enterprise edition/provider fields and premium action states | UI shows disabled or locked state from backend snapshot |
+| Project module | Module can be enabled/disabled independently in the local Warroom | Same module can attach to Enterprise Bridge or airgap runner packages | Module action fails closed when dependency, source, or connector is missing |
+| Evidence | Local evidence packs and report exports remain local | Premium jobs return signed evidence into the local timeline | Reject result if org, signature, or replay contract does not match |
+
+Do not market CE as "free Enterprise." The accurate promise is:
+
+```text
+CE is the self-hosted open-core Warroom. Enterprise unlocks premium execution,
+commercial intelligence, identity, support, and deployment controls through
+license-gated capability and evidence contracts.
+```
+
 ## Contribution Boundary
 
 CE changes should flow back upstream. Accepted community changes are reviewed as

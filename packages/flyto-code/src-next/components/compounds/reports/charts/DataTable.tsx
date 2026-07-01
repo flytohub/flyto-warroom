@@ -8,11 +8,92 @@
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
-import { t, tOr } from '@lib/i18n';
+import { alpha, styled } from '@mui/material/styles'
+import { t } from '@lib/i18n';
 import { TABLE } from '../designTokens'
 import { normalizeSeverity, severityColor } from '@atoms/SeverityChip'
 
 interface Props { rows: any[]; fields?: string[] }
+
+const EmptyCaption = styled(Typography)(({ theme }) => ({
+  color: theme.palette.text.secondary,
+}))
+
+const MutedScalar = styled('span')(({ theme }) => ({
+  color: theme.palette.text.secondary,
+}))
+
+const BooleanScalar = styled('span')(({ theme }) => ({
+  fontWeight: theme.typography.fontWeightMedium,
+}))
+
+const SeverityPill = styled('span', {
+  shouldForwardProp: (prop) => prop !== 'severitycolor',
+})<{ severitycolor: string }>(({ severitycolor }) => ({
+  display: 'inline-block',
+  padding: '2px 8px',
+  borderRadius: 10,
+  fontWeight: 700,
+  fontSize: TABLE.bodyFontSize,
+  color: severitycolor,
+  backgroundColor: alpha(severitycolor, 0.14),
+}))
+
+const TableScroller = styled(Box)({
+  width: '100%',
+  maxWidth: '100%',
+  overflowX: 'auto',
+  overflowY: 'hidden',
+  WebkitOverflowScrolling: 'touch',
+})
+
+const ReportTable = styled('table')(({ theme }) => ({
+  width: 'max-content',
+  minWidth: '100%',
+  maxWidth: 'none',
+  borderCollapse: 'collapse',
+  fontSize: TABLE.bodyFontSize,
+  tableLayout: 'auto',
+  '& th, & td': {
+    padding: theme.spacing(1.25, 1.5),
+  },
+}))
+
+const HeaderRow = styled('tr')(({ theme }) => ({
+  borderBottom: `2px solid ${theme.palette.divider}`,
+  backgroundColor: theme.palette.background.paper,
+}))
+
+const HeaderCell = styled('th')(({ theme }) => ({
+  textAlign: 'left',
+  color: theme.palette.text.secondary,
+  fontWeight: 700,
+  whiteSpace: 'nowrap',
+  fontSize: TABLE.headerFontSize,
+  letterSpacing: 0,
+}))
+
+const BodyRow = styled('tr')(({ theme }) => ({
+  borderBottom: `1px solid ${theme.palette.divider}`,
+  transition: theme.transitions.create('background-color', { duration: theme.transitions.duration.shortest }),
+  '&:hover': { backgroundColor: theme.palette.action.hover },
+  '&:nth-of-type(even)': { backgroundColor: alpha(theme.palette.common.white, TABLE.zebraOpacity) },
+}))
+
+const DataCell = styled('td')({
+  whiteSpace: 'nowrap',
+  fontSize: TABLE.bodyFontSize,
+  maxWidth: 320,
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
+})
+
+const RowLimitCaption = styled(Typography)(({ theme }) => ({
+  display: 'block',
+  textAlign: 'center',
+  padding: theme.spacing(1, 0),
+  color: theme.palette.text.secondary,
+}))
 
 function isBadScalar(value: string): boolean {
   const normalized = value.trim().toLowerCase()
@@ -27,30 +108,17 @@ function isBadScalar(value: string): boolean {
 }
 
 function CellValue({ value }: { value: any }) {
-  if (value == null) return <span style={{ color: '#6b7280' }}>-</span>
-  if (typeof value === 'boolean') return <span style={{ fontWeight: 600 }}>{value ? t('common.yes') : t('common.no')}</span>
+  if (value == null) return <MutedScalar>-</MutedScalar>
+  if (typeof value === 'boolean') return <BooleanScalar>{value ? t('common.yes') : t('common.no')}</BooleanScalar>
   // Arrays/objects → show count or skip
-  if (Array.isArray(value)) return <span style={{ color: '#6b7280' }}>{value.length} {t('common.items')}</span>
-  if (typeof value === 'object') return <span style={{ color: '#6b7280' }}>-</span>
+  if (Array.isArray(value)) return <MutedScalar>{value.length} {t('common.items')}</MutedScalar>
+  if (typeof value === 'object') return <MutedScalar>-</MutedScalar>
   const str = String(value)
-  if (isBadScalar(str)) return <span style={{ color: '#6b7280' }}>-</span>
+  if (isBadScalar(str)) return <MutedScalar>-</MutedScalar>
   // Colour the cell only when it reads as a severity word.
   if (normalizeSeverity(str)) {
     const sevColor = severityColor(str)
-    // Use inline text with left border instead of Chip — survives PDF white bg
-    return (
-      <span style={{
-        display: 'inline-block',
-        padding: '2px 8px',
-        borderRadius: 10,
-        fontWeight: 700,
-        fontSize: 12,
-        color: sevColor,
-        backgroundColor: `${sevColor}22`,
-      }}>
-        {str.toUpperCase()}
-      </span>
-    )
+    return <SeverityPill severitycolor={sevColor}>{str.toUpperCase()}</SeverityPill>
   }
   return <>{str}</>
 }
@@ -72,7 +140,7 @@ function shortenHash(value: any): any {
 }
 
 export default function DataTable({ rows, fields }: Props) {
-  if (!rows.length) return <Typography variant="caption" color="text.secondary">{t('reports.noData')}</Typography>
+  if (!rows.length) return <EmptyCaption variant="caption">{t('reports.noData')}</EmptyCaption>
 
   // Auto-detect columns; exclude internal fields and object/array columns
   const allCols = fields ?? Object.keys(rows[0]).filter(k => {
@@ -91,81 +159,39 @@ export default function DataTable({ rows, fields }: Props) {
     return true
   }))
 
-  if (!cols.length) return <Typography variant="caption" color="text.secondary">{t('reports.noData')}</Typography>
+  if (!cols.length) return <EmptyCaption variant="caption">{t('reports.noData')}</EmptyCaption>
 
   const display = rows.slice(0, 100)
 
   return (
-    <Box
-      className="report-table-container"
-      sx={{
-        width: '100%',
-        maxWidth: '100%',
-        overflowX: 'auto',
-        overflowY: 'hidden',
-        WebkitOverflowScrolling: 'touch',
-      }}
-    >
-      <Box
-        component="table"
-        className="report-table"
-        sx={{
-          width: 'max-content',
-          minWidth: '100%',
-          maxWidth: 'none',
-          borderCollapse: 'collapse',
-          fontSize: TABLE.bodyFontSize,
-          tableLayout: 'auto',      // let columns size naturally
-          '& th, & td': { px: 1.5, py: 1.25 },
-        }}
-      >
-        <Box component="thead">
-          <Box component="tr" sx={{
-            borderBottom: '2px solid', borderColor: 'divider',
-            bgcolor: 'background.paper',
-          }}>
+    <TableScroller>
+      <ReportTable>
+        <thead>
+          <HeaderRow>
             {cols.map(col => (
-              <Box component="th" key={col} sx={{
-                textAlign: 'left',
-                color: 'text.secondary',
-                fontWeight: 700,
-                whiteSpace: 'nowrap',
-                fontSize: TABLE.headerFontSize,
-                letterSpacing: '0.03em',
-              }}>
+              <HeaderCell key={col}>
                 {formatHeader(col)}
-              </Box>
+              </HeaderCell>
             ))}
-          </Box>
-        </Box>
-        <Box component="tbody">
+          </HeaderRow>
+        </thead>
+        <tbody>
           {display.map((row, i) => (
-            <Box component="tr" key={i} sx={{
-              borderBottom: '1px solid', borderColor: 'divider',
-              transition: '0.1s',
-              '&:hover': { bgcolor: 'action.hover' },
-              '&:nth-of-type(even)': { bgcolor: `rgba(255,255,255,${TABLE.zebraOpacity})` },
-            }}>
+            <BodyRow key={i}>
               {cols.map(col => (
-                <Box component="td" key={col} sx={{
-                  whiteSpace: 'nowrap',     // keep each cell on one line
-                  fontSize: TABLE.bodyFontSize,
-                  maxWidth: 320,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                }}>
+                <DataCell key={col}>
                   <CellValue value={shortenHash(row[col])} />
-                </Box>
+                </DataCell>
               ))}
-            </Box>
+            </BodyRow>
           ))}
-        </Box>
-      </Box>
+        </tbody>
+      </ReportTable>
       {rows.length > 100 && (
-        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', textAlign: 'center', py: 1 }}>
-          {tOr('reports.showingRows', `Showing 100 of ${rows.length} rows`)}
-        </Typography>
+        <RowLimitCaption variant="caption">
+          {t('reports.showingRows', { n: rows.length })}
+        </RowLimitCaption>
       )}
-    </Box>
+    </TableScroller>
   )
 }

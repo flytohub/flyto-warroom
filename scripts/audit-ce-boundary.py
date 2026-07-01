@@ -90,6 +90,9 @@ REQUIRED_MARKERS = {
     "docs/feature-matrix.md": [
         "Flyto2 Warroom CE is the self-hosted open-core security war room",
         "Premium actions must fail closed",
+        "License Gate Contract",
+        "CE is the self-hosted open-core Warroom. Enterprise unlocks premium execution",
+        "No job dispatch, no optimistic success, no unsigned evidence",
         "Enterprise Cloud Bridge",
     ],
     "docs/edition-profiles.md": [
