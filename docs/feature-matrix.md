@@ -49,6 +49,26 @@ Enterprise remains sellable without becoming a separate product:
 | Project module | Module can be enabled/disabled independently in the local Warroom | Same module can attach to Enterprise Bridge or airgap runner packages | Module action fails closed when dependency, source, or connector is missing |
 | Evidence | Local evidence packs and report exports remain local | Premium jobs return signed evidence into the local timeline | Reject result if org, signature, or replay contract does not match |
 
+## Revenue Boundary
+
+The source-of-truth naming in the private engine is
+`internal/modulecatalog/catalog.yaml`:
+
+| Boundary | Modules / capabilities | Commercial rule |
+| --- | --- | --- |
+| CE included | Core cockpit, code, CTEM/external, cloud posture views, container evidence, vulnerability queue, local Product Verification, deterministic AutoFix, reporting | Must run locally without Flyto Cloud, Stripe, Firebase, hosted AI, hosted telemetry, or private datasets |
+| Enterprise add-on | Darkweb/commercial intelligence, identity/SSO/SCIM, red team execution, AI Gate premium execution, live cloud/container/runtime/VM remediation, managed runners | May show locked UI states in CE, but execution requires edition, license, role/action permission, connector readiness, and signed evidence |
+| Enterprise-only delivery | Private datasets, private runner bundles, airgap update bundles, support attestations, legal hold, customer-specific retention, managed bridge jobs | Must stay behind private image/source or signed cloud/airgap contracts |
+
+SaaS, on-prem, and airgap are separate deployment profiles:
+
+| Profile | Auth | License | Evidence | Provider dependency |
+| --- | --- | --- | --- | --- |
+| SaaS | hosted/Flyto account or customer OIDC | subscription | managed signed evidence | GitHub Actions and cloud release gates must pass |
+| Self-hosted CE | local JWT | none | local evidence pack | no required Flyto Cloud dependency |
+| Enterprise Cloud Bridge | enterprise identity | enterprise license or cloud entitlement | managed signed evidence returned to local timeline | bridge must be signed and fail closed |
+| Enterprise Airgap | enterprise IdP or local fallback | signed offline license | offline signed evidence | no required egress |
+
 Do not market CE as "free Enterprise." The accurate promise is:
 
 ```text

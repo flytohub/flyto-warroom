@@ -52,19 +52,19 @@ const REQUIRED_VISUAL_SYSTEM_CONSUMERS = [
 ]
 
 const TOTAL_BUDGETS = {
-  rawSx: 6760,
-  inlineHex: 2270,
-  gradient: 90,
-  muiPaper: 460,
-  muiCard: 12,
+  rawSx: 6717,
+  inlineHex: 2261,
+  gradient: 85,
+  muiPaper: 372,
+  muiCard: 4,
   tailwindClass: 900,
-  largeRadius: 155,
-  rawFontSize: 1840,
-  rawFontWeight: 1325,
+  largeRadius: 153,
+  rawFontSize: 1839,
+  rawFontWeight: 1320,
   rawFontFamily: 286,
   rawLineHeight: 284,
-  rawSpacingPx: 40,
-  rawRadius: 950,
+  rawSpacingPx: 32,
+  rawRadius: 945,
   tinyFontSize: 0,
 }
 
