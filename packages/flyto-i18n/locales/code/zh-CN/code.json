@@ -8389,7 +8389,12 @@
     "dashboard.humanUrgentCount": "{n} 个紧急",
     "dashboard.humanSignalCount": "{n} 个信号",
     "dashboard.humanResourceCount": "{n} 个资源",
-    "dashboard.humanAutofixCount": "{n} 个 AutoFix"
+    "dashboard.humanAutofixCount": "{n} 个 AutoFix",
+    "code.warroom.budgetIncidentsLoading": "正在加载行动预算事件...",
+    "code.warroom.budgetPoliciesLoading": "正在加载行动预算策略...",
+    "code.warroom.budgetIncidentsLoadFailed": "无法加载行动预算事件。",
+    "code.warroom.budgetPoliciesLoadFailed": "无法加载行动预算策略。",
+    "code.warroom.budgetLoadHint": "请刷新页面，或在引擎响应后重试。"
   },
   "version": "1.0.0"
 }

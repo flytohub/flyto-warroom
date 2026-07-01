@@ -5,7 +5,7 @@
  *   1. Open incidents — soft/hard breach rows with a Resolve button
  *   2. Token caps — list + inline edit (one row per metric × window)
  */
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
@@ -18,12 +18,14 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import MenuItem from '@mui/material/MenuItem'
 import LinearProgress from '@mui/material/LinearProgress'
 import IconButton from '@mui/material/IconButton'
+import { alpha, keyframes, styled } from '@mui/material/styles'
 import {
   AlertTriangle, CheckCircle2, Gauge, Loader2, Plus, Trash2, X, Pencil,
 } from 'lucide-react'
 import { useOrg } from '@hooks/useOrg'
 import { t } from '@lib/i18n';
 import { qk } from '@lib/queryKeys'
+import { queryFailed, queryUnresolved, resolvedList } from '@lib/queryState'
 import {
   listCampaignBudgetPolicies, upsertCampaignBudgetPolicy,
   deleteCampaignBudgetPolicy,
@@ -40,6 +42,246 @@ const DEFAULT_POLICY = {
   is_active: true,
 }
 
+const spin = keyframes({
+  to: {
+    transform: 'rotate(360deg)',
+  },
+})
+
+const SpinningLoader = styled(Loader2)({
+  animation: `${spin} 1s linear infinite`,
+})
+
+const PanelStack = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(3),
+}))
+
+const CenterState = styled(Box)(({ theme }) => ({
+  paddingTop: theme.spacing(6),
+  paddingBottom: theme.spacing(6),
+  textAlign: 'center',
+}))
+
+const BudgetSectionPaper = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== 'hasIncidents' && prop !== 'accent',
+})<{ hasIncidents?: boolean; accent?: 'primary' }>(({ theme, hasIncidents, accent }) => ({
+  padding: theme.spacing(2),
+  borderRadius: theme.spacing(1),
+  border: `1px solid ${
+    hasIncidents
+      ? theme.palette.warning.main
+      : accent === 'primary'
+        ? theme.palette.primary.main
+        : theme.palette.divider
+  }`,
+  backgroundColor: accent === 'primary' ? theme.palette.action.hover : theme.palette.background.paper,
+}))
+
+const SectionHeader = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1.5),
+  marginBottom: theme.spacing(2),
+}))
+
+const HeaderSpacer = styled(Box)({
+  flex: 1,
+})
+
+const SectionAlertIcon = styled(AlertTriangle, {
+  shouldForwardProp: (prop) => prop !== 'hasIncidents',
+})<{ hasIncidents?: boolean }>(({ theme, hasIncidents }) => ({
+  color: hasIncidents ? theme.palette.warning.main : 'currentColor',
+}))
+
+const SuccessCheckIcon = styled(CheckCircle2)(({ theme }) => ({
+  color: theme.palette.success.main,
+}))
+
+const CountChip = styled(Chip)(({ theme }) => ({
+  height: theme.spacing(2.5),
+  fontSize: theme.typography.pxToRem(13),
+  fontWeight: 700,
+}))
+
+const BreachChip = styled(Chip)(({ theme }) => ({
+  height: theme.spacing(2.75),
+  fontSize: theme.typography.pxToRem(13),
+  fontWeight: 600,
+}))
+
+const EmptyStateRoot = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1.5),
+  paddingTop: theme.spacing(2),
+  paddingBottom: theme.spacing(2),
+  justifyContent: 'center',
+  opacity: 0.6,
+}))
+
+const EmptyStateRootLarge = styled(EmptyStateRoot)(({ theme }) => ({
+  paddingTop: theme.spacing(3),
+  paddingBottom: theme.spacing(3),
+}))
+
+const ColumnStack = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(1.5),
+}))
+
+const TightColumnStack = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: theme.spacing(1),
+}))
+
+const IncidentCard = styled(Paper, {
+  shouldForwardProp: (prop) => prop !== 'hardBreach',
+})<{ hardBreach?: boolean }>(({ theme, hardBreach }) => {
+  const tone = hardBreach ? theme.palette.error.main : theme.palette.warning.main
+  return {
+    padding: theme.spacing(1.5),
+    borderRadius: theme.spacing(0.75),
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(2),
+    border: `1px solid ${tone}`,
+    backgroundColor: alpha(tone, 0.04),
+  }
+})
+
+const IncidentContent = styled(Box)({
+  flex: 1,
+})
+
+const InlineRow = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1),
+}))
+
+const IncidentHeaderRow = styled(InlineRow)(({ theme }) => ({
+  marginBottom: theme.spacing(0.5),
+}))
+
+const MonoCaption = styled(Typography)({
+  fontFamily: 'monospace',
+})
+
+const IncidentMeta = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.pxToRem(13),
+}))
+
+const IncidentProgress = styled(LinearProgress)(({ theme }) => ({
+  marginTop: theme.spacing(1),
+  height: theme.spacing(0.5),
+  borderRadius: theme.spacing(0.25),
+}))
+
+const ResolveButton = styled(Button)(({ theme }) => ({
+  textTransform: 'none',
+  fontSize: theme.typography.pxToRem(13),
+  flexShrink: 0,
+}))
+
+const NewPolicyButton = styled(Button)(({ theme }) => ({
+  textTransform: 'none',
+  fontSize: theme.typography.pxToRem(12),
+}))
+
+const BudgetPanelStateRoot = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'tone',
+})<{ tone?: 'default' | 'error' }>(({ theme, tone = 'default' }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(1.5),
+  paddingTop: theme.spacing(2.5),
+  paddingBottom: theme.spacing(2.5),
+  justifyContent: 'center',
+  color: tone === 'error' ? theme.palette.error.main : theme.palette.text.secondary,
+}))
+
+const BudgetPanelStateHint = styled(Typography)(({ theme }) => ({
+  marginTop: theme.spacing(0.25),
+}))
+
+const PolicyRowRoot = styled(Box, {
+  shouldForwardProp: (prop) => prop !== 'activePolicy',
+})<{ activePolicy?: boolean }>(({ theme, activePolicy = true }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(2),
+  padding: theme.spacing(1.5),
+  borderRadius: theme.spacing(0.75),
+  border: `1px solid ${theme.palette.divider}`,
+  opacity: activePolicy ? 1 : 0.6,
+  transition: theme.transitions.create('background-color', {
+    duration: theme.transitions.duration.shorter,
+  }),
+  '&:hover': {
+    backgroundColor: theme.palette.action.hover,
+  },
+}))
+
+const PolicyContent = styled(Box)({
+  flex: 1,
+})
+
+const PolicyMetaRow = styled(InlineRow)(({ theme }) => ({
+  marginTop: theme.spacing(0.5),
+}))
+
+const HardStopCaption = styled(Typography, {
+  shouldForwardProp: (prop) => prop !== 'enabled',
+})<{ enabled?: boolean }>(({ theme, enabled }) => ({
+  color: enabled ? theme.palette.error.main : theme.palette.text.secondary,
+}))
+
+const InactiveText = styled(Typography)({
+  fontStyle: 'italic',
+})
+
+const DeleteIconButton = styled(IconButton)(({ theme }) => ({
+  color: theme.palette.error.main,
+}))
+
+const FormHint = styled(Typography)(({ theme }) => ({
+  display: 'block',
+  marginBottom: theme.spacing(2),
+}))
+
+const PolicyFormPaper = styled(BudgetSectionPaper)(({ theme }) => ({
+  marginTop: theme.spacing(2),
+}))
+
+const FormGrid = styled(Box)(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: theme.spacing(2),
+}))
+
+const FormToggleRow = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.spacing(3),
+  marginTop: theme.spacing(2),
+}))
+
+const FormActions = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  justifyContent: 'flex-end',
+  gap: theme.spacing(1.5),
+  marginTop: theme.spacing(2),
+}))
+
+const TextActionButton = styled(Button)({
+  textTransform: 'none',
+})
+
 function metricLabel(m: CampaignBudgetMetric): string {
   switch (m) {
     case 'input_tokens':  return t('warroom.budgetMetricInput')
@@ -54,12 +296,12 @@ export function CampaignBudgetPanel() {
   const orgId = org?.id ?? null
   const [editing, setEditing] = useState<null | { id?: string } & typeof DEFAULT_POLICY>(null)
 
-  const { data: policiesResp } = useQuery({
+  const policiesQ = useQuery({
     queryKey: qk.pentest.campaignBudgetPolicies(orgId),
     queryFn: () => listCampaignBudgetPolicies(orgId!),
     enabled: !!orgId,
   })
-  const { data: incidentsResp } = useQuery({
+  const incidentsQ = useQuery({
     queryKey: qk.pentest.campaignBudgetIncidents(orgId),
     queryFn: () => listCampaignBudgetIncidents(orgId!),
     enabled: !!orgId,
@@ -84,42 +326,57 @@ export function CampaignBudgetPanel() {
     onSuccess: () => qc.invalidateQueries({ queryKey: qk.pentest.campaignBudgetIncidents(orgId) }),
   })
 
-  const policies = policiesResp?.policies ?? []
-  const incidents = incidentsResp?.incidents ?? []
+  const policies = resolvedList(policiesQ.data?.policies, policiesQ, !!orgId)
+  const incidents = resolvedList(incidentsQ.data?.incidents, incidentsQ, !!orgId)
+  const policiesLoading = queryUnresolved(policiesQ, !!orgId)
+  const incidentsLoading = queryUnresolved(incidentsQ, !!orgId)
+  const policiesFailed = queryFailed(policiesQ, !!orgId)
+  const incidentsFailed = queryFailed(incidentsQ, !!orgId)
 
   if (!orgId) {
     return (
-      <Box sx={{ py: 6, textAlign: 'center' }}>
+      <CenterState>
         <Typography variant="body2" color="text.secondary">
           {t('warroom.budgetNoOrg')}
         </Typography>
-      </Box>
+      </CenterState>
     )
   }
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+    <PanelStack>
       {/* Incidents section */}
-      <Paper elevation={0} sx={{ p: 2, borderRadius: 2, border: 1, borderColor: incidents.length > 0 ? 'warning.main' : 'divider' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
-          <AlertTriangle size={14} style={{ color: incidents.length > 0 ? '#f97316' : undefined }} />
+      <BudgetSectionPaper elevation={0} hasIncidents={incidents.length > 0}>
+        <SectionHeader>
+          <SectionAlertIcon size={14} hasIncidents={incidents.length > 0} />
           <Typography variant="subtitle2" fontWeight={600}>
             {t('warroom.budgetIncidentsHeader')}
           </Typography>
-          <Chip
+          <CountChip
             label={incidents.length}
             size="small"
             color={incidents.length > 0 ? 'warning' : 'default'}
-            sx={{ height: 20, fontSize: 13, fontWeight: 700 }}
           />
-        </Box>
-        {incidents.length === 0 ? (
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, py: 2, justifyContent: 'center', opacity: 0.6 }}>
-            <CheckCircle2 size={18} style={{ color: '#22c55e' }} />
+        </SectionHeader>
+        {incidentsLoading ? (
+          <BudgetPanelState
+            icon={<SpinningLoader size={18} />}
+            title={t('warroom.budgetIncidentsLoading')}
+          />
+        ) : incidentsFailed ? (
+          <BudgetPanelState
+            icon={<AlertTriangle size={18} />}
+            title={t('warroom.budgetIncidentsLoadFailed')}
+            hint={t('warroom.budgetLoadHint')}
+            tone="error"
+          />
+        ) : incidents.length === 0 ? (
+          <EmptyStateRoot>
+            <SuccessCheckIcon size={18} />
             <Typography variant="body2">{t('warroom.budgetIncidentsEmpty')}</Typography>
-          </Box>
+          </EmptyStateRoot>
         ) : (
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+          <ColumnStack>
             {incidents.map(inc => {
               const pct = inc.amountLimit > 0
                 ? Math.round((inc.amountObserved / inc.amountLimit) * 100)
@@ -129,84 +386,88 @@ export function CampaignBudgetPanel() {
                 .replace('{policyId}', inc.policyId.slice(0, 8))
                 .replace('{when}', new Date(inc.createdAt).toLocaleString())
               return (
-                <Paper
+                <IncidentCard
                   key={inc.id}
                   elevation={0}
-                  sx={{
-                    p: 1.5, borderRadius: 1.5, display: 'flex', alignItems: 'center', gap: 2,
-                    border: 1, borderColor: isHard ? 'error.main' : 'warning.main',
-                    bgcolor: isHard ? 'rgba(239,68,68,0.04)' : 'rgba(249,115,22,0.04)',
-                  }}
+                  hardBreach={isHard}
                 >
-                  <Box sx={{ flex: 1 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
-                      <Chip
+                  <IncidentContent>
+                    <IncidentHeaderRow>
+                      <BreachChip
                         label={isHard ? t('warroom.budgetHardBreach') : t('warroom.budgetSoftWarn')}
                         size="small"
                         color={isHard ? 'error' : 'warning'}
-                        sx={{ height: 22, fontSize: 13, fontWeight: 600 }}
                       />
-                      <Typography variant="caption" sx={{ fontFamily: 'monospace' }}>
+                      <MonoCaption variant="caption">
                         {inc.amountObserved.toLocaleString()} / {inc.amountLimit.toLocaleString()} · <b>{pct}%</b>
-                      </Typography>
-                    </Box>
-                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: 13 }}>
+                      </MonoCaption>
+                    </IncidentHeaderRow>
+                    <IncidentMeta variant="body2" color="text.secondary">
                       {meta}
-                    </Typography>
-                    <LinearProgress
+                    </IncidentMeta>
+                    <IncidentProgress
                       variant="determinate"
                       value={Math.min(pct, 100)}
                       color={isHard ? 'error' : 'warning'}
-                      sx={{ mt: 1, height: 4, borderRadius: 2 }}
                     />
-                  </Box>
-                  <Button
+                  </IncidentContent>
+                  <ResolveButton
                     size="small"
                     variant="outlined"
-                    startIcon={resolveMut.isPending ? <Loader2 size={12} className="animate-spin" /> : <CheckCircle2 size={12} />}
+                    startIcon={resolveMut.isPending ? <SpinningLoader size={12} /> : <CheckCircle2 size={12} />}
                     onClick={() => resolveMut.mutate(inc.id)}
                     disabled={resolveMut.isPending}
-                    sx={{ textTransform: 'none', fontSize: 13, flexShrink: 0 }}
                   >
                     {t('warroom.budgetResolve')}
-                  </Button>
-                </Paper>
+                  </ResolveButton>
+                </IncidentCard>
               )
             })}
-          </Box>
+          </ColumnStack>
         )}
-      </Paper>
+      </BudgetSectionPaper>
 
       {/* Policies section */}
-      <Paper elevation={0} sx={{ p: 2, borderRadius: 2, border: 1, borderColor: 'divider' }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 2 }}>
+      <BudgetSectionPaper elevation={0}>
+        <SectionHeader>
           <Gauge size={14} />
           <Typography variant="subtitle2" fontWeight={600}>
             {t('warroom.budgetPoliciesHeader')}
           </Typography>
-          <Chip label={policies.length} size="small" sx={{ height: 20, fontSize: 13, fontWeight: 700 }} />
-          <Box sx={{ flex: 1 }} />
-          <Button
+          <CountChip label={policies.length} size="small" />
+          <HeaderSpacer />
+          <NewPolicyButton
             size="small"
             variant="contained"
             startIcon={<Plus size={12} />}
             onClick={() => setEditing({ ...DEFAULT_POLICY })}
-            disabled={!!editing}
-            sx={{ textTransform: 'none', fontSize: 12 }}
+            disabled={!!editing || policiesLoading || policiesFailed}
           >
             {t('warroom.budgetNew')}
-          </Button>
-        </Box>
+          </NewPolicyButton>
+        </SectionHeader>
 
-        {policies.length === 0 && !editing ? (
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, py: 3, justifyContent: 'center', opacity: 0.6 }}>
+        {policiesLoading ? (
+          <BudgetPanelState
+            icon={<SpinningLoader size={18} />}
+            title={t('warroom.budgetPoliciesLoading')}
+          />
+        ) : policiesFailed ? (
+          <BudgetPanelState
+            icon={<AlertTriangle size={18} />}
+            title={t('warroom.budgetPoliciesLoadFailed')}
+            hint={t('warroom.budgetLoadHint')}
+            tone="error"
+          />
+        ) : policies.length === 0 && !editing ? (
+          <EmptyStateRootLarge>
             <Gauge size={18} />
             <Typography variant="body2">
               {t('warroom.budgetPoliciesEmpty')}
             </Typography>
-          </Box>
+          </EmptyStateRootLarge>
         ) : (
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+          <TightColumnStack>
             {policies.map(p => (
               <PolicyRow
                 key={p.id}
@@ -223,7 +484,7 @@ export function CampaignBudgetPanel() {
                 onDelete={() => deleteMut.mutate(p.id)}
               />
             ))}
-          </Box>
+          </TightColumnStack>
         )}
 
         {editing && (
@@ -235,8 +496,34 @@ export function CampaignBudgetPanel() {
             saving={saveMut.isPending}
           />
         )}
-      </Paper>
-    </Box>
+      </BudgetSectionPaper>
+    </PanelStack>
+  )
+}
+
+function BudgetPanelState({
+  icon,
+  title,
+  hint,
+  tone = 'default',
+}: {
+  icon: ReactNode
+  title: string
+  hint?: string
+  tone?: 'default' | 'error'
+}) {
+  return (
+    <BudgetPanelStateRoot tone={tone}>
+      {icon}
+      <Box>
+        <Typography variant="body2" fontWeight={600}>{title}</Typography>
+        {hint && (
+          <BudgetPanelStateHint variant="body2" color="text.secondary">
+            {hint}
+          </BudgetPanelStateHint>
+        )}
+      </Box>
+    </BudgetPanelStateRoot>
   )
 }
 
@@ -246,20 +533,13 @@ function PolicyRow({
   const windowLabel = t('warroom.budgetLastDays')
     .replace('{days}', String(policy.windowDays))
   return (
-    <Box sx={{
-      display: 'flex', alignItems: 'center', gap: 2,
-      p: 1.5, borderRadius: 1.5,
-      border: 1, borderColor: 'divider',
-      opacity: policy.isActive ? 1 : 0.6,
-      '&:hover': { bgcolor: 'action.hover' },
-      transition: 'all 0.15s',
-    }}>
-      <Box sx={{ flex: 1 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+    <PolicyRowRoot activePolicy={policy.isActive}>
+      <PolicyContent>
+        <InlineRow>
           <Typography variant="body2" fontWeight={600}>{metricLabel(policy.metric)}</Typography>
           <Typography variant="body2" color="text.secondary">{windowLabel}</Typography>
-        </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5 }}>
+        </InlineRow>
+        <PolicyMetaRow>
           <Typography variant="body2" color="text.secondary">
             {t('warroom.budgetCapPrefix')} <b>{policy.amount.toLocaleString()}</b>
           </Typography>
@@ -268,28 +548,28 @@ function PolicyRow({
             {t('warroom.budgetWarnAt')} <b>{policy.warnPercent}%</b>
           </Typography>
           <Typography variant="body2" color="text.secondary">·</Typography>
-          <Typography variant="caption" sx={{ color: policy.hardStopEnabled ? '#ef4444' : 'text.secondary' }}>
+          <HardStopCaption variant="caption" enabled={policy.hardStopEnabled}>
             {policy.hardStopEnabled
               ? t('warroom.budgetHardStopOn')
               : t('warroom.budgetMonitorOnly')}
-          </Typography>
+          </HardStopCaption>
           {!policy.isActive && (
             <>
               <Typography variant="body2" color="text.secondary">·</Typography>
-              <Typography variant="body2" color="text.secondary" sx={{ fontStyle: 'italic' }}>
+              <InactiveText variant="body2" color="text.secondary">
                 {t('warroom.budgetInactive')}
-              </Typography>
+              </InactiveText>
             </>
           )}
-        </Box>
-      </Box>
+        </PolicyMetaRow>
+      </PolicyContent>
       <IconButton size="small" onClick={onEdit} title={t('warroom.budgetEditPolicy')}>
         <Pencil size={14} />
       </IconButton>
-      <IconButton size="small" onClick={onDelete} title={t('warroom.budgetDelete')} sx={{ color: 'error.main' }}>
+      <DeleteIconButton size="small" onClick={onDelete} title={t('warroom.budgetDelete')}>
         <Trash2 size={14} />
-      </IconButton>
-    </Box>
+      </DeleteIconButton>
+    </PolicyRowRoot>
   )
 }
 
@@ -303,12 +583,12 @@ function PolicyForm({
   saving: boolean
 }) {
   return (
-    <Paper elevation={0} sx={{ mt: 2, p: 2, borderRadius: 2, border: 1, borderColor: 'primary.main', bgcolor: 'action.hover' }}>
-      <Typography variant="body2" color="text.secondary" sx={{ display: 'block', mb: 2 }}>
+    <PolicyFormPaper elevation={0} accent="primary">
+      <FormHint variant="body2" color="text.secondary">
         {t('warroom.budgetFormHint')}
-      </Typography>
+      </FormHint>
 
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2 }}>
+      <FormGrid>
         <TextField
           select
           label={t('warroom.budgetMetricTotal')}
@@ -348,9 +628,9 @@ function PolicyForm({
           value={value.warn_percent}
           onChange={e => onChange({ ...value, warn_percent: Number(e.target.value) || 80 })}
         />
-      </Box>
+      </FormGrid>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 3, mt: 2 }}>
+      <FormToggleRow>
         <FormControlLabel
           control={
             <Switch
@@ -371,25 +651,24 @@ function PolicyForm({
           }
           label={<Typography variant="caption">{t('warroom.budgetActive')}</Typography>}
         />
-      </Box>
+      </FormToggleRow>
 
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 1.5, mt: 2 }}>
-        <Button size="small" variant="text" startIcon={<X size={12} />} onClick={onCancel} disabled={saving} sx={{ textTransform: 'none' }}>
+      <FormActions>
+        <TextActionButton size="small" variant="text" startIcon={<X size={12} />} onClick={onCancel} disabled={saving}>
           {t('warroom.budgetCancel')}
-        </Button>
-        <Button
+        </TextActionButton>
+        <TextActionButton
           size="small"
           variant="contained"
-          startIcon={saving ? <Loader2 size={12} className="animate-spin" /> : <CheckCircle2 size={12} />}
+          startIcon={saving ? <SpinningLoader size={12} /> : <CheckCircle2 size={12} />}
           onClick={onSave}
           disabled={saving}
-          sx={{ textTransform: 'none' }}
         >
           {value.id
             ? t('warroom.budgetSave')
             : t('warroom.budgetCreate')}
-        </Button>
-      </Box>
-    </Paper>
+        </TextActionButton>
+      </FormActions>
+    </PolicyFormPaper>
   )
 }

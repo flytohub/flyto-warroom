@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "Tarayıcı rapor sekmesini engelledi — bu site için açılır pencerelere izin verin",
     "vaReport.previewTitle": "VA raporu önizlemesi",
     "warroom.tabFindings": "Bulgular",
-    "warroom.tabOverview": "Genel Bakış"
+    "warroom.tabOverview": "Genel Bakış",
+    "code.warroom.budgetIncidentsLoading": "Kampanya bütçe olayları yükleniyor...",
+    "code.warroom.budgetPoliciesLoading": "Kampanya bütçe politikaları yükleniyor...",
+    "code.warroom.budgetIncidentsLoadFailed": "Kampanya bütçe olayları yüklenemedi.",
+    "code.warroom.budgetPoliciesLoadFailed": "Kampanya bütçe politikaları yüklenemedi.",
+    "code.warroom.budgetLoadHint": "Sayfayı yenileyin veya engine yanıt verdikten sonra tekrar deneyin."
   },
   "version": "1.0.0"
 }

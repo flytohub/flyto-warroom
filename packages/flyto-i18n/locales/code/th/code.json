@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "เบราว์เซอร์บล็อกแท็บรายงาน — อนุญาตป๊อปอัปสำหรับไซต์นี้",
     "vaReport.previewTitle": "ตัวอย่างรายงาน VA",
     "warroom.tabFindings": "ผลการค้นพบ",
-    "warroom.tabOverview": "ภาพรวม"
+    "warroom.tabOverview": "ภาพรวม",
+    "code.warroom.budgetIncidentsLoading": "กำลังโหลดเหตุการณ์งบประมาณแคมเปญ...",
+    "code.warroom.budgetPoliciesLoading": "กำลังโหลดนโยบายงบประมาณแคมเปญ...",
+    "code.warroom.budgetIncidentsLoadFailed": "ไม่สามารถโหลดเหตุการณ์งบประมาณแคมเปญได้",
+    "code.warroom.budgetPoliciesLoadFailed": "ไม่สามารถโหลดนโยบายงบประมาณแคมเปญได้",
+    "code.warroom.budgetLoadHint": "รีเฟรชหน้า หรือลองอีกครั้งหลังจาก engine ตอบกลับ"
   },
   "version": "1.0.0"
 }

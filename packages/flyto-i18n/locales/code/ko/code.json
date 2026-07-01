@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "브라우저가 보고서 탭을 차단했습니다 — 이 사이트에서 팝업을 허용하세요",
     "vaReport.previewTitle": "VA 보고서 미리보기",
     "warroom.tabFindings": "보안 발견",
-    "warroom.tabOverview": "개요"
+    "warroom.tabOverview": "개요",
+    "code.warroom.budgetIncidentsLoading": "캠페인 예산 인시던트를 불러오는 중...",
+    "code.warroom.budgetPoliciesLoading": "캠페인 예산 정책을 불러오는 중...",
+    "code.warroom.budgetIncidentsLoadFailed": "캠페인 예산 인시던트를 불러오지 못했습니다.",
+    "code.warroom.budgetPoliciesLoadFailed": "캠페인 예산 정책을 불러오지 못했습니다.",
+    "code.warroom.budgetLoadHint": "페이지를 새로 고치거나 엔진이 응답한 뒤 다시 시도하세요."
   },
   "version": "1.0.0"
 }

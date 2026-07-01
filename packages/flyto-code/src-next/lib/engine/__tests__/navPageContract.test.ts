@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { getDualModePaths, MODULES, SIDEBAR_GROUP_ORDER } from '@code/modules'
@@ -22,6 +22,9 @@ import { getDualModePaths, MODULES, SIDEBAR_GROUP_ORDER } from '@code/modules'
  *     ../flyto-engine/internal/permission/capabilities.yaml | sort > backend-pages.txt
  */
 const here = dirname(fileURLToPath(import.meta.url))
+const packagesRoot = join(here, '..', '..', '..', '..', '..')
+const engineCatalogPath = join(packagesRoot, 'flyto-engine', 'internal', 'modulecatalog', 'catalog.yaml')
+const contractsCapabilitiesPath = join(packagesRoot, 'flyto-contracts', 'capabilities', 'capabilities.yaml')
 const BACKEND_PAGES = new Set(
   readFileSync(join(here, '..', '__generated__', 'backend-pages.txt'), 'utf8')
     .split('\n')
@@ -30,8 +33,23 @@ const BACKEND_PAGES = new Set(
 )
 
 function collectProjectRegistryPages(): Set<string> {
-  const catalog = readFileSync(join(here, '..', '..', '..', '..', '..', 'flyto-engine', 'internal', 'modulecatalog', 'catalog.yaml'), 'utf8')
   const pages = new Set<string>()
+  if (!existsSync(engineCatalogPath)) {
+    const capabilities = readFileSync(contractsCapabilitiesPath, 'utf8')
+    let inPages = false
+    for (const line of capabilities.split('\n')) {
+      if (line.trim() === 'pages:') {
+        inPages = true
+        continue
+      }
+      if (inPages && /^\S/.test(line)) break
+      const match = line.match(/^\s{2}([a-z_][a-z0-9_]*):\s*/)
+      if (inPages && match) pages.add(match[1])
+    }
+    return pages
+  }
+
+  const catalog = readFileSync(engineCatalogPath, 'utf8')
   for (const match of catalog.matchAll(/^\s+pages:\s*\[([^\]]*)\]/gm)) {
     for (const raw of match[1].split(',')) {
       const page = raw.trim()
@@ -71,9 +89,9 @@ describe('sidebar nav page-id contract', () => {
     it(`module '${m.id}' is registered in the project module catalog ('${pageId}')`, () => {
       expect(
         PROJECT_REGISTRY_PAGES.has(pageId),
-        `module '${m.id}' uses page '${pageId}', but flyto-engine/internal/modulecatalog/catalog.yaml ` +
-          `does not list it under any module pages:. The project capability gate will fail closed, ` +
-          `so add the page to the owning module or intentionally hide the module from sidebar.`,
+        `module '${m.id}' uses page '${pageId}', but neither the project module catalog nor ` +
+          `the CE capability contract lists it. The project capability gate will fail closed, ` +
+          `so add the page to the owning module/contract or intentionally hide the module from sidebar.`,
       ).toBe(true)
     })
   }

@@ -47,16 +47,33 @@ const mockIncidents = [
   },
 ]
 
+const queryScenario = vi.hoisted(() => ({
+  policies: 'success' as 'success' | 'loading' | 'error',
+  incidents: 'success' as 'success' | 'loading' | 'error',
+}))
+
 vi.mock('@tanstack/react-query', () => ({
   useQuery: ({ queryKey }: { queryKey: unknown[] }) => {
     const key = Array.isArray(queryKey) ? queryKey[0] : ''
     if (key === 'campaign-budget-policies') {
-      return { data: { policies: mockPolicies }, isLoading: false, isError: false }
+      if (queryScenario.policies === 'loading') {
+        return { data: null, isLoading: true, isPending: true, isSuccess: false, isError: false }
+      }
+      if (queryScenario.policies === 'error') {
+        return { data: null, isLoading: false, isPending: false, isSuccess: false, isError: true, error: new Error('policies failed') }
+      }
+      return { data: { policies: mockPolicies }, isLoading: false, isPending: false, isSuccess: true, isError: false }
     }
     if (key === 'campaign-budget-incidents') {
-      return { data: { incidents: mockIncidents }, isLoading: false, isError: false }
+      if (queryScenario.incidents === 'loading') {
+        return { data: null, isLoading: true, isPending: true, isSuccess: false, isError: false }
+      }
+      if (queryScenario.incidents === 'error') {
+        return { data: null, isLoading: false, isPending: false, isSuccess: false, isError: true, error: new Error('incidents failed') }
+      }
+      return { data: { incidents: mockIncidents }, isLoading: false, isPending: false, isSuccess: true, isError: false }
     }
-    return { data: null, isLoading: false, isError: false }
+    return { data: null, isLoading: false, isPending: false, isSuccess: false, isError: false }
   },
   useQueryClient: () => ({ invalidateQueries: vi.fn() }),
   useMutation: ({ onSuccess }: { onSuccess?: () => void }) => ({
@@ -76,7 +93,11 @@ vi.mock('@lib/engine/platform/campaignBudget', () => ({
 import { CampaignBudgetPanel } from '../CampaignBudgetPanel'
 
 describe('CampaignBudgetPanel', () => {
-  beforeEach(() => { vi.clearAllMocks() })
+  beforeEach(() => {
+    vi.clearAllMocks()
+    queryScenario.policies = 'success'
+    queryScenario.incidents = 'success'
+  })
 
   it('mounts without crashing', () => {
     render(<CampaignBudgetPanel />)
@@ -122,5 +143,29 @@ describe('CampaignBudgetPanel', () => {
     render(<CampaignBudgetPanel />)
     const resolveButtons = screen.getAllByText('Mark resolved')
     expect(resolveButtons.length).toBe(mockIncidents.length)
+  })
+
+  it('renders loading states before showing empty lists', () => {
+    queryScenario.policies = 'loading'
+    queryScenario.incidents = 'loading'
+
+    render(<CampaignBudgetPanel />)
+
+    expect(screen.getByText('Loading campaign budget incidents...')).toBeDefined()
+    expect(screen.getByText('Loading campaign budget policies...')).toBeDefined()
+    expect(screen.queryByText('Nothing breaching right now.')).toBeNull()
+    expect(screen.queryByText('No caps yet — add one to start tracking spend.')).toBeNull()
+  })
+
+  it('renders API failure states instead of silent empty fallbacks', () => {
+    queryScenario.policies = 'error'
+    queryScenario.incidents = 'error'
+
+    render(<CampaignBudgetPanel />)
+
+    expect(screen.getByText('Could not load campaign budget incidents.')).toBeDefined()
+    expect(screen.getByText('Could not load campaign budget policies.')).toBeDefined()
+    expect(screen.getAllByText('Refresh the page or try again after the engine responds.').length).toBe(2)
+    expect(screen.getByText('New policy').closest('button')?.disabled).toBe(true)
   })
 })

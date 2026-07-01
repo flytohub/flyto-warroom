@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "Il browser ha bloccato la scheda del report — consenti i popup per questo sito",
     "vaReport.previewTitle": "Anteprima del report VA",
     "warroom.tabFindings": "Risultati",
-    "warroom.tabOverview": "Panoramica"
+    "warroom.tabOverview": "Panoramica",
+    "code.warroom.budgetIncidentsLoading": "Caricamento incidenti del budget campagna...",
+    "code.warroom.budgetPoliciesLoading": "Caricamento criteri del budget campagna...",
+    "code.warroom.budgetIncidentsLoadFailed": "Impossibile caricare gli incidenti del budget campagna.",
+    "code.warroom.budgetPoliciesLoadFailed": "Impossibile caricare i criteri del budget campagna.",
+    "code.warroom.budgetLoadHint": "Aggiorna la pagina o riprova dopo la risposta del motore."
   },
   "version": "1.0.0"
 }

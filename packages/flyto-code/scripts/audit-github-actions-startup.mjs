@@ -56,8 +56,56 @@ function ghApi(apiPath) {
   return JSON.parse(result.stdout || '{}')
 }
 
+function tryGhApi(apiPath) {
+  try {
+    return { ok: true, data: ghApi(apiPath) }
+  } catch (error) {
+    return { ok: false, error: error.message }
+  }
+}
+
 function workflowMatches(run, workflowName) {
   return run.workflowName === workflowName || run.name === workflowName || run.displayTitle === workflowName
+}
+
+function summarizeRun(run) {
+  return {
+    id: run.id,
+    workflowId: run.workflow_id,
+    name: run.name || '',
+    displayTitle: run.display_title || run.displayTitle || '',
+    event: run.event,
+    status: run.status,
+    conclusion: run.conclusion,
+    path: run.path,
+    createdAt: run.created_at || run.createdAt,
+    updatedAt: run.updated_at || run.updatedAt,
+    url: run.html_url || run.url,
+  }
+}
+
+function summarizeJob(job) {
+  return {
+    name: job.name,
+    status: job.status,
+    conclusion: job.conclusion,
+    startedAt: job.started_at,
+    completedAt: job.completed_at,
+    runnerId: job.runner_id,
+    runnerName: job.runner_name,
+    runnerGroupId: job.runner_group_id,
+    runnerGroupName: job.runner_group_name,
+    labels: job.labels || [],
+    steps: Array.isArray(job.steps) ? job.steps.length : 0,
+  }
+}
+
+function startupFailureReason(run, jobs) {
+  if (run.conclusion === 'startup_failure' && jobs.length === 0) return 'startup_failure_no_jobs_created'
+  if (jobs.length === 0) return 'no_jobs_created'
+  if (run.conclusion !== 'success') return `conclusion_${run.conclusion || 'missing'}`
+  if (run.status !== 'completed') return `status_${run.status || 'missing'}`
+  return undefined
 }
 
 function reportFailure(report, message) {
@@ -66,7 +114,7 @@ function reportFailure(report, message) {
   writeReport(report)
   if (json) console.log(JSON.stringify(report, null, 2))
   else console.error(`GitHub Actions startup audit failed: ${message}. Report: ${reportPath}`)
-  if (!soft) process.exit(1)
+  process.exit(soft ? 0 : 1)
 }
 
 function writeReport(report) {
@@ -81,11 +129,17 @@ const report = {
   head,
   requiredWorkflows,
   ok: true,
+  diagnostics: {},
+  observedRuns: [],
   workflows: [],
 }
 
 try {
   const runs = ghApi(`/repos/${repo}/actions/runs?head_sha=${encodeURIComponent(head)}&per_page=100`).workflow_runs || []
+  report.observedRuns = runs.map(summarizeRun)
+  report.diagnostics.repositoryActions = tryGhApi(`/repos/${repo}/actions/permissions`)
+  report.diagnostics.workflowPermissions = tryGhApi(`/repos/${repo}/actions/permissions/workflow`)
+  report.diagnostics.repositoryRunners = tryGhApi(`/repos/${repo}/actions/runners`)
   if (runs.length === 0) {
     reportFailure(report, `no GitHub Actions runs found for HEAD ${head}`)
   }
@@ -95,14 +149,27 @@ try {
     const latest = matching
       .sort((a, b) => String(b.created_at || '').localeCompare(String(a.created_at || '')))[0]
     if (!latest) {
-      report.workflows.push({ workflow, ok: false, reason: 'missing_run' })
+      const startupFailures = runs
+        .filter((run) => run.conclusion === 'startup_failure' || run.path === 'BuildFailed' || !run.name)
+        .map(summarizeRun)
+      report.workflows.push({
+        workflow,
+        ok: false,
+        reason: startupFailures.length ? 'missing_named_run_with_startup_failures_present' : 'missing_run',
+        startupFailures,
+      })
       continue
     }
 
     const jobs = ghApi(`/repos/${repo}/actions/runs/${latest.id}/jobs?per_page=100`).jobs || []
+    const workflowMeta = latest.workflow_id
+      ? tryGhApi(`/repos/${repo}/actions/workflows/${latest.workflow_id}`)
+      : { ok: false, error: 'run did not include workflow_id' }
     const item = {
       workflow,
       id: latest.id,
+      workflowId: latest.workflow_id,
+      workflowMeta,
       url: latest.html_url,
       event: latest.event,
       status: latest.status,
@@ -110,18 +177,10 @@ try {
       path: latest.path,
       createdAt: latest.created_at,
       updatedAt: latest.updated_at,
-      jobs: jobs.map((job) => ({
-        name: job.name,
-        status: job.status,
-        conclusion: job.conclusion,
-        startedAt: job.started_at,
-        completedAt: job.completed_at,
-      })),
+      jobs: jobs.map(summarizeJob),
       ok: latest.status === 'completed' && latest.conclusion === 'success' && jobs.length > 0,
     }
-    if (jobs.length === 0) item.reason = 'no_jobs_created'
-    else if (latest.conclusion !== 'success') item.reason = `conclusion_${latest.conclusion || 'missing'}`
-    else if (latest.status !== 'completed') item.reason = `status_${latest.status || 'missing'}`
+    item.reason = startupFailureReason(latest, jobs)
     report.workflows.push(item)
   }
 

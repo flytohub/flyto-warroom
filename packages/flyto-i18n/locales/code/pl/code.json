@@ -8350,7 +8350,12 @@
     "vaReport.popupBlocked": "Przeglądarka zablokowała kartę raportu — zezwól na wyskakujące okienka dla tej witryny",
     "vaReport.previewTitle": "Podgląd raportu VA",
     "warroom.tabFindings": "Wyniki",
-    "warroom.tabOverview": "Przegląd"
+    "warroom.tabOverview": "Przegląd",
+    "code.warroom.budgetIncidentsLoading": "Ładowanie incydentów budżetu kampanii...",
+    "code.warroom.budgetPoliciesLoading": "Ładowanie zasad budżetu kampanii...",
+    "code.warroom.budgetIncidentsLoadFailed": "Nie udało się wczytać incydentów budżetu kampanii.",
+    "code.warroom.budgetPoliciesLoadFailed": "Nie udało się wczytać zasad budżetu kampanii.",
+    "code.warroom.budgetLoadHint": "Odśwież stronę albo spróbuj ponownie, gdy silnik odpowie."
   },
   "version": "1.0.0"
 }
