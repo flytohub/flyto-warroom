@@ -10,49 +10,62 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 
 REQUIRED_MARKERS = {
     "README.md": [
+        "BYO offensive validation platform",
+        "Bring your own tools",
+        "turns their findings into verified attack paths, pentest evidence, and red-team scenarios",
         "self-hosted open-core security warroom",
         "scanner-only dashboard",
-        "evidence-backed remediation loop",
-        "detect, triage, remediate, verify, audit, and rerun",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
+        "Existing security tools are inputs",
         "CE is useful without Flyto Cloud",
         "Enterprise Cloud Bridge",
     ],
     "docs/docker-hub-overview.md": [
+        "BYO offensive validation platform",
+        "Bring your own tools",
+        "turns their findings into verified attack paths, pentest evidence, and red-team scenarios",
         "self-hosted open-core security warroom",
         "Not a scanner-only image",
-        "evidence-backed remediation loop",
-        "detect, triage, remediate, verify, audit, and rerun",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
         "Enterprise Path",
     ],
     "docs/feature-matrix.md": [
+        "BYO offensive validation platform",
+        "turns existing tool findings into verified attack paths, pentest evidence, and red-team scenarios",
         "self-hosted open-core security warroom",
-        "evidence-backed remediation loop",
         "not a scanner-only dashboard",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
         "Premium actions must fail closed",
         "Contribution Boundary",
     ],
     "docs/public-roadmap.md": [
-        "evidence-backed remediation loop",
-        "detect, triage, remediate, verify, audit, and rerun",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
+        "bring your own tools",
+        "turn their findings into attack paths, replayable evidence, and remediation records",
         "Shipped In CE",
         "Enterprise Cloud Bridge",
         "Non-Claims",
     ],
     "docs/autofix-whitepaper.md": [
+        "BYO offensive validation platform",
+        "turns existing tool findings into verified attack paths, pentest evidence, and red-team scenarios",
         "evidence-backed remediation",
         "detect, triage, remediate, verify, audit, and rerun",
         "AI may propose, but it cannot be the final authorization gate",
         "False positives are not noise to hide",
     ],
     "docs/benchmark-evidence.md": [
-        "evidence-backed remediation loop",
-        "detect, triage, remediate, verify, audit, and rerun",
+        "BYO offensive validation loop",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
+        "originating tool, import contract, asset, and normalized evidence",
         "live results from seeded/demo data",
         "fabricated percentage",
     ],
     "docs/README.md": [
+        "BYO offensive validation platform",
+        "bring your own tools",
+        "verified attack paths, pentest evidence, and red-team scenarios",
         "self-hosted open-core security warroom",
-        "evidence-backed remediation loop",
         "not a scanner-only dashboard",
     ],
 }
@@ -64,6 +77,8 @@ DANGEROUS_CLAIMS = [
     (re.compile(r"\b100%\s+AutoFix\s+success\b", re.IGNORECASE), "Do not claim 100% AutoFix success."),
     (re.compile(r"\bno false positives\b", re.IGNORECASE), "Do not claim zero false positives."),
     (re.compile(r"\bbenchmark leadership\b", re.IGNORECASE), "Do not claim benchmark leadership without evidence."),
+    (re.compile(r"\breplaces?\s+your\s+existing\s+security\s+tools\b", re.IGNORECASE), "Do not claim replacement of the customer's existing stack."),
+    (re.compile(r"\bdrop\s+your\s+(scanners|security tools)\b", re.IGNORECASE), "Do not tell users to drop existing tools."),
 ]
 
 SAFE_NEGATION_HINTS = (
@@ -83,6 +98,10 @@ def read(path: Path) -> str:
         return ""
 
 
+def normalize(text: str) -> str:
+    return " ".join(text.split())
+
+
 def claim_is_negated(lines: list[str], index: int) -> bool:
     window = " ".join(lines[max(0, index - 4) : index + 1]).lower()
     return any(hint in window for hint in SAFE_NEGATION_HINTS)
@@ -97,8 +116,9 @@ def main() -> int:
             blockers.append(f"missing positioning file: {rel}")
             continue
         body = read(path)
+        normalized_body = normalize(body)
         for marker in markers:
-            if marker not in body:
+            if normalize(marker) not in normalized_body:
                 blockers.append(f"{rel} missing positioning marker: {marker}")
 
         lines = body.splitlines()

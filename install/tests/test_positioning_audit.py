@@ -51,8 +51,8 @@ def test_missing_positioning_marker_blocks_release(tmp_path: Path) -> None:
     readme = repo / "README.md"
     readme.write_text(
         readme.read_text(encoding="utf-8").replace(
-            "self-hosted open-core security warroom",
-            "general scanner dashboard",
+            "Bring your own tools",
+            "Generic scanner dashboard",
         ),
         encoding="utf-8",
     )
@@ -60,7 +60,7 @@ def test_missing_positioning_marker_blocks_release(tmp_path: Path) -> None:
     result = run_audit(repo)
 
     assert result.returncode == 2
-    assert "missing positioning marker: self-hosted open-core security warroom" in result.stderr
+    assert "missing positioning marker: Bring your own tools" in result.stderr
 
 
 def test_unsafe_competitor_claim_blocks_release(tmp_path: Path) -> None:
@@ -75,3 +75,17 @@ def test_unsafe_competitor_claim_blocks_release(tmp_path: Path) -> None:
 
     assert result.returncode == 2
     assert "Do not claim full replacement of Aikido" in result.stderr
+
+
+def test_replacing_customer_stack_claim_blocks_release(tmp_path: Path) -> None:
+    repo = copy_required_docs(tmp_path)
+    readme = repo / "README.md"
+    readme.write_text(
+        readme.read_text(encoding="utf-8") + "\nFlyto2 replaces your existing security tools.\n",
+        encoding="utf-8",
+    )
+
+    result = run_audit(repo)
+
+    assert result.returncode == 2
+    assert "Do not claim replacement of the customer's existing stack" in result.stderr

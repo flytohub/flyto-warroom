@@ -4,7 +4,7 @@ This roadmap is intentionally split by edition. It should prevent two failure
 modes: promising Enterprise-only work as CE, and hiding useful CE work behind a
 sales story.
 
-The canonical product loop is an evidence-backed remediation loop: detect, triage, remediate, verify, audit, and rerun.
+The canonical product loop is Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation.
 
 ## Shipped In CE
 
@@ -13,8 +13,8 @@ The canonical product loop is an evidence-backed remediation loop: detect, triag
 - Local JWT authentication for the CE install path.
 - Public contracts for capabilities, scanner manifests, runner callbacks,
   product verification scenarios, audit events, and evidence events.
-- Warroom cockpit package with code, external, cloud, container, evidence,
-  reports, AutoFix, and governance surfaces.
+- Warroom cockpit package with BYO finding normalization, code, external, cloud,
+  container, evidence, reports, AutoFix, and governance surfaces.
 - Demo seed workspace bundle covering code/container/cloud/external/evidence/autofix.
 - Release audits for CE boundary, protected paths, Docker image coordinates,
   GitHub protection files, and public docs.
@@ -25,6 +25,9 @@ The canonical product loop is an evidence-backed remediation loop: detect, triag
   tables when the running engine exposes a supported seed endpoint.
 - Browser smoke for the published Docker Compose stack.
 - Public screenshots and replay artifacts for CE install, seed, and report flow.
+- Importers for common scanner, ASM, SAST, DAST, CSPM, and SIEM exports.
+- Stronger local attack-path templates that convert imported findings into
+  safe validation tasks.
 - More deterministic AutoFix rules that do not require a commercial AI provider.
 - Clearer empty states for CE surfaces when a connector is not configured.
 
@@ -52,5 +55,6 @@ The canonical product loop is an evidence-backed remediation loop: detect, triag
 
 Flyto2 Warroom does not claim guaranteed coverage, 100% AutoFix success, or full
 replacement of Aikido or any scanner without independent evidence. The product
-promise is an evidence-backed closed loop: detect, triage, remediate, verify,
-audit, and rerun.
+promise is an evidence-backed offensive validation layer: bring your own tools,
+then turn their findings into attack paths, replayable evidence, and remediation
+records.

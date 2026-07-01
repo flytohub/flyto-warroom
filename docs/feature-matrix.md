@@ -1,10 +1,11 @@
 # Flyto2 Warroom CE / Enterprise Feature Matrix
 
 Flyto2 Warroom CE is the self-hosted open-core security war room. In public
-positioning terms, it is a self-hosted open-core security warroom: a local
-evidence-backed remediation loop, not a scanner-only dashboard. Enterprise adds
-commercial intelligence, managed remediation, identity, support, and deployment
-controls through explicit capability and evidence contracts.
+positioning terms, it is a self-hosted open-core security warroom and BYO offensive validation platform:
+a local layer that turns existing tool findings into verified attack paths,
+pentest evidence, and red-team scenarios. It is not a scanner-only dashboard.
+Enterprise adds commercial intelligence, managed remediation, identity, support,
+and deployment controls through explicit capability and evidence contracts.
 
 This matrix is a product boundary, not a marketing hint. If a capability is not
 available in CE, the UI should show a gated state with a reason instead of a
@@ -14,13 +15,15 @@ hidden fail-open path.
 | --- | --- | --- | --- |
 | Local install | Docker Compose, local Postgres, local JWT auth | Same local Warroom plus entitled cloud jobs | Private images, offline license, customer-controlled update bundle |
 | Unified cockpit | Code, container, cloud, external, evidence, score, reports surfaces when data exists | Same cockpit with signed premium results | Same cockpit with offline evidence packages |
+| BYO data ingestion | Normalize findings, assets, identities, and evidence through public contracts and demo seed data | Managed connectors for commercial tools, feeds, scanners, and customer pipelines | Offline importer bundles and customer-controlled connector packages |
+| Attack path validation | Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation | Managed scenario ranking, commercial enrichment, and signed validation evidence | Offline validation packs and customer-approved scenario catalogs |
 | Code security | SAST, SCA, secrets, IaC, reachability, code score, deterministic remediation evidence | AI proposal gate, approval, promotion, rollback | Private proposal/review workflow without cloud egress |
 | Container security | Dockerfile/image-definition posture and local evidence | Live registry/workload remediation and managed connector execution | Private registry/workload connector bundle |
 | Cloud posture | Connector contracts, posture views, IAM evidence when configured | Live cloud remediation and commercial enrichment | Offline/cloud-private connector execution |
 | External attack surface | Footprint, asset map, posture, issue lifecycle, verify fixed, reopen, false positive | Commercial enrichment and continuous monitoring | Customer-controlled enrichment bundle |
 | Threat intelligence | Public/feed-backed lookups when configured | Darkweb, stealer logs, leak, phishing, actor, malware, ransomware datasets | Offline licensed datasets |
-| Automated Security Testing | Local runner, authorization records, replay/evidence contract | Managed runner fleet and scale-out execution | Customer-controlled runner fleet |
-| Red team workflows | Planning, authorization, findings, evidence timeline | Managed campaigns and signed operator approvals | Offline campaign pack and approvals |
+| Automated Security Testing | Safe authorization gates, local runner, replay, screenshot, DOM/network evidence contract | Managed runner fleet and scale-out execution | Customer-controlled runner fleet |
+| Red team workflows | Planning, authorization, attack paths, scenario records, evidence timeline | Managed campaigns, signed operator approvals, and detection-gap workflows | Offline campaign pack and approvals |
 | AutoFix | Deterministic fixes, preview, operator acceptance, verification evidence | AI proposals, live cloud/container/runtime remediation, rollback orchestration | Offline approval and private remediation runners |
 | Evidence and reports | Timeline, evidence pack, report export contracts | Signed premium evidence and support attestations | Legal hold, retention, offline audit export |
 | Identity | Local users, roles, capability-gated UI/actions | SSO/SAML/SCIM, advanced RBAC, billing entitlement | Offline identity and license controls |

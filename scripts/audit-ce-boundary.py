@@ -74,8 +74,10 @@ DENIED_TREE_PATTERNS = [
 REQUIRED_MARKERS = {
     "docs/docker-hub-overview.md": [
         "Flyto2 Warroom CE Preview",
+        "BYO offensive validation platform",
+        "Bring your own tools",
+        "verified attack paths",
         "self-hosted open-core security warroom",
-        "evidence-backed remediation loop",
         "does not enable product telemetry by default",
         "Recommended install path is Docker Compose",
         "manifest lists",
@@ -95,8 +97,10 @@ REQUIRED_MARKERS = {
     ],
     "docs/feature-matrix.md": [
         "Flyto2 Warroom CE is the self-hosted open-core security war room",
+        "BYO offensive validation platform",
+        "verified attack paths",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
         "self-hosted open-core security warroom",
-        "evidence-backed remediation loop",
         "Premium actions must fail closed",
         "License Gate Contract",
         "Revenue Boundary",
@@ -135,16 +139,19 @@ REQUIRED_MARKERS = {
         "Shipped In CE",
         "CE Next",
         "Enterprise Airgap",
-        "evidence-backed remediation loop",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
     ],
     "docs/autofix-whitepaper.md": [
         "AutoFix in Flyto2 is not",
+        "BYO offensive validation platform",
+        "verified attack paths",
         "detect, triage, remediate, verify, audit, and rerun",
         "**Gate authority** stays deterministic",
         "100% AutoFix success",
     ],
     "docs/benchmark-evidence.md": [
-        "evidence-backed remediation loop",
+        "BYO offensive validation loop",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
         "False positives should be first-class",
         "Verification Loop",
         "benchmark leadership without independent evidence",
@@ -167,8 +174,9 @@ REQUIRED_MARKERS = {
         "community edition is public",
     ],
     "docs/README.md": [
+        "BYO offensive validation platform",
+        "verified attack paths",
         "self-hosted open-core security warroom",
-        "evidence-backed remediation loop",
     ],
     "scripts/README.md": [
         "audit-positioning.py",

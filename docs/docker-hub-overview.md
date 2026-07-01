@@ -4,12 +4,18 @@
 # Flyto2 Warroom CE Preview
 
 Flyto2 Warroom CE is the self-hosted open-core edition of Flyto2 Warroom: a
-self-hosted open-core security warroom for code security, external attack
-surface, cloud/container/runtime posture, automated security testing, evidence,
-scoring, and compliance workflows.
+self-hosted open-core BYO offensive validation platform for code security,
+external attack surface, cloud/container/runtime posture, automated security
+testing, evidence, scoring, and compliance workflows.
 
-Not a scanner-only image: Warroom is an evidence-backed remediation loop for
-detect, triage, remediate, verify, audit, and rerun workflows.
+CE also remains a self-hosted open-core security warroom for local evidence,
+reports, authorization gates, and audit trails.
+
+Bring your own tools. Flyto2 turns their findings into verified attack paths,
+pentest evidence, and red-team scenarios.
+
+Not a scanner-only image: Warroom follows Findings -> Attack Paths -> Offensive
+Validation -> Evidence -> Remediation.
 
 This is a CE Preview for local labs, evaluators, security teams, and
 open-source users who want to run Warroom on their own Docker host.
@@ -79,8 +85,9 @@ a password hash for the initial admin account.
   services.
 - Public frontend source, i18n packages, local code intelligence, YAML runtime,
   public API/capability/evidence contracts, and installer scripts.
-- Baseline workflows for code security, CTEM/external posture, automated
-  security testing, evidence, reports, score views, and compliance surfaces.
+- Baseline workflows for BYO finding normalization, code security,
+  CTEM/external posture, attack path validation, automated security testing,
+  evidence, reports, score views, and compliance surfaces.
 
 ## Enterprise Path
 

@@ -4,6 +4,11 @@ AutoFix in Flyto2 is not "AI changed files and the alert disappeared." The
 closed loop is evidence-backed remediation: a finding must carry provenance,
 scope, proposed change, approval, verification, and rollback context.
 
+AutoFix is downstream of the BYO offensive validation platform. Flyto2 first
+turns existing tool findings into verified attack paths, pentest evidence, and
+red-team scenarios; remediation comes after the validation layer proves or
+refutes the risk.
+
 The operating model is detect, triage, remediate, verify, audit, and rerun. A
 finding is not closed because a tool says so; it is closed when the relevant
 evidence loop proves the state changed or records why it cannot be safely fixed.
@@ -12,18 +17,20 @@ evidence loop proves the state changed or records why it cannot be safely fixed.
 
 1. **Finding intake** records the source, surface, affected asset, confidence,
    severity, reachability, and tenant/org boundary.
-2. **Fix classification** separates deterministic rules, repo/code/IaC patches,
+2. **Attack-path classification** separates isolated findings from plausible
+   exploit chains, safe validation tasks, and red-team scenario candidates.
+3. **Fix classification** separates deterministic rules, repo/code/IaC patches,
    container-definition patches, live connector actions, external workflow
    tasks, and AI proposals.
-3. **Preview** shows the exact patch or action plan before it can be accepted.
-4. **Gate authority** stays deterministic. AI may propose, but it cannot be the final authorization gate for risky actions.
-5. **Operator acceptance** records who accepted, which evidence was available,
+4. **Preview** shows the exact patch or action plan before it can be accepted.
+5. **Gate authority** stays deterministic. AI may propose, but it cannot be the final authorization gate for risky actions.
+6. **Operator acceptance** records who accepted, which evidence was available,
    what capability allowed the action, and which rollback path exists.
-6. **Execution** creates a PR, patch, workflow task, or signed Enterprise Bridge
+7. **Execution** creates a PR, patch, workflow task, or signed Enterprise Bridge
    job depending on the surface.
-7. **Verification** reruns the relevant scanner, replay, connector check, or
+8. **Verification** reruns the relevant scanner, replay, connector check, or
    evidence probe.
-8. **Audit** stores the result as a timeline event and evidence pack.
+9. **Audit** stores the result as a timeline event and evidence pack.
 
 ## CE Scope
 

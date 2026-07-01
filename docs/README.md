@@ -4,7 +4,9 @@ This directory is the public operating manual for the self-hosted open-core
 Warroom distribution.
 
 Public docs must describe Flyto2 Warroom as a self-hosted open-core security warroom
-and an evidence-backed remediation loop, not a scanner-only dashboard.
+and BYO offensive validation platform, not a scanner-only dashboard.
+The canonical story is: bring your own tools, then turn their findings into
+verified attack paths, pentest evidence, and red-team scenarios.
 
 Start here:
 

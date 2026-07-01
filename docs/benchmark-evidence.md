@@ -3,14 +3,19 @@
 Flyto2 should compete on measurable evidence, not unsupported accuracy claims.
 This page defines how public benchmark and evidence claims must be made.
 
-Benchmark language must support the same evidence-backed remediation loop used
-by the product: detect, triage, remediate, verify, audit, and rerun. Public
-claims should make that loop inspectable instead of presenting a naked score.
+Benchmark language must support the same BYO offensive validation loop used by
+the product: Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation.
+Public claims should make that loop inspectable instead of presenting a naked
+score.
 
 ## What Can Be Claimed
 
 - A scanner result has source, timestamp, target, evidence, and confidence.
+- A BYO finding can be traced back to the originating tool, import contract,
+  asset, and normalized evidence.
 - A finding can be verified fixed, reopened, or marked false positive.
+- An attack path can show which imported findings were chained and which safe
+  validation step proved or refuted the chain.
 - A remediation loop can be rerun and attached to a timeline.
 - A benchmark is available only when measured sample size and methodology are
   present.
