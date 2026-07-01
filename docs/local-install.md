@@ -51,6 +51,24 @@ Sign in with the initial admin email and password provided to `setup-ce.py`.
 CE uses engine-issued local JWTs; it does not require
 Firebase and it does not use dev auth.
 
+## Seed The Demo Workspace
+
+After the stack is healthy, load the CE demo workspace:
+
+```sh
+python3 /tmp/flyto2-warroom-ce/install/scripts/seed-demo-workspace.py --email admin@example.com
+```
+
+The script logs in through local JWT auth, creates `Flyto2 Warroom CE Demo`,
+and writes an evidence pack that connects code, container, cloud, external
+attack surface, evidence, and AutoFix into one local closed loop.
+
+Run the offline validator at any time:
+
+```sh
+make -C /tmp/flyto2-warroom-ce demo-seed-dry-run
+```
+
 CE local JWT auth is password-based. Do not claim or advertise local TOTP/2FA
 unless the backend login flow actually enforces it. For production deployments
 that require 2FA, place Flyto2 behind an identity provider or use an edition

@@ -14,18 +14,31 @@ CE_CONTROL_FILES = [
     "install/docker-compose.ce.yml",
     "install/scripts/build-local-images.sh",
     "install/scripts/preflight.py",
+    "install/scripts/seed-demo-workspace.py",
+    "install/demo-workspace.json",
     "install/scripts/setup-ce.py",
     "packages/flyto-code/.env.example",
     ".github/workflows/ci.yml",
 ]
 
 REQUIRED_FILES = [
+    ".env.example",
+    "CHANGELOG.md",
+    "docs/README.md",
     "docs/docker-hub-overview.md",
     "docs/code-protection.md",
     "docs/enterprise-cloud-bridge.md",
+    "docs/feature-matrix.md",
+    "docs/public-roadmap.md",
+    "docs/autofix-whitepaper.md",
+    "docs/benchmark-evidence.md",
+    "docs/demo-seed-workspace.md",
     "docs/official-builds.md",
     "TRADEMARK.md",
     "GOVERNANCE.md",
+    "install/README.md",
+    "scripts/README.md",
+    "packages/README.md",
 ]
 
 DENIED_CONTROL_PATTERNS = [
@@ -66,6 +79,31 @@ REQUIRED_MARKERS = {
         "What Can Be Cloud-Backed",
         "Premium requests should follow the same contract",
         "Airgap Alternative",
+    ],
+    "docs/feature-matrix.md": [
+        "Flyto2 Warroom CE is the self-hosted open-core security war room",
+        "Premium actions must fail closed",
+        "Enterprise Cloud Bridge",
+    ],
+    "docs/public-roadmap.md": [
+        "Shipped In CE",
+        "CE Next",
+        "Enterprise Airgap",
+    ],
+    "docs/autofix-whitepaper.md": [
+        "AutoFix in Flyto2 is not",
+        "**Gate authority** stays deterministic",
+        "100% AutoFix success",
+    ],
+    "docs/benchmark-evidence.md": [
+        "False positives should be first-class",
+        "Verification Loop",
+        "benchmark leadership without independent evidence",
+    ],
+    "docs/demo-seed-workspace.md": [
+        "The demo seed workspace",
+        "Seed A Running CE Stack",
+        "Future Native Seeding",
     ],
     "docs/official-builds.md": [
         "Official Images",
