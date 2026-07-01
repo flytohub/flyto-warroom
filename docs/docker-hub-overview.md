@@ -4,9 +4,12 @@
 # Flyto2 Warroom CE Preview
 
 Flyto2 Warroom CE is the self-hosted open-core edition of Flyto2 Warroom: a
-local security operations cockpit for code security, external attack surface,
-cloud/container/runtime posture, automated security testing, evidence, scoring,
-and compliance workflows.
+self-hosted open-core security warroom for code security, external attack
+surface, cloud/container/runtime posture, automated security testing, evidence,
+scoring, and compliance workflows.
+
+Not a scanner-only image: Warroom is an evidence-backed remediation loop for
+detect, triage, remediate, verify, audit, and rerun workflows.
 
 This is a CE Preview for local labs, evaluators, security teams, and
 open-source users who want to run Warroom on their own Docker host.

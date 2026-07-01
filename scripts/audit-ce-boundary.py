@@ -47,6 +47,7 @@ REQUIRED_FILES = [
     "install/README.md",
     "scripts/README.md",
     "packages/README.md",
+    "scripts/audit-positioning.py",
 ]
 
 DENIED_CONTROL_PATTERNS = [
@@ -73,6 +74,8 @@ DENIED_TREE_PATTERNS = [
 REQUIRED_MARKERS = {
     "docs/docker-hub-overview.md": [
         "Flyto2 Warroom CE Preview",
+        "self-hosted open-core security warroom",
+        "evidence-backed remediation loop",
         "does not enable product telemetry by default",
         "Recommended install path is Docker Compose",
         "manifest lists",
@@ -92,6 +95,8 @@ REQUIRED_MARKERS = {
     ],
     "docs/feature-matrix.md": [
         "Flyto2 Warroom CE is the self-hosted open-core security war room",
+        "self-hosted open-core security warroom",
+        "evidence-backed remediation loop",
         "Premium actions must fail closed",
         "License Gate Contract",
         "Revenue Boundary",
@@ -130,13 +135,16 @@ REQUIRED_MARKERS = {
         "Shipped In CE",
         "CE Next",
         "Enterprise Airgap",
+        "evidence-backed remediation loop",
     ],
     "docs/autofix-whitepaper.md": [
         "AutoFix in Flyto2 is not",
+        "detect, triage, remediate, verify, audit, and rerun",
         "**Gate authority** stays deterministic",
         "100% AutoFix success",
     ],
     "docs/benchmark-evidence.md": [
+        "evidence-backed remediation loop",
         "False positives should be first-class",
         "Verification Loop",
         "benchmark leadership without independent evidence",
@@ -157,6 +165,13 @@ REQUIRED_MARKERS = {
     "GOVERNANCE.md": [
         "private Flyto2 source workspace",
         "community edition is public",
+    ],
+    "docs/README.md": [
+        "self-hosted open-core security warroom",
+        "evidence-backed remediation loop",
+    ],
+    "scripts/README.md": [
+        "audit-positioning.py",
     ],
 }
 

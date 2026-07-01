@@ -3,6 +3,9 @@
 This directory is the public operating manual for the self-hosted open-core
 Warroom distribution.
 
+Public docs must describe Flyto2 Warroom as a self-hosted open-core security warroom
+and an evidence-backed remediation loop, not a scanner-only dashboard.
+
 Start here:
 
 - `local-install.md` for Docker Compose setup.

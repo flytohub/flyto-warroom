@@ -64,7 +64,9 @@ REQUIRED = [
     ".github/pull_request_template.md",
     ".github/workflows/ci.yml",
     "scripts/audit-github-protection.py",
+    "scripts/audit-positioning.py",
     "scripts/audit-ce-boundary.py",
+    "install/tests/test_positioning_audit.py",
     "install/README.md",
     "scripts/README.md",
     "packages/README.md",
@@ -110,6 +112,8 @@ DENIED_CE_COMPOSE = [
 REQUIRED_MARKERS = {
     "README.md": [
         "Self-hosted open-core security war room",
+        "self-hosted open-core security warroom",
+        "evidence-backed remediation loop",
         "10-Minute Local Loop",
         "## Usage",
         "Aikido alternative",
@@ -117,6 +121,8 @@ REQUIRED_MARKERS = {
     ],
     "docs/feature-matrix.md": [
         "Flyto2 Warroom CE / Enterprise Feature Matrix",
+        "self-hosted open-core security warroom",
+        "evidence-backed remediation loop",
         "Premium actions must fail closed",
         "License Gate Contract",
         "Revenue Boundary",
@@ -155,18 +161,23 @@ REQUIRED_MARKERS = {
         "Shipped In CE",
         "Enterprise Cloud Bridge",
         "Non-Claims",
+        "evidence-backed remediation loop",
     ],
     "docs/autofix-whitepaper.md": [
         "evidence-backed remediation",
+        "detect, triage, remediate, verify, audit, and rerun",
         "AI may propose",
         "False positives are not noise to hide",
     ],
     "docs/benchmark-evidence.md": [
+        "evidence-backed remediation loop",
         "false-positive handling policy",
         "Verification Loop",
         "fabricated percentage",
     ],
     "docs/docker-hub-overview.md": [
+        "self-hosted open-core security warroom",
+        "evidence-backed remediation loop",
         "linux/amd64",
         "linux/arm64",
         "manifest lists",

@@ -9,6 +9,10 @@
 Self-hosted open-core security war room for the Flyto2 security operations
 platform.
 
+Positioning: Flyto2 Warroom is a self-hosted open-core security warroom, not a
+scanner-only dashboard. The product loop is an evidence-backed remediation loop:
+detect, triage, remediate, verify, audit, and rerun.
+
 Flyto2 Warroom CE is the self-hosted open-core security operations
 platform for code, CTEM, external attack surface, cloud, container,
 runtime, automated security testing, evidence, scoring, and compliance
@@ -52,6 +56,11 @@ unless an Enterprise Bridge or supported connector is configured.
 Flyto2 Warroom brings security signals into one cockpit instead of leaving
 them as disconnected scanner output. A finding should map to an asset, a
 score, evidence, ownership, remediation, verification, and an audit trail.
+
+CE is useful without Flyto Cloud: local auth, local storage, local evidence,
+public contracts, and deterministic remediation paths must keep working on a
+Docker host. Enterprise Cloud Bridge attaches premium execution only through
+explicit capability, entitlement, connector, and signed-evidence gates.
 
 The CE distribution is intentionally usable, but it is not a full source
 release of the private Flyto2 backend. Enterprise-only datasets, live

@@ -4,6 +4,10 @@ AutoFix in Flyto2 is not "AI changed files and the alert disappeared." The
 closed loop is evidence-backed remediation: a finding must carry provenance,
 scope, proposed change, approval, verification, and rollback context.
 
+The operating model is detect, triage, remediate, verify, audit, and rerun. A
+finding is not closed because a tool says so; it is closed when the relevant
+evidence loop proves the state changed or records why it cannot be safely fixed.
+
 ## Core Model
 
 1. **Finding intake** records the source, surface, affected asset, confidence,
@@ -12,8 +16,7 @@ scope, proposed change, approval, verification, and rollback context.
    container-definition patches, live connector actions, external workflow
    tasks, and AI proposals.
 3. **Preview** shows the exact patch or action plan before it can be accepted.
-4. **Gate authority** stays deterministic. AI may propose, but it cannot be the
-   final authorization gate for risky actions.
+4. **Gate authority** stays deterministic. AI may propose, but it cannot be the final authorization gate for risky actions.
 5. **Operator acceptance** records who accepted, which evidence was available,
    what capability allowed the action, and which rollback path exists.
 6. **Execution** creates a PR, patch, workflow task, or signed Enterprise Bridge

@@ -1,8 +1,10 @@
 # Flyto2 Warroom CE / Enterprise Feature Matrix
 
-Flyto2 Warroom CE is the self-hosted open-core security war room. Enterprise
-adds commercial intelligence, managed remediation, identity, support, and
-deployment controls through explicit capability and evidence contracts.
+Flyto2 Warroom CE is the self-hosted open-core security war room. In public
+positioning terms, it is a self-hosted open-core security warroom: a local
+evidence-backed remediation loop, not a scanner-only dashboard. Enterprise adds
+commercial intelligence, managed remediation, identity, support, and deployment
+controls through explicit capability and evidence contracts.
 
 This matrix is a product boundary, not a marketing hint. If a capability is not
 available in CE, the UI should show a gated state with a reason instead of a

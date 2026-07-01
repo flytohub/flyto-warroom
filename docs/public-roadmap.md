@@ -4,6 +4,8 @@ This roadmap is intentionally split by edition. It should prevent two failure
 modes: promising Enterprise-only work as CE, and hiding useful CE work behind a
 sales story.
 
+The canonical product loop is an evidence-backed remediation loop: detect, triage, remediate, verify, audit, and rerun.
+
 ## Shipped In CE
 
 - Self-hosted Docker Compose stack for engine, worker, frontend, runner,

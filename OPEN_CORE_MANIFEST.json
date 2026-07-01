@@ -77,6 +77,7 @@
     "install/fixtures/cloud-bundle/recipes/warroom-deterministic-audit.yaml",
     "install/tests/test_cloud_bundle_fixture.py",
     "install/tests/test_provider_readiness.py",
+    "install/tests/test_positioning_audit.py",
     "docs/local-install.md",
     "docs/README.md",
     "docs/enterprise-simulation.md",
@@ -110,6 +111,7 @@
     ".github/CODEOWNERS",
     ".github/pull_request_template.md",
     "scripts/audit-github-protection.py",
+    "scripts/audit-positioning.py",
     "scripts/audit-ce-boundary.py",
     ".github/workflows/ci.yml"
   ],
