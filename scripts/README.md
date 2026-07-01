@@ -7,5 +7,7 @@ These scripts protect the public CE mirror:
 - `audit-github-protection.py` checks public repository governance files.
 - `export-upstream-patches.py` exports public PR changes as upstream patch
   bundles so accepted community work can flow back into Flyto2.
+- `install/scripts/provider-readiness.py` records paid/account provider
+  blockers without using credentials or calling external provider APIs.
 
 Run `make audit` before changing release-sensitive files.

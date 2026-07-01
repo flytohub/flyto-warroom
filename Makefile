@@ -5,7 +5,7 @@ DOCKER_COMPOSE ?= $(shell if docker compose version >/dev/null 2>&1; then printf
 COMPOSE_CE = $(DOCKER_COMPOSE) --env-file $(ENV_CE) -f install/docker-compose.ce.yml
 COMPOSE_EE_SIM = $(DOCKER_COMPOSE) --env-file $(ENV_EE_SIM) -f install/docker-compose.ce.yml -f install/docker-compose.ee-sim.yml
 
-.PHONY: setup-ce preflight verify verify-fast verify-images ce-up ce-down ce-logs ce-ps ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit audit-docker-boundary demo-seed demo-seed-dry-run build-local-images publish-multiarch-images
+.PHONY: setup-ce preflight provider-readiness verify verify-fast verify-images ce-up ce-down ce-logs ce-ps ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit audit-docker-boundary demo-seed demo-seed-dry-run build-local-images publish-multiarch-images
 
 setup-ce:
 	python3 install/scripts/setup-ce.py
@@ -41,7 +41,10 @@ audit:
 	python3 scripts/audit-github-protection.py .
 	$(MAKE) audit-docker-boundary
 
-verify: audit demo-seed-dry-run
+provider-readiness:
+	python3 install/scripts/provider-readiness.py --scope public_release --allow-provider-blocked
+
+verify: audit demo-seed-dry-run provider-readiness
 	python3 install/scripts/verify-docker-images.py --dry-run
 
 verify-fast: verify

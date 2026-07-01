@@ -15,6 +15,9 @@ The public CE release tree must pass:
   images
 - demo seed workspace audit covering code, container, cloud, external,
   evidence, and AutoFix
+- `python3 install/scripts/provider-readiness.py --scope public_release`
+  records paid/account gates and returns `CODE_READY_PROVIDER_BLOCKED` until
+  the account owner marks the required providers ready.
 
 ## Account And Provider Gates
 
@@ -41,3 +44,5 @@ Provider-blocked releases may still be useful for local validation, public
 documentation review, and dry-run image builds. They must not be described as
 fully released, remotely CI-green, or commercially available until the external
 gate is resolved and fresh evidence is captured.
+
+The paid/provider ledger is maintained in `docs/paid-prerequisites.md`.
