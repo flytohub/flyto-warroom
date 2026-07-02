@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import json
 import shutil
 import subprocess
 import sys
@@ -89,3 +90,15 @@ def test_replacing_customer_stack_claim_blocks_release(tmp_path: Path) -> None:
 
     assert result.returncode == 2
     assert "Do not claim replacement of the customer's existing stack" in result.stderr
+
+
+def test_demo_workspace_is_byo_offensive_validation_loop() -> None:
+    bundle = json.loads((ROOT / "install/demo-workspace.json").read_text(encoding="utf-8"))
+    surfaces = {item["id"] for item in bundle["surfaces"]}
+    evidence_surfaces = {item["surface"] for item in bundle["evidence_pack"]}
+    required = {"byo", "attack_path", "validation", "code", "container", "cloud", "external", "evidence", "autofix"}
+
+    assert required.issubset(surfaces)
+    assert {"byo", "attack_path", "validation"}.issubset(evidence_surfaces)
+    assert "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation" in " ".join(bundle["claims"]["claimed"])
+    assert any("existing security stack" in claim for claim in bundle["claims"]["not_claimed"])

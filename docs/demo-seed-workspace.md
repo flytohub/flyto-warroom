@@ -2,14 +2,26 @@
 
 The demo seed workspace gives a first-time CE user one command that creates a
 local Warroom workspace and attaches an evidence pack covering the core product
-surfaces:
+loop:
 
+- BYO finding intake
+- attack path validation
+- safe offensive validation
 - code
 - container
 - cloud
 - external
 - evidence
 - autofix
+
+The product story is deliberately narrow:
+
+```text
+Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation
+```
+
+Bring your own tools. Flyto2 turns their findings into verified attack paths,
+pentest evidence, and red-team scenarios.
 
 The seed is intentionally honest. It does not pretend to run live cloud,
 container, or runtime remediation. It labels each item as CE evidence,
@@ -53,7 +65,8 @@ The script:
 Open `http://localhost:8088`, sign in with the same local admin account, and
 select the demo workspace. The evidence pack should be visible as local
 workspace content and should describe how code, container, cloud, external,
-evidence, and AutoFix connect into one closed loop.
+evidence, AutoFix, BYO imports, attack paths, and safe validation connect into
+one closed loop.
 
 ## Future Native Seeding
 

@@ -198,6 +198,11 @@ REQUIRED_MARKERS = {
         "manifest-list digest",
     ],
     "docs/demo-seed-workspace.md": [
+        "BYO finding intake",
+        "attack path validation",
+        "safe offensive validation",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
+        "Bring your own tools",
         "code",
         "container",
         "cloud",
@@ -206,7 +211,17 @@ REQUIRED_MARKERS = {
     ],
 }
 
-REQUIRED_DEMO_SURFACES = {"code", "container", "cloud", "external", "evidence", "autofix"}
+REQUIRED_DEMO_SURFACES = {
+    "byo",
+    "attack_path",
+    "validation",
+    "code",
+    "container",
+    "cloud",
+    "external",
+    "evidence",
+    "autofix",
+}
 
 
 def text(path: Path) -> str:

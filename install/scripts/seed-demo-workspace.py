@@ -11,7 +11,17 @@ from urllib import error, request
 
 ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_BUNDLE = ROOT / "install/demo-workspace.json"
-REQUIRED_SURFACES = {"code", "container", "cloud", "external", "evidence", "autofix"}
+REQUIRED_SURFACES = {
+    "byo",
+    "attack_path",
+    "validation",
+    "code",
+    "container",
+    "cloud",
+    "external",
+    "evidence",
+    "autofix",
+}
 
 
 def load_bundle(path: Path) -> dict:
@@ -61,15 +71,26 @@ def render_markdown(bundle: dict) -> str:
             f"- Enterprise: {item['enterprise_path']}",
             "",
         ])
-    lines.extend(["## Evidence Pack", ""])
+    lines.extend([
+        "## BYO Offensive Validation Loop",
+        "",
+        "Bring your own tools. Flyto2 turns their findings into verified attack paths, pentest evidence, and red-team scenarios.",
+        "",
+        "```text",
+        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
+        "```",
+        "",
+        "## Evidence Pack",
+        "",
+    ])
     for ev in bundle["evidence_pack"]:
         lines.append(f"- `{ev['id']}` [{ev['surface']}] {ev['kind']}: {ev['claim']} ({ev['status']})")
     lines.extend([
         "",
         "## Claim Guardrails",
         "",
-        "This demo does not claim guaranteed coverage, 100% AutoFix success, or full replacement of any scanner.",
-        "It demonstrates the evidence-backed remediation loop and the CE/Enterprise boundary.",
+        "This demo does not claim guaranteed coverage, 100% AutoFix success, full replacement of any scanner, or replacement of the customer's existing security stack.",
+        "It demonstrates BYO offensive validation, evidence-backed remediation, and the CE/Enterprise boundary.",
         "",
     ])
     return "\n".join(lines)
