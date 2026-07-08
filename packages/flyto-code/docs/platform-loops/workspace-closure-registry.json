@@ -1,6 +1,6 @@
 {
   "schema": "flyto-code.workspace-closure-registry.v1",
-  "purpose": "Keep SaaS, open-core, enterprise airgap, admin, verification, and browser workflow boundaries tied back to the same eight product surfaces.",
+  "purpose": "Keep SaaS, open-core, enterprise airgap, admin, verification, and browser workflow boundaries tied back to the same nine product surfaces.",
   "surfacesSource": "docs/platform-loops/platform-loop-registry.json",
   "requiredSurfaces": [
     "overview",
@@ -10,7 +10,8 @@
     "runtime_cloud_identity",
     "darkweb",
     "scoring_compliance",
-    "operations_admin"
+    "operations_admin",
+    "enterprise_control"
   ],
   "repos": [
     {

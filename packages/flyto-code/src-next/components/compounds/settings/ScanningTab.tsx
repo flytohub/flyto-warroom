@@ -23,6 +23,16 @@ import {
   type ScanScheduleKind,
   type ScanScheduleRow,
 } from '@lib/engine'
+
+const SCAN_INTERVAL_OPTIONS = [
+  { label: '1m', value: '1m0s' },
+  { label: '5m', value: '5m0s' },
+  { label: '15m', value: '15m0s' },
+  { label: '30m', value: '30m0s' },
+  { label: '1h', value: '1h0m0s' },
+  { label: '6h', value: '6h0m0s' },
+  { label: '24h', value: '24h0m0s' },
+] as const
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { request } from '@lib/engine/client'
 import { sectionTitleSx, accentCardSx, rowSx, iconBoxSx, selectSx, switchSx } from './shared'
@@ -462,11 +472,11 @@ export function SystemScannersSection() {
                       disabled={patchMut.isPending}
                       sx={selectSx}
                     >
-                      {['1m','5m','15m','30m','1h','6h','24h'].map(opt => (
-                        <MenuItem key={opt} value={opt + '0s'} sx={{ fontSize: 13 }}>{opt}</MenuItem>
+                      {SCAN_INTERVAL_OPTIONS.map(opt => (
+                        <MenuItem key={opt.value} value={opt.value} sx={{ fontSize: 13 }}>{opt.label}</MenuItem>
                       ))}
                       {/* Show current interval if not in preset list */}
-                      {!['1m0s','5m0s','15m0s','30m0s','1h0m0s','6h0m0s','24h0m0s'].includes(sc.interval) && (
+                      {!SCAN_INTERVAL_OPTIONS.some(opt => opt.value === sc.interval) && (
                         <MenuItem value={sc.interval} sx={{ fontSize: 13 }}>{sc.interval}</MenuItem>
                       )}
                     </Select>

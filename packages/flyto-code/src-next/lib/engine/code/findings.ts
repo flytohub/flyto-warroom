@@ -149,8 +149,26 @@ export interface FindingsFilter {
   severity?: FindingSeverity
   grade?: FindingGrade
   asset_importance?: AssetImportance
+  affects_rating?: boolean
   threat_only?: boolean
+  has_threat_insights?: boolean
+  threat_group?: string
+  threat_activity_label?: ThreatActivityLabel
+  tag?: string
+  web_app_test?: string
   source?: string
+  first_seen_from?: string
+  first_seen_to?: string
+  last_seen_from?: string
+  last_seen_to?: string
+  impact_end_date_from?: string
+  impact_end_date_to?: string
+  no_impact_end_date_from?: string
+  no_impact_end_date_to?: string
+  remaining_lifetime_min?: number
+  remaining_lifetime_max?: number
+  assets?: string
+  vulnerability?: string
   include_resolved?: boolean
   q?: string                         // free-text search (migration 476)
   limit?: number
@@ -163,8 +181,26 @@ export function listFindings(orgId: string, filter: FindingsFilter = {}) {
   if (filter.severity) qs.set('severity', filter.severity)
   if (filter.grade) qs.set('grade', filter.grade)
   if (filter.asset_importance) qs.set('asset_importance', filter.asset_importance)
+  if (filter.affects_rating != null) qs.set('affects_rating', filter.affects_rating ? '1' : '0')
   if (filter.threat_only) qs.set('threat_only', '1')
+  if (filter.has_threat_insights != null) qs.set('has_threat_insights', filter.has_threat_insights ? '1' : '0')
+  if (filter.threat_group) qs.set('threat_group', filter.threat_group)
+  if (filter.threat_activity_label) qs.set('threat_activity_label', filter.threat_activity_label)
+  if (filter.tag) qs.set('tag', filter.tag)
+  if (filter.web_app_test) qs.set('web_app_test', filter.web_app_test)
   if (filter.source) qs.set('source', filter.source)
+  if (filter.first_seen_from) qs.set('first_seen_from', filter.first_seen_from)
+  if (filter.first_seen_to) qs.set('first_seen_to', filter.first_seen_to)
+  if (filter.last_seen_from) qs.set('last_seen_from', filter.last_seen_from)
+  if (filter.last_seen_to) qs.set('last_seen_to', filter.last_seen_to)
+  if (filter.impact_end_date_from) qs.set('impact_end_date_from', filter.impact_end_date_from)
+  if (filter.impact_end_date_to) qs.set('impact_end_date_to', filter.impact_end_date_to)
+  if (filter.no_impact_end_date_from) qs.set('no_impact_end_date_from', filter.no_impact_end_date_from)
+  if (filter.no_impact_end_date_to) qs.set('no_impact_end_date_to', filter.no_impact_end_date_to)
+  if (filter.remaining_lifetime_min != null) qs.set('remaining_lifetime_min', String(filter.remaining_lifetime_min))
+  if (filter.remaining_lifetime_max != null) qs.set('remaining_lifetime_max', String(filter.remaining_lifetime_max))
+  if (filter.assets) qs.set('assets', filter.assets)
+  if (filter.vulnerability) qs.set('vulnerability', filter.vulnerability)
   if (filter.include_resolved) qs.set('include_resolved', '1')
   if (filter.q) qs.set('q', filter.q)
   if (filter.limit != null) qs.set('limit', String(filter.limit))

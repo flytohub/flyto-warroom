@@ -71,6 +71,12 @@ export interface KernelAssetMapNode {
   dimensions: string[]
   legacy_sources: string[]
   last_seen_at?: string
+  validation_status?: string
+  validated_at?: string
+  validated_by?: string
+  asset_tier?: string
+  compliance_scope?: string
+  business_unit_id?: string
   surface: string
   asset_score?: number
   asset_display_score?: number
@@ -96,6 +102,7 @@ export interface KernelAssetMapEdge {
   confidence_label?: string
   confirmation_kind?: string
   from_surface?: string
+  attack_confidence?: number
   // discovery_pool vs confirmed_asset_graph: "confirmed" for corroborated/
   // confirmed edges, "lead" for candidate edges. In the default
   // confirmed_asset_graph a "lead" edge only appears under
@@ -121,6 +128,24 @@ export interface KernelAssetMapResponse {
   nodes: KernelAssetMapNode[]
   edges: KernelAssetMapEdge[]
   summary: KernelAssetMapSummary
+  path_confidence?: number
+}
+
+export interface KernelAssetAttributesPatch {
+  asset_tier?: string
+  validation_status?: 'verified' | 'false_positive'
+  business_unit_id?: string
+  compliance_scope?: string[]
+}
+
+export interface KernelAssetAttributesResponse {
+  resource_id: string
+  asset_tier?: string
+  validation_status?: string
+  validated_at?: string
+  validated_by?: string
+  compliance_scope?: string
+  business_unit_id?: string
 }
 
 export function getKernelAssetMap(
@@ -131,6 +156,18 @@ export function getKernelAssetMap(
   const leads = opts.showDiscoveryLeads ? '&show_discovery_leads=true' : ''
   return request<KernelAssetMapResponse>(
     'GET', `/api/v1/code/orgs/${orgId}/asset-map/kernel?limit=${limit}${leads}`,
+  )
+}
+
+export function updateKernelAssetAttributes(
+  orgId: string,
+  resourceId: string,
+  patch: KernelAssetAttributesPatch,
+) {
+  return request<KernelAssetAttributesResponse>(
+    'PATCH',
+    `/api/v1/code/orgs/${orgId}/asset-map/resources/${encodeURIComponent(resourceId)}/attributes`,
+    patch,
   )
 }
 

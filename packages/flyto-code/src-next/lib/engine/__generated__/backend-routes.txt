@@ -320,6 +320,10 @@ GET /api/v1/system/data/quality
 GET /api/v1/system/data/quality/org/{orgID}
 GET /api/v1/system/data/retention-policies
 GET /api/v1/system/data/retention-status
+GET /api/v1/system/enterprise/audit/events
+GET /api/v1/system/enterprise/audit/export
+GET /api/v1/system/enterprise/profile
+GET /api/v1/system/enterprise/readiness
 GET /api/v1/system/events
 GET /api/v1/system/events/aggregates
 GET /api/v1/system/events/stream
@@ -362,6 +366,7 @@ GET /scim/v2/Users/{id}
 GET /sitemap.xml
 PATCH /api/v1/code/ai-governance/use-cases/{useCaseId}
 PATCH /api/v1/code/orgs/{id}
+PATCH /api/v1/code/orgs/{id}/asset-map/resources/{resourceId}/attributes
 PATCH /api/v1/code/orgs/{id}/assets/{assetId}/compliance-scope
 PATCH /api/v1/code/orgs/{id}/assets/{assetId}/tier
 PATCH /api/v1/code/orgs/{id}/attack-surface/{assetId}/takedown
@@ -391,6 +396,7 @@ POST /api/v1/approvals/{id}/reject
 POST /api/v1/approvals/{id}/request-revision
 POST /api/v1/approvals/{id}/resubmit
 POST /api/v1/audit/repair
+POST /api/v1/auth/local/login
 POST /api/v1/auth/saml/{orgID}/acs
 POST /api/v1/billing/events
 POST /api/v1/billing/webhook

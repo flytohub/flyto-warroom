@@ -4,18 +4,9 @@
 # Flyto2 Warroom CE Preview
 
 Flyto2 Warroom CE is the self-hosted open-core edition of Flyto2 Warroom: a
-self-hosted open-core BYO offensive validation platform for code security,
-external attack surface, cloud/container/runtime posture, automated security
-testing, evidence, scoring, and compliance workflows.
-
-CE also remains a self-hosted open-core security warroom for local evidence,
-reports, authorization gates, and audit trails.
-
-Bring your own tools. Flyto2 turns their findings into verified attack paths,
-pentest evidence, and red-team scenarios.
-
-Not a scanner-only image: Warroom follows Findings -> Attack Paths -> Offensive
-Validation -> Evidence -> Remediation.
+local security operations cockpit for code security, external attack surface,
+cloud/container/runtime posture, automated security testing, evidence, scoring,
+and compliance workflows.
 
 This is a CE Preview for local labs, evaluators, security teams, and
 open-source users who want to run Warroom on their own Docker host.
@@ -39,16 +30,6 @@ This repository publishes Flyto2 Warroom CE services as separate tags:
 - `verification-ce` - product verification service
 - `brand-vision-ce` - brand/image analysis helper
 - `pdf-ce` - report PDF service
-
-Official service tags are Docker manifest lists for:
-
-- `linux/amd64`
-- `linux/arm64`
-
-Per-architecture inputs are published as suffix tags such as
-`engine-ce-amd64`, `engine-ce-arm64`, `code-ce-amd64`, and `code-ce-arm64`.
-Most users should pull the unsuffixed service tag and let Docker choose the
-right platform.
 
 Versioned tags are also published for reproducible installs, for example:
 
@@ -85,9 +66,8 @@ a password hash for the initial admin account.
   services.
 - Public frontend source, i18n packages, local code intelligence, YAML runtime,
   public API/capability/evidence contracts, and installer scripts.
-- Baseline workflows for BYO finding normalization, code security,
-  CTEM/external posture, attack path validation, automated security testing,
-  evidence, reports, score views, and compliance surfaces.
+- Baseline workflows for code security, CTEM/external posture, automated
+  security testing, evidence, reports, score views, and compliance surfaces.
 
 ## Enterprise Path
 
@@ -133,9 +113,10 @@ services.
 
 ## Architecture Note
 
-Official service tags are multi-arch manifest lists, not ARM64-only images.
-Check GitHub release notes, platform coverage, and image digests before
-production use.
+This image set is currently published as linux/arm64 images from the local
+release pipeline. Check GitHub release notes and image digests before production
+use. linux/amd64 and multi-arch publishing should be enabled before a broader
+public launch.
 
 ## Verify Image Digests
 
@@ -143,9 +124,6 @@ production use.
 git clone https://github.com/flytohub/flyto-warroom.git
 python3 flyto-warroom/install/scripts/verify-docker-images.py --manifest flyto-warroom/OPEN_CORE_MANIFEST.json
 ```
-
-The verifier checks tag reachability, manifest-list digest, and required
-`linux/amd64` plus `linux/arm64` platform coverage.
 
 ## License
 

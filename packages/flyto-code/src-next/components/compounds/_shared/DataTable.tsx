@@ -10,6 +10,7 @@
  */
 
 import { useMemo } from 'react'
+import { Box } from '@mui/material'
 import {
   MaterialReactTable,
   useMaterialReactTable,
@@ -53,8 +54,22 @@ export function DataTable<T extends MRT_RowData>({
     enableColumnFilters: false,
     enableFullScreenToggle: false,
     enableHiding: false,
-    muiTableContainerProps: { sx: { maxHeight: maxBodyHeight } },
-    muiTablePaperProps: { elevation: 0, sx: { borderRadius: flytoRadii.surface } },
+    muiTableContainerProps: {
+      sx: {
+        maxHeight: maxBodyHeight,
+        maxWidth: '100%',
+        overflowX: 'auto',
+      },
+    },
+    muiTablePaperProps: {
+      elevation: 0,
+      sx: {
+        borderRadius: flytoRadii.surface,
+        maxWidth: '100%',
+        minWidth: 0,
+        overflow: 'hidden',
+      },
+    },
     muiTableBodyRowProps: onRowClick
       ? ({ row }) => ({
           onClick: () => onRowClick(row.original),
@@ -67,7 +82,11 @@ export function DataTable<T extends MRT_RowData>({
     localization: emptyText ? { noRecordsToDisplay: emptyText } : undefined,
   })
 
-  return <MaterialReactTable table={table} />
+  return (
+    <Box sx={{ maxWidth: '100%', minWidth: 0, overflow: 'hidden' }}>
+      <MaterialReactTable table={table} />
+    </Box>
+  )
 }
 
 export type { MRT_ColumnDef, MRT_RowData }

@@ -38,7 +38,7 @@ export function ModeView({ manager, engineer, noAnimate }: ModeViewProps) {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -8 }}
         transition={{ duration: 0.22, ease: 'easeOut' }}
-        style={{ height: '100%', minHeight: 0 }}
+        style={{ height: '100%', minHeight: 0, width: '100%', minWidth: 0 }}
       >
         {content}
       </motion.div>

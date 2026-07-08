@@ -14,6 +14,7 @@ import { DATA_SOURCE_MAP } from './datasources'
 import { joinRows } from './joinLogic'
 import type { JoinNode, JoinEdge } from './joinLogic'
 import type { ChartType, SavedComponent, JoinConfig } from './types'
+import type { BackendReportSource } from '@lib/engine'
 import { JoinSourceList } from './JoinSourceList'
 import { JoinResultPreview } from './JoinResultPreview'
 import { JoinChartSelector } from './JoinChartSelector'
@@ -25,9 +26,10 @@ interface Props {
   fetchedData: Map<string, any[]>
   onAddSource: (sourceId: string) => void
   onSave: (comp: SavedComponent) => void
+  backendSourceById?: Record<string, BackendReportSource>
 }
 
-export function JoinSidebar({ nodes, edges, fetchedData, onAddSource, onSave }: Props) {
+export function JoinSidebar({ nodes, edges, fetchedData, onAddSource, onSave, backendSourceById }: Props) {
   const [chartType, setChartType] = useState<ChartType | ''>('')
   const [name, setName] = useState('')
   const [previewDialog, setPreviewDialog] = useState(false)
@@ -111,7 +113,7 @@ export function JoinSidebar({ nodes, edges, fetchedData, onAddSource, onSave }: 
     <Box sx={{
       flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden',
     }}>
-      <JoinSourceList nodes={nodes} onAddSource={onAddSource} />
+      <JoinSourceList nodes={nodes} onAddSource={onAddSource} backendSourceById={backendSourceById} />
 
       <JoinResultPreview
         rowCount={joinedRows.length}

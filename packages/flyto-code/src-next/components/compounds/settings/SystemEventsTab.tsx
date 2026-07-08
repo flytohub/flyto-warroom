@@ -9,7 +9,7 @@
  * are operator-hostile + rotate; this table is queryable from
  * anywhere with a Firebase ID token.
  */
-import { useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { fetchEventSource } from '@microsoft/fetch-event-source'
 import {
@@ -409,7 +409,7 @@ export function SystemEventsTab() {
           {eventsReady && events.map(ev => {
             const open = expanded.has(ev.id)
             return (
-              <>
+              <Fragment key={ev.id}>
                 <TableRow key={ev.id} sx={{ cursor: 'pointer', '&:hover': { bgcolor: 'action.hover' } }} onClick={() => toggleExpand(ev.id)}>
                   <TableCell sx={{ width: 32 }}>
                     {open ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
@@ -492,7 +492,7 @@ export function SystemEventsTab() {
                     </TableCell>
                   </TableRow>
                 )}
-              </>
+              </Fragment>
             )
           })}
         </TableBody>

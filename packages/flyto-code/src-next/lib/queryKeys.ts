@@ -216,6 +216,7 @@ export const qk = {
 
   exposure: {
     findingsFacets: (o?: string, includeResolved?: boolean) => ['findings-facets', o, includeResolved] as const,
+    findingsListAll: (o?: string) => ['findings', o] as const,
     findingsList: (o?: string, f?: Record<string, unknown>) => ['findings', o, f] as const,
     findingsPage: (
       o?: string,
@@ -400,6 +401,9 @@ export const qk = {
     notificationRules: () => ['system-notif-rules'] as const,
     orgNotificationChannels: (o?: string) => ['org-notif-channels', o] as const,
     orgNotificationRules: (o?: string) => ['org-notif-rules', o] as const,
+    enterpriseProfile: () => ['system-enterprise-profile'] as const,
+    enterpriseReadiness: (o?: string) => ['system-enterprise-readiness', o] as const,
+    enterpriseAuditEvents: (o?: string, outcome?: string, limit?: number) => ['system-enterprise-audit-events', o, outcome ?? '', limit ?? 0] as const,
     launchpadPacks: (o?: string) => ['launchpad-packs', o] as const,
     launchpadPlan: (o?: string, packId?: string) => ['launchpad-plan', o, packId] as const,
     auditTrail: (workspaceId?: string) => ['audit-trail', workspaceId] as const,

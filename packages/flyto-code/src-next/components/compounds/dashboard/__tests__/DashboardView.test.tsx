@@ -205,31 +205,4 @@ describe('DashboardView', () => {
     renderDashboard()
     expect(screen.queryByText('Welcome to Warroom')).toBeNull()
   })
-
-  it('renders cockpit navigation and the human posture model for active surfaces', async () => {
-    capabilityState.ready = true
-    capabilityState.pages = ['mcp']
-    queryStates.byKey.set('mcp-overview', {
-      data: {
-        configured: true,
-        servers: [{ id: 'mcp-1', name: 'Gateway', transport: 'sse', deploymentKind: 'edge', status: 'active', toolCount: 2, unclassifiedTools: 0, writeTools: 1 }],
-        serverStatusCounts: { active: 1 },
-        toolTotal: 2,
-        unclassifiedTools: 0,
-        recentDecisions: [],
-        decisionCounts: {},
-      },
-      isLoading: false,
-      isError: false,
-      isSuccess: true,
-    })
-
-    renderDashboard()
-
-    expect(screen.getByRole('navigation', { name: 'Dashboard workbench navigation' })).toBeDefined()
-    expect(screen.getByRole('button', { name: 'Open Runtime' })).toBeDefined()
-    expect(screen.getByText('Human security posture')).toBeDefined()
-    expect(screen.getByText('Your org as a living attack surface')).toBeDefined()
-    expect(await screen.findByRole('img', { name: 'Human security posture model' })).toBeDefined()
-  })
 })

@@ -20,6 +20,7 @@ import { qk } from '@lib/queryKeys'
 import { t, tOr } from '@lib/i18n';
 import { LoadingState } from '@atoms/LoadingState'
 import { QueryError } from '@atoms/QueryError'
+import { AgentFirewallManagerSurface, runtimeModeLabel } from './AgentFirewallManagerSurface'
 
 const BRAND = '#7c3aed'
 
@@ -63,6 +64,69 @@ function StatusChip({ label, tone }: { label: string; tone: 'ok' | 'warn' | 'off
       size="small"
       label={label}
       sx={{ height: 22, fontSize: 12, fontWeight: 800, color, bgcolor: alpha(color, 0.12), border: `1px solid ${alpha(color, 0.35)}` }}
+    />
+  )
+}
+
+export function AgentFirewallActivityManagerView() {
+  const { org } = useOrg()
+  const { data: rawData, isLoading, isError, error, refetch } = useQuery({
+    queryKey: qk.mcp.overview(org?.id),
+    queryFn: () => getMcpOverview(org!.id),
+    enabled: !!org?.id,
+    staleTime: 60_000,
+  })
+  const { data: policy } = useQuery({
+    queryKey: qk.mcp.policy(org?.id),
+    queryFn: () => getMcpPolicy(org!.id),
+    enabled: !!org?.id,
+    staleTime: 60_000,
+  })
+
+  if (isLoading) return <LoadingState variant="spinner" py={8} />
+  if (isError) return <Box sx={{ p: 3 }}><QueryError error={error} onRetry={refetch} label={t('agentFirewall.activityLoadFailed')} compact /></Box>
+
+  const data = rawData ?? EMPTY_OVERVIEW
+  const mode = ((policy?.defaultMode as MCPRolloutMode) || 'observe')
+  const liveDecisions = data.recentDecisions.filter((d) => d.toolName !== 'connection_probe')
+  const riskyDecisions = liveDecisions.filter((d) => d.stateChange || d.externalSideEffect)
+  const blocking = isBlockingMode(mode)
+  const modeLabel = runtimeModeLabel(mode)
+  const needsClassification = data.unclassifiedTools > 0
+
+  return (
+    <AgentFirewallManagerSurface
+      title={tOr('agentFirewall.manager.activityTitle', '代理程式活動')}
+      subtitle={tOr('agentFirewall.manager.activitySubtitle', '彙整代理工具呼叫、副作用、受保護伺服器與決策覆蓋狀態。')}
+      icon={<Activity size={24} />}
+      status={blocking ? tOr('agentFirewall.manager.statusEnforcing', '執法中') : tOr('agentFirewall.manager.statusObserve', '觀察 / 推行')}
+      surfaceLabel="LIVE ACTIVITY"
+      railSteps={['事件', '副作用', '風險維度', '決策']}
+      variant="activity"
+      decision={liveDecisions.length > 0
+        ? riskyDecisions.length > 0
+          ? tOr('agentFirewall.manager.activityDecisionRisk', '即時代理活動包含狀態變更或外部副作用風險。')
+          : tOr('agentFirewall.manager.activityDecisionLive', '即時代理活動已可見，可交由 SOC 審查。')
+        : tOr('agentFirewall.manager.activityDecisionConnect', '尚無即時代理流量，活動覆蓋仍應保守呈現。')}
+      decisionDetail={tOr('agentFirewall.manager.activityDecisionDetail', '管理模式摘要準備度與風險；工程模式保留控制佇列、風險維度、伺服器清單與決策 feed。')}
+      metrics={[
+        { label: tOr('agentFirewall.manager.metric.liveEvents', '即時事件'), value: liveDecisions.length, tone: liveDecisions.length > 0 ? 'good' : 'info' },
+        { label: tOr('agentFirewall.manager.metric.sideEffects', '副作用'), value: riskyDecisions.length, tone: riskyDecisions.length > 0 ? 'bad' : 'good' },
+        { label: tOr('agentFirewall.manager.metric.servers', '受保護伺服器'), value: data.servers.length, tone: data.servers.length > 0 ? 'good' : 'info' },
+        { label: tOr('agentFirewall.manager.metric.unclassified', '未分類工具'), value: data.unclassifiedTools, tone: needsClassification ? 'info' : 'good' },
+      ]}
+      primaryTitle={tOr('agentFirewall.manager.primary.activityControls', '活動控制')}
+      primaryItems={[
+        { title: t('agentFirewall.controlEnforce'), detail: blocking ? t('agentFirewall.controlEnforceOkDesc') : t('agentFirewall.controlEnforceDesc'), tone: blocking ? 'good' : 'info', status: modeLabel },
+        { title: t('agentFirewall.controlClassify'), detail: needsClassification ? tOr('agentFirewall.controlClassifyDesc', `${data.unclassifiedTools} 個工具需要分類。`) : t('agentFirewall.controlClassifyOkDesc'), tone: needsClassification ? 'info' : 'good', value: data.unclassifiedTools },
+        { title: t('agentFirewall.controlTraffic'), detail: liveDecisions.length > 0 ? t('agentFirewall.controlTrafficOkDesc') : t('agentFirewall.controlTrafficDesc'), tone: liveDecisions.length > 0 ? 'good' : 'info', value: liveDecisions.length },
+      ]}
+      secondaryTitle={tOr('agentFirewall.manager.secondary.activitySignals', '決策訊號')}
+      secondaryItems={[
+        { title: t('agentFirewall.riskDimensions'), detail: `${RISK_DIMENSIONS.length} 個維度：工具、資料、目標、動作、流向、身分、序列、歷史。`, tone: 'info', value: RISK_DIMENSIONS.length },
+        { title: t('agentFirewall.protectedServers'), detail: data.servers.length > 0 ? '已註冊伺服器與工具可納入治理。' : '尚未註冊伺服器。', tone: data.servers.length > 0 ? 'good' : 'info', value: data.servers.length },
+        { title: t('agentFirewall.decisionFeed'), detail: riskyDecisions.length > 0 ? '優先檢視狀態變更或外部副作用決策。' : '目前未看到副作用風險。', tone: riskyDecisions.length > 0 ? 'bad' : 'good', value: riskyDecisions.length },
+      ]}
     />
   )
 }

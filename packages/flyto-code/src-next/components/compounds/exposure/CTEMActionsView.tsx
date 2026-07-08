@@ -2,6 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useSnackbar } from 'notistack'
 import { Chip, Alert, Button, Stack, TextField, Checkbox, Tooltip, IconButton, Box } from '@mui/material'
+import { alpha } from '@mui/material/styles'
 import {
   FileText, ArrowUpRight, ListTree, Globe, ShieldAlert,
   Clock, CheckCircle2, RotateCcw, User, Flame, Crown, Skull,
@@ -23,7 +24,6 @@ import {
 } from '@lib/engine'
 import { getCtemPrioritiesPage } from '@lib/engine/code/posture'
 import { colors, softBg } from '@/styles/designTokens'
-import { FlytoPageHeader } from '@atoms/FlytoPageHeader'
 import { InlineErrorNotice } from '@atoms/InlineErrorNotice'
 import { QueryError } from '@atoms/QueryError'
 import { SignalStrip, type SignalSpec } from '@atoms/SignalStrip'
@@ -544,58 +544,153 @@ export function CTEMActionsView({ orgId }: CTEMActionsViewProps) {
   const ctemItemCount = (ctemQ.data?.items ?? []).length
 
   return (
-    <div className="exp-root" style={{ '--exp-accent': '#8b5cf6', '--exp-accent-end': '#a78bfa' } as React.CSSProperties}>
-      <Box sx={{
-        px: 3, pt: 3,
-        // Section accent rail — carries colors.section.exposure (#06b6d4)
-        // so the engineer view reads as the same page as the manager view.
-        borderLeft: `3px solid ${colors.section.exposure}`,
-        ml: -3, pl: 6,
-      }}>
-        <FlytoPageHeader
-          title={
-            <Box component="span" sx={{ display: 'inline-flex', alignItems: 'center', gap: 1 }}>
-              <Box
-                component="span"
-                sx={{
-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  width: 28, height: 28, borderRadius: 1.5,
-                  bgcolor: softBg(colors.section.exposure, 0.14),
-                  color: colors.section.exposure,
-                }}
-              >
-                <ShieldAlert size={16} />
-              </Box>
-              {t('ctem.actionsTitle')}
-            </Box>
-          }
-          subtitle={t('ctem.actionsLede')}
-          action={ctemItemCount > 0 ? (
-            <Button
-              size="small"
-              variant="contained"
-              color="inherit"
-              disableElevation
-              startIcon={<Wand2 size={14} />}
-              onClick={() => fixQueue.open({ filter: 'all' })}
-              sx={{
-                textTransform: 'none', fontWeight: 700,
-                bgcolor: '#7c3aed', color: '#fff', boxShadow: 'none',
-                '&:hover': { bgcolor: '#6d28d9', boxShadow: 'none' },
-                '&:active': { bgcolor: '#5b21b6', boxShadow: 'none' },
-              }}
-            >
-              {t('ctem.openFixQueue')}
-            </Button>
-          ) : undefined}
-        />
-      </Box>
-
+    <div
+      className="exp-root ctem-actions-root"
+      style={{
+        '--exp-accent': colors.section.exposure,
+        '--exp-accent-end': colors.techDeep,
+        background: 'linear-gradient(180deg, rgba(6,182,212,0.08) 0%, rgba(139,92,246,0.035) 42%, transparent 100%)',
+      } as React.CSSProperties}
+    >
       {/* ── 1. Compliance evidence export — collapsible.
             Auditors fetch the binder once per session, so it
             doesn't earn permanent vertical space at the top of
             the page. Click the header to expand. Closed by
             default; click-to-expand reveals the 7-framework grid. */}
+      <Box
+        sx={{
+          flexShrink: 0,
+          display: 'grid',
+          gridTemplateColumns: { xs: 'minmax(0, 1fr)', lg: 'minmax(0, 1fr) auto' },
+          gap: 1.5,
+          alignItems: 'stretch',
+        }}
+      >
+        <Box
+          sx={{
+            minWidth: 0,
+            borderRadius: 2,
+            border: '1px solid',
+            borderColor: (theme) => alpha(colors.section.exposure, theme.palette.mode === 'dark' ? 0.35 : 0.22),
+            bgcolor: (theme) => alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.62 : 0.9),
+            backgroundImage: (theme) => [
+              `linear-gradient(120deg, ${alpha(colors.section.exposure, theme.palette.mode === 'dark' ? 0.18 : 0.1)}, transparent 48%)`,
+              `linear-gradient(90deg, ${alpha(colors.brand, theme.palette.mode === 'dark' ? 0.1 : 0.06)}, transparent 70%)`,
+            ].join(','),
+            boxShadow: (theme) => theme.palette.mode === 'dark'
+              ? `0 18px 42px ${alpha('#000', 0.26)}`
+              : `0 14px 34px ${alpha('#334155', 0.12)}`,
+            px: { xs: 1.5, md: 2 },
+            py: 1.5,
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+          }}
+        >
+          <Box
+            sx={{
+              width: 42,
+              height: 42,
+              borderRadius: 1.75,
+              flexShrink: 0,
+              display: 'grid',
+              placeItems: 'center',
+              color: colors.section.exposure,
+              bgcolor: softBg(colors.section.exposure, 0.14),
+              boxShadow: `inset 0 0 0 1px ${softBg(colors.section.exposure, 0.32)}`,
+            }}
+          >
+            <ShieldAlert size={21} />
+          </Box>
+          <Box sx={{ minWidth: 0 }}>
+            <Stack direction="row" spacing={1} alignItems="center" sx={{ flexWrap: 'wrap', rowGap: 0.5 }}>
+              <Box component="h1" sx={{ m: 0, fontSize: { xs: 22, md: 26 }, lineHeight: 1.05, fontWeight: 850 }}>
+                {t('ctem.actionsTitle')}
+              </Box>
+              <Chip
+                size="small"
+                icon={<ListTree size={13} />}
+                label={viewMode === 'priority' ? t('ctem.viewByPriority') : viewMode === 'domain' ? t('ctem.viewByDomain') : t('ctem.viewByTier')}
+                sx={{
+                  height: 24,
+                  fontSize: 12,
+                  fontWeight: 800,
+                  color: colors.section.exposure,
+                  bgcolor: softBg(colors.section.exposure, 0.13),
+                  '& .MuiChip-icon': { color: 'inherit' },
+                }}
+              />
+            </Stack>
+            <Box sx={{ mt: 0.5, color: 'text.secondary', fontSize: 13, maxWidth: 820 }}>
+              {t('ctem.actionsLede')}
+            </Box>
+          </Box>
+        </Box>
+
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: { xs: 'repeat(3, minmax(0, 1fr))', sm: 'repeat(3, 112px)' },
+            gap: 1,
+          }}
+        >
+          <OpsMetric label={t('ctem.open')} value={benchItems.length} tone={colors.section.exposure} />
+          <OpsMetric label={t('ctem.showingOf')} value={filteredItems.length} tone={colors.brand} />
+          <OpsMetric label={t('ctem.bulkSelected')} value={selectedFps.size} tone={selectedFps.size > 0 ? colors.semantic.warning : colors.semantic.neutral} />
+        </Box>
+      </Box>
+
+      <Stack direction="row" spacing={1} alignItems="center" sx={{ flexShrink: 0, flexWrap: 'wrap', rowGap: 1 }}>
+        <Button
+          size="small"
+          variant="outlined"
+          startIcon={<RefreshCw size={14} />}
+          disabled={ctemQ.isFetching || issuesQ.isFetching}
+          onClick={() => {
+            void ctemQ.refetch()
+            void issuesQ.refetch()
+          }}
+          sx={{ textTransform: 'none', fontWeight: 700, borderRadius: 1.5 }}
+        >
+          {tOr('common.refresh', 'Refresh')}
+        </Button>
+        {ctemItemCount > 0 && (
+          <Button
+            size="small"
+            variant="contained"
+            color="inherit"
+            disableElevation
+            startIcon={<Wand2 size={14} />}
+            onClick={() => fixQueue.open({ filter: 'all' })}
+            sx={{
+              textTransform: 'none',
+              fontWeight: 800,
+              bgcolor: colors.section.exposure,
+              color: '#00111a',
+              boxShadow: 'none',
+              '&:hover': { bgcolor: colors.techDeep, boxShadow: 'none' },
+            }}
+          >
+            {t('ctem.openFixQueue')}
+          </Button>
+        )}
+        {ctemStale && (
+          <Chip
+            size="small"
+            icon={<Clock size={13} />}
+            label={t('ctem.staleTitle')}
+            sx={{
+              height: 30,
+              fontSize: 12,
+              fontWeight: 800,
+              color: colors.semantic.warning,
+              bgcolor: softBg(colors.semantic.warning, 0.13),
+              '& .MuiChip-icon': { color: 'inherit' },
+            }}
+          />
+        )}
+      </Stack>
+
       <JellyCard delay={0} noHover>
       <div className="exp-card">
         <button
@@ -1175,6 +1270,43 @@ export function CTEMActionsView({ orgId }: CTEMActionsViewProps) {
 //    CTEMActionsDetail.tsx (sibling). 2026-05-17 audit split this
 //    1323-LOC file into orchestrator + detail to reduce cognitive
 //    load and let the panel re-render independently.
+
+function OpsMetric({ label, value, tone }: { label: string; value: number; tone: string }) {
+  return (
+    <Box
+      sx={{
+        minWidth: 0,
+        borderRadius: 2,
+        border: '1px solid',
+        borderColor: (theme) => alpha(tone, theme.palette.mode === 'dark' ? 0.3 : 0.2),
+        bgcolor: (theme) => alpha(tone, theme.palette.mode === 'dark' ? 0.12 : 0.075),
+        px: 1.25,
+        py: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}
+    >
+      <Box
+        sx={{
+          color: 'text.secondary',
+          fontSize: 10,
+          fontWeight: 800,
+          letterSpacing: 0.4,
+          textTransform: 'uppercase',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {label}
+      </Box>
+      <Box sx={{ color: tone, fontSize: 22, fontWeight: 900, lineHeight: 1.1, fontVariantNumeric: 'tabular-nums' }}>
+        {value}
+      </Box>
+    </Box>
+  )
+}
 
 // formatUSDCompact compacts a dollar amount for the impact chip:
 // 1_247_892 → "$1.2M", 850_000 → "$850K". No localization yet;

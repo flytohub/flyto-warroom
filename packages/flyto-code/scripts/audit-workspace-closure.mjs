@@ -92,8 +92,8 @@ const requiredSurfaces = Array.isArray(registry.requiredSurfaces) ? registry.req
 const platformSurfaces = Array.isArray(platform.surfaces) ? platform.surfaces : []
 const actualSurfaceIds = platformSurfaces.map((surface) => surface.id).filter(Boolean)
 
-if (requiredSurfaces.length !== 8) {
-  violations.push({ file: rel(REGISTRY_FILE), reason: `expected exactly 8 required surfaces, got ${requiredSurfaces.length}` })
+if (requiredSurfaces.length !== 9) {
+  violations.push({ file: rel(REGISTRY_FILE), reason: `expected exactly 9 required surfaces, got ${requiredSurfaces.length}` })
 }
 
 if (!sameSet(requiredSurfaces, actualSurfaceIds)) {

@@ -60,6 +60,50 @@ function validateManifest() {
       violations.push({ file: rel(MANIFEST_PATH), reason: `required doc must be a root filename: ${required}` })
     }
   }
+  assertNoExcludedImports()
+}
+
+// Dependency-level boundary (not just path-level): a community-shipped Go
+// package must not IMPORT any package under an excluded fragment. Path-only
+// checks miss this — e.g. a file in the shipped internal/scanner importing the
+// excluded internal/ai would sail through green. This turns that false-green
+// into a hard failure.
+function assertNoExcludedImports() {
+  const excluded = (manifest.excludePathFragments || [])
+    .map((f) => f.replace(/^\/+|\/+$/g, ''))
+    .filter(Boolean)
+  for (const includePath of manifest.includePaths || []) {
+    const abs = path.join(WORKSPACE, includePath)
+    if (!fs.existsSync(abs) || !fs.statSync(abs).isDirectory()) continue
+    for (const file of walk(abs)) {
+      if (!file.endsWith('.go')) continue
+      const text = fs.readFileSync(file, 'utf8')
+      for (const imp of extractGoImports(text)) {
+        for (const frag of excluded) {
+          if (imp.includes(frag)) {
+            violations.push({
+              file: rel(file),
+              reason: `community Go file imports excluded package "${imp}" (matches excluded fragment "${frag}")`,
+            })
+          }
+        }
+      }
+    }
+  }
+}
+
+function extractGoImports(text) {
+  const out = []
+  const block = text.match(/import\s*\(([\s\S]*?)\)/)
+  if (block) {
+    for (const line of block[1].split('\n')) {
+      const m = line.match(/"([^"]+)"/)
+      if (m) out.push(m[1])
+    }
+  }
+  // single-line imports, incl. aliased/blank/dot forms: import _ "x", import a "x"
+  for (const m of text.matchAll(/^\s*import\s+(?:[A-Za-z0-9_.]+\s+)?"([^"]+)"/gm)) out.push(m[1])
+  return out
 }
 
 function assertAllowedPath(repoRelativePath) {
@@ -91,12 +135,11 @@ async function buildExport() {
     schema: 'flyto-community-sbom-placeholder/v1',
     note: 'Generate the release SBOM in CI before publishing the Community artifact.',
   }, null, 2))
-  await writeFile(path.join(distRoot, 'SECURITY.md'), [
-    '# Security Policy',
-    '',
-    'Report vulnerabilities privately to the Flyto maintainers. Do not publish exploit details before coordinated disclosure.',
-    '',
-  ].join('\n'))
+  // Ship the static CE distribution docs (LICENSE, README, CONTRIBUTING, CLA,
+  // SECURITY) + the CLA-assistant workflow from version-controlled templates,
+  // so every export carries them (satisfies manifest.requiredDocs — previously
+  // LICENSE/README were listed as required but never generated).
+  await cp(path.join(ROOT, 'docs', 'open-core', 'dist-docs'), distRoot, { recursive: true })
 }
 
 async function safeClean(targetPath) {

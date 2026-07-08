@@ -16,20 +16,22 @@ import { t } from '@lib/i18n';
 import { qk } from '@lib/queryKeys'
 import { useOrg } from '@hooks/useOrg'
 import { useCapabilities } from '@hooks/useCapabilities'
-import { DATA_SOURCE_MAP, canUseDataSource } from './datasources'
+import { DATA_SOURCE_MAP, reportSourceRuntimeState } from './datasources'
 import { JoinCanvas } from './JoinCanvas'
 import { JoinSidebar } from './JoinSidebar'
 import { useJoinDesigner } from './useJoinDesigner'
 import { getNestedValue } from './utils'
 import type { SavedComponent } from './types'
+import type { BackendReportSource } from '@lib/engine'
 
 interface Props {
   open: boolean
   onClose: () => void
   onSave: (comp: SavedComponent) => void
+  backendSourceById?: Record<string, BackendReportSource>
 }
 
-export function JoinDesignerModal({ open, onClose, onSave }: Props) {
+export function JoinDesignerModal({ open, onClose, onSave, backendSourceById }: Props) {
   const { org } = useOrg()
   const orgId = org?.id ?? ''
   const caps = useCapabilities(orgId)
@@ -48,7 +50,7 @@ export function JoinDesignerModal({ open, onClose, onSave }: Props) {
       return {
         queryKey: qk.reports.dataSource(n.sourceId, orgId),
         queryFn: () => ds?.fetcher(orgId),
-        enabled: !!ds && canUseDataSource(ds, caps) && !!orgId,
+        enabled: !!ds && !reportSourceRuntimeState(ds, caps, backendSourceById?.[n.sourceId]).disabled && !!orgId,
         staleTime: 2 * 60_000,
       }
     }),
@@ -70,7 +72,7 @@ export function JoinDesignerModal({ open, onClose, onSave }: Props) {
 
   function handleAddSource(sourceId: string) {
     const ds = DATA_SOURCE_MAP[sourceId]
-    if (!ds || !canUseDataSource(ds, caps)) return
+    if (!ds || reportSourceRuntimeState(ds, caps, backendSourceById?.[sourceId]).disabled) return
     addNode(sourceId, ds.fields.map(f => f.key))
   }
 
@@ -141,6 +143,7 @@ export function JoinDesignerModal({ open, onClose, onSave }: Props) {
             fetchedData={fetchedData}
             onAddSource={handleAddSource}
             onSave={handleSave}
+            backendSourceById={backendSourceById}
           />
         </Box>
       </Box>

@@ -1,0 +1,27 @@
+id: enterprise-edition-boundary-smoke
+surface: enterprise_control
+description: Verify the Enterprise control plane renders edition boundaries and refreshes from audit SSE.
+requires:
+  - frontend
+  - engine
+steps:
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/enterprise-control-plane?mode=engineer"
+  - module: browser.extract
+    selector: "main"
+  - module: api.request
+    method: GET
+    url: "{{engineUrl}}/api/v1/system/enterprise/profile"
+assertions:
+  - assert: api_path_present
+    path: /system/enterprise/profile
+  - assert: query_key_present
+    query_key: system-enterprise-profile
+  - assert: event_invalidates_query
+    event: enterprise.audit.logged
+    invalidates: qk.platform.enterpriseAuditEvents
+  - assert: route_renders_without_error
+    step: 1
+  - assert: http_status
+    step: 3
+    status: 200

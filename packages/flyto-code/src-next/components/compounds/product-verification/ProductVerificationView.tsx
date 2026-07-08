@@ -17,17 +17,18 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material'
+import { alpha, type Theme } from '@mui/material/styles'
 import { Activity, AlertTriangle, Clock, FileJson, GitBranch, Image, Network, Play, ScrollText, ShieldCheck } from 'lucide-react'
 import { FlytoCodeBlock } from '@atoms/FlytoCodeBlock'
 import { FlytoPageHeader } from '@atoms/FlytoPageHeader'
 import { FlytoSurface } from '@atoms/FlytoSurface'
-import { FlytoMetricTile } from '@atoms/FlytoMetric'
 import { TabBar } from '@atoms/TabBar'
 import { InlineErrorNotice } from '@atoms/InlineErrorNotice'
 import { QueryError } from '@atoms/QueryError'
 import { useOrg } from '@hooks/useOrg'
 import { qk } from '@lib/queryKeys'
 import { t } from '@lib/i18n';
+import { useExperience } from '@/contexts/ExperienceContext'
 import {
   createWarroomVerificationRun,
   getEventScope,
@@ -225,7 +226,6 @@ export function ProductVerificationView() {
     enabled: !!org?.id && !!selectedRun?.id && !!selectedRun?.runnerExecutionId,
     staleTime: 5000,
   })
-  const resolvedEmpty = runsQ.isSuccess && runs.length === 0
   const canRun = !!org?.id && targetUrl.trim().length > 0 && !createRun.isPending
   const contract = runsQ.data?.graph_contract ?? createRun.data?.graph_contract ?? 'warroom.product_verification.v1'
   const evidencePack = evidenceQ.data?.evidencePack ?? null
@@ -246,7 +246,8 @@ export function ProductVerificationView() {
 
   const summary = useMemo(() => summarizeRuns(runs), [runs])
   const productScanner = scannerQ.data?.scanner ?? null
-  const tabItems = useMemo(() => [
+  const primaryTabValue: VerificationTab = tab === 'overview' || tab === 'testing' || tab === 'scheduler' ? tab : 'evidence'
+  const primaryTabItems = useMemo(() => [
     {
       value: 'overview',
       label: t('productVerification.tabOverview'),
@@ -258,6 +259,26 @@ export function ProductVerificationView() {
       label: t('productVerification.tabTestingMatrix'),
       icon: <ShieldCheck size={14} />,
       count: evidencePack ? buildVerificationMatrix(selectedRun, evidencePack, evidenceQ.data?.artifacts ?? [], evidenceGate).filter((row) => row.status === 'blocked' || row.status === 'missing').length : undefined,
+    },
+    {
+      value: 'evidence',
+      label: t('productVerification.tabEvidencePack'),
+      icon: <FileJson size={14} />,
+      count: summary.withEvidence,
+    },
+    {
+      value: 'scheduler',
+      label: t('productVerification.tabSchedulerRuns'),
+      icon: <Clock size={14} />,
+      count: productScanner?.currently_running ? 1 : undefined,
+    },
+  ], [evidencePack, productScanner?.currently_running, runs.length, screenshotArtifacts.length, stateContradictions.length, summary.withEvidence])
+  const evidenceTabItems = useMemo(() => [
+    {
+      value: 'evidence',
+      label: t('productVerification.tabEvidencePack'),
+      icon: <FileJson size={14} />,
+      count: summary.withEvidence,
     },
     {
       value: 'discovery',
@@ -312,23 +333,11 @@ export function ProductVerificationView() {
       label: t('productVerification.tabRbacEntitlement'),
       icon: <ShieldCheck size={14} />,
     },
-    {
-      value: 'scheduler',
-      label: t('productVerification.tabSchedulerRuns'),
-      icon: <Clock size={14} />,
-      count: productScanner?.currently_running ? 1 : undefined,
-    },
-    {
-      value: 'evidence',
-      label: t('productVerification.tabEvidencePack'),
-      icon: <FileJson size={14} />,
-      count: summary.withEvidence,
-    },
-  ], [evidencePack, productScanner?.currently_running, runs.length, screenshotArtifacts.length, stateContradictions.length, summary.withEvidence])
+  ], [evidencePack, screenshotArtifacts.length, stateContradictions.length, summary.withEvidence])
 
   return (
     <Box sx={{ height: '100%', minHeight: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-      <Box sx={{ flexShrink: 0, px: { xs: 2, md: 4 }, pt: { xs: 2, md: 3 } }}>
+      <Box sx={{ flexShrink: 0, px: { xs: 2, md: 4 }, pt: { xs: 2, md: 2.5 } }}>
         <FlytoPageHeader
           title={t('productVerification.title')}
           subtitle={t('productVerification.subtitle')}
@@ -336,7 +345,7 @@ export function ProductVerificationView() {
         />
       </Box>
 
-      <Box sx={{ flexShrink: 0, px: { xs: 2, md: 4 }, pb: 1.5 }}>
+      <Box sx={{ flexShrink: 0, px: { xs: 2, md: 4 }, pb: 1 }}>
         <VerificationCommandPanel
           targetUrl={targetUrl}
           repoId={repoId}
@@ -351,15 +360,35 @@ export function ProductVerificationView() {
         />
       </Box>
 
-      <Box sx={{ flexShrink: 0, px: { xs: 2, md: 4 }, pb: 1 }}>
+      <Box sx={{ flexShrink: 0, px: { xs: 2, md: 4 }, pb: 0.75 }}>
         <TabBar
-          value={tab}
+          value={primaryTabValue}
           onChange={(value) => setTab(value as VerificationTab)}
-          items={tabItems}
+          items={primaryTabItems}
           noDivider
           sx={{ bgcolor: 'background.paper', border: 1, borderColor: 'divider', borderRadius: 1, px: 1 }}
         />
       </Box>
+
+      {primaryTabValue === 'evidence' && (
+        <Box sx={{ flexShrink: 0, px: { xs: 2, md: 4 }, pb: 0.75 }}>
+          <TabBar
+            value={tab}
+            onChange={(value) => setTab(value as VerificationTab)}
+            items={evidenceTabItems}
+            noDivider
+            sx={{
+              minHeight: 36,
+              bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.13 : 0.06),
+              border: 1,
+              borderColor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.28 : 0.18),
+              borderRadius: 1,
+              px: 1,
+              '& .MuiTab-root': { minHeight: 36 },
+            }}
+          />
+        </Box>
+      )}
 
       <Box sx={{ flex: 1, minHeight: 0, overflow: 'hidden', px: { xs: 2, md: 4 }, pb: 3 }}>
         {runsQ.isLoading && <LinearProgress sx={{ mb: 1 }} />}
@@ -375,38 +404,20 @@ export function ProductVerificationView() {
         )}
 
         <ScrollTabPanel active={tab === 'overview'} value="overview">
-          <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-            <FlytoMetricTile sx={{ flex: 1 }} icon={<ShieldCheck size={18} />} label={t('productVerification.contract')} value={contract} />
-            <FlytoMetricTile sx={{ flex: 1 }} icon={<Activity size={18} />} label={t('productVerification.activeRuns')} value={String(summary.active)} />
-            <FlytoMetricTile sx={{ flex: 1 }} icon={<FileJson size={18} />} label={t('productVerification.latestVerdict')} value={latest?.verdict ?? latest?.status ?? 'none'} />
-          </Stack>
-
-          <TargetVerifierSummary
-            run={selectedRun}
+          <ProductVerificationOverview
+            runs={runs}
+            selectedRun={selectedRun}
+            contract={contract}
+            evidenceGate={evidenceGate}
+            evidencePack={evidencePack}
+            artifacts={evidenceQ.data?.artifacts ?? []}
             inputTargetUrl={targetUrl}
             inputRepoId={repoId}
-            contract={contract}
+            onSelectRun={(run) => {
+              setSelectedRunId(run.id)
+              setTab('evidence')
+            }}
           />
-
-          {resolvedEmpty && (
-            <Alert severity="info">
-              {t('productVerification.empty')}
-            </Alert>
-          )}
-
-          <Stack spacing={1.5}>
-            {runs.map((run) => (
-              <RunRow
-                key={run.id}
-                run={run}
-                selected={selectedRun?.id === run.id}
-                onSelect={() => {
-                  setSelectedRunId(run.id)
-                  setTab('evidence')
-                }}
-              />
-            ))}
-          </Stack>
         </ScrollTabPanel>
 
         <ScrollTabPanel active={tab === 'testing'} value="testing">
@@ -435,56 +446,18 @@ export function ProductVerificationView() {
         </ScrollTabPanel>
 
         <ScrollTabPanel active={tab === 'evidence'} value="evidence">
-          <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden' }}>
-            <SectionHeader icon={<GitBranch size={16} />} title={t('productVerification.evidencePipeline')} />
-            <Box sx={{ p: 2, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))', xl: 'repeat(3, minmax(0, 1fr))' }, gap: 1.25 }}>
-              <PipelineStep title="Discovery" detail="Route graph, DOM snapshot, action candidates, API calls and console signals." />
-              <PipelineStep title={t('productVerification.intentGraph')} detail="Groups buttons, forms, APIs and redirects into business intents before YAML synthesis." />
-              <PipelineStep title={t('hardcoded.state.graph.775626d7')} detail="Tracks loading, error, resolved_empty, resolved_data, locked, hidden, pending, partial, stale and expired." />
-              <PipelineStep title="Replay" detail="flyto-core replays generated YAML and records network, screenshot, DOM and timing evidence." />
-              <PipelineStep title={t('productVerification.rawEvidencePack')} detail="Every finding keeps replay data, screenshots and API traces so the result is reviewable without guessing." />
-              <PipelineStep title={t('hardcoded.deterministic.gate.9ee97a15')} detail="CI blocks on reproducible contradictions before optional LLM evidence review." />
-            </Box>
-          </Paper>
-
-          <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden' }}>
-            <SectionHeader icon={<FileJson size={16} />} title={t('productVerification.latestEvidence')} />
-            <Box sx={{ p: 2, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 1.25 }}>
-              <EvidenceField label={t('productVerification.selectedRun')} value={selectedRun?.id ?? 'none'} />
-              <EvidenceField label={t('productVerification.evidenceSig')} value={selectedRun?.evidenceSig ?? evidenceQ.data?.evidenceSig ?? 'pending'} />
-              <EvidenceField label={t('productVerification.runnerExecution')} value={selectedRun?.runnerExecutionId ?? 'not dispatched'} />
-              <EvidenceField label={t('productVerification.gateVerdict')} value={evidenceGate.verdict ?? 'unknown'} />
-              <EvidenceField label={t('productVerification.gateScore')} value={formatGateScore(evidenceGate.score)} />
-              <EvidenceField label={t('productVerification.updatedAt')} value={formatDate(selectedRun?.updatedAt) || 'none'} />
-            </Box>
-            {selectedRun && !selectedRun.runnerExecutionId && (
-              <Alert severity="info" sx={{ mx: 2, mb: 2 }}>
-                {t('productVerification.evidenceWaitingForRunner')}
-              </Alert>
-            )}
-            {evidenceQ.isLoading && <LinearProgress sx={{ mx: 2, mb: 2 }} />}
-            {evidenceQ.isError && (
-              <Box sx={{ mx: 2, mb: 2 }}>
-                <QueryError compact error={evidenceQ.error} onRetry={() => { void evidenceQ.refetch() }} label={t('productVerification.latestEvidence')} />
-              </Box>
-            )}
-            {evidenceQ.isSuccess && (evidenceQ.data.artifacts.length === 0) && (
-              <Alert severity="warning" sx={{ mx: 2, mb: 2 }}>
-                {t('productVerification.noEvidenceArtifacts')}
-              </Alert>
-            )}
-            {(evidenceFindings.length > 0 || evidencePack?.scores || evidenceGate.hasGateMetadata) && (
-              <Box sx={{ px: 2, pb: 2, display: 'grid', gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1.3fr) minmax(280px, 0.7fr)' }, gap: 1.25 }}>
-                <FindingList findings={evidenceFindings} />
-                <ScorePanel pack={evidencePack} artifacts={evidenceQ.data?.artifacts ?? []} gate={evidenceGate} />
-              </Box>
-            )}
-            {evidencePack && (
-              <Box sx={{ px: 2, pb: 2 }}>
-                <EvidencePackPreview pack={evidencePack} />
-              </Box>
-            )}
-          </Paper>
+          <ProductVerificationEvidencePanel
+            selectedRun={selectedRun}
+            evidencePack={evidencePack}
+            artifacts={evidenceQ.data?.artifacts ?? []}
+            evidenceSig={evidenceQ.data?.evidenceSig ?? undefined}
+            gate={evidenceGate}
+            findings={evidenceFindings}
+            loading={evidenceQ.isLoading}
+            error={evidenceQ.isError ? evidenceQ.error : null}
+            success={evidenceQ.isSuccess}
+            onRetry={() => { void evidenceQ.refetch() }}
+          />
         </ScrollTabPanel>
 
         <ScrollTabPanel active={tab === 'yaml'} value="yaml">
@@ -568,215 +541,1064 @@ function VerificationCommandPanel({
   onDryRunChange: (value: boolean) => void
   onRun: () => void
 }) {
-  const outcomes = [
-    {
-      icon: <Network size={16} />,
-      title: t('productVerification.commandOutcomeDiscovery'),
-    },
-    {
-      icon: <Activity size={16} />,
-      title: t('productVerification.commandOutcomeReplay'),
-    },
-    {
-      icon: <FileJson size={16} />,
-      title: t('productVerification.commandOutcomeEvidence'),
-    },
-    {
-      icon: <ShieldCheck size={16} />,
-      title: t('productVerification.commandOutcomeGate'),
-    },
-  ]
-  const safeguards = [
-    t('productVerification.commandSafetyScope'),
-    t('productVerification.commandSafetyNoLlm'),
-    t('productVerification.commandSafetyArtifacts'),
-    t('productVerification.commandSafetySignature'),
-  ]
-  const contractRows = [
-    {
-      icon: <ShieldCheck size={16} />,
-      title: t('productVerification.contractScopeTitle'),
-      detail: t('productVerification.contractScopeDetail'),
-    },
-    {
-      icon: <Activity size={16} />,
-      title: t('productVerification.contractDeterministicTitle'),
-      detail: t('productVerification.contractDeterministicDetail'),
-    },
-    {
-      icon: <GitBranch size={16} />,
-      title: t('productVerification.contractLlmTitle'),
-      detail: t('productVerification.contractLlmDetail'),
-    },
-    {
-      icon: <FileJson size={16} />,
-      title: t('productVerification.contractEvidenceTitle'),
-      detail: t('productVerification.contractEvidenceDetail'),
-    },
-  ]
   const errorMessage = createError instanceof Error ? createError.message : createError ? String(createError) : ''
 
   return (
-    <FlytoSurface tone="neutral" density="regular">
+    <FlytoSurface
+      tone="tech"
+      density="compact"
+      sx={{
+        position: 'relative',
+        borderColor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.34 : 0.22),
+        bgcolor: (theme) =>
+          theme.palette.mode === 'dark'
+            ? alpha(theme.palette.background.paper, 0.72)
+            : alpha(theme.palette.background.paper, 0.96),
+        boxShadow: (theme) => `0 10px 24px ${alpha(theme.palette.common.black, theme.palette.mode === 'dark' ? 0.24 : 0.06)}`,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          inset: 0,
+          pointerEvents: 'none',
+          opacity: (theme) => (theme.palette.mode === 'dark' ? 0.36 : 0.42),
+          backgroundImage: (theme) =>
+            `linear-gradient(90deg, ${alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.12 : 0.055)} 0%, transparent 36%, ${alpha(theme.palette.info.main, theme.palette.mode === 'dark' ? 0.1 : 0.045)} 100%), linear-gradient(90deg, ${alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.08 : 0.055)} 1px, transparent 1px)`,
+          backgroundSize: '100% 100%, 28px 100%',
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          left: 0,
+          right: 0,
+          bottom: 0,
+          height: 2,
+          background: (theme) =>
+            `linear-gradient(90deg, ${alpha(theme.palette.primary.main, 0.68)}, ${alpha(theme.palette.info.main, 0.48)}, transparent)`,
+        },
+      }}
+      bodySx={{
+        position: 'relative',
+        zIndex: 1,
+        p: { xs: 1, md: 1.1 },
+        '& .MuiInputBase-root': {
+          height: 40,
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? alpha(theme.palette.background.paper, 0.78) : theme.palette.background.paper),
+          boxShadow: (theme) => `inset 0 0 0 1px ${alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.14 : 0.1)}`,
+        },
+        '& .MuiOutlinedInput-notchedOutline': {
+          borderColor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.28 : 0.18),
+        },
+        '& .Mui-focused .MuiOutlinedInput-notchedOutline': {
+          borderColor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.62 : 0.42),
+        },
+        '& .MuiButton-root': {
+          height: 40,
+          borderRadius: 1,
+        },
+      }}
+    >
       <Box
         sx={{
           display: 'grid',
-          gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) minmax(360px, 0.52fr)' },
-          gap: { xs: 2, lg: 3 },
+          gridTemplateColumns: { xs: '1fr', md: 'minmax(150px, 0.55fr) minmax(260px, 1.35fr) minmax(180px, 0.85fr) auto auto' },
+          gap: 1,
+          alignItems: 'center',
+          minWidth: 0,
+        }}
+      >
+        <Stack direction="row" spacing={0.8} alignItems="center" sx={{ minWidth: 0 }}>
+          <Box
+            sx={{
+              width: 34,
+              height: 34,
+              borderRadius: 1,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'info.main',
+              bgcolor: (theme) => alpha(theme.palette.info.main, theme.palette.mode === 'dark' ? 0.13 : 0.07),
+              border: 1,
+              borderColor: (theme) => alpha(theme.palette.info.main, theme.palette.mode === 'dark' ? 0.32 : 0.22),
+              flexShrink: 0,
+            }}
+          >
+            <Play size={16} />
+          </Box>
+          <Box sx={{ minWidth: 0 }}>
+            <Typography variant="subtitle2" fontWeight={950} noWrap>
+              {t('productVerification.commandTitle')}
+            </Typography>
+            <Typography variant="caption" color="text.secondary" noWrap sx={{ display: 'block' }}>
+              {t('productVerification.commandSubtitle')}
+            </Typography>
+          </Box>
+        </Stack>
+        <TextField
+          label={t('productVerification.targetUrl')}
+          placeholder={t('productVerification.targetUrlPlaceholder')}
+          value={targetUrl}
+          onChange={(e) => onTargetUrlChange(e.target.value)}
+          size="small"
+          sx={{ minWidth: 0 }}
+        />
+        <TextField
+          label={t('productVerification.repoId')}
+          placeholder={t('productVerification.repoIdPlaceholder')}
+          value={repoId}
+          onChange={(e) => onRepoIdChange(e.target.value)}
+          size="small"
+          sx={{ minWidth: 0 }}
+        />
+        <FormControlLabel
+          control={<Checkbox checked={dryRun} onChange={(e) => onDryRunChange(e.target.checked)} size="small" />}
+          label={t('productVerification.dryRun')}
+          sx={{ whiteSpace: 'nowrap', mx: 0 }}
+        />
+        <Button
+          variant="contained"
+          startIcon={<Play size={18} />}
+          disabled={!canRun}
+          onClick={onRun}
+          sx={{
+            minWidth: 124,
+            flexShrink: 0,
+            fontWeight: 900,
+            '&:not(.Mui-disabled)': {
+              background: (theme) => `linear-gradient(90deg, ${theme.palette.primary.main}, ${alpha(theme.palette.info.main, 0.86)})`,
+              boxShadow: (theme) => `0 10px 20px ${alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.28 : 0.18)}`,
+            },
+          }}
+        >
+          {createPending ? t('common.running') : t('productVerification.run')}
+        </Button>
+      </Box>
+      {createPending && <LinearProgress sx={{ mt: 1 }} />}
+      {errorMessage && (
+        <Box sx={{ mt: 1 }}>
+          <InlineErrorNotice error={errorMessage} />
+        </Box>
+      )}
+    </FlytoSurface>
+  )
+}
+
+function ProductVerificationOverview({
+  runs,
+  selectedRun,
+  contract,
+  evidenceGate,
+  evidencePack,
+  artifacts,
+  inputTargetUrl,
+  inputRepoId,
+  onSelectRun,
+}: {
+  runs: WarroomCampaignExecution[]
+  selectedRun?: WarroomCampaignExecution
+  contract: string
+  evidenceGate: EvidenceGateSummary
+  evidencePack: WarroomEvidencePack | null
+  artifacts: WarroomEvidenceArtifact[]
+  inputTargetUrl: string
+  inputRepoId: string
+  onSelectRun: (run: WarroomCampaignExecution) => void
+}) {
+  const activeTarget = selectedRun?.targetUrl || inputTargetUrl.trim()
+  const activeRepo = selectedRun?.repoId || inputRepoId.trim()
+  const verdict = evidenceGate.verdict ?? selectedRun?.verdict ?? selectedRun?.status ?? t('productVerification.infoNone')
+  const artifactCompleteness = evidenceGate.artifactCompleteness
+  const artifactTotal = artifactCompleteness?.required?.length ?? 3
+  const artifactPresent = artifactCompleteness?.present?.length ?? artifacts.length
+  const matrixRows = buildVerificationMatrix(selectedRun, evidencePack, artifacts, evidenceGate)
+  const blockingRows = matrixRows.filter((row) => row.status === 'blocked' || row.status === 'missing')
+  const hasTarget = Boolean(activeTarget)
+  const hasRunner = Boolean(selectedRun?.runnerExecutionId)
+  const hasEvidence = Boolean(selectedRun?.evidenceSig || evidencePack || artifactPresent > 0)
+  const hasBlockers = hasTarget && (evidenceGate.blockers.length > 0 || blockingRows.length > 0)
+  const decisionTone = !hasTarget
+    ? 'primary.main'
+    : hasBlockers
+      ? 'warning.main'
+      : hasEvidence
+        ? 'success.main'
+        : 'info.main'
+  const decisionTitle = !hasTarget
+    ? t('productVerification.commandTitle')
+    : hasBlockers
+      ? t('productVerification.overviewResolveBlockers')
+      : hasEvidence
+        ? t('productVerification.overviewReviewEvidence')
+        : t('productVerification.overviewWaitingRunner')
+  const decisionBody = !hasTarget
+    ? t('productVerification.commandSubtitle')
+    : hasBlockers
+      ? t('productVerification.overviewResolveBlockersDetail')
+      : hasEvidence
+        ? t('productVerification.overviewReviewEvidenceDetail')
+        : t('productVerification.evidenceWaitingForRunner')
+  const selectedTitle = targetHost(activeTarget) || t('productVerification.infoNeedsTarget')
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 1.25,
+        minHeight: 0,
+        flexShrink: 0,
+        width: '100%',
+        pb: 1,
+      }}
+    >
+      <Paper
+        variant="outlined"
+        sx={{
+          position: 'relative',
+          flexShrink: 0,
+          borderRadius: 1,
+          overflow: 'hidden',
+          borderColor: (theme) => alpha(resolveToneColor(theme, decisionTone), theme.palette.mode === 'dark' ? 0.38 : 0.28),
+          bgcolor: (theme) =>
+            theme.palette.mode === 'dark'
+              ? alpha(theme.palette.background.paper, 0.92)
+              : alpha(theme.palette.background.paper, 0.985),
+          boxShadow: (theme) => `0 16px 34px ${alpha(theme.palette.common.black, theme.palette.mode === 'dark' ? 0.24 : 0.06)}`,
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            inset: 0,
+            pointerEvents: 'none',
+            opacity: (theme) => (theme.palette.mode === 'dark' ? 0.3 : 0.34),
+            backgroundImage: (theme) =>
+              `linear-gradient(135deg, ${alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.12 : 0.055)}, transparent 38%, ${alpha(theme.palette.info.main, theme.palette.mode === 'dark' ? 0.1 : 0.045)} 74%, transparent), linear-gradient(${alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.08 : 0.055)} 1px, transparent 1px), linear-gradient(90deg, ${alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.07 : 0.045)} 1px, transparent 1px)`,
+            backgroundSize: '100% 100%, 32px 32px, 32px 32px',
+          },
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 3,
+            background: (theme) =>
+              `linear-gradient(90deg, ${alpha(theme.palette.primary.main, 0.72)}, ${alpha(theme.palette.info.main, 0.62)}, ${alpha(theme.palette.success.main, 0.5)})`,
+          },
+        }}
+      >
+        <TechCorners tone={decisionTone} />
+        <Box
+          sx={{
+            position: 'relative',
+            zIndex: 1,
+            p: { xs: 2, md: 2.25 },
+            display: 'grid',
+            gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) minmax(360px, 0.72fr)' },
+            gap: 2.25,
+            alignItems: 'center',
+          }}
+        >
+          <Box
+            sx={{
+              minWidth: 0,
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', md: '104px minmax(0, 1fr)' },
+              gap: 1.6,
+              alignItems: 'center',
+            }}
+          >
+            <VerificationBeacon value={hasTarget ? formatGateScore(evidenceGate.score) : 'PV'} tone={decisionTone} active={hasTarget} />
+            <Box sx={{ minWidth: 0 }}>
+              <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap sx={{ mb: 1.2 }}>
+                <Chip size="small" color={statusColor[verdict] ?? 'primary'} label={verdict} sx={{ fontWeight: 900 }} />
+                <Chip size="small" variant="outlined" label={contract} sx={{ fontWeight: 850, bgcolor: 'background.paper' }} />
+                <Chip
+                  size="small"
+                  variant="outlined"
+                  label={activeRepo || t('productVerification.infoRepoOptional')}
+                  sx={{ fontWeight: 850, maxWidth: 260, bgcolor: 'background.paper' }}
+                />
+              </Stack>
+              <Typography
+                variant="h5"
+                fontWeight={950}
+                noWrap
+                title={selectedTitle}
+                sx={{ lineHeight: 1.04, letterSpacing: 0 }}
+              >
+                {selectedTitle}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" noWrap title={activeTarget || undefined} sx={{ mt: 0.75 }}>
+                {activeTarget || t('productVerification.commandSubtitle')}
+              </Typography>
+
+              <Box
+                sx={{
+                  mt: 1.6,
+                  height: 8,
+                  borderRadius: 999,
+                  overflow: 'hidden',
+                  bgcolor: (theme) => alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.18 : 0.08),
+                }}
+              >
+                <Box
+                  sx={{
+                    width: hasTarget ? (hasEvidence ? '92%' : '52%') : '18%',
+                    height: '100%',
+                    borderRadius: 999,
+                    background: (theme) =>
+                      `linear-gradient(90deg, ${theme.palette.primary.main}, ${hasEvidence ? theme.palette.success.main : theme.palette.info.main})`,
+                  }}
+                />
+              </Box>
+
+              <VerificationPipeline
+                targetActive={hasTarget}
+                targetValue={selectedTitle}
+                evidenceActive={hasEvidence}
+                runnerActive={hasRunner}
+                artifactValue={`${artifactPresent}/${artifactTotal}`}
+              />
+
+              <Box sx={{ mt: 1.35, display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, minmax(0, 1fr))' }, gap: 0.85 }}>
+                <DecisionMetric
+                  icon={<ShieldCheck size={16} />}
+                  label={t('productVerification.gateScore')}
+                  value={formatGateScore(evidenceGate.score)}
+                  tone={decisionTone}
+                />
+                <DecisionMetric
+                  icon={<FileJson size={16} />}
+                  label={t('productVerification.matrixEvidence')}
+                  value={`${artifactPresent}/${artifactTotal}`}
+                  tone={artifactCompleteness?.complete ? 'success.main' : artifactPresent > 0 ? 'warning.main' : 'text.secondary'}
+                />
+                <DecisionMetric
+                  icon={<Activity size={16} />}
+                  label={t('productVerification.runnerExecution')}
+                  value={hasRunner ? t('productVerification.infoRunnerLinked') : t('productVerification.infoNoRunner')}
+                  tone={hasRunner ? 'success.main' : 'text.secondary'}
+                />
+              </Box>
+            </Box>
+          </Box>
+
+          <Box
+            sx={{
+              minWidth: 0,
+              border: 1,
+              borderColor: (theme) => alpha(resolveToneColor(theme, decisionTone), theme.palette.mode === 'dark' ? 0.55 : 0.42),
+              borderLeft: 4,
+              borderRadius: 1,
+              p: { xs: 1.5, md: 1.75 },
+              position: 'relative',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              gap: 1.25,
+              bgcolor: (theme) =>
+                theme.palette.mode === 'dark'
+                  ? alpha(resolveToneColor(theme, decisionTone), 0.1)
+                  : alpha(resolveToneColor(theme, decisionTone), 0.045),
+              backdropFilter: 'blur(8px)',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                inset: 0,
+                pointerEvents: 'none',
+                backgroundImage: (theme) =>
+                  `linear-gradient(90deg, ${alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.07 : 0.035)} 1px, transparent 1px)`,
+                backgroundSize: '24px 100%',
+                opacity: 0.38,
+              },
+            }}
+          >
+            <Box sx={{ minWidth: 0, position: 'relative', zIndex: 1 }}>
+              <Typography variant="caption" color="text.secondary" fontWeight={900} textTransform="uppercase" sx={{ letterSpacing: 0 }}>
+                {t('productVerification.overviewNextAction')}
+              </Typography>
+              <Typography variant="h6" fontWeight={950} sx={{ color: decisionTone, mt: 0.6, lineHeight: 1.16, letterSpacing: 0 }}>
+                {decisionTitle}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.85, lineHeight: 1.55 }}>
+                {decisionBody}
+              </Typography>
+            </Box>
+
+            <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap" sx={{ position: 'relative', zIndex: 1 }}>
+              <Chip size="small" icon={<ShieldCheck size={14} />} label={t('productVerification.testingMatrixTitle')} />
+              <Chip size="small" icon={<FileJson size={14} />} label={t('productVerification.tabEvidencePack')} />
+              <Chip size="small" icon={<Clock size={14} />} label={t('productVerification.tabSchedulerRuns')} />
+            </Stack>
+          </Box>
+        </Box>
+      </Paper>
+
+      <Box
+        sx={{
+          minHeight: 0,
+          flexShrink: 0,
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) minmax(320px, 0.42fr)' },
+          gap: 1.25,
           alignItems: 'stretch',
         }}
       >
-        <Stack spacing={1.75} sx={{ minWidth: 0 }}>
-          <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap" useFlexGap>
-            <Chip
-              size="small"
-              variant="outlined"
-              icon={<ShieldCheck size={14} />}
-              label={t('productVerification.commandKicker')}
-              sx={{ fontWeight: 750 }}
-            />
-            {safeguards.slice(0, 2).map((item) => (
-              <Chip key={item} size="small" variant="outlined" label={item} />
-            ))}
-          </Stack>
-
-          <Stack spacing={0.75}>
-            <Typography variant="h5" fontWeight={850} sx={{ lineHeight: 1.18, letterSpacing: 0 }}>
-              {t('productVerification.commandHeadline')}
-            </Typography>
-            <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 760, lineHeight: 1.65 }}>
-              {t('productVerification.commandBody')}
-            </Typography>
-          </Stack>
-
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', xl: 'repeat(4, minmax(0, 1fr))' },
-              gap: 1,
-            }}
-          >
-            {outcomes.map((item) => (
-              <Stack
-                key={item.title}
-                direction="row"
-                spacing={1}
-                alignItems="center"
-                sx={{
-                  minWidth: 0,
-                  border: 1,
-                  borderColor: 'divider',
-                  borderRadius: 1,
-                  px: 1.25,
-                  py: 1,
-                  bgcolor: 'background.paper',
-                }}
-              >
-                <Box sx={{ color: 'primary.main', lineHeight: 0 }}>{item.icon}</Box>
-                <Typography variant="caption" fontWeight={800} sx={{ minWidth: 0 }}>
-                  {item.title}
-                </Typography>
-              </Stack>
-            ))}
-          </Box>
-
-          <Stack direction="row" spacing={1} alignItems="center">
-            <ShieldCheck size={15} />
-            <Typography variant="caption" fontWeight={850}>
-              {t('productVerification.contractStripTitle')}
-            </Typography>
-          </Stack>
-
-          <Box
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' },
-              gap: 1,
-            }}
-          >
-            {contractRows.map((row) => (
-              <Stack key={row.title} direction="row" spacing={1} alignItems="flex-start" sx={{ minWidth: 0 }}>
-                <Box sx={{ color: 'primary.main', pt: 0.25, lineHeight: 0 }}>{row.icon}</Box>
-                <Box sx={{ minWidth: 0 }}>
-                  <Typography variant="caption" fontWeight={850} color="text.primary" sx={{ display: 'block' }}>
-                    {row.title}
-                  </Typography>
-                  <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.25, lineHeight: 1.45 }}>
-                    {row.detail}
-                  </Typography>
-                </Box>
-              </Stack>
-            ))}
-          </Box>
-        </Stack>
-
-        <Box
+        <Paper
+          variant="outlined"
           sx={{
-            minWidth: 0,
-            borderLeft: { xs: 0, lg: 1 },
-            borderTop: { xs: 1, lg: 0 },
-            borderColor: 'divider',
-            pl: { xs: 0, lg: 3 },
-            pt: { xs: 2, lg: 0 },
+            position: 'relative',
+            flexShrink: 0,
+            borderRadius: 1,
+            overflow: 'hidden',
+            minHeight: 'auto',
+            height: 'auto',
+            borderColor: (theme) => alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.16 : 0.12),
+            bgcolor: 'background.paper',
+            boxShadow: (theme) => `0 10px 22px ${alpha(theme.palette.common.black, theme.palette.mode === 'dark' ? 0.18 : 0.045)}`,
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 2,
+              background: (theme) =>
+                `linear-gradient(90deg, ${alpha(theme.palette.primary.main, 0.62)}, ${alpha(theme.palette.info.main, 0.46)}, transparent)`,
+            },
           }}
         >
-          <Stack spacing={1.5} sx={{ height: '100%' }}>
-            <Stack spacing={0.25}>
-              <Typography variant="subtitle2" fontWeight={850}>
-                {t('productVerification.commandTitle')}
-              </Typography>
-              <Typography variant="caption" color="text.secondary" sx={{ lineHeight: 1.45 }}>
-                {t('productVerification.commandSubtitle')}
-              </Typography>
-            </Stack>
-
-            <TextField
-              label={t('productVerification.targetUrl')}
-              placeholder={t('productVerification.targetUrlPlaceholder')}
-              value={targetUrl}
-              onChange={(e) => onTargetUrlChange(e.target.value)}
-              size="small"
-              fullWidth
-            />
-            <TextField
-              label={t('productVerification.repoId')}
-              placeholder={t('productVerification.repoIdPlaceholder')}
-              value={repoId}
-              onChange={(e) => onRepoIdChange(e.target.value)}
-              size="small"
-              fullWidth
-            />
-            <Stack direction={{ xs: 'column', sm: 'row' }} spacing={1} alignItems={{ xs: 'stretch', sm: 'center' }}>
-              <FormControlLabel
-                control={<Checkbox checked={dryRun} onChange={(e) => onDryRunChange(e.target.checked)} />}
-                label={t('productVerification.dryRun')}
-                sx={{ flex: 1, whiteSpace: 'nowrap', mx: 0 }}
+          <SectionHeader icon={<AlertTriangle size={16} />} title={t('productVerification.testingMatrixTitle')} />
+          <Box sx={{ p: 1.25, minHeight: 0 }}>
+            {hasBlockers ? (
+              <Stack spacing={0.8} sx={{ mt: 1.25 }}>
+                {evidenceGate.blockers.slice(0, 4).map((blocker) => (
+                  <EvidenceIssue key={blocker} text={blocker} tone="warning.main" />
+                ))}
+                {blockingRows.slice(0, 4).map((row) => (
+                  <EvidenceIssue key={row.id} text={`${row.title}: ${row.evidence}`} tone={row.status === 'blocked' ? 'error.main' : 'warning.main'} />
+                ))}
+              </Stack>
+            ) : (
+              <PreflightBoard
+                hasTarget={hasTarget}
+                hasEvidence={hasEvidence}
+                hasRunner={hasRunner}
+                decisionTone={decisionTone}
+                decisionTitle={decisionTitle}
+                selectedTitle={selectedTitle}
+                artifactValue={`${artifactPresent}/${artifactTotal}`}
+                verdict={verdict}
               />
-              <Button
-                variant="contained"
-                startIcon={<Play size={18} />}
-                disabled={!canRun}
-                onClick={onRun}
-                sx={{ minWidth: 144 }}
-              >
-                {createPending ? t('common.running') : t('productVerification.run')}
-              </Button>
-            </Stack>
+            )}
+          </Box>
+        </Paper>
 
-            <Stack direction="row" spacing={0.75} flexWrap="wrap" useFlexGap>
-              {safeguards.slice(2).map((item) => (
-                <Chip key={item} size="small" variant="outlined" label={item} />
-              ))}
-            </Stack>
-
-            {createPending && <LinearProgress />}
-            {errorMessage && (
-              <InlineErrorNotice error={errorMessage} />
+        <Paper
+          variant="outlined"
+          sx={{
+            position: 'relative',
+            flexShrink: 0,
+            borderRadius: 1,
+            overflow: 'hidden',
+            minHeight: 'auto',
+            height: 'auto',
+            borderColor: (theme) => alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.16 : 0.12),
+            bgcolor: 'background.paper',
+            boxShadow: (theme) => `0 10px 22px ${alpha(theme.palette.common.black, theme.palette.mode === 'dark' ? 0.18 : 0.045)}`,
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: 2,
+              background: (theme) =>
+                `linear-gradient(90deg, ${alpha(theme.palette.primary.main, 0.62)}, ${alpha(theme.palette.info.main, 0.42)}, transparent)`,
+            },
+          }}
+        >
+          <SectionHeader icon={<Clock size={16} />} title={t('productVerification.overviewRecentRuns')} />
+          <Stack spacing={0.8} sx={{ p: 1.25, minHeight: 0 }}>
+            {runs.slice(0, 4).map((run) => (
+              <CompactRunRow
+                key={run.id}
+                run={run}
+                selected={selectedRun?.id === run.id}
+                onSelect={() => onSelectRun(run)}
+              />
+            ))}
+            {runs.length === 0 && (
+              <RecentRunsEmpty />
+            )}
+            {runs.length > 4 && (
+              <Typography variant="caption" color="text.secondary" sx={{ px: 0.75 }}>
+                {t('productVerification.overviewMoreRuns', { count: runs.length - 4 })}
+              </Typography>
             )}
           </Stack>
+        </Paper>
+      </Box>
+    </Box>
+  )
+}
+
+function TechCorners({ tone }: { tone: string }) {
+  return (
+    <Box
+      aria-hidden
+      sx={{
+        position: 'absolute',
+        inset: 10,
+        pointerEvents: 'none',
+        zIndex: 1,
+        '& .corner': {
+          position: 'absolute',
+          width: 24,
+          height: 24,
+          borderColor: tone,
+          opacity: (theme) => (theme.palette.mode === 'dark' ? 0.65 : 0.5),
+        },
+        '& .tl': { top: 0, left: 0, borderTop: 2, borderLeft: 2 },
+        '& .tr': { top: 0, right: 0, borderTop: 2, borderRight: 2 },
+        '& .bl': { bottom: 0, left: 0, borderBottom: 2, borderLeft: 2 },
+        '& .br': { bottom: 0, right: 0, borderBottom: 2, borderRight: 2 },
+      }}
+    >
+      <Box className="corner tl" />
+      <Box className="corner tr" />
+      <Box className="corner bl" />
+      <Box className="corner br" />
+    </Box>
+  )
+}
+
+function resolveToneColor(theme: Theme, tone: string) {
+  switch (tone) {
+    case 'success.main':
+      return theme.palette.success.main
+    case 'warning.main':
+      return theme.palette.warning.main
+    case 'error.main':
+      return theme.palette.error.main
+    case 'info.main':
+      return theme.palette.info.main
+    case 'text.secondary':
+      return theme.palette.text.secondary
+    case 'text.primary':
+      return theme.palette.text.primary
+    case 'primary.main':
+    default:
+      return theme.palette.primary.main
+  }
+}
+
+function VerificationBeacon({ value, tone, active }: { value: string; tone: string; active: boolean }) {
+  return (
+    <Box
+      sx={{
+        width: 96,
+        height: 96,
+        borderRadius: 1,
+        position: 'relative',
+        display: { xs: 'none', md: 'grid' },
+        placeItems: 'center',
+        color: tone,
+        border: 1,
+        borderColor: tone,
+        bgcolor: (theme) => alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.5 : 0.82),
+        overflow: 'hidden',
+        boxShadow: (theme) => `inset 0 0 24px ${alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.18 : 0.11)}`,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          inset: 8,
+          borderRadius: '50%',
+          background: (theme) =>
+            `conic-gradient(from 210deg, transparent 0 22%, ${alpha(resolveToneColor(theme, tone), active ? 0.42 : 0.16)} 28%, transparent 34% 72%, ${alpha(theme.palette.info.main, 0.28)} 79%, transparent 86%)`,
+          opacity: active ? 0.95 : 0.65,
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          inset: 14,
+          border: '1px solid',
+          borderColor: tone,
+          borderRadius: '50%',
+          opacity: active ? 0.42 : 0.22,
+          boxShadow: (theme) => `0 0 0 12px ${alpha(resolveToneColor(theme, tone), 0.08)}, 0 0 0 26px ${alpha(resolveToneColor(theme, tone), 0.045)}`,
+        },
+      }}
+    >
+      <Box sx={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
+        <ShieldCheck size={20} />
+        <Typography sx={{ fontSize: 20, lineHeight: 1, fontWeight: 950, mt: 0.25, textShadow: (theme) => `0 0 16px ${alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.5 : 0.2)}` }} noWrap>
+          {value}
+        </Typography>
+      </Box>
+    </Box>
+  )
+}
+
+function VerificationPipeline({
+  targetActive,
+  targetValue,
+  evidenceActive,
+  runnerActive,
+  artifactValue,
+}: {
+  targetActive: boolean
+  targetValue: string
+  evidenceActive: boolean
+  runnerActive: boolean
+  artifactValue: string
+}) {
+  const stages = [
+    {
+      icon: <Network size={14} />,
+      label: t('productVerification.targetUrl'),
+      value: targetActive ? targetValue : t('productVerification.infoPending'),
+      active: targetActive,
+      tone: 'info.main',
+    },
+    {
+      icon: <FileJson size={14} />,
+      label: t('productVerification.tabEvidencePack'),
+      value: artifactValue,
+      active: evidenceActive,
+      tone: 'success.main',
+    },
+    {
+      icon: <Activity size={14} />,
+      label: t('productVerification.runnerExecution'),
+      value: runnerActive ? t('productVerification.infoRunnerLinked') : t('productVerification.infoNoRunner'),
+      active: runnerActive,
+      tone: 'primary.main',
+    },
+  ]
+
+  return (
+    <Box
+      sx={{
+        mt: 1.1,
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, minmax(0, 1fr))' },
+        gap: 0.7,
+        position: 'relative',
+      }}
+    >
+      {stages.map((stage, index) => (
+        <Box
+          key={stage.label}
+          sx={{
+            minWidth: 0,
+            position: 'relative',
+            border: 1,
+            borderColor: (theme) => alpha(theme.palette.divider, theme.palette.mode === 'dark' ? 0.9 : 1),
+            borderRadius: 1,
+            px: 0.9,
+            py: 0.75,
+            display: 'grid',
+            gridTemplateColumns: 'auto minmax(0, 1fr)',
+            gap: 0.7,
+            alignItems: 'center',
+            bgcolor: (theme) =>
+              stage.active
+                ? alpha(resolveToneColor(theme, stage.tone), theme.palette.mode === 'dark' ? 0.09 : 0.045)
+                : alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.6 : 0.92),
+            '&::before': index === 0 ? undefined : {
+              content: '""',
+              position: 'absolute',
+              top: '50%',
+              right: '100%',
+              width: 10,
+              height: 1,
+              bgcolor: (theme) => (stage.active ? resolveToneColor(theme, stage.tone) : theme.palette.divider),
+              transform: 'translateY(-50%)',
+            },
+          }}
+        >
+          <Box
+            sx={{
+              width: 26,
+              height: 26,
+              borderRadius: 1,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: stage.active ? stage.tone : 'text.secondary',
+              bgcolor: (theme) =>
+                alpha(stage.active ? resolveToneColor(theme, stage.tone) : theme.palette.text.secondary, theme.palette.mode === 'dark' ? 0.12 : 0.065),
+            }}
+          >
+            {stage.icon}
+          </Box>
+          <Box sx={{ minWidth: 0 }}>
+            <Typography variant="caption" color="text.secondary" fontWeight={850} noWrap>
+              {stage.label}
+            </Typography>
+            <Typography variant="body2" sx={{ color: stage.active ? stage.tone : 'text.primary', fontWeight: 950, lineHeight: 1.15 }} noWrap title={stage.value}>
+              {stage.value}
+            </Typography>
+          </Box>
+        </Box>
+      ))}
+    </Box>
+  )
+}
+
+function PreflightBoard({
+  hasTarget,
+  hasEvidence,
+  hasRunner,
+  decisionTone,
+  decisionTitle,
+  selectedTitle,
+  artifactValue,
+  verdict,
+}: {
+  hasTarget: boolean
+  hasEvidence: boolean
+  hasRunner: boolean
+  decisionTone: string
+  decisionTitle: string
+  selectedTitle: string
+  artifactValue: string
+  verdict: string
+}) {
+  const nodes = [
+    {
+      icon: <Network size={15} />,
+      label: t('productVerification.targetUrl'),
+      value: hasTarget ? selectedTitle : t('productVerification.infoPending'),
+      detail: t('productVerification.commandSubtitle'),
+      active: hasTarget,
+      tone: 'info.main',
+    },
+    {
+      icon: <FileJson size={15} />,
+      label: t('productVerification.tabEvidencePack'),
+      value: artifactValue,
+      detail: t('productVerification.evidenceWaitingForRunner'),
+      active: hasEvidence,
+      tone: 'success.main',
+    },
+    {
+      icon: <Activity size={15} />,
+      label: t('productVerification.runnerExecution'),
+      value: hasRunner ? t('productVerification.infoRunnerLinked') : t('productVerification.infoNoRunner'),
+      detail: t('productVerification.overviewWaitingRunner'),
+      active: hasRunner,
+      tone: 'primary.main',
+    },
+    {
+      icon: <ShieldCheck size={15} />,
+      label: t('productVerification.gateVerdict'),
+      value: verdict,
+      detail: decisionTitle,
+      active: hasTarget || hasEvidence,
+      tone: decisionTone,
+    },
+  ]
+
+  return (
+    <Box
+      sx={{
+        height: '100%',
+        minHeight: 176,
+        display: 'grid',
+        gridTemplateRows: 'auto minmax(0, 1fr) auto',
+        gap: 1,
+      }}
+    >
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: 'auto minmax(0, 1fr) auto',
+          gap: 0.9,
+          alignItems: 'center',
+          minWidth: 0,
+          px: 0.4,
+        }}
+      >
+        <Box sx={{ color: 'primary.main', display: 'flex' }}>
+          <GitBranch size={16} />
+        </Box>
+        <Typography variant="body2" fontWeight={950} noWrap>
+          {t('productVerification.evidencePipeline')}
+        </Typography>
+        <Chip
+          size="small"
+          label={decisionTitle}
+          sx={{
+            height: 22,
+            maxWidth: 220,
+            color: decisionTone,
+            bgcolor: (theme) => alpha(resolveToneColor(theme, decisionTone), theme.palette.mode === 'dark' ? 0.13 : 0.08),
+            fontWeight: 900,
+          }}
+        />
+      </Box>
+
+      <Box
+        sx={{
+          minHeight: 0,
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' },
+          gap: 0.85,
+        }}
+      >
+        {nodes.map((node) => (
+          <PreflightNode key={node.label} {...node} />
+        ))}
+      </Box>
+
+      <Box
+        sx={{
+          height: 8,
+          borderRadius: 999,
+          overflow: 'hidden',
+          bgcolor: (theme) => alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.16 : 0.07),
+        }}
+      >
+        <Box
+          sx={{
+            height: '100%',
+            width: hasEvidence ? '88%' : hasTarget ? '46%' : '18%',
+            borderRadius: 999,
+            background: (theme) =>
+              `linear-gradient(90deg, ${theme.palette.primary.main}, ${theme.palette.info.main}, ${hasEvidence ? theme.palette.success.main : alpha(theme.palette.info.main, 0.42)})`,
+          }}
+        />
+      </Box>
+    </Box>
+  )
+}
+
+function PreflightNode({
+  icon,
+  label,
+  value,
+  detail,
+  active,
+  tone,
+}: {
+  icon: ReactNode
+  label: string
+  value: string
+  detail: string
+  active: boolean
+  tone: string
+}) {
+  return (
+    <Box
+      sx={{
+        minWidth: 0,
+        border: 1,
+        borderColor: (theme) =>
+          alpha(resolveToneColor(theme, active ? tone : 'text.secondary'), active ? (theme.palette.mode === 'dark' ? 0.34 : 0.28) : (theme.palette.mode === 'dark' ? 0.2 : 0.16)),
+        borderRadius: 1,
+        p: 1,
+        display: 'grid',
+        gridTemplateColumns: 'auto minmax(0, 1fr)',
+        gap: 0.85,
+        alignItems: 'center',
+        bgcolor: (theme) =>
+          active
+            ? alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.095 : 0.05)
+            : alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.62 : 0.92),
+      }}
+    >
+      <Box
+        sx={{
+          width: 32,
+          height: 32,
+          borderRadius: 1,
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: active ? tone : 'text.secondary',
+          bgcolor: (theme) => alpha(resolveToneColor(theme, active ? tone : 'text.secondary'), theme.palette.mode === 'dark' ? 0.13 : 0.075),
+        }}
+      >
+        {icon}
+      </Box>
+      <Box sx={{ minWidth: 0 }}>
+        <Typography variant="caption" color="text.secondary" fontWeight={850} noWrap>
+          {label}
+        </Typography>
+        <Typography variant="body2" fontWeight={950} sx={{ color: active ? tone : 'text.primary', lineHeight: 1.1 }} noWrap title={value}>
+          {value}
+        </Typography>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.25 }} noWrap title={detail}>
+          {detail}
+        </Typography>
+      </Box>
+    </Box>
+  )
+}
+
+function RecentRunsEmpty() {
+  return (
+    <Box
+      sx={{
+        height: '100%',
+        minHeight: 176,
+        border: 1,
+        borderColor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.22 : 0.14),
+        borderRadius: 1,
+        p: 1.25,
+        display: 'grid',
+        gridTemplateRows: 'minmax(0, 1fr) auto',
+        gap: 1,
+        bgcolor: (theme) => (theme.palette.mode === 'dark' ? alpha(theme.palette.background.paper, 0.64) : alpha(theme.palette.background.paper, 0.96)),
+        backgroundImage: (theme) =>
+          `linear-gradient(${alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.07 : 0.035)} 1px, transparent 1px), linear-gradient(90deg, ${alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.06 : 0.03)} 1px, transparent 1px)`,
+        backgroundSize: '28px 28px',
+      }}
+    >
+      <Box sx={{ minWidth: 0, display: 'grid', placeItems: 'center', textAlign: 'center' }}>
+        <Box sx={{ minWidth: 0 }}>
+          <Box
+            sx={{
+              width: 42,
+              height: 42,
+              mx: 'auto',
+              borderRadius: 1,
+              display: 'inline-flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'primary.main',
+              bgcolor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.13 : 0.07),
+              border: 1,
+              borderColor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.28 : 0.2),
+            }}
+          >
+            <Clock size={18} />
+          </Box>
+          <Typography variant="body2" fontWeight={950} sx={{ mt: 1 }}>
+            {t('productVerification.overviewNoRuns')}
+          </Typography>
+          <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.45, lineHeight: 1.45 }}>
+            {t('productVerification.empty')}
+          </Typography>
         </Box>
       </Box>
-    </FlytoSurface>
+      <Stack direction="row" spacing={0.65} useFlexGap flexWrap="wrap">
+        <Chip size="small" label={t('productVerification.testingMatrixTitle')} sx={{ height: 22, fontWeight: 850 }} />
+        <Chip size="small" label={t('productVerification.tabEvidencePack')} sx={{ height: 22, fontWeight: 850 }} />
+        <Chip size="small" label={t('productVerification.tabSchedulerRuns')} sx={{ height: 22, fontWeight: 850 }} />
+      </Stack>
+    </Box>
+  )
+}
+
+function DecisionMetric({
+  icon,
+  label,
+  value,
+  tone = 'primary.main',
+}: {
+  icon: ReactNode
+  label: string
+  value: string
+  tone?: string
+}) {
+  return (
+    <Box
+      sx={{
+        minWidth: 0,
+        border: 1,
+        borderColor: (theme) => alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.14 : 0.1),
+        borderRadius: 1,
+        borderLeft: 3,
+        borderLeftColor: tone,
+        p: 1,
+        display: 'grid',
+        gridTemplateColumns: 'auto minmax(0, 1fr)',
+        gap: 0.85,
+        alignItems: 'center',
+        bgcolor: (theme) =>
+          theme.palette.mode === 'dark'
+            ? alpha(resolveToneColor(theme, tone), 0.08)
+            : alpha(resolveToneColor(theme, tone), 0.04),
+      }}
+    >
+      <Box
+        sx={{
+          width: 32,
+          height: 32,
+          borderRadius: 1,
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: tone,
+          bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.12 : 0.07),
+          flexShrink: 0,
+        }}
+      >
+        {icon}
+      </Box>
+      <Box sx={{ minWidth: 0 }}>
+        <Typography variant="caption" color="text.secondary" fontWeight={850} noWrap>
+          {label}
+        </Typography>
+        <Typography sx={{ mt: 0.35, fontSize: 19, lineHeight: 1, fontWeight: 950, color: tone }} noWrap title={value}>
+          {value}
+        </Typography>
+      </Box>
+    </Box>
+  )
+}
+
+function CompactRunRow({ run, selected, onSelect }: { run: WarroomCampaignExecution; selected: boolean; onSelect: () => void }) {
+  const status = run.verdict ?? run.status
+  return (
+    <Box
+      role="button"
+      tabIndex={0}
+      onClick={onSelect}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') onSelect()
+      }}
+      sx={{
+        minWidth: 0,
+        display: 'grid',
+        gridTemplateColumns: 'minmax(0, 1fr) auto',
+        gap: 1,
+        alignItems: 'center',
+        border: 1,
+        borderColor: selected ? 'primary.main' : 'divider',
+        borderRadius: 1,
+        px: 1,
+        py: 0.85,
+        cursor: 'pointer',
+        bgcolor: selected ? 'action.hover' : 'background.paper',
+      }}
+    >
+      <Box sx={{ minWidth: 0 }}>
+        <Typography variant="body2" fontWeight={850} noWrap title={run.targetUrl}>
+          {targetHost(run.targetUrl) || run.targetUrl}
+        </Typography>
+        <Typography variant="caption" color="text.secondary" noWrap sx={{ display: 'block' }}>
+          {formatDate(run.createdAt)} - {run.evidenceSig ?? run.runnerExecutionId ?? t('productVerification.infoPending')}
+        </Typography>
+      </Box>
+      <Stack direction="row" spacing={0.5}>
+        <Chip size="small" color={statusColor[status] ?? statusColor[run.status] ?? 'default'} label={status} sx={{ height: 22 }} />
+        {run.criticalCount > 0 && <Chip size="small" color="error" label={`P0 ${run.criticalCount}`} sx={{ height: 22 }} />}
+      </Stack>
+    </Box>
+  )
+}
+
+function EvidenceIssue({ text, tone }: { text: string; tone: string }) {
+  return (
+    <Box sx={{ border: 1, borderColor: tone, borderRadius: 1, p: 1, minWidth: 0, bgcolor: (theme) => alpha(theme.palette.warning.main, theme.palette.mode === 'dark' ? 0.1 : 0.06) }}>
+      <Typography variant="body2" fontWeight={850} sx={{ overflowWrap: 'anywhere' }}>
+        {text}
+      </Typography>
+    </Box>
   )
 }
 
@@ -804,12 +1626,12 @@ function TargetVerifierSummary({
       <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden', flex: 1, minWidth: 0 }}>
         <SectionHeader icon={<Activity size={16} />} title={t('productVerification.targetUnderVerification')} />
         <Box sx={{ p: 2, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 1.25 }}>
-          <EvidenceField label={t('hardcoded.customer.target.url.1d5eb39d')} value={activeTarget || 'enter a customer-owned URL'} />
-          <EvidenceField label={t('hardcoded.target.host.5e52ec50')} value={targetHost(activeTarget) || 'not selected'} />
-          <EvidenceField label={t('hardcoded.connected.repo.43d86abc')} value={activeRepo || 'repo optional'} />
+          <EvidenceField label={t('hardcoded.customer.target.url.1d5eb39d')} value={activeTarget || t('productVerification.infoEnterCustomerUrl')} />
+          <EvidenceField label={t('hardcoded.target.host.5e52ec50')} value={targetHost(activeTarget) || t('productVerification.infoNotSelected')} />
+          <EvidenceField label={t('hardcoded.connected.repo.43d86abc')} value={activeRepo || t('productVerification.infoRepoOptional')} />
           <EvidenceField label={t('hardcoded.verified.scope.e78a5a72')} value={verifiedScope} />
           <EvidenceField label={t('hardcoded.target.owner.d87266ba')} value="customer-owned URL/domain/repo" />
-          <EvidenceField label={t('hardcoded.current.run.af8c332e')} value={run?.id ?? 'not selected'} />
+          <EvidenceField label={t('hardcoded.current.run.af8c332e')} value={run?.id ?? t('productVerification.infoNotSelected')} />
         </Box>
       </Paper>
 
@@ -819,8 +1641,8 @@ function TargetVerifierSummary({
           <EvidenceField label={t('hardcoded.control.plane.38f00e1f')} value="flyto-engine" />
           <EvidenceField label="Runner" value="flyto-core verification runner" />
           <EvidenceField label="Contract" value={contract} />
-          <EvidenceField label={t('productVerification.evidenceSig')} value={run?.evidenceSig ?? 'pending'} />
-          <EvidenceField label={t('productVerification.runnerExecution')} value={run?.runnerExecutionId ?? 'not dispatched'} />
+          <EvidenceField label={t('productVerification.evidenceSig')} value={run?.evidenceSig ?? t('productVerification.infoPending')} />
+          <EvidenceField label={t('productVerification.runnerExecution')} value={run?.runnerExecutionId ?? t('productVerification.infoNoRunner')} />
           <EvidenceField label={t('hardcoded.gate.boundary.f75aed45')} value="server-side verifier; customer target remains external" />
         </Box>
       </Paper>
@@ -1070,8 +1892,8 @@ function ReplayTimelinePanel({
       <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden' }}>
         <SectionHeader icon={<Play size={16} />} title={t('productVerification.replayTimeline')} />
         <Box sx={{ p: 2, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(4, minmax(0, 1fr))' }, gap: 1.25 }}>
-          <EvidenceField label={t('productVerification.runnerExecution')} value={run.runnerExecutionId ?? 'not dispatched'} />
-          <EvidenceField label={t('hardcoded.replay.ok.fa567137')} value={model.replay?.ok == null ? 'unknown' : model.replay.ok ? 'yes' : 'no'} />
+          <EvidenceField label={t('productVerification.runnerExecution')} value={run.runnerExecutionId ?? t('productVerification.infoNoRunner')} />
+          <EvidenceField label={t('hardcoded.replay.ok.fa567137')} value={model.replay?.ok == null ? t('productVerification.infoUnknown') : model.replay.ok ? t('productVerification.infoYes') : t('productVerification.infoNo')} />
           <EvidenceField label={t('hardcoded.passed.total.dd49952d')} value={`${model.replay?.passed ?? 0} / ${model.replay?.total ?? replayResults.length}`} />
           <EvidenceField label="Reliability" value={formatScore(model.replay?.reliability)} />
         </Box>
@@ -1215,6 +2037,7 @@ export function AutomationTestPanel({
   artifacts: WarroomEvidenceArtifact[]
   gate: EvidenceGateSummary
 }) {
+  const { mode } = useExperience()
   const scenario = pack?.scenarios
   const model = normalizeAutomationModel(pack, artifacts, gate)
   const scenarioSteps = scenario?.steps ?? []
@@ -1240,6 +2063,10 @@ export function AutomationTestPanel({
   const matrixRows = buildVerificationMatrix(run, pack, artifacts, gate)
 
   if (!run) {
+    if (mode === 'manager') {
+      return <AutomationManagerEmptyState />
+    }
+
     return (
       <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden' }}>
         <SectionHeader icon={<Play size={16} />} title={t('productVerification.automationTests')} />
@@ -1247,6 +2074,24 @@ export function AutomationTestPanel({
           {t('productVerification.noAutomationRun')}
         </Alert>
       </Paper>
+    )
+  }
+
+  if (mode === 'manager') {
+    return (
+      <AutomationManagerTestPanel
+        run={run}
+        model={model}
+        artifacts={artifacts}
+        gate={gate}
+        matrixRows={matrixRows}
+        artifactCompleteness={artifactCompleteness}
+        requiredArtifacts={requiredArtifacts}
+        replayReliability={replayReliability}
+        p0={p0}
+        p1={p1}
+        deterministicRules={deterministicRules}
+      />
     )
   }
 
@@ -1274,9 +2119,9 @@ export function AutomationTestPanel({
           <EvidenceField label={t('hardcoded.replay.reliability.0d427d49')} value={formatScore(replayReliability)} />
           <EvidenceField label={t('hardcoded.replay.steps.73b44ac4')} value={`${model.replay?.passed ?? pack?.run?.passed ?? 0}/${model.replay?.total ?? pack?.run?.total ?? scenarioSteps.length} passed`} />
           <EvidenceField label="P0/P1 findings" value={`${p0} / ${p1}`} />
-          <EvidenceField label={t('hardcoded.scenario.contract.b9a30319')} value={scenarioModel?.schema_version ?? scenario?.schema_version ?? 'pending'} />
-          <EvidenceField label={t('productVerification.runnerExecution')} value={run.runnerExecutionId ?? 'not dispatched'} />
-          <EvidenceField label={t('productVerification.evidenceSig')} value={run.evidenceSig ?? 'pending'} />
+          <EvidenceField label={t('hardcoded.scenario.contract.b9a30319')} value={scenarioModel?.schema_version ?? scenario?.schema_version ?? t('productVerification.infoPending')} />
+          <EvidenceField label={t('productVerification.runnerExecution')} value={run.runnerExecutionId ?? t('productVerification.infoNoRunner')} />
+          <EvidenceField label={t('productVerification.evidenceSig')} value={run.evidenceSig ?? t('productVerification.infoPending')} />
           <EvidenceField label="Artifacts" value={`${artifactCompleteness?.present?.length ?? artifacts.length}/${requiredArtifacts.length} ${artifactCompleteness?.complete ? 'complete' : 'captured'}`} />
         </Box>
         {gate.blockers.length > 0 && (
@@ -1446,6 +2291,601 @@ export function AutomationTestPanel({
         </Box>
       </Paper>
     </Stack>
+  )
+}
+
+function AutomationManagerEmptyState() {
+  const waitingRows = [
+    {
+      icon: <Network size={15} />,
+      title: t('productVerification.targetUrl'),
+      detail: t('productVerification.infoEnterCustomerUrl'),
+      tone: 'info.main',
+    },
+    {
+      icon: <Activity size={15} />,
+      title: t('productVerification.runnerExecution'),
+      detail: t('productVerification.infoNoRunner'),
+      tone: 'primary.main',
+    },
+    {
+      icon: <FileJson size={15} />,
+      title: t('productVerification.tabEvidencePack'),
+      detail: t('productVerification.evidenceWaitingForRunner'),
+      tone: 'success.main',
+    },
+    {
+      icon: <ShieldCheck size={15} />,
+      title: t('productVerification.gateVerdict'),
+      detail: t('productVerification.infoPending'),
+      tone: 'warning.main',
+    },
+  ]
+
+  return (
+    <Stack spacing={1.35} sx={{ minHeight: '100%', pb: 0.5 }}>
+      <Paper
+        variant="outlined"
+        sx={{
+          borderRadius: 1,
+          overflow: 'hidden',
+          position: 'relative',
+          borderColor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.4 : 0.28),
+          bgcolor: (theme) => alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.78 : 0.95),
+          backgroundImage: (theme) =>
+            `linear-gradient(90deg, ${alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.18 : 0.08)}, transparent 42%),
+             linear-gradient(${alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.07 : 0.035)} 1px, transparent 1px),
+             linear-gradient(90deg, ${alpha(theme.palette.info.main, theme.palette.mode === 'dark' ? 0.055 : 0.03)} 1px, transparent 1px)`,
+          backgroundSize: 'auto, 28px 28px, 28px 28px',
+        }}
+      >
+        <TechCorners tone="primary.main" />
+        <Box sx={{ position: 'relative', zIndex: 2, p: { xs: 1.5, md: 2 } }}>
+          <Stack direction={{ xs: 'column', lg: 'row' }} spacing={1.5} justifyContent="space-between" alignItems={{ xs: 'stretch', lg: 'center' }}>
+            <Box sx={{ minWidth: 0 }}>
+              <Chip size="small" icon={<ShieldCheck size={14} />} label={t('productVerification.automationTests')} sx={{ height: 24, fontWeight: 900 }} />
+              <Typography variant="h5" sx={{ mt: 0.8, fontWeight: 950, lineHeight: 1.12, letterSpacing: 0 }}>
+                {t('productVerification.testingMatrixTitle')}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.45, maxWidth: 820, lineHeight: 1.55 }}>
+                {t('productVerification.noAutomationRun')}
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                minWidth: { xs: 0, lg: 260 },
+                border: 1,
+                borderColor: (theme) => alpha(theme.palette.warning.main, theme.palette.mode === 'dark' ? 0.34 : 0.24),
+                borderRadius: 1,
+                p: 1.25,
+                bgcolor: (theme) => alpha(theme.palette.warning.main, theme.palette.mode === 'dark' ? 0.09 : 0.06),
+              }}
+            >
+              <Typography variant="caption" color="text.secondary" fontWeight={850}>
+                {t('productVerification.overviewNextAction')}
+              </Typography>
+              <Typography variant="body1" sx={{ mt: 0.25, fontWeight: 950, color: 'warning.main' }}>
+                {t('productVerification.infoEnterCustomerUrl')}
+              </Typography>
+            </Box>
+          </Stack>
+        </Box>
+      </Paper>
+
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', xl: 'minmax(0, 0.64fr) minmax(320px, 0.36fr)' }, gap: 1.25, flex: 1, minHeight: 0 }}>
+        <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden', minWidth: 0 }}>
+          <SectionHeader icon={<GitBranch size={16} />} title={t('productVerification.evidencePipeline')} />
+          <Box sx={{ p: 1.5, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(4, minmax(0, 1fr))' }, gap: 0.85 }}>
+            {waitingRows.map((row) => (
+              <Box
+                key={row.title}
+                sx={{
+                  border: 1,
+                  borderColor: (theme) => alpha(resolveToneColor(theme, row.tone), theme.palette.mode === 'dark' ? 0.28 : 0.2),
+                  borderRadius: 1,
+                  p: 1,
+                  minHeight: 118,
+                  display: 'grid',
+                  gridTemplateRows: 'auto minmax(0, 1fr)',
+                  gap: 1,
+                  bgcolor: (theme) => alpha(resolveToneColor(theme, row.tone), theme.palette.mode === 'dark' ? 0.075 : 0.045),
+                }}
+              >
+                <Stack direction="row" spacing={0.75} alignItems="center">
+                  <Box sx={{ color: row.tone, display: 'flex' }}>{row.icon}</Box>
+                  <Typography variant="body2" fontWeight={950} noWrap title={row.title}>
+                    {row.title}
+                  </Typography>
+                </Stack>
+                <Typography variant="caption" color="text.secondary" sx={{ lineHeight: 1.55, alignSelf: 'end' }}>
+                  {row.detail}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Paper>
+
+        <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden', minWidth: 0 }}>
+          <SectionHeader icon={<AlertTriangle size={16} />} title={t('productVerification.overviewNextAction')} />
+          <Box sx={{ p: 1.5, display: 'grid', gap: 0.85 }}>
+            {[
+              t('productVerification.targetUrl'),
+              t('productVerification.runnerExecution'),
+              t('productVerification.tabEvidencePack'),
+              t('productVerification.gateVerdict'),
+            ].map((label) => (
+              <Box
+                key={label}
+                sx={{
+                  border: 1,
+                  borderColor: 'divider',
+                  borderRadius: 1,
+                  p: 1,
+                  display: 'grid',
+                  gridTemplateColumns: 'minmax(0, 1fr) auto',
+                  gap: 1,
+                  alignItems: 'center',
+                }}
+              >
+                <Typography variant="body2" fontWeight={850} noWrap title={label}>
+                  {label}
+                </Typography>
+                <Chip size="small" label={t('productVerification.infoPending')} sx={{ height: 22, fontWeight: 900 }} />
+              </Box>
+            ))}
+          </Box>
+        </Paper>
+      </Box>
+    </Stack>
+  )
+}
+
+function AutomationManagerTestPanel({
+  run,
+  model,
+  artifacts,
+  gate,
+  matrixRows,
+  artifactCompleteness,
+  requiredArtifacts,
+  replayReliability,
+  p0,
+  p1,
+  deterministicRules,
+}: {
+  run: WarroomCampaignExecution
+  model: WarroomAutomationTestModel
+  artifacts: WarroomEvidenceArtifact[]
+  gate: EvidenceGateSummary
+  matrixRows: VerificationMatrixRowModel[]
+  artifactCompleteness: WarroomArtifactCompleteness | undefined
+  requiredArtifacts: string[]
+  replayReliability: number | undefined
+  p0: number
+  p1: number
+  deterministicRules: DeterministicRuleSummary
+}) {
+  const blockedRows = matrixRows.filter((row) => row.status === 'blocked' || row.status === 'missing')
+  const readyRows = matrixRows.filter((row) => row.status === 'passed' || row.status === 'captured')
+  const pendingRows = matrixRows.filter((row) => row.status === 'pending')
+  const artifactPresent = artifactCompleteness?.present?.length ?? artifacts.length
+  const artifactTotal = requiredArtifacts.length || Math.max(artifactPresent, 1)
+  const artifactPercent = Math.min(100, Math.round((artifactPresent / artifactTotal) * 100))
+  const readinessScore = typeof model.readiness_score === 'number'
+    ? Math.round(model.readiness_score)
+    : typeof gate.score === 'number'
+      ? Math.round(gate.score)
+      : undefined
+  const replayPassed = model.replay?.passed ?? 0
+  const replayTotal = model.replay?.total ?? 0
+  const replayPercent = replayTotal > 0 ? Math.round((replayPassed / replayTotal) * 100) : undefined
+  const gateBlocked = (gate.verdict ?? run.verdict ?? run.status).toLowerCase().includes('block') || blockedRows.length > 0 || gate.blockers.length > 0
+  const decisionTone = gateBlocked ? 'error.main' : pendingRows.length > 0 ? 'warning.main' : 'success.main'
+  const nextAction = gateBlocked
+    ? t('productVerification.overviewResolveBlockers')
+    : artifactCompleteness && !artifactCompleteness.complete
+      ? t('hardcoded.missing.artifacts.d17dd24b')
+      : t('productVerification.overviewReviewEvidence')
+  const coverage = model.coverage
+  const coverageSignals = [
+    {
+      label: t('hardcoded.observed.coverage.cbdbdf95'),
+      value: coverage?.observed_coverage,
+      tone: 'info.main',
+    },
+    {
+      label: t('hardcoded.reachable.coverage.e4e2178c'),
+      value: coverage?.reachable_coverage,
+      tone: gateBlocked ? 'warning.main' : 'success.main',
+    },
+    {
+      label: t('hardcoded.expected.coverage.3af2c1d5'),
+      value: coverage?.expected_coverage,
+      tone: 'primary.main',
+    },
+  ]
+  const assuranceRows = [
+    {
+      icon: <ShieldCheck size={15} />,
+      title: t('productVerification.gateVerdict'),
+      value: gate.verdict ?? run.verdict ?? run.status,
+      detail: formatGateScore(gate.score),
+      tone: decisionTone,
+      progress: readinessScore,
+    },
+    {
+      icon: <Activity size={15} />,
+      title: t('hardcoded.replay.reliability.0d427d49'),
+      value: formatScore(replayReliability),
+      detail: `${replayPassed}/${replayTotal || matrixRows.length} ${t('productVerification.matrixStatusPassed')}`,
+      tone: replayReliability == null ? 'text.secondary' : replayReliability >= 0.95 ? 'success.main' : 'warning.main',
+      progress: replayReliability == null ? replayPercent : Math.round((replayReliability <= 1 ? replayReliability * 100 : replayReliability)),
+    },
+    {
+      icon: <FileJson size={15} />,
+      title: t('productVerification.tabEvidencePack'),
+      value: `${artifactPresent}/${artifactTotal}`,
+      detail: artifactCompleteness?.complete ? t('productVerification.infoEvidenceComplete') : (artifactCompleteness?.missing ?? []).join(', ') || t('productVerification.infoPending'),
+      tone: artifactCompleteness?.complete ? 'success.main' : 'warning.main',
+      progress: artifactPercent,
+    },
+    {
+      icon: <Network size={15} />,
+      title: t('productVerification.eventStreamModel'),
+      value: model.event_stream?.status ?? t('productVerification.infoPending'),
+      detail: `${model.event_stream?.observed_count ?? model.event_stream?.observed_events?.length ?? 0} ${t('hardcoded.observed.events.d38e740b')}`,
+      tone: model.event_stream?.fail_closed ? 'success.main' : model.event_stream?.status ? 'primary.main' : 'text.secondary',
+      progress: model.event_stream?.fail_closed ? 100 : model.event_stream?.status ? 64 : 24,
+    },
+    {
+      icon: <Clock size={15} />,
+      title: t('productVerification.schedulerLoopModel'),
+      value: model.scheduler_loop?.durable_job ? t('productVerification.matrixStatusCaptured') : t('productVerification.infoPending'),
+      detail: t('productVerification.matrixSchedulerEvidence', {
+        scanner: model.scheduler_loop?.scanner_id || 'product_verification',
+        runs: model.scheduler_loop?.run_count ?? 0,
+        failures: model.scheduler_loop?.fail_count ?? 0,
+      }),
+      tone: model.scheduler_loop?.durable_job ? 'success.main' : 'warning.main',
+      progress: model.scheduler_loop?.durable_job ? 88 : 36,
+    },
+  ]
+  const visibleBlockers = gate.blockers.length > 0
+    ? gate.blockers.slice(0, 4)
+    : blockedRows.slice(0, 4).map((row) => `${row.title}: ${matrixStatusLabel(row.status)}`)
+
+  return (
+    <Stack spacing={1.35} sx={{ minHeight: '100%', pb: 0.5 }}>
+      <Paper
+        variant="outlined"
+        sx={{
+          borderRadius: 1,
+          overflow: 'hidden',
+          position: 'relative',
+          borderColor: (theme) => alpha(resolveToneColor(theme, decisionTone), theme.palette.mode === 'dark' ? 0.42 : 0.32),
+          bgcolor: (theme) => alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.78 : 0.94),
+          backgroundImage: (theme) =>
+            `linear-gradient(90deg, ${alpha(resolveToneColor(theme, decisionTone), theme.palette.mode === 'dark' ? 0.16 : 0.08)}, transparent 38%),
+             linear-gradient(${alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.07 : 0.035)} 1px, transparent 1px),
+             linear-gradient(90deg, ${alpha(theme.palette.info.main, theme.palette.mode === 'dark' ? 0.055 : 0.03)} 1px, transparent 1px)`,
+          backgroundSize: 'auto, 28px 28px, 28px 28px',
+        }}
+      >
+        <TechCorners tone={decisionTone} />
+        <Box sx={{ position: 'relative', zIndex: 2, p: { xs: 1.5, md: 2 } }}>
+          <Stack direction={{ xs: 'column', lg: 'row' }} spacing={1.5} justifyContent="space-between" alignItems={{ xs: 'stretch', lg: 'center' }}>
+            <Box sx={{ minWidth: 0 }}>
+              <Stack direction="row" spacing={1} alignItems="center" flexWrap="wrap">
+                <Chip size="small" icon={<ShieldCheck size={14} />} label={t('productVerification.automationTests')} sx={{ height: 24, fontWeight: 900 }} />
+                <Chip
+                  size="small"
+                  label={`${readyRows.length}/${matrixRows.length} ${t('productVerification.matrixStatusCaptured')}`}
+                  sx={{
+                    height: 24,
+                    fontWeight: 900,
+                    color: decisionTone,
+                    bgcolor: (theme) => alpha(resolveToneColor(theme, decisionTone), theme.palette.mode === 'dark' ? 0.16 : 0.1),
+                  }}
+                />
+              </Stack>
+              <Typography variant="h5" sx={{ mt: 0.8, fontWeight: 950, lineHeight: 1.12, letterSpacing: 0 }}>
+                {t('productVerification.testingMatrixTitle')}
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ mt: 0.45, maxWidth: 840, lineHeight: 1.55 }}>
+                {t('productVerification.testingMatrixSubtitle')}
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                minWidth: { xs: 0, lg: 280 },
+                border: 1,
+                borderColor: (theme) => alpha(resolveToneColor(theme, decisionTone), theme.palette.mode === 'dark' ? 0.38 : 0.26),
+                borderRadius: 1,
+                p: 1.25,
+                bgcolor: (theme) => alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.56 : 0.8),
+              }}
+            >
+              <Typography variant="caption" color="text.secondary" fontWeight={850}>
+                {t('productVerification.overviewNextAction')}
+              </Typography>
+              <Typography variant="body1" sx={{ mt: 0.25, fontWeight: 950, color: decisionTone }}>
+                {nextAction}
+              </Typography>
+              <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.35 }} noWrap title={run.targetUrl}>
+                {targetHost(run.targetUrl) || run.repoId || run.id}
+              </Typography>
+            </Box>
+          </Stack>
+
+          <Box sx={{ mt: 1.35, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(4, minmax(0, 1fr))' }, gap: 1 }}>
+            <AutomationDecisionMetric
+              label={t('productVerification.gateScore')}
+              value={readinessScore == null ? formatGateScore(gate.score) : `${readinessScore}`}
+              detail={gate.verdict ?? run.verdict ?? run.status}
+              tone={decisionTone}
+            />
+            <AutomationDecisionMetric
+              label={t('hardcoded.replay.reliability.0d427d49')}
+              value={formatScore(replayReliability)}
+              detail={`${replayPassed}/${replayTotal || matrixRows.length} ${t('productVerification.replayTimeline')}`}
+              tone={replayReliability == null ? 'text.secondary' : replayReliability >= 0.95 ? 'success.main' : 'warning.main'}
+            />
+            <AutomationDecisionMetric
+              label={t('productVerification.tabEvidencePack')}
+              value={`${artifactPercent}%`}
+              detail={`${artifactPresent}/${artifactTotal} ${t('productVerification.tabEvidencePack')}`}
+              tone={artifactCompleteness?.complete ? 'success.main' : 'warning.main'}
+            />
+            <AutomationDecisionMetric
+              label="P0 / P1"
+              value={`${p0} / ${p1}`}
+              detail={`${deterministicRules.total} ${t('productVerification.deterministicRules')}`}
+              tone={p0 > 0 ? 'error.main' : p1 > 0 || deterministicRules.total > 0 ? 'warning.main' : 'success.main'}
+            />
+          </Box>
+        </Box>
+      </Paper>
+
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', xl: 'minmax(0, 0.62fr) minmax(320px, 0.38fr)' }, gap: 1.25, minHeight: 0 }}>
+        <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden', minWidth: 0 }}>
+          <SectionHeader icon={<GitBranch size={16} />} title={t('productVerification.evidencePipeline')} />
+          <Box sx={{ p: 1.5, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(5, minmax(0, 1fr))' }, gap: 0.85 }}>
+            {assuranceRows.map((row) => (
+              <AutomationAssuranceTile key={row.title} {...row} />
+            ))}
+          </Box>
+          <Box sx={{ px: 1.5, pb: 1.5, display: 'grid', gap: 0.85 }}>
+            {coverageSignals.map((item) => (
+              <AutomationCoverageRail key={item.label} label={item.label} value={item.value} tone={item.tone} />
+            ))}
+          </Box>
+        </Paper>
+
+        <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden', minWidth: 0 }}>
+          <SectionHeader icon={<AlertTriangle size={16} />} title={t('productVerification.overviewNextAction')} />
+          <Box sx={{ p: 1.5 }}>
+            {visibleBlockers.length > 0 ? (
+              <Stack spacing={0.85}>
+                {visibleBlockers.map((blocker, index) => (
+                  <Box
+                    key={`${blocker}-${index}`}
+                    sx={{
+                      border: 1,
+                      borderColor: (theme) => alpha(theme.palette.warning.main, theme.palette.mode === 'dark' ? 0.36 : 0.28),
+                      borderRadius: 1,
+                      p: 1,
+                      display: 'grid',
+                      gridTemplateColumns: 'auto minmax(0, 1fr)',
+                      gap: 0.85,
+                      bgcolor: (theme) => alpha(theme.palette.warning.main, theme.palette.mode === 'dark' ? 0.1 : 0.07),
+                    }}
+                  >
+                    <Box sx={{ color: 'warning.main', display: 'flex', mt: 0.25 }}>
+                      <AlertTriangle size={15} />
+                    </Box>
+                    <Typography variant="body2" fontWeight={850} sx={{ overflowWrap: 'anywhere', lineHeight: 1.45 }}>
+                      {blocker}
+                    </Typography>
+                  </Box>
+                ))}
+              </Stack>
+            ) : (
+              <Box
+                sx={{
+                  border: 1,
+                  borderColor: (theme) => alpha(theme.palette.success.main, theme.palette.mode === 'dark' ? 0.34 : 0.25),
+                  borderRadius: 1,
+                  p: 1.25,
+                  bgcolor: (theme) => alpha(theme.palette.success.main, theme.palette.mode === 'dark' ? 0.09 : 0.06),
+                }}
+              >
+                <Typography variant="body2" fontWeight={950} color="success.main">
+                  {t('productVerification.overviewReviewEvidence')}
+                </Typography>
+                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.4, lineHeight: 1.55 }}>
+                  {run.evidenceSig ?? t('productVerification.infoEvidenceComplete')}
+                </Typography>
+              </Box>
+            )}
+            {(artifactCompleteness?.missing ?? []).length > 0 && (
+              <Box sx={{ mt: 1 }}>
+                <Typography variant="caption" color="text.secondary" fontWeight={850}>
+                  {t('hardcoded.missing.artifacts.d17dd24b')}
+                </Typography>
+                <Stack direction="row" spacing={0.75} flexWrap="wrap" useFlexGap sx={{ mt: 0.75 }}>
+                  {(artifactCompleteness?.missing ?? []).map((kind) => (
+                    <Chip key={kind} size="small" variant="outlined" color="warning" label={formatScoreKey(kind)} />
+                  ))}
+                </Stack>
+              </Box>
+            )}
+          </Box>
+        </Paper>
+      </Box>
+
+      <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden', flex: 1, minHeight: 0 }}>
+        <SectionHeader icon={<ShieldCheck size={16} />} title={t('hardcoded.evidence.matrix.7adfb5df')} />
+        <Box sx={{ p: 1.5, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))', xl: 'repeat(3, minmax(0, 1fr))' }, gap: 0.85 }}>
+          {matrixRows.map((row) => (
+            <AutomationMatrixTile key={row.id} row={row} />
+          ))}
+        </Box>
+      </Paper>
+    </Stack>
+  )
+}
+
+function AutomationDecisionMetric({
+  label,
+  value,
+  detail,
+  tone,
+}: {
+  label: string
+  value: string
+  detail: string
+  tone: string
+}) {
+  return (
+    <Box
+      sx={{
+        minWidth: 0,
+        border: 1,
+        borderColor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.32 : 0.24),
+        borderRadius: 1,
+        p: 1.1,
+        bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.1 : 0.055),
+      }}
+    >
+      <Typography variant="caption" color="text.secondary" fontWeight={850} noWrap>
+        {label}
+      </Typography>
+      <Typography sx={{ mt: 0.25, fontSize: 26, lineHeight: 1, fontWeight: 950, color: tone }} noWrap>
+        {value}
+      </Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.45 }} noWrap title={detail}>
+        {detail}
+      </Typography>
+    </Box>
+  )
+}
+
+function AutomationAssuranceTile({
+  icon,
+  title,
+  value,
+  detail,
+  tone,
+  progress,
+}: {
+  icon: ReactNode
+  title: string
+  value: string
+  detail: string
+  tone: string
+  progress?: number
+}) {
+  const normalized = typeof progress === 'number' && Number.isFinite(progress) ? Math.max(0, Math.min(100, progress)) : 0
+
+  return (
+    <Box
+      sx={{
+        minWidth: 0,
+        border: 1,
+        borderColor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.26 : 0.2),
+        borderRadius: 1,
+        p: 1,
+        display: 'grid',
+        gridTemplateRows: 'auto minmax(0, 1fr) auto',
+        gap: 0.75,
+        bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.075 : 0.045),
+      }}
+    >
+      <Stack direction="row" spacing={0.7} alignItems="center" sx={{ minWidth: 0 }}>
+        <Box sx={{ color: tone, display: 'flex' }}>{icon}</Box>
+        <Typography variant="caption" color="text.secondary" fontWeight={850} noWrap>
+          {title}
+        </Typography>
+      </Stack>
+      <Box sx={{ minWidth: 0 }}>
+        <Typography variant="body2" fontWeight={950} sx={{ color: tone, lineHeight: 1.15 }} noWrap title={value}>
+          {value}
+        </Typography>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.35 }} noWrap title={detail}>
+          {detail}
+        </Typography>
+      </Box>
+      <Box sx={{ height: 5, borderRadius: 999, overflow: 'hidden', bgcolor: (theme) => alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.16 : 0.08) }}>
+        <Box
+          sx={{
+            height: '100%',
+            width: `${normalized}%`,
+            borderRadius: 999,
+            bgcolor: tone,
+          }}
+        />
+      </Box>
+    </Box>
+  )
+}
+
+function AutomationCoverageRail({ label, value, tone }: { label: string; value: number | undefined; tone: string }) {
+  const normalized = typeof value === 'number' && Number.isFinite(value)
+    ? Math.max(0, Math.min(100, value <= 1 ? value * 100 : value))
+    : 0
+
+  return (
+    <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '190px minmax(0, 1fr) auto' }, gap: 1, alignItems: 'center' }}>
+      <Typography variant="caption" fontWeight={850} color="text.secondary" noWrap>
+        {label}
+      </Typography>
+      <Box sx={{ height: 7, borderRadius: 999, overflow: 'hidden', bgcolor: (theme) => alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.14 : 0.07) }}>
+        <Box sx={{ height: '100%', width: `${normalized}%`, borderRadius: 999, bgcolor: tone }} />
+      </Box>
+      <Typography variant="caption" fontWeight={900} sx={{ color: tone }}>
+        {formatScore(value)}
+      </Typography>
+    </Box>
+  )
+}
+
+function AutomationMatrixTile({ row }: { row: VerificationMatrixRowModel }) {
+  const tone = matrixStatusTone(row.status)
+
+  return (
+    <Box
+      sx={{
+        minWidth: 0,
+        border: 1,
+        borderColor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.32 : 0.22),
+        borderRadius: 1,
+        p: 1,
+        bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.075 : 0.04),
+      }}
+    >
+      <Stack direction="row" spacing={0.75} alignItems="center" justifyContent="space-between" sx={{ minWidth: 0 }}>
+        <Typography variant="body2" fontWeight={950} noWrap title={row.title}>
+          {row.title}
+        </Typography>
+        <Chip
+          size="small"
+          label={matrixStatusLabel(row.status)}
+          sx={{
+            height: 22,
+            flexShrink: 0,
+            color: tone,
+            bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.15 : 0.09),
+            fontWeight: 900,
+          }}
+        />
+      </Stack>
+      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.45, lineHeight: 1.45 }} noWrap title={row.evidence}>
+        {row.evidence}
+      </Typography>
+      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.35 }} noWrap title={row.owner}>
+        {t('productVerification.matrixOwner')}: {row.owner}
+      </Typography>
+    </Box>
   )
 }
 
@@ -1655,6 +3095,14 @@ function matrixStatusColor(status: VerificationMatrixStatus): 'default' | 'prima
   return 'default'
 }
 
+function matrixStatusTone(status: VerificationMatrixStatus) {
+  if (status === 'passed') return 'success.main'
+  if (status === 'captured') return 'primary.main'
+  if (status === 'blocked') return 'error.main'
+  if (status === 'missing') return 'warning.main'
+  return 'text.secondary'
+}
+
 function matrixStatusLabel(status: VerificationMatrixStatus) {
   if (status === 'passed') return t('productVerification.matrixStatusPassed')
   if (status === 'captured') return t('productVerification.matrixStatusCaptured')
@@ -1831,7 +3279,7 @@ function normalizeAutomationModel(
   }
 }
 
-function ScrollTabPanel({ active, value, children }: { active: boolean; value: VerificationTab; children: ReactNode }) {
+function ScrollTabPanel({ active, value, children, scroll = true }: { active: boolean; value: VerificationTab; children: ReactNode; scroll?: boolean }) {
   if (!active) return null
 
   return (
@@ -1842,12 +3290,12 @@ function ScrollTabPanel({ active, value, children }: { active: boolean; value: V
       sx={{
         height: '100%',
         minHeight: 0,
-        overflowY: 'auto',
+        overflowY: scroll ? 'auto' : 'hidden',
         overflowX: 'hidden',
         pr: 0.5,
         display: 'flex',
         flexDirection: 'column',
-        gap: 2,
+        gap: scroll ? 2 : 0,
       }}
     >
       {children}
@@ -1864,11 +3312,347 @@ function SectionHeader({ icon, title }: { icon: ReactNode; title: string }) {
   )
 }
 
-function PipelineStep({ title, detail }: { title: string; detail: string }) {
+function ProductVerificationEvidencePanel({
+  selectedRun,
+  evidencePack,
+  artifacts,
+  evidenceSig,
+  gate,
+  findings,
+  loading,
+  error,
+  success,
+  onRetry,
+}: {
+  selectedRun?: WarroomCampaignExecution
+  evidencePack: WarroomEvidencePack | null
+  artifacts: WarroomEvidenceArtifact[]
+  evidenceSig?: string
+  gate: EvidenceGateSummary
+  findings: WarroomEvidenceFinding[]
+  loading: boolean
+  error: unknown
+  success: boolean
+  onRetry: () => void
+}) {
+  const model = normalizeAutomationModel(evidencePack, artifacts, gate)
+  const graph = evidencePack?.site_graph
+  const pages = graph?.pages?.length ?? 0
+  const intents = graph?.intents?.length ?? 0
+  const observedStates = Array.from(new Set((graph?.pages ?? []).flatMap((page) => page.states ?? []))).length
+  const replaySteps = model.replay?.total ?? model.replay?.steps?.length ?? evidencePack?.run?.results?.length ?? 0
+  const scoreRows = Object.keys(gate.scoreBreakdown).length
+  const artifactCompleteness = gate.artifactCompleteness
+  const artifactTotal = artifactCompleteness?.required?.length ?? 3
+  const artifactPresent = artifactCompleteness?.present?.length ?? artifacts.length
+  const missingArtifacts = artifactCompleteness?.missing ?? []
+  const hasRunner = Boolean(selectedRun?.runnerExecutionId)
+  const hasEvidence = Boolean(evidencePack || evidenceSig || selectedRun?.evidenceSig || artifactPresent > 0)
+  const evidenceGapCount = gate.blockers.length + missingArtifacts.length + (success && artifacts.length === 0 ? 1 : 0)
+  const gateStatus: VerificationMatrixStatus = gate.blockers.length > 0 ? 'blocked' : gate.verdict ? 'passed' : hasEvidence ? 'captured' : 'pending'
+  const runnerStatus: VerificationMatrixStatus = hasRunner ? 'captured' : selectedRun ? 'pending' : 'missing'
+  const artifactStatus: VerificationMatrixStatus = artifactPresent > 0 ? 'captured' : hasRunner || success ? 'missing' : 'pending'
+  const gapStatus: VerificationMatrixStatus = evidenceGapCount > 0 ? 'blocked' : hasEvidence ? 'passed' : 'pending'
+  const stageStatus = (count: number): VerificationMatrixStatus => (count > 0 ? 'captured' : hasEvidence ? 'missing' : 'pending')
+  const selectedRunLabel = selectedRun?.id ?? t('productVerification.infoNone')
+  const evidenceSignature = selectedRun?.evidenceSig ?? evidenceSig ?? t('productVerification.infoPending')
+  const nextActionValue = evidenceGapCount > 0 ? String(evidenceGapCount) : hasEvidence ? t('productVerification.matrixStatusPassed') : t('productVerification.infoNeedsTarget')
+  const nextActionDetail = evidenceGapCount > 0
+    ? t('productVerification.overviewResolveBlockers')
+    : hasEvidence
+      ? t('productVerification.overviewReviewEvidence')
+      : t('productVerification.commandSubtitle')
+
+  const pipelineSteps = [
+    {
+      icon: <Network size={16} />,
+      title: t('productVerification.discoveryEvidence'),
+      detail: t('productVerification.pipelineDiscoveryDetail'),
+      value: String(pages),
+      status: stageStatus(pages),
+    },
+    {
+      icon: <GitBranch size={16} />,
+      title: t('productVerification.intentGraph'),
+      detail: t('productVerification.pipelineIntentDetail'),
+      value: String(intents),
+      status: stageStatus(intents),
+    },
+    {
+      icon: <Activity size={16} />,
+      title: t('productVerification.stateApiGraph'),
+      detail: t('productVerification.pipelineStateDetail'),
+      value: String(observedStates),
+      status: stageStatus(observedStates),
+    },
+    {
+      icon: <Play size={16} />,
+      title: t('productVerification.replayTimeline'),
+      detail: t('productVerification.pipelineReplayDetail'),
+      value: String(replaySteps),
+      status: stageStatus(replaySteps),
+    },
+    {
+      icon: <FileJson size={16} />,
+      title: t('productVerification.rawEvidencePack'),
+      detail: t('productVerification.pipelineEvidenceDetail'),
+      value: `${artifactPresent}/${artifactTotal}`,
+      status: artifactStatus,
+    },
+    {
+      icon: <ShieldCheck size={16} />,
+      title: t('productVerification.deterministicRules'),
+      detail: t('productVerification.pipelineGateDetail'),
+      value: gate.hasGateMetadata ? formatGateScore(gate.score) : String(scoreRows),
+      status: gateStatus,
+    },
+  ] satisfies Array<{ icon: ReactNode; title: string; detail: string; value: string; status: VerificationMatrixStatus }>
+
   return (
-    <Box sx={{ p: 1.5, border: 1, borderColor: 'divider', borderRadius: 1, minWidth: 0 }}>
-      <Typography variant="body2" fontWeight={800}>{title}</Typography>
-      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.5, lineHeight: 1.55 }}>{detail}</Typography>
+    <Box sx={{ height: '100%', minHeight: 0, display: 'grid', gridTemplateRows: 'auto minmax(0, 1fr)', gap: 1.25, overflow: 'hidden' }}>
+      <Paper
+        variant="outlined"
+        sx={{
+          borderRadius: 1,
+          overflow: 'hidden',
+          borderColor: (theme) => alpha(theme.palette.primary.main, theme.palette.mode === 'dark' ? 0.28 : 0.18),
+          bgcolor: (theme) => (theme.palette.mode === 'dark' ? alpha(theme.palette.background.paper, 0.84) : alpha(theme.palette.background.paper, 0.98)),
+        }}
+      >
+        <Box sx={{ p: 1.25, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(4, minmax(0, 1fr))' }, gap: 1 }}>
+          <EvidenceSignalCard
+            icon={<ShieldCheck size={17} />}
+            label={t('productVerification.gateVerdict')}
+            value={gate.verdict ?? t('productVerification.infoUnknown')}
+            detail={formatGateScore(gate.score)}
+            status={gateStatus}
+          />
+          <EvidenceSignalCard
+            icon={<FileJson size={17} />}
+            label={t('productVerification.matrixEvidence')}
+            value={`${artifactPresent}/${artifactTotal}`}
+            detail={missingArtifacts.length > 0 ? missingArtifacts.join(', ') : t('productVerification.overviewReviewEvidence')}
+            status={artifactStatus}
+          />
+          <EvidenceSignalCard
+            icon={<Activity size={17} />}
+            label={t('productVerification.runnerExecution')}
+            value={hasRunner ? t('productVerification.infoRunnerLinked') : t('productVerification.infoNoRunner')}
+            detail={selectedRunLabel}
+            status={runnerStatus}
+          />
+          <EvidenceSignalCard
+            icon={<AlertTriangle size={17} />}
+            label={t('productVerification.overviewNextAction')}
+            value={nextActionValue}
+            detail={nextActionDetail}
+            status={gapStatus}
+          />
+        </Box>
+      </Paper>
+
+      <Box
+        sx={{
+          minHeight: 0,
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', xl: 'minmax(0, 0.92fr) minmax(340px, 0.58fr)' },
+          gridTemplateRows: { xs: 'minmax(280px, 0.8fr) minmax(320px, 1fr)', xl: 'minmax(0, 1fr)' },
+          gap: 1.25,
+          overflow: 'hidden',
+        }}
+      >
+        <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden', minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+          <SectionHeader icon={<GitBranch size={16} />} title={t('productVerification.evidencePipeline')} />
+          <Stack direction="row" spacing={0.75} useFlexGap flexWrap="wrap" sx={{ px: 1.25, py: 1, borderBottom: 1, borderColor: 'divider' }}>
+            {pipelineSteps.map((step) => (
+              <Chip
+                key={step.title}
+                size="small"
+                label={`${step.title} ${step.value}`}
+                sx={{
+                  height: 24,
+                  fontWeight: 850,
+                  color: matrixStatusTone(step.status),
+                  bgcolor: (theme) => alpha(resolveToneColor(theme, matrixStatusTone(step.status)), theme.palette.mode === 'dark' ? 0.14 : 0.08),
+                }}
+              />
+            ))}
+          </Stack>
+          <Box
+            sx={{
+              minHeight: 0,
+              overflowY: 'auto',
+              p: 1.25,
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', lg: 'repeat(2, minmax(0, 1fr))' },
+              alignContent: 'start',
+              gap: 1,
+            }}
+          >
+            {pipelineSteps.map((step) => (
+              <PipelineStep key={step.title} {...step} />
+            ))}
+          </Box>
+        </Paper>
+
+        <Paper variant="outlined" sx={{ borderRadius: 1, overflow: 'hidden', minHeight: 0, display: 'flex', flexDirection: 'column' }}>
+          <SectionHeader icon={<FileJson size={16} />} title={t('productVerification.latestEvidence')} />
+          <Box sx={{ minHeight: 0, overflowY: 'auto', p: 1.25, display: 'grid', gap: 1.1, alignContent: 'start' }}>
+            <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 0.85 }}>
+              <EvidenceDatum label={t('productVerification.selectedRun')} value={selectedRunLabel} />
+              <EvidenceDatum label={t('productVerification.evidenceSig')} value={evidenceSignature} tone={hasEvidence ? 'success.main' : 'text.secondary'} />
+              <EvidenceDatum label={t('productVerification.runnerExecution')} value={selectedRun?.runnerExecutionId ?? t('productVerification.infoNoRunner')} tone={hasRunner ? 'success.main' : 'warning.main'} />
+              <EvidenceDatum label={t('productVerification.updatedAt')} value={formatDate(selectedRun?.updatedAt) || t('productVerification.infoNone')} />
+            </Box>
+
+            {selectedRun && !selectedRun.runnerExecutionId && (
+              <Alert severity="info">
+                {t('productVerification.evidenceWaitingForRunner')}
+              </Alert>
+            )}
+            {loading && <LinearProgress />}
+            {error != null && <QueryError compact error={error} onRetry={onRetry} label={t('productVerification.latestEvidence')} />}
+            {success && artifacts.length === 0 && (
+              <Alert severity="warning">
+                {t('productVerification.noEvidenceArtifacts')}
+              </Alert>
+            )}
+            {(findings.length > 0 || evidencePack?.scores || gate.hasGateMetadata) && (
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr)' }, gap: 1 }}>
+                <FindingList findings={findings} />
+                <ScorePanel pack={evidencePack} artifacts={artifacts} gate={gate} />
+              </Box>
+            )}
+            {evidencePack && <EvidencePackPreview pack={evidencePack} />}
+          </Box>
+        </Paper>
+      </Box>
+    </Box>
+  )
+}
+
+function EvidenceSignalCard({
+  icon,
+  label,
+  value,
+  detail,
+  status,
+}: {
+  icon: ReactNode
+  label: string
+  value: string
+  detail: string
+  status: VerificationMatrixStatus
+}) {
+  const tone = matrixStatusTone(status)
+  return (
+    <Box
+      sx={{
+        minWidth: 0,
+        border: 1,
+        borderColor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.34 : 0.22),
+        borderRadius: 1,
+        p: 1,
+        display: 'grid',
+        gridTemplateColumns: 'auto minmax(0, 1fr)',
+        gap: 0.85,
+        alignItems: 'center',
+        bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.1 : 0.045),
+      }}
+    >
+      <Box
+        sx={{
+          width: 34,
+          height: 34,
+          borderRadius: 1,
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: tone,
+          bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.15 : 0.08),
+          flexShrink: 0,
+        }}
+      >
+        {icon}
+      </Box>
+      <Box sx={{ minWidth: 0 }}>
+        <Stack direction="row" spacing={0.6} alignItems="center" sx={{ minWidth: 0 }}>
+          <Typography variant="caption" color="text.secondary" fontWeight={850} noWrap>
+            {label}
+          </Typography>
+          <Chip size="small" label={matrixStatusLabel(status)} sx={{ height: 20, fontSize: 11, fontWeight: 850, color: tone }} />
+        </Stack>
+        <Typography sx={{ mt: 0.35, fontSize: 20, lineHeight: 1, fontWeight: 950, color: tone }} noWrap title={value}>
+          {value}
+        </Typography>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.35 }} noWrap title={detail}>
+          {detail}
+        </Typography>
+      </Box>
+    </Box>
+  )
+}
+
+function PipelineStep({
+  icon,
+  title,
+  detail,
+  value,
+  status,
+}: {
+  icon: ReactNode
+  title: string
+  detail: string
+  value: string
+  status: VerificationMatrixStatus
+}) {
+  const tone = matrixStatusTone(status)
+  return (
+    <Box
+      sx={{
+        p: 1.2,
+        border: 1,
+        borderColor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.28 : 0.2),
+        borderRadius: 1,
+        minWidth: 0,
+        display: 'grid',
+        gridTemplateColumns: 'auto minmax(0, 1fr) auto',
+        gap: 0.9,
+        alignItems: 'start',
+        bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.075 : 0.035),
+      }}
+    >
+      <Box
+        sx={{
+          width: 32,
+          height: 32,
+          borderRadius: 1,
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: tone,
+          bgcolor: (theme) => alpha(resolveToneColor(theme, tone), theme.palette.mode === 'dark' ? 0.13 : 0.075),
+        }}
+      >
+        {icon}
+      </Box>
+      <Box sx={{ minWidth: 0 }}>
+        <Typography variant="body2" fontWeight={900} noWrap title={title}>{title}</Typography>
+        <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mt: 0.45, lineHeight: 1.5 }}>{detail}</Typography>
+      </Box>
+      <Stack spacing={0.6} alignItems="flex-end" sx={{ minWidth: 56 }}>
+        <Typography sx={{ fontSize: 20, lineHeight: 1, fontWeight: 950, color: tone }} noWrap>{value}</Typography>
+        <Chip size="small" label={matrixStatusLabel(status)} sx={{ height: 20, fontSize: 11, fontWeight: 850, color: tone }} />
+      </Stack>
+    </Box>
+  )
+}
+
+function EvidenceDatum({ label, value, tone = 'text.primary' }: { label: string; value: string; tone?: string }) {
+  return (
+    <Box sx={{ p: 1, border: 1, borderColor: 'divider', borderRadius: 1, minWidth: 0, bgcolor: 'background.paper' }}>
+      <Typography variant="caption" color="text.secondary" fontWeight={850}>{label}</Typography>
+      <Typography variant="body2" sx={{ mt: 0.45, fontWeight: 950, color: tone, overflowWrap: 'anywhere' }}>{value}</Typography>
     </Box>
   )
 }
@@ -2175,7 +3959,7 @@ function ContractRow({ label, value }: { label: string; value: string }) {
   )
 }
 
-function RunRow({ run, selected, onSelect }: { run: WarroomCampaignExecution; selected: boolean; onSelect: () => void }) {
+export function LegacyProductVerificationRunRow({ run, selected, onSelect }: { run: WarroomCampaignExecution; selected: boolean; onSelect: () => void }) {
   const status = run.verdict ?? run.status
   return (
     <Paper

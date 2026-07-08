@@ -1,5 +1,6 @@
 import { PageShell } from '@atoms/PageShell'
-import { McpView } from '@compounds/surface/mcp/McpView';
+import { ModeView } from '@compounds/_shared/ModeView'
+import { McpManagerView, McpView } from '@compounds/surface/mcp/McpView';
 
 /**
  * Agent Firewall surface — tabbed product view over the guardian backend
@@ -10,7 +11,7 @@ import { McpView } from '@compounds/surface/mcp/McpView';
 export default function McpPage() {
   return (
     <PageShell padded={false} scroll="host">
-      <McpView />
+      <ModeView manager={<McpManagerView />} engineer={<McpView />} />
     </PageShell>
   )
 }

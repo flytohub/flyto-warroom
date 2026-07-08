@@ -21,6 +21,10 @@ GENERATED_REVIEW_PREFIXES = (
     "install/",
     "docs/",
     ".github/",
+    # generated CE tooling (audit-ce-boundary.py, audit-positioning.py, READMEs,
+    # export-upstream-patches.py itself) — all emitted by the generator, so a
+    # warroom-side change routes back to the generator, not a source patch.
+    "scripts/",
 )
 
 GENERATED_REVIEW_FILES = {
@@ -28,9 +32,16 @@ GENERATED_REVIEW_FILES = {
     "CONTRIBUTING.md",
     "GOVERNANCE.md",
     "LICENSES.md",
+    "LICENSE",
+    "CLA.md",
     "OPEN_CORE_MANIFEST.json",
     "SECURITY.md",
     "TRADEMARK.md",
+    # hand-authored CE-only root/packages files (rest of the open_core_manual
+    # bucket is covered by the docs/ install/ scripts/ prefixes above).
+    ".env.example",
+    "CHANGELOG.md",
+    "packages/README.md",
 }
 
 

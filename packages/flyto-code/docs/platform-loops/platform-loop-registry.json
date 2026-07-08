@@ -238,11 +238,11 @@
         "score-refresh-loop.yaml"
       ]
     },
-    {
-      "id": "operations_admin",
-      "label": "Operations / Reports / Settings",
-      "modules": [
-        "operations",
+        {
+            "id": "operations_admin",
+            "label": "Operations / Reports / Settings",
+            "modules": [
+                "operations",
         "reports",
         "va_report",
         "settings"
@@ -263,9 +263,36 @@
         "activity.logged"
       ],
       "recipes": [
-        "ai-branch-guard.yaml",
-        "operations-health-smoke.yaml"
-      ]
-    }
-  ]
+                "ai-branch-guard.yaml",
+                "operations-health-smoke.yaml"
+            ]
+        },
+        {
+            "id": "enterprise_control",
+            "label": "Enterprise / Edition Control",
+            "modules": [
+                "enterprise_control_plane"
+            ],
+            "api": [
+                "/system/enterprise/profile",
+                "/system/enterprise/readiness",
+                "/system/enterprise/audit/events",
+                "/system/enterprise/audit/export"
+            ],
+            "qk": [
+                "system-enterprise-profile",
+                "system-enterprise-readiness",
+                "system-enterprise-audit-events"
+            ],
+            "events": [
+                "enterprise.audit.logged",
+                "license.updated"
+            ],
+            "recipes": [
+                "enterprise-edition-boundary-smoke.yaml",
+                "enterprise-readiness-contract.yaml",
+                "enterprise-audit-export.yaml"
+            ]
+        }
+    ]
 }

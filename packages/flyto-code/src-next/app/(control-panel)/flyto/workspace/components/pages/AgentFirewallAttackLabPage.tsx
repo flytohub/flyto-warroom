@@ -1,10 +1,11 @@
 import { PageShell } from '@atoms/PageShell'
-import { AgentFirewallAttackLab } from '@components/compounds/surface/mcp/AgentFirewallAttackLab';
+import { ModeView } from '@compounds/_shared/ModeView'
+import { AgentFirewallAttackLab, AgentFirewallAttackLabManagerView } from '@components/compounds/surface/mcp/AgentFirewallAttackLab';
 
 export default function AgentFirewallAttackLabPage() {
   return (
     <PageShell padded={false} scroll="host">
-      <AgentFirewallAttackLab />
+      <ModeView manager={<AgentFirewallAttackLabManagerView />} engineer={<AgentFirewallAttackLab />} />
     </PageShell>
   )
 }

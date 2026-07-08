@@ -33,6 +33,7 @@ export type ModuleGroup =
   | 'history'    // Audit Timeline
   | 'scoring'    // Score Trends / Compliance
   | 'operations' // Operations health (connector / scan / system) — operator plane
+  | 'enterprise' // Enterprise-only control plane: edition boundary + audit ledger
   | 'admin'      // Reports / VA Report / Settings (bottom)
   | 'hidden'     // routed but not in sidebar (repo detail / org chart)
 

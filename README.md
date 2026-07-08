@@ -6,22 +6,12 @@
 [![Docs](https://img.shields.io/badge/Docs-docs.flyto2.com-0891b2)](https://docs.flyto2.com/warroom/self-hosted-ce)
 [![License](https://img.shields.io/badge/License-open--core-16a34a)](LICENSES.md)
 
-Self-hosted open-core BYO offensive validation platform for the Flyto2
-security operations platform.
-
-Self-hosted open-core security war room remains the local delivery model.
-
-Bring your own tools. Flyto2 turns their findings into verified attack paths,
-pentest evidence, and red-team scenarios.
-
-Positioning: Flyto2 Warroom is a self-hosted open-core security warroom and BYO
-offensive validation platform, not a scanner-only dashboard. The product loop
-is Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation.
+Self-hosted Community Edition for the Flyto2 security operations platform.
 
 Flyto2 Warroom CE is the self-hosted open-core security operations
-platform for teams that want to validate security findings from existing ASM,
-SAST, DAST, SCA, CSPM, cloud, container, dark web, SIEM, scanner, and code
-tools without replacing that stack.
+platform for code, CTEM, external attack surface, cloud, container,
+runtime, automated security testing, evidence, scoring, and compliance
+workflows.
 
 It is built for teams that want a local Warroom they can install, inspect,
 patch, verify, and connect back to Flyto2 Enterprise services when they
@@ -32,48 +22,15 @@ need commercial intelligence, managed remediation, or enterprise controls.
 | Channel | Link | Purpose |
 | --- | --- | --- |
 | Product page | https://flyto2.com/open-source/ | CE positioning and edition model |
-| Aikido alternative | https://flyto2.com/aikido-alternative/ | Careful comparison for teams evaluating Aikido-style platforms |
 | Docs | https://docs.flyto2.com/warroom/self-hosted-ce | Install, local auth, Docker tags, and Enterprise bridge boundaries |
 | GitHub | https://github.com/flytohub/flyto-warroom | Public source mirror, contracts, governance, and contribution loop |
 | Docker Hub | https://hub.docker.com/r/chesterhsu/flyto-warroom | Published CE service images |
 
-## 10-Minute Local Loop
-
-```sh
-git clone https://github.com/flytohub/flyto-warroom.git
-cd flyto-warroom
-python3 install/scripts/setup-ce.py --email admin@example.com
-make preflight
-make verify-images
-make ce-up
-python3 install/scripts/seed-demo-workspace.py --email admin@example.com
-```
-
-Open `http://localhost:8088`, sign in with the local admin account, and select
-the `Flyto2 Warroom CE Demo` workspace. The seeded evidence pack walks through
-code, container, cloud, external attack surface, evidence, and AutoFix.
-
-The seed is honest: it does not claim live cloud/container/runtime remediation
-unless an Enterprise Bridge or supported connector is configured.
-
 ## What Is Flyto2 Warroom?
 
-Flyto2 Warroom brings security signals into one validation layer instead of
-leaving them as disconnected scanner output. A finding should map to an asset,
-an attack hypothesis, a validation path, evidence, ownership, remediation,
-verification, and an audit trail.
-
-Existing security tools are inputs: ASM, SAST, DAST, SCA, CSPM, CNAPP, dark web
-intelligence, SIEM alerts, bug bounty reports, weak-scan reports, and pentest
-reports can all be normalized into the same evidence contract. Flyto2's core is
-offensive validation: which findings can plausibly chain into an attack path,
-which paths can be safely checked, and which evidence can be replayed or handed
-to engineering.
-
-CE is useful without Flyto Cloud: local auth, local storage, local evidence,
-public contracts, and deterministic remediation paths must keep working on a
-Docker host. Enterprise Cloud Bridge attaches premium execution only through
-explicit capability, entitlement, connector, and signed-evidence gates.
+Flyto2 Warroom brings security signals into one cockpit instead of leaving
+them as disconnected scanner output. A finding should map to an asset, a
+score, evidence, ownership, remediation, verification, and an audit trail.
 
 The CE distribution is intentionally usable, but it is not a full source
 release of the private Flyto2 backend. Enterprise-only datasets, live
@@ -84,12 +41,9 @@ workflows stay behind explicit capability gates.
 
 | Area | What CE is meant to show | Enterprise path |
 | --- | --- | --- |
-| BYO data ingestion | Public contracts and seed examples for normalizing findings, assets, identities, and evidence from existing tools | Managed connectors for commercial tools, feeds, and customer data pipelines |
-| Attack path validation | Correlation from asset/finding/evidence into local attack hypotheses and replayable validation tasks | Managed attack-path enrichment, scenario ranking, and signed validation evidence |
 | Code security | SAST, SCA, secrets, IaC, reachability, code score, evidence | AI proposals, promotion, approval, rollback |
 | CTEM and external exposure | Footprint, asset map, posture, issue lifecycle, scoring | Commercial enrichment and continuous monitoring |
-| Automated security testing | Safe authorization gates, local runner workflows, replay, screenshot, DOM/network evidence | Managed runner fleet and scale-out execution |
-| Red team scenario automation | Scenario records, MITRE-style mapping fields, evidence timeline, and report outputs | Managed campaigns, signed operator approvals, and detection-gap workflows |
+| Automated security testing | Authorized DAST/runner workflows, replay, evidence | Managed runner fleet and scale-out execution |
 | Cloud, container, runtime, VM | Posture views, connector contracts, local evidence | Live remediation and managed connector execution |
 | Threat intelligence | Public/feed-backed lookups where configured | Darkweb, stealer, leak, phishing, actor, malware datasets |
 | Evidence and compliance | Audit timeline, reports, evidence packs, verification | Legal hold, offline license, airgap, enterprise support |
@@ -110,32 +64,6 @@ make ce-up
 Open `http://localhost:8088` and sign in with the local admin account
 created by `setup-ce.py`.
 
-Optional demo seed:
-
-```sh
-python3 install/scripts/seed-demo-workspace.py --email admin@example.com
-```
-
-## Usage
-
-Use CE as a local offensive validation layer:
-
-1. Install and start the Docker Compose stack.
-2. Sign in with the local JWT admin account.
-3. Seed the demo workspace or connect your own repos, domains, containers, and
-   cloud accounts.
-4. Import or review findings from your existing security stack.
-5. Turn findings into attack paths, safe validation tasks, replay evidence, and
-   remediation records.
-6. Accept deterministic AutoFix or remediation actions only after preview,
-   gate checks, and verification evidence.
-7. Export pentest-style reports, red-team scenarios, and audit evidence from
-   the local timeline.
-
-Use Enterprise Bridge only for explicitly entitled premium jobs such as
-commercial threat intelligence, managed runner fleets, live remediation,
-enterprise identity, legal hold, support, and airgap controls.
-
 Default local ports:
 
 | Service | Port |
@@ -151,14 +79,12 @@ Default local ports:
 
 ```mermaid
 flowchart LR
-  Tools["Existing tools<br/>ASM/SAST/DAST/CSPM/SIEM/Dark web"] --> API
   UI["flyto-code<br/>Warroom cockpit"] --> API["CE engine image<br/>public contracts"]
   API --> DB[("Postgres")]
   API --> Runner["runner-ce"]
   API --> Verify["verification-ce"]
   API --> PDF["pdf-ce"]
   API --> Vision["brand-vision-ce"]
-  API --> Paths["Attack paths<br/>validation scenarios<br/>evidence packs"]
   Core["flyto-core<br/>YAML runtime"] --> API
   Indexer["flyto-indexer<br/>local code intelligence"] --> API
   API -. premium signed jobs .-> Cloud["Flyto2 Enterprise Cloud Bridge"]
@@ -173,20 +99,15 @@ connector credentials, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-core` | `flyto-core` | 1002 | YAML runtime, browser automation, deterministic verification, and module SDK. |
-| `flyto-indexer` | `flyto-indexer` | 253 | Local code intelligence for SAST, SCA, secrets, IaC, impact, SBOM, and evidence gates. |
+| `flyto-core` | `flyto-core` | 1005 | YAML runtime, browser automation, deterministic verification, and module SDK. |
+| `flyto-indexer` | `flyto-indexer` | 285 | Local code intelligence for SAST, SCA, secrets, IaC, impact, SBOM, and evidence gates. |
 | `flyto-i18n` | `flyto-i18n` | 5000 | Shared locale source and generated distribution files. |
-| `flyto-code` | `flyto-code` | 1565 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1599 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 21 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 
 ## Docker Images
 
 Published repository: `docker.io/chesterhsu/flyto-warroom`
-
-Official service tags are multi-arch Docker manifest lists for `linux/amd64`
-and `linux/arm64`. Docker should select the correct platform automatically on
-Intel/AMD servers, Apple Silicon Macs, and ARM64 Linux hosts. Per-architecture
-input tags use `-amd64` and `-arm64` suffixes for release traceability.
 
 | Service | Tag |
 | --- | --- |
@@ -227,20 +148,9 @@ connector, signature, or cloud service check fails. See
 | Reset local database | `make ce-reset-db` |
 | Verify release tree | `make verify` |
 | Verify image digests | `make verify-images` |
-| Publish multi-arch images | `make publish-multiarch-images` |
 
 See `docs/local-install.md` for setup and reset details. See
 `docs/enterprise-simulation.md` for local enterprise-gate simulation.
-
-## Product Closure Docs
-
-| Document | Purpose |
-| --- | --- |
-| `docs/feature-matrix.md` | CE / Enterprise Cloud Bridge / Enterprise Airgap feature matrix |
-| `docs/public-roadmap.md` | Public roadmap split by CE, Enterprise Bridge, and Airgap |
-| `docs/autofix-whitepaper.md` | Evidence-backed remediation loop and AutoFix gate model |
-| `docs/benchmark-evidence.md` | Accuracy, false-positive, benchmark, and verification methodology |
-| `docs/demo-seed-workspace.md` | One-command demo seed workflow |
 
 ## What Stays Private
 
@@ -273,8 +183,6 @@ The generated tree includes fail-closed release checks:
 
 - `make verify` runs release audits and Docker image digest dry-run.
 - `make audit` runs release, CE boundary, and GitHub protection audits.
-- `make demo-seed-dry-run` validates the demo seed workspace bundle without
-  contacting a running engine.
 - `make verify-images` checks the public Docker image coordinates and
   expected digests in `OPEN_CORE_MANIFEST.json`.
 - GitHub Actions run governance, release, frontend build, contract, and

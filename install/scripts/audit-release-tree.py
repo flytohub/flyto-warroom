@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import json
 import re
 import sys
 from pathlib import Path
@@ -9,8 +8,6 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 REQUIRED = [
     "OPEN_CORE_MANIFEST.json",
     "Makefile",
-    ".env.example",
-    "CHANGELOG.md",
     "packages/flyto-contracts/openapi/flyto-engine.openapi.yaml",
     "packages/flyto-contracts/capabilities/capabilities.yaml",
     "packages/flyto-contracts/schemas/evidence-event.schema.json",
@@ -23,34 +20,12 @@ REQUIRED = [
     "install/.env.ee-sim.example",
     "install/scripts/hash-local-password.py",
     "install/scripts/setup-ce.py",
-    "install/scripts/build-cloud-bundle-fixture.py",
     "install/scripts/preflight.py",
     "install/scripts/verify-docker-images.py",
-    "install/scripts/publish-multiarch-images.sh",
-    "install/scripts/audit-docker-build-boundary.py",
-    "install/scripts/provider-readiness.py",
     "install/scripts/mint-ee-sim-jwt.py",
-    "install/scripts/seed-demo-workspace.py",
-    "install/demo-workspace.json",
-    "install/fixtures/cloud-bundle/bundle-template.yaml",
-    "install/fixtures/cloud-bundle/recipes/flyto2-ui-smoke.yaml",
-    "install/fixtures/cloud-bundle/recipes/flyto2-ui-login-smoke.yaml",
-    "install/fixtures/cloud-bundle/recipes/warroom-deterministic-audit.yaml",
-    "install/tests/test_cloud_bundle_fixture.py",
-    "install/tests/test_provider_readiness.py",
     "docs/local-install.md",
-    "docs/README.md",
     "docs/enterprise-simulation.md",
     "docs/enterprise-cloud-bridge.md",
-    "docs/edition-profiles.md",
-    "docs/cloud-bundle-producer.md",
-    "docs/feature-matrix.md",
-    "docs/public-roadmap.md",
-    "docs/paid-prerequisites.md",
-    "docs/release-readiness.md",
-    "docs/autofix-whitepaper.md",
-    "docs/benchmark-evidence.md",
-    "docs/demo-seed-workspace.md",
     "docs/code-protection.md",
     "docs/official-builds.md",
     "docs/github-hardening.md",
@@ -63,13 +38,11 @@ REQUIRED = [
     ".github/CODEOWNERS",
     ".github/pull_request_template.md",
     ".github/workflows/ci.yml",
+    ".github/workflows/cla.yml",
+    "LICENSE",
+    "CLA.md",
     "scripts/audit-github-protection.py",
-    "scripts/audit-positioning.py",
     "scripts/audit-ce-boundary.py",
-    "install/tests/test_positioning_audit.py",
-    "install/README.md",
-    "scripts/README.md",
-    "packages/README.md",
 ]
 
 PRIVATE_GLOBS = [
@@ -109,120 +82,6 @@ DENIED_CE_COMPOSE = [
     re.compile(r"FLYTO_ENTERPRISE_JWT_SECRET_KEY"),
 ]
 
-REQUIRED_MARKERS = {
-    "README.md": [
-        "Self-hosted open-core security war room",
-        "BYO offensive validation platform",
-        "Bring your own tools",
-        "verified attack paths",
-        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
-        "self-hosted open-core security warroom",
-        "10-Minute Local Loop",
-        "## Usage",
-        "Aikido alternative",
-        "Product Closure Docs",
-    ],
-    "docs/feature-matrix.md": [
-        "Flyto2 Warroom CE / Enterprise Feature Matrix",
-        "BYO offensive validation platform",
-        "verified attack paths",
-        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
-        "self-hosted open-core security warroom",
-        "Premium actions must fail closed",
-        "License Gate Contract",
-        "Revenue Boundary",
-        "CE is the self-hosted open-core Warroom. Enterprise unlocks premium execution",
-        "No job dispatch, no optimistic success, no unsigned evidence",
-        "Contribution Boundary",
-    ],
-    "docs/release-readiness.md": [
-        "CODE_READY_PROVIDER_BLOCKED",
-        "GitHub Actions billing/startup lock",
-        "Docker Hub authentication",
-        "docs/paid-prerequisites.md",
-        "fully released, remotely CI-green, or commercially available",
-    ],
-    "docs/paid-prerequisites.md": [
-        "Flyto2 Warroom Paid Prerequisites",
-        "GitHub Actions billing/startup",
-        "Docker Hub publish permission",
-        "Commercial threat-intelligence feeds",
-        "CODE_READY_PROVIDER_BLOCKED",
-        "make provider-readiness",
-    ],
-    "docs/edition-profiles.md": [
-        "flyto.editions.v1",
-        "warroom_saas",
-        "auth_mode=none_local_loopback",
-        "Premium actions fail closed",
-    ],
-    "docs/cloud-bundle-producer.md": [
-        "flyto.warroom.bundle.v1",
-        "FLYTO_WARROOM_IMPORT_DIR",
-        "A dropped bundle is never executed directly",
-        "trigger_type=mcp",
-    ],
-    "docs/public-roadmap.md": [
-        "Shipped In CE",
-        "Enterprise Cloud Bridge",
-        "Non-Claims",
-        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
-    ],
-    "docs/autofix-whitepaper.md": [
-        "BYO offensive validation platform",
-        "verified attack paths",
-        "evidence-backed remediation",
-        "detect, triage, remediate, verify, audit, and rerun",
-        "AI may propose",
-        "False positives are not noise to hide",
-    ],
-    "docs/benchmark-evidence.md": [
-        "BYO offensive validation loop",
-        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
-        "false-positive handling policy",
-        "Verification Loop",
-        "fabricated percentage",
-    ],
-    "docs/docker-hub-overview.md": [
-        "BYO offensive validation platform",
-        "Bring your own tools",
-        "verified attack paths",
-        "self-hosted open-core security warroom",
-        "linux/amd64",
-        "linux/arm64",
-        "manifest lists",
-    ],
-    "docs/official-builds.md": [
-        "linux/amd64",
-        "linux/arm64",
-        "manifest-list digest",
-    ],
-    "docs/demo-seed-workspace.md": [
-        "BYO finding intake",
-        "attack path validation",
-        "safe offensive validation",
-        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
-        "Bring your own tools",
-        "code",
-        "container",
-        "cloud",
-        "external",
-        "autofix",
-    ],
-}
-
-REQUIRED_DEMO_SURFACES = {
-    "byo",
-    "attack_path",
-    "validation",
-    "code",
-    "container",
-    "cloud",
-    "external",
-    "evidence",
-    "autofix",
-}
-
 
 def text(path: Path) -> str:
     try:
@@ -244,23 +103,6 @@ def main() -> int:
     for rel in REQUIRED:
         if not (ROOT / rel).exists():
             blockers.append(f"missing required release file: {rel}")
-    manifest_path = ROOT / "OPEN_CORE_MANIFEST.json"
-    if manifest_path.exists():
-        try:
-            manifest = json.loads(text(manifest_path))
-        except json.JSONDecodeError as exc:
-            blockers.append(f"OPEN_CORE_MANIFEST.json invalid JSON: {exc}")
-        else:
-            release = manifest.get("release", {})
-            platforms = set(release.get("public_image_platforms", []))
-            for platform in ("linux/amd64", "linux/arm64"):
-                if platform not in platforms:
-                    blockers.append(f"OPEN_CORE_MANIFEST.json missing public image platform: {platform}")
-            arch_tags = release.get("public_image_arch_tags", {})
-            suffixes = set(arch_tags.get("suffixes", [])) if isinstance(arch_tags, dict) else set()
-            for suffix in ("amd64", "arm64"):
-                if suffix not in suffixes:
-                    blockers.append(f"OPEN_CORE_MANIFEST.json missing public image arch suffix: {suffix}")
     for pattern in PRIVATE_GLOBS:
         for match in ROOT.glob(pattern):
             if match.is_file() and not is_local_artifact(match):
@@ -287,27 +129,6 @@ def main() -> int:
         for denied in ("VITE_AUTH_MODE=enterprise", "VITE_AUTH_MODE=firebase"):
             if denied in frontend_text:
                 blockers.append(f"frontend CE env contains denied auth mode: {denied}")
-    for rel, markers in REQUIRED_MARKERS.items():
-        path = ROOT / rel
-        if not path.exists():
-            continue
-        body = text(path)
-        for marker in markers:
-            if marker not in body:
-                blockers.append(f"{rel} missing release marker: {marker}")
-    demo_path = ROOT / "install/demo-workspace.json"
-    if demo_path.exists():
-        try:
-            demo = json.loads(text(demo_path))
-        except json.JSONDecodeError as exc:
-            blockers.append(f"install/demo-workspace.json invalid JSON: {exc}")
-        else:
-            surfaces = {item.get("id") for item in demo.get("surfaces", [])}
-            missing = sorted(REQUIRED_DEMO_SURFACES - surfaces)
-            if missing:
-                blockers.append("demo workspace missing surfaces: " + ", ".join(missing))
-            if len(demo.get("evidence_pack", [])) < 5:
-                blockers.append("demo workspace evidence_pack must include at least 5 entries")
     for path in ROOT.rglob("*"):
         if not path.is_file() or path.stat().st_size > 2_000_000:
             continue

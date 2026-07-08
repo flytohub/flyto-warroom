@@ -220,12 +220,69 @@ describe('buildDomainRows', () => {
       type: 'subdomain',
       canonical_value: 'api.example.com',
       sources: ['kernel'],
-      confidence: 90,
+      confidence: 100,
       findings: [],
     }])
 
     expect(assets.map(a => a.asset_type)).toEqual(['subdomain', 'http_endpoint'])
     expect(result).toHaveLength(1)
     expect(result[0].assets.some(a => a.asset_type === 'http_endpoint')).toBe(true)
+  })
+
+  it('keeps low-confidence kernel domains because the kernel endpoint is already confirmed', () => {
+    const kernelAssets = [
+      {
+        resource_id: 'kr-docs',
+        type: 'subdomain' as const,
+        canonical_value: 'docs.example.com',
+        sources: ['attack_surface'],
+        confidence: 100,
+        findings: [],
+      },
+      {
+        resource_id: 'kr-www',
+        type: 'subdomain' as const,
+        canonical_value: 'www.example.com',
+        sources: ['attack_surface'],
+        confidence: 85,
+        current_tier: 'unranked',
+        findings: [],
+      },
+    ]
+
+    const confirmed = buildDomainRows([], [], undefined, kernelAssets)
+    expect(confirmed.map(r => r.domain).sort()).toEqual(['docs.example.com', 'www.example.com'])
+    expect(confirmed.find(r => r.domain === 'www.example.com')?.verifierStatus).toBeUndefined()
+  })
+
+  it('hides explicitly marked kernel candidates unless candidate mode is enabled', () => {
+    const kernelAssets = [
+      {
+        resource_id: 'kr-docs',
+        type: 'subdomain' as const,
+        canonical_value: 'docs.example.com',
+        sources: ['attack_surface'],
+        confidence: 100,
+        findings: [],
+      },
+      {
+        resource_id: 'kr-www',
+        type: 'subdomain' as const,
+        canonical_value: 'www.example.com',
+        sources: ['attack_surface'],
+        confidence: 85,
+        current_tier: 'candidate',
+        findings: [],
+      },
+    ]
+
+    const confirmed = buildDomainRows([], [], undefined, kernelAssets)
+    expect(confirmed.map(r => r.domain)).toEqual(['docs.example.com'])
+
+    const withCandidates = buildDomainRows([], [], undefined, kernelAssets, true)
+    const candidate = withCandidates.find(r => r.domain === 'www.example.com')
+    expect(withCandidates.map(r => r.domain).sort()).toEqual(['docs.example.com', 'www.example.com'])
+    expect(candidate?.verifierStatus).toBe('inconclusive')
+    expect(candidate?.scopeBucket).toBe('candidate')
   })
 })

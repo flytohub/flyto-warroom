@@ -34,9 +34,10 @@ import {
   useCallback,
   type ReactNode,
 } from 'react'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useLocation, useParams, useSearchParams } from 'react-router-dom'
 import { useCapabilities } from '@hooks/useCapabilities'
 import { useProjectCapabilities } from '@hooks/useProjectCapabilities'
+import { isDualModeWorkspacePath } from '@code/modules'
 
 export type ExperienceMode = 'manager' | 'engineer'
 
@@ -78,9 +79,15 @@ const ExperienceContext = createContext<ExperienceContextValue | null>(null)
 
 export function ExperienceProvider({ children }: { children: ReactNode }) {
   const { orgId } = useParams<{ orgId: string }>()
+  const location = useLocation()
   const [searchParams, setSearchParams] = useSearchParams()
   const cap = useCapabilities(orgId)
   const projectCap = useProjectCapabilities(orgId)
+  const base = orgId ? `/projects/${orgId}` : ''
+  const subPath = base && location.pathname.startsWith(base)
+    ? location.pathname.slice(base.length) || '/dashboard'
+    : location.pathname
+  const routeSupportsDualMode = isDualModeWorkspacePath(subPath)
 
   // Role default — only meaningful once capabilities are ready.
   const roleDefault: ExperienceMode = useMemo(() => {
@@ -112,14 +119,16 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
   }, [cap.ready, explicit, roleDefault])
 
   // React to a URL change driven externally (e.g. a shared link opened
-  // mid-session). URL is the highest-priority source.
+  // mid-session). URL is the highest-priority source, but only on
+  // routes that actually expose a manager/engineer switch.
   useEffect(() => {
+    if (!routeSupportsDualMode) return
     if (isMode(urlMode) && urlMode !== mode) {
       setModeState(urlMode)
       setExplicit(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [urlMode])
+  }, [urlMode, routeSupportsDualMode])
 
   const setMode = useCallback(
     (m: ExperienceMode) => {
@@ -136,7 +145,20 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
 
   // Reflect the resolved mode into the URL query (replace, no nav) and
   // keep localStorage in sync so the choice persists across reloads.
+  //
+  // Non-dual-mode pages are always engineer-mode surfaces. They may be
+  // reached after a manager page, so normalize the URL there instead of
+  // showing a stale "?mode=manager" that the page cannot honor.
   useEffect(() => {
+    if (!routeSupportsDualMode) {
+      if (searchParams.get('mode') !== 'engineer') {
+        const next = new URLSearchParams(searchParams)
+        next.set('mode', 'engineer')
+        setSearchParams(next, { replace: true })
+      }
+      return
+    }
+
     try {
       localStorage.setItem(STORAGE_KEY, mode)
     } catch {
@@ -148,11 +170,13 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
       setSearchParams(next, { replace: true })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode])
+  }, [mode, routeSupportsDualMode, subPath])
+
+  const effectiveMode: ExperienceMode = routeSupportsDualMode ? mode : 'engineer'
 
   const value = useMemo<ExperienceContextValue>(
-    () => ({ mode, setMode, resolved: cap.ready }),
-    [mode, setMode, cap.ready],
+    () => ({ mode: effectiveMode, setMode, resolved: cap.ready }),
+    [effectiveMode, setMode, cap.ready],
   )
 
   return (

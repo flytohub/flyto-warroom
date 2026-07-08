@@ -1,15 +1,15 @@
 import { useMemo, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import {
-  Box, Button, Chip, Divider, IconButton, MenuItem, Paper, Stack, TextField, Tooltip, Typography,
+  Box, Button, Chip, Divider, IconButton, MenuItem, Paper, Stack, Tab, Tabs, TextField, Tooltip, Typography,
 } from '@mui/material'
 import { alpha, useTheme } from '@mui/material/styles'
 import {
-  Box as BoxIcon, ShieldCheck, Terminal, Layers, Package,
+  Box as BoxIcon, ShieldCheck, Layers, Package, Search, ListFilter,
   ArrowRight, GitBranch, Play, Save, FileText, CheckCircle2, RotateCcw, ShieldOff,
 } from 'lucide-react'
 import { useSnackbar } from 'notistack'
-import { t } from '@lib/i18n';
+import { t, tOr } from '@lib/i18n';
 import { qk } from '@lib/queryKeys'
 import { FlytoCodeBlock } from '@atoms/FlytoCodeBlock'
 import { FlytoSurface } from '@atoms/FlytoSurface'
@@ -32,20 +32,15 @@ import {
 } from '@lib/engine'
 import { getContainerPosture, type ContainerPosture } from '@lib/engine/code/posture'
 import { Loading, ScanViewRoot, ScanViewHeader } from './_shared'
-import { ContainerPostureHeader } from './PostureHeader'
 import { colors } from '@/styles/designTokens'
-import { flytoFontFamily, flytoTextStyles } from '@/styles/visualSystem'
+import { flytoTextStyles } from '@/styles/visualSystem'
 
-const MONO = flytoFontFamily.mono
 const ACCENT = colors.tech
 const SECURE = colors.semantic.success
 const SEV: Record<string, string> = {
   CRITICAL: colors.severity.critical, HIGH: colors.severity.high, MEDIUM: colors.severity.medium, LOW: colors.severity.low,
 }
 const SEV_ORDER = ['CRITICAL', 'HIGH', 'MEDIUM', 'LOW']
-const GRADE_COLOR: Record<string, string> = {
-  good: SECURE, fair: colors.severity.medium, warn: colors.severity.high, bad: colors.severity.critical, neutral: colors.severity.low,
-}
 type ContainerSourceKind = 'repo_scan' | 'repo_manual' | 'registry_connection' | 'kubernetes_connection' | 'finding_verify' | 'unknown'
 
 interface ContainerFinding {
@@ -68,6 +63,7 @@ interface ContainerFinding {
 }
 
 type ContainerFindingAction = 'verify' | 'false_positive' | 'reopen'
+type ContainerTab = 'containers' | 'checks'
 
 interface ContainerImageGroup {
   image: string
@@ -88,6 +84,19 @@ interface ContainerSourceSection {
   imageGroups: ContainerImageGroup[]
   counts: Record<string, number>
   worst: number
+}
+
+interface ContainerInventoryRow {
+  id: string
+  image: string
+  name: string
+  registry: string
+  domain: string
+  source: string
+  issues: number
+  counts: Record<string, number>
+  worst: number
+  lastScan?: string
 }
 
 function normSev(s: string): string {
@@ -111,6 +120,11 @@ export function ContainerScanView() {
   const qc = useQueryClient()
   const { enqueueSnackbar } = useSnackbar()
   const orgId = org?.id
+  const [activeTab, setActiveTab] = useState<ContainerTab>('containers')
+  const [inventorySearch, setInventorySearch] = useState('')
+  const [inventorySource, setInventorySource] = useState('all')
+  const [inventorySeverity, setInventorySeverity] = useState('all')
+  const [checksSearch, setChecksSearch] = useState('')
 
   const reposQ = useConnectedRepos(orgId)
   const connectionsQ = useQuery({
@@ -193,6 +207,22 @@ export function ContainerScanView() {
     () => buildContainerSourceSections(findings, repoNameById, connectionById),
     [findings, repoNameById, connectionById],
   )
+  const inventoryRows = useMemo(
+    () => buildContainerInventoryRows(sourceSections),
+    [sourceSections],
+  )
+  const inventorySources = useMemo(
+    () => Array.from(new Set(inventoryRows.map(row => row.source))).sort((a, b) => a.localeCompare(b)),
+    [inventoryRows],
+  )
+  const visibleInventoryRows = useMemo(
+    () => filterContainerInventoryRows(inventoryRows, inventorySearch, inventorySource, inventorySeverity),
+    [inventoryRows, inventorySearch, inventorySource, inventorySeverity],
+  )
+  const visibleSourceSections = useMemo(
+    () => filterContainerSourceSections(sourceSections, checksSearch),
+    [sourceSections, checksSearch],
+  )
 
   const loading = findingsQ.isLoading || postureQ.isLoading
   const errored = findingsQ.isError || postureQ.isError
@@ -207,41 +237,719 @@ export function ContainerScanView() {
         count={findings.length}
       />
 
-      <Box sx={{ flex: 1, minHeight: 0, overflowY: 'auto', overflowX: 'hidden', display: 'flex', flexDirection: 'column', gap: 2, pr: 0.5 }}>
-        <ContainerPostureHeader />
-        <PostureBar posture={posture} sevCounts={sevCounts} dark={dark} />
-        <ContainerClosedLoopPanel orgId={orgId} dark={dark} />
+      <Box sx={{
+        flex: 1,
+        minHeight: 0,
+        minWidth: 0,
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 1.25,
+      }}>
+        <ContainerTabs
+          active={activeTab}
+          onChange={setActiveTab}
+          imageCount={inventoryRows.length || posture?.image_count || 0}
+          findingsCount={findings.length}
+        />
 
-        {loading && <Loading />}
-
-        {errored && !loading && (
-          <QueryError
-            error={loadError}
-            onRetry={() => {
-              void findingsQ.refetch()
-              void postureQ.refetch()
+        {activeTab === 'containers' && (
+          <Box
+            sx={{
+              minHeight: 0,
+              minWidth: 0,
+              overflowY: 'auto',
+              overflowX: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 1.25,
+              pr: 0.5,
+              pb: 0.5,
             }}
-            label={t('scoring.containerScan')}
-            compact
-          />
+          >
+            <ContainerInventoryView
+              rows={visibleInventoryRows}
+              totalRows={inventoryRows.length}
+              search={inventorySearch}
+              source={inventorySource}
+              severity={inventorySeverity}
+              sources={inventorySources}
+              sevCounts={sevCounts}
+              posture={posture}
+              dark={dark}
+              onSearch={setInventorySearch}
+              onSource={setInventorySource}
+              onSeverity={setInventorySeverity}
+              onClear={() => {
+                setInventorySearch('')
+                setInventorySource('all')
+                setInventorySeverity('all')
+              }}
+              onInspect={(image) => {
+                setChecksSearch(image)
+                setActiveTab('checks')
+              }}
+            />
+            <ContainerClosedLoopPanel orgId={orgId} dark={dark} />
+          </Box>
         )}
 
-        {!loading && !errored && findings.length === 0 && (
-          <SecurePanel imageCount={posture?.image_count ?? 0} dark={dark} />
-        )}
+        {activeTab === 'checks' && (
+          <Box
+            data-testid="container-findings-scroll"
+            sx={{
+              minHeight: 0,
+              minWidth: 0,
+              overflowY: 'auto',
+              overflowX: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 1,
+              pr: 0.5,
+              pb: 0.5,
+            }}
+          >
+            {loading && <Loading />}
 
-        {!loading && !errored && sourceSections.map(section => (
-          <ContainerSourceSectionView
-            key={section.key}
-            section={section}
-            dark={dark}
-            busyFindingId={lifecycleMut.variables?.findingId}
-            onAction={(action, findingId) => lifecycleMut.mutate({ action, findingId })}
-          />
-        ))}
+            {errored && !loading && (
+              <QueryError
+                error={loadError}
+                onRetry={() => {
+                  void findingsQ.refetch()
+                  void postureQ.refetch()
+                }}
+                label={t('scoring.containerScan')}
+                compact
+              />
+            )}
+
+            {!loading && !errored && findings.length === 0 && (
+              <SecurePanel imageCount={posture?.image_count ?? 0} dark={dark} />
+            )}
+
+            {!loading && !errored && findings.length > 0 && (
+              <ContainerChecksToolbar
+                search={checksSearch}
+                onSearch={setChecksSearch}
+                resultCount={visibleSourceSections.reduce((sum, section) => sum + section.items.length, 0)}
+              />
+            )}
+
+            {!loading && !errored && visibleSourceSections.map(section => (
+              <ContainerSourceSectionView
+                key={section.key}
+                section={section}
+                dark={dark}
+                busyFindingId={lifecycleMut.variables?.findingId}
+                onAction={(action, findingId) => lifecycleMut.mutate({ action, findingId })}
+              />
+            ))}
+          </Box>
+        )}
       </Box>
     </ScanViewRoot>
   )
+}
+
+function ContainerTabs({ active, onChange, imageCount, findingsCount }: {
+  active: ContainerTab
+  onChange: (tab: ContainerTab) => void
+  imageCount: number
+  findingsCount: number
+}) {
+  const theme = useTheme()
+  const dark = theme.palette.mode === 'dark'
+  return (
+    <Paper
+      variant="outlined"
+      sx={{
+        flexShrink: 0,
+        borderRadius: 1.25,
+        borderColor: alpha(ACCENT, dark ? 0.34 : 0.22),
+        bgcolor: dark ? alpha(colors.brandDarkest, 0.42) : alpha(theme.palette.background.paper, 0.92),
+        p: 0.5,
+        minWidth: 0,
+      }}
+    >
+      <Tabs
+        value={active}
+        onChange={(_, value) => onChange(value as ContainerTab)}
+        variant="scrollable"
+        scrollButtons="auto"
+        sx={{
+          minHeight: 40,
+          '& .MuiTabs-indicator': { display: 'none' },
+          '& .MuiTab-root': {
+            minHeight: 40,
+            px: 1.25,
+            py: 0.55,
+            mr: 0.5,
+            borderRadius: 1,
+            border: '1px solid',
+            borderColor: 'transparent',
+            color: 'text.secondary',
+            textTransform: 'none',
+            letterSpacing: 0,
+            fontWeight: 850,
+            alignItems: 'center',
+          },
+          '& .MuiTab-root.Mui-selected': {
+            color: ACCENT,
+            borderColor: alpha(ACCENT, 0.45),
+            bgcolor: alpha(ACCENT, dark ? 0.16 : 0.09),
+            boxShadow: `inset 0 0 0 1px ${alpha(ACCENT, dark ? 0.08 : 0.04)}`,
+          },
+        }}
+      >
+        <Tab
+          value="containers"
+          label={<ContainerTabLabel icon={<BoxIcon size={15} />} label={tOr('warroom.containerTabInventory', '\u5bb9\u5668\u6e05\u55ae')} count={imageCount} />}
+          id="container-tab-inventory"
+          aria-controls="container-panel-inventory"
+        />
+        <Tab
+          value="checks"
+          label={<ContainerTabLabel icon={<FileText size={15} />} label={tOr('warroom.containerTabChecks', 'CVE \u6aa2\u67e5')} count={findingsCount} hot={findingsCount > 0} />}
+          id="container-tab-checks"
+          aria-controls="container-panel-checks"
+        />
+      </Tabs>
+    </Paper>
+  )
+}
+
+function ContainerTabLabel({ icon, label, count, hot = false }: {
+  icon: React.ReactNode
+  label: string
+  count: number
+  hot?: boolean
+}) {
+  return (
+    <Box sx={{ display: 'inline-flex', alignItems: 'center', gap: 0.75, minWidth: 0 }}>
+      <Box sx={{ display: 'inline-flex', color: 'inherit' }}>{icon}</Box>
+      <Typography component="span" sx={{ fontSize: 13, fontWeight: 900, lineHeight: 1 }} noWrap>
+        {label}
+      </Typography>
+      <Chip
+        size="small"
+        label={count}
+        sx={{
+          height: 22,
+          minWidth: 28,
+          borderRadius: 0.8,
+          fontWeight: 950,
+          color: hot ? colors.severity.critical : 'text.primary',
+          bgcolor: hot ? alpha(colors.severity.critical, 0.1) : 'action.selected',
+          '& .MuiChip-label': { px: 0.75 },
+        }}
+      />
+    </Box>
+  )
+}
+
+function ContainerInventoryView({
+  rows,
+  totalRows,
+  search,
+  source,
+  severity,
+  sources,
+  sevCounts,
+  posture,
+  dark,
+  onSearch,
+  onSource,
+  onSeverity,
+  onClear,
+  onInspect,
+}: {
+  rows: ContainerInventoryRow[]
+  totalRows: number
+  search: string
+  source: string
+  severity: string
+  sources: string[]
+  sevCounts: Record<string, number>
+  posture: ContainerPosture | null
+  dark: boolean
+  onSearch: (value: string) => void
+  onSource: (value: string) => void
+  onSeverity: (value: string) => void
+  onClear: () => void
+  onInspect: (image: string) => void
+}) {
+  const theme = useTheme()
+  const activeFilters = !!search || source !== 'all' || severity !== 'all'
+  const totalIssues = rows.reduce((sum, row) => sum + row.issues, 0)
+
+  return (
+    <Paper
+      variant="outlined"
+      sx={{
+        flexShrink: 0,
+        borderRadius: 2,
+        overflow: 'hidden',
+        borderColor: alpha(ACCENT, dark ? 0.32 : 0.22),
+        bgcolor: dark ? alpha(colors.brandDarkest, 0.28) : theme.palette.background.paper,
+      }}
+    >
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1fr) auto' },
+          gap: 1.25,
+          alignItems: 'center',
+          px: 1.5,
+          py: 1.25,
+          borderBottom: '1px solid',
+          borderColor: 'divider',
+          bgcolor: dark ? alpha(colors.brandDeep, 0.18) : alpha(ACCENT, 0.035),
+        }}
+      >
+        <Box sx={{ minWidth: 0 }}>
+          <Stack direction="row" spacing={0.75} alignItems="center" sx={{ minWidth: 0, flexWrap: 'wrap' }}>
+            <Box sx={{
+              width: 32,
+              height: 32,
+              borderRadius: 1.1,
+              display: 'grid',
+              placeItems: 'center',
+              color: ACCENT,
+              bgcolor: alpha(ACCENT, dark ? 0.18 : 0.1),
+              border: `1px solid ${alpha(ACCENT, 0.28)}`,
+            }}>
+              <BoxIcon size={16} />
+            </Box>
+            <Typography sx={{ ...flytoTextStyles.codeStrong, fontSize: 18 }}>
+              {tOr('warroom.containerInventoryTitle', '\u5bb9\u5668\u6e05\u55ae')}
+            </Typography>
+            <Chip
+              size="small"
+              label={`${rows.length}/${totalRows}`}
+              sx={{ height: 22, borderRadius: 0.9, ...flytoTextStyles.codeTiny, fontWeight: 900 }}
+            />
+          </Stack>
+          <Typography sx={{ mt: 0.45, color: 'text.secondary', ...flytoTextStyles.codeSmall }}>
+            {tOr('warroom.containerInventorySub', '\u5148\u770b\u6620\u50cf\u6a94\u8207\u4f86\u6e90\uff0c\u518d\u9032\u5165 CVE \u6aa2\u67e5\u3002')}
+          </Typography>
+        </Box>
+
+        <Stack direction="row" spacing={0.75} sx={{ justifyContent: { xs: 'flex-start', md: 'flex-end' }, flexWrap: 'wrap' }}>
+          <InventoryMetric label="C" value={sevCounts.CRITICAL} color={SEV.CRITICAL} />
+          <InventoryMetric label="H" value={sevCounts.HIGH} color={SEV.HIGH} />
+          <InventoryMetric label="M" value={sevCounts.MEDIUM} color={SEV.MEDIUM} />
+          <InventoryMetric label="L" value={sevCounts.LOW} color={SEV.LOW} />
+          <InventoryMetric label={tOr('warroom.containerImagesShort', '\u6620\u50cf')} value={posture?.image_count ?? totalRows} color={ACCENT} />
+        </Stack>
+      </Box>
+
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: { xs: 'minmax(180px, 1fr) 132px 132px 78px', lg: 'minmax(220px, 1fr) 180px 170px 88px' },
+          gap: 1,
+          alignItems: 'center',
+          px: 1.5,
+          py: 1.15,
+          borderBottom: '1px solid',
+          borderColor: 'divider',
+          bgcolor: dark ? alpha(colors.brandDarkest, 0.16) : alpha(theme.palette.grey[50], 0.8),
+          overflowX: 'auto',
+          overflowY: 'hidden',
+        }}
+      >
+        <TextField
+          size="small"
+          value={search}
+          onChange={(event) => onSearch(event.target.value)}
+          placeholder={tOr('common.search', '\u641c\u5c0b')}
+          InputProps={{
+            startAdornment: <Search size={16} style={{ marginRight: 8, opacity: 0.7 }} />,
+          }}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              height: 42,
+              borderRadius: 2,
+              bgcolor: dark ? alpha(colors.brandDeep, 0.26) : theme.palette.background.paper,
+            },
+          }}
+        />
+        <TextField
+          select
+          size="small"
+          value={source}
+          onChange={(event) => onSource(event.target.value)}
+          sx={{ '& .MuiOutlinedInput-root': { height: 42, borderRadius: 2 } }}
+        >
+          <MenuItem value="all">{tOr('warroom.allSources', '\u5168\u90e8\u4f86\u6e90')}</MenuItem>
+          {sources.map(option => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+        </TextField>
+        <TextField
+          select
+          size="small"
+          value={severity}
+          onChange={(event) => onSeverity(event.target.value)}
+          sx={{ '& .MuiOutlinedInput-root': { height: 42, borderRadius: 2 } }}
+        >
+          <MenuItem value="all">{tOr('warroom.allSeverities', '\u5168\u90e8\u56b4\u91cd\u5ea6')}</MenuItem>
+          {SEV_ORDER.map(option => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+        </TextField>
+        <Button
+          variant="outlined"
+          disabled={!activeFilters}
+          onClick={onClear}
+          startIcon={<ListFilter size={15} />}
+          sx={{ height: 42, borderRadius: 2, px: 1.25, minWidth: 78, whiteSpace: 'nowrap' }}
+        >
+          {'\u6e05\u9664'}
+        </Button>
+      </Box>
+
+      <Box sx={{ minWidth: 0 }}>
+        <Box
+          sx={{
+            display: { xs: 'none', lg: 'grid' },
+            gridTemplateColumns: '54px minmax(190px, 1.5fr) minmax(130px, 0.8fr) minmax(130px, 0.8fr) minmax(190px, 1.05fr) 150px 112px',
+            alignItems: 'center',
+            px: 1.5,
+            py: 0.95,
+            bgcolor: dark ? alpha(colors.brandDarkest, 0.34) : alpha(theme.palette.grey[100], 0.92),
+            borderBottom: '1px solid',
+            borderColor: 'divider',
+            color: 'text.secondary',
+            ...flytoTextStyles.codeTiny,
+            fontWeight: 900,
+          }}
+        >
+          <span>{tOr('warroom.containerType', '\u985e\u578b')}</span>
+          <span>{tOr('warroom.containerName', '\u540d\u7a31')}</span>
+          <span>Registry</span>
+          <span>{tOr('warroom.containerSource', '\u4f86\u6e90')}</span>
+          <span>Issues</span>
+          <span>{tOr('warroom.containerLastScan', '\u6700\u5f8c\u6383\u63cf')}</span>
+          <span />
+        </Box>
+
+        {rows.length === 0 ? (
+          <Box sx={{ minHeight: 158, display: 'grid', placeItems: 'center', color: 'text.secondary', px: 2, textAlign: 'center' }}>
+            <Typography sx={{ ...flytoTextStyles.codeSmall }}>
+              {activeFilters
+                ? tOr('warroom.containerNoFilterResult', '\u6c92\u6709\u7b26\u5408\u689d\u4ef6\u7684\u5bb9\u5668\u3002')
+                : tOr('warroom.containerNoInventory', '\u5c1a\u672a\u5efa\u7acb\u5bb9\u5668\u6e05\u55ae\uff0c\u53ef\u5728\u4e0b\u65b9\u65b0\u589e Registry \u6216 Kubernetes \u4f86\u6e90\u3002')}
+            </Typography>
+          </Box>
+        ) : (
+          rows.map(row => (
+            <ContainerInventoryRowView
+              key={row.id}
+              row={row}
+              dark={dark}
+              onInspect={() => onInspect(row.image)}
+            />
+          ))
+        )}
+
+        {rows.length > 0 && (
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            gap: 1,
+            px: 1.5,
+            py: 1,
+            borderTop: '1px solid',
+            borderColor: 'divider',
+            color: 'text.secondary',
+          }}>
+            <Typography sx={{ ...flytoTextStyles.codeTiny }}>
+              {rows.length} {tOr('warroom.containerRows', '\u5217')} / {totalIssues} issues
+            </Typography>
+            <Typography sx={{ ...flytoTextStyles.codeTiny }}>
+              {tOr('warroom.containerInventoryHint', '\u9ede\u6aa2\u67e5\u53ef\u5207\u5230\u5c0d\u61c9 CVE \u660e\u7d30')}
+            </Typography>
+          </Box>
+        )}
+      </Box>
+    </Paper>
+  )
+}
+
+function InventoryMetric({ label, value, color }: { label: string; value: number; color: string }) {
+  return (
+    <Chip
+      size="small"
+      label={`${value} ${label}`}
+      sx={{
+        height: 24,
+        borderRadius: 1,
+        color,
+        bgcolor: alpha(color, 0.1),
+        border: `1px solid ${alpha(color, 0.22)}`,
+        ...flytoTextStyles.codeTiny,
+        fontWeight: 950,
+      }}
+    />
+  )
+}
+
+function ContainerInventoryRowView({ row, dark, onInspect }: {
+  row: ContainerInventoryRow
+  dark: boolean
+  onInspect: () => void
+}) {
+  const theme = useTheme()
+  const worstColor = SEV[SEV_ORDER[row.worst] ?? 'LOW'] ?? SEV.LOW
+  const issueChips = SEV_ORDER.filter(sev => row.counts[sev] > 0)
+
+  return (
+    <Box
+      sx={{
+        display: 'grid',
+        gridTemplateColumns: { xs: '38px minmax(0, 1fr) auto', lg: '54px minmax(190px, 1.5fr) minmax(130px, 0.8fr) minmax(130px, 0.8fr) minmax(190px, 1.05fr) 150px 112px' },
+        alignItems: 'center',
+        gap: { xs: 0.75, lg: 0 },
+        px: 1.5,
+        py: { xs: 1.1, lg: 0.95 },
+        borderTop: '1px solid',
+        borderColor: 'divider',
+        bgcolor: dark ? alpha(colors.brandDarkest, 0.08) : theme.palette.background.paper,
+        '&:hover': {
+          bgcolor: dark ? alpha(ACCENT, 0.08) : alpha(ACCENT, 0.045),
+        },
+        minWidth: 0,
+      }}
+    >
+      <Box sx={{
+        width: 30,
+        height: 30,
+        borderRadius: 1,
+        display: 'grid',
+        placeItems: 'center',
+        color: ACCENT,
+        bgcolor: alpha(ACCENT, dark ? 0.16 : 0.09),
+      }}>
+        <BoxIcon size={15} />
+      </Box>
+
+      <Box sx={{ minWidth: 0 }}>
+        <Typography sx={{ ...flytoTextStyles.codeStrong, fontSize: 14, minWidth: 0 }} noWrap title={row.image}>
+          {row.name}
+        </Typography>
+        <Typography sx={{ ...flytoTextStyles.codeTiny, color: 'text.secondary', mt: 0.25 }} noWrap title={row.image}>
+          {row.image}
+        </Typography>
+      </Box>
+
+      <Typography sx={{ ...flytoTextStyles.codeSmall, color: 'text.secondary', display: { xs: 'none', lg: 'block' } }} noWrap title={row.registry}>
+        {row.registry}
+      </Typography>
+      <Typography sx={{ ...flytoTextStyles.codeSmall, color: 'text.secondary', display: { xs: 'none', lg: 'block' } }} noWrap title={row.source}>
+        {row.source}
+      </Typography>
+
+      <Stack direction="row" spacing={0.5} sx={{ flexWrap: 'wrap', alignItems: 'center', gridColumn: { xs: '2 / -1', lg: 'auto' } }}>
+        {issueChips.length === 0 ? (
+          <Chip size="small" label="0" sx={{ height: 24, borderRadius: 1, ...flytoTextStyles.codeTiny }} />
+        ) : issueChips.map(sev => (
+          <Chip
+            key={sev}
+            size="small"
+            label={`${row.counts[sev]} ${sev[0]}`}
+            sx={{
+              height: 24,
+              borderRadius: 1,
+              color: SEV[sev],
+              bgcolor: alpha(SEV[sev], dark ? 0.16 : 0.1),
+              border: `1px solid ${alpha(SEV[sev], 0.28)}`,
+              ...flytoTextStyles.codeTiny,
+              fontWeight: 900,
+            }}
+          />
+        ))}
+      </Stack>
+
+      <Box sx={{ display: { xs: 'none', lg: 'flex' }, alignItems: 'center', gap: 0.65, minWidth: 0 }}>
+        <Box sx={{ width: 7, height: 7, borderRadius: '50%', bgcolor: worstColor }} />
+        <Typography sx={{ ...flytoTextStyles.codeTiny, color: 'text.secondary' }} noWrap>
+          {formatContainerScanDate(row.lastScan)}
+        </Typography>
+      </Box>
+
+      <Button
+        size="small"
+        variant="outlined"
+        onClick={onInspect}
+        disabled={row.issues === 0}
+        sx={{
+          height: 32,
+          borderRadius: 1.2,
+          px: 1.25,
+          justifySelf: 'end',
+          gridColumn: { xs: '3', lg: 'auto' },
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {tOr('warroom.inspectCves', '\u6aa2\u67e5')}
+      </Button>
+    </Box>
+  )
+}
+
+function ContainerChecksToolbar({ search, onSearch, resultCount }: {
+  search: string
+  onSearch: (value: string) => void
+  resultCount: number
+}) {
+  const theme = useTheme()
+  const dark = theme.palette.mode === 'dark'
+  return (
+    <Paper
+      variant="outlined"
+      sx={{
+        flexShrink: 0,
+        borderRadius: 1.5,
+        p: 1,
+        display: 'grid',
+        gridTemplateColumns: { xs: '1fr', md: 'minmax(240px, 420px) auto' },
+        gap: 1,
+        alignItems: 'center',
+        borderColor: alpha(ACCENT, dark ? 0.3 : 0.2),
+      }}
+    >
+      <TextField
+        size="small"
+        value={search}
+        onChange={(event) => onSearch(event.target.value)}
+        placeholder={tOr('warroom.searchCves', '\u641c\u5c0b CVE / image / package')}
+        InputProps={{
+          startAdornment: <Search size={16} style={{ marginRight: 8, opacity: 0.7 }} />,
+        }}
+        sx={{ '& .MuiOutlinedInput-root': { height: 40, borderRadius: 1.5 } }}
+      />
+      <Chip
+        size="small"
+        label={`${resultCount} ${tOr('warroom.containerFindings', '\u767c\u73fe')}`}
+        sx={{
+          justifySelf: { xs: 'start', md: 'end' },
+          height: 26,
+          borderRadius: 1,
+          ...flytoTextStyles.codeTiny,
+          fontWeight: 900,
+          color: resultCount > 0 ? colors.severity.critical : SECURE,
+          bgcolor: alpha(resultCount > 0 ? colors.severity.critical : SECURE, 0.1),
+        }}
+      />
+    </Paper>
+  )
+}
+
+function buildContainerInventoryRows(sections: ContainerSourceSection[]): ContainerInventoryRow[] {
+  const byImage = new Map<string, ContainerInventoryRow>()
+  for (const section of sections) {
+    for (const group of section.imageGroups) {
+      const parsed = parseContainerImageRef(group.image)
+      let row = byImage.get(group.image)
+      if (!row) {
+        row = {
+          id: group.image,
+          image: group.image,
+          name: parsed.name,
+          registry: parsed.registry,
+          domain: section.subjectLabel,
+          source: section.sourceLabel,
+          issues: 0,
+          counts: { CRITICAL: 0, HIGH: 0, MEDIUM: 0, LOW: 0 },
+          worst: 99,
+          lastScan: undefined,
+        }
+        byImage.set(group.image, row)
+      }
+      row.issues += group.items.length
+      row.worst = Math.min(row.worst, group.worst)
+      if (!row.domain.includes(section.subjectLabel)) row.domain = `${row.domain}, ${section.subjectLabel}`
+      if (!row.source.includes(section.sourceLabel)) row.source = `${row.source}, ${section.sourceLabel}`
+      for (const sev of SEV_ORDER) row.counts[sev] += group.counts[sev] ?? 0
+      for (const item of group.items) {
+        if (!row.lastScan || item.scanned_at > row.lastScan) row.lastScan = item.scanned_at
+      }
+    }
+  }
+  return [...byImage.values()].sort((a, b) => (
+    a.worst - b.worst
+    || b.issues - a.issues
+    || a.name.localeCompare(b.name)
+  ))
+}
+
+function parseContainerImageRef(image: string): { registry: string; name: string } {
+  const parts = image.split('/').filter(Boolean)
+  if (parts.length === 0) return { registry: 'unknown', name: image || 'unknown' }
+  const first = parts[0]
+  const hasRegistry = first.includes('.') || first.includes(':') || first === 'localhost'
+  const registry = hasRegistry ? first : 'Docker Hub'
+  const name = hasRegistry ? parts.slice(1).join('/') || first : parts.join('/')
+  return { registry, name: name || image }
+}
+
+function filterContainerInventoryRows(
+  rows: ContainerInventoryRow[],
+  search: string,
+  source: string,
+  severity: string,
+): ContainerInventoryRow[] {
+  const q = search.trim().toLowerCase()
+  return rows.filter(row => {
+    if (source !== 'all' && row.source !== source && !row.source.split(', ').includes(source)) return false
+    if (severity !== 'all' && (row.counts[severity] ?? 0) <= 0) return false
+    if (!q) return true
+    return [
+      row.image,
+      row.name,
+      row.registry,
+      row.domain,
+      row.source,
+    ].some(value => value.toLowerCase().includes(q))
+  })
+}
+
+function filterContainerSourceSections(sections: ContainerSourceSection[], search: string): ContainerSourceSection[] {
+  const q = search.trim().toLowerCase()
+  if (!q) return sections
+  return sections
+    .map(section => {
+      const items = section.items.filter(item => [
+        item.image_ref,
+        item.package_name,
+        item.installed_version,
+        item.fixed_version || '',
+        item.cve_id || '',
+        item.title,
+        item.severity,
+        section.subjectLabel,
+        section.sourceLabel,
+      ].some(value => value.toLowerCase().includes(q)))
+      const imageGroups = groupContainerFindingsByImage(items)
+      return {
+        ...section,
+        items,
+        imageGroups,
+        counts: countSev(items),
+        worst: items.reduce((worst, item) => Math.min(worst, sevRank(item.severity)), 99),
+      }
+    })
+    .filter(section => section.items.length > 0)
+}
+
+function formatContainerScanDate(value?: string): string {
+  if (!value) return '-'
+  const date = new Date(value)
+  if (Number.isNaN(date.getTime())) return value.slice(0, 16)
+  return new Intl.DateTimeFormat('zh-TW', {
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  }).format(date)
 }
 
 function buildContainerSourceSections(
@@ -491,8 +1199,14 @@ function ContainerClosedLoopPanel({ orgId, dark }: { orgId?: string; dark: boole
       )}
       tone="tech"
       density="compact"
-      bodySx={{ p: 0 }}
-      sx={{ minWidth: 0 }}
+      scroll
+      bodySx={{
+        p: 0,
+        minHeight: 0,
+        overflowY: 'auto',
+        overflowX: 'hidden',
+      }}
+      sx={{ minWidth: 0, minHeight: 0, flexShrink: 0 }}
     >
 
       <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1.05fr 0.95fr' }, gap: 0, minWidth: 0 }}>
@@ -772,131 +1486,6 @@ function containerRunStatusKey(status: string): string {
   if (status === 'complete') return 'warroom.containerRunComplete'
   if (status === 'failed') return 'warroom.containerRunFailed'
   return 'warroom.containerRunUnknown'
-}
-
-// ── Posture bar — terminal header + coverage ring + grade + sev tiles ─
-
-function PostureBar({ posture, sevCounts, dark }: {
-  posture: ContainerPosture | null
-  sevCounts: Record<string, number>
-  dark: boolean
-}) {
-  const imageCount = posture?.image_count ?? 0
-  const scored = posture?.scored_count ?? 0
-  const images = posture?.images ?? []
-  const running = images.filter((img) => img.running).length
-  const exposed = images.filter((img) => img.exposed).length
-  const coverage = imageCount > 0 ? Math.round((scored / imageCount) * 100) : 0
-  const grade = posture?.avg_grade
-  const gradeColor = grade ? (GRADE_COLOR[grade] ?? colors.severity.low) : colors.severity.low
-
-  return (
-    <Paper variant="outlined" sx={{
-      borderColor: alpha(ACCENT, dark ? 0.35 : 0.25),
-      borderRadius: 2,
-      overflow: 'hidden',
-      minWidth: 0,
-      bgcolor: dark ? alpha('#0b1220', 0.55) : 'background.paper',
-      boxShadow: dark ? `inset 0 1px 0 ${alpha(ACCENT, 0.25)}` : 'none',
-    }}>
-      {/* Command-line header strip */}
-      <Box sx={{
-        display: 'flex', alignItems: 'center', gap: 1, px: 1.5, py: 0.85,
-        borderBottom: '1px solid', borderColor: alpha(ACCENT, 0.2),
-        bgcolor: alpha(ACCENT, dark ? 0.1 : 0.06),
-      }}>
-        <Terminal size={14} style={{ color: ACCENT }} />
-        <Typography sx={{ ...flytoTextStyles.codeValue, color: ACCENT }}>
-          $ trivy image --scanners vuln
-        </Typography>
-        <Box sx={{ flex: 1 }} />
-        <Typography sx={{ ...flytoTextStyles.codeSmall, color: 'text.secondary', minWidth: 0 }} noWrap>
-          {imageCount} {t('warroom.images')} · {scored} {t('warroom.scored')} · {running} {t('warroom.runningImages')} · {exposed} {t('warroom.exposedImages')}
-        </Typography>
-      </Box>
-
-      <Box sx={{
-        display: 'grid', gap: 2, p: 2,
-        gridTemplateColumns: { xs: '1fr', sm: 'auto auto 1fr' }, alignItems: 'center',
-      }}>
-        {/* Coverage ring */}
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-          <Ring pct={coverage} color={ACCENT} />
-          <Box>
-            <Typography variant="caption" color="text.secondary" sx={{ ...flytoTextStyles.codeTiny, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-              {t('warroom.coverage')}
-            </Typography>
-            <Typography sx={flytoTextStyles.codeValue}>
-              {scored}/{imageCount}
-            </Typography>
-          </Box>
-        </Box>
-
-        {/* Grade */}
-        <Box sx={{
-          display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-          px: 2.5, mx: { sm: 1 }, borderLeft: { sm: '1px solid' }, borderRight: { sm: '1px solid' },
-          borderColor: { sm: 'divider' },
-        }}>
-          <Typography sx={{ ...flytoTextStyles.codeStrong, fontSize: 30, lineHeight: 1, color: gradeColor }}>
-            {posture?.avg_display != null ? posture.avg_display : '—'}
-          </Typography>
-          <Typography variant="caption" color="text.secondary" sx={{ ...flytoTextStyles.codeTiny, textTransform: 'uppercase', letterSpacing: '0.08em', mt: 0.25 }}>
-            {grade ? grade : t('warroom.unscored')}
-          </Typography>
-        </Box>
-
-        {/* Severity tiles */}
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: 'repeat(2, minmax(0, 1fr))', sm: 'repeat(4, minmax(0, 1fr))' }, gap: 1, minWidth: 0 }}>
-          {SEV_ORDER.map(sev => (
-            <SevTile key={sev} sev={sev} count={sevCounts[sev] ?? 0} dark={dark} />
-          ))}
-        </Box>
-      </Box>
-    </Paper>
-  )
-}
-
-function SevTile({ sev, count, dark }: { sev: string; count: number; dark: boolean }) {
-  const color = SEV[sev]
-  const hot = count > 0 && (sev === 'CRITICAL' || sev === 'HIGH')
-  return (
-    <Box sx={{
-      borderRadius: 1.5, px: 1.25, py: 1,
-      border: '1px solid', borderColor: alpha(color, count > 0 ? 0.5 : 0.18),
-      bgcolor: alpha(color, count > 0 ? (dark ? 0.14 : 0.08) : 0.04),
-      boxShadow: hot ? `0 0 14px ${alpha(color, 0.45)}` : 'none',
-      transition: 'box-shadow .2s',
-      minWidth: 0,
-    }}>
-      <Typography sx={{ ...flytoTextStyles.codeStrong, fontSize: 20, lineHeight: 1, color: count > 0 ? color : 'text.disabled' }}>
-        {count}
-      </Typography>
-      <Typography sx={{ ...flytoTextStyles.codeTiny, fontWeight: 700, letterSpacing: '0.06em', color: count > 0 ? color : 'text.secondary', overflow: 'hidden', textOverflow: 'ellipsis' }} noWrap>
-        {sev}
-      </Typography>
-    </Box>
-  )
-}
-
-function Ring({ pct, color, size = 64 }: { pct: number; color: string; size?: number }) {
-  const sw = 6
-  const r = (size - sw) / 2
-  const c = 2 * Math.PI * r
-  return (
-    <svg width={size} height={size} style={{ flexShrink: 0 }}>
-      <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={alpha(color, 0.18)} strokeWidth={sw} />
-      <circle
-        cx={size / 2} cy={size / 2} r={r} fill="none" stroke={color} strokeWidth={sw} strokeLinecap="round"
-        strokeDasharray={c} strokeDashoffset={c * (1 - pct / 100)}
-        transform={`rotate(-90 ${size / 2} ${size / 2})`}
-      />
-      <text x="50%" y="50%" textAnchor="middle" dominantBaseline="central"
-        style={{ fontFamily: MONO, fontWeight: 800, fontSize: 14, fill: 'currentColor' }}>
-        {pct}%
-      </text>
-    </svg>
-  )
 }
 
 // ── Per-image scan report card ──────────────────────────────────────

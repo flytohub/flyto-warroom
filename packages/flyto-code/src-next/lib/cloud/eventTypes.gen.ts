@@ -83,6 +83,10 @@ export const ENGINE_EVENT_TYPES = [
   // badge so operators know to manually trigger a cascade for the
   // rest if they want them covered.
   'discovery.truncated',
+  // Enterprise — edition boundary and immutable audit ledger. Published after
+  // an enterprise audit row is appended so admin pages refresh profile/audit
+  // evidence without polling. Payload: {org_id, action, surface, outcome}.
+  'enterprise.audit.logged',
   // EventExternalIssueUpdated — external CTEM issue state change
   // (mark-fixed / assign / verify). Published after the handlers_ctem
   // status mutations. FE invalidates ctem priorities + external posture.
@@ -121,6 +125,9 @@ export const ENGINE_EVENT_TYPES = [
   // Published after UpsertIssueStatus. FE invalidates enriched issues +
   // autofix findings. Payload: {org_id, fingerprint, status}.
   'issue.status_changed',
+  // Enterprise — license or entitlement transition recorded in the enterprise
+  // audit ledger. Payload matches EventEnterpriseAuditLogged.
+  'license.updated',
   // Code — MCP Runtime Guardian. Published after an MCP call attempt is
   // decided + recorded, whether it arrived from the external MCP proxy's
   // API-key ingest path or from the dashboard's test-connection action.
@@ -155,13 +162,15 @@ export const ENGINE_EVENT_TYPES = [
   'project.created',
   'project.deleted',
   'project.updated',
+  // Code — cross-surface remediation. Published after target/plan/run
+  // lifecycle transitions so AutoFix, cloud, container, runtime, and external
+  // cockpits can refresh without polling.
+  'remediation.changed',
   // EventRepoConnected / EventRepoDisconnected — asset ingest signal so a
   // second war-room tab sees the connect/disconnect without staleTime.
   // Payload: {org_id, repo_id}.
   'repo.connected',
   'repo.disconnected',
-  // Code — cross-surface remediation. Payload: {event, target_id, plan_id, run_id}.
-  'remediation.changed',
   // Cortex — knowledge workspace
   'resource.created',
   'resource.deleted',

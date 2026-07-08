@@ -42,7 +42,7 @@
  */
 
 import { t } from '@lib/i18n';
-import { useMemo, useRef, useState, Suspense } from 'react'
+import { useLayoutEffect, useMemo, useRef, useState, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { OrbitControls, Html } from '@react-three/drei'
 import { useTheme } from '@mui/material/styles'
@@ -96,6 +96,18 @@ export function AssetCity3D({ buildings, onBuildingClick }: AssetCity3DProps) {
   //   dark  → original deep-space tone for the cyberpunk vibe
   const theme = useTheme()
   const isDark = theme.palette.mode === 'dark'
+  // r3f binds pointer events to the canvas's parent node at connect
+  // time. Under LazyMount + Suspense + JellyCard the canvas can be
+  // detached mid-mount, so connect() hits a null node
+  // ("Cannot read properties of null (reading 'addEventListener')")
+  // and the WebGL context is lost. Anchor events to a wrapper div we
+  // own, and only mount <Canvas> after that div is committed to the
+  // DOM so the event source can never be null.
+  const eventSourceRef = useRef<HTMLDivElement>(null)
+  const [canvasReady, setCanvasReady] = useState(false)
+  useLayoutEffect(() => {
+    if (eventSourceRef.current) setCanvasReady(true)
+  }, [])
   const bgColor = isDark ? '#050715' : '#eef2f8'
   const fogColor = bgColor
   const gridColor = isDark ? '#1d4ed8' : '#7c3aed'
@@ -105,16 +117,6 @@ export function AssetCity3D({ buildings, onBuildingClick }: AssetCity3DProps) {
   const accentIntensity = isDark ? 0.4 : 0.18
   const planeColor = isDark ? '#0b0f1f' : '#f3f4fa'
 
-  if (buildings.length === 0) {
-    return (
-      <div style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        height: '100%', color: isDark ? '#94a3b8' : '#64748b', fontSize: 13,
-      }}>
-        {t('dashboard.cityEmpty')}
-      </div>
-    )
-  }
   // Pull the camera back as more districts appear so the full city +
   // the buffers between districts stay in frame on first paint.
   // Single-district orgs keep the original tight zoom; each extra
@@ -125,38 +127,53 @@ export function AssetCity3D({ buildings, onBuildingClick }: AssetCity3DProps) {
     : districtCount === 2 ? [14, 11, 18]
     : [10, 9, 14]
 
+  // The wrapper div always mounts (even for the empty state) so the
+  // event-source ref is committed before the Canvas ever renders.
   return (
-    <Canvas
-      camera={{ position: cameraPos, fov: 45 }}
-      style={{ width: '100%', height: '100%' }}
-      dpr={[1, 2]}
-      gl={{ antialias: true, alpha: true }}
-    >
-      <Suspense fallback={null}>
-        <color attach="background" args={[bgColor]} />
-        <fog attach="fog" args={[fogColor, 18, 38]} />
-        <ambientLight intensity={ambientIntensity} />
-        <directionalLight position={[8, 14, 6]} intensity={0.85} color={isDark ? '#c4b5fd' : '#ffffff'} />
-        <pointLight position={[-10, 6, -10]} intensity={fillIntensity} color="#06b6d4" />
-        <pointLight position={[10, 4, 10]} intensity={accentIntensity} color="#ec4899" />
-        <City
-          buildings={buildings}
-          onBuildingClick={onBuildingClick}
-          gridColor={gridColor}
-          gridOpacity={gridOpacity}
-          planeColor={planeColor}
-          isDark={isDark}
-        />
-        <OrbitControls
-          enablePan={false}
-          enableZoom={false}
-          autoRotate
-          autoRotateSpeed={0.55}
-          minPolarAngle={Math.PI / 4}
-          maxPolarAngle={Math.PI / 2.15}
-        />
-      </Suspense>
-    </Canvas>
+    <div ref={eventSourceRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
+      {buildings.length === 0 ? (
+        <div style={{
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          height: '100%', color: isDark ? '#94a3b8' : '#64748b', fontSize: 13,
+        }}>
+          {t('dashboard.cityEmpty')}
+        </div>
+      ) : canvasReady ? (
+        <Canvas
+          camera={{ position: cameraPos, fov: 45 }}
+          style={{ width: '100%', height: '100%' }}
+          dpr={[1, 2]}
+          gl={{ antialias: true, alpha: true }}
+          eventSource={eventSourceRef as React.RefObject<HTMLElement>}
+          eventPrefix="client"
+        >
+          <Suspense fallback={null}>
+            <color attach="background" args={[bgColor]} />
+            <fog attach="fog" args={[fogColor, 18, 38]} />
+            <ambientLight intensity={ambientIntensity} />
+            <directionalLight position={[8, 14, 6]} intensity={0.85} color={isDark ? '#c4b5fd' : '#ffffff'} />
+            <pointLight position={[-10, 6, -10]} intensity={fillIntensity} color="#06b6d4" />
+            <pointLight position={[10, 4, 10]} intensity={accentIntensity} color="#ec4899" />
+            <City
+              buildings={buildings}
+              onBuildingClick={onBuildingClick}
+              gridColor={gridColor}
+              gridOpacity={gridOpacity}
+              planeColor={planeColor}
+              isDark={isDark}
+            />
+            <OrbitControls
+              enablePan={false}
+              enableZoom={false}
+              autoRotate
+              autoRotateSpeed={0.55}
+              minPolarAngle={Math.PI / 4}
+              maxPolarAngle={Math.PI / 2.15}
+            />
+          </Suspense>
+        </Canvas>
+      ) : null}
+    </div>
   )
 }
 

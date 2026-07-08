@@ -15,7 +15,7 @@ export default function ReposPage() {
     <PageShell padded={false} scroll="host">
       <ModeView
         manager={
-          <Box sx={{ height: '100%', overflow: 'auto' }}>
+          <Box sx={{ height: '100%', overflow: 'hidden' }}>
             <RepoListManagerView orgId={orgId} />
           </Box>
         }

@@ -46,6 +46,16 @@ function parseAssetScope(asset?: AttackSurfaceAsset): Pick<DomainRow, 'scopeBuck
   }
 }
 
+function isConfirmedKernelAsset(asset: KernelAsset): boolean {
+  const tier = asset.current_tier?.toLowerCase()
+  // /external-posture/kernel is already the confirmed external-surface
+  // read model. Confidence is evidence strength, not an inventory gate:
+  // the engine can legitimately return active domains at 85/92 confidence.
+  // Only hide rows the backend explicitly marks as non-promoted leads.
+  if (!tier || tier === 'unranked' || tier === 'confirmed') return true
+  return !['candidate', 'lead', 'weak', 'rejected', 'suppressed', 'noise'].includes(tier)
+}
+
 /** Aggregate assets into domain-level rows with generated security issues.
  *  `postureDomains` is optional — when provided, each row gets the
  *  backend's authoritative score/grade so the UI doesn't recompute
@@ -145,6 +155,8 @@ export function buildDomainRows(
       kernelByDomain.set(domain, asset)
       if (!domainMap.has(domain)) {
         const project = projectsByDomain.get(domain)
+        const confirmed = Boolean(project) || isConfirmedKernelAsset(asset)
+        if (!confirmed && !includeCandidates) continue
         domainMap.set(domain, {
           url: asset.type === 'ip' ? `http://${domain}` : `https://${domain}`,
           type: project ? PROJECT_TYPES.find(t => t.id === project.project_type)?.nameKey ?? 'pentest.frontend' : 'pentest.attackSurface',
@@ -152,7 +164,8 @@ export function buildDomainRows(
           assets: [],
           issues: [],
           lastScan: '',
-          scopeBucket: project?.scope_bucket,
+          verifierStatus: confirmed ? undefined : 'inconclusive',
+          scopeBucket: project?.scope_bucket ?? (confirmed ? undefined : 'candidate'),
           activeGateStatus: project?.active_gate_status,
           requiredAction: project?.required_action,
         })

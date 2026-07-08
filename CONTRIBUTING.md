@@ -40,3 +40,11 @@ python scripts/export-upstream-patches.py --base origin/main --output upstream-p
 
 The generated patch bundle is then applied to the private source repositories,
 reviewed there, and re-exported.
+
+## Contributor License Agreement (CLA)
+
+Before a contribution can be accepted and ported upstream, you must agree to the
+Contributor License Agreement in `CLA.md`. This lets maintainers keep your
+contribution maintainable across both the Apache-2.0 community edition and the
+commercial edition. The CLA-assistant workflow comments a one-time signing link
+on your first PR; the check must be green before the change is merged/ported.

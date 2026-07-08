@@ -4,11 +4,9 @@ import Divider from '@mui/material/Divider';
 import CircularProgress from '@mui/material/CircularProgress';
 import { useOrg } from '@hooks/useOrg';
 import { useOrgEvents } from '@hooks/useOrgEvents';
-import { AiPanelProvider, useAiPanelContext } from '@hooks/useAiPanelContext';
 import { RepoFilterProvider } from '@hooks/useRepoFilter';
 import { FixQueueProvider } from '@/contexts/FixQueueContext';
 import { ExperienceProvider } from '@/contexts/ExperienceContext';
-import { AiPanel } from '@compounds/layout/AiPanel';
 import { IntegrationHealthBanner } from '@compounds/layout/IntegrationHealthBanner';
 import { FixQueueDrawer } from '@compounds/fix-queue/FixQueueDrawer';
 import WorkspaceSidebar from './WorkspaceSidebar';
@@ -26,10 +24,9 @@ import { getFullBleedPaths } from '@code/modules';
 const FULL_BLEED_PAGES = [...getFullBleedPaths(), '/warroom', '/threat-intel'];
 
 function WorkspaceInner() {
-  const { org, loading, ready } = useOrg();
+  const { org, ready } = useOrg();
   const { orgId } = useParams();
   const location = useLocation();
-  const { collapsed, togglePanel } = useAiPanelContext();
   useOrgEvents(org?.id);
 
   // Wait for orgs to load before deciding
@@ -82,9 +79,6 @@ function WorkspaceInner() {
         )}
       </Box>
 
-      {/* AI co-pilot sidebar */}
-      <AiPanel collapsed={collapsed} onToggle={togglePanel} />
-
       {/* Fix queue right-side drawer — opens from any "Walk me
           through fixing" CTA on dashboard / pulse / cross-dim tile. */}
       <FixQueueDrawer />
@@ -95,13 +89,11 @@ function WorkspaceInner() {
 export default function WorkspaceLayout() {
   return (
     <RepoFilterProvider>
-      <AiPanelProvider>
-        <FixQueueProvider>
-          <ExperienceProvider>
-            <WorkspaceInner />
-          </ExperienceProvider>
-        </FixQueueProvider>
-      </AiPanelProvider>
+      <FixQueueProvider>
+        <ExperienceProvider>
+          <WorkspaceInner />
+        </ExperienceProvider>
+      </FixQueueProvider>
     </RepoFilterProvider>
   );
 }

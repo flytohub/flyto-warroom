@@ -17,7 +17,9 @@ import {
 } from 'firebase/auth'
 import { auth } from '@lib/firebase'
 import { env } from '@lib/env'
+import { loginWithLocalEngine, type EngineAuthUser } from '@lib/engine/auth'
 import { isSessionJWTAuthMode } from '@lib/engine/authToken'
+import { request } from '@lib/engine/client'
 import { GITLAB_TOKEN_KEY } from '@lib/oauth'
 import type { ReactNode } from 'react'
 
@@ -60,12 +62,7 @@ function makeDevUser(): FirebaseUser {
   return devUser
 }
 
-type EngineUser = {
-  id: string
-  email?: string
-  displayName?: string
-  photoURL?: string | null
-}
+type EngineUser = EngineAuthUser
 
 function makeSessionUser(u: EngineUser): FirebaseUser {
   return {
@@ -122,26 +119,12 @@ function hasSessionToken(): boolean {
   }
 }
 
-async function fetchEngineMe(token: string): Promise<EngineUser> {
-  const res = await fetch(`${env.engineUrl}/api/v1/me`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-  if (!res.ok) throw new Error('Not authenticated')
-  return res.json()
+async function fetchEngineMe(): Promise<EngineUser> {
+  return request<EngineUser>('GET', '/api/v1/me')
 }
 
 async function signInWithLocalEngine(email: string, password: string): Promise<FirebaseUser> {
-  const res = await fetch(`${env.engineUrl}/api/v1/auth/local/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password }),
-  })
-  if (!res.ok) throw new Error('auth/invalid-credential')
-  const body = await res.json() as {
-    accessToken?: string
-    access_token?: string
-    user?: EngineUser
-  }
+  const body = await loginWithLocalEngine(email, password)
   const token = body.accessToken || body.access_token
   if (!token || !body.user?.id) throw new Error('auth/invalid-credential')
   sessionStorage.setItem(JWT_SESSION_KEY, JSON.stringify(token))
@@ -196,7 +179,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         return
       }
       let cancelled = false
-      let token = ''
+      let token: string
       try {
         const parsed = JSON.parse(raw) as unknown
         token = typeof parsed === 'string' ? parsed : ''
@@ -209,7 +192,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setLoading(false)
         return
       }
-      fetchEngineMe(token)
+      fetchEngineMe()
         .then((engineUser) => {
           if (cancelled) return
           sessionStorage.setItem(SESSION_USER_KEY, JSON.stringify(engineUser))

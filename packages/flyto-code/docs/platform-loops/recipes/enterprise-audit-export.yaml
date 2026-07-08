@@ -1,0 +1,25 @@
+id: enterprise-audit-export
+surface: enterprise_control
+description: Verify enterprise audit export is API-backed and license events refresh enterprise gates.
+requires:
+  - frontend
+  - engine
+steps:
+  - module: browser.goto
+    url: "{{baseUrl}}/projects/{{orgId}}/enterprise-control-plane?mode=engineer"
+  - module: api.request
+    method: GET
+    url: "{{engineUrl}}/api/v1/system/enterprise/audit/export?org={{orgId}}&format=json"
+assertions:
+  - assert: api_path_present
+    path: /system/enterprise/audit/export
+  - assert: query_key_present
+    query_key: system-enterprise-audit-events
+  - assert: event_invalidates_query
+    event: license.updated
+    invalidates: qk.platform.enterpriseProfile
+  - assert: route_renders_without_error
+    step: 1
+  - assert: http_status
+    step: 2
+    status: 200

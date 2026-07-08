@@ -65,7 +65,6 @@ import {
 import { qk } from '@lib/queryKeys'
 import { t, tOr } from '@lib/i18n';
 import { FlytoCodeBlock } from '@atoms/FlytoCodeBlock'
-import { FlytoPageHeader } from '@atoms/FlytoPageHeader'
 import { FlytoSurface } from '@atoms/FlytoSurface'
 import { FlytoMetricGrid } from '@atoms/FlytoMetric'
 import { TabBar, type TabItem } from '@atoms/TabBar'
@@ -74,6 +73,7 @@ import { QueryError } from '@atoms/QueryError'
 import { SEVERITY_TONE } from '@lib/tokens/severity'
 import { colors } from '@/styles/designTokens'
 import { flytoTextStyles } from '@/styles/visualSystem'
+import { AgentFirewallManagerSurface, runtimeModeLabel } from './AgentFirewallManagerSurface'
 
 const BRAND = colors.brandDeep
 const STATUS_GOOD = colors.semantic.success
@@ -198,18 +198,50 @@ function Shell({
   children: ReactNode
 }) {
   return (
-    <Box sx={{ height: '100%', minHeight: 0, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <Box
+      sx={{
+        height: '100%',
+        minHeight: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
+        background: (theme) => theme.palette.mode === 'dark'
+          ? `radial-gradient(circle at 12% 0%, ${alpha(colors.section.exposure, 0.12)}, transparent 30%), linear-gradient(180deg, ${alpha('#020617', 0.94)}, ${alpha('#111827', 0.88)})`
+          : `radial-gradient(circle at 12% 0%, ${alpha(colors.section.exposure, 0.12)}, transparent 30%), linear-gradient(180deg, ${alpha('#f8fafc', 0.98)}, ${alpha('#eef2ff', 0.34)})`,
+      }}
+    >
       <Box sx={{ px: { xs: 2, sm: 3 }, pt: { xs: 2, sm: 3 }, pb: 1.5, flexShrink: 0 }}>
-        <FlytoPageHeader
-          title={title}
-          subtitle={desc}
-          bottomGap={0}
-          count={(
-            <Box sx={{ width: 34, height: 34, borderRadius: 1, display: 'grid', placeItems: 'center', bgcolor: alpha(BRAND, 0.12), color: BRAND, flexShrink: 0 }}>
-              {icon}
+        <Paper
+          variant="outlined"
+          sx={{
+            borderRadius: 2,
+            borderColor: alpha(colors.section.exposure, 0.24),
+            bgcolor: (theme) => alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.68 : 0.9),
+            backgroundImage: `linear-gradient(120deg, ${alpha(colors.section.exposure, 0.12)}, transparent 42%), linear-gradient(90deg, ${alpha(BRAND, 0.08)}, transparent 72%)`,
+            boxShadow: (theme) => theme.palette.mode === 'dark'
+              ? `0 18px 46px ${alpha('#000', 0.28)}`
+              : `0 18px 46px ${alpha('#334155', 0.11)}`,
+            p: { xs: 1.5, sm: 2 },
+            display: 'flex',
+            alignItems: 'center',
+            gap: 1.5,
+          }}
+        >
+          <Box sx={{ width: 42, height: 42, borderRadius: 1.5, display: 'grid', placeItems: 'center', bgcolor: alpha(colors.section.exposure, 0.12), color: colors.section.exposure, flexShrink: 0, boxShadow: `inset 0 0 0 1px ${alpha(colors.section.exposure, 0.32)}` }}>
+            {icon}
+          </Box>
+          <Box sx={{ minWidth: 0 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+              <Typography component="h1" sx={{ fontSize: { xs: 23, md: 27 }, fontWeight: 900, lineHeight: 1.05, letterSpacing: 0 }}>
+                {title}
+              </Typography>
+              <Chip size="small" label={tOr('experience.engineer', 'Engineer')} sx={{ height: 23, fontSize: 12, fontWeight: 850, color: colors.section.exposure, bgcolor: alpha(colors.section.exposure, 0.11) }} />
             </Box>
-          )}
-        />
+            <Typography sx={{ mt: 0.5, color: 'text.secondary', fontSize: 13, lineHeight: 1.55, maxWidth: 920 }}>
+              {desc}
+            </Typography>
+          </Box>
+        </Paper>
       </Box>
 
       <Box sx={{ px: { xs: 2, sm: 3 }, pb: 1, flexShrink: 0 }}>
@@ -248,6 +280,358 @@ function LoadingOrError({ overview }: { overview: ReturnType<typeof useAgentSecu
   if (overview.isLoading) return <LoadingState variant="spinner" py={8} />
   if (overview.error) return <Box sx={{ p: 3 }}><QueryError error={overview.error} onRetry={overview.refetch} label={t('agentFirewall.label')} compact /></Box>
   return null
+}
+
+function liveAgentDecisions(data: MCPOverview) {
+  return data.recentDecisions.filter((d) => d.toolName !== 'connection_probe')
+}
+
+function isBlockingRuntimeMode(mode: string) {
+  return mode === 'enforce' || mode === 'soft_enforce'
+}
+
+export function AISecurityCenterManagerView() {
+  const { orgId, overview, data, mode } = useAgentSecurityData()
+  const evidence = useQuery({
+    queryKey: qk.mcp.evidence(orgId),
+    queryFn: () => getMcpEvidenceReport(orgId!),
+    enabled: !!orgId,
+    staleTime: 60_000,
+  })
+  const registry = useAIGovernanceUseCases(orgId)
+  if (overview.isLoading || overview.error) return <LoadingOrError overview={overview} />
+
+  const live = liveAgentDecisions(data)
+  const summary = evidence.data?.summary
+  const blockedOrHeld = summary?.blockedOrHeld ?? live.filter((d) => ['deny', 'hold', 'approval', 'blocked'].includes(String(d.effective || d.verdict).toLowerCase())).length
+  const telemetryReady = data.configured || live.length > 0 || (summary?.totalEvents ?? 0) > 0
+  const blocking = isBlockingRuntimeMode(mode)
+  const modeLabel = runtimeModeLabel(mode)
+  const eventCount = summary?.totalEvents ?? live.length
+  const useCaseCount = registry.data?.length ?? 0
+
+  return (
+    <AgentFirewallManagerSurface
+      title="AI 安全中心"
+      subtitle="統一檢視 Agent Firewall 執行期遙測、AI 使用案例、政策模式與可交付證據。"
+      icon={<RadioTower size={24} />}
+      status={blocking ? '正式攔截' : telemetryReady ? '觀察中' : '待接入'}
+      surfaceLabel="AI SECURITY"
+      railSteps={['遙測', '政策姿態', 'AI 名冊', '稽核報告']}
+      variant="security"
+      decision={
+        telemetryReady
+          ? blocking
+            ? 'Agent Firewall 已可對高風險代理動作執行攔截或暫停。'
+            : '目前已有遙測，建議先以觀察模式確認政策命中，再推進攔截。'
+          : '尚未接入執行期遙測，不能宣稱具備 AI Agent 防護。'
+      }
+      decisionDetail="管理頁只回答三件事：有沒有遙測、政策是否能執行、證據能不能交付給 SOC / GRC。工程細節留在 engineer 模式。"
+      metrics={[
+        { label: '執行期事件', value: eventCount, tone: telemetryReady ? 'good' : 'info', helper: telemetryReady ? '已接入遙測' : '尚未看到事件' },
+        { label: '政策模式', value: modeLabel, tone: blocking ? 'good' : 'info', helper: blocking ? '可攔截' : '觀察 / 漸進推行' },
+        { label: '阻擋 / 暫停', value: blockedOrHeld, tone: blockedOrHeld > 0 ? 'bad' : 'neutral', helper: '需管理追蹤的決策' },
+        { label: 'AI 使用案例', value: useCaseCount, tone: useCaseCount > 0 ? 'good' : 'info', helper: useCaseCount > 0 ? '已建立名冊' : '待盤點' },
+      ]}
+      primaryTitle="控制面就緒度"
+      primaryItems={[
+        {
+          title: '遙測接入',
+          detail: telemetryReady
+            ? 'Agent Firewall endpoint、MCP proxy 或瀏覽器事件已進入後端。'
+            : '先建立匯入金鑰並導入 MCP、瀏覽器或 endpoint 流量。',
+          tone: telemetryReady ? 'good' : 'info',
+          value: eventCount,
+        },
+        {
+          title: '政策決策',
+          detail: blocking
+            ? '高風險工具呼叫可被暫停、拒絕或要求核准。'
+            : '目前仍以觀察或影子決策為主，正式攔截前需要完成驗證。',
+          tone: blocking ? 'good' : 'info',
+          status: modeLabel,
+        },
+        {
+          title: '證據輸出',
+          detail: evidence.data
+            ? '已可產生 digest-safe 證據摘要，不暴露原始 prompt。'
+            : '等待更多事件後產生可稽核證據，避免只剩文字描述。',
+          tone: evidence.data ? 'good' : 'warn',
+        },
+        {
+          title: '資料最小化',
+          detail: '確認 prompt、檔案與回應只保留必要摘要，原文與敏感欄位不得進入管理報告。',
+          tone: 'neutral',
+          status: '待驗證',
+        },
+        {
+          title: '緊急旁路',
+          detail: '正式攔截前要定義 break-glass 責任人、時限與事後審查，避免阻斷業務流程。',
+          tone: 'neutral',
+          status: '待設定',
+        },
+      ]}
+      secondaryTitle="管理決策流程"
+      secondaryItems={[
+        {
+          title: '盤點 AI 使用',
+          detail: '先確認 Shadow AI、Coding Agent、瀏覽器 AI 與 MCP 工具的真實使用範圍。',
+          tone: useCaseCount > 0 ? 'good' : 'info',
+          value: useCaseCount,
+        },
+        {
+          title: '推進政策模式',
+          detail: '從 observe 到 soft enforce，再到 enforce；每一步都要有事件與核准證據支撐。',
+          tone: blocking ? 'good' : 'info',
+          status: modeLabel,
+        },
+        {
+          title: '交付可稽核報告',
+          detail: '證據需能回答誰、用什麼工具、送出什麼類型資料、政策做了什麼決策。',
+          tone: evidence.data ? 'good' : 'neutral',
+        },
+        {
+          title: '指定責任人',
+          detail: '每個 AI 使用案例都要有業務 owner 與技術 owner，否則只能停在觀察名單。',
+          tone: useCaseCount > 0 ? 'good' : 'neutral',
+          status: 'RACI',
+        },
+        {
+          title: '設定稽核節奏',
+          detail: '每週看阻擋與暫停、每月看例外與政策漂移，季度輸出董事會摘要。',
+          tone: 'neutral',
+          status: '週 / 月 / 季',
+        },
+      ]}
+    />
+  )
+
+  return (
+    <AgentFirewallManagerSurface
+      title={tOr('agentFirewall.manager.centerTitle', 'AI 安全中心')}
+      subtitle={tOr('agentFirewall.manager.centerSubtitle', '集中查看 AI 執行期曝險、政策模式、證據準備度與部署進度。')}
+      icon={<RadioTower size={24} />}
+      status={blocking ? tOr('agentFirewall.manager.statusEnforcing', '執法中') : tOr('agentFirewall.manager.statusObserve', '觀察 / 推行')}
+      surfaceLabel="AI SECURITY"
+      railSteps={['遙測', '政策姿態', 'AI 名冊', '稽核報告']}
+      variant="security"
+      decision={telemetryReady
+        ? blocking
+          ? tOr('agentFirewall.manager.centerDecisionEnforce', '執行期控制已可交付主管檢視。')
+          : tOr('agentFirewall.manager.centerDecisionRollout', '已有遙測，下一步是從觀察推進到可控執法。')
+        : tOr('agentFirewall.manager.centerDecisionConnect', '先接上遙測，再宣稱具備 AI 執行期控制。')}
+      decisionDetail={tOr('agentFirewall.manager.centerDecisionDetail', '此視圖把業務可決策狀態，和工程才需要看的政策與傳輸細節分開。')}
+      metrics={[
+        { label: tOr('agentFirewall.manager.metric.liveEvents', '即時事件'), value: summary?.totalEvents ?? live.length, tone: telemetryReady ? 'good' : 'warn', helper: data.configured ? '已設定匯入' : '需要流量' },
+        { label: tOr('agentFirewall.manager.metric.policyMode', '政策模式'), value: modeLabel, tone: blocking ? 'good' : 'warn' },
+        { label: tOr('agentFirewall.manager.metric.blockedHeld', '阻擋 / 暫停'), value: blockedOrHeld, tone: blockedOrHeld > 0 ? 'bad' : 'neutral' },
+        { label: tOr('agentFirewall.manager.metric.useCases', '使用案例'), value: registry.data?.length ?? 0, tone: (registry.data?.length ?? 0) > 0 ? 'good' : 'warn' },
+      ]}
+      primaryTitle={tOr('agentFirewall.manager.primary.controls', '控制準備度')}
+      primaryItems={[
+        { title: tOr('agentFirewall.manager.item.telemetry', '遙測匯入'), detail: telemetryReady ? tOr('agentFirewall.manager.item.telemetryReady', '代理、瀏覽器、endpoint 或 MCP 流量已可支援決策。') : tOr('agentFirewall.manager.item.telemetryGap', '目前只看得到設計狀態，需接入真實執行期事件。'), tone: telemetryReady ? 'good' : 'warn', value: summary?.totalEvents ?? live.length },
+        { title: tOr('agentFirewall.manager.item.policy', '政策執法'), detail: blocking ? tOr('agentFirewall.manager.item.policyOn', '政策可暫停或阻擋高風險動作。') : tOr('agentFirewall.manager.item.policyObserve', '目前推行模式尚未真正阻擋。'), tone: blocking ? 'good' : 'warn', status: modeLabel },
+        { title: tOr('agentFirewall.manager.item.evidence', '證據狀態'), detail: evidence.data ? tOr('agentFirewall.manager.item.evidenceReady', '可供稽核的 digest-safe 報告已就緒。') : tOr('agentFirewall.manager.item.evidenceWait', '需要執行期證據，報告才有管理意義。'), tone: evidence.data ? 'good' : 'warn' },
+      ]}
+      secondaryTitle={tOr('agentFirewall.manager.secondary.executiveLoop', '管理迴路')}
+      secondaryItems={[
+        { title: tOr('agentFirewall.manager.item.discover', '盤點 AI 使用'), detail: 'Shadow AI、核准案例、使用者、裝置與應用分類。', tone: telemetryReady ? 'good' : 'warn' },
+        { title: tOr('agentFirewall.manager.item.decide', '決定政策姿態'), detail: '依業務風險選擇觀察、影子、軟執法或正式執法。', tone: blocking ? 'good' : 'info' },
+        { title: tOr('agentFirewall.manager.item.report', '回報稽核'), detail: '匯出政策結果、DLP 轉換與證據列，不保存原始 prompt。', tone: evidence.data ? 'good' : 'neutral' },
+      ]}
+    />
+  )
+}
+
+export function AIGovernanceManagerView() {
+  const { orgId, overview, data, mode } = useAgentSecurityData()
+  const registry = useAIGovernanceUseCases(orgId)
+  const scorecard = useAIGovernanceScore(orgId)
+  const lifecycle = useAIGovernanceEvents(orgId)
+  if (overview.isLoading || overview.error) return <LoadingOrError overview={overview} />
+
+  const dimensions = scorecard.data?.dimensions ?? []
+  const score = scorecard.data?.overall ?? 0
+  const grade = scorecard.data?.grade ?? 'N/A'
+  const openRuntimeGaps = numberSummary(scorecard.data?.summary?.openRuntimeGaps, data.configured ? 0 : 1)
+  const approvalBacklog = (registry.data ?? []).filter((row) => row.approvalStatus !== 'approved').length
+  const modeLabel = runtimeModeLabel(mode)
+
+  return (
+    <AgentFirewallManagerSurface
+      title={tOr('agentFirewall.manager.governanceTitle', 'AI 治理')}
+      subtitle={tOr('agentFirewall.manager.governanceSubtitle', '面向管理層的 AI 使用案例、責任歸屬、模型風險、核准與政策證據。')}
+      icon={<ClipboardCheck size={24} />}
+      status={`${tOr('agentFirewall.grade', '等級')} ${grade}`}
+      surfaceLabel="AI GOVERNANCE"
+      railSteps={['清冊', 'Owner', '核准', '框架']}
+      variant="governance"
+      decision={score >= 75
+        ? tOr('agentFirewall.manager.governanceDecisionGood', '治理可信度足以擴大受監控的 AI 使用案例。')
+        : tOr('agentFirewall.manager.governanceDecisionGap', '擴大前仍需要責任歸屬、核准或執行期證據。')}
+      decisionDetail={tOr('agentFirewall.manager.governanceDecisionDetail', '管理模式顯示哪些缺口阻礙 AI 風險結論；工程模式保留可編輯清冊與證據細節。')}
+      metrics={[
+        { label: tOr('agentFirewall.manager.metric.readiness', '準備度'), value: `${score}%`, tone: score >= 75 ? 'good' : score >= 45 ? 'warn' : 'bad', helper: `${dimensions.length} 個維度` },
+        { label: tOr('agentFirewall.manager.metric.useCases', '使用案例'), value: registry.data?.length ?? 0, tone: (registry.data?.length ?? 0) > 0 ? 'good' : 'warn' },
+        { label: tOr('agentFirewall.manager.metric.approvals', '待核准'), value: approvalBacklog, tone: approvalBacklog > 0 ? 'warn' : 'good' },
+        { label: tOr('agentFirewall.manager.metric.lifecycle', '生命週期事件'), value: lifecycle.data?.length ?? 0, tone: (lifecycle.data?.length ?? 0) > 0 ? 'good' : 'neutral' },
+      ]}
+      primaryTitle={tOr('agentFirewall.manager.primary.governanceGaps', '治理缺口')}
+      primaryItems={[
+        { title: tOr('agentFirewall.manager.item.modelInventory', '模型清冊'), detail: registry.data?.length ? tOr('agentFirewall.manager.item.modelInventoryReady', '已登錄的 AI 使用案例具備負責人與模型欄位。') : tOr('agentFirewall.manager.item.modelInventoryGap', '尚無已核准的 AI 使用案例清冊。'), tone: registry.data?.length ? 'good' : 'warn', value: registry.data?.length ?? 0 },
+        { title: tOr('agentFirewall.manager.item.runtimeGap', '執行期證據'), detail: data.configured ? tOr('agentFirewall.manager.item.runtimeReady', 'Agent Firewall 可附加使用證據。') : tOr('agentFirewall.manager.item.runtimeGapDesc', '在流量導入前，治理仍只是政策文件。'), tone: data.configured ? 'good' : 'warn', value: openRuntimeGaps },
+        { title: tOr('agentFirewall.manager.item.rolloutMode', '推行模式'), detail: tOr('agentFirewall.manager.item.rolloutModeDesc', '執法模式決定治理是否能真正阻擋高風險使用。'), tone: isBlockingRuntimeMode(mode) ? 'good' : 'info', status: modeLabel },
+      ]}
+      secondaryTitle={tOr('agentFirewall.manager.secondary.frameworks', '框架覆蓋')}
+      secondaryItems={[
+        { title: 'NIST AI RMF', detail: '以執行期證據支撐盤點、衡量、管理與治理。', tone: score >= 60 ? 'good' : 'warn' },
+        { title: 'ISO 42001', detail: '責任歸屬、用途、控制、證據與生命週期審查。', tone: registry.data?.length ? 'good' : 'warn' },
+        { title: '內部稽核', detail: '使用證據匯出與核准軌跡，不再靠截圖交差。', tone: lifecycle.data?.length ? 'good' : 'neutral' },
+      ]}
+    />
+  )
+}
+
+export function ShadowAIManagerView() {
+  const { overview, data, mode } = useAgentSecurityData()
+  if (overview.isLoading || overview.error) return <LoadingOrError overview={overview} />
+
+  const live = liveAgentDecisions(data)
+  const highRiskApps = 4
+  const blocking = isBlockingRuntimeMode(mode)
+  const modeLabel = runtimeModeLabel(mode)
+
+  return (
+    <AgentFirewallManagerSurface
+      title={tOr('agentFirewall.manager.shadowTitle', 'Shadow AI 曝險')}
+      subtitle={tOr('agentFirewall.manager.shadowSubtitle', '依業務風險排序未核准 AI 目的地、Coding Agent、瀏覽器 AI 與私有 LLM 使用。')}
+      icon={<MonitorSmartphone size={24} />}
+      status={blocking ? tOr('agentFirewall.manager.statusBlockable', '可阻擋') : tOr('agentFirewall.manager.statusPolicyGap', '政策缺口')}
+      surfaceLabel="SHADOW AI"
+      railSteps={['探索', '分類', '核准', '封鎖']}
+      variant="shadow"
+      decision={live.length > 0
+        ? tOr('agentFirewall.manager.shadowDecisionLive', 'Shadow AI 已可用觀測到的執行期證據治理。')
+        : tOr('agentFirewall.manager.shadowDecisionDeploy', '先部署瀏覽器或 endpoint 遙測，再宣稱已覆蓋探索。')}
+      decisionDetail={tOr('agentFirewall.manager.shadowDecisionDetail', '工程模式保留清冊與政策分頁；管理模式直接呈現曝險答案。')}
+      metrics={[
+        { label: tOr('agentFirewall.manager.metric.aiApps', 'AI 類別'), value: 6, tone: 'info' },
+        { label: tOr('agentFirewall.manager.metric.highRisk', '高風險'), value: highRiskApps, tone: 'bad' },
+        { label: tOr('agentFirewall.manager.metric.liveEvents', '即時事件'), value: live.length, tone: live.length > 0 ? 'good' : 'warn' },
+        { label: tOr('agentFirewall.manager.metric.policyMode', '政策模式'), value: modeLabel, tone: blocking ? 'good' : 'warn' },
+      ]}
+      primaryTitle={tOr('agentFirewall.manager.primary.shadowPriority', 'Shadow AI 優先順序')}
+      primaryItems={[
+        { title: t('agentFirewall.shadowApp.deepseek'), detail: '未核准外部模型使用應阻擋或走例外核准。', tone: blocking ? 'good' : 'bad', status: blocking ? '政策已阻擋' : '政策缺口' },
+        { title: t('agentFirewall.shadowApp.codingAgents'), detail: 'IDE 與 Coding Agent 需要讓工具呼叫通過 Agent Firewall。', tone: live.length > 0 ? 'good' : 'warn' },
+        { title: t('agentFirewall.shadowApp.perplexityBrowser'), detail: '瀏覽器 AI 需要部署 connector 才能取得使用者側遙測。', tone: 'warn' },
+      ]}
+      secondaryTitle={tOr('agentFirewall.manager.secondary.shadowControls', '控制計畫')}
+      secondaryItems={[
+        { title: tOr('agentFirewall.manager.item.deployConnector', '部署 connector'), detail: '瀏覽器、endpoint 與 MCP proxy 覆蓋是探索層。', tone: data.configured ? 'good' : 'warn' },
+        { title: tOr('agentFirewall.manager.item.requireOwner', '要求負責人'), detail: '沒有 owner 就不應視為已核准 AI 使用案例。', tone: 'info' },
+        { title: tOr('agentFirewall.manager.item.routeRisk', '導入高風險動作'), detail: '原始碼、機密、客戶資料與正式環境操作必須導入。', tone: live.length > 0 ? 'good' : 'warn' },
+      ]}
+    />
+  )
+}
+
+export function AIDLPManagerView() {
+  const { orgId, overview, data } = useAgentSecurityData()
+  const evidence = useQuery({
+    queryKey: qk.mcp.evidence(orgId),
+    queryFn: () => getMcpEvidenceReport(orgId!),
+    enabled: !!orgId,
+    staleTime: 60_000,
+  })
+  if (overview.isLoading || overview.error) return <LoadingOrError overview={overview} />
+
+  const summary = evidence.data?.summary
+  const tokenizationEligible = summary?.tokenizationEligible ?? 0
+  const sensitiveOutbound = summary?.outboundSensitive ?? 0
+
+  return (
+    <AgentFirewallManagerSurface
+      title={tOr('agentFirewall.manager.dlpTitle', 'AI DLP')}
+      subtitle={tOr('agentFirewall.manager.dlpSubtitle', '保護 prompt、檔案、原始碼、截圖與送往 AI 的 payload，不保存原始敏感內容。')}
+      icon={<Database size={24} />}
+      status={tokenizationEligible > 0 ? tOr('agentFirewall.manager.statusEvidenceBacked', '證據支撐') : tOr('agentFirewall.manager.statusReady', '等待流量')}
+      surfaceLabel="AI DLP"
+      railSteps={['偵測', '遮罩', 'Token 化', '證據']}
+      variant="dlp"
+      decision={sensitiveOutbound > 0
+        ? tOr('agentFirewall.manager.dlpDecisionSensitive', '敏感 AI 外流需要阻擋、遮罩或 token 化政策審查。')
+        : tOr('agentFirewall.manager.dlpDecisionReady', 'DLP 控制已就緒，待執行期流量驗證覆蓋。')}
+      decisionDetail={tOr('agentFirewall.manager.dlpDecisionDetail', '管理模式說明覆蓋與風險；工程模式保留控制矩陣與轉換細節。')}
+      metrics={[
+        { label: tOr('agentFirewall.manager.metric.protectedDecisions', '受保護決策'), value: data.recentDecisions.length, tone: data.recentDecisions.length > 0 ? 'good' : 'warn' },
+        { label: tOr('agentFirewall.manager.metric.tokenEligible', '可 token 化'), value: tokenizationEligible, tone: tokenizationEligible > 0 ? 'good' : 'neutral' },
+        { label: tOr('agentFirewall.manager.metric.sensitiveOutbound', '敏感外流'), value: sensitiveOutbound, tone: sensitiveOutbound > 0 ? 'bad' : 'good' },
+        { label: tOr('agentFirewall.manager.metric.rawStorage', '原文保存'), value: '關閉', tone: 'good' },
+      ]}
+      primaryTitle={tOr('agentFirewall.manager.primary.dlpControls', 'DLP 控制')}
+      primaryItems={[
+        { title: 'Prompt / 貼上內容', detail: 'PII、機密與原始碼文字可遮罩或 token 化。', tone: 'good' },
+        { title: '檔案上傳', detail: 'PDF、截圖與會議筆記上傳需套用轉換政策。', tone: tokenizationEligible > 0 ? 'good' : 'warn' },
+        { title: '程式碼送往 AI', detail: '儲存庫片段與機密應暫停或核准後再送出。', tone: 'bad' },
+      ]}
+      secondaryTitle={tOr('agentFirewall.manager.secondary.dlpAssurance', '保證機制')}
+      secondaryItems={[
+        { title: tOr('agentFirewall.manager.item.digestSafe', 'Digest-safe 證據'), detail: '報告保留 hash、類別與轉換 metadata，不保存原始 prompt。', tone: 'good' },
+        { title: tOr('agentFirewall.manager.item.transformPolicy', '轉換政策'), detail: '可依資料類別調整阻擋、遮罩、token 化、暫停或核准。', tone: 'info' },
+        { title: tOr('agentFirewall.manager.item.coverageGap', '覆蓋缺口'), detail: data.recentDecisions.length ? '已有執行期決策。' : '尚無導入的執行期決策。', tone: data.recentDecisions.length ? 'good' : 'warn' },
+      ]}
+    />
+  )
+}
+
+export function EvidenceReportsManagerView() {
+  const { orgId, overview, data, mode } = useAgentSecurityData()
+  const evidence = useQuery({
+    queryKey: qk.mcp.evidence(orgId),
+    queryFn: () => getMcpEvidenceReport(orgId!),
+    enabled: !!orgId,
+    staleTime: 60_000,
+  })
+  if (overview.isLoading || overview.error) return <LoadingOrError overview={overview} />
+
+  const summary = evidence.data?.summary
+  const rows = summary?.totalEvents ?? data.recentDecisions.length
+  const modeLabel = runtimeModeLabel(mode)
+
+  return (
+    <AgentFirewallManagerSurface
+      title={tOr('agentFirewall.manager.evidenceTitle', '證據報告')}
+      subtitle={tOr('agentFirewall.manager.evidenceSubtitle', '供稽核使用的執行期執法、敏感外流、使用者/裝置歸因與 AI 攻擊鏈證據。')}
+      icon={<FileSearch size={24} />}
+      status={evidence.data ? tOr('agentFirewall.manager.statusExportReady', '可匯出') : tOr('agentFirewall.manager.statusWaiting', '等待事件')}
+      surfaceLabel="EVIDENCE"
+      railSteps={['事件', 'Digest', '歸因', '匯出']}
+      variant="evidence"
+      decision={rows > 0
+        ? tOr('agentFirewall.manager.evidenceDecisionReady', '證據已可用於 SOC、稽核與管理報告。')
+        : tOr('agentFirewall.manager.evidenceDecisionWait', '報告需要執行期事件後才有實際意義。')}
+      decisionDetail={tOr('agentFirewall.manager.evidenceDecisionDetail', '證據模式強調保證與隱私，不提供原始 payload 瀏覽。')}
+      metrics={[
+        { label: tOr('agentFirewall.manager.metric.evidenceRows', '證據列'), value: rows, tone: rows > 0 ? 'good' : 'warn' },
+        { label: tOr('agentFirewall.manager.metric.policyMode', '政策模式'), value: modeLabel, tone: isBlockingRuntimeMode(mode) ? 'good' : 'warn' },
+        { label: tOr('agentFirewall.manager.metric.sensitiveOutbound', '敏感外流'), value: summary?.outboundSensitive ?? 0, tone: (summary?.outboundSensitive ?? 0) > 0 ? 'bad' : 'good' },
+        { label: tOr('agentFirewall.manager.metric.rawStorage', '原文保存'), value: '關閉', tone: 'good' },
+      ]}
+      primaryTitle={tOr('agentFirewall.manager.primary.reportSet', '報告組')}
+      primaryItems={[
+        { title: '執行期執法報告', detail: '顯示模式、有效決策、暫停/阻擋總量與政策原因。', tone: evidence.data ? 'good' : 'warn', status: modeLabel },
+        { title: '敏感外流報告', detail: '彙整外傳敏感類別與 token 化資格。', tone: (summary?.outboundSensitive ?? 0) > 0 ? 'bad' : 'good' },
+        { title: '使用者與裝置報告', detail: '在有遙測時將 AI 動作歸因到身分與 endpoint。', tone: summary?.deviceAttributed ? 'good' : 'warn' },
+      ]}
+      secondaryTitle={tOr('agentFirewall.manager.secondary.reportAssurance', '保證護欄')}
+      secondaryItems={[
+        { title: tOr('agentFirewall.manager.item.noRawPrompt', '不保存原始 prompt'), detail: '證據使用 digest-safe metadata 與轉換結果。', tone: 'good' },
+        { title: tOr('agentFirewall.manager.item.replayable', '可回放鏈'), detail: '可審查 session 行為，不暴露 payload 文字。', tone: rows > 0 ? 'good' : 'neutral' },
+        { title: tOr('agentFirewall.manager.item.exportPath', '匯出路徑'), detail: 'CSV 與 JSON 證據可供稽核、SOC 或 GRC 流程使用。', tone: evidence.data ? 'good' : 'warn' },
+      ]}
+    />
+  )
 }
 
 export function AISecurityCenterView() {

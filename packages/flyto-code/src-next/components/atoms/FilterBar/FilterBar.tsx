@@ -46,7 +46,6 @@ export function FilterBar({
                 size="small"
                 onClick={() => onSearchChange('')}
                 aria-label={t('filterBar.clearSearch')}
-                title={t('filterBar.clearSearch')}
               >
                 <X size={12} />
               </IconButton>
@@ -60,7 +59,6 @@ export function FilterBar({
               size="small"
               onClick={(e) => setFilterAnchor(e.currentTarget)}
               aria-label={t('filterBar.filters')}
-              title={t('filterBar.filters')}
               sx={{
                 border: '1px solid var(--mui-palette-divider, rgba(148,163,184,0.2))',
                 borderRadius: 1.5,
@@ -81,7 +79,6 @@ export function FilterBar({
           <Tooltip title={t('filterBar.sort')}>
             <IconButton size="small" onClick={(e) => setSortAnchor(e.currentTarget)}
               aria-label={t('filterBar.sort')}
-              title={t('filterBar.sort')}
               sx={{
                 border: '1px solid var(--mui-palette-divider, rgba(148,163,184,0.2))',
                 borderRadius: 1.5, color: 'var(--mui-palette-text-secondary)',

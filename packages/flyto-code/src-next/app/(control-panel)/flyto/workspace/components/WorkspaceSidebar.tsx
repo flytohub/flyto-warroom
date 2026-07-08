@@ -19,24 +19,32 @@ import Tooltip from '@mui/material/Tooltip';
 import {
   ChevronDown, Search, LayoutDashboard,
   Pencil, Check, X, LockKeyhole,
+  ChevronsLeft, ChevronsRight,
 } from 'lucide-react';
+import _ from 'lodash';
 import {
   SIDEBAR_GROUP_ORDER,
   getModulesByGroup,
   navPath,
 } from '@code/modules';
-import type { CountSlot, Module } from '@code/Module';
+import type { CountSlot } from '@code/Module';
 import { t, tOr } from '@lib/i18n';
 import { clickableA11y } from '@lib/a11y';
+import useFuseLayoutSettings from '@components/adapters/useLayoutSettings';
+import useFuseSettings from '@components/adapters/useFuseSettings';
 import { useOrg, useConnectedRepos } from '@hooks/useOrg';
 import { useCapabilities } from '@hooks/useCapabilities';
 import { useProjectCapabilities } from '@hooks/useProjectCapabilities';
 import { useQuery } from '@tanstack/react-query';
 import { getOrgHealthSummary, getEnrichedOrgIssues, listPentestProjects, listAttackSurface, listAutofixFindings, listOrgs, type AutofixFindingRow } from '@lib/engine';
+import { extractHostFromAssetValue, getExternalPostureKernel } from '@compounds/_shared/externalPosture';
+
+const SIDEBAR_EXPANDED_WIDTH = 260;
+const SIDEBAR_COLLAPSED_WIDTH = 76;
 
 /* ── Nav item ── */
 function NavItem({
-  icon: Icon, label, count, to, active, dim, locked, lockReason,
+  icon: Icon, label, count, to, active, dim, locked, lockReason, collapsed = false,
 }: {
   icon: typeof LayoutDashboard;
   label: string;
@@ -46,74 +54,104 @@ function NavItem({
   dim?: boolean;
   locked?: boolean;
   lockReason?: string;
+  collapsed?: boolean;
 }) {
   const navigate = useNavigate();
-  return (
-    <ListItemButton
-      aria-label={label}
-      selected={active}
-      onClick={() => navigate(to)}
+  const tooltipTitle = collapsed
+    ? `${label}${count ? ` (${count})` : ''}${locked ? ` - ${lockReason || t('sidebar.lockedPreview')}` : ''}`
+    : '';
+  const lockNode = (
+    <Box
+      component="span"
       sx={{
-        px: { xs: 1, sm: 2 }, py: 0.6, borderRadius: 1.5, mx: { xs: 0.75, sm: 1 }, mb: 0.25,
-        width: 'auto',
-        maxWidth: { xs: 'calc(100% - 12px)', sm: 'none' },
-        overflow: 'hidden',
-        boxSizing: 'border-box',
-        justifyContent: { xs: 'center', sm: 'flex-start' },
-        opacity: dim ? 0.45 : 1,
-        '&.Mui-selected': { bgcolor: 'rgba(139,92,246,0.12)' },
-        '&.Mui-selected:hover': { bgcolor: 'rgba(139,92,246,0.18)' },
+        display: collapsed ? 'inline-flex' : { xs: 'none', sm: 'inline-flex' },
+        alignItems: 'center',
+        justifyContent: 'center',
+        ml: collapsed ? 0 : 0.5,
+        color: 'text.secondary',
+        position: collapsed ? 'absolute' : 'static',
+        right: collapsed ? 5 : undefined,
+        bottom: collapsed ? 3 : undefined,
       }}
     >
-      <ListItemIcon sx={{ minWidth: { xs: 0, sm: 32 }, color: active ? 'primary.main' : 'text.secondary' }}>
-        <Icon size={16} />
-      </ListItemIcon>
-      <ListItemText
-        primary={label}
-        primaryTypographyProps={{ variant: 'body2', fontWeight: active ? 600 : 400, noWrap: true, color: 'text.primary' }}
-        sx={{ display: { xs: 'none', sm: 'block' } }}
-      />
-      {count !== undefined && count > 0 && (
-        <Chip label={count} size="small" sx={{ display: { xs: 'none', sm: 'inline-flex' }, height: 18, fontSize: 12, bgcolor: 'action.selected', color: 'primary.main' }} />
-      )}
-      {locked && (
-        <Tooltip title={lockReason || t('sidebar.lockedPreview')}>
-          <Box
-            component="span"
+      <LockKeyhole size={13} />
+    </Box>
+  );
+  return (
+    <Tooltip title={tooltipTitle} placement="right" disableInteractive={!collapsed}>
+      <ListItemButton
+        aria-label={label}
+        selected={active}
+        onClick={() => navigate(to)}
+        sx={{
+          px: collapsed ? 0 : { xs: 1, sm: 2 },
+          py: 0.6,
+          borderRadius: 1.5,
+          mx: collapsed ? 1 : { xs: 0.75, sm: 1 },
+          mb: 0.25,
+          width: 'auto',
+          maxWidth: { xs: 'calc(100% - 12px)', sm: 'none' },
+          minHeight: 34,
+          overflow: 'hidden',
+          boxSizing: 'border-box',
+          justifyContent: collapsed ? 'center' : { xs: 'center', sm: 'flex-start' },
+          position: 'relative',
+          opacity: dim ? 0.45 : 1,
+          '&.Mui-selected': { bgcolor: 'rgba(139,92,246,0.12)' },
+          '&.Mui-selected:hover': { bgcolor: 'rgba(139,92,246,0.18)' },
+        }}
+      >
+        <ListItemIcon sx={{ minWidth: collapsed ? 0 : { xs: 0, sm: 32 }, color: active ? 'primary.main' : 'text.secondary', justifyContent: 'center' }}>
+          <Icon size={16} />
+        </ListItemIcon>
+        <ListItemText
+          primary={label}
+          primaryTypographyProps={{ variant: 'body2', fontWeight: active ? 600 : 400, noWrap: true, color: 'text.primary' }}
+          sx={{ display: collapsed ? 'none' : { xs: 'none', sm: 'block' } }}
+        />
+        {!collapsed && count !== undefined && count > 0 && (
+          <Chip
+            label={count}
+            size="small"
             sx={{
               display: { xs: 'none', sm: 'inline-flex' },
-              alignItems: 'center',
-              justifyContent: 'center',
-              ml: 0.5,
-              color: 'text.secondary',
+              height: 18,
+              fontSize: 12,
+              bgcolor: 'action.selected',
+              color: 'primary.main',
             }}
-          >
-            <LockKeyhole size={13} />
-          </Box>
-        </Tooltip>
-      )}
-    </ListItemButton>
+          />
+        )}
+        {locked && (
+          collapsed ? lockNode : (
+            <Tooltip title={lockReason || t('sidebar.lockedPreview')}>
+              {lockNode}
+            </Tooltip>
+          )
+        )}
+      </ListItemButton>
+    </Tooltip>
   );
 }
 
 /** Placeholder rendered while capabilities resolve, so the nav doesn't
  *  flash an empty or stale module subset before settling on the backend
  *  capability snapshot. Mimics a couple of grouped nav rows. */
-function NavSkeleton() {
+function NavSkeleton({ collapsed = false }: { collapsed?: boolean }) {
   const rows = [3, 2, 4]; // items per faux-group
   return (
-    <Box aria-hidden sx={{ px: { xs: 0.75, sm: 1 }, pt: 1 }}>
+    <Box aria-hidden sx={{ px: collapsed ? 1 : { xs: 0.75, sm: 1 }, pt: 1 }}>
       {rows.map((count, g) => (
         <Box key={g} sx={{ mb: 1.5 }}>
           <Skeleton
             variant="text"
             width={64}
-            sx={{ mx: { xs: 'auto', sm: 1.5 }, mb: 0.5, display: { xs: 'none', sm: 'block' } }}
+            sx={{ mx: { xs: 'auto', sm: 1.5 }, mb: 0.5, display: collapsed ? 'none' : { xs: 'none', sm: 'block' } }}
           />
           {Array.from({ length: count }).map((_, i) => (
-            <Box key={i} sx={{ display: 'flex', alignItems: 'center', gap: 1, px: { xs: 1, sm: 2 }, py: 0.7 }}>
+            <Box key={i} sx={{ display: 'flex', alignItems: 'center', justifyContent: collapsed ? 'center' : 'flex-start', gap: 1, px: collapsed ? 0 : { xs: 1, sm: 2 }, py: 0.7 }}>
               <Skeleton variant="rounded" width={16} height={16} sx={{ flexShrink: 0 }} />
-              <Skeleton variant="text" sx={{ flex: 1, display: { xs: 'none', sm: 'block' } }} />
+              <Skeleton variant="text" sx={{ flex: 1, display: collapsed ? 'none' : { xs: 'none', sm: 'block' } }} />
             </Box>
           ))}
         </Box>
@@ -159,6 +197,20 @@ function OrgSwitcher({ currentOrgId }: { currentOrgId?: string }) {
   );
 }
 
+function isConfirmedAttackSurfaceDomain(row: { review_status?: string; tier?: string; confidence?: number }): boolean {
+  const review = row.review_status?.toLowerCase()
+  if (review) return review === 'auto_confirmed' || review === 'confirmed' || review === 'verified'
+  const tier = row.tier?.toLowerCase()
+  if (tier && tier !== 'unranked') return tier === 'confirmed'
+  return (row.confidence ?? 0) >= 100
+}
+
+function isCountedKernelDomain(row: { current_tier?: string }): boolean {
+  const tier = row.current_tier?.toLowerCase()
+  if (!tier || tier === 'unranked' || tier === 'confirmed') return true
+  return !['candidate', 'lead', 'weak', 'rejected', 'suppressed', 'noise'].includes(tier)
+}
+
 export default function WorkspaceSidebar() {
   const { orgId } = useParams<{ orgId: string }>();
   const location = useLocation();
@@ -172,6 +224,8 @@ export default function WorkspaceSidebar() {
   // top of dark, that just reads as "two dark surfaces colliding".
   const mainTheme = useTheme();
   const sidebarTheme = mainTheme.palette.mode === 'light' ? navbarTheme : mainTheme;
+  const { config } = useFuseLayoutSettings();
+  const { setSettings } = useFuseSettings();
   // Capabilities decide which nav items render. The backend
   // (/api/v1/me/capabilities) is the policy source; we just gate
   // rendering. While the request is in flight `canSeePage` returns
@@ -200,6 +254,11 @@ export default function WorkspaceSidebar() {
   const base = `/projects/${orgId}`;
   const currentPath = location.pathname;
   const isActive = (path: string) => currentPath === `${base}/${path}` || currentPath.startsWith(`${base}/${path}/`);
+  const sidebarCollapsed = Boolean(config?.navbar?.folded);
+  const toggleSidebarCollapsed = () => {
+    setSettings(_.set({}, 'layout.config.navbar.folded', !sidebarCollapsed));
+  };
+  const toggleLabel = sidebarCollapsed ? t('common.expand') : t('common.collapse');
 
   // Counts
   const repoCount = repos?.length ?? 0;
@@ -228,6 +287,11 @@ export default function WorkspaceSidebar() {
     queryFn: () => listAttackSurface(org!.id),
     enabled: !!org?.id, staleTime: 60_000,
   });
+  const { data: domainKernel } = useQuery({
+    queryKey: qk.externalPostureKernel(org?.id),
+    queryFn: () => getExternalPostureKernel(org!.id),
+    enabled: !!org?.id, staleTime: 60_000,
+  });
   const { data: autofixData } = useQuery({
     queryKey: qk.autofix.findingsCount(org?.id),
     queryFn: () => listAutofixFindings(org!.id),
@@ -237,24 +301,39 @@ export default function WorkspaceSidebar() {
   const autofixCount = (autofixData?.findings ?? []).filter(
     (f: AutofixFindingRow) => !(f.rule_id === 'tier2-ai' && f.patch_status === 'no_preview')
   ).length;
-  // Domain badge count. Canonical source is the kernel-backed
-  // /attack-surface handler's top-level `count` (68e2e78) — same store
-  // as Asset Map, which is what reconciles the old sidebar(=pentest
-  // projects) / page / asset-map three-way mismatch. Falls back to the
-  // legacy projects+resolving-subs heuristic only if the engine predates
-  // that field (the legacy path also can't work post-convergence anyway,
-  // since kernel domain rows no longer carry `metadata.resolves`).
-  const projectDomains = new Set((pentestProjects?.projects ?? []).map(p => p.target_url.replace(/^https?:\/\//, '').replace(/\/.*$/, '')));
+  // Domain badge count mirrors DomainsView: external-posture/kernel is the
+  // confirmed inventory source, while pentest projects are only merged in as
+  // explicit targets. The legacy attack-surface count remains a last fallback.
+  const projectDomains = new Set(
+    (pentestProjects?.projects ?? [])
+      .map(p => extractHostFromAssetValue(p.target_url))
+      .filter(Boolean),
+  );
   const resolvingSubs = (attackSurface?.assets ?? []).filter(a => {
     if (a.asset_type !== 'subdomain') return false;
     try { return JSON.parse(a.metadata).resolves && !projectDomains.has(a.value); } catch { return false; }
   });
-  const domainCount = attackSurface?.count ?? (projectDomains.size + resolvingSubs.length);
+  const domainSignals = attackSurface?.domains ?? [];
+  const discoveredDomainCount = domainSignals.length > 0
+    ? domainSignals.filter(isConfirmedAttackSurfaceDomain).length
+    : attackSurface?.count ?? resolvingSubs.length;
+  const kernelDomains = new Set(
+    (domainKernel?.assets ?? [])
+      .filter(isCountedKernelDomain)
+      .map(asset => extractHostFromAssetValue(asset.canonical_value))
+      .filter(Boolean),
+  )
+  const kernelDomainCount = domainKernel
+    ? kernelDomains.size > 0
+      ? new Set([...kernelDomains, ...projectDomains]).size
+      : Math.max(domainKernel.asset_count ?? 0, projectDomains.size)
+    : undefined
+  const domainCount = kernelDomainCount ?? (projectDomains.size > 0 ? projectDomains.size : discoveredDomainCount);
 
   return (
     <ThemeProvider theme={sidebarTheme}>
     <Box data-testid="workspace-sidebar" component="nav" aria-label={t('sidebar.navLabel')} sx={{
-      width: { xs: 52, sm: 260 }, flexShrink: 0,
+      width: { xs: 52, sm: sidebarCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH }, flexShrink: 0,
       boxSizing: 'border-box',
       position: 'relative',
       zIndex: 0,
@@ -268,27 +347,107 @@ export default function WorkspaceSidebar() {
       bgcolor: 'background.paper',
       color: 'text.primary',
       display: 'flex', flexDirection: 'column',
+      transition: theme => theme.transitions.create('width', {
+        duration: theme.transitions.duration.shorter,
+        easing: theme.transitions.easing.easeInOut,
+      }),
     }}>
       {/* Logo — click to go back to projects */}
       <Box
-        onClick={() => navigate('/projects')}
-        {...clickableA11y(() => navigate('/projects'), { label: t('sidebar.backToProjects') })}
         sx={{
-          px: { xs: 0.75, sm: 2 }, py: 1.5,
-          display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', sm: 'flex-start' }, gap: 1.5,
-          cursor: 'pointer',
+          px: sidebarCollapsed ? { xs: 0.75, sm: 0.75 } : { xs: 0.75, sm: 1.5 },
+          py: sidebarCollapsed ? { xs: 1.25, sm: 1.35 } : 1.25,
+          minHeight: { xs: 58, sm: sidebarCollapsed ? 88 : 58 },
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: { xs: 'center', sm: sidebarCollapsed ? 'center' : 'space-between' },
+          flexDirection: { xs: 'row', sm: sidebarCollapsed ? 'column' : 'row' },
+          gap: sidebarCollapsed ? { xs: 1, sm: 1.25 } : 1,
           borderBottom: '1px solid', borderColor: 'divider',
-          '&:hover': { bgcolor: 'action.hover' },
         }}
       >
-        <img src="/favicon.svg" alt="Warroom" style={{ width: 28, height: 28 }} />
-        <Typography variant="body1" fontWeight={700} sx={{ display: { xs: 'none', sm: 'block' }, letterSpacing: 0 }}>
-          <span style={{ color: '#a78bfa' }}>War</span>room
-        </Typography>
+        <Tooltip title={sidebarCollapsed ? 'Warroom' : ''} placement="right">
+          <Box
+            onClick={() => navigate('/projects')}
+            {...clickableA11y(() => navigate('/projects'), { label: t('sidebar.backToProjects') })}
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: sidebarCollapsed ? 'center' : 'flex-start',
+              gap: 1.5,
+              minWidth: 0,
+              flex: sidebarCollapsed ? '0 0 auto' : 1,
+              px: sidebarCollapsed ? 0 : 0.5,
+              py: 0.5,
+              borderRadius: 1.5,
+              cursor: 'pointer',
+              '&:hover': { bgcolor: 'action.hover' },
+            }}
+          >
+            <img src="/favicon.svg" alt="Warroom" style={{ width: 28, height: 28 }} />
+            <Typography variant="body1" fontWeight={700} sx={{ display: sidebarCollapsed ? 'none' : { xs: 'none', sm: 'block' }, letterSpacing: 0 }}>
+              <span style={{ color: '#a78bfa' }}>War</span>room
+            </Typography>
+          </Box>
+        </Tooltip>
+        <Tooltip title={toggleLabel}>
+          <IconButton
+            size="small"
+            aria-label={toggleLabel}
+            aria-pressed={sidebarCollapsed}
+            onClick={toggleSidebarCollapsed}
+            sx={{
+              display: { xs: 'none', sm: 'inline-flex' },
+              width: sidebarCollapsed ? 36 : 34,
+              height: sidebarCollapsed ? 28 : 30,
+              flexShrink: 0,
+              color: sidebarCollapsed ? '#c4b5fd' : 'text.secondary',
+              bgcolor: sidebarCollapsed ? 'rgba(255,255,255,0.055)' : 'rgba(255,255,255,0.035)',
+              background: sidebarCollapsed
+                ? 'linear-gradient(180deg, rgba(255,255,255,0.075), rgba(255,255,255,0.035))'
+                : 'rgba(255,255,255,0.035)',
+              border: '1px solid',
+              borderColor: sidebarCollapsed ? 'rgba(196,181,253,0.24)' : 'rgba(196,181,253,0.16)',
+              borderRadius: 1.25,
+              boxShadow: sidebarCollapsed
+                ? 'inset 0 1px 0 rgba(255,255,255,0.1)'
+                : 'inset 0 1px 0 rgba(255,255,255,0.06)',
+              position: 'relative',
+              overflow: 'hidden',
+              '&::before': sidebarCollapsed ? {
+                content: '""',
+                position: 'absolute',
+                left: 5,
+                top: 7,
+                bottom: 7,
+                width: 2,
+                borderRadius: 1,
+                bgcolor: 'rgba(34,211,238,0.72)',
+                pointerEvents: 'none',
+              } : undefined,
+              '& svg': {
+                ml: sidebarCollapsed ? 0.5 : 0,
+                filter: 'none',
+              },
+              '&:hover': sidebarCollapsed ? {
+                bgcolor: 'rgba(255,255,255,0.08)',
+                background: 'linear-gradient(180deg, rgba(255,255,255,0.105), rgba(255,255,255,0.045))',
+                borderColor: 'rgba(34,211,238,0.42)',
+                color: '#ede9fe',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.14)',
+              } : {
+                bgcolor: 'rgba(255,255,255,0.07)',
+                borderColor: 'rgba(196,181,253,0.28)',
+              },
+            }}
+          >
+            {sidebarCollapsed ? <ChevronsRight size={17} strokeWidth={2.4} /> : <ChevronsLeft size={17} />}
+          </IconButton>
+        </Tooltip>
       </Box>
 
       {/* Org header + switcher */}
-      <Box sx={{ display: { xs: 'none', sm: 'block' }, p: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
+      <Box sx={{ display: sidebarCollapsed ? 'none' : { xs: 'none', sm: 'block' }, p: 2, borderBottom: '1px solid', borderColor: 'divider' }}>
         {editing ? (
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
             <input
@@ -325,7 +484,7 @@ export default function WorkspaceSidebar() {
       </Box>
 
       {/* Search */}
-      <Box sx={{ display: { xs: 'none', sm: 'block' }, px: 1.5, py: 1 }}>
+      <Box sx={{ display: sidebarCollapsed ? 'none' : { xs: 'none', sm: 'block' }, px: 1.5, py: 1 }}>
         <TextField
           placeholder={t('quick.search')}
           size="small"
@@ -378,7 +537,7 @@ export default function WorkspaceSidebar() {
             load instead of flashing inaccessible items or rendering an empty
             policy-derived nav. */}
         {!caps.ready || !projectCaps.ready ? (
-          <NavSkeleton />
+          <NavSkeleton collapsed={sidebarCollapsed} />
         ) : (
         SIDEBAR_GROUP_ORDER.filter(g => g.id !== 'admin').map(group => {
           const items = getModulesByGroup(group.id).filter(m =>
@@ -388,7 +547,7 @@ export default function WorkspaceSidebar() {
           return (
             <Box key={group.id}>
               {group.showHeader && (
-                <Typography variant="caption" sx={{ px: 2.5, py: 0.5, display: { xs: 'none', sm: 'block' }, color: 'text.secondary', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', mt: 1 }}>
+                <Typography variant="caption" sx={{ px: 2.5, py: 0.5, display: sidebarCollapsed ? 'none' : { xs: 'none', sm: 'block' }, color: 'text.secondary', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', mt: 1 }}>
                   {tOr(group.headerKey, group.headerFallback)}
                 </Typography>
               )}
@@ -415,6 +574,7 @@ export default function WorkspaceSidebar() {
                       locked={locked}
                       lockReason={pageState.reason}
                       dim={locked}
+                      collapsed={sidebarCollapsed}
                     />
                   )
                 })}
@@ -454,6 +614,7 @@ export default function WorkspaceSidebar() {
                 locked={locked}
                 lockReason={pageState.reason}
                 dim={locked}
+                collapsed={sidebarCollapsed}
               />
             )
           })}

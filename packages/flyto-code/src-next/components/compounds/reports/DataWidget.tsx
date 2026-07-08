@@ -17,7 +17,7 @@ import { qk } from '@lib/queryKeys'
 import { useCapabilities } from '@hooks/useCapabilities'
 import { QueryError } from '@atoms/QueryError'
 import { CARD } from './designTokens'
-import { DATA_SOURCE_MAP, blockedDataSourceMessage, canUseDataSource } from './datasources'
+import { DATA_SOURCE_MAP, canUseDataSource } from './datasources'
 import { CHART_TYPE_MAP } from './chartTypes'
 import { getNestedValue } from './utils'
 import { joinRows } from './joinLogic'
@@ -137,13 +137,12 @@ export function DataWidget({ config, orgId }: Props) {
   }
 
   if (!singleAllowed || blockedJoinSource) {
-    const blocked = blockedJoinSource ?? ds
     return (
       <Paper sx={{ p: 2, borderRadius: 2, border: '1px dashed', borderColor: 'divider', height: '100%' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>
           <Lock size={14} style={{ color: 'var(--mui-palette-text-secondary)', flexShrink: 0 }} />
           <Typography variant="caption" color="text.secondary">
-            {tOr('reports.sourceLocked', blockedDataSourceMessage(blocked))}
+            {t('reports.sourceLocked')}
           </Typography>
         </Box>
       </Paper>

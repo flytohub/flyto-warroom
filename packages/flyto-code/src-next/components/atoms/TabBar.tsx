@@ -44,8 +44,18 @@ export function TabBar({ items, value, onChange, accentColor, noDivider, sx }: T
         ...(noDivider ? null : { borderBottom: '1px solid', borderColor: 'divider' }),
         '& .MuiTab-root': {
           ...flytoTypography.tab,
+          minWidth: 'auto',
+          maxWidth: 220,
           minHeight: 40,
+          px: { xs: 1, sm: 1.25 },
           py: 0,
+        },
+        '& .MuiTab-iconWrapper': {
+          mr: 0.5,
+        },
+        '& .MuiTabs-scrollButtons': {
+          width: 32,
+          flexShrink: 0,
         },
         ...(accentColor
           ? {

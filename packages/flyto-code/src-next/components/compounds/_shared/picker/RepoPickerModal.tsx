@@ -7,7 +7,7 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
-import { AlertTriangle, RefreshCw } from 'lucide-react'
+import { AlertTriangle, RefreshCw, Link2 } from 'lucide-react'
 import { useAuth } from '@hooks/useAuth'
 import { useOrg, useConnectedRepos } from '@hooks/useOrg'
 import { adaptGitHubRepo } from '@lib/github'
@@ -53,6 +53,11 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
   const [reloadNonce, setReloadNonce] = useState(0)
   const [reconnecting, setReconnecting] = useState(false)
   const [reconnectError, setReconnectError] = useState<string | null>(null)
+  // True when the engine reports GitHub was never connected (or was
+  // disconnected) for this org — distinct from "connected but the list
+  // came back empty". A first-time user must see a plain "Connect GitHub"
+  // prompt, NOT the "authorization expired / reconnect" narrative.
+  const [notConnected, setNotConnected] = useState(false)
   // Currently-connected repos (engine side). Used to:
   //   (1) pre-check the picker rows that are already connected, so
   //       the UI reads as "current state" rather than "blank list",
@@ -104,12 +109,13 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
     setSelectedOwner(null)
     setConfirmDisconnect([])
     setReconnectError(null)
+    setNotConnected(false)
 
     async function loadGitHub(): Promise<Repository[]> {
       if (!org?.id) return []
       const status = await getGitHubStatus(org.id).catch(() => ({ connected: false, login: '' }))
       if (!status.connected) {
-        setReconnectError(t('repoPicker.notConnected'))
+        setNotConnected(true)
         return []
       }
       const all: Repository[] = []
@@ -149,7 +155,7 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
       .catch((err) => {
         const message = err instanceof Error ? err.message : String(err)
         if (provider === 'github' && /github_not_connected|409|conflict/i.test(message)) {
-          setReconnectError(t('repoPicker.notConnected'))
+          setNotConnected(true)
         } else if (import.meta.env.DEV) {
           console.error(`Failed to load ${provider} repos:`, err)
         }
@@ -355,31 +361,37 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
               </Box>
             )}
             {owners.length === 0 ? (
-              // Loaded but nothing came back. The dominant cause is an
-              // expired / auto-cleared GitHub authorization (the engine
-              // proxy returns no repos), which otherwise reads as a silent
-              // empty list with nothing to select. Say so + offer reconnect.
+              // Empty list has two very different causes:
+              //   (a) GitHub was never connected for this org (first-time /
+              //       disconnected) — status.connected === false. Show a plain
+              //       "Connect GitHub" prompt; a warning about expired auth is
+              //       misleading when nothing was ever authorized.
+              //   (b) GitHub IS connected but the proxy returned no repos — the
+              //       dominant cause is an expired / auto-cleared authorization.
+              //       Say so + offer reconnect.
               <Box sx={{ textAlign: 'center', py: 6, px: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 1.5 }}>
-                <Box sx={{ width: 52, height: 52, borderRadius: 2.5, display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: 'rgba(245,158,11,0.12)' }}>
-                  <AlertTriangle size={24} style={{ color: '#f59e0b' }} />
+                <Box sx={{ width: 52, height: 52, borderRadius: 2.5, display: 'flex', alignItems: 'center', justifyContent: 'center', bgcolor: notConnected ? 'rgba(139,92,246,0.12)' : 'rgba(245,158,11,0.12)' }}>
+                  {notConnected
+                    ? <Link2 size={24} style={{ color: '#a78bfa' }} />
+                    : <AlertTriangle size={24} style={{ color: '#f59e0b' }} />}
                 </Box>
                 <Typography variant="subtitle1" fontWeight={700}>
-                  {t('repoPicker.emptyTitle')}
+                  {notConnected ? t('onboarding.connectGithub') : t('repoPicker.emptyTitle')}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" sx={{ maxWidth: 420, lineHeight: 1.5 }}>
-                  {t('repoPicker.emptyDesc')}
+                  {notConnected ? t('repoPicker.notConnected') : t('repoPicker.emptyDesc')}
                 </Typography>
                 <Button
                   variant="contained"
                   disabled={reconnecting}
-                  startIcon={reconnecting ? <CircularProgress size={14} color="inherit" /> : <RefreshCw size={15} />}
+                  startIcon={reconnecting ? <CircularProgress size={14} color="inherit" /> : (notConnected ? <Link2 size={15} /> : <RefreshCw size={15} />)}
                   onClick={() => {
                     if (provider === 'github') handleReconnectGitHub()
                     else if (org?.id) window.location.href = `/projects/${org.id}/settings?tab=integrations`
                   }}
                   sx={{ mt: 1, textTransform: 'none', fontWeight: 700, borderRadius: 2 }}
                 >
-                  {t('repoPicker.reconnect')}
+                  {notConnected ? t('onboarding.connectGithub') : t('repoPicker.reconnect')}
                 </Button>
                 {reconnectError && (
                   <Typography variant="caption" sx={{ color: 'error.main', maxWidth: 440, mt: 0.5 }}>

@@ -52,7 +52,7 @@ export function CustomBuilder({
 }: Props) {
   return (
     <Box sx={{
-      width: 300, flexShrink: 0, minWidth: 260,
+      width: { xs: 280, xl: 300 }, flexShrink: 0, minWidth: 260,
       borderLeft: '1px solid', borderColor: 'divider',
       display: 'flex', flexDirection: 'column',
       overflow: 'hidden',

@@ -1,6 +1,6 @@
 name: CLA Assistant
-# Requires every PR author to sign the Contributor License Agreement (CLA.md)
-# before their contribution can be accepted/ported upstream.
+# Requires every PR author to sign the CLA (CLA.md) before the contribution can
+# be accepted/ported upstream.
 on:
   issue_comment:
     types: [created]
@@ -22,7 +22,6 @@ jobs:
         uses: contributor-assistant/github-action@v2.6.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # A PAT with repo scope on the signatures repo (set as a repo secret).
           PERSONAL_ACCESS_TOKEN: ${{ secrets.CLA_PAT }}
         with:
           path-to-signatures: 'signatures/cla-signatures.json'

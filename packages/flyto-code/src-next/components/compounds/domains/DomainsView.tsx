@@ -1,4 +1,4 @@
-import { useState, useMemo, useRef, useCallback, type SyntheticEvent } from 'react'
+import { useState, useMemo, useRef, useCallback, useEffect, type SyntheticEvent } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import Box from '@mui/material/Box'
@@ -23,9 +23,12 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import Checkbox from '@mui/material/Checkbox'
 import FormControlLabel from '@mui/material/FormControlLabel'
+import IconButton from '@mui/material/IconButton'
+import Popover from '@mui/material/Popover'
+import Tooltip from '@mui/material/Tooltip'
 import CircularProgress from '@mui/material/CircularProgress'
 import { alpha } from '@mui/material/styles'
-import { Globe, Plus, ShieldCheck, ArrowRight, Radar, Upload, Eye } from 'lucide-react'
+import { Globe, Plus, ShieldCheck, ArrowRight, Radar, Upload, Eye, Search as SearchIcon } from 'lucide-react'
 import { colors } from '@/styles/designTokens'
 import { t, tOr } from '@lib/i18n';
 import { formatEngineError } from '@lib/engine/errors'
@@ -42,7 +45,7 @@ import { FlytoPageHeader } from '@atoms/FlytoPageHeader'
 import { QueryError } from '@atoms/QueryError'
 import { EmptyStateGuide } from '@atoms/EmptyStateGuide'
 import { GatedButton } from '@atoms/GatedButton'
-import { SearchField, toolbarControlSx } from '@atoms/SearchField'
+import { SearchField } from '@atoms/SearchField'
 import {
   listPentestProjects,
   deleteDomain,
@@ -61,13 +64,24 @@ import {
 } from '@lib/engine/code/footprintSurface'
 import { PROJECT_TYPES, LIST_PAGE_SIZE, CHECKS_PAGE_SIZE, SCOPE_LABELS, type DomainIssue, type DomainRow } from './types'
 import { buildDomainRows, flattenAttackSurfaceAssets } from './buildDomainRows'
-import { getExternalPostureKernel } from '@compounds/_shared/externalPosture'
+import { extractHostFromAssetValue, getExternalPostureKernel } from '@compounds/_shared/externalPosture'
 import { qk } from '@lib/queryKeys'
 import { GroupedDomainList, groupRows } from './GroupedDomainList'
 import { DomainDetail } from './DomainDetail'
 import { DomainImportModal } from './DomainImportModal'
 
 type DomainScopeFilter = 'owned' | 'vendor' | 'candidate' | 'all'
+const DOMAIN_TOOLBAR_H = 36
+const domainToolbarControlSx = {
+  height: DOMAIN_TOOLBAR_H,
+  minHeight: DOMAIN_TOOLBAR_H,
+  maxHeight: DOMAIN_TOOLBAR_H,
+  boxSizing: 'border-box',
+  textTransform: 'none',
+  fontWeight: 600,
+  borderRadius: 1.5,
+  fontSize: 13,
+}
 
 function readScopeFilter(raw: string | null): DomainScopeFilter {
   return raw === 'vendor' || raw === 'candidate' || raw === 'all' ? raw : 'owned'
@@ -125,6 +139,8 @@ export function DomainsView() {
   })
   const [page, setPage] = useState(1)
   const [search, setSearch] = useState(() => searchParams.get('q') ?? '')
+  const [searchAnchorEl, setSearchAnchorEl] = useState<HTMLElement | null>(null)
+  const searchActive = Boolean(searchAnchorEl) || Boolean(search)
   const [scopeFilter, setScopeFilter] = useState<DomainScopeFilter>(() => readScopeFilter(searchParams.get('scope')))
   const [selectedDomain, setSelectedDomain] = useState<string | null>(() => searchParams.get('domain'))
   const [checkFilter, setCheckFilter] = useState<string>('')
@@ -140,6 +156,8 @@ export function DomainsView() {
   // so the surface stays the precise confirmed-only inventory; flipping it
   // passes include_candidates=true so unverified discoveries appear too.
   const [showCandidates, setShowCandidates] = useState(() => searchParams.get('candidates') === '1')
+  const latestDomainRowsRef = useRef<DomainRow[]>([])
+  const [scanBaselineDomains, setScanBaselineDomains] = useState<Set<string> | null>(null)
 
   const { data: pentestData } = useQuery({
     queryKey: qk.pentest.projects(org?.id),
@@ -236,6 +254,12 @@ export function DomainsView() {
   })
 
   const scanAllMut = useMutation({
+    onMutate: () => {
+      const currentRows = latestDomainRowsRef.current
+      if (currentRows.length > 0) {
+        setScanBaselineDomains(new Set(currentRows.map(row => row.domain)))
+      }
+    },
     // Server responds instantly even when nothing is triggered; without a
     // floor the spinner flickers and spam-clicks look like no-ops.
     mutationFn: async () => {
@@ -354,25 +378,44 @@ export function DomainsView() {
     const assets = flattenAttackSurfaceAssets(attackSurfaceData?.assets ?? [])
     return buildDomainRows(assets, projects, undefined, kernelPostureData?.assets, showCandidates)
   }, [attackSurfaceData, pentestData, kernelPostureData, showCandidates])
+  const projectDomainBaseline = useMemo(() => {
+    const domains = new Set<string>()
+    for (const project of pentestData?.projects ?? []) {
+      const domain = extractHostFromAssetValue(project.target_url)
+      if (domain) domains.add(domain)
+    }
+    return domains
+  }, [pentestData])
+  const scanListFrozen = scanAllMut.isPending || scanningCount > 0
+  useEffect(() => {
+    latestDomainRowsRef.current = domainRows
+  }, [domainRows])
+  const visibleDomainRows = useMemo(() => {
+    const baseline = scanListFrozen
+      ? scanBaselineDomains ?? (projectDomainBaseline.size > 0 ? projectDomainBaseline : null)
+      : null
+    if (!baseline || baseline.size === 0) return domainRows
+    return domainRows.filter(row => baseline.has(row.domain))
+  }, [domainRows, projectDomainBaseline, scanBaselineDomains, scanListFrozen])
   const domainInventoryStats = useMemo(() => {
-    const candidateRows = domainRows.filter(r => r.verifierStatus === 'inconclusive')
-    const confirmedRows = domainRows.length - candidateRows.length
+    const candidateRows = visibleDomainRows.filter(r => r.verifierStatus === 'inconclusive')
+    const confirmedRows = visibleDomainRows.length - candidateRows.length
     return {
       confirmedRows,
       candidateRows: candidateRows.length,
-      totalRows: domainRows.length,
+      totalRows: visibleDomainRows.length,
       confirmedLabel: t('domains.confirmedCountLabel')
         .replace('{n}', String(confirmedRows)),
       candidateLabel: t('domains.candidateCountLabel')
         .replace('{n}', String(candidateRows.length)),
     }
-  }, [domainRows])
+  }, [visibleDomainRows])
   const scopeStats = useMemo(() => ({
-    owned: domainRows.filter(r => rowMatchesScope(r, 'owned')).length,
-    vendor: domainRows.filter(r => rowMatchesScope(r, 'vendor')).length,
-    candidate: domainRows.filter(r => rowMatchesScope(r, 'candidate')).length,
-    all: domainRows.length,
-  }), [domainRows])
+    owned: visibleDomainRows.filter(r => rowMatchesScope(r, 'owned')).length,
+    vendor: visibleDomainRows.filter(r => rowMatchesScope(r, 'vendor')).length,
+    candidate: visibleDomainRows.filter(r => rowMatchesScope(r, 'candidate')).length,
+    all: visibleDomainRows.length,
+  }), [visibleDomainRows])
   // Group count — reuse GroupedDomainList's own grouper so the chip
   // and the rendered list can never disagree (in particular the
   // `byId.has(pid)` guard that promotes dangling-parent rows to
@@ -380,7 +423,7 @@ export function DomainsView() {
   // the operator "G groups · D domains" instead of just the raw
   // row total — a page showing 1 root + 5 subdomains otherwise
   // reads as "5" and the parent grouping is invisible up here.
-  const groupCount = useMemo(() => groupRows(domainRows).length, [domainRows])
+  const groupCount = useMemo(() => groupRows(visibleDomainRows).length, [visibleDomainRows])
   const domainDataLoading = isKernelLoading || isAttackSurfaceLoading
   const domainDataError = isKernelError || isAttackSurfaceError
   const domainQueryError = kernelError ?? attackSurfaceError
@@ -393,8 +436,8 @@ export function DomainsView() {
   const allChecks = useMemo(() => CHECK_CATALOG.map(c => ({ ...c })), [])
 
   const filtered = useMemo(() => {
-    if (mainTab === 'checks') return domainRows
-    let rows = domainRows
+    if (mainTab === 'checks') return visibleDomainRows
+    let rows = visibleDomainRows
     if (envFilter !== 'all') {
       rows = rows.filter(r => r.project?.environment === envFilter)
     }
@@ -402,7 +445,7 @@ export function DomainsView() {
     if (!search) return rows
     const q = search.toLowerCase()
     return rows.filter(r => r.domain.toLowerCase().includes(q))
-  }, [domainRows, search, mainTab, envFilter, scopeFilter])
+  }, [visibleDomainRows, search, mainTab, envFilter, scopeFilter])
 
   const filteredChecks = useMemo(() => {
     let list = allChecks
@@ -422,7 +465,7 @@ export function DomainsView() {
   const pagedChecks = filteredChecks.slice((page - 1) * CHECKS_PAGE_SIZE, page * CHECKS_PAGE_SIZE)
 
   // Domain detail
-  const detail = selectedDomain ? domainRows.find(r => r.domain === selectedDomain) : null
+  const detail = selectedDomain ? visibleDomainRows.find(r => r.domain === selectedDomain) : null
   if (selectedDomain && !detail) {
     if (import.meta.env.DEV) console.warn('DomainsView: selectedDomain not found', selectedDomain)
   }
@@ -741,12 +784,12 @@ export function DomainsView() {
           <Chip
             label={showCandidates && domainInventoryStats.candidateRows > 0
               ? `${domainInventoryStats.confirmedRows} + ${domainInventoryStats.candidateRows}`
-              : (groupCount !== domainRows.length ? `${groupCount} · ${domainRows.length}` : domainRows.length)}
+              : (groupCount !== visibleDomainRows.length ? `${groupCount} · ${visibleDomainRows.length}` : visibleDomainRows.length)}
             size="small"
             title={showCandidates && domainInventoryStats.candidateRows > 0
               ? `${domainInventoryStats.confirmedLabel} · ${domainInventoryStats.candidateLabel}`
-              : (groupCount !== domainRows.length
-                  ? tOr('domains.countTooltip', `${groupCount} group(s) · ${domainRows.length} domain(s) total`)
+              : (groupCount !== visibleDomainRows.length
+                  ? tOr('domains.countTooltip', `${groupCount} group(s) · ${visibleDomainRows.length} domain(s) total`)
                   : undefined)}
             sx={{ fontWeight: 700, height: 22, fontSize: 13, bgcolor: 'rgba(148, 163, 184, 0.16)', color: 'text.primary' }}
           />
@@ -814,7 +857,7 @@ export function DomainsView() {
             <Chip
               label={showCandidates && domainInventoryStats.candidateRows > 0
                 ? `${domainInventoryStats.confirmedRows} + ${domainInventoryStats.candidateRows}`
-                : (groupCount !== domainRows.length ? `${groupCount} · ${domainRows.length}` : domainRows.length)}
+                : (groupCount !== visibleDomainRows.length ? `${groupCount} · ${visibleDomainRows.length}` : visibleDomainRows.length)}
               size="small"
               title={showCandidates && domainInventoryStats.candidateRows > 0
                 ? `${domainInventoryStats.confirmedLabel} · ${domainInventoryStats.candidateLabel}`
@@ -832,12 +875,107 @@ export function DomainsView() {
       </Tabs>
 
       <Box className="flex items-center gap-2 mb-1 flex-wrap">
-        <SearchField
-          placeholder={t('common.search')}
-          value={search}
-          onChange={(v) => { setSearch(v); updateParam('q', v); setPage(1) }}
-          sx={{ flex: 1 }}
-        />
+        <Tooltip title={t('common.search')}>
+          <IconButton
+            size="small"
+            aria-label={t('common.search')}
+            aria-pressed={searchActive}
+            onClick={(event) => setSearchAnchorEl(event.currentTarget)}
+            sx={{
+              ...domainToolbarControlSx,
+              width: DOMAIN_TOOLBAR_H,
+              minWidth: DOMAIN_TOOLBAR_H,
+              p: 0,
+              flexShrink: 0,
+              border: 1,
+              borderColor: colors.brand,
+              bgcolor: searchActive ? colors.brand : alpha(colors.brand, 0.07),
+              color: searchActive ? 'common.white' : colors.brand,
+              boxShadow: `inset 0 0 0 1px ${alpha(colors.brand, searchActive ? 0.18 : 0.08)}`,
+              '& svg': {
+                width: 19,
+                height: 19,
+                strokeWidth: 2.25,
+              },
+              '&:hover': {
+                bgcolor: searchActive ? colors.brand : alpha(colors.brand, 0.12),
+                borderColor: colors.brand,
+                color: searchActive ? 'common.white' : colors.brand,
+                boxShadow: `inset 0 0 0 1px ${alpha(colors.brand, 0.14)}`,
+              },
+            }}
+          >
+            <SearchIcon size={19} />
+          </IconButton>
+        </Tooltip>
+        <Popover
+          open={Boolean(searchAnchorEl)}
+          anchorEl={searchAnchorEl}
+          onClose={() => setSearchAnchorEl(null)}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+          slotProps={{
+            paper: {
+              sx: {
+                mt: 1,
+                p: 1,
+                width: 360,
+                maxWidth: 'calc(100vw - 32px)',
+                borderRadius: 2,
+                border: 1,
+                borderColor: alpha(colors.brand, 0.22),
+                boxShadow: '0 18px 40px rgba(15,23,42,0.16)',
+              },
+            },
+          }}
+        >
+          <SearchField
+            autoFocus
+            height={DOMAIN_TOOLBAR_H}
+            placeholder={t('common.search')}
+            value={search}
+            onChange={(v) => { setSearch(v); updateParam('q', v); setPage(1) }}
+            sx={{
+              width: '100%',
+              '& .MuiOutlinedInput-root': {
+                height: DOMAIN_TOOLBAR_H,
+                minHeight: DOMAIN_TOOLBAR_H,
+                maxHeight: DOMAIN_TOOLBAR_H,
+                borderRadius: 1.5,
+                bgcolor: alpha(colors.brand, 0.035),
+              },
+              '&& .MuiOutlinedInput-root': {
+                height: DOMAIN_TOOLBAR_H,
+                minHeight: DOMAIN_TOOLBAR_H,
+                maxHeight: DOMAIN_TOOLBAR_H,
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                top: 0,
+                borderColor: alpha(colors.brand, 0.45),
+              },
+              '& .MuiOutlinedInput-notchedOutline legend': {
+                display: 'none',
+              },
+              '& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline': {
+                borderColor: alpha(colors.brand, 0.75),
+              },
+              '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                borderColor: colors.brand,
+                borderWidth: 1,
+              },
+              '& .MuiInputBase-input': {
+                height: DOMAIN_TOOLBAR_H,
+                py: 0,
+                lineHeight: `${DOMAIN_TOOLBAR_H}px`,
+                boxSizing: 'border-box',
+              },
+              '& .MuiInputAdornment-root svg': {
+                width: 18,
+                height: 18,
+              },
+            }}
+          />
+        </Popover>
         {[
           { id: 'owned' as const, label: t('domains.scopeOwned'), count: scopeStats.owned },
           { id: 'vendor' as const, label: t('domains.scopeVendors'), count: scopeStats.vendor },
@@ -856,7 +994,7 @@ export function DomainsView() {
                 updateParam('scope', item.id, 'owned')
                 setPage(1)
               }}
-              sx={{ ...toolbarControlSx, fontSize: 13, flexShrink: 0, px: 0.5 }}
+              sx={{ ...domainToolbarControlSx, flexShrink: 0, px: 0.5 }}
             />
           )
         })}
@@ -879,11 +1017,10 @@ export function DomainsView() {
             updateParam('candidates', next ? '1' : '')
             setPage(1)
           }}
-          // Share the toolbar's fixed height (toolbarControlSx → TOOLBAR_H)
-          // so it lines up with the Scan-all button + search field.
-          sx={{ ...toolbarControlSx, fontSize: 13, flexShrink: 0, px: 0.5 }}
+          // Share the domains toolbar's fixed height so search, filters, and scan align.
+          sx={{ ...domainToolbarControlSx, flexShrink: 0, px: 0.5 }}
         />
-        {domainRows.length > 0 && (
+        {visibleDomainRows.length > 0 && (
           <Box className="flex items-center gap-2">
             <GatedButton
               action="scan:trigger"
@@ -896,7 +1033,18 @@ export function DomainsView() {
               // first only covers ~200ms of HTTP latency.
               disabled={scanAllMut.isPending || scanningCount > 0}
               startIcon={(scanAllMut.isPending || scanningCount > 0) ? <CircularProgress size={14} /> : <Radar size={14} />}
-              sx={{ ...toolbarControlSx, fontSize: 13 }}
+              sx={{
+                ...domainToolbarControlSx,
+                px: 1.25,
+                borderColor: colors.brand,
+                bgcolor: alpha(colors.brand, 0.07),
+                boxShadow: `inset 0 0 0 1px ${alpha(colors.brand, 0.08)}`,
+                '&:hover': {
+                  borderColor: colors.brand,
+                  bgcolor: alpha(colors.brand, 0.12),
+                  boxShadow: `inset 0 0 0 1px ${alpha(colors.brand, 0.14)}`,
+                },
+              }}
               title={scanningCount > 0
                 ? tOr('dast.scanAllInProgress', `${scanningCount} discovery scan(s) in progress — wait for them to complete`)
                 : undefined}
@@ -972,7 +1120,7 @@ export function DomainsView() {
           so it stays visible while the list scrolls behind it. */}
       {mainTab === 'domains' && !domainDataLoading && (
         <Box sx={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
-          {domainRows.length === 0 ? (
+          {visibleDomainRows.length === 0 ? (
             <Paper elevation={1} className="rounded-xl" sx={{ py: 4, px: 4 }}>
               <EmptyStateGuide
                 icon={<Globe size={28} />}

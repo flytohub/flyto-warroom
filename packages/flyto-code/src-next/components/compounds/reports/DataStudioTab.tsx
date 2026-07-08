@@ -15,14 +15,21 @@ import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import Skeleton from '@mui/material/Skeleton'
 import Alert from '@mui/material/Alert'
-import { Save, GitMerge, Lock } from 'lucide-react'
+import { Circle, Save, GitMerge, Lock } from 'lucide-react'
 import { JoinDesignerModal } from './JoinDesignerModal'
 import { ComponentLibrary } from './ComponentLibrary'
 import { t, tOr } from '@lib/i18n';
 import { qk } from '@lib/queryKeys'
 import { useOrg } from '@hooks/useOrg'
 import { useCapabilities } from '@hooks/useCapabilities'
-import { DATA_SOURCES, DATA_SOURCE_MAP, blockedDataSourceMessage, canUseDataSource } from './datasources'
+import { listBackendReportSources } from '@lib/engine'
+import {
+  DATA_SOURCES,
+  DATA_SOURCE_MAP,
+  REPORT_SOURCE_STATUS_COLOR,
+  backendReportSourceMap,
+  reportSourceRuntimeState,
+} from './datasources'
 import { CHART_TYPES, CHART_TYPE_MAP } from './chartTypes'
 import { getNestedValue, CHART_COLORS, loadComponents, persistComponents } from './utils'
 import ChartRenderer from './charts/ChartRenderer'
@@ -46,8 +53,20 @@ export function DataStudioTab({ components, onComponentsChange, onSave }: Props)
   const [chartType, setChartType] = useState<ChartType | ''>('')
   const [componentName, setComponentName] = useState('')
 
+  const { data: sourceCatalog, isError: sourceCatalogFailed, error: sourceCatalogError } = useQuery({
+    queryKey: qk.reports.sources(orgId),
+    queryFn: () => listBackendReportSources(orgId),
+    enabled: !!orgId,
+    staleTime: 60_000,
+  })
+  const backendSourceById = useMemo(
+    () => backendReportSourceMap(sourceCatalog?.sources),
+    [sourceCatalog],
+  )
+
   const ds = DATA_SOURCE_MAP[selectedSource]
-  const selectedSourceAllowed = canUseDataSource(ds, caps)
+  const selectedSourceState = ds ? reportSourceRuntimeState(ds, caps, backendSourceById[selectedSource]) : undefined
+  const selectedSourceAllowed = selectedSourceState ? !selectedSourceState.disabled : false
 
   const stringFields = useMemo(() =>
     ds?.fields.filter(f => f.type === 'string' || f.type === 'severity' || f.type === 'grade') ?? [],
@@ -84,7 +103,7 @@ export function DataStudioTab({ components, onComponentsChange, onSave }: Props)
   }, [previewData, ds])
 
   function handleSave() {
-    if (!selectedSource || !chartType) return
+    if (!selectedSource || !chartType || !selectedSourceAllowed) return
     const name = componentName.trim() || `${ds?.name ?? selectedSource} — ${CHART_TYPE_MAP[chartType]?.name ?? chartType}`
 
     // Sanitize: never save internal ID fields as label
@@ -146,6 +165,7 @@ export function DataStudioTab({ components, onComponentsChange, onSave }: Props)
         open={designerOpen}
         onClose={() => setDesignerOpen(false)}
         onSave={handleDesignerSave}
+        backendSourceById={backendSourceById}
       />
 
       {/* ── Quick builder form (scrollable, for single-source widgets) ── */}
@@ -163,23 +183,56 @@ export function DataStudioTab({ components, onComponentsChange, onSave }: Props)
         >
           <MenuItem value="" disabled><em>{t('reports.pickSource')}</em></MenuItem>
           {DATA_SOURCES.map(s => {
-            const allowed = canUseDataSource(s, caps)
+            const state = reportSourceRuntimeState(s, caps, backendSourceById[s.id])
+            const color = REPORT_SOURCE_STATUS_COLOR[state.status]
+            const label = tOr(s.nameKey ?? '', s.name)
+            const showState = state.status !== 'unknown' || Boolean(sourceCatalog) || state.disabled
             return (
-              <MenuItem key={s.id} value={s.id} disabled={!allowed} sx={{ fontSize: 12 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <MenuItem
+                key={s.id}
+                value={s.id}
+                disabled={state.disabled}
+                title={state.detail ? `${t(state.detailKey)}: ${state.detail}` : t(state.detailKey)}
+                sx={{ fontSize: 12 }}
+              >
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, width: '100%', minWidth: 0 }}>
                   <s.icon size={12} />
-                  {tOr(s.nameKey ?? '', s.name)}
-                  {!allowed && <Lock size={11} aria-hidden="true" />}
+                  <Typography variant="caption" style={{ flex: 1, minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {label}
+                  </Typography>
+                  {showState && (
+                    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, color, flexShrink: 0 }}>
+                      <Circle size={7} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+                      <Typography variant="caption" color="inherit">
+                        {t(state.labelKey)}
+                      </Typography>
+                    </span>
+                  )}
+                  {state.disabled && <Lock size={11} aria-hidden="true" />}
                 </Box>
               </MenuItem>
             )
           })}
         </Select>
 
-        {ds && !selectedSourceAllowed && (
-          <Alert severity="info" icon={<Lock size={16} />} sx={{ mb: 1.5, py: 0.5, borderRadius: 1.5 }}>
+        {sourceCatalogFailed && (
+          <Alert severity="warning" style={{ marginBottom: 12, paddingTop: 4, paddingBottom: 4 }}>
             <Typography variant="caption">
-              {tOr('reports.sourceLocked', blockedDataSourceMessage(ds))}
+              {t('reports.sourceCatalogError')}
+              {sourceCatalogError instanceof Error && sourceCatalogError.message ? `: ${sourceCatalogError.message}` : ''}
+            </Typography>
+          </Alert>
+        )}
+
+        {ds && selectedSourceState && selectedSourceState.status !== 'ready' && selectedSourceState.status !== 'unknown' && (
+          <Alert
+            severity={selectedSourceState.status === 'error' ? 'error' : selectedSourceState.status === 'empty' ? 'warning' : 'info'}
+            icon={selectedSourceState.status === 'locked' ? <Lock size={16} /> : undefined}
+            sx={{ mb: 1.5, py: 0.5, borderRadius: 1.5 }}
+          >
+            <Typography variant="caption">
+              {t(selectedSourceState.detailKey)}
+              {selectedSourceState.detail ? `: ${selectedSourceState.detail}` : ''}
             </Typography>
           </Alert>
         )}

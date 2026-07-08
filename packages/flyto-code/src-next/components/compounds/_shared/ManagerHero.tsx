@@ -54,30 +54,42 @@ export function ManagerHero({
 }: ManagerHeroProps) {
   const theme = useTheme()
   const dark = theme.palette.mode === 'dark'
+  const valueIsLongText = typeof headline.value === 'string' && headline.value.length > 18
+  const hasAllRegions = Boolean(visual && aside)
 
   return (
     <Box sx={{
-      display: 'flex',
-      flexDirection: { xs: 'column', md: 'row' },
-      alignItems: { xs: 'stretch', md: 'center' },
-      gap: { xs: 2, md: 3 },
+      display: 'grid',
+      gridTemplateColumns: {
+        xs: 'minmax(0, 1fr)',
+        md: hasAllRegions ? 'minmax(140px, 190px) minmax(0, 1fr)' : visual ? 'minmax(150px, 220px) minmax(0, 1fr)' : aside ? 'minmax(0, 1fr) minmax(210px, 280px)' : 'minmax(0, 1fr)',
+        xl: hasAllRegions ? 'minmax(140px, 190px) minmax(0, 1fr) minmax(190px, 260px)' : visual ? 'minmax(150px, 220px) minmax(0, 1fr)' : aside ? 'minmax(0, 1fr) minmax(210px, 280px)' : 'minmax(0, 1fr)',
+      },
+      alignItems: 'center',
+      gap: { xs: 1.5, md: 2 },
       minHeight,
+      minWidth: 0,
     }}>
       {visual && (
         <Box sx={{
-          flex: { xs: '0 1 auto', md: '1 1 420px' },
           minWidth: 0,
-          maxWidth: { xs: '100%', md: '52%' },
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          alignSelf: 'stretch',
           '& > *': { minWidth: 0, maxWidth: '100%' },
         }}>
           {visual}
         </Box>
       )}
 
-      <Box sx={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 0.75 }}>
+      <Box sx={{
+        minWidth: 0,
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 0.75,
+        ...(valueIsLongText && { alignSelf: 'center' }),
+      }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           {icon && (
             <Box sx={{
@@ -99,9 +111,14 @@ export function ManagerHero({
         <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1, flexWrap: 'wrap' }}>
           <Typography sx={{
             fontFamily: 'ui-monospace, monospace',
-            fontSize: { xs: 40, md: 52 }, fontWeight: 800, lineHeight: 1,
+            fontSize: valueIsLongText ? { xs: 27, md: hasAllRegions ? 30 : 34 } : { xs: 40, md: 52 },
+            fontWeight: 800,
+            lineHeight: valueIsLongText ? 1.12 : 1,
             color: tintValue ? accent : 'text.primary',
             textShadow: tintValue ? `0 0 28px ${alpha(accent, 0.35)}` : 'none',
+            maxWidth: '100%',
+            overflowWrap: 'anywhere',
+            wordBreak: valueIsLongText ? 'break-word' : 'normal',
           }}>
             {headline.value}
           </Typography>
@@ -122,11 +139,12 @@ export function ManagerHero({
 
       {aside && (
         <Box sx={{
-          flexShrink: 0,
-          width: { xs: '100%', md: 'auto' },
-          minWidth: { md: 220 },
-          borderLeft: { md: `1px solid ${alpha(theme.palette.text.primary, dark ? 0.12 : 0.08)}` },
-          pl: { md: 3 },
+          minWidth: 0,
+          gridColumn: hasAllRegions ? { md: '1 / -1', xl: 'auto' } : 'auto',
+          borderTop: hasAllRegions ? { md: `1px solid ${alpha(theme.palette.text.primary, dark ? 0.12 : 0.08)}`, xl: 0 } : 0,
+          borderLeft: { md: hasAllRegions ? 0 : `1px solid ${alpha(theme.palette.text.primary, dark ? 0.12 : 0.08)}`, xl: `1px solid ${alpha(theme.palette.text.primary, dark ? 0.12 : 0.08)}` },
+          pt: hasAllRegions ? { md: 1.25, xl: 0 } : 0,
+          pl: { md: hasAllRegions ? 0 : 2, xl: 2 },
         }}>
           {aside}
         </Box>

@@ -21,7 +21,8 @@
  * KpiCard's tone path), so a raw hue is never painted as a surface.
  */
 
-import { createContext, useContext, type ReactNode } from 'react'
+import { createContext, useContext, useEffect, useRef, type ReactNode } from 'react'
+import { useLocation } from 'react-router'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
@@ -87,6 +88,8 @@ export function ManagerDashboard({
   contentOverflow = 'auto',
 }: ManagerDashboardProps) {
   const theme = useTheme()
+  const location = useLocation()
+  const bodyRef = useRef<HTMLDivElement | null>(null)
   const dark = theme.palette.mode === 'dark'
   const neutralBorder = alpha(theme.palette.text.primary, dark ? 0.14 : 0.08)
   const border = accent ? alpha(accent, dark ? 0.4 : 0.32) : neutralBorder
@@ -96,6 +99,13 @@ export function ManagerDashboard({
   const isHeroSplit = layout === 'hero-split'
   const isTimeline = layout === 'timeline'
 
+  useEffect(() => {
+    const node = bodyRef.current
+    if (!node) return
+    node.scrollTop = 0
+    node.scrollLeft = 0
+  }, [location.pathname, location.search])
+
   const header = (title || actions) && (
     <Box sx={{
       flexShrink: 0,
@@ -104,6 +114,7 @@ export function ManagerDashboard({
       justifyContent: 'space-between',
       gap: 2,
       flexWrap: 'wrap',
+      minWidth: 0,
       border: '1px solid',
       borderColor: border,
       borderLeft: accent ? `3px solid ${accent}` : '1px solid',
@@ -141,7 +152,7 @@ export function ManagerDashboard({
           )}
         </Box>
       </Box>
-      {actions && <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>{actions}</Box>}
+      {actions && <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', minWidth: 0, maxWidth: '100%', alignItems: 'center' }}>{actions}</Box>}
     </Box>
   )
 
@@ -149,6 +160,9 @@ export function ManagerDashboard({
   // visual. Kept light: just framing; the hero content owns its layout.
   const heroFrame = hero && (
     <Box sx={{
+      display: 'grid',
+      gridTemplateColumns: 'minmax(0, 1fr)',
+      alignItems: 'stretch',
       borderRadius: 1,
       border: '1px solid',
       borderColor: border,
@@ -159,7 +173,10 @@ export function ManagerDashboard({
         backgroundImage: `linear-gradient(135deg, ${alpha(accent, dark ? 0.07 : 0.05)} 0%, transparent 55%)`,
       }),
       p: { xs: 1.5, md: 2 },
+      minWidth: 0,
+      maxWidth: '100%',
       overflow: 'hidden',
+      flexShrink: 0,
     }}>
       {hero}
     </Box>
@@ -170,6 +187,8 @@ export function ManagerDashboard({
       display: 'grid',
       gap: 1.5,
       gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+      minWidth: 0,
+      flexShrink: 0,
     }}>
       {kpis}
     </Box>
@@ -177,7 +196,7 @@ export function ManagerDashboard({
 
   // In hero-split, the KPIs stack vertically beside the hero.
   const kpiStack = kpis && (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.5, minWidth: 0, flexShrink: 0 }}>
       {kpis}
     </Box>
   )
@@ -192,6 +211,7 @@ export function ManagerDashboard({
       },
       alignItems: 'stretch',
       minWidth: 0,
+      ...(contentOverflow !== 'hidden' && { flexShrink: 0 }),
       ...(contentOverflow === 'hidden' && {
         flex: { xs: '0 0 auto', lg: '1 1 0' },
         minHeight: { xs: 'auto', lg: 0 },
@@ -211,6 +231,7 @@ export function ManagerDashboard({
         sm: isTimeline ? '1fr' : 'repeat(auto-fit, minmax(340px, 1fr))',
       },
       minWidth: 0,
+      flexShrink: 0,
     }}>
       {workItems}
     </Box>
@@ -224,6 +245,7 @@ export function ManagerDashboard({
       borderLeft: accent ? `3px solid ${alpha(accent, 0.7)}` : `1px solid ${border}`,
       boxShadow: 'none',
       bgcolor: alpha(theme.palette.background.paper, dark ? 0.5 : 0.9),
+      flexShrink: 0,
     }}>
       {narrative}
     </Card>
@@ -237,6 +259,7 @@ export function ManagerDashboard({
         gap: 1.5,
         gridTemplateColumns: { xs: '1fr', md: '1.6fr 1fr' },
         alignItems: 'stretch',
+        minWidth: 0,
       }}>
         {heroFrame}
         {kpiStack}
@@ -255,6 +278,7 @@ export function ManagerDashboard({
         height: '100%',
         minHeight: 0,
         overflow: { xs: contentOverflow === 'hidden' ? 'auto' : 'hidden', lg: 'hidden' },
+        overflowX: 'hidden',
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
@@ -263,15 +287,19 @@ export function ManagerDashboard({
         mx: 'auto',
         width: '100%',
         boxSizing: 'border-box',
+        '& *': { boxSizing: 'border-box' },
       }}>
         {header}
 
-        <Box sx={{
+        <Box ref={bodyRef} sx={{
           flex: { xs: contentOverflow === 'hidden' ? '0 0 auto' : 1, lg: 1 },
           minHeight: { xs: contentOverflow === 'hidden' ? 'auto' : 0, lg: 0 },
           overflow: { xs: contentOverflow === 'hidden' ? 'visible' : contentOverflow, lg: contentOverflow },
+          overflowX: 'hidden',
+          overscrollBehavior: 'contain',
+          scrollbarGutter: 'stable',
           display: 'flex', flexDirection: 'column', gap: 2,
-          pr: { md: 0.5 }, pb: 0.5,
+          pr: { md: 0.5 }, pb: 2,
           minWidth: 0,
           // Timeline spine — a left accent rail running down the scroll
           // column gives the page a chronological "flow" identity.

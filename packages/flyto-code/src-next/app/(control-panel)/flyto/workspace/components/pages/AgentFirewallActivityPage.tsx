@@ -1,10 +1,11 @@
 import { PageShell } from '@atoms/PageShell'
-import { AgentFirewallActivityView } from '@compounds/surface/mcp/AgentFirewallActivityView';
+import { ModeView } from '@compounds/_shared/ModeView'
+import { AgentFirewallActivityManagerView, AgentFirewallActivityView } from '@compounds/surface/mcp/AgentFirewallActivityView';
 
 export default function AgentFirewallActivityPage() {
   return (
     <PageShell padded={false} scroll="host">
-      <AgentFirewallActivityView />
+      <ModeView manager={<AgentFirewallActivityManagerView />} engineer={<AgentFirewallActivityView />} />
     </PageShell>
   )
 }

@@ -1,6 +1,7 @@
 import { PageShell } from '@atoms/PageShell'
-import { AIGovernanceView } from '@compounds/surface/mcp/AISecurityGovernanceViews';
+import { ModeView } from '@compounds/_shared/ModeView'
+import { AIGovernanceManagerView, AIGovernanceView } from '@compounds/surface/mcp/AISecurityGovernanceViews';
 
 export default function AIGovernancePage() {
-  return <PageShell padded={false} scroll="host"><AIGovernanceView /></PageShell>
+  return <PageShell padded={false} scroll="host"><ModeView manager={<AIGovernanceManagerView />} engineer={<AIGovernanceView />} /></PageShell>
 }

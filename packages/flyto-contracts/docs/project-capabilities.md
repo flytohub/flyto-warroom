@@ -115,6 +115,49 @@ The project capabilities response returns:
 - navigation hints
 - resolved capability booleans
 
+## Edition Boundary Matrix
+
+The engine is the policy authority for both general and enterprise modes.
+Frontend code should render this state; it should not create a parallel policy
+engine.
+
+| Contract | General / Community / SaaS | Enterprise cloud / self-hosted / airgap |
+| --- | --- | --- |
+| Edition profile | Community and SaaS report their active providers and unsupported actions, but enterprise audit APIs remain unavailable. | `enterprise_cloud`, `self_hosted_online`, and `enterprise_airgap` expose enterprise profile plus enterprise-only audit routes when system permission and org scope pass. |
+| Auth and billing | Community may use local auth/local storage. SaaS may use Firebase and Stripe-derived entitlements. | Enterprise uses enterprise/local auth, contract or offline license state, and provider declarations that stay separate from SaaS Firebase/Stripe assumptions. |
+| Capability snapshot | `/me/capabilities` remains the frontend source of page/action/surface truth. | Same snapshot shape, with enterprise edition/provider values and enterprise unsupported-action rules. |
+| Project modules | `internal/modulecatalog/catalog.yaml` composes code, external, cloud, container, dark web, identity, product verification, AutoFix, red team, AI gate, and reporting. | Same catalog model; enterprise modules may add stricter dependencies, approval gates, audit evidence, offline provider requirements, and deployment edition blockers. |
+| Action enforcement | Handlers must check membership, role permission, commercial action, project module/action state, and target scope before execution. | Enterprise handlers add edition, license, data residency, audit, legal-hold, airgap, and provider checks where applicable. |
+| Audit and evidence | Standard audit/evidence remains available according to module entitlement. Enterprise audit control-plane routes fail closed. | Enterprise audit ledger is append-only, org-scoped, hash chained, redacted, exportable, and verified over the full org chain. |
+| Frontend rendering | `flyto-code` pages use `useCapabilities`, project capabilities, module registry, and structured API errors. | Enterprise pages additionally consume `/api/v1/system/enterprise/profile` and audit ledger/export APIs; action buttons still use capability action gates. |
+
+## Frontend / Backend Responsibilities
+
+Backend responsibilities:
+
+- Own edition resolution, provider selection, entitlement, RBAC, commercial
+  action access, project module state, target scope, and workflow gates.
+- Return stable structured contracts: capability snapshots, module registry,
+  project capabilities, enterprise profile, audit events, and evidence export.
+- Fail closed when edition, license, provider, org scope, or action permission
+  is missing.
+- Record audit/evidence for security-relevant decisions, especially enterprise
+  exports, approvals, legal hold, offline license, and remediation promotion.
+
+Frontend responsibilities:
+
+- Treat backend snapshots as facts. Do not infer entitlement from Stripe price
+  ids, Firebase state, local constants, or route names.
+- Keep controls visible-but-disabled while capability state is loading; hide or
+  deny only after the backend snapshot resolves.
+- Use project capabilities for module-level navigation and `/me/capabilities`
+  for page/action gates.
+- Route all user-facing text through `flyto-i18n`; surface backend error codes
+  as explanatory states, not as alternate policy.
+- Show enterprise-specific pages as a clear disabled state outside enterprise
+  when reachable, and never pretend that an enterprise-only export or audit
+  action succeeded.
+
 ## Frontend Contract
 
 `flyto-code` must fetch the registry instead of hardcoding product structure

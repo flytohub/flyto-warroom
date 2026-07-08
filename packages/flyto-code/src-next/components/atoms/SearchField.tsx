@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components -- This atom intentionally exports shared toolbar constants. */
 /**
  * SearchField — the canonical search/filter input for toolbars.
  *
@@ -32,13 +33,14 @@ export interface SearchFieldProps {
   value: string
   onChange: (value: string) => void
   placeholder?: string
+  height?: number
   /** Extra sx (e.g. flex: 1 to fill the row). */
   sx?: SxProps<Theme>
   autoFocus?: boolean
   'aria-label'?: string
 }
 
-export function SearchField({ value, onChange, placeholder, sx, autoFocus, ...rest }: SearchFieldProps) {
+export function SearchField({ value, onChange, placeholder, height = TOOLBAR_H, sx, autoFocus, ...rest }: SearchFieldProps) {
   return (
     <TextField
       size="small"
@@ -54,11 +56,12 @@ export function SearchField({ value, onChange, placeholder, sx, autoFocus, ...re
               <Search size={16} />
             </InputAdornment>
           ),
+          sx: { height, minHeight: height, maxHeight: height, borderRadius: 2 },
         },
       }}
       sx={{
         // Pin the field's outer height so it matches TOOLBAR_H-tall buttons.
-        '& .MuiOutlinedInput-root': { height: TOOLBAR_H, borderRadius: 2 },
+        '& .MuiOutlinedInput-root': { height, minHeight: height, maxHeight: height, borderRadius: 2 },
         ...sx,
       }}
     />

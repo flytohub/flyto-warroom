@@ -79,7 +79,7 @@ export function ReportCatalog({ selected, onSelect, onCustomNew, onCustomLoad, o
 
   return (
     <Box sx={{
-      width: 240, flexShrink: 0,
+      width: { xs: 220, xl: 240 }, flexShrink: 0,
       borderRight: '1px solid', borderColor: 'divider',
       display: 'flex', flexDirection: 'column',
       overflow: 'hidden',

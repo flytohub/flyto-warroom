@@ -5,7 +5,7 @@ DOCKER_COMPOSE ?= $(shell if docker compose version >/dev/null 2>&1; then printf
 COMPOSE_CE = $(DOCKER_COMPOSE) --env-file $(ENV_CE) -f install/docker-compose.ce.yml
 COMPOSE_EE_SIM = $(DOCKER_COMPOSE) --env-file $(ENV_EE_SIM) -f install/docker-compose.ce.yml -f install/docker-compose.ee-sim.yml
 
-.PHONY: setup-ce preflight provider-readiness verify verify-fast verify-images ce-up ce-down ce-logs ce-ps ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit audit-docker-boundary demo-seed demo-seed-dry-run build-local-images publish-multiarch-images
+.PHONY: setup-ce preflight verify verify-images ce-up ce-down ce-logs ce-ps ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit build-local-images
 
 setup-ce:
 	python3 install/scripts/setup-ce.py
@@ -38,17 +38,10 @@ ee-sim-logs:
 audit:
 	python3 install/scripts/audit-release-tree.py .
 	python3 scripts/audit-ce-boundary.py .
-	python3 scripts/audit-positioning.py .
 	python3 scripts/audit-github-protection.py .
-	$(MAKE) audit-docker-boundary
 
-provider-readiness:
-	python3 install/scripts/provider-readiness.py --scope public_release --allow-provider-blocked
-
-verify: audit demo-seed-dry-run provider-readiness
+verify: audit
 	python3 install/scripts/verify-docker-images.py --dry-run
-
-verify-fast: verify
 
 preflight:
 	python3 install/scripts/preflight.py --env $(ENV_CE)
@@ -56,17 +49,5 @@ preflight:
 verify-images:
 	python3 install/scripts/verify-docker-images.py
 
-audit-docker-boundary:
-	python3 install/scripts/audit-docker-build-boundary.py /Users/chester/flytohub --skip-missing-workspace
-
-demo-seed:
-	python3 install/scripts/seed-demo-workspace.py
-
-demo-seed-dry-run:
-	python3 install/scripts/seed-demo-workspace.py --dry-run
-
 build-local-images:
 	sh install/scripts/build-local-images.sh /Users/chester/flytohub
-
-publish-multiarch-images:
-	sh install/scripts/publish-multiarch-images.sh --push /Users/chester/flytohub

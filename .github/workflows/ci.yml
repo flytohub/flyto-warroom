@@ -36,15 +36,8 @@ jobs:
       - name: Verify embedded indexer package
         working-directory: packages/flyto-indexer
         run: python -m src.cli verify . --full-scan --json
-      - name: Run verify-fast
-        run: make verify-fast
-      - name: Verify generated Warroom root
-        env:
-          PYTHONPATH: packages/flyto-indexer
-        run: |
-          # flyto-index verify equivalent through the embedded source package.
-          python -m src.cli verify . --full-scan --json
-          echo "flyto-index verify completed"
+      - name: Verify release audit target
+        run: make verify
       - name: Audit generated release boundary
         run: python install/scripts/audit-release-tree.py .
       - name: Audit CE moat and privacy boundary

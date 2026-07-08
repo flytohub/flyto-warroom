@@ -229,6 +229,17 @@ export async function setLocale(locale: Locale): Promise<void> {
 const reportedMissingKeys = new Set<string>()
 const reportedStaleKeys = new Set<string>()
 
+function isBrokenTranslationValue(value: string | undefined): boolean {
+  if (!value) return false
+  const compact = value.replace(/\s+/g, '')
+  return value.includes('\uFFFD') || /\?{4,}/.test(value) || /^\?+$/.test(compact)
+}
+
+function resolveTranslation(key: string): string | undefined {
+  const local = translations[key]
+  return isBrokenTranslationValue(local) ? enFallback[key] : (local || enFallback[key])
+}
+
 /**
  * Translate `key` against the active locale. Falls back to en bundle, then
  * to the key itself (so a missing key is visible on screen, not blank).
@@ -238,12 +249,12 @@ const reportedStaleKeys = new Set<string>()
  */
 export function t(key: string, params?: Record<string, string | number>): string {
   // Use || (not ??) so empty strings in incomplete locales fall through to en
-  const hit = translations[key] || enFallback[key]
+  const hit = resolveTranslation(key)
   if (hit === undefined && import.meta.env?.DEV && !reportedMissingKeys.has(key)) {
     reportedMissingKeys.add(key)
     console.warn(`[i18n] missing key: ${key} (locale=${currentLocale})`)
   }
-  if (import.meta.env?.DEV && !translations[key] && enFallback[key] && !reportedStaleKeys.has(key)) {
+  if (import.meta.env?.DEV && (!translations[key] || isBrokenTranslationValue(translations[key])) && enFallback[key] && !reportedStaleKeys.has(key)) {
     reportedStaleKeys.add(key)
     console.warn(`[i18n] untranslated key (falling back to en): ${key}`)
   }
@@ -265,7 +276,7 @@ export function t(key: string, params?: Record<string, string | number>): string
  */
 export function tOr(key: string, fallback: string, params?: Record<string, string | number>): string {
   // Use || so empty strings ("") in incomplete locales fall through to en, then fallback
-  const hit = translations[key] || enFallback[key]
+  const hit = resolveTranslation(key)
   let text = hit || fallback
   if (params) {
     for (const [k, v] of Object.entries(params)) {

@@ -460,9 +460,9 @@ export function HistoryView({ variant, orgId }: ViewProps) {
                   background: 'rgba(148,163,184,0.18)',
                 }}
               />
-              {state.query.data.items.map(it => (
+              {state.query.data.items.map((it, index) => (
                 <FeedRow
-                  key={`${it.kind}:${it.recorded_at}:${it.alert_id || it.repo_id || it.project_id || it.asset_id || ''}`}
+                  key={`${it.kind}:${it.recorded_at}:${it.alert_id || it.repo_id || it.project_id || it.asset_id || 'event'}:${index}`}
                   item={it}
                   currentVariant={variant}
                   onSetDomain={state.setDomain}

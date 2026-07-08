@@ -1,4 +1,4 @@
-# Flyto Code
+# Flyto2 Code
 
 **AI-powered war room for your codebase.** Full-spectrum application
 security platform with a code-intelligence layer and a closed-loop

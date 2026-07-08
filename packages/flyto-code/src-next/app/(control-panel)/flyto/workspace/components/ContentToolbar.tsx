@@ -7,7 +7,7 @@ import FullScreenToggle from '@/components/theme-layouts/components/FullScreenTo
 import LanguageSwitcher from '@/components/theme-layouts/components/LanguageSwitcher';
 import { ExperienceToggle } from '@compounds/_shared/ExperienceToggle';
 import { useLocation, useParams } from 'react-router';
-import { getDualModePaths } from '@code/modules';
+import { isDualModeWorkspacePath } from '@code/modules';
 
 /**
  * Content-area toolbar — renders inside the workspace content area.
@@ -22,7 +22,7 @@ export default function ContentToolbar() {
   const subPath = base && location.pathname.startsWith(base)
     ? location.pathname.slice(base.length) || '/dashboard'
     : location.pathname;
-  const showExperienceToggle = isDualModePath(subPath);
+  const showExperienceToggle = isDualModeWorkspacePath(subPath);
 
   return (
     <Toolbar className="min-h-12 p-0 md:min-h-14" sx={{ flexShrink: 0, minWidth: 0, overflow: 'hidden' }}>
@@ -52,10 +52,4 @@ export default function ContentToolbar() {
       </Box>
     </Toolbar>
   );
-}
-
-const DUAL_MODE_PATH_PREFIXES = [...getDualModePaths(), '/warroom'];
-
-function isDualModePath(path: string): boolean {
-  return DUAL_MODE_PATH_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
 }

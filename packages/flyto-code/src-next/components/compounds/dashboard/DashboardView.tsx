@@ -40,12 +40,6 @@ import { EmptyStateGuide } from '@atoms/EmptyStateGuide'
 import { useFixQueue } from '@/contexts/FixQueueContext'
 import { HealthGauge, RiskBars } from './charts'
 import { ScoreTrendChart } from './ScoreTrendChart'
-import type { HumanPostureSignal, HumanSignalTone } from './HumanPosture3D'
-import './dashboardCockpit.css'
-
-const HumanPosture3D = lazy(() =>
-  import('./HumanPosture3D').then((m) => ({ default: m.HumanPosture3D })),
-)
 
 // Lazy-load the Three.js scene so the 290 KB bundle doesn't enter
 // the critical path of users who never reach the dashboard. The
@@ -133,19 +127,6 @@ function useDashboardMetrics(params: {
       healthRepos,
     }
   }, [healthSummary, totalRepos, repoList, healthRepos, computedScore])
-}
-
-function boundedSignalIntensity(value: number, max: number) {
-  if (max <= 0) return 0.24
-  return Math.max(0.24, Math.min(1, value / max))
-}
-
-function postureTone(scoreAvailable: boolean, score: number | null, critical: number): HumanSignalTone {
-  if (critical > 0) return 'danger'
-  if (!scoreAvailable || score == null) return 'neutral'
-  if (score >= 80) return 'success'
-  if (score >= 65) return 'warning'
-  return 'danger'
 }
 
 // --- Main Dashboard ---
@@ -606,125 +587,6 @@ export function DashboardView({ onNavigate }: { onNavigate?: (section: string) =
   // Hiding tiles that have zero data is friendlier than greying them.
   const showRepoRisks = hasCode && agg.topRisks.length > 0
   const showExternalThreats = hasExternal
-  const urgentCodeCount = agg.critical + agg.high
-  const externalSignalCount =
-    externalThreat.kev + externalThreat.threatActor + externalThreat.crownJewel +
-    slaBreaches + (leakData?.hit_count ?? 0)
-  const postureSignals: HumanPostureSignal[] = [
-    {
-      id: 'identity',
-      label: t('dashboard.humanPosture'),
-      value: agg.scoreAvailable
-        ? `${agg.avgGrade} · ${Math.round(agg.avgScore!)}`
-        : t('dashboard.humanAwaiting'),
-      tone: postureTone(agg.scoreAvailable, agg.avgScore, agg.critical),
-      intensity: agg.scoreAvailable ? boundedSignalIntensity(100 - agg.avgScore!, 100) : 0.36,
-    },
-    {
-      id: 'code',
-      label: t('dashboard.humanCode'),
-      value: urgentCodeCount > 0
-        ? t('dashboard.humanUrgentCount', { n: urgentCodeCount })
-        : t('dashboard.humanQuiet'),
-      tone: urgentCodeCount > 0 ? (agg.critical > 0 ? 'danger' : 'warning') : hasCode ? 'success' : 'neutral',
-      intensity: boundedSignalIntensity(urgentCodeCount, 8),
-    },
-    {
-      id: 'external',
-      label: t('dashboard.humanExposure'),
-      value: externalSignalCount > 0
-        ? t('dashboard.humanSignalCount', { n: externalSignalCount })
-        : t('dashboard.humanQuiet'),
-      tone: externalSignalCount > 0 ? 'warning' : hasExternal ? 'success' : 'neutral',
-      intensity: boundedSignalIntensity(externalSignalCount, 8),
-    },
-    {
-      id: 'cloud',
-      label: t('dashboard.humanCloud'),
-      value: hasCloud
-        ? t('dashboard.humanResourceCount', { n: cloudPosture?.resource_count ?? 0 })
-        : t('dashboard.humanCloudOff'),
-      tone: hasCloud ? 'tech' : 'neutral',
-      intensity: hasCloud ? 0.54 : 0.24,
-    },
-    {
-      id: 'runtime',
-      label: t('dashboard.humanRuntime'),
-      value: hasRuntime ? t('dashboard.humanRuntimeLive') : t('dashboard.humanRuntimeOff'),
-      tone: hasRuntime ? 'brand' : 'neutral',
-      intensity: hasRuntime ? 0.58 : 0.24,
-    },
-    {
-      id: 'workflow',
-      label: t('dashboard.humanWorkflow'),
-      value: crossDim.autofix > 0
-        ? t('dashboard.humanAutofixCount', { n: crossDim.autofix })
-        : t('dashboard.humanReview'),
-      tone: crossDim.autofix > 0 ? 'brand' : 'neutral',
-      intensity: boundedSignalIntensity(crossDim.autofix, 5),
-    },
-  ]
-  const cockpitNavItems = [
-    {
-      key: 'pulse',
-      icon: <Flame size={16} />,
-      label: t('dashboard.navPulse'),
-      meta: pulseTop5.length > 0
-        ? t('dashboard.navPulseMeta', { n: pulseTop5.length })
-        : t('dashboard.navPulseMetaEmpty'),
-      target: '_pulse',
-      visible: caps.canSeePage('pulse'),
-    },
-    {
-      key: 'repos',
-      icon: <GitBranch size={16} />,
-      label: t('dashboard.navRepos'),
-      meta: t('dashboard.navReposMeta', { n: repoList.length }),
-      target: '_repos',
-      visible: caps.canSeePage('repos') && hasCode,
-    },
-    {
-      key: 'domains',
-      icon: <Globe2 size={16} />,
-      label: t('dashboard.navDomains'),
-      meta: t('dashboard.navDomainsMeta', { n: domainData?.assets?.length ?? 0 }),
-      target: '_domains',
-      visible: caps.canSeePage('domains') && hasExternal,
-    },
-    {
-      key: 'cloud',
-      icon: <Cloud size={16} />,
-      label: t('dashboard.navCloud'),
-      meta: t('dashboard.navCloudMeta', { n: cloudPosture?.resource_count ?? 0 }),
-      target: '_cloud-posture',
-      visible: caps.canSeePage('cspm') && hasCloud,
-    },
-    {
-      key: 'runtime',
-      icon: <RadioTower size={16} />,
-      label: t('dashboard.navRuntime'),
-      meta: t('dashboard.navRuntimeMeta', { n: runtimeOverview?.toolTotal ?? 0 }),
-      target: '_mcp',
-      visible: caps.canSeePage('mcp') && hasRuntime,
-    },
-    {
-      key: 'autofix',
-      icon: <Wand2 size={16} />,
-      label: t('dashboard.navAutofix'),
-      meta: t('dashboard.navAutofixMeta', { n: crossDim.autofix }),
-      target: '_autofix',
-      visible: caps.canSeePage('autofix') && crossDim.autofix > 0,
-    },
-  ].filter(item => item.visible)
-  const primaryTarget = caps.canSeePage('pulse')
-    ? '_pulse'
-    : cockpitNavItems[0]?.target ?? '_dashboard'
-  const primaryActionLabel = caps.canSeePage('pulse')
-    ? t('dashboard.humanPrimaryAction')
-    : t('dashboard.humanPrimarySurfaceAction')
-  const secondaryTarget = caps.canSeePage('asset_map')
-    ? '_asset-map'
-    : cockpitNavItems.find(item => item.target !== primaryTarget)?.target ?? '_dashboard'
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5, p: 1 }}>
@@ -734,67 +596,6 @@ export function DashboardView({ onNavigate }: { onNavigate?: (section: string) =
         subtitle={t('dashboard.subtitle')}
         bottomGap={0}
       />
-
-      {cockpitNavItems.length > 0 && (
-        <nav className="dashboard-cockpit-navbar" aria-label={t('dashboard.cockpitNavLabel')}>
-          {cockpitNavItems.map((item) => (
-            <button
-              key={item.key}
-              type="button"
-              className="dashboard-cockpit-navitem"
-              aria-label={t('dashboard.navOpen', { label: item.label })}
-              onClick={() => onNavigate?.(item.target)}
-            >
-              {item.icon}
-              <span className="dashboard-cockpit-navcopy">
-                <span className="dashboard-cockpit-navlabel">{item.label}</span>
-                <span className="dashboard-cockpit-navmeta">{item.meta}</span>
-              </span>
-            </button>
-          ))}
-        </nav>
-      )}
-
-      <section className="dashboard-human-cockpit" aria-label={t('dashboard.humanTitle')}>
-        <div className="dashboard-human-copy">
-          <div>
-            <p className="dashboard-human-kicker">{t('dashboard.humanKicker')}</p>
-            <h2 className="dashboard-human-title">{t('dashboard.humanTitle')}</h2>
-            <p className="dashboard-human-subtitle">{t('dashboard.humanSubtitle')}</p>
-          </div>
-          <div className="dashboard-human-signal-grid">
-            {postureSignals.slice(0, 4).map((signal) => (
-              <div key={signal.id} className="dashboard-human-signal">
-                <span className="dashboard-human-signal-label">{signal.label}</span>
-                <span className="dashboard-human-signal-value">{signal.value}</span>
-              </div>
-            ))}
-          </div>
-          <div className="dashboard-human-actions">
-            <button
-              type="button"
-              className="dashboard-human-action"
-              onClick={() => onNavigate?.(primaryTarget)}
-            >
-              <Target size={16} />
-              {primaryActionLabel}
-            </button>
-            <button
-              type="button"
-              className="dashboard-human-action is-secondary"
-              onClick={() => onNavigate?.(secondaryTarget)}
-            >
-              <ChevronRight size={16} />
-              {t('dashboard.humanSecondaryAction')}
-            </button>
-          </div>
-        </div>
-        <div className="dashboard-human-stage">
-          <Suspense fallback={<div className="dashboard-human-loading">{t('dashboard.human3dLoading')}</div>}>
-            <HumanPosture3D signals={postureSignals} />
-          </Suspense>
-        </div>
-      </section>
 
       {/* ── Risk Hero Banner ─────────────────────────────────────
           Single-line judgement of org state. Three inline chips

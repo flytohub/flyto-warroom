@@ -1,6 +1,11 @@
 import { describe, expect, it } from 'vitest'
 
-import { DATA_SOURCE_MAP, canUseDataSource } from '../datasources'
+import {
+  DATA_SOURCE_MAP,
+  backendReportSourceMap,
+  canUseDataSource,
+  reportSourceRuntimeState,
+} from '../datasources'
 
 describe('report data source entitlement gates', () => {
   it('gates CSPM on the backend cspm page capability', () => {
@@ -30,5 +35,77 @@ describe('report data source entitlement gates', () => {
       'latest_decision_state',
       'bundle_sha256',
     ]))
+  })
+
+  it('maps backend report source catalog state by id', () => {
+    const map = backendReportSourceMap([
+      {
+        id: 'containers',
+        name: 'Container Findings',
+        category: 'code',
+        available: true,
+        readiness: 'ready',
+        has_data: true,
+        sample_count: 1,
+        kpi_signal_count: 2,
+        supported_chart_types: ['table'],
+      },
+    ])
+    expect(map.containers?.sample_count).toBe(1)
+    expect(map.containers?.kpi_signal_count).toBe(2)
+  })
+
+  it('keeps backend unavailable sources fail-closed even when the page is visible', () => {
+    const source = DATA_SOURCE_MAP.containers
+    const state = reportSourceRuntimeState(
+      source,
+      { ready: true, canSeePage: page => page === 'containers' },
+      {
+        id: 'containers',
+        name: 'Container Findings',
+        category: 'code',
+        available: false,
+        unavailable_reason: 'missing feature',
+        supported_chart_types: ['table'],
+      },
+    )
+    expect(state.status).toBe('locked')
+    expect(state.disabled).toBe(true)
+    expect(state.detail).toBe('missing feature')
+  })
+
+  it('surfaces backend readiness without disabling non-locked sources', () => {
+    const source = DATA_SOURCE_MAP.containers
+    const gate = { ready: true, canSeePage: (page: string) => page === 'containers' }
+
+    expect(reportSourceRuntimeState(source, gate, {
+      id: 'containers',
+      name: 'Container Findings',
+      category: 'code',
+      available: true,
+      readiness: 'empty',
+      has_data: false,
+      supported_chart_types: ['table'],
+    })).toMatchObject({ status: 'empty', disabled: false })
+
+    expect(reportSourceRuntimeState(source, gate, {
+      id: 'containers',
+      name: 'Container Findings',
+      category: 'code',
+      available: true,
+      readiness: 'error',
+      probe_error: 'store offline',
+      supported_chart_types: ['table'],
+    })).toMatchObject({ status: 'error', disabled: false, detail: 'store offline' })
+
+    expect(reportSourceRuntimeState(source, gate, {
+      id: 'containers',
+      name: 'Container Findings',
+      category: 'code',
+      available: true,
+      readiness: 'ready',
+      has_data: true,
+      supported_chart_types: ['table'],
+    })).toMatchObject({ status: 'ready', disabled: false })
   })
 })

@@ -109,11 +109,11 @@ test('manual Run produces runner id, complete evidence pack and screenshots in f
   await page.getByLabel(/Approved target URL/i).fill(TARGET_URL)
   await page.getByLabel(/Repo scope/i).fill(fixture.repoId)
   await page.getByLabel(/Preview only/i).uncheck()
-  await expect(page.getByText('Target under verification').first()).toBeVisible()
-  await expect(page.getByText('Customer target URL').first()).toBeVisible()
+  await expect(page.getByText('Next action').first()).toBeVisible()
   await expect(page.getByText(TARGET_URL).first()).toBeVisible()
-  await expect(page.getByText('Verifier provenance').first()).toBeVisible()
-  await expect(page.getByText('Control plane').first()).toBeVisible()
+  await expect(page.getByText('Gate score').first()).toBeVisible()
+  await expect(page.getByText('Evidence').first()).toBeVisible()
+  await expect(page.getByText('Runner execution').first()).toBeVisible()
 
   const createResponse = page.waitForResponse((res) =>
     res.url().includes(`/api/v1/code/orgs/${fixture.orgId}/warroom-verification/runs`) &&
@@ -140,7 +140,7 @@ test('manual Run produces runner id, complete evidence pack and screenshots in f
   expect(evidence.gateVerdict, 'evidence API should expose the 90-point gate verdict').toBeTruthy()
   expect(typeof evidence.gateScore, 'evidence API should expose the 90-point gate score').toBe('number')
   await expect(page.getByText('Gate verdict').first()).toBeVisible()
-  await expect(page.getByText('Gate score')).toBeVisible()
+  await expect(page.getByText('Gate score').first()).toBeVisible()
   await expect(page.getByText(`${evidence.gateScore} / 100`).first()).toBeVisible()
   await captureProductVerificationPage(page, 'e2e/__screenshots__/product-verification-gate.png')
 
@@ -152,6 +152,7 @@ test('manual Run produces runner id, complete evidence pack and screenshots in f
   await expect(testingPanel.getByText('Evidence artifacts')).toBeVisible()
   await captureProductVerificationPage(page, 'e2e/__screenshots__/product-verification-testing-matrix.png')
 
+  await page.getByRole('tab', { name: /Evidence Pack/i }).click()
   await page.getByRole('tab', { name: /YAML Scenarios/i }).click()
   const yamlPanel = page.locator('#product-verification-panel-yaml')
   await expect(yamlPanel.getByText('YAML Scenarios')).toBeVisible({ timeout: 45_000 })
@@ -193,15 +194,15 @@ test('manual Run produces runner id, complete evidence pack and screenshots in f
   await expect(rbacPanel.getByText('Verifier authority')).toBeVisible()
   await captureProductVerificationPage(page, 'e2e/__screenshots__/product-verification-rbac-entitlement.png')
 
-  await page.getByRole('tab', { name: /Scheduler Runs/i }).click()
-  const schedulerPanel = page.locator('#product-verification-panel-scheduler')
-  await expect(schedulerPanel.getByText('Scheduled Automated Security Testing')).toBeVisible({ timeout: 45_000 })
-  await captureProductVerificationPage(page, 'e2e/__screenshots__/product-verification-scheduler-runs.png')
-
   await page.getByRole('tab', { name: /Screenshots/i }).click()
   const screenshotPanel = page.locator('#product-verification-panel-screenshots')
   await expect(screenshotPanel.locator('img').first()).toBeVisible({ timeout: 45_000 })
   await captureProductVerificationPage(page, 'e2e/__screenshots__/product-verification-evidence.png')
+
+  await page.getByRole('tab', { name: /Scheduler Runs/i }).click()
+  const schedulerPanel = page.locator('#product-verification-panel-scheduler')
+  await expect(schedulerPanel.getByText('Scheduled Automated Security Testing')).toBeVisible({ timeout: 45_000 })
+  await captureProductVerificationPage(page, 'e2e/__screenshots__/product-verification-scheduler-runs.png')
 
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto(`/projects/${fixture.orgId}/product-verification`, { waitUntil: 'domcontentloaded' })

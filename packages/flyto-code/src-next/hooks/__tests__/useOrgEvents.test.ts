@@ -721,6 +721,31 @@ describe('useOrgEvents / handleEvent', () => {
     expect(keys).toContainEqual(['integration-health', 'org-1'])
   })
 
+  it('enterprise audit and license events refresh the enterprise profile and audit ledger', () => {
+    const { qc, spy } = makeClient()
+    handleEvent(qc, 'org-1', {
+      id: 35,
+      workspaceId: 'org-1',
+      type: 'enterprise.audit.logged',
+      payload: { org_id: 'org-1', action: 'enterprise.audit.export' },
+      timestamp: 't',
+    })
+    handleEvent(qc, 'org-1', {
+      id: 36,
+      workspaceId: 'org-1',
+      type: 'license.updated',
+      payload: { org_id: 'org-1', action: 'license.updated' },
+      timestamp: 't',
+    })
+
+    const calls = spy.mock.calls.map(c => c[0] as { queryKey: unknown[]; exact?: boolean })
+    const keys = calls.map(c => c.queryKey)
+    expect(keys).toContainEqual(['system-enterprise-profile'])
+    expect(keys).toContainEqual(['system-enterprise-readiness', 'org-1'])
+    expect(keys).toContainEqual(['system-enterprise-audit-events', 'org-1', '', 0])
+    expect(calls.some(c => c.queryKey[0] === 'system-enterprise-audit-events' && c.exact === false)).toBe(true)
+  })
+
   it('activity.logged is intentionally ignored by flyto-code pages', () => {
     const { qc, spy } = makeClient()
     handleEvent(qc, 'org-1', {

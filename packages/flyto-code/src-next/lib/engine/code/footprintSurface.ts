@@ -1339,10 +1339,13 @@ export interface DomainKernelAsset {
   sources?: string[]
   score?: number
   grade?: string
+  display_grade?: string
+  score_status?: string
   last_scanned?: string
   confidence: number
   current_tier?: string
   first_seen_at?: string
+  finding_count?: number
   findings?: { severity?: string }[]
 }
 

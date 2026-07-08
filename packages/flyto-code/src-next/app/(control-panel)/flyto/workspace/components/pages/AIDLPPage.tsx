@@ -1,6 +1,7 @@
 import { PageShell } from '@atoms/PageShell'
-import { AIDLPView } from '@compounds/surface/mcp/AISecurityGovernanceViews';
+import { ModeView } from '@compounds/_shared/ModeView'
+import { AIDLPManagerView, AIDLPView } from '@compounds/surface/mcp/AISecurityGovernanceViews';
 
 export default function AIDLPPage() {
-  return <PageShell padded={false} scroll="host"><AIDLPView /></PageShell>
+  return <PageShell padded={false} scroll="host"><ModeView manager={<AIDLPManagerView />} engineer={<AIDLPView />} /></PageShell>
 }

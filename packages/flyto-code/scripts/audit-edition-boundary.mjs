@@ -51,6 +51,8 @@ const engineCapabilitiesFile = path.join(WORKSPACE, 'flyto-engine', 'internal', 
 const engineEditionsFile = path.join(WORKSPACE, 'flyto-engine', 'internal', 'permission', 'editions.yaml')
 const engineOfflineLicenseFile = path.join(WORKSPACE, 'flyto-engine', 'internal', 'offlinelicense', 'license.go')
 const engineUpdateBundleFile = path.join(WORKSPACE, 'flyto-engine', 'internal', 'updatebundle', 'bundle.go')
+const engineEnterpriseAuditFile = path.join(WORKSPACE, 'flyto-engine', 'api', 'handlers_enterprise_audit.go')
+const engineEnterpriseRoutesFile = path.join(WORKSPACE, 'flyto-engine', 'api', 'routes_system_enterprise_audit.go')
 const cloudRuntimeConfigFile = path.join(WORKSPACE, 'flyto-cloud', 'src', 'ui', 'web', 'backend', 'api', 'runtime_config.py')
 const gatewayConfigFile = path.join(WORKSPACE, 'flyto-cloud', 'src', 'ui', 'web', 'backend', 'gateway', 'config.py')
 const cloudAirgapComposeFile = path.join(WORKSPACE, 'flyto-cloud', 'deploy', 'enterprise-airgap', 'docker-compose.yml')
@@ -66,6 +68,8 @@ const airgapUpdateDoc = path.join(ROOT, 'docs', 'open-core', 'airgap-update-secu
 const frontendCapabilitiesFile = path.join(SRC, 'lib', 'engine', 'platform', 'capabilities.ts')
 const frontendUseCapabilitiesFile = path.join(SRC, 'hooks', 'useCapabilities.ts')
 const frontendUseCapabilitiesTestFile = path.join(SRC, 'hooks', '__tests__', 'useCapabilities.test.tsx')
+const frontendEnterpriseClientFile = path.join(SRC, 'lib', 'engine', 'system', 'enterprise.ts')
+const frontendEnterpriseViewFile = path.join(SRC, 'components', 'compounds', 'system', 'EnterpriseControlPlaneView.tsx')
 
 const engineCapabilities = readFile(engineCapabilitiesFile)
 expectIncludes(engineCapabilitiesFile, engineCapabilities, [
@@ -114,6 +118,23 @@ expectIncludes(engineUpdateBundleFile, engineUpdateBundle, [
   'ErrPathTraversal',
   'ErrChecksum',
 ], 'engine must verify signed offline update bundles and payload checksums')
+
+const engineEnterpriseAudit = readFile(engineEnterpriseAuditFile)
+expectIncludes(engineEnterpriseAuditFile, engineEnterpriseAudit, [
+  'enterpriseReadinessSchemaVersion',
+  'handleEnterpriseReadiness',
+  'VerifyEnterpriseAuditChain',
+  'enterpriseReadinessDomains',
+  'operator_action',
+], 'engine enterprise control plane must expose readiness without fake success')
+
+const engineEnterpriseRoutes = readFile(engineEnterpriseRoutesFile)
+expectIncludes(engineEnterpriseRoutesFile, engineEnterpriseRoutes, [
+  '/api/v1/system/enterprise/profile',
+  '/api/v1/system/enterprise/readiness',
+  '/api/v1/system/enterprise/audit/events',
+  '/api/v1/system/enterprise/audit/export',
+], 'engine enterprise routes must include profile, readiness, audit events, and export')
 
 const cloudRuntimeConfig = readFile(cloudRuntimeConfigFile)
 expectIncludes(cloudRuntimeConfigFile, cloudRuntimeConfig, [
@@ -193,6 +214,21 @@ expectIncludes(frontendUseCapabilitiesTestFile, frontendUseCapabilitiesTest, [
   "result.current.providerFor('billing')",
   "result.current.isActionUnsupported('billing.checkout')",
 ], 'frontend capability tests must prove edition/provider helpers consume engine snapshot fields')
+
+const frontendEnterpriseClient = readFile(frontendEnterpriseClientFile)
+expectIncludes(frontendEnterpriseClientFile, frontendEnterpriseClient, [
+  'EnterpriseReadinessResponse',
+  'getEnterpriseReadiness',
+  '/api/v1/system/enterprise/readiness',
+], 'frontend enterprise client must expose readiness API contract')
+
+const frontendEnterpriseView = readFile(frontendEnterpriseViewFile)
+expectIncludes(frontendEnterpriseViewFile, frontendEnterpriseView, [
+  'getEnterpriseReadiness',
+  'qk.platform.enterpriseReadiness',
+  'EnterpriseReadinessPanel',
+  'enterprise.readiness.title',
+], 'frontend enterprise control plane must render readiness and use typed query keys')
 
 const packageJson = JSON.parse(readFile(packageJsonFile) || '{}')
 if (packageJson.scripts?.['audit:edition-boundary'] !== 'node scripts/audit-edition-boundary.mjs') {

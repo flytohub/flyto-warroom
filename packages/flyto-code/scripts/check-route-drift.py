@@ -220,6 +220,46 @@ def extract_template_literal(text: str, start: int) -> tuple[str, int]:
         i += 1
     return ''.join(out), n
 
+
+def find_call_end(text: str, open_paren: int) -> int:
+    """Return the matching ')' for a call, or a conservative fallback index."""
+    depth = 0
+    quote: str | None = None
+    i = open_paren
+    while i < len(text):
+        c = text[i]
+        if quote:
+            if c == '\\' and i + 1 < len(text):
+                i += 2
+                continue
+            if quote == '`' and c == '$' and i + 1 < len(text) and text[i + 1] == '{':
+                i += 2
+                nested = 1
+                while i < len(text) and nested > 0:
+                    if text[i] == '{':
+                        nested += 1
+                    elif text[i] == '}':
+                        nested -= 1
+                    elif text[i] in "'\"`":
+                        _, i = extract_template_literal(text, i)
+                        continue
+                    i += 1
+                continue
+            if c == quote:
+                quote = None
+            i += 1
+            continue
+        if c in "'\"`":
+            quote = c
+        elif c == '(':
+            depth += 1
+        elif c == ')':
+            depth -= 1
+            if depth == 0:
+                return i
+        i += 1
+    return min(len(text), open_paren + 600)
+
 # Backend route pattern:
 #   mux.HandleFunc("POST /api/v1/...", post(srv.handleX))
 #   mux.HandleFunc("GET /health", srv.handleHealth)
@@ -410,9 +450,11 @@ def scan_frontend(root: Path) -> dict[tuple[str, str], list[str]]:
                 raw = resolve_identifier_assignment(api_assignments, name, m.start())
                 if raw is None:
                     continue
-            # Look ahead for method: 'X' within the same call expression
-            # (cap window at 600 chars to avoid runaway).
-            window = text[after:after + 600]
+            # Look ahead for method: 'X' only within this fetch call expression.
+            # A fixed-size window can capture the next fetch's method and turn a
+            # default-GET call into false POST drift.
+            call_end = find_call_end(text, m.end() - 1)
+            window = text[after:call_end]
             mm = RX_FETCH_METHOD.search(window)
             method = mm.group('method') if mm else 'GET'
             if method not in HTTP_METHODS:

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -27,9 +27,6 @@ import { dirname, join } from 'node:path'
  */
 const here = dirname(fileURLToPath(import.meta.url))
 const srcRoot = join(here, '..', '..', '..') // src-next/
-const packagesRoot = join(here, '..', '..', '..', '..', '..')
-const engineCatalogPath = join(packagesRoot, 'flyto-engine', 'internal', 'modulecatalog', 'catalog.yaml')
-const contractsCapabilitiesPath = join(packagesRoot, 'flyto-contracts', 'capabilities', 'capabilities.yaml')
 
 const VALID_ACTIONS = new Set(
   readFileSync(join(here, '..', '__generated__', 'backend-actions.txt'), 'utf8')
@@ -37,16 +34,8 @@ const VALID_ACTIONS = new Set(
 )
 
 function collectProjectRegistryActions(): Set<string> {
+  const catalog = readFileSync(join(here, '..', '..', '..', '..', '..', 'flyto-engine', 'internal', 'modulecatalog', 'catalog.yaml'), 'utf8')
   const actions = new Set<string>()
-  if (!existsSync(engineCatalogPath)) {
-    const capabilities = readFileSync(contractsCapabilitiesPath, 'utf8')
-    for (const match of capabilities.matchAll(/^\s+-\s+([a-z_]+[.:][a-z_:]+)/gm)) {
-      actions.add(match[1])
-    }
-    return actions
-  }
-
-  const catalog = readFileSync(engineCatalogPath, 'utf8')
   for (const match of catalog.matchAll(/^\s+(?:permissions|commercial_actions):\s*\[([^\]]*)\]/gm)) {
     for (const raw of match[1].split(',')) {
       const action = raw.trim()
@@ -114,14 +103,13 @@ describe('RBAC action-gate contract', () => {
       ).toEqual([])
   })
 
-  it('every gated action is registered in the project module catalog or CE capability contract', () => {
+  it('every gated action is registered in the project module catalog', () => {
     const bad = actions.filter((a) => !PROJECT_REGISTRY_ACTIONS.has(a.action))
     expect(
       bad.map((b) => `${b.action}  (${b.file})`),
       `These gate actions exist in the org/RBAC vocabulary but are not declared by any ` +
-        `modulecatalog permissions/commercial_actions entry or CE capability contract. ` +
-        `The project capability gate will fail closed, so add the action to the owning ` +
-        `module/contract or remove the UI gate.`,
+        `modulecatalog permissions/commercial_actions entry. The project capability gate ` +
+        `will fail closed, so add the action to the owning module or remove the UI gate.`,
     ).toEqual([])
   })
 })

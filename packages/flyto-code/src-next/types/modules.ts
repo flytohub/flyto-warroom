@@ -33,7 +33,7 @@ import {
   // Container / Runtime / Identity
   Bot, Fingerprint,
   // Operations
-  HeartPulse,
+  HeartPulse, Building,
   // Darkweb
   Bug, Cpu, AlertTriangle, Database, Map, KeyRound,
   // Brand / coming-soon
@@ -264,6 +264,7 @@ export const MODULES: Module[] = [
     path: 'agent-firewall/security-center',
     capability: 'mcp',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/AISecurityCenterPage'),
     sidebar: { group: 'runtime', labelKey: 'nav.aiSecurityCenter', fallback: 'AI Security Center', icon: RadioTower },
   },
@@ -272,6 +273,7 @@ export const MODULES: Module[] = [
     path: 'agent-firewall/attack-lab',
     capability: 'mcp',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/AgentFirewallAttackLabPage'),
     sidebar: { group: 'runtime', labelKey: 'nav.agentAttackLab', fallback: 'Attack Lab', icon: FlaskConical },
   },
@@ -280,6 +282,7 @@ export const MODULES: Module[] = [
     path: 'agent-firewall/governance',
     capability: 'mcp',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/AIGovernancePage'),
     sidebar: { group: 'runtime', labelKey: 'nav.aiGovernance', fallback: 'AI Governance', icon: ClipboardCheck },
   },
@@ -288,6 +291,7 @@ export const MODULES: Module[] = [
     path: 'mcp',
     capability: 'mcp',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/McpPage'),
     sidebar: { group: 'runtime', labelKey: 'nav.agentFirewall', fallback: 'Agent Firewall', icon: Bot },
   },
@@ -296,6 +300,7 @@ export const MODULES: Module[] = [
     path: 'agent-firewall/activity',
     capability: 'mcp',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/AgentFirewallActivityPage'),
     sidebar: { group: 'runtime', labelKey: 'nav.agentActivity', fallback: 'Agent Activity', icon: Activity },
   },
@@ -304,6 +309,7 @@ export const MODULES: Module[] = [
     path: 'agent-firewall/shadow-ai',
     capability: 'mcp',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/ShadowAIPage'),
     sidebar: { group: 'runtime', labelKey: 'nav.shadowAI', fallback: 'Shadow AI', icon: Smartphone },
   },
@@ -312,6 +318,7 @@ export const MODULES: Module[] = [
     path: 'agent-firewall/ai-dlp',
     capability: 'mcp',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/AIDLPPage'),
     sidebar: { group: 'runtime', labelKey: 'nav.aiDLP', fallback: 'AI DLP', icon: Database },
   },
@@ -320,6 +327,7 @@ export const MODULES: Module[] = [
     path: 'agent-firewall/evidence',
     capability: 'mcp',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/EvidenceReportsPage'),
     sidebar: { group: 'runtime', labelKey: 'nav.aiEvidenceReports', fallback: 'Evidence Reports', icon: FileSearch },
   },
@@ -353,9 +361,18 @@ export const MODULES: Module[] = [
     sidebar: { group: 'operations', labelKey: 'nav.operations', fallback: 'Operations', icon: HeartPulse },
   },
   {
+    id: 'enterprise_control_plane',
+    path: 'enterprise-control-plane',
+    capability: 'compliance',
+    fullBleed: true,
+    lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/EnterpriseControlPlanePage'),
+    sidebar: { group: 'enterprise', labelKey: 'nav.enterpriseControlPlane', fallback: 'Enterprise Control', icon: Building },
+  },
+  {
     id: 'attack_paths',
     path: 'attack-paths',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/AttackPathsPage'),
     sidebar: { group: 'exposure', labelKey: 'nav.attack_paths', fallback: 'Attack Paths', icon: Crosshair },
   },
@@ -363,6 +380,7 @@ export const MODULES: Module[] = [
     id: 'mitigations',
     path: 'mitigations',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/MitigationsPage'),
     sidebar: { group: 'exposure', labelKey: 'nav.mitigations', fallback: 'Mitigations', icon: ShieldCheck },
   },
@@ -370,6 +388,7 @@ export const MODULES: Module[] = [
     id: 'vendor_risk',
     path: 'vendors',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/VendorRiskPage'),
     sidebar: { group: 'exposure', labelKey: 'nav.vendorRisk', fallback: 'Vendor Risk', icon: Building2 },
   },
@@ -442,6 +461,7 @@ export const MODULES: Module[] = [
     id: 'brand_protection',
     path: 'brand-protection',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/BrandProtectionPage'),
     sidebar: { group: 'darkweb', labelKey: 'nav.brandProtection', fallback: 'Brand Protection', icon: Shield },
   },
@@ -519,6 +539,7 @@ export const MODULES: Module[] = [
     id: 'scoring',
     path: 'scoring',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/ScoringPage'),
     sidebar: { group: 'scoring', labelKey: 'nav.scoringOverview', fallback: 'Scoring Overview', icon: BarChart3 },
   },
@@ -526,6 +547,7 @@ export const MODULES: Module[] = [
     id: 'score_trends',
     path: 'score-trends',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/ScoreTrendsPage'),
     sidebar: { group: 'scoring', labelKey: 'nav.scoreTrends', fallback: 'Score Trends', icon: GitFork },
   },
@@ -550,6 +572,7 @@ export const MODULES: Module[] = [
     id: 'va_report',
     path: 'va-report',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/VAReportPage'),
     sidebar: { group: 'admin', labelKey: 'nav.vaReport', fallback: 'VA Report', icon: FileText },
   },
@@ -557,6 +580,7 @@ export const MODULES: Module[] = [
     id: 'settings',
     path: 'settings',
     fullBleed: true,
+    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/SettingsPage'),
     sidebar: { group: 'admin', labelKey: 'settings.title', fallback: 'Settings', icon: Settings },
   },
@@ -598,6 +622,7 @@ export const SIDEBAR_GROUP_ORDER: { id: Exclude<import('./Module').ModuleGroup, 
   { id: 'history',  headerKey: 'nav.historySection',  headerFallback: 'History',            showHeader: true  },
   { id: 'scoring',  headerKey: 'nav.scoringSection',  headerFallback: 'Scoring',            showHeader: true  },
   { id: 'operations', headerKey: 'nav.operationsSection', headerFallback: 'Operations',     showHeader: true  },
+  { id: 'enterprise', headerKey: 'nav.enterpriseSection', headerFallback: 'Enterprise',     showHeader: true  },
   { id: 'admin',    headerKey: '',                    headerFallback: '',                   showHeader: false },
 ]
 
@@ -619,6 +644,11 @@ export function getFullBleedPaths(): string[] {
  *  page metadata should not drift into toolbar-specific lists. */
 export function getDualModePaths(): string[] {
   return MODULES.filter(m => m.dualMode).map(m => '/' + navPath(m.path))
+}
+
+export function isDualModeWorkspacePath(path: string): boolean {
+  const pathname = (path.startsWith('/') ? path : `/${path}`).split(/[?#]/, 1)[0]
+  return getDualModePaths().some(prefix => pathname === prefix || pathname.startsWith(`${prefix}/`))
 }
 
 /** Lookup: modules by sidebar group (drops hidden entries). */

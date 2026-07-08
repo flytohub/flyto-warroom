@@ -34,10 +34,11 @@ describe('AssetCoverageView', () => {
     expect(screen.getAllByText('Uncertainty debt')[0]).toBeTruthy()
     expect(screen.getByRole('tab', { name: /Overview/i })).toBeTruthy()
     expect(screen.getByRole('tab', { name: /Worklist/i })).toBeTruthy()
-    expect(screen.getByText('Group scope ledger')).toBeTruthy()
-    expect(screen.getByText('Scope incomplete')).toBeTruthy()
+    expect(screen.getByText('Manager decision')).toBeTruthy()
+    expect(screen.getByText('Not ready to claim complete coverage')).toBeTruthy()
+    expect(screen.getByText('Next actions')).toBeTruthy()
     expect(screen.getAllByText('Cathay Century Insurance')[0]).toBeTruthy()
-    expect(screen.getAllByText(/not evidence of absence/i)[0]).toBeTruthy()
+    expect(screen.getAllByText(/Evidence debt, not absence/i)[0]).toBeTruthy()
 
     expect(screen.queryByText('Coverage worklist')).toBeNull()
     fireEvent.click(screen.getByRole('tab', { name: /Worklist/i }))
@@ -56,7 +57,7 @@ describe('AssetCoverageView', () => {
     render(<AssetCoverageManagerView orgId="org-1" />)
 
     expect(screen.getAllByText('Asset coverage')[0]).toBeTruthy()
-    expect(screen.getByText('No entity-specific debt returned in this scope ledger.')).toBeTruthy()
+    expect(screen.getByText('Manager decision')).toBeTruthy()
   })
 
   it('shows engineer policy, entity scope debt, missing credential groups, and quarantined candidates', () => {
@@ -68,8 +69,8 @@ describe('AssetCoverageView', () => {
 
     fireEvent.click(screen.getByRole('tab', { name: /Policy/i }))
     expect(screen.getByText('Evidence policy')).toBeTruthy()
-    expect(screen.getByText('quarantine_until_confirmed')).toBeTruthy()
-    expect(screen.getByText('debt_not_absence')).toBeTruthy()
+    expect(screen.getByText('Quarantine until confirmed')).toBeTruthy()
+    expect(screen.getByText('Evidence debt, not absence')).toBeTruthy()
 
     fireEvent.click(screen.getByRole('tab', { name: /Scope/i }))
     expect(screen.getByText('Entity scope ledger')).toBeTruthy()

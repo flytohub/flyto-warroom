@@ -61,7 +61,7 @@ export default function RepoDetailPage() {
     <PageShell padded={false} scroll="host">
       <ModeView
         manager={
-          <Box sx={{ height: '100%', overflow: 'auto' }}>
+          <Box sx={{ height: '100%', minHeight: 0, overflow: 'hidden' }}>
             <RepoDetailManagerView repoId={repoId} repo={repo} orgId={org?.id} />
           </Box>
         }

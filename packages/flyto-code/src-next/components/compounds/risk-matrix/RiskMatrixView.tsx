@@ -162,16 +162,27 @@ export function RiskMatrixView() {
   }
 
   return (
-    <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+    <Box sx={{
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      overflow: 'hidden',
+      bgcolor: (theme) => alpha(theme.palette.background.default, theme.palette.mode === 'dark' ? 0.3 : 0.55),
+    }}>
       {/* Header */}
       <Box
         sx={{
           flexShrink: 0,
-          px: { xs: 2, md: 4 },
-          pt: { xs: 1.5, md: 2 },
-          pb: 1.5,
-          borderBottom: '1px solid',
-          borderColor: 'divider',
+          mx: { xs: 1.5, md: 3 },
+          mt: { xs: 1.25, md: 1.75 },
+          px: { xs: 1.75, md: 2.25 },
+          py: 1.45,
+          border: '1px solid',
+          borderColor: (theme) => alpha(RAW.violet500, theme.palette.mode === 'dark' ? 0.42 : 0.3),
+          borderLeft: `3px solid ${RAW.violet500}`,
+          borderRadius: 1,
+          bgcolor: (theme) => alpha(theme.palette.background.paper, theme.palette.mode === 'dark' ? 0.62 : 0.94),
+          backgroundImage: `linear-gradient(90deg, ${alpha(RAW.violet500, 0.075)} 0%, transparent 44%)`,
         }}
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -185,7 +196,7 @@ export function RiskMatrixView() {
         </Typography>
       </Box>
 
-      <Box sx={{ flex: 1, minHeight: 0, overflowY: 'auto', px: { xs: 2, md: 4 }, py: 2 }}>
+      <Box sx={{ flex: 1, minHeight: 0, overflowY: 'auto', px: { xs: 1.5, md: 3 }, py: 1.5 }}>
         {isError && (
           <Paper variant="outlined" sx={{ p: 3 }}>
             <Typography color="error" variant="body2">
@@ -234,7 +245,12 @@ export function RiskMatrixView() {
         {!isLoading && !isError && data && (totals.bad > 0 || totals.good > 0) && (
           <>
             {/* Totals strip — open-risk vs verified-safe metric tiles. */}
-            <Box sx={{ display: 'flex', gap: 1.5, mb: 2.5, flexWrap: 'wrap' }}>
+            <Box sx={{
+              display: 'grid',
+              gap: 1,
+              mb: 1.5,
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, minmax(0, 1fr))' },
+            }}>
               <TotalTile
                 icon={<ShieldAlert size={16} />}
                 tone={GRADE_TONE.bad.tone}
@@ -246,6 +262,12 @@ export function RiskMatrixView() {
                 tone={GRADE_TONE.good.tone}
                 label={t('riskMatrix.verifiedSafe')}
                 value={totals.good}
+              />
+              <TotalTile
+                icon={<HelpCircle size={16} />}
+                tone={RAW.violet500}
+                label={tOr('riskMatrix.unclassifiedSummary', '未分類缺口')}
+                value={laneSplit.unclassified}
               />
             </Box>
 
@@ -289,15 +311,23 @@ export function RiskMatrixView() {
             )}
 
             {/* The grid. CSS grid: one label col + 4 severity cols. */}
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: `minmax(128px, 1.1fr) repeat(${SEVERITY_COLS.length}, minmax(104px, 1fr))`,
-                gap: 1,
-                alignItems: 'stretch',
-                minWidth: 600,
-              }}
-            >
+            <Box sx={{
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 1,
+              bgcolor: 'background.paper',
+              p: { xs: 1, md: 1.25 },
+              overflowX: 'auto',
+            }}>
+              <Box
+                sx={{
+                  display: 'grid',
+                  gridTemplateColumns: `minmax(138px, 1.05fr) repeat(${SEVERITY_COLS.length}, minmax(112px, 1fr))`,
+                  gap: 1,
+                  alignItems: 'stretch',
+                  minWidth: 660,
+                }}
+              >
               {/* Header row: axis-hint corner + severity-toned column pills. */}
               <Box
                 sx={{
@@ -520,6 +550,7 @@ export function RiskMatrixView() {
                   </Box>
                 )
               })}
+              </Box>
             </Box>
 
             {/* Legend — what red / green mean + the evidence bar. */}

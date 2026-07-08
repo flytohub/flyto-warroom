@@ -47,6 +47,11 @@ export interface BackendReportSource {
   required_action?: string
   available: boolean
   unavailable_reason?: string
+  readiness?: 'ready' | 'empty' | 'error' | 'unavailable' | string
+  has_data?: boolean
+  sample_count?: number
+  kpi_signal_count?: number
+  probe_error?: string
   supported_chart_types: string[]
   joinable_on?: string[]
 }

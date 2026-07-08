@@ -578,6 +578,18 @@
       ]
     },
     {
+      "id": "enterprise_control_plane",
+      "moduleId": "enterprise_control_plane",
+      "surface": "enterprise_control",
+      "label": "Enterprise Control",
+      "pathTemplate": "/projects/{orgId}/enterprise-control-plane?mode=engineer",
+      "mode": "both",
+      "scrollPolicy": "host",
+      "expectedText": [
+        "Enterprise"
+      ]
+    },
+    {
       "id": "verdict",
       "moduleId": "verdict",
       "surface": "overview",

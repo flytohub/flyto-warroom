@@ -1,6 +1,8 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, type ReactNode } from 'react'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
+import { useNavigate } from 'react-router'
 import {
+  ArrowLeft,
   GitBranch, FileCode, Globe2, Box as LucideBox, Package, Shield, Play, Loader2,
   Lock, ExternalLink, GitPullRequest, ShieldAlert, CheckCircle2,
   ShieldCheck, XCircle, Upload, Wand2, Copy, AlertTriangle,
@@ -8,7 +10,7 @@ import {
 } from 'lucide-react'
 import {
   Box, Button, Chip, Dialog, DialogContent, DialogTitle,
-  IconButton, LinearProgress, Paper, Typography,
+  IconButton, LinearProgress, Paper, Tooltip, Typography,
 } from '@mui/material'
 import { TabBar } from '@atoms/TabBar'
 import { LoadingState } from '@atoms/LoadingState'
@@ -42,11 +44,54 @@ import {
   buildIntelItems,
 } from './repo_detail/parts'
 
+function BackToReposButton({ onBack }: { onBack: () => void }) {
+  const label = tOr('repoDetail.backToRepos', 'Back to repositories')
+
+  return (
+    <Tooltip title={label} arrow>
+      <IconButton
+        size="small"
+        onClick={onBack}
+        aria-label={label}
+        sx={{
+          width: 36,
+          height: 36,
+          borderRadius: 1,
+          flex: '0 0 auto',
+          border: '1px solid',
+          borderColor: 'divider',
+          color: flytoTone.brand.fg,
+          bgcolor: 'background.paper',
+          '&:hover': {
+            borderColor: flytoTone.brand.border,
+            bgcolor: flytoTone.brand.bg,
+          },
+        }}
+      >
+        <ArrowLeft size={16} />
+      </IconButton>
+    </Tooltip>
+  )
+}
+
+function CenteredDetailState({ children, onBack }: { children: ReactNode; onBack: () => void }) {
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', minHeight: 0 }}>
+      <Box sx={{ px: { xs: 1.5, md: 3 }, pt: 2, flexShrink: 0 }}>
+        <BackToReposButton onBack={onBack} />
+      </Box>
+      <Box sx={{ flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
+        {children}
+      </Box>
+    </Box>
+  )
+}
+
 /* ═══════════════════════════════════════════════════════════════════
    Hero Header — Grade + KPIs + Repo metadata
    ═══════════════════════════════════════════════════════════════════ */
 
-function HeroHeader({ profile, repo, repoId, openIssues, scanning, onScan, onUpload, onCopyPrompt, promptCopied, isLocal, unifiedScore }: {
+function HeroHeader({ profile, repo, repoId, openIssues, scanning, onScan, onUpload, onCopyPrompt, promptCopied, isLocal, unifiedScore, onBack }: {
   profile: RepoProfile
   repo: ConnectedRepo | null
   repoId: string
@@ -58,6 +103,7 @@ function HeroHeader({ profile, repo, repoId, openIssues, scanning, onScan, onUpl
   promptCopied: boolean
   isLocal: boolean
   unifiedScore?: RepoScoreResultServer
+  onBack: () => void
 }) {
   // Unified score only
   const grade = unifiedScore?.grade ?? '--'
@@ -72,10 +118,11 @@ function HeroHeader({ profile, repo, repoId, openIssues, scanning, onScan, onUpl
   ]
 
   return (
-    <Box sx={{ px: 3, pt: 2.5, pb: 2, borderBottom: 1, borderColor: 'divider', flexShrink: 0 }}>
+    <Box sx={{ px: { xs: 1.5, md: 3 }, pt: 2.5, pb: 2, borderBottom: 1, borderColor: 'divider', flexShrink: 0 }}>
       {/* Row 1: Repo name + actions */}
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: 0 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1, flexWrap: 'wrap', mb: 2 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, minWidth: 0, flex: { xs: '1 1 100%', md: '1 1 260px' } }}>
+          <BackToReposButton onBack={onBack} />
           <GitBranch size={18} style={{ ...flytoToneIconStyle('success', 1), flexShrink: 0 }} />
           <Typography variant="h6" fontWeight={700} noWrap sx={{ color: 'text.primary' }}>
             {repo?.fullName ?? repoId}
@@ -95,7 +142,18 @@ function HeroHeader({ profile, repo, repoId, openIssues, scanning, onScan, onUpl
             </IconButton>
           )}
         </Box>
-        <Box sx={{ display: 'flex', gap: 1, flexShrink: 0 }}>
+        <Box sx={{
+          display: 'flex',
+          gap: 1,
+          flexWrap: 'wrap',
+          justifyContent: { xs: 'flex-start', md: 'flex-end' },
+          flex: { xs: '1 1 100%', md: '0 1 auto' },
+          minWidth: 0,
+          '& .MuiButton-root': {
+            height: 36,
+            whiteSpace: 'nowrap',
+          },
+        }}>
           {isLocal ? (
             <Button variant="outlined" size="small" color="secondary" startIcon={<Upload size={14} />} onClick={onUpload}>
               {t('repo.uploadScan')}
@@ -122,11 +180,16 @@ function HeroHeader({ profile, repo, repoId, openIssues, scanning, onScan, onUpl
       </Box>
 
       {/* Row 2: Grade + KPIs + Metadata */}
-      <Box sx={{ display: 'flex', gap: 3, alignItems: 'stretch' }}>
+      <Box sx={{
+        display: 'grid',
+        gridTemplateColumns: { xs: '92px minmax(0, 1fr)', lg: '108px minmax(0, 1fr) minmax(160px, 220px)' },
+        gap: 1.5,
+        alignItems: 'stretch',
+      }}>
         {/* Grade block */}
         <Paper variant="outlined" sx={{
-          px: 3, py: 1.5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-          bgcolor: gradeStyle.bg, borderColor: gradeStyle.border, borderRadius: flytoRadii.surface, minWidth: 90,
+          px: 2, py: 1.5, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+          bgcolor: gradeStyle.bg, borderColor: gradeStyle.border, borderRadius: flytoRadii.surface, minWidth: 0,
         }}>
           <Typography variant="h3" fontWeight={800} sx={{ color: gradeStyle.color, lineHeight: 1 }}>
             {grade}
@@ -137,19 +200,20 @@ function HeroHeader({ profile, repo, repoId, openIssues, scanning, onScan, onUpl
         </Paper>
 
         {/* KPI tiles */}
-        <Box sx={{ display: 'grid', gridTemplateColumns: `repeat(${kpis.length}, 1fr)`, gap: 1.5, flex: 1, minWidth: 0 }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(118px, 1fr))', gap: 1, minWidth: 0 }}>
           {kpis.map((kpi) => {
             const Icon = kpi.icon
             const tone = flytoTone[kpi.tone]
             return (
               <Paper key={kpi.label} variant="outlined" sx={{
-                p: 1.5, display: 'flex', alignItems: 'center', gap: 1.5,
+                p: 1.2, minHeight: 74, minWidth: 0, display: 'flex', alignItems: 'center', gap: 1,
                 borderTop: `2px solid ${tone.border}`,
                 bgcolor: tone.bg,
+                overflow: 'hidden',
               }}>
                 <Icon size={16} style={{ color: tone.fg, flexShrink: 0, opacity: 0.8 }} />
                 <Box sx={{ minWidth: 0 }}>
-                  <Typography variant="subtitle2" fontWeight={700} color="text.primary">{kpi.value}</Typography>
+                  <Typography variant="subtitle2" fontWeight={700} color="text.primary" noWrap>{kpi.value}</Typography>
                   <Typography variant="caption" color="text.secondary" noWrap>{kpi.label}</Typography>
                 </Box>
               </Paper>
@@ -158,20 +222,30 @@ function HeroHeader({ profile, repo, repoId, openIssues, scanning, onScan, onUpl
         </Box>
 
         {/* Quick metadata */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5, justifyContent: 'center', flexShrink: 0 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box sx={{
+          display: 'flex',
+          flexDirection: { xs: 'row', lg: 'column' },
+          flexWrap: 'wrap',
+          gap: 0.75,
+          alignItems: { xs: 'center', lg: 'flex-start' },
+          justifyContent: 'center',
+          minWidth: 0,
+          gridColumn: { xs: '1 / -1', lg: 'auto' },
+          overflow: 'hidden',
+        }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, minWidth: 0 }}>
             <Chip label={profile.project_type} size="small" color="secondary" variant="outlined" />
             {profile.project_sub_type && (
-              <Typography variant="caption" color="text.secondary">{profile.project_sub_type}</Typography>
+              <Typography variant="caption" color="text.secondary" noWrap>{profile.project_sub_type}</Typography>
             )}
           </Box>
           {profile.frameworks && profile.frameworks.length > 0 && (
-            <Typography variant="caption" color="text.secondary" noWrap sx={{ maxWidth: 200 }}>
+            <Typography variant="caption" color="text.secondary" noWrap sx={{ minWidth: 0, maxWidth: { xs: '100%', lg: 200 } }}>
               {profile.frameworks.map(fw => fw.name).join(', ')}
             </Typography>
           )}
           {profile.project_license && (
-            <Typography variant="caption" color="text.secondary">
+            <Typography variant="caption" color="text.secondary" noWrap>
               {profile.project_license}
             </Typography>
           )}
@@ -304,7 +378,7 @@ function OverviewTab({ profile, repoId, repo, onTabChange }: { profile: RepoProf
 
       {/* Health Dimensions — individual cards */}
       {dimEntries.length > 0 && (
-        <Box sx={{ display: 'grid', gridTemplateColumns: `repeat(${dimEntries.length}, 1fr)`, gap: 2 }}>
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 2 }}>
           {dimEntries.map((d) => {
             const Icon = d.icon
             const pct = d.dim.max > 0 ? (d.dim.score / d.dim.max) * 100 : 0
@@ -346,17 +420,19 @@ function OverviewTab({ profile, repoId, repo, onTabChange }: { profile: RepoProf
       )}
 
       {/* Key Metrics — small stat tiles */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: 1.5 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(84px, 1fr))', gap: 1.25 }}>
         {metaItems.map((m) => {
           const Icon = m.icon
           const tone = flytoTone[m.tone as FlytoTone]
           return (
             <Paper key={m.label} variant="outlined" sx={{
-              p: 1.5, borderRadius: flytoRadii.surface, textAlign: 'center',
+              p: 1.25, minHeight: 86, borderRadius: flytoRadii.surface, textAlign: 'center',
               borderBottom: `2px solid ${tone.border}`,
+              minWidth: 0,
+              overflow: 'hidden',
             }}>
               <Icon size={14} style={{ color: tone.fg, opacity: 0.7, margin: '0 auto 4px' }} />
-              <Typography variant="subtitle2" color="text.primary" sx={flytoTypography.metricLabel}>
+              <Typography variant="subtitle2" color="text.primary" noWrap sx={flytoTypography.metricLabel}>
                 {m.value}
               </Typography>
               <Typography variant="caption" color="text.secondary" noWrap>
@@ -368,7 +444,7 @@ function OverviewTab({ profile, repoId, repo, onTabChange }: { profile: RepoProf
       </Box>
 
       {/* Two-column: Project Stack + Languages */}
-      <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2.5 }}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1fr 1fr' }, gap: 2.5 }}>
         {/* Left: Frameworks / Services / Patterns */}
         <Paper variant="outlined" sx={{ p: 2.5, borderRadius: flytoRadii.surface, position: 'relative', overflow: 'hidden' }}>
           <Box sx={{
@@ -628,6 +704,7 @@ function getVisibleTabs(profile: RepoProfile): TabKey[] {
 }
 
 export function RepoDetailView({ repoId, repo }: RepoDetailViewProps) {
+  const navigate = useNavigate()
   const qc = useQueryClient()
   const [scanning, setScanning] = useState(false)
   const [uploadOpen, setUploadOpen] = useState(false)
@@ -638,6 +715,14 @@ export function RepoDetailView({ repoId, repo }: RepoDetailViewProps) {
   const { data: repoDetail } = useRepoDetail(repo?.ownerName ?? '', repo?.repoName ?? '')
 
   const { org } = useOrg()
+  const orgId = repo?.orgId ?? org?.id
+  const returnToRepos = () => {
+    if (orgId) {
+      navigate(`/projects/${orgId}/repos?mode=engineer`)
+    } else {
+      navigate(-1)
+    }
+  }
   const { data: profile, isLoading } = useQuery({
     queryKey: qk.repos.profile(repoId),
     queryFn: () => getRepoProfile(repoId),
@@ -750,20 +835,20 @@ export function RepoDetailView({ repoId, repo }: RepoDetailViewProps) {
   // ── Scanning state ──
   if (scanning) {
     return (
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: 2 }}>
+      <CenteredDetailState onBack={returnToRepos}>
         <LoadingState variant="spinner" py={0} />
         <Typography variant="body1" fontWeight={600} color="text.primary">{t('repoDetail.scanning')}</Typography>
         <Typography variant="body2" color="text.secondary">{t('repoDetail.scanningDesc')}</Typography>
-      </Box>
+      </CenteredDetailState>
     )
   }
 
   // ── Loading state ──
   if (isLoading) {
     return (
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
+      <CenteredDetailState onBack={returnToRepos}>
         <LoadingState variant="spinner" py={0} />
-      </Box>
+      </CenteredDetailState>
     )
   }
 
@@ -781,7 +866,7 @@ export function RepoDetailView({ repoId, repo }: RepoDetailViewProps) {
   if (!profile || profile.file_count === 0) {
     const isZeroFileResult = hasCompletedScan && profile!.file_count === 0
     return (
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: 2 }}>
+      <CenteredDetailState onBack={returnToRepos}>
         <Box sx={flytoCircleIconBoxSx(80)}>
           {isZeroFileResult
             ? <CheckCircle2 size={36} style={{ opacity: 0.25 }} />
@@ -829,7 +914,7 @@ export function RepoDetailView({ repoId, repo }: RepoDetailViewProps) {
               onSuccess={() => { setUploadOpen(false); qc.invalidateQueries({ queryKey: qk.repos.profile(repoId) }) }} />
           </DialogContent>
         </Dialog>
-      </Box>
+      </CenteredDetailState>
     )
   }
 
@@ -843,6 +928,7 @@ export function RepoDetailView({ repoId, repo }: RepoDetailViewProps) {
         scanning={scanning} onScan={handleScan} onUpload={() => setUploadOpen(true)}
         onCopyPrompt={handleCopyAIPrompt} promptCopied={promptCopied} isLocal={isLocal}
         unifiedScore={unifiedRepoScore}
+        onBack={returnToRepos}
       />
 
       {/* Missing data warning */}
@@ -865,7 +951,7 @@ export function RepoDetailView({ repoId, repo }: RepoDetailViewProps) {
       )}
 
       {/* Tab bar */}
-      <Box sx={{ px: 3, pt: 1, flexShrink: 0 }}>
+      <Box sx={{ px: { xs: 1.5, md: 3 }, pt: 1, flexShrink: 0 }}>
         <TabBar
           value={safeTab}
           onChange={(v) => setActiveTab(v as TabKey)}
@@ -883,7 +969,7 @@ export function RepoDetailView({ repoId, repo }: RepoDetailViewProps) {
       </Box>
 
       {/* Tab content — scrollable */}
-      <Box sx={{ flex: 1, overflow: 'auto', px: 3, py: 2.5 }}>
+      <Box sx={{ flex: 1, overflow: 'auto', px: { xs: 1.5, md: 3 }, py: 2.5 }}>
         {safeTab === 'overview' && <OverviewTab profile={profile} repoId={repoId} repo={repo} onTabChange={setActiveTab} />}
         {safeTab === 'security' && (
           <SecurityTab profile={profile} repoId={repoId} orgId={repo?.orgId ?? org?.id} isLocal={isLocal}

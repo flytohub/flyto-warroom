@@ -19,18 +19,6 @@ frontend images with the same per-service tags used by Docker Hub
 tags directly from the published image repository, while maintainers can rebuild
 the same tags locally from the private workspace before starting compose.
 
-Local image builds target the current Docker host. Official Docker Hub service
-tags are published separately as multi-arch manifest lists for `linux/amd64` and
-`linux/arm64`:
-
-```sh
-sh /tmp/flyto2-warroom-ce/install/scripts/publish-multiarch-images.sh --push /Users/chester/flytohub
-python3 /tmp/flyto2-warroom-ce/install/scripts/verify-docker-images.py --write-digests
-```
-
-Run the publish path only from the source workspace after the Docker build
-boundary audit passes.
-
 ## Start CE Locally
 
 ```sh
@@ -44,8 +32,7 @@ password SHA-256 hash, generates local-only Postgres/JWT/runner/verification
 secrets, and writes `install/.env` with owner-only permissions.
 
 `verify-images` checks that every public Docker Hub service tag in
-`OPEN_CORE_MANIFEST.json` has a valid manifest, matches the published digest,
-and includes the required `linux/amd64` plus `linux/arm64` platforms.
+`OPEN_CORE_MANIFEST.json` has a valid manifest and matches the published digest.
 `preflight` verifies that local secrets are not blank/placeholders and that
 compose can resolve the final image set.
 
@@ -63,24 +50,6 @@ Open:
 Sign in with the initial admin email and password provided to `setup-ce.py`.
 CE uses engine-issued local JWTs; it does not require
 Firebase and it does not use dev auth.
-
-## Seed The Demo Workspace
-
-After the stack is healthy, load the CE demo workspace:
-
-```sh
-python3 /tmp/flyto2-warroom-ce/install/scripts/seed-demo-workspace.py --email admin@example.com
-```
-
-The script logs in through local JWT auth, creates `Flyto2 Warroom CE Demo`,
-and writes an evidence pack that connects code, container, cloud, external
-attack surface, evidence, and AutoFix into one local closed loop.
-
-Run the offline validator at any time:
-
-```sh
-make -C /tmp/flyto2-warroom-ce demo-seed-dry-run
-```
 
 CE local JWT auth is password-based. Do not claim or advertise local TOTP/2FA
 unless the backend login flow actually enforces it. For production deployments

@@ -454,6 +454,17 @@ export function handleEvent(qc: ReturnType<typeof useQueryClient>, orgId: string
       return
     }
 
+    // Enterprise control plane — immutable audit ledger / license boundary
+    // changed. Refresh both the edition profile and every audit ledger filter
+    // so platform admins see export/license events without polling.
+    case 'enterprise.audit.logged':
+    case 'license.updated': {
+      qc.invalidateQueries({ queryKey: qk.platform.enterpriseProfile() })
+      qc.invalidateQueries({ queryKey: qk.platform.enterpriseReadiness(orgId) })
+      qc.invalidateQueries({ queryKey: qk.platform.enterpriseAuditEvents(orgId), exact: false })
+      return
+    }
+
     // (P1-5) Code-issue lifecycle (snooze/ignore/solve) changed via
     // UpsertIssueStatus. Bust the enriched issues feed (status column)
     // AND autofix findings — autofix eligibility can flip when an issue

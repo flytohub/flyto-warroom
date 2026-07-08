@@ -20,7 +20,7 @@ import {
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { DataSourceDef, FieldDef } from './types'
-import type { ReportSourceMeta, SourceCategory } from '@lib/engine'
+import type { BackendReportSource, ReportSourceMeta, SourceCategory } from '@lib/engine'
 
 // ── Import all module REPORT_SOURCES ──
 import { REPOS_REPORT_SOURCES } from '@lib/engine'
@@ -151,14 +151,118 @@ export interface ReportDataSourceGate {
   canSeePage: (page: string) => boolean
 }
 
+export type ReportSourceRuntimeStatus = 'ready' | 'empty' | 'error' | 'locked' | 'unknown'
+
+export interface ReportSourceRuntimeState {
+  status: ReportSourceRuntimeStatus
+  allowed: boolean
+  disabled: boolean
+  labelKey: string
+  detailKey: string
+  detail?: string
+  sampleCount: number
+  kpiSignalCount: number
+}
+
 export function canUseDataSource(ds: DataSourceDef | undefined, gate: ReportDataSourceGate): boolean {
   if (!ds?.requiredPage) return true
   if (!gate.ready) return false
   return gate.canSeePage(ds.requiredPage)
 }
 
-export function blockedDataSourceMessage(ds: DataSourceDef): string {
-  return `Data source requires access to ${ds.requiredPage ?? 'the backing module'}`
+export function backendReportSourceMap(sources: BackendReportSource[] | undefined): Record<string, BackendReportSource> {
+  return Object.fromEntries((sources ?? []).map(source => [source.id, source]))
+}
+
+export function reportSourceRuntimeState(
+  ds: DataSourceDef | undefined,
+  gate: ReportDataSourceGate,
+  backend?: BackendReportSource,
+): ReportSourceRuntimeState {
+  const sampleCount = backend?.sample_count ?? 0
+  const kpiSignalCount = backend?.kpi_signal_count ?? 0
+  const frontendAllowed = canUseDataSource(ds, gate)
+
+  if (!ds || !frontendAllowed) {
+    return {
+      status: 'locked',
+      allowed: false,
+      disabled: true,
+      labelKey: 'reports.sourceStatus.locked',
+      detailKey: 'reports.sourceStatus.lockedDetail',
+      detail: ds?.requiredPage,
+      sampleCount,
+      kpiSignalCount,
+    }
+  }
+
+  if (backend?.available === false) {
+    return {
+      status: 'locked',
+      allowed: false,
+      disabled: true,
+      labelKey: 'reports.sourceStatus.locked',
+      detailKey: 'reports.sourceStatus.lockedDetail',
+      detail: backend.unavailable_reason,
+      sampleCount,
+      kpiSignalCount,
+    }
+  }
+
+  if (backend?.readiness === 'error') {
+    return {
+      status: 'error',
+      allowed: true,
+      disabled: false,
+      labelKey: 'reports.sourceStatus.error',
+      detailKey: 'reports.sourceStatus.errorDetail',
+      detail: backend.probe_error,
+      sampleCount,
+      kpiSignalCount,
+    }
+  }
+
+  if (backend?.readiness === 'empty' || backend?.has_data === false) {
+    return {
+      status: 'empty',
+      allowed: true,
+      disabled: false,
+      labelKey: 'reports.sourceStatus.empty',
+      detailKey: 'reports.sourceStatus.emptyDetail',
+      sampleCount,
+      kpiSignalCount,
+    }
+  }
+
+  if (backend?.readiness === 'ready' || backend?.has_data) {
+    return {
+      status: 'ready',
+      allowed: true,
+      disabled: false,
+      labelKey: 'reports.sourceStatus.ready',
+      detailKey: 'reports.sourceStatus.readyDetail',
+      sampleCount,
+      kpiSignalCount,
+    }
+  }
+
+  return {
+    status: 'unknown',
+    allowed: true,
+    disabled: false,
+    labelKey: 'reports.sourceStatus.unknown',
+    detailKey: 'reports.sourceStatus.unknownDetail',
+    sampleCount,
+    kpiSignalCount,
+  }
+}
+
+export const REPORT_SOURCE_STATUS_COLOR: Record<ReportSourceRuntimeStatus, string> = {
+  ready: 'var(--mui-palette-success-main)',
+  empty: 'var(--mui-palette-warning-main)',
+  error: 'var(--mui-palette-error-main)',
+  locked: 'var(--mui-palette-text-secondary)',
+  unknown: 'var(--mui-palette-action-disabled)',
 }
 
 export const DATA_SOURCE_CATEGORIES = [
