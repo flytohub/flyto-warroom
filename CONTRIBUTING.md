@@ -21,7 +21,7 @@ accepted public changes back into the source repositories, rerun
 - `packages/flyto-contracts/capabilities/capabilities.yaml` maps back to
   `flyto-engine/internal/permission/capabilities.yaml`.
 - `install/**`, root docs, and generated workflow files map back to the
-  `flyto-indexer` exporter implementation.
+  private Flyto2 open-core exporter maintained by the Flyto2 team.
 
 ## PR Expectations
 

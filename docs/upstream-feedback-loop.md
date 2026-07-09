@@ -27,7 +27,7 @@ product line.
 6. Re-export CE:
 
    ```sh
-   python -m src.cli flyto2-open-core-export /Users/chester/flytohub --output /tmp/flyto-warroom
+   python -m release.cli flyto2-open-core-export /Users/chester/flytohub --output /tmp/flyto-warroom
    python /tmp/flyto-warroom/install/scripts/audit-release-tree.py /tmp/flyto-warroom
    ```
 

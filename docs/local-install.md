@@ -9,7 +9,7 @@ installer files only.
 Maintainers with the private workspace can build the local images:
 
 ```sh
-python -m src.cli flyto2-open-core-export /Users/chester/flytohub --output /tmp/flyto2-warroom-ce
+python -m release.cli flyto2-open-core-export /Users/chester/flytohub --output /tmp/flyto2-warroom-ce
 sh /tmp/flyto2-warroom-ce/install/scripts/build-local-images.sh /Users/chester/flytohub
 ```
 
