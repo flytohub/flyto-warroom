@@ -12,10 +12,10 @@ accepted public changes back into the source repositories, rerun
 
 ## Path Ownership
 
-- `packages/flyto-core/**` maps back to `flyto-core`.
-- `packages/flyto-indexer/**` maps back to `flyto-indexer`.
-- `packages/flyto-i18n/**` maps back to `flyto-i18n`.
 - `packages/flyto-code/**` maps back to `flyto-code`.
+- `flyto-core`, `flyto-indexer`, and `flyto-i18n` are external open-source
+  dependencies (PyPI / npm), not vendored here — contribute to their own public
+  repos directly. See `DEPENDENCIES.md`.
 - `packages/flyto-contracts/openapi/flyto-engine.openapi.yaml` maps back to
   `flyto-engine/api/openapi.yaml`.
 - `packages/flyto-contracts/capabilities/capabilities.yaml` maps back to

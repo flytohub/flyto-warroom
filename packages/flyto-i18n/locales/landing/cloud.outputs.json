@@ -1,9 +1,0 @@
-{
-  "$schema": "../../schema/locale.schema.json",
-  "locale": "landing",
-  "category": "cloud.outputs",
-  "version": "1.0.0",
-  "translations": {
-    "outputs.title": ""
-  }
-}

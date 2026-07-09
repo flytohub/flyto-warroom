@@ -15,10 +15,11 @@ product line.
 3. Apply package patches to the private workspace:
 
    ```sh
-   git -C /Users/chester/flytohub/flyto-core apply /path/to/upstream-patches/flyto-core.patch
-   git -C /Users/chester/flytohub/flyto-indexer apply /path/to/upstream-patches/flyto-indexer.patch
-   git -C /Users/chester/flytohub/flyto-i18n apply /path/to/upstream-patches/flyto-i18n.patch
+   git -C /Users/chester/flytohub/flyto-code apply /path/to/upstream-patches/flyto-code.patch
    ```
+
+   (`flyto-core`, `flyto-indexer`, and `flyto-i18n` are external dependencies,
+   not vendored here — contributions to them go to their own public repos.)
 
 4. For generated-only changes listed in `REVIEW_GENERATED.md`, change the
    source generator or private engine contract first.

@@ -1,1 +1,0 @@
-{"locale": "vi", "name": "Vietnamese", "native": "Tiếng Việt", "region": "VN", "version": "83af84352bcf", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "Mô tả về quy trình lỗi này", "label": "Mô tả"}}, "pleaseSelect": "Vui lòng chọn…", "ports": {"error": "Đầu ra"}}}}

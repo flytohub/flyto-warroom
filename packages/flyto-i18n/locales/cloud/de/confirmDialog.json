@@ -1,9 +1,0 @@
-{
-    "$schema": "../../../schema/locale.schema.json",
-    "locale": "de",
-    "category": "cloud.confirmDialog",
-    "version": "1.0.0",
-    "translations": {
-        "confirmDialog.areYouSure": "Sind Sie sicher?"
-    }
-}

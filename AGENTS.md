@@ -5,8 +5,10 @@ private Flyto2 source of truth.
 
 ## Before Changes
 
-- Identify whether the change belongs to `flyto-core`, `flyto-indexer`,
-  `flyto-i18n`, `flyto-code`, `flyto-contracts`, or generated release files.
+- Identify whether the change belongs to `flyto-code`, `flyto-contracts`, or
+  generated release files. (`flyto-core`, `flyto-indexer`, and `flyto-i18n` are
+  external open-source dependencies — contribute to their own public repos, not
+  here. See `DEPENDENCIES.md`.)
 - Prefer `flyto-indexer` search, impact, audit, and verify workflows for code
   exploration when the tool is available.
 - If a generated file needs a lasting change, update the source package or the
@@ -30,9 +32,6 @@ make audit
 python3 install/scripts/verify-docker-images.py --dry-run
 ```
 
-If you change the embedded exporter, also run its lint and tests:
-
-```sh
-python -m ruff check packages/flyto-indexer/src/flyto2_open_core.py packages/flyto-indexer/tests/test_flyto2_open_core.py
-python -m pytest packages/flyto-indexer/tests/test_flyto2_open_core.py -q
-```
+The exporter that generates this repository lives in the external `flyto-indexer`
+package (`src/flyto2_open_core.py`), not in this tree — change it there and
+regenerate.

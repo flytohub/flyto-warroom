@@ -9,9 +9,6 @@ import subprocess
 
 
 PACKAGE_PATCHES = {
-    "packages/flyto-core": "flyto-core",
-    "packages/flyto-indexer": "flyto-indexer",
-    "packages/flyto-i18n": "flyto-i18n",
     "packages/flyto-code": "flyto-code",
 }
 
@@ -32,6 +29,7 @@ GENERATED_REVIEW_FILES = {
     "CONTRIBUTING.md",
     "GOVERNANCE.md",
     "LICENSES.md",
+    "DEPENDENCIES.md",
     "LICENSE",
     "CLA.md",
     "OPEN_CORE_MANIFEST.json",

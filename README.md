@@ -99,9 +99,6 @@ connector credentials, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-core` | `flyto-core` | 1005 | YAML runtime, browser automation, deterministic verification, and module SDK. |
-| `flyto-indexer` | `flyto-indexer` | 285 | Local code intelligence for SAST, SCA, secrets, IaC, impact, SBOM, and evidence gates. |
-| `flyto-i18n` | `flyto-i18n` | 5000 | Shared locale source and generated distribution files. |
 | `flyto-code` | `flyto-code` | 1599 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 21 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 

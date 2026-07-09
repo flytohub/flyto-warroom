@@ -26,16 +26,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Install Python lint and test tooling
-        run: python -m pip install ruff pytest
-      - name: Lint embedded exporter
-        run: python -m ruff check packages/flyto-indexer/src/flyto2_open_core.py packages/flyto-indexer/tests/test_flyto2_open_core.py
-      - name: Test embedded exporter
-        working-directory: packages/flyto-indexer
-        run: python -m pytest tests/test_flyto2_open_core.py -q
-      - name: Verify embedded indexer package
-        working-directory: packages/flyto-indexer
-        run: python -m src.cli verify . --full-scan --json
+      # The exporter and indexer live in the external flyto-indexer package
+      # (tested in their own repo's CI); this mirror no longer vendors them.
       - name: Verify release audit target
         run: make verify
       - name: Audit generated release boundary
