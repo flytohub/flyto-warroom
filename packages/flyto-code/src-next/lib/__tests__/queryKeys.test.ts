@@ -138,6 +138,7 @@ describe('queryKeys factory', () => {
     expect(qk.mcp.aiGovernanceScore(ORG)).toEqual(['ai-governance-score', 'org-1'])
     expect(qk.mcp.aiGovernanceUseCases(ORG)).toEqual(['ai-governance-use-cases', 'org-1'])
     expect(qk.mcp.aiGovernanceEvents(ORG)).toEqual(['ai-governance-events', 'org-1'])
+    expect(qk.mcp.attackLabSimulation(ORG, 'enforce')).toEqual(['mcp-attack-lab-simulate', 'org-1', 'enforce'])
     expect(qk.cloud.posture(ORG)).toEqual(['cloud-posture', 'org-1'])
     expect(qk.cloud.posture(ORG, { limit: 500 })).toEqual([
       'cloud-posture',

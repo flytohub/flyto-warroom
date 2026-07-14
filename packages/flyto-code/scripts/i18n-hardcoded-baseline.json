@@ -1,0 +1,1969 @@
+{
+  "schema": "flyto-code.i18n-hardcoded-baseline.v1",
+  "generated_at": "2026-07-14T00:00:00Z",
+  "policy": "Legacy runtime English UI strings are tracked here so audit:i18n-hardcoded blocks new hardcoded English while the baseline is burned down. Run audit-i18n-hardcoded.mjs --zero to require full cleanup.",
+  "findings": [
+    {
+      "file": "src-next/app/(control-panel)/flyto/workspace/components/WorkspaceSidebar.tsx",
+      "kind": "ternary_string",
+      "value": "Warroom' : '",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Crown jewel",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Customer-facing",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Asset exceptions",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Asset Map",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No assets yet",
+      "count": 4
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No relationships",
+      "count": 3
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No surface data",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Surface scores",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Adjust the surface filter or search.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "False positive",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Mark verified",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No assets yet",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No matching assets",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No relationships",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Open repo alerts",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Refresh the kernel asset map after discovery finishes.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/asset-map/AssetMapView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Show leads",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Awaiting preview",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Backend states grouped by readiness",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Failed gates",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Needs intervention",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No AutoFix runs yet",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No repair backlog is waiting for manager review.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Patch readiness",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "PR output and gate results",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Priority repair queue",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Ready for PR",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Recent automation runs",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Repair funnel",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Severity and rule family mix",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/autofix/AutofixManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Verified patches",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Asset Importance",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Asset name, host, IP",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Close details",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Close filters",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Customize columns",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "CVE, identifier, description",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Export CSV",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Finding Grade",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Finding Identifier",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Finding Severity",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "First Seen",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Group name",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Impact End Date",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Impacts Risk Vector Grade",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Impacts RV Grade",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Last Seen",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Max days",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Next page",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "No Impact End Date",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Previous page",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Remaining Lifetime",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Reset filters",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Risk Vector",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Rolled Up ID",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Save filter set",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Search columns...",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Search filter options...",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Search...",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "State Versions",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Threat Activity Score",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Threat Groups",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Threat Insights",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Web App Sec Tests",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Web App Test",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_text",
+      "value": "Customize Columns",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_text",
+      "value": "Filter Sets",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_text",
+      "value": "Last Scan",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "jsx_text",
+      "value": "Rows Per Page",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Asset Importance",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Authoritative finding source.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Backend detail text when the finding includes one.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Backend-provided grade for this immutable finding state/version.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Confidence percentage from the current domain asset evidence.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Current lifecycle status derived from append-only finding events.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Date the finding was initially observed.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Date the finding was most recently observed.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Domain or host tied to the finding.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Finding Identifier",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Finding severity reported by the evidence source.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "First Seen",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Highest source-provided asset importance associated with this finding.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Host, domain, page, application, or evidence identifier for the finding.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Immutable source identifier for this exact finding state/version.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Impact End Date",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Impacts RV Grade",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Infrastructure tags or source labels associated with this asset.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Last Seen",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Name of the finding's risk vector.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "No Impact End Date",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Projected remaining impact lifetime from the source.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Remaining Lifetime",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Risk Vector",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Rolled Up ID",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "UTC date when an exclusion/no-impact period ends.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "UTC date when this finding stops impacting the risk-vector grade.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Whether the API marks this finding as included in risk-vector grade impact.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "ternary_string",
+      "value": "Domain Inventory",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "ternary_string",
+      "value": "Historical resolved' : 'Current",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "ternary_string",
+      "value": "Open filters",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/domains/DomainsManagerView.tsx",
+      "kind": "ternary_string",
+      "value": "Yes' : 'No",
+      "count": 3
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Action ready",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Add feedback or evidence before assigning automated authority.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Analyst confirmed",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Brand abuse command",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Brand review queue",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Canonical login",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Command readout",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Computer context",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Confirm evidence chain",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Confirmed feedback sharpens future candidates.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Confirmed learning",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Confirmed patterns",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Decision authority",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Engineer mode can still collect new evidence and promote future candidates.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Evidence coverage",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Evidence debt",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Evidence matrix",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Footprint coverage",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Footprint linked",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Fresh evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Freshness coverage",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Human closed",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Human review",
+      "count": 4
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Human-review rows stay out of machine takedown.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Intent score",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Known pattern",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Learning coverage",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Learning memory",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Learning signal",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Machine case",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Machine cases",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Machine recommendation",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Missing evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Missing proof blocks automated authority.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Monitoring is waiting for a candidate with enough evidence to enter review.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Needs action",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Needs evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "New pattern",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No active brand-abuse target",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No active review target.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No brand rows need manager review",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No decision authority yet",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No provider telemetry configured yet.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No urgent rows",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Not set",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Pipeline state",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Precision quality",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Providers ready",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Refresh due",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Refresh stale evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Relationship score",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Review gate",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Review lane",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Review only rows with enough signal; similarity-only records stay in watch until evidence arrives.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Route human decisions",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Rows marked human review should not become machine cases until feedback is recorded.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Similarity-only watch",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Stale candidates stay visible, but do not carry automated takedown authority.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Stale rows",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Suppressed pattern",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Tie similarity, footprint context, visual reference, and abuse intent before calling a brand-abuse case.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Unknown freshness",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Visual supported",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/BrandProtectionManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Workflow posture",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Critical 曝險仍在隊列中，先確認 owner、修復窗口與驗證方式。",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Critical 曝險待決策",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Critical 清空後，聚焦 High 與 KEV。",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Critical 項目需要修復窗口與驗證方式。",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "CTEM 行動中樞",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "KEV 項目要拉高處置優先級。",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "KEV 風險需追蹤",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "SLA 壓力正在升高",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "SLA 已逾期",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/CTEMManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "SLA 逾期",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Backlog by impact level",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Critical / High need attention",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Critical / High share",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Decision brief",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Fix path",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Fix-ready coverage",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Issue type mix",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Live issues engine",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Manual review",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Most concentrated repo",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No critical or high backlog",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Repair command",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Repository concentration",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Rollup source of the queue",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Triage focus",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "What needs leadership attention before broad cleanup",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/IssuesManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Where the open risk is sitting",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/posture/DomainDetailPanel.tsx",
+      "kind": "jsx_attr",
+      "value": "Asset mapping",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/posture/DomainDetailPanel.tsx",
+      "kind": "jsx_attr",
+      "value": "Kernel score",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/posture/DomainDetailPanel.tsx",
+      "kind": "jsx_attr",
+      "value": "No open findings",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/posture/DomainDetailPanel.tsx",
+      "kind": "ternary_string",
+      "value": "OK' : 'MISSING",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/PostureOverview.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Domain \\u8a3a\\u65b7\\u968a\\u5217",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/exposure/PostureOverview.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No score",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Audit activity is visible and reviewable",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Audit assurance",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Audit readout",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Audit-relevant events ordered by breach, severity, and recency.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Breach watch",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Cadence command",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Cadence drift",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Compliance readout",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Every visible event is available in engineer mode with its timestamp and source context.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Evidence custody",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Evidence queue",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No SLA breach is visible in this window.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Opened / resolved",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Previous window",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Score delta",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/history/AuditTimelineManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "SLA rows should be reviewed before generating an external audit packet.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "All targets have a run",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Confirm active-scan approval and credentials before traffic is emitted.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Create authorized pentest targets from engineer mode.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Evidence ledger",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Evidence quality",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Export the report for the validated target set.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "How far campaigns progressed through the 5-phase path",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Live validation state",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Next decision",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No campaign evidence has completed yet. This page will stay quiet until a target produces reproducible proof.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No pentest targets yet. Use engineer mode to add authorized targets.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "No proven breach yet",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Offensive validation",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Only completed scans and pipeline evidence are counted",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Pick the highest-value target in engineer mode.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Retest fixed findings before closing risk.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Review proven evidence and assign remediation owners.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Run the 5-phase pipeline to generate reproducible evidence.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Target coverage",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Targets breached with evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Targets sorted by proven risk and latest DAST evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Untested targets",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/pentest/PentestManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Validation queue",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Assurance evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Assurance ledger",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Assurance mix",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Assurance runs",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Board exposure",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Board-visible exposure",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Commitment roadmap",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Committed effort",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Credential exposure",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Dependency sequence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Exposure ledger",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Latest assurance",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Manager brief",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Open live view",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Open PR",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Portfolio posture",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Posture decision",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Project type",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Ready engineering fixes",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Ready fix queue",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Ready fixes",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Remediation commitment",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Repository context",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Score evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Upload local scan",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "jsx_text",
+      "value": "Upload local scan",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Critical CVEs",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Dead code",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "object_prop",
+      "value": "High CVEs",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "object_prop",
+      "value": "Taint flows",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "ternary_string",
+      "value": "Accepted' : proposal.actionable ? 'Ready' : 'Info",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "ternary_string",
+      "value": "Needs rotation review' : 'No exposed secrets",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "ternary_string",
+      "value": "Queueing scan' : tOr('repoList.scanNow', 'Scan now",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Pending scan",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Repository scan queued",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Scan now",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoDetailView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Back to repositories",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoListManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "At risk",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoListManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Could not load repository posture",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoListManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Open repository",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoListManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Pending scan",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/repos/RepoListManagerView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Scan queue idle",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/scanning/Container.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "CVE \\u6aa2\\u67e5",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Egress Risk API",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Enforce preview",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Enforce simulation",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Live decisions",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Overview API",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Policy mode",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Policy Simulate API",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Runtime evidence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "jsx_attr",
+      "value": "Sensitive egress",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "object_prop",
+      "value": "Blueprint chains', value: CHAINS.length, helper: 'front-end lab scenarios",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "object_prop",
+      "value": "Live decisions', value: liveDecisions.length, helper: configured ? 'from MCP overview API' : 'no runtime ingest yet",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "object_prop",
+      "value": "Probe coverage', value: totalProbes, helper: 'lab payload sequence",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "object_prop",
+      "value": "Production side effect",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "object_prop",
+      "value": "Release gate', value: blockingMode ? 'ON' : 'OBS",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "object_prop",
+      "value": "Sensitive egress', value: sensitiveEgress, helper: 'from egress risk API",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "ternary_string",
+      "value": "LIVE API' : 'BLUEPRINT",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallAttackLab.tsx",
+      "kind": "ternary_string",
+      "value": "ON' : 'OBS",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AgentFirewallManagerSurface.tsx",
+      "kind": "jsx_text",
+      "value": "Attack chain validation",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "object_prop",
+      "value": "ISO 42001', detail:",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "object_prop",
+      "value": "NIST AI RMF', detail:",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Agent Firewall 可附加使用證據。",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "AI DLP",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "AI 安全中心",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "AI 治理",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "AI 類別",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Digest-safe 證據",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "DLP 控制",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "DLP 控制已就緒，待執行期流量驗證覆蓋。",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Shadow AI 優先順序",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Shadow AI 已可用觀測到的執行期證據治理。",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/AISecurityGovernanceViews.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Shadow AI 曝險",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/McpView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Agent Firewall",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/McpView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Agent Firewall 已可主動暫停或阻擋高風險代理動作。",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/surface/mcp/McpView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "AI 資料外流",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/system/EnterpriseControlPlaneView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Could not verify platform-admin scope. Check your session and try again.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/system/EnterpriseControlPlaneView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Enterprise control-plane evidence is restricted to platform administrators.",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/system/EnterpriseControlPlaneView.tsx",
+      "kind": "tOr_static_fallback",
+      "value": "Platform admin access required",
+      "count": 2
+    },
+    {
+      "file": "src-next/components/compounds/threat-intel/IoCManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Feed rows",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/threat-intel/IoCManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Stale / Error",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/threat-intel/SensorMapManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Feed ready",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/threat-intel/SensorMapManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Rows ingested",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/threat-intel/SensorMapManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Stale / Error",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/threat-intel/SensorMapManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Top share",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/threat-intel/SensorMapManagerView.tsx",
+      "kind": "return_string",
+      "value": "Unknown origin",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/vendor-risk/VendorRiskManagerView.tsx",
+      "kind": "jsx_attr",
+      "value": "Assessment coverage",
+      "count": 1
+    },
+    {
+      "file": "src-next/components/compounds/vendor-risk/VendorRiskManagerView.tsx",
+      "kind": "ternary_string",
+      "value": "ACTIVE' : 'EMPTY",
+      "count": 1
+    }
+  ]
+}

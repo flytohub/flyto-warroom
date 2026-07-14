@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-14T09:03:06.946827+00:00",
+  "generated_at": "2026-07-14T10:35:02.275991+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -113,7 +113,7 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1599,
+      "file_count": 1601,
       "generated_files": [
         "e2e/product_verification_evidence.spec.ts",
         "e2e/sweep.spec.ts",

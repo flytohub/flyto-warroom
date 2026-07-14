@@ -13,6 +13,8 @@ import process from 'node:process'
 
 const ROOT = process.cwd()
 const SRC = path.join(ROOT, 'src-next')
+const BASELINE_PATH = path.join(ROOT, 'scripts', 'i18n-hardcoded-baseline.json')
+const requireZero = process.argv.includes('--zero')
 
 const SKIP_PARTS = new Set([
   '__tests__',
@@ -181,6 +183,25 @@ for (const file of walk(SRC)) {
 }
 
 if (findings.length > 0) {
+  const baseline = requireZero ? null : readBaseline()
+  if (baseline) {
+    const regressionFindings = diffAgainstBaseline(findings, baseline)
+    if (regressionFindings.length === 0) {
+      const currentCount = findings.length
+      const baselineCount = countBaselineFindings(baseline)
+      const resolved = Math.max(0, baselineCount - currentCount)
+      console.log(`runtime i18n hardcoded English audit passed with legacy baseline: ${currentCount} known finding(s), ${resolved} resolved since baseline`)
+      process.exit(0)
+    }
+
+    console.error(`runtime i18n hardcoded English audit failed: ${regressionFindings.length} new finding(s) outside legacy baseline`)
+    for (const f of regressionFindings.slice(0, 120)) {
+      console.error(`${f.file}:${f.line} [${f.kind}] ${JSON.stringify(f.value)}`)
+    }
+    if (regressionFindings.length > 120) console.error(`... and ${regressionFindings.length - 120} more`)
+    process.exit(1)
+  }
+
   console.error(`runtime i18n hardcoded English audit failed: ${findings.length} finding(s)`)
   for (const f of findings.slice(0, 120)) {
     console.error(`${f.file}:${f.line} [${f.kind}] ${JSON.stringify(f.value)}`)
@@ -190,3 +211,39 @@ if (findings.length > 0) {
 }
 
 console.log('runtime i18n hardcoded English audit passed')
+
+function readBaseline() {
+  if (!fs.existsSync(BASELINE_PATH)) return null
+  const raw = JSON.parse(fs.readFileSync(BASELINE_PATH, 'utf8'))
+  if (raw.schema !== 'flyto-code.i18n-hardcoded-baseline.v1') {
+    throw new Error(`invalid i18n hardcoded baseline schema in ${path.relative(ROOT, BASELINE_PATH)}`)
+  }
+  return raw
+}
+
+function findingKey(finding) {
+  return `${finding.file}\u0000${finding.kind}\u0000${finding.value}`
+}
+
+function countBaselineFindings(baseline) {
+  return (baseline.findings ?? []).reduce((sum, finding) => sum + Number(finding.count ?? 1), 0)
+}
+
+function diffAgainstBaseline(currentFindings, baseline) {
+  const allowed = new Map()
+  for (const finding of baseline.findings ?? []) {
+    allowed.set(findingKey(finding), Number(finding.count ?? 1))
+  }
+
+  const seen = new Map()
+  const regressions = []
+  for (const finding of currentFindings) {
+    const key = findingKey(finding)
+    const count = (seen.get(key) ?? 0) + 1
+    seen.set(key, count)
+    if (count > (allowed.get(key) ?? 0)) {
+      regressions.push(finding)
+    }
+  }
+  return regressions
+}

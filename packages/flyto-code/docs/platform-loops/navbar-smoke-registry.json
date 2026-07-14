@@ -547,7 +547,7 @@
       "surface": "operations_admin",
       "label": "Reports",
       "pathTemplate": "/projects/{orgId}/reports?mode=engineer",
-      "mode": "both",
+      "mode": "engineer",
       "scrollPolicy": "host",
       "expectedText": [
         "Reports"
@@ -583,7 +583,7 @@
       "surface": "enterprise_control",
       "label": "Enterprise Control",
       "pathTemplate": "/projects/{orgId}/enterprise-control-plane?mode=engineer",
-      "mode": "both",
+      "mode": "engineer",
       "scrollPolicy": "host",
       "expectedText": [
         "Enterprise"
@@ -595,7 +595,7 @@
       "surface": "overview",
       "label": "Verdict",
       "pathTemplate": "/projects/{orgId}/verdict?mode=engineer",
-      "mode": "both",
+      "mode": "engineer",
       "scrollPolicy": "host",
       "expectedText": [
         "Verdict"
@@ -607,7 +607,7 @@
       "surface": "exposure",
       "label": "Risk Matrix",
       "pathTemplate": "/projects/{orgId}/risk-matrix?mode=engineer",
-      "mode": "both",
+      "mode": "engineer",
       "scrollPolicy": "host",
       "expectedText": [
         "Risk Matrix"
@@ -619,7 +619,7 @@
       "surface": "scoring_compliance",
       "label": "Timeline",
       "pathTemplate": "/projects/{orgId}/timeline?mode=engineer",
-      "mode": "both",
+      "mode": "engineer",
       "scrollPolicy": "host",
       "expectedText": [
         "Timeline"

@@ -669,6 +669,10 @@ export function RepoDetailManagerView({
       refreshData()
     },
     onError: () => enqueueSnackbar(t('repoList.scanFailed'), { variant: 'error' }),
+    onSettled: () => {
+      qc.invalidateQueries({ queryKey: qk.repos.scans(repoId) })
+      qc.invalidateQueries({ queryKey: qk.security.repoVerifyExecutions(repoId) })
+    },
   })
 
   return (
@@ -916,7 +920,7 @@ export function RepoDetailManagerView({
                 <Typography variant="subtitle2" sx={{ mt: 1, mb: 1, fontWeight: 900 }}>
                   Could not load repository posture
                 </Typography>
-                <GatedButton action="repo:read" size="small" variant="outlined" onClick={refreshData} startIcon={<RefreshCw size={14} />}>
+                <GatedButton action="asset:read" size="small" variant="outlined" onClick={refreshData} startIcon={<RefreshCw size={14} />}>
                   {tOr('repos.manager.refresh', 'Refresh')}
                 </GatedButton>
               </Box>

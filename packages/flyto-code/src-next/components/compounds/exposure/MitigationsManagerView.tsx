@@ -289,26 +289,6 @@ export function MitigationsManagerView({ orgId }: MitigationsManagerViewProps) {
           stats={stats}
         />
       }
-      narrative={false && (
-        <Box>
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 0.5 }}>
-            Trust posture
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {hasData
-              ? `Your team has declared ${stats.total} compensating control${
-                  stats.total === 1 ? '' : 's'
-                }. The priority engine is currently honouring ${stats.trustRetained}% of the declared risk-reduction — the remainder has decayed because the automated freshness probe hasn't confirmed those controls recently. ${
-                  stats.byTier.aspirational > 0
-                    ? `${stats.byTier.aspirational} control${
-                        stats.byTier.aspirational === 1 ? ' is' : 's are'
-                      } aspirational and contribute nothing to scoring until evidence lands.`
-                    : 'Every control still carries at least partial evidence credit.'
-                } Switch to engineer mode (top bar) to refresh evidence URLs and inspect the append-only ledger per control.`
-              : '尚未宣告補償控制。當團隊新增 WAF、EDR、修補基準或分段控制，並附上可驗證證據後，這裡會顯示哪些防護仍可信、哪些已衰退。'}
-          </Typography>
-        </Box>
-      )}
     />
   )
 }

@@ -63,6 +63,12 @@ const FLYTO_PURPLE = '#7c3aed'
 const MONO = "'ui-monospace','SFMono-Regular','Menlo','Consolas',monospace"
 const PANEL_RADIUS = 1
 const PANEL_SHADOW = '0 10px 28px rgba(15, 23, 42, 0.06)'
+const LIVE_ASSET_TYPE_TONES: Record<string, string> = {
+  'vm': '#0f766e',
+  'workload': '#0369a1',
+  'kubernetes_workload': '#2563eb',
+  'container_image': '#7c3aed',
+}
 
 type ValidationLocal = 'verified' | 'false_positive'
 
@@ -113,6 +119,11 @@ function codeAlertRepoIds(node: KernelAssetMapNode): string[] {
 
 function surfaceMeta(surface?: string) {
   return surfaceDef(surface)
+}
+
+function assetTone(node?: KernelAssetMapNode): string {
+  if (!node) return '#64748b'
+  return LIVE_ASSET_TYPE_TONES[node.type || ''] ?? surfaceColor(node.surface)
 }
 
 function sortBySurface<T extends { surface?: string }>(items: T[]) {
@@ -231,7 +242,10 @@ export function AssetMapView() {
       const label = t('assetMap.validateFailed')
       showToast(detail ? `${label}: ${detail.slice(0, 90)}` : label, 'error')
     },
-    onSettled: () => setValidatingId(null),
+    onSettled: () => {
+      setValidatingId(null)
+      qc.invalidateQueries({ queryKey: qk.assetMapKernelMode(orgId, showLeads ? 'leads' : 'confirmed') })
+    },
   })
 
   const scanMut = useMutation({
@@ -794,7 +808,7 @@ function AssetTableRow({
   actions: AssetRowActions
   onSelect: () => void
 }) {
-  const color = surfaceColor(node.surface)
+  const color = assetTone(node)
   const findings = node.finding_count ?? 0
   const alerts = codeAlertCount(node)
   const local = actions.validatedById[node.resource_id]
@@ -830,7 +844,7 @@ function AssetTableRow({
       }}
     >
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75, minWidth: 0 }}>
-        <SurfaceIcon surface={node.surface} />
+        <SurfaceIcon surface={node.surface} tone={color} />
         <Box sx={{ minWidth: 0 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.45, minWidth: 0 }}>
             <Typography variant="body2" fontWeight={850} noWrap title={displayName(node)} sx={{ minWidth: 0 }}>
@@ -852,9 +866,9 @@ function AssetTableRow({
       </Box>
       <Box sx={{ minWidth: 0 }}>
         <SurfaceChip surface={node.surface} />
-        <Typography variant="caption" color="text.secondary" noWrap sx={{ display: 'block', mt: 0.25 }}>
-          {node.type}
-        </Typography>
+          <Typography variant="caption" noWrap sx={{ display: 'block', mt: 0.25, color }}>
+            {node.type}
+          </Typography>
       </Box>
       <NumberCell value={relationCount} />
       <NumberCell value={node.evidence_count ?? 0} />
@@ -1032,7 +1046,7 @@ function AssetInspectorPanel({
 function RelationItem({ relation }: { relation: RelationCard }) {
   const edge = relation.edge
   const other = relation.other
-  const color = other ? surfaceColor(other.surface) : '#64748b'
+  const color = assetTone(other)
   return (
     <Box sx={{ border: '1px solid', borderColor: edge.edge_class === 'lead' ? alpha('#f59e0b', 0.35) : 'divider', borderRadius: 1, p: 0.85, bgcolor: edge.edge_class === 'lead' ? alpha('#f59e0b', 0.06) : 'background.paper' }}>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.65, minWidth: 0 }}>
@@ -1106,11 +1120,12 @@ function DetailFact({ label, value, warn = false }: {
   )
 }
 
-function SurfaceIcon({ surface }: { surface?: string }) {
+function SurfaceIcon({ surface, tone }: { surface?: string; tone?: string }) {
   const meta = surfaceMeta(surface)
   const Icon = meta.Icon
+  const color = tone ?? meta.color
   return (
-    <Box sx={{ width: 30, height: 30, borderRadius: 1, display: 'grid', placeItems: 'center', bgcolor: alpha(meta.color, 0.13), color: meta.color, boxShadow: `inset 0 0 0 1px ${alpha(meta.color, 0.25)}`, flexShrink: 0 }}>
+    <Box sx={{ width: 30, height: 30, borderRadius: 1, display: 'grid', placeItems: 'center', bgcolor: alpha(color, 0.13), color, boxShadow: `inset 0 0 0 1px ${alpha(color, 0.25)}`, flexShrink: 0 }}>
       <Icon size={16} />
     </Box>
   )

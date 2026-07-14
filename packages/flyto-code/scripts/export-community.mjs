@@ -60,6 +60,11 @@ function validateManifest() {
       violations.push({ file: rel(MANIFEST_PATH), reason: `required doc must be a root filename: ${required}` })
     }
   }
+  for (const required of ['README.md', 'LICENSE', 'SECURITY.md', 'SBOM.placeholder.json']) {
+    if (!manifest.requiredDocs?.includes(required)) {
+      violations.push({ file: rel(MANIFEST_PATH), reason: `community export must require ${required}` })
+    }
+  }
   assertNoExcludedImports()
 }
 
@@ -135,10 +140,10 @@ async function buildExport() {
     schema: 'flyto-community-sbom-placeholder/v1',
     note: 'Generate the release SBOM in CI before publishing the Community artifact.',
   }, null, 2))
-  // Ship the static CE distribution docs (LICENSE, README, CONTRIBUTING, CLA,
-  // SECURITY) + the CLA-assistant workflow from version-controlled templates,
-  // so every export carries them (satisfies manifest.requiredDocs — previously
-  // LICENSE/README were listed as required but never generated).
+  // Ship the static CE distribution docs (LICENSE, README.md, CONTRIBUTING,
+  // CLA, SECURITY.md) + the CLA-assistant workflow from version-controlled
+  // templates, so every export carries them (satisfies manifest.requiredDocs —
+  // previously LICENSE/README were listed as required but never generated).
   await cp(path.join(ROOT, 'docs', 'open-core', 'dist-docs'), distRoot, { recursive: true })
 }
 

@@ -522,6 +522,10 @@ export function RepoListManagerView({ orgId }: { orgId: string | undefined }) {
       refreshData()
     },
     onError: () => enqueueSnackbar(t('repoList.scanFailed'), { variant: 'error' }),
+    onSettled: () => {
+      qc.invalidateQueries({ queryKey: qk.repos.scansAll() })
+      if (orgId) qc.invalidateQueries({ queryKey: qk.repos.healthSummary(orgId) })
+    },
   })
 
   const cancelAllMut = useMutation({
@@ -534,6 +538,10 @@ export function RepoListManagerView({ orgId }: { orgId: string | undefined }) {
       refreshData()
     },
     onError: () => enqueueSnackbar(t('repoList.cancelAllFailed'), { variant: 'error' }),
+    onSettled: () => {
+      qc.invalidateQueries({ queryKey: qk.repos.scansAll() })
+      if (orgId) qc.invalidateQueries({ queryKey: qk.repos.healthSummary(orgId) })
+    },
   })
 
   function openRepo(repoId: string) {
@@ -818,7 +826,7 @@ export function RepoListManagerView({ orgId }: { orgId: string | undefined }) {
                   <Typography variant="subtitle2" sx={{ fontWeight: 850, mb: 0.5 }}>
                     {tOr('repos.manager.loadFailed', 'Could not load repository posture')}
                   </Typography>
-                  <GatedButton action="repo:read" variant="outlined" size="small" onClick={refreshData} startIcon={<RefreshCw size={14} />}>
+                  <GatedButton action="asset:read" variant="outlined" size="small" onClick={refreshData} startIcon={<RefreshCw size={14} />}>
                     {tOr('repos.manager.refresh', 'Refresh')}
                   </GatedButton>
                 </Box>

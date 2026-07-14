@@ -124,7 +124,7 @@ export function AgentFirewallAttackLabManagerView() {
     staleTime: 60_000,
   })
   const simulateQ = useQuery({
-    queryKey: ['mcp-attack-lab-simulate', org?.id, 'enforce'] as const,
+    queryKey: qk.mcp.attackLabSimulation(org?.id, 'enforce'),
     queryFn: () => simulateMcpPolicy(org!.id, { defaultMode: 'enforce', limit: 200 }),
     enabled: !!org?.id,
     staleTime: 60_000,

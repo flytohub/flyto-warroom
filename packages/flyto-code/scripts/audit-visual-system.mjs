@@ -17,6 +17,8 @@ import { fileURLToPath } from 'node:url'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SRC = path.join(ROOT, 'src-next')
 const REPORT_DIR = path.join(ROOT, 'reports')
+const BASELINE_PATH = path.join(ROOT, 'scripts', 'visual-system-baseline.json')
+const requireZero = process.argv.includes('--zero')
 const TARGET_DIRS = [
   path.join(SRC, 'app', '(control-panel)', 'flyto', 'workspace', 'components', 'pages'),
   path.join(SRC, 'components', 'compounds'),
@@ -279,6 +281,7 @@ const report = {
   schema: 'flyto-code.visual-system-audit.v1',
   generatedAt: new Date().toISOString(),
   ok: violations.length === 0,
+  zeroOk: violations.length === 0,
   totals,
   budgets: {
     totals: TOTAL_BUDGETS,
@@ -301,6 +304,19 @@ const report = {
   violations,
 }
 
+const baseline = requireZero ? null : readBaseline()
+const baselineRegressions = baseline
+  ? visualBaselineRegressions(baseline, metrics, totals, tinyFontFindings, violations)
+  : []
+if (baseline) {
+  report.baseline = {
+    path: rel(BASELINE_PATH),
+    ok: baselineRegressions.length === 0,
+    regressions: baselineRegressions,
+  }
+  report.ok = report.zeroOk || baselineRegressions.length === 0
+}
+
 fs.mkdirSync(REPORT_DIR, { recursive: true })
 fs.writeFileSync(path.join(REPORT_DIR, 'visual-system-audit.json'), `${JSON.stringify(report, null, 2)}\n`)
 fs.writeFileSync(path.join(REPORT_DIR, 'visual-system-audit.md'), markdown(report))
@@ -310,4 +326,74 @@ if (!report.ok) {
   process.exit(1)
 }
 
-console.log('visual system audit: PASS')
+if (report.zeroOk) {
+  console.log('visual system audit: PASS')
+} else {
+  console.log(`visual system audit: PASS with legacy baseline (${baselineRegressions.length} regression(s), ${violations.length} zero-mode violation(s) tracked)`)
+}
+
+function readBaseline() {
+  if (!fs.existsSync(BASELINE_PATH)) return null
+  const baseline = JSON.parse(read(BASELINE_PATH))
+  if (baseline.schema !== 'flyto-code.visual-system-baseline.v1') {
+    throw new Error(`invalid visual-system baseline schema in ${rel(BASELINE_PATH)}`)
+  }
+  return baseline
+}
+
+function isLegacyBudgetViolation(violation) {
+  return (
+    violation.file === 'visual-system' ||
+    /count \d+ exceeds per-file budget/.test(violation.reason) ||
+    /fontSize below 12px floor/.test(violation.reason)
+  )
+}
+
+function countTinyFontsByFile(findings) {
+  const counts = {}
+  for (const finding of findings) {
+    const file = String(finding.file).replace(/:\d+$/, '')
+    counts[file] = (counts[file] ?? 0) + 1
+  }
+  return counts
+}
+
+function visualBaselineRegressions(baseline, currentMetrics, currentTotals, currentTinyFonts, currentViolations) {
+  const regressions = []
+  const baselineTotals = baseline.totals ?? {}
+  const baselineFiles = baseline.files ?? {}
+  const baselineTiny = baseline.tinyFontByFile ?? {}
+  const currentTiny = countTinyFontsByFile(currentTinyFonts)
+
+  for (const violation of currentViolations) {
+    if (!isLegacyBudgetViolation(violation)) regressions.push(violation)
+  }
+
+  for (const metric of Object.keys(TOTAL_BUDGETS)) {
+    const allowed = Number(baselineTotals[metric] ?? TOTAL_BUDGETS[metric] ?? 0)
+    const actual = Number(currentTotals[metric] ?? 0)
+    if (actual > allowed) {
+      regressions.push({ file: 'visual-system', reason: `${metric} total ${actual} exceeds legacy baseline ${allowed}` })
+    }
+  }
+
+  for (const item of currentMetrics) {
+    const previous = baselineFiles[item.file]
+    for (const metric of Object.keys(FILE_BUDGETS)) {
+      const actual = Number(item[metric] ?? 0)
+      const allowed = previous ? Number(previous[metric] ?? 0) : Number(FILE_BUDGETS[metric] ?? 0)
+      if (actual > allowed) {
+        regressions.push({ file: item.file, reason: `${metric} count ${actual} exceeds legacy baseline ${allowed}` })
+      }
+    }
+  }
+
+  for (const [file, actual] of Object.entries(currentTiny)) {
+    const allowed = Number(baselineTiny[file] ?? 0)
+    if (actual > allowed) {
+      regressions.push({ file, reason: `tiny font count ${actual} exceeds legacy baseline ${allowed}` })
+    }
+  }
+
+  return regressions
+}

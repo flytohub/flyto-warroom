@@ -20,7 +20,6 @@ import {
   AlertTriangle,
   ChevronDown,
   ChevronUp,
-  CircleDot,
   GitBranch,
   Layers3,
   Network,
@@ -34,7 +33,7 @@ import {
 import { DataBoundary } from '@atoms/DataBoundary'
 import { qk } from '@lib/queryKeys'
 import { tOr } from '@lib/i18n'
-import { surfaceDef, SURFACE_LIST } from '@lib/surfaces'
+import { surfaceDef } from '@lib/surfaces'
 import { colors } from '@/styles/designTokens'
 import {
   getKernelAssetMap,
@@ -82,21 +81,6 @@ interface FocusLayout {
   all: FocusRelation[]
   crossSurfaceCount: number
   leadCount: number
-}
-
-interface GraphPoint {
-  node: KernelAssetMapNode
-  x: number
-  y: number
-  tone: string
-}
-
-interface SurfaceHeader {
-  surface: string
-  x: number
-  count: number
-  tone: string
-  label?: string
 }
 
 const ACCENT = colors.brand
@@ -579,7 +563,6 @@ function RelationshipMap({
   loading?: boolean
 }) {
   const theme = useTheme()
-  const layout = useMemo(() => buildGraphLayout(nodes, relationCards, relationshipCounts, selectedId), [nodes, relationCards, relationshipCounts, selectedId])
   const focusLayout = useMemo(() => buildFocusLayout(nodes, relationCards, relationshipCounts, selectedId), [nodes, relationCards, relationshipCounts, selectedId])
 
   if (loading) return <LoadingBlock />
@@ -616,271 +599,6 @@ function RelationshipMap({
       </Box>
     </Box>
   )
-
-  return (
-    <Box sx={{ height: '100%', minHeight: GRAPH_HEIGHT, display: 'grid', gridTemplateRows: 'minmax(300px, 1fr) auto', gap: 1 }}>
-      <Box
-        sx={{
-          position: 'relative',
-          minHeight: 300,
-          borderRadius: 1,
-          border: '1px solid',
-          borderColor: alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.12 : 0.1),
-          bgcolor: theme.palette.mode === 'dark' ? alpha('#020617', 0.3) : '#ffffff',
-          overflow: 'hidden',
-        }}
-      >
-        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}>
-          <defs>
-            <linearGradient id="asset-map-line" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0%" stopColor={ACCENT} stopOpacity="0.6" />
-              <stop offset="100%" stopColor={TECH} stopOpacity="0.6" />
-            </linearGradient>
-          </defs>
-          {layout.lines.map(({ edge, source, target }) => {
-            const selected = selectedId === source.node.resource_id || selectedId === target.node.resource_id
-            const sourceX = source.x + (source.x < target.x ? 9 : -9)
-            const targetX = target.x + (source.x < target.x ? -9 : 9)
-            const midX = (sourceX + targetX) / 2
-            return (
-              <path
-                key={edge.id}
-                d={`M ${sourceX} ${source.y} C ${midX} ${source.y}, ${midX} ${target.y}, ${targetX} ${target.y}`}
-                fill="none"
-                stroke={selected ? 'url(#asset-map-line)' : alpha(theme.palette.text.primary, 0.26)}
-                strokeWidth={selected ? 1.65 : 0.9}
-                strokeDasharray={edge.edge_class === 'lead' ? '1.4 1.1' : undefined}
-                strokeLinecap="round"
-                vectorEffect="non-scaling-stroke"
-              />
-            )
-          })}
-        </svg>
-
-        {layout.surfaceHeaders.map((header) => (
-          <Box
-            key={`${header.label ?? header.surface}-${header.x}`}
-            sx={{
-              position: 'absolute',
-              left: `${header.x}%`,
-              top: 14,
-              transform: 'translateX(-50%)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: 0.55,
-              color: header.tone,
-              maxWidth: 140,
-            }}
-          >
-            <CircleDot size={12} />
-            <Typography variant="caption" sx={{ fontWeight: 950 }} noWrap>
-              {header.label ?? surfaceLabel(header.surface)} {header.count}
-            </Typography>
-          </Box>
-        ))}
-
-        {layout.points.map((point) => {
-          const selected = selectedId === point.node.resource_id
-          const signals = assetSignals(point.node)
-          return (
-            <ButtonBase
-              key={point.node.resource_id}
-              onClick={() => onSelect(point.node.resource_id)}
-              sx={{
-                position: 'absolute',
-                left: `${point.x}%`,
-                top: `${point.y}%`,
-                transform: 'translate(-50%, -50%)',
-                width: { xs: 104, sm: 118 },
-                height: 42,
-                px: 0.75,
-                borderRadius: 1,
-                border: '1px solid',
-                borderColor: selected ? point.tone : alpha(point.tone, 0.28),
-                bgcolor: selected ? alpha(point.tone, 0.18) : alpha(point.tone, 0.08),
-                boxShadow: selected ? `0 0 0 3px ${alpha(point.tone, 0.12)}` : 'none',
-                display: 'flex',
-                alignItems: 'center',
-                gap: 0.65,
-                textAlign: 'left',
-                overflow: 'hidden',
-              }}
-            >
-              <Box sx={{ width: 9, height: 9, borderRadius: '50%', bgcolor: point.tone, flex: '0 0 auto', boxShadow: `0 0 0 4px ${alpha(point.tone, 0.13)}` }} />
-              <Box sx={{ minWidth: 0, flex: 1 }}>
-                <Typography variant="caption" sx={{ display: 'block', fontWeight: 950, lineHeight: 1.15 }} noWrap title={nodeName(point.node)}>
-                  {nodeName(point.node)}
-                </Typography>
-                <Typography variant="caption" color="text.secondary" sx={{ display: 'block', fontSize: 11, lineHeight: 1.15 }} noWrap>
-                  {formatNumber(relationshipCount(point.node, relationshipCounts))} {tOr('assetMap.relationshipAbbr', 'rel')}{signals > 0 ? ` / ${formatNumber(signals)} ${tOr('assetMap.findings', 'findings')}` : ''}
-                </Typography>
-              </Box>
-            </ButtonBase>
-          )
-        })}
-      </Box>
-
-      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' }, gap: 0.8 }}>
-        <MiniReadout label="跨表面關聯" value={formatNumber(layout.crossSurfaceCount)} tone={TECH} />
-        <MiniReadout label={tOr('assetMap.lead', 'Lead')} value={formatNumber(relationCards.filter((card) => card.edge.edge_class === 'lead').length)} tone={colors.semantic.warning} />
-        <MiniReadout label={tOr('assetMap.findings', 'Findings')} value={formatNumber(nodes.filter((node) => assetSignals(node) > 0).length)} tone={colors.semantic.danger} />
-      </Box>
-    </Box>
-  )
-}
-
-function buildGraphLayout(
-  nodes: KernelAssetMapNode[],
-  relationCards: RelationCard[],
-  relationshipCounts: Record<string, number>,
-  selectedId: string | null,
-) {
-  const relationWeight = (card: RelationCard) => (card.edge.evidence_count ?? 0) * 10 + card.edge.confidence
-  const surfaces = SURFACE_LIST
-    .map((surface) => surface.id)
-    .filter((surface) => nodes.some((node) => (node.surface || 'unknown') === surface))
-  if (!surfaces.includes('unknown') && nodes.some((node) => !SURFACE_LIST.some((surface) => surface.id === node.surface))) {
-    surfaces.push('unknown')
-  }
-  const activeSurfaces = surfaces.length ? surfaces : ['unknown']
-  const maxRows = activeSurfaces.length > 3 ? 4 : 5
-  const columnSpan = activeSurfaces.length <= 2 ? 46 : activeSurfaces.length === 3 ? 56 : 72
-  const columnStart = (100 - columnSpan) / 2
-  const columnStep = activeSurfaces.length === 1 ? 0 : columnSpan / (activeSurfaces.length - 1)
-  const points: GraphPoint[] = []
-  const pointById = new Map<string, GraphPoint>()
-  const focusLinkWeight = new Map<string, number>()
-  const focusNode = selectedId ? nodes.find((node) => node.resource_id === selectedId) : undefined
-
-  if (selectedId && focusNode) {
-    for (const card of relationCards) {
-      const { edge } = card
-      if (edge.source_resource_id !== selectedId && edge.target_resource_id !== selectedId) continue
-      const otherId = edge.source_resource_id === selectedId ? edge.target_resource_id : edge.source_resource_id
-      focusLinkWeight.set(otherId, (focusLinkWeight.get(otherId) ?? 0) + relationWeight(card))
-    }
-  }
-
-  if (selectedId && focusNode && focusLinkWeight.size > 0) {
-    const focusSurface = focusNode.surface || 'unknown'
-    const focusPoint = { node: focusNode, x: 18, y: 48, tone: surfaceDef(focusSurface).color }
-    points.push(focusPoint)
-    pointById.set(focusNode.resource_id, focusPoint)
-
-    const directNodes = [...focusLinkWeight.entries()]
-      .map(([resourceId, weight]) => ({ node: nodes.find((item) => item.resource_id === resourceId), weight }))
-      .filter((entry): entry is { node: KernelAssetMapNode; weight: number } => !!entry.node)
-      .sort((a, b) => b.weight - a.weight || assetRank(b.node, relationshipCounts) - assetRank(a.node, relationshipCounts))
-
-    const groupMap = new Map<string, Array<{ node: KernelAssetMapNode; weight: number }>>()
-    for (const entry of directNodes) {
-      const surface = entry.node.surface || 'unknown'
-      const group = groupMap.get(surface) ?? []
-      group.push(entry)
-      groupMap.set(surface, group)
-    }
-
-    const groups = [...groupMap.entries()]
-      .map(([surface, entries]) => ({
-        surface,
-        entries,
-        weight: entries.reduce((sum, entry) => sum + entry.weight, 0),
-      }))
-      .sort((a, b) => b.weight - a.weight)
-      .slice(0, 3)
-
-    const columnXs = groups.length <= 1 ? [62] : groups.length === 2 ? [50, 76] : [42, 64, 86]
-    groups.forEach((group, columnIndex) => {
-      const x = columnXs[columnIndex] ?? 82
-      const rows = group.entries.slice(0, 5)
-      rows.forEach((entry, row) => {
-        const y = rows.length === 1 ? 48 : 24 + row * (60 / Math.max(rows.length - 1, 1))
-        const point = { node: entry.node, x, y, tone: surfaceDef(group.surface).color }
-        points.push(point)
-        pointById.set(entry.node.resource_id, point)
-      })
-    })
-
-    const focusLines = relationCards
-      .filter((card) => card.edge.source_resource_id === selectedId || card.edge.target_resource_id === selectedId)
-      .sort((a, b) => relationWeight(b) - relationWeight(a))
-      .map((card) => ({
-        edge: card.edge,
-        source: pointById.get(card.edge.source_resource_id),
-        target: pointById.get(card.edge.target_resource_id),
-      }))
-      .filter((line): line is { edge: KernelAssetMapEdge; source: GraphPoint; target: GraphPoint } => !!line.source && !!line.target)
-      .slice(0, 16)
-
-    const crossSurfaceCount = relationCards.filter((card) => card.source.surface !== card.target.surface).length
-    const surfaceHeaders: SurfaceHeader[] = [
-      {
-        surface: focusSurface,
-        x: focusPoint.x,
-        count: relationshipCount(focusNode, relationshipCounts),
-        tone: focusPoint.tone,
-        label: tOr('assetMap.focus', '焦點'),
-      },
-      ...groups.map((group, index) => ({
-        surface: group.surface,
-        x: columnXs[index] ?? 82,
-        count: group.entries.length,
-        tone: surfaceDef(group.surface).color,
-      })),
-    ]
-
-    return { points, lines: focusLines, surfaceHeaders, crossSurfaceCount }
-  }
-
-  activeSurfaces.forEach((surface, index) => {
-    const x = activeSurfaces.length === 1 ? 50 : columnStart + columnStep * index
-    const group = sortAssetsBySignal(nodes.filter((node) => (node.surface || 'unknown') === surface), relationshipCounts)
-      .sort((a, b) => {
-        if (!selectedId) return 0
-        if (a.resource_id === selectedId) return -1
-        if (b.resource_id === selectedId) return 1
-        const linked = (focusLinkWeight.get(b.resource_id) ?? 0) - (focusLinkWeight.get(a.resource_id) ?? 0)
-        return linked || assetRank(b, relationshipCounts) - assetRank(a, relationshipCounts)
-      })
-    let picked = group.slice(0, maxRows)
-    const selected = selectedId ? group.find((node) => node.resource_id === selectedId) : undefined
-    if (selected && !picked.some((node) => node.resource_id === selected.resource_id)) {
-      picked = [...picked.slice(0, Math.max(0, maxRows - 1)), selected]
-    }
-    picked.forEach((node, row) => {
-      const y = 23 + row * (64 / Math.max(maxRows - 1, 1))
-      const point = { node, x, y, tone: surfaceDef(surface).color }
-      points.push(point)
-      pointById.set(node.resource_id, point)
-    })
-  })
-
-  const crossSurfaceLines = relationCards
-    .map((card) => ({
-      edge: card.edge,
-      source: pointById.get(card.edge.source_resource_id),
-      target: pointById.get(card.edge.target_resource_id),
-    }))
-    .filter((line): line is { edge: KernelAssetMapEdge; source: GraphPoint; target: GraphPoint } => !!line.source && !!line.target)
-    .filter((line) => line.source.node.surface !== line.target.node.surface)
-
-  const sortedLines = [...crossSurfaceLines]
-    .sort((a, b) =>
-      (b.edge.evidence_count ?? 0) - (a.edge.evidence_count ?? 0) ||
-      b.edge.confidence - a.edge.confidence)
-  const selectedLines = selectedId
-    ? sortedLines.filter((line) => line.edge.source_resource_id === selectedId || line.edge.target_resource_id === selectedId)
-    : []
-  const lines = (selectedLines.length ? selectedLines : sortedLines).slice(0, selectedLines.length ? 16 : 10)
-
-  const surfaceHeaders: SurfaceHeader[] = activeSurfaces.map((surface, index) => ({
-    surface,
-    x: activeSurfaces.length === 1 ? 50 : columnStart + columnStep * index,
-    count: nodes.filter((node) => (node.surface || 'unknown') === surface).length,
-    tone: surfaceDef(surface).color,
-  }))
-
-  return { points, lines, surfaceHeaders, crossSurfaceCount: crossSurfaceLines.length }
 }
 
 function RelationColumn({

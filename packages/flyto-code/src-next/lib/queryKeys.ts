@@ -467,6 +467,7 @@ export const qk = {
     aiGovernanceScore: (o?: string) => ['ai-governance-score', o] as const,
     aiGovernanceUseCases: (o?: string) => ['ai-governance-use-cases', o] as const,
     aiGovernanceEvents: (o?: string) => ['ai-governance-events', o] as const,
+    attackLabSimulation: (o?: string, mode?: string) => ['mcp-attack-lab-simulate', o, mode] as const,
     explanation: (o?: string, eventId?: string | null) => ['mcp-explanation', o, eventId] as const,
     eventExplanation: (o?: string, eventId?: string | null) => ['mcp-event-explanation', o, eventId] as const,
     sessionTimeline: (o?: string, sessionId?: string | null) => ['mcp-session-timeline', o, sessionId] as const,
