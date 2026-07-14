@@ -5,7 +5,7 @@ import {
   MODULES,
 } from '@code/modules'
 
-const NON_EXPORTABLE_IDS = new Set([
+const CE_FORBIDDEN_MODULE_IDS = new Set([
   'enterprise_control_plane',
   'social_media',
   'mobile_apps',
@@ -15,13 +15,13 @@ const NON_EXPORTABLE_IDS = new Set([
   'cloud_storage_exposure',
 ])
 
-describe('workspace module split/merge boundary contract', () => {
-  it('assigns every workspace module to exactly one physical package', () => {
+describe('workspace CE module split/merge boundary contract', () => {
+  it('assigns every CE workspace module to exactly one physical package', () => {
     const packageNames = new Set(MODULE_PACKAGE_ORDER)
     const ids = new Set<string>()
     const paths = new Set<string>()
 
-    expect(MODULES.length).toBeGreaterThan(50)
+    expect(MODULES.length).toBeGreaterThan(40)
 
     for (const module of MODULES) {
       expect(module.boundary, `${module.id} must declare boundary metadata`).toBeTruthy()
@@ -35,34 +35,25 @@ describe('workspace module split/merge boundary contract', () => {
     }
   })
 
-  it('keeps CE-exportable modules free of moat markers', () => {
-    const exportable = MODULES.filter((module) => module.boundary?.exportable)
+  it('keeps every generated CE module free of moat markers', () => {
+    expect(MODULES.length).toBeGreaterThan(40)
 
-    expect(exportable.length).toBeGreaterThan(45)
-
-    for (const module of exportable) {
-      expect(module.boundary!.edition, `${module.id} is exportable but not CE-owned`).toBe('ce')
+    for (const module of MODULES) {
+      expect(module.boundary!.exportable, `${module.id} is not CE-exportable`).toBe(true)
+      expect(module.boundary!.edition, `${module.id} is not CE-owned`).toBe('ce')
       expect(module.boundary!.moat, `${module.id} leaks a moat marker into CE export`).toBe('none')
-      expect(module.boundary!.licenseTier, `${module.id} is exportable but not community-tier`).toBe('community')
+      expect(module.boundary!.licenseTier, `${module.id} is not community-tier`).toBe('community')
     }
   })
 
-  it('keeps enterprise and future-only surfaces out of CE export', () => {
-    const nonExportableIds = new Set(
-      MODULES.filter((module) => module.boundary?.exportable === false).map((module) => module.id),
-    )
+  it('keeps enterprise and future-only surfaces out of generated CE source', () => {
+    const ids = new Set(MODULES.map((module) => module.id))
+    const nonExportable = MODULES.filter((module) => module.boundary?.exportable === false)
 
-    expect(nonExportableIds).toEqual(NON_EXPORTABLE_IDS)
-
-    const enterpriseControl = MODULES.find((module) => module.id === 'enterprise_control_plane')
-    expect(enterpriseControl?.boundary).toMatchObject({
-      edition: 'enterprise',
-      exportable: false,
-      package: 'enterprise',
-      mergeSurface: 'enterprise',
-      moat: 'enterprise-control-plane',
-      licenseTier: 'enterprise',
-    })
+    expect(nonExportable).toEqual([])
+    for (const id of CE_FORBIDDEN_MODULE_IDS) {
+      expect(ids.has(id), `${id} must not be present in generated CE source`).toBe(false)
+    }
   })
 
   it('can split by package and merge back into the unified cockpit', () => {

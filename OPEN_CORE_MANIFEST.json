@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-14T14:48:18.262932+00:00",
+  "generated_at": "2026-07-14T15:48:20.711294+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -113,7 +113,7 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1602,
+      "file_count": 1598,
       "generated_files": [
         "e2e/product_verification_evidence.spec.ts",
         "e2e/sweep.spec.ts",
@@ -123,7 +123,10 @@
         "package-lock.json",
         "LICENSE",
         ".env.example",
-        "OPEN_CORE.md"
+        "OPEN_CORE.md",
+        "src-next/types/module-manifests/index.ts",
+        "src-next/types/module-manifests/__tests__/moduleBoundaryContract.test.ts",
+        "CE_SOURCE_BOUNDARY.md"
       ],
       "path": "packages/flyto-code"
     },
@@ -307,5 +310,30 @@
       "enterprise SSO/SAML/SCIM implementation",
       "AutoFix AI proposal, approval, promotion, and rollback orchestration"
     ]
+  },
+  "frontend_source_boundary": {
+    "schema": "flyto.frontend-open-core-boundary.v1",
+    "source_repo": "flyto-code",
+    "planned_public_package": "packages/flyto-code",
+    "ce_export_mode": "ce_exportable_module_manifests_only",
+    "non_exportable_module_manifests": [
+      "src-next/types/module-manifests/enterprise.ts",
+      "src-next/types/module-manifests/future.ts"
+    ],
+    "ce_pruned_paths": [
+      "src-next/types/module-manifests/enterprise.ts",
+      "src-next/types/module-manifests/future.ts",
+      "src-next/app/(control-panel)/flyto/workspace/components/pages/EnterpriseControlPlanePage.tsx",
+      "src-next/components/compounds/system/EnterpriseControlPlaneView.tsx",
+      "src-next/components/compounds/system/__tests__/EnterpriseControlPlaneView.test.tsx"
+    ],
+    "ce_rewrite_files": [
+      "src-next/types/module-manifests/index.ts",
+      "src-next/types/module-manifests/__tests__/moduleBoundaryContract.test.ts"
+    ],
+    "ce_allowed_contract_paths": [
+      "src-next/lib/engine/system/enterprise.ts"
+    ],
+    "reason": "Private flyto-code keeps enterprise/future manifests for paid overlays; generated CE source keeps only routed CE-exportable modules and public API contracts."
   }
 }

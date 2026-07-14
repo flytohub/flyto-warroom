@@ -7,9 +7,7 @@ import { cloudModules } from './cloud'
 import { runtimeModules } from './runtime'
 import { identityModules } from './identity'
 import { operationsModules } from './operations'
-import { enterpriseModules } from './enterprise'
 import { darkwebModules } from './darkweb'
-import { futureModules } from './future'
 import { historyModules } from './history'
 import { scoringModules } from './scoring'
 import { adminModules } from './admin'
@@ -24,9 +22,7 @@ export const MODULE_PACKAGE_ORDER = [
   'runtime',
   'identity',
   'operations',
-  'enterprise',
   'darkweb',
-  'future',
   'history',
   'scoring',
   'admin',
@@ -42,9 +38,7 @@ export const MODULES: Module[] = [
   ...runtimeModules,
   ...identityModules,
   ...operationsModules,
-  ...enterpriseModules,
   ...darkwebModules,
-  ...futureModules,
   ...historyModules,
   ...scoringModules,
   ...adminModules,
@@ -65,7 +59,6 @@ export const SIDEBAR_GROUP_ORDER: { id: Exclude<import('../Module').ModuleGroup,
   { id: 'history',  headerKey: 'nav.historySection',  headerFallback: 'History',            showHeader: true  },
   { id: 'scoring',  headerKey: 'nav.scoringSection',  headerFallback: 'Scoring',            showHeader: true  },
   { id: 'operations', headerKey: 'nav.operationsSection', headerFallback: 'Operations',     showHeader: true  },
-  { id: 'enterprise', headerKey: 'nav.enterpriseSection', headerFallback: 'Enterprise',     showHeader: true  },
   { id: 'admin',    headerKey: '',                    headerFallback: '',                   showHeader: false },
 ]
 
