@@ -1,6 +1,6 @@
 # Contributing
 
-Flyto Engine changes must preserve route ownership, authorization checks,
+Flyto2 Engine changes must preserve route ownership, authorization checks,
 PostgreSQL-backed data contracts, and frontend/backend closure.
 
 Before editing:

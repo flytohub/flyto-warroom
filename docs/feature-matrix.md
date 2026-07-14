@@ -4,7 +4,7 @@ Machine-generated from `services/flyto-engine-ce/internal/modulecatalog/catalog.
 Do not hand-edit this file in the public mirror; change the private
 `flyto-engine` module catalog and rerun the open-core exporter.
 
-CE must stay useful without Flyto Cloud. Enterprise must stay compelling
+CE must stay useful without Flyto2 Cloud. Enterprise must stay compelling
 without exposing private datasets, provider credentials, hosted control
 planes, live remediation workers, or commercial billing implementation.
 

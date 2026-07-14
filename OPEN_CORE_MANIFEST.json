@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-14T10:35:02.275991+00:00",
+  "generated_at": "2026-07-14T11:45:03.365042+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -113,7 +113,7 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1601,
+      "file_count": 1584,
       "generated_files": [
         "e2e/product_verification_evidence.spec.ts",
         "e2e/sweep.spec.ts",
@@ -169,7 +169,7 @@
     "enterprise SSO/SAML/SCIM, legal hold, airgap installers, deployment edition internals",
     "darkweb, stealer-log, phishing-feed, commercial threat-intel, and proprietary correlation datasets",
     "cloud/container/runtime live remediation orchestration and customer connector credentials",
-    "Flyto Cloud Enterprise Bridge services, entitlement signer, managed job execution plane, and hosted SaaS control plane",
+    "Flyto2 Cloud Enterprise Bridge services, entitlement signer, managed job execution plane, and hosted SaaS control plane",
     "AutoFix promotion, approval, rollback orchestration, and commercial AI proposal workflows",
     "hosted SaaS-only frontend configuration, private preview credentials, and enterprise image publishing metadata"
   ],

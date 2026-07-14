@@ -10,7 +10,7 @@ needs an update.
 ## Reporting A Vulnerability
 
 Use GitHub private vulnerability reporting or contact the maintainers through
-the official Flyto security channel. Do not file public issues for exploitable
+the official Flyto2 security channel. Do not file public issues for exploitable
 vulnerabilities, secrets, customer data exposure, auth bypasses, supply-chain
 tampering, or runner escape findings.
 

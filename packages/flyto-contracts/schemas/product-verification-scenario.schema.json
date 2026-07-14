@@ -26,6 +26,6 @@
     "scenario_id",
     "checks"
   ],
-  "title": "Flyto product verification scenario",
+  "title": "Flyto2 product verification scenario",
   "type": "object"
 }

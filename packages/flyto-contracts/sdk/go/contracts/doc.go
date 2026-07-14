@@ -1,4 +1,4 @@
-// Package contracts contains lightweight public Flyto protocol types.
+// Package contracts contains lightweight public Flyto2 protocol types.
 package contracts
 
 type ArtifactRef struct {

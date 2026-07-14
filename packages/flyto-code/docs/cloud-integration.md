@@ -1,7 +1,7 @@
-# Cloud Integration — Pushing Workflow Templates to Flyto Automation
+# Cloud Integration — Pushing Workflow Templates to Flyto2 Automation
 
-When a Flyto Code scan surfaces a gap that a DAST / red-team / page-automation
-workflow would validate, we push that workflow (YAML) into **Flyto Automation**
+When a Flyto2 Code scan surfaces a gap that a DAST / red-team / page-automation
+workflow would validate, we push that workflow (YAML) into **Flyto2 Automation**
 (`flyto-cloud`) so it can run on a schedule against the live target.
 
 Folders on the cloud side mirror the taxonomy flyto-code's AI builds per repo

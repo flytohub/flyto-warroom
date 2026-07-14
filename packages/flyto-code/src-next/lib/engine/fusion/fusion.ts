@@ -304,7 +304,7 @@ export interface ModuleSourceRef {
 /** Org-wide policy for one capability module. `allowedSources` empty/absent =
  *  "any source ok" (plain on/off); a non-empty list restricts which sources may
  *  feed the module across the org — e.g. [integration:tenable] suppresses
- *  Flyto's own scan so only the BYO source counts. */
+ *  Flyto2's own scan so only the BYO source counts. */
 export interface OrgModule {
   id?: string
   orgId?: string

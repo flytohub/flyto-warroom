@@ -55,7 +55,7 @@ backend-only GET /health
 # Owner: backend  Reason: external webhook receiver
 backend-only POST /api/v1/github/webhook
 
-# Cortex / Cloud / Runner internal endpoints — sibling Flyto products call
+# Cortex / Cloud / Runner internal endpoints — sibling Flyto2 products call
 # these directly. flyto-code intentionally does not consume cortex resource /
 # project / folder CRUD or runtime SDK telemetry; they live in flyto-cortex
 # and flyto-runner respectively.
@@ -97,7 +97,7 @@ backend-only PUT /scim/v2/Users/{*}
 # Reason: External service webhook receivers; browsers should not call these endpoints directly.
 backend-only POST /api/v1/billing/webhook
 # Owner: billing
-# Reason: Flyto Cloud posts signed normalized billing events to Engine; the SPA must never call this server-to-server entitlement receiver directly.
+# Reason: Flyto2 Cloud posts signed normalized billing events to Engine; the SPA must never call this server-to-server entitlement receiver directly.
 backend-only POST /api/v1/billing/events
 
 # -- agent_firewall_data_plane --

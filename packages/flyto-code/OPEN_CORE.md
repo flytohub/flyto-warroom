@@ -1,4 +1,4 @@
-# Flyto Code In Flyto2 Warroom CE
+# Flyto2 Code In Flyto2 Warroom CE
 
 This frontend package is copied from the private `flyto-code` source tree by
 `flyto2-open-core-export`.

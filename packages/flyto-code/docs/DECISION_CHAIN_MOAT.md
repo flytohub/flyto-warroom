@@ -1,6 +1,6 @@
 # Decision Chain Moat Contract
 
-Flyto Code's durable moat is the Risk Decision evidence chain. The product
+Flyto2 Code's durable moat is the Risk Decision evidence chain. The product
 must not regress into a collection of scanners, dashboards, AI summaries, and
 security pages that can be copied independently.
 
@@ -42,7 +42,7 @@ Issue and pulse APIs must expose enriched Risk Decision context through:
 BYO evidence must be materialized into the same decision kernel. It is not a
 side table. Immediate materialization runs after import-map ingest, and the
 worker fallback keeps historical BYO claims bridged into findings. Module
-routing must preserve the source gate so customers can suppress Flyto-native
+routing must preserve the source gate so customers can suppress Flyto2-native
 scans while keeping trusted external evidence active.
 
 Pentest and DAST results must feed evidence, not only a pentest page.

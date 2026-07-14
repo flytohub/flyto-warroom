@@ -1,7 +1,7 @@
 # Flyto2 Trademark Policy
 
 The open-source licenses in this repository grant rights to the code they cover.
-They do not grant rights to the Flyto2 name, Flyto2 Warroom name, Flyto logos,
+They do not grant rights to the Flyto2 name, Flyto2 Warroom name, Flyto2 logos,
 product artwork, domain names, or other brand assets.
 
 ## Allowed Use
@@ -15,10 +15,10 @@ Without written permission, you may not:
 
 - call a modified distribution "Flyto2", "Flyto2 Warroom", or confusingly
   similar names;
-- use Flyto logos, product marks, screenshots, or artwork to imply official
+- use Flyto2 logos, product marks, screenshots, or artwork to imply official
   endorsement;
 - publish Docker images, packages, domains, or marketplace listings that appear
-  to be an official Flyto2 build or official Flyto release;
+  to be an official Flyto2 build or official Flyto2 release;
 - remove attribution or represent a fork as the upstream project.
 
 ## Modified Distributions

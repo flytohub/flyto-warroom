@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Guard the Flyto Code moat: a decision-grade evidence chain, not a pile of
+ * Guard the Flyto2 Code moat: a decision-grade evidence chain, not a pile of
  * disconnected security pages.
  *
  * This is intentionally static. It catches regressions where a future change

@@ -47,7 +47,7 @@ vi.mock('@atoms/Pagination', () => ({
   Pagination: () => null,
 }))
 
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import { DomainsView } from '../DomainsView'
 
@@ -59,10 +59,10 @@ describe('DomainsView', () => {
   })
 
   it('renders search input', () => {
-    const { container } = render(<MemoryRouter><DomainsView /></MemoryRouter>)
-    // MUI TextField renders an <input> element; find by placeholder
-    const input = container.querySelector('input')
-    expect(input).not.toBeNull()
+    render(<MemoryRouter><DomainsView /></MemoryRouter>)
+    fireEvent.click(screen.getByRole('button', { name: /search|common\.search/i }))
+    // MUI TextField renders an <input> element inside the search popover portal.
+    expect(screen.getByRole('textbox')).toBeTruthy()
   })
 
   it('shows empty state when no domains', () => {

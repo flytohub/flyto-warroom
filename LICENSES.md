@@ -1,7 +1,7 @@
 # Licenses
 
 Flyto2 Warroom CE is an aggregate open-core distribution generated from the
-Flyto workspace.
+Flyto2 workspace.
 
 - `packages/flyto-code`: Apache-2.0
 - `packages/flyto-contracts`: Apache-2.0

@@ -58,7 +58,7 @@ that supports enterprise SSO/MFA enforcement.
 
 ## Use Higher-Tier Capabilities
 
-CE can run without a Flyto Cloud account. If an Enterprise license or cloud
+CE can run without a Flyto2 Cloud account. If an Enterprise license or cloud
 entitlement is configured later, premium features should appear through the same
 local UI and evidence timeline. The local engine should check capability,
 license, role, connector, and evidence-signature gates before accepting premium

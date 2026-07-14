@@ -17,7 +17,7 @@ REQUIRED_MARKERS = {
         "scanner-only dashboard",
         "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
         "Existing security tools are inputs",
-        "CE is useful without Flyto Cloud",
+        "CE is useful without Flyto2 Cloud",
         "Enterprise Cloud Bridge",
     ],
     "docs/docker-hub-overview.md": [

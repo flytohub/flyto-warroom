@@ -32,6 +32,6 @@ Default license: Apache 2.0 for the Community export. The main private monorepo 
 - Run `npm run audit:edition-boundary` from `flyto-code`.
 - Run `npm run audit:community-export` before creating the release artifact.
 - Verify Community code does not import enterprise modules.
-- Verify exported code has no SaaS-only provider imports such as Firebase, Stripe, Google Cloud, Sentry, external CDN, or Flyto production domains.
+- Verify exported code has no SaaS-only provider imports such as Firebase, Stripe, Google Cloud, Sentry, external CDN, or Flyto2 production domains.
 - Generate SBOM and scan the export package before publishing.
 - Verify signed offline bundles, SBOM, secret scan, and license scan evidence before any public release.

@@ -31,6 +31,7 @@ CODE_CTX="$TMP_ROOT/flyto-code"
 mkdir -p "$CODE_CTX"
 tar -C "$WORKSPACE/flyto-code" -cf - . | tar -C "$CODE_CTX" -xf -
 rm -rf "$CODE_CTX/node_modules"   "$CODE_CTX/dist"   "$CODE_CTX/dist-next"   "$CODE_CTX/out"   "$CODE_CTX/test-results"   "$CODE_CTX/flyto-design-tokens-pkg"
+find "$CODE_CTX/public/i18n" -maxdepth 1 -type f -name '*.json' -delete 2>/dev/null || true
 if [ -d "$WORKSPACE/flyto-design-tokens" ]; then
   cp -R "$WORKSPACE/flyto-design-tokens" "$CODE_CTX/flyto-design-tokens-pkg"
 else

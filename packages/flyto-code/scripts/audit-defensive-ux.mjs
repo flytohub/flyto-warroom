@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Flyto defensive UX guard.
+ * Flyto2 defensive UX guard.
  *
  * This checks the surfaces that were manually audited for async-state drift:
  * settings/admin tabs, scanning views, MCP admin widgets, Agent Firewall,

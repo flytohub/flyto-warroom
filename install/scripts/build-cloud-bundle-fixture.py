@@ -38,7 +38,7 @@ class BundleBuildError(ValueError):
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Build a signed Flyto Cloud Warroom bundle fixture")
+    parser = argparse.ArgumentParser(description="Build a signed Flyto2 Cloud Warroom bundle fixture")
     parser.add_argument("--source", default=str(DEFAULT_SOURCE), help="fixture source directory")
     parser.add_argument("--output", required=True, help="output bundle directory")
     parser.add_argument("--producer", default="flyto-warroom-ce-fixture")

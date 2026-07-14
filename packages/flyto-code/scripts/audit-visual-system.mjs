@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Flyto visual-system guard.
+ * Flyto2 visual-system guard.
  *
  * This is not a screenshot/aesthetic oracle. It is a deterministic drift
- * budget for the concrete causes of Flyto Code's inconsistent look: direct
+ * budget for the concrete causes of Flyto2 Code's inconsistent look: direct
  * MUI Paper/Card surfaces in product views, local hex palettes, ad-hoc
  * gradients, oversized radii, and raw sx sprawl. The budgets are intentionally
  * based on the current legacy surface area and should only move downward.

@@ -125,7 +125,7 @@ export function buildHistoryReportHtml(args: ReportArgs): string {
 
   // Cover meta grid — period · window · filters · audience. Same
   // pattern as report_engine.go puts under the gradient title band
-  // so all Flyto PDFs feel like the same product.
+  // so all Flyto2 PDFs feel like the same product.
   const metaGrid = `
     <div class="cover-meta-grid">
       <div class="cover-meta-item">
@@ -351,7 +351,7 @@ function footerHtml(style: 'compliance' | 'sprint', stats: Stats, date: string):
 
 function pdfCss(variant: HistoryVariant): string {
   // Two accent palettes — audit (violet) and code (cyan). Gradient
-  // colours duplicated from report_engine.go so every Flyto PDF
+  // colours duplicated from report_engine.go so every Flyto2 PDF
   // (exec report, va report, audit report) presents as the same brand.
   const accent     = variant === 'audit' ? '#8b5cf6' : '#0891b2'
   const accentSoft = variant === 'audit' ? '#f3f0fb' : '#ecfeff'

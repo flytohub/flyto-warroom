@@ -1,4 +1,4 @@
-# Flyto Enterprise CTEM Closed-Loop Audit
+# Flyto2 Enterprise CTEM Closed-Loop Audit
 
 Date: 2026-06-14 Asia/Taipei
 
@@ -188,7 +188,7 @@ Scope:
 | Alert triage / noise reduction | Deduplicate, prioritize, remediate, verify evidence | findings, ctem_actions, mitigations, scoring, score_trends | finding/facet/history/mitigation/score routes | engine scoring, event/SSE invalidation | triage actions gated | explainability, audit log, SLA | Alert lifecycle SSE closure now covered; deeper analyst workflow tests still needed |
 | Reports / compliance / evidence | Build/export reports, view audit timeline, compliance and verdicts | reports, va_report, audit_timeline, compliance, verdict, timeline | report templates/components, audit, compliance, history APIs | report builder, evidence binder, flyto-core smoke | manager/engineer modes | audit-ready exports, immutable evidence | Reports datasource entitlement and legacy section guards fixed; export/download fidelity still needs live PDF artifact QA |
 | Operations / admin surface | Settings, members, API keys, scan credentials, integration health | settings, operations, identity | org members, invitations, API keys, budgets, audit, integration health | engine authz/store/cache | org roles/capabilities | tenant isolation, API-key lifecycle, audit log | flyto-code settings/report loops fixed; flyto-admin unauth sign-in and dev-auth cloud smoke verified; production-auth smoke still requires real Firebase credentials |
-| BOY/BYO integrations | Bring vendor/customer telemetry, map sample JSON to Flyto kernel claims, poll or push evidence | settings -> Data sources -> Add external source | `org_integrations`, `org_import_mappings`, `integration_poll_config`, `kernel_claims`, fusion/source-health routes | engine import maps, certified YAML mappings, flyto-indexer impact, flyto-core browser smoke | source create/update credentials gated by org capability | no browser-stored tokens, certified/custom mappings, schema drift tolerance, per-source health, tenant isolation | UI now supports arbitrary vendor fields; remaining backend debt is hardening every legacy vendor-specific ingest path behind the generic import-map/fusion model |
+| BOY/BYO integrations | Bring vendor/customer telemetry, map sample JSON to Flyto2 kernel claims, poll or push evidence | settings -> Data sources -> Add external source | `org_integrations`, `org_import_mappings`, `integration_poll_config`, `kernel_claims`, fusion/source-health routes | engine import maps, certified YAML mappings, flyto-indexer impact, flyto-core browser smoke | source create/update credentials gated by org capability | no browser-stored tokens, certified/custom mappings, schema drift tolerance, per-source health, tenant isolation | UI now supports arbitrary vendor fields; remaining backend debt is hardening every legacy vendor-specific ingest path behind the generic import-map/fusion model |
 
 ## Page/API/Permission/Guard Closure
 
@@ -259,9 +259,9 @@ Sources reviewed:
 - [Rapid7 Exposure Command](https://www.rapid7.com/products/command/exposure-management/): exposure management across attack surface context, cloud and application risk, native/third-party context and remediation workflows.
 - [Rapid7 Command pricing](https://www.rapid7.com/products/command/pricing/): public package names and capability matrix are shown; list price is not public and quote-based by billable assets.
 
-Flyto gap against this benchmark:
+Flyto2 gap against this benchmark:
 
-- Stronger than a single-point code scanner: Flyto already has pages for code, CTEM, ASM, pentest, AI security, reports and settings.
+- Stronger than a single-point code scanner: Flyto2 already has pages for code, CTEM, ASM, pentest, AI security, reports and settings.
 - Main product gaps are depth and operational packaging:
   - dark web keyword/watchlist CRUD, alert verification, source confidence, takedown workflow
   - CTEM mobilization from exposure -> validation -> remediation -> retest -> evidence
@@ -315,7 +315,7 @@ P2 remaining:
 - No live GitHub credential/PAT import was tested; user should revoke/rotate the previously pasted GitHub token.
 - No live BitSight/Cyble/Recorded Future/Rapid7 vendor credential was used.
 - No destructive pentest/red-team action was executed against real targets.
-- Authorized `flyto2.com` safe probes were limited to DNS/HTTP/TLS/passive CT and product guard checks. The existing domain-import discovery queue did run Flyto's passive discovery battery, including port fingerprinting; no exploit payload or active DAST `/run` was executed.
+- Authorized `flyto2.com` safe probes were limited to DNS/HTTP/TLS/passive CT and product guard checks. The existing domain-import discovery queue did run Flyto2's passive discovery battery, including port fingerprinting; no exploit payload or active DAST `/run` was executed.
 - No production billing/packaging/tenant-admin flow was tested.
 - No production-auth flyto-admin browser smoke was run because credentials must be requested in the current conversation; dev-auth `/admin/cloud` smoke was run.
 - `audit:loop-runtime --execute` was run against local dev-auth APIs; production-auth runtime execution was not run.

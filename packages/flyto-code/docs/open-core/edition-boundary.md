@@ -1,6 +1,6 @@
-# Flyto Edition Boundary
+# Flyto2 Edition Boundary
 
-Flyto uses one core product with edition-specific providers, deployment profiles, and capability gates. Do not split SaaS, Community, and Enterprise into separate products or duplicate code paths.
+Flyto2 uses one core product with edition-specific providers, deployment profiles, and capability gates. Do not split SaaS, Community, and Enterprise into separate products or duplicate code paths.
 
 ## Editions
 
@@ -30,7 +30,7 @@ means `enterprise_cloud`, `self_hosted_online`, or `enterprise_airgap`.
 
 ## Implementation Rules
 
-- General and enterprise must look like the same Flyto product, not two
+- General and enterprise must look like the same Flyto2 product, not two
   unrelated forks. Share route primitives, API clients, i18n namespaces, page
   shells, and design tokens.
 - Separate by capability, provider, edition, and export manifest; do not

@@ -5,9 +5,9 @@
  * For each capability that the engine ACTUALLY gates on a source allowlist
  * (`external` / `code` — the modules checked by the scheduler + scan/ingest
  * paths via IsModuleSourceActiveForOrg), the operator toggles which sources run:
- * Flyto's own engine and/or any wired external integration. Deselecting Flyto
+ * Flyto2's own engine and/or any wired external integration. Deselecting Flyto2
  * while keeping an integration writes an allowlist of just that integration —
- * which really suppresses Flyto's scan (proven by sql_org_module_gate_test.go).
+ * which really suppresses Flyto2's scan (proven by sql_org_module_gate_test.go).
  *
  * Empty allowlist = "any source" (plain on). All-off = module disabled. This is
  * NOT cosmetic: the rows it writes are read at ingest/scan time.

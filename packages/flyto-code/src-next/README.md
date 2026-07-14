@@ -1,6 +1,6 @@
 # src-next
 
-Primary React source tree for Flyto Code. Product code lives in
+Primary React source tree for Flyto2 Code. Product code lives in
 `components/`, `hooks/`, `lib/`, `types/`, and `utils/`; Fuse template
 compatibility code stays under `@fuse/`, `@auth/`, and related prefixed
 folders.

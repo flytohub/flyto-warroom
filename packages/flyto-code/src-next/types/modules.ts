@@ -331,7 +331,7 @@ export const MODULES: Module[] = [
     sidebar: { group: 'runtime', labelKey: 'nav.aiEvidenceReports', fallback: 'Evidence Reports', icon: FileSearch },
   },
   // ── IDENTITY ────────────────────────────────────────────────────────
-  // Bring-your-own-IdP surface; no Flyto-native engine yet. Placeholder
+  // Bring-your-own-IdP surface; no Flyto2-native engine yet. Placeholder
   // page points the user at Settings → Integrations. Gated on the
   // `identity` page id — dark until the backend resolves it.
   {

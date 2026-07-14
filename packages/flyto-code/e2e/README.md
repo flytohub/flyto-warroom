@@ -27,7 +27,7 @@ Useful overrides:
 
 The smoke preflights `FLYTO_PRODUCT_VERIFY_TARGET_URL` before dispatch. This
 guards against false-positive screenshot evidence where the Docker runner only
-captures Vite's blocked-host error page instead of the Flyto app.
+captures Vite's blocked-host error page instead of the Flyto2 app.
 
 During Playwright smoke, `VITE_ENGINE_URL=__same_origin__` is normalized to an
 empty browser-side base URL so both host Playwright and the Docker verification

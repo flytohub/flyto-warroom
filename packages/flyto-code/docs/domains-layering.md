@@ -14,7 +14,7 @@
 
 ```
 PentestProject（改名概念上 = Domain）
-├── name: "Flyto API"           ← 用戶取的名字
+├── name: "Flyto2 API"           ← 用戶取的名字
 ├── target_url: "https://api.flyto2.com"
 ├── project_type: "rest_api"
 │
@@ -39,7 +39,7 @@ PentestProject（改名概念上 = Domain）
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│ Flyto API                                                │
+│ Flyto2 API                                                │
 │                                                          │
 │  ┌────────────┐ ┌────────────┐ ┌────────────┐           │
 │  │ Production │ │  Staging   │ │   Dev      │           │
@@ -110,7 +110,7 @@ CSV 匯入後自動分組。
 ┌─────────────────────────────────────────────┐
 │ Add Domain                                   │
 │                                              │
-│ Name:        [Flyto API              ]       │
+│ Name:        [Flyto2 API              ]       │
 │ URL:         [https://api.flyto2.com ]       │
 │                                              │
 │ Environment:                                 │
@@ -154,7 +154,7 @@ ALTER TABLE pentest_projects
 
 ```json
 {
-  "name": "Flyto API",
+  "name": "Flyto2 API",
   "target": "https://api.flyto2.com",
   "target_url": "https://api.flyto2.com",
   "relationship": "owned",

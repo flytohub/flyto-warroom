@@ -1,5 +1,5 @@
 /**
- * @flyto2/design-tokens — canonical design values for the Flyto Platform.
+ * @flyto2/design-tokens — canonical design values for the Flyto2 Platform.
  *
  * Two entry points:
  *

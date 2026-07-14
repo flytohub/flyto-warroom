@@ -1,6 +1,6 @@
 # docs
 
-Product, audit, and platform-loop documentation for Flyto Code.
+Product, audit, and platform-loop documentation for Flyto2 Code.
 
 Use this directory for durable handoffs and contracts that must survive across
 AI-agent sessions: platform loop registries, API response maps, frontend audit

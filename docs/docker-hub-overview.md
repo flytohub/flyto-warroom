@@ -108,7 +108,7 @@ instance.
 
 Community Edition includes the self-hosted open-core Warroom stack. Enterprise
 features are separate commercial offerings and are exposed through documented
-capabilities, contracts, signed evidence, private images, or Flyto Cloud
+capabilities, contracts, signed evidence, private images, or Flyto2 Cloud
 services.
 
 ## Architecture Note

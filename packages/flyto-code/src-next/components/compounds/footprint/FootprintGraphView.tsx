@@ -322,7 +322,7 @@ function ActionabilityStatsPanel({ entities, totalRelationships, signals }: Acti
 // 「資安不能都只有壞的也有好的」.
 //
 // Visualisation is intentionally NOT a 4x4 criticality × severity
-// grid — that's Bitsight's patented shape. We use Flyto's own
+// grid — that's Bitsight's patented shape. We use Flyto2's own
 // tier taxonomy (healthy / watching / acting) and a single
 // horizontal bar.
 function PostureDistributionPanel({ orgId }: { orgId: string }) {

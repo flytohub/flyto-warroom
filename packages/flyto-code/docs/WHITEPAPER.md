@@ -1,4 +1,4 @@
-# Flyto Code — White Paper
+# Flyto2 Code — White Paper
 
 **Version 0.1 · April 2026**
 
@@ -17,7 +17,7 @@ Engineering-aware tools (Sourcegraph, Copilot) understand code but ignore
 risk; risk tools (Aikido, Snyk, SonarQube) report findings but don't verify
 them, test them, or fix them.
 
-**Flyto Code** is the single surface that does both, anchored by three
+**Flyto2 Code** is the single surface that does both, anchored by three
 differentiators:
 
 1. **Full coverage** — SCA, SAST, DAST, secrets, IaC, license, container,
@@ -67,7 +67,7 @@ The most important gap is between *finding* and *proof*. A SAST tool says
 Every step is manual. On busy teams it doesn't happen; findings accumulate
 in a backlog that correlates with neither real risk nor remediation speed.
 
-Flyto Code automates all five steps. That is the product's moat.
+Flyto2 Code automates all five steps. That is the product's moat.
 
 ### 2.3 The data-processing gap
 
@@ -83,15 +83,15 @@ As a consequence:
 - Exec-facing roll-ups (grade distribution, top-5 at-risk, critical count)
   are recomputed on every render.
 
-Flyto Code's architecture forbids this. All aggregation lives in the
+Flyto2 Code's architecture forbids this. All aggregation lives in the
 engine; the frontend is a pure renderer. Scores and grades are unified by
 a single Bitsight-style mapping shared across services.
 
 ---
 
-## 3. The Flyto Code Solution
+## 3. The Flyto2 Code Solution
 
-Flyto Code is the frontend of a closed-loop security platform. It consumes
+Flyto2 Code is the frontend of a closed-loop security platform. It consumes
 four backend services and surfaces them as a single war room.
 
 ### 3.1 The war room
@@ -467,7 +467,7 @@ The full feature matrix is tracked in
 
 ## 9. Cloud Integration
 
-Flyto Code pushes generated pentest workflows into Flyto Automation
+Flyto2 Code pushes generated pentest workflows into Flyto2 Automation
 (the `flyto-cloud` service) for scheduled execution. The sync is
 flyto-code-authoritative: every scan regenerates the desired set of
 `(folder, template)` rows and diffs them against the cloud state.
@@ -500,7 +500,7 @@ Seven phases. Phase 1 is current. Detailed tracker in
 
 ## 11. Competitive Frame
 
-Flyto Code is a **zero-config developer portal** — a war room that
+Flyto2 Code is a **zero-config developer portal** — a war room that
 gives engineering teams full visibility into architecture, security,
 dependencies, CI/CD, testing, and documentation without writing a
 single line of configuration. Security is one dashboard tab, not the
@@ -508,34 +508,34 @@ entire product.
 
 ### 11.1 Primary competitors: Developer Portals
 
-| Competitor | Positioning | Flyto Code advantage |
+| Competitor | Positioning | Flyto2 Code advantage |
 |---|---|---|
 | **Backstage** (Spotify OSS) | Developer portal, requires `catalog-info.yaml` per repo | Zero config — connect GitHub and scan. No YAML in every repo. |
 | **Port** | Enterprise IDP, VC-funded | Mid-market pricing; Port targets Fortune 500 |
 | **OpsLevel / Cortex** | US enterprise IDP | Too expensive and heavy for 10-100 dev teams |
-| **GitHub Insights** | Free but shallow | Flyto is significantly deeper (architecture maps, security, health scoring) |
-| **Datadog Software Delivery** | APM add-on | Datadog is runtime-focused and expensive; Flyto is code-focused |
+| **GitHub Insights** | Free but shallow | Flyto2 is significantly deeper (architecture maps, security, health scoring) |
+| **Datadog Software Delivery** | APM add-on | Datadog is runtime-focused and expensive; Flyto2 is code-focused |
 
-Backstage's well-known pain points are Flyto Code's differentiation:
-- Backstage requires YAML config in every repo; Flyto needs zero setup.
-- Backstage's plugin ecosystem is complex; Flyto is batteries-included.
-- Backstage UI looks like enterprise software; Flyto is a tactical console.
-- Backstage requires self-hosting with operational overhead; Flyto runs
+Backstage's well-known pain points are Flyto2 Code's differentiation:
+- Backstage requires YAML config in every repo; Flyto2 needs zero setup.
+- Backstage's plugin ecosystem is complex; Flyto2 is batteries-included.
+- Backstage UI looks like enterprise software; Flyto2 is a tactical console.
+- Backstage requires self-hosting with operational overhead; Flyto2 runs
   as SaaS or as a single-container self-hosted deployment.
 
 ### 11.2 Adjacent competitors: Security Scanners
 
-Security scanners (Aikido, Snyk, SonarQube) overlap with Flyto Code's
+Security scanners (Aikido, Snyk, SonarQube) overlap with Flyto2 Code's
 security tab but are not the primary competitive frame. They do one
-thing (scan for vulnerabilities); Flyto does nine things (architecture,
+thing (scan for vulnerabilities); Flyto2 does nine things (architecture,
 dependencies, APIs, modules, quality, security, CI/CD, testing, docs).
 
-What Flyto Code has that pure security tools do not:
+What Flyto2 Code has that pure security tools do not:
 
 1. **Code intelligence** — architecture maps, API classification,
    module relationship graphs, pattern detection — from the same
    scanner that finds CVEs.
-2. **Closed-loop verification** — Aikido reports, Flyto proves.
+2. **Closed-loop verification** — Aikido reports, Flyto2 proves.
 3. **Bitsight-style scoring** — scores that stay consistent across
    pages because the engine, not the browser, owns the math.
 4. **MCP server** — flyto-indexer exposes smart tools (`search`,
@@ -549,7 +549,7 @@ What Flyto Code has that pure security tools do not:
 
 ## 12. Trust Model & Scan Upload
 
-Flyto Code is designed around **progressive trust**: users start with
+Flyto2 Code is designed around **progressive trust**: users start with
 zero trust (offline local scanning) and gradually share more data as
 they gain confidence in the platform. At no level does the server see
 source code — only analysis summaries, function names, and dependency
@@ -560,7 +560,7 @@ graph), L3 (CI automation). Full specification in
 [`flyto-engine/docs/trust-model.md`](../../flyto-engine/docs/trust-model.md).
 
 Key differentiator vs. Aikido/Snyk: they require GitHub OAuth token
-(read access to all repos) on day one. Flyto asks for nothing — users
+(read access to all repos) on day one. Flyto2 asks for nothing — users
 `pip install flyto-indexer`, scan locally, and decide what to share.
 
 ---
@@ -583,10 +583,10 @@ Key differentiator vs. Aikido/Snyk: they require GitHub OAuth token
 
 ## 13. Glossary
 
-- **War room** — the three-column workspace that is Flyto Code's
+- **War room** — the three-column workspace that is Flyto2 Code's
   primary UX.
 - **Closed-loop verification** — the scan → generate-test → execute →
-  verdict → display cycle that distinguishes Flyto Code from listing
+  verdict → display cycle that distinguishes Flyto2 Code from listing
   tools.
 - **Bitsight-style scoring** — 250-900 display score with A-F grade
   bands, floored to 10 to avoid false precision.

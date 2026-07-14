@@ -1,4 +1,4 @@
-# Flyto Code 頁面 ↔ Engine API 對照表
+# Flyto2 Code 頁面 ↔ Engine API 對照表
 
 整理日期：2026-05-24
 來源：`src-next/types/modules.ts`（MODULES 清單）+ 各 `*Page.tsx` 對應 compound 的實際呼叫。

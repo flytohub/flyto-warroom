@@ -1,7 +1,7 @@
 # Contributing To Flyto2 Warroom CE
 
 Flyto2 Warroom CE is a generated open-core mirror, not a permanent fork. The
-source of truth remains the Flyto workspace; this public repository exists so
+source of truth remains the Flyto2 workspace; this public repository exists so
 users can install CE, inspect public contracts, and send patches.
 
 ## Single Source Rule

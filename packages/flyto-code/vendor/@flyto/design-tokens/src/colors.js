@@ -1,5 +1,5 @@
 /**
- * Flyto brand palette.
+ * Flyto2 brand palette.
  *
  * Source of truth for every product. Cloud uses these via UnoCSS preset;
  * Cortex injects them into Mantine theme + consumes as CSS variables.
@@ -13,7 +13,7 @@ export const purple = {
   200: '#ddd6fe',
   300: '#c4b5fd',
   400: '#a78bfa',   // brand-light
-  500: '#8b5cf6',   // brand (canonical Flyto purple)
+  500: '#8b5cf6',   // brand (canonical Flyto2 purple)
   600: '#7c3aed',   // brand-dark
   700: '#6d28d9',
   800: '#5b21b6',

@@ -1,6 +1,6 @@
 # scripts
 
-Local and CI guard scripts for Flyto Code.
+Local and CI guard scripts for Flyto2 Code.
 
 The important branch gates are route drift, frontend closure, platform loops,
 navbar smoke registry validation, AI code quality, i18n sync, and compliance

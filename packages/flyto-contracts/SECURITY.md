@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-We release patches for security vulnerabilities in the following versions of Flyto Engine:
+We release patches for security vulnerabilities in the following versions of Flyto2 Engine:
 
 | Version | Supported |
 | ------- | --------- |
@@ -11,7 +11,7 @@ We release patches for security vulnerabilities in the following versions of Fly
 
 ## Reporting a Vulnerability
 
-We take security seriously. If you discover a security vulnerability in Flyto Engine, please report it responsibly.
+We take security seriously. If you discover a security vulnerability in Flyto2 Engine, please report it responsibly.
 
 **Please do NOT report security vulnerabilities through public GitHub issues.**
 
@@ -55,4 +55,4 @@ Security fixes are released as patch versions. We recommend watching this reposi
 
 ---
 
-Thank you for helping keep Flyto Engine and its users safe.
+Thank you for helping keep Flyto2 Engine and its users safe.

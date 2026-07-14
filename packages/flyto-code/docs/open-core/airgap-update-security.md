@@ -1,6 +1,6 @@
 # Enterprise Airgap Update Security
 
-Flyto Enterprise airgap updates use signed offline bundles. The bundle verifier lives in engine code so admin import endpoints and release tooling use the same safety rules.
+Flyto2 Enterprise airgap updates use signed offline bundles. The bundle verifier lives in engine code so admin import endpoints and release tooling use the same safety rules.
 
 ## Bundle Contract
 

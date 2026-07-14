@@ -11,7 +11,7 @@ export const GITHUB_TOKEN_KEY = 'flyto-code:github-token'
  * if unset, the App flow isn't deployed yet, and the caller should
  * fall back to the OAuth path (`connectGitHub`).
  *
- * The `state` query param carries the Flyto orgID through GitHub's
+ * The `state` query param carries the Flyto2 orgID through GitHub's
  * redirect so the callback page knows which org to bind the
  * installation to. GitHub passes it back verbatim.
  */

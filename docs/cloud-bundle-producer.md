@@ -1,6 +1,6 @@
-# Flyto Cloud Bundle Producer
+# Flyto2 Cloud Bundle Producer
 
-Warroom can hand automation test recipes to Flyto Cloud without sharing private
+Warroom can hand automation test recipes to Flyto2 Cloud without sharing private
 runtime implementation or credentials. The handoff artifact is a signed
 `flyto-bundle.yaml` plus hashed local assets.
 
@@ -52,7 +52,7 @@ recipes/warroom-deterministic-audit.yaml
 
 ## Import Into Cloud
 
-On Flyto Cloud, point the inbox to the bundle folder or its parent folder:
+On Flyto2 Cloud, point the inbox to the bundle folder or its parent folder:
 
 ```sh
 export FLYTO_WARROOM_IMPORT_DIR=/tmp/flyto-warroom-cloud-bundle

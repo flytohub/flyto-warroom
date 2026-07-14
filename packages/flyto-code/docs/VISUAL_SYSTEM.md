@@ -1,6 +1,6 @@
-# Flyto Code Visual System
+# Flyto2 Code Visual System
 
-Flyto Code is a dense security workbench. It should feel like a SOC console
+Flyto2 Code is a dense security workbench. It should feel like a SOC console
 and enterprise operator surface: quiet, compact, stable, and evidence-first.
 It is not a marketing page, a terminal-themed demo, or a collection of
 domain-specific mini-products.

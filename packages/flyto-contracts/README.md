@@ -1,8 +1,8 @@
-# Flyto Contracts
+# Flyto2 Contracts
 
-This package is the public protocol surface for Flyto integrations.
+This package is the public protocol surface for Flyto2 integrations.
 
-It is generated from the private Flyto engine source by `flyto2-open-core-export`.
+It is generated from the private Flyto2 engine source by `flyto2-open-core-export`.
 It intentionally does not expose engine runtime, handlers, billing, tenant store,
 cloud connector implementation, threat-intel datasets, or live remediation
 orchestration.
@@ -18,5 +18,5 @@ orchestration.
 
 ## Merge Rule
 
-Change the private Flyto source first, rerun the exporter, and review the
+Change the private Flyto2 source first, rerun the exporter, and review the
 generated community delta. Generated copies should not be edited directly.

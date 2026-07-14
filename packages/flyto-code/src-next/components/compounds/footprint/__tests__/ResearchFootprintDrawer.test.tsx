@@ -326,7 +326,7 @@ function nanshanContestedResponse(): ResearchFootprintResponse {
     citation_index: [
       { id: 'obs-cyble', kind: 'boy_observation', title: 'Cyble darkweb identity evidence', source_type: 'fusion', source_name: 'cyble', raw_ref: 'fusion:cyble:darkweb_identity:nanshanlife.com.tw:abc', related_ids: [], metadata_summary: {} },
       { id: 'obs-bitsight', kind: 'boy_observation', title: 'Bitsight exposure context', source_type: 'fusion', source_name: 'bitsight', raw_ref: 'fusion:bitsight:posture:nanshanlife.com.tw:external.posture:def', related_ids: [], metadata_summary: {} },
-      { id: 'obs-flyto', kind: 'boy_observation', title: 'Flyto native conflict evidence', source_type: 'fusion', source_name: 'flyto.native', raw_ref: 'fusion:flyto.native:native_conflict:nanshanlife.com.tw:ghi', related_ids: [], metadata_summary: {} },
+      { id: 'obs-flyto', kind: 'boy_observation', title: 'Flyto2 native conflict evidence', source_type: 'fusion', source_name: 'flyto.native', raw_ref: 'fusion:flyto.native:native_conflict:nanshanlife.com.tw:ghi', related_ids: [], metadata_summary: {} },
       { id: 'rel-support', kind: 'boy_relation', title: 'Supports external exposure context', raw_ref: 'boy_relation:rel-support', related_ids: ['obs-cyble', 'obs-bitsight'], metadata_summary: {} },
       { id: 'rel-conflict', kind: 'boy_relation', title: 'Contradicts darkweb identity', raw_ref: 'boy_relation:rel-conflict', related_ids: ['obs-cyble', 'obs-flyto'], metadata_summary: {} },
     ],

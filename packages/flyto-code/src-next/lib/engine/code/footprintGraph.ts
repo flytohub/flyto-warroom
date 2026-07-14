@@ -476,7 +476,7 @@ export async function getThreatSeedSuggestions(orgId: string): Promise<ThreatSee
 
 // ─── Posture Distribution (好 + 壞 平衡視圖) ──────────────────
 // 不模仿 Bitsight 的 criticality × severity 4x4 grid (專利)。
-// 用 Flyto 自己的 tier 分類: healthy / watching / acting。
+// 用 Flyto2 自己的 tier 分類: healthy / watching / acting。
 
 export interface PostureBucket {
   bucket: 'healthy' | 'watching' | 'acting'

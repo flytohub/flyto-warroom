@@ -52,6 +52,12 @@ function renderView() {
   )
 }
 
+function openChecksTab(view: ReturnType<typeof renderView>) {
+  const tab = view.container.querySelector('#container-tab-checks')
+  expect(tab).toBeTruthy()
+  fireEvent.click(tab as HTMLElement)
+}
+
 describe('ContainerScanView closed loop', () => {
   beforeEach(() => {
     posture.getContainerPosture.mockResolvedValue({ image_count: 0, scored_count: 0, images: [] })
@@ -148,7 +154,8 @@ describe('ContainerScanView closed loop', () => {
       }],
     })
 
-    renderView()
+    const view = renderView()
+    openChecksTab(view)
 
     fireEvent.click(await screen.findByRole('button', { name: 'Verify fixed' }))
     await waitFor(() => expect(engine.verifyContainerFinding).toHaveBeenCalledWith('org-1', 'finding-1'))
@@ -171,7 +178,8 @@ describe('ContainerScanView closed loop', () => {
       }],
     })
 
-    renderView()
+    const view = renderView()
+    openChecksTab(view)
 
     fireEvent.click(await screen.findByRole('button', { name: 'Mark false positive' }))
     await waitFor(() => expect(engine.falsePositiveContainerFinding).toHaveBeenCalledWith('org-1', 'finding-1'))
@@ -229,7 +237,8 @@ describe('ContainerScanView closed loop', () => {
       ],
     })
 
-    renderView()
+    const view = renderView()
+    openChecksTab(view)
 
     expect(await screen.findByText('Live Kubernetes')).toBeTruthy()
     expect(await screen.findByText('Repo Dockerfile')).toBeTruthy()

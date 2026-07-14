@@ -1,4 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router'
+import type React from 'react'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
 import type { AssetCoverageResponse } from '@lib/engine/code/assetCoverage'
@@ -22,13 +24,17 @@ vi.mock('react-router-dom', async () => {
 
 queryData.current = assetCoverageFixture
 
+function renderWithRouter(ui: React.ReactElement) {
+  return render(<MemoryRouter>{ui}</MemoryRouter>)
+}
+
 describe('AssetCoverageView', () => {
   beforeEach(() => {
     queryData.current = assetCoverageFixture
   })
 
   it('renders manager coverage certainty without treating debt as absence', () => {
-    render(<AssetCoverageManagerView orgId="org-1" />)
+    renderWithRouter(<AssetCoverageManagerView orgId="org-1" />)
 
     expect(screen.getAllByText('Asset coverage')[0]).toBeTruthy()
     expect(screen.getAllByText('Uncertainty debt')[0]).toBeTruthy()
@@ -54,14 +60,14 @@ describe('AssetCoverageView', () => {
       } as unknown as AssetCoverageResponse['scope'],
     }
 
-    render(<AssetCoverageManagerView orgId="org-1" />)
+    renderWithRouter(<AssetCoverageManagerView orgId="org-1" />)
 
     expect(screen.getAllByText('Asset coverage')[0]).toBeTruthy()
     expect(screen.getByText('Manager decision')).toBeTruthy()
   })
 
   it('shows engineer policy, entity scope debt, missing credential groups, and quarantined candidates', () => {
-    render(<AssetCoverageEngineerView orgId="org-1" />)
+    renderWithRouter(<AssetCoverageEngineerView orgId="org-1" />)
 
     expect(screen.getByRole('tab', { name: /^Resources\b/i })).toBeTruthy()
     expect(screen.getByText('Confirmed resource source-pairs')).toBeTruthy()
@@ -90,7 +96,7 @@ describe('AssetCoverageView', () => {
   })
 
   it('opens a drawer with source claims for a resource that has evidence', async () => {
-    render(<AssetCoverageEngineerView orgId="org-1" />)
+    renderWithRouter(<AssetCoverageEngineerView orgId="org-1" />)
 
     fireEvent.click(screen.getAllByText('api.example.com')[0])
 
@@ -102,7 +108,7 @@ describe('AssetCoverageView', () => {
   })
 
   it('keeps resources with no returned claims as unknown, not clean', async () => {
-    render(<AssetCoverageEngineerView orgId="org-1" />)
+    renderWithRouter(<AssetCoverageEngineerView orgId="org-1" />)
 
     fireEvent.click(screen.getAllByText('www.example.com')[0])
 

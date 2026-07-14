@@ -36,7 +36,7 @@ product line.
 
 ## Why This Exists
 
-Community changes should improve Flyto itself, not only the public mirror. The
+Community changes should improve Flyto2 itself, not only the public mirror. The
 patch exporter gives maintainers a repeatable bridge from public contribution to
 private source-of-truth, while release audits prevent private code or credentials
 from flowing in the other direction.

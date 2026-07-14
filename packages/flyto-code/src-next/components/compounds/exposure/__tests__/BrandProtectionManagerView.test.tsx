@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router'
 import { describe, expect, it, vi } from 'vitest'
 
 import type { BrandProtectionResponse } from '@lib/engine/code/pentest'
@@ -132,7 +133,11 @@ import { BrandProtectionManagerView } from '../BrandProtectionManagerView'
 
 describe('BrandProtectionManagerView', () => {
   it('renders quality-first KPIs and review queue metadata', () => {
-    render(<BrandProtectionManagerView />)
+    render(
+      <MemoryRouter>
+        <BrandProtectionManagerView />
+      </MemoryRouter>,
+    )
 
     expect(screen.getByText('Precision quality')).toBeTruthy()
     expect(screen.getByText('91')).toBeTruthy()

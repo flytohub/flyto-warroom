@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export public Flyto Warroom PR changes as source-repo patch bundles."""
+"""Export public Flyto2 Warroom PR changes as source-repo patch bundles."""
 
 from __future__ import annotations
 

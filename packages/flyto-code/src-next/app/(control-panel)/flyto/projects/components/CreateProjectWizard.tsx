@@ -5,7 +5,7 @@
  * MODULES; the wizard walks three (optionally four) focused steps:
  *
  *   ① Modules   — pick what to monitor (free during preview).
- *   ② Sources   — for each module that supports it, turn on Flyto's
+ *   ② Sources   — for each module that supports it, turn on Flyto2's
  *                 engine AND/OR any external providers (multi-select,
  *                 not either-or — the kernel fuses every source).
  *                 Skipped when nothing on the selection can add sources.
@@ -203,7 +203,7 @@ export function CreateProjectWizard({ open, onClose, onCreated, initialPreset, i
       return next
     })
     // Seed a default source config the first time a selectable module
-    // is turned on (Flyto engine on iff it has one, no providers yet).
+    // is turned on (Flyto2 engine on iff it has one, no providers yet).
     setCfg((prev) => {
       if (prev[id]) return prev
       const m = modules.find((x) => x.id === id)
@@ -399,10 +399,10 @@ function ModulesStep({
 }
 
 /* ── Step 2: per-module sources ──
- * Project creation only decides whether Flyto's OWN engine runs for a module.
+ * Project creation only decides whether Flyto2's OWN engine runs for a module.
  * External providers (Bitsight / Cyble / Tenable / Okta / …) and custom APIs are
  * NOT picked here — they are wired afterwards in Settings → Data Sources, where
- * the connect → test-call → map flow lives. This keeps "what Flyto scans" separate
+ * the connect → test-call → map flow lives. This keeps "what Flyto2 scans" separate
  * from "which vendor feeds we fuse in", and avoids a half-configured vendor (a
  * checked box with no credential) at creation time. */
 function SourcesStep({
@@ -515,7 +515,7 @@ function ReviewStep({
     if (!m.sourceSelectable) return t('projects.wizard.source.flyto')
     const c = configFor(cfg, m)
     // External providers are wired post-creation in Settings → Data Sources, so
-    // the only creation-time source decision is whether Flyto's own engine runs.
+    // the only creation-time source decision is whether Flyto2's own engine runs.
     if (c.flyto) return t('projects.wizard.source.flyto')
     return t('projects.wizard.externalLater')
   }

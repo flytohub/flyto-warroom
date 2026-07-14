@@ -1,6 +1,6 @@
 # Contributing
 
-Flyto Code changes must preserve the product loop between navbar pages,
+Flyto2 Code changes must preserve the product loop between navbar pages,
 engine API clients, query keys, CI evidence, and flyto-indexer verification.
 
 Before editing:

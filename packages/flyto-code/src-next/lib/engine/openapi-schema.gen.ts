@@ -2603,7 +2603,7 @@ export interface paths {
         };
         /**
          * Bulk-upsert a project's module config (the wizard's confirm step)
-         * @description The enable/billing dimension + each module's MULTI-SELECT sources, separate from where data comes from. The platform never binds a module to one vendor: a module can be fed by Flyto's own engine AND any number of external integrations at once. Each source is { kind: flyto } or { kind: integration, integrationId }. The integration's credential is set separately via /fusion/integrations/{id}/credential.
+         * @description The enable/billing dimension + each module's MULTI-SELECT sources, separate from where data comes from. The platform never binds a module to one vendor: a module can be fed by Flyto2's own engine AND any number of external integrations at once. Each source is { kind: flyto } or { kind: integration, integrationId }. The integration's credential is set separately via /fusion/integrations/{id}/credential.
          */
         put: {
             parameters: {
@@ -2623,7 +2623,7 @@ export interface paths {
                             module: string;
                             enabled?: boolean;
                             billingTier?: string;
-                            /** @description multi-select — Flyto and/or any number of external integrations */
+                            /** @description multi-select — Flyto2 and/or any number of external integrations */
                             sources?: {
                                 /** @enum {string} */
                                 kind: "flyto" | "integration";

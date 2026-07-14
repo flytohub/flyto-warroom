@@ -9,7 +9,7 @@ stacks into a single console.
 
 ## What it is
 
-Connect your GitHub / GitLab repos and Flyto Code:
+Connect your GitHub / GitLab repos and Flyto2 Code:
 
 - Scans for dependencies, secrets, SAST findings, licenses, CVEs.
 - Builds architecture maps, API graphs, and health scores.

@@ -1,15 +1,15 @@
 # Flyto2 Enterprise Cloud Bridge
 
 Flyto2 Warroom CE is designed to be useful on its own, while higher-value
-commercial capabilities can be delivered by Flyto Cloud without publishing the
+commercial capabilities can be delivered by Flyto2 Cloud without publishing the
 private implementation code.
 
 The bridge model is simple:
 
 1. Run Warroom CE on your own host.
 2. Add an Enterprise license or cloud entitlement token.
-3. CE asks Flyto Cloud only for explicitly enabled premium jobs.
-4. Flyto Cloud returns signed results, evidence, and status events.
+3. CE asks Flyto2 Cloud only for explicitly enabled premium jobs.
+4. Flyto2 Cloud returns signed results, evidence, and status events.
 5. The local Warroom stores the outcome in its own timeline, evidence pack, and
    audit trail.
 
@@ -49,7 +49,7 @@ Premium requests should follow the same contract across modules:
 2. The local engine checks org, role, edition, license, and action permission.
 3. If the action is premium, the engine creates a signed bridge request with the
    minimum required metadata.
-4. Flyto Cloud validates entitlement and executes the premium job.
+4. Flyto2 Cloud validates entitlement and executes the premium job.
 5. Results return as signed evidence events, artifacts, and status updates.
 6. The local engine records the evidence and refreshes the UI through the normal
    SSE/cache invalidation path.
@@ -72,7 +72,7 @@ protects the commercial moat.
 
 ## Airgap Alternative
 
-Customers that cannot call Flyto Cloud need an Enterprise offline or airgap
+Customers that cannot call Flyto2 Cloud need an Enterprise offline or airgap
 edition. That path should use signed offline licenses, private enterprise
 images, private update bundles, and customer-controlled deployment evidence
 instead of the cloud bridge.

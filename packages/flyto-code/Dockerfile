@@ -49,7 +49,7 @@ RUN npm run build
 # ── Stage 2: Serve ──
 FROM nginx:alpine
 LABEL org.opencontainers.image.title="flyto-code" \
-      org.opencontainers.image.description="Flyto frontend application" \
+      org.opencontainers.image.description="Flyto2 frontend application" \
       org.opencontainers.image.source="https://github.com/flytohub/flytohub" \
       org.opencontainers.image.licenses="UNLICENSED"
 

@@ -992,7 +992,7 @@ func defaultPaywalls() map[string]Paywall {
 		},
 		"cloud_cspm": {
 			Title:           "Unlock Cloud posture",
-			Message:         "Monitor cloud posture, IAM exposure, and CSPM findings from the same Flyto workspace.",
+			Message:         "Monitor cloud posture, IAM exposure, and CSPM findings from the same Flyto2 workspace.",
 			CTAKey:          "buy_cloud_cspm",
 			RequiredFeature: "cspm",
 			RequiredSKU:     "flyto_cspm_monthly",

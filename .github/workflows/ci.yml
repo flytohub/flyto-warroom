@@ -1,4 +1,4 @@
-name: Flyto Warroom CE
+name: Flyto2 Warroom CE
 
 on:
   pull_request:

@@ -5,8 +5,8 @@
  * A project is a SET OF MODULES. Each module is two independent axes:
  *   1. enabled (free during preview — billing is not wired yet).
  *   2. sources: a MULTI-SELECT set, not an either-or. A module can feed
- *      from Flyto's own engine AND one or more external providers at the
- *      same time (e.g. External → Flyto scan + Bitsight + SecurityScorecard).
+ *      from Flyto2's own engine AND one or more external providers at the
+ *      same time (e.g. External → Flyto2 scan + Bitsight + SecurityScorecard).
  *      The kernel fuses every source's evidence — picking only one would
  *      defeat the whole point.
  *
@@ -56,9 +56,9 @@ export interface ProjectModule {
    *  no destination yet. */
   landingPath?: string
   /** Whether this module can also pull from external providers (in
-   *  ADDITION to Flyto). Code is Flyto-only (you scan code with us). */
+   *  ADDITION to Flyto2). Code is Flyto2-only (you scan code with us). */
   sourceSelectable: boolean
-  /** False = Flyto has no native engine for this domain, so it's
+  /** False = Flyto2 has no native engine for this domain, so it's
    *  BYO-only (e.g. Identity → Okta). Default true. */
   flytoNative?: boolean
   /** BYO providers offered (multi-select) when sourceSelectable. */
@@ -186,7 +186,7 @@ export const PROJECT_MODULES: ProjectModule[] = [
     descKey: 'projects.feature.containerDesc',
     descFallback: 'Container image CVEs + base-image scanning (Trivy).',
     status: 'beta', landingPath: 'containers',
-    sourceSelectable: true, // Flyto (Trivy) + Custom (e.g. Wiz/Aqua) via BYO
+    sourceSelectable: true, // Flyto2 (Trivy) + Custom (e.g. Wiz/Aqua) via BYO
     byoProviders: [],
     features: ['surface_container', 'container', 'container_findings'],
     crossCutting: false,
@@ -238,7 +238,7 @@ export const PROJECT_MODULES: ProjectModule[] = [
     // providers + write paths land.
     status: 'beta', landingPath: 'identity',
     sourceSelectable: true,
-    flytoNative: false, // no Flyto-native identity engine — BYO-only
+    flytoNative: false, // no Flyto2-native identity engine — BYO-only
     byoProviders: [{ id: 'okta', label: 'Okta' }],
     features: ['identity'],
     crossCutting: false,
@@ -284,14 +284,14 @@ export interface ModuleConfig {
   custom: boolean
 }
 
-/** Default config for a freshly-enabled module: Flyto's own engine on
+/** Default config for a freshly-enabled module: Flyto2's own engine on
  *  (when it has one), no external/custom sources yet. */
 export function defaultModuleConfig(flytoNative = true): ModuleConfig {
   return { flyto: flytoNative, providers: [], custom: false }
 }
 
 /** Resolve the live config for a module, falling back to its default
- *  (Flyto on iff the module has a native engine). */
+ *  (Flyto2 on iff the module has a native engine). */
 export function configFor(cfg: Record<string, ModuleConfig>, m: ProjectModule): ModuleConfig {
   return cfg[m.id] ?? defaultModuleConfig(m.flytoNative !== false)
 }
@@ -330,7 +330,7 @@ export function deriveCustomFeatures(enabled: Set<string>, modules: ProjectModul
 }
 
 /** Wire-shape for the `module_sources` payload — one row per (module,
- *  source). A module with Flyto + 2 providers emits 3 rows. */
+ *  source). A module with Flyto2 + 2 providers emits 3 rows. */
 export interface ModuleSourcePayload {
   module: string
   source: ModuleSource

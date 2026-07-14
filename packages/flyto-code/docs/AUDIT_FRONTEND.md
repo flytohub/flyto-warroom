@@ -12,7 +12,7 @@ files scanned, results aggregated.
 |------|-------:|------:|--------|
 | **fontsize** (9/10/11 → ≥12 per CLAUDE.md floor) | 78 | 4 | ✅ bulk-fixed 17 compounds |
 | **textdisabled** (info text using disabled color) | 49 | 2 | ✅ bulk-fixed 19 compounds |
-| **brand_typo** (Flyto → Flyto2 in user-facing) | 4 | 2 | ✅ 3 user-facing fixed (rest are comments) |
+| **brand_typo** (Flyto2 → Flyto2 in user-facing) | 4 | 2 | ✅ 3 user-facing fixed (rest are comments) |
 | **emoji** (literal emoji vs lucide-react) | 14 | 13 | ✅ 🔄 → RefreshCw; rest are in comments/fallbacks |
 | | | | |
 | hardcoded_color | 351 | 351 | Mostly palette maps + severity tones (legitimate) |
@@ -60,11 +60,11 @@ that's actually disabled).
 ### `brand_typo` — 4 → 0 (user-facing)
 
 Per CLAUDE.md memory `feedback_brand_name`: "Product name in ALL
-user-facing copy MUST be Flyto2. Never Flyto, Flyto Platform, FLYTO.
+user-facing copy MUST be Flyto2. Never Flyto2, Flyto2 Platform, FLYTO.
 Internal repo / package / Cloud Run names are exempt."
 
-- `QueryError.tsx` — "The Flyto engine returned…" × 2 → Flyto2
-- `TakedownLetterDialog.tsx` — "Flyto does NOT file complaints…" → Flyto2
+- `QueryError.tsx` — "The Flyto2 engine returned…" × 2 → Flyto2
+- `TakedownLetterDialog.tsx` — "Flyto2 does NOT file complaints…" → Flyto2
 - `lib/oauth.ts` comment — left as-is (internal)
 - Locale files — 4 keys per locale × 4 locales updated
 
@@ -139,5 +139,5 @@ python3 scripts/audit_frontend.py --category fontsize --full --limit 100
 | Commit | Scope |
 |--------|-------|
 | flyto-code `cf330c6` | audit_frontend.py + brand typo + 🔄 → RefreshCw |
-| flyto-i18n `e571907a` | Flyto → Flyto2 in 4 locales × 4 keys |
+| flyto-i18n `e571907a` | Flyto2 → Flyto2 in 4 locales × 4 keys |
 | flyto-code `5b402fd` | fontsize + text.disabled bulk fixes |

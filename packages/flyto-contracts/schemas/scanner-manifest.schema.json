@@ -40,6 +40,6 @@
     "surfaces",
     "evidence_contracts"
   ],
-  "title": "Flyto scanner manifest",
+  "title": "Flyto2 scanner manifest",
   "type": "object"
 }

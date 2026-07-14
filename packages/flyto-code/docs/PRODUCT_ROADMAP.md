@@ -1,4 +1,4 @@
-# Flyto Code — Product Roadmap
+# Flyto2 Code — Product Roadmap
 
 Zero-config developer portal (war room) powered by AI.
 Full-spectrum codebase intelligence with integrated security scanning.
@@ -9,7 +9,7 @@ Full-spectrum codebase intelligence with integrated security scanning.
 
 ### 1. Scanners
 
-| Feature | Aikido | Flyto | Module | Status |
+| Feature | Aikido | Flyto2 | Module | Status |
 |---------|--------|-------|--------|--------|
 | Open Source Dependency Scanning (SCA) | All tiers | flyto-indexer | `dependency_scanner.py` | DONE |
 | Secrets Detection (Git) | All tiers | flyto-indexer | `secret_scanner.py` | DONE |
@@ -27,7 +27,7 @@ Full-spectrum codebase intelligence with integrated security scanning.
 
 ### 2. SCA Features
 
-| Feature | Aikido | Flyto | Status |
+| Feature | Aikido | Flyto2 | Status |
 |---------|--------|-------|--------|
 | Reachability analysis | Pro+ | flyto-indexer `taint.py` | DONE |
 | AutoFix (version bump PRs) | All tiers | flyto-engine + GitHub API | PLANNED |
@@ -40,7 +40,7 @@ Full-spectrum codebase intelligence with integrated security scanning.
 
 ### 3. CSPM (Cloud Posture Management)
 
-| Feature | Flyto Module | Status |
+| Feature | Flyto2 Module | Status |
 |---------|-------------|--------|
 | AWS misconfiguration checks | flyto-engine `internal/cspm/aws.go` | PLANNED |
 | GCP misconfiguration checks | flyto-engine `internal/cspm/gcp.go` | PLANNED |
@@ -52,7 +52,7 @@ Cloud credentials stored in `org_tokens` table (encrypted via `internal/secrets`
 
 ### 4. Secrets Detection
 
-| Feature | Flyto Module | Status |
+| Feature | Flyto2 Module | Status |
 |---------|-------------|--------|
 | Secrets in code (Git) | flyto-indexer `secret_scanner.py` (18 patterns) | DONE |
 | Secrets across SDLC (IDE/CI) | flyto-vscode + CI action | PLANNED |
@@ -60,7 +60,7 @@ Cloud credentials stored in `org_tokens` table (encrypted via `internal/secrets`
 
 ### 5. SAST (Static Code Analysis)
 
-| Feature | Flyto Module | Status |
+| Feature | Flyto2 Module | Status |
 |---------|-------------|--------|
 | Full language coverage | Python, Go, TypeScript, Vue, Rust | DONE |
 | IDE notifications | flyto-vscode | PLANNED |
@@ -70,7 +70,7 @@ Cloud credentials stored in `org_tokens` table (encrypted via `internal/secrets`
 
 ### 6. DAST (Dynamic Testing)
 
-| Feature | Flyto Module | Status |
+| Feature | Flyto2 Module | Status |
 |---------|-------------|--------|
 | Self-built app scans | flyto-core `workflows/pentests/` | YAML READY |
 | Authenticated DAST | pentest YAML with auth_token | YAML READY |
@@ -96,7 +96,7 @@ Cloud credentials stored in `org_tokens` table (encrypted via `internal/secrets`
 
 ### 7. Productivity
 
-| Feature | Flyto Module | Status |
+| Feature | Flyto2 Module | Status |
 |---------|-------------|--------|
 | Slack/Teams notifications | flyto-engine webhook | PLANNED |
 | IDE plugins | flyto-vscode | EXISTS (needs security features) |
@@ -110,7 +110,7 @@ Cloud credentials stored in `org_tokens` table (encrypted via `internal/secrets`
 
 ### 8. Management & Reporting
 
-| Feature | Flyto Module | Status |
+| Feature | Flyto2 Module | Status |
 |---------|-------------|--------|
 | Audit log | flyto-engine `internal/audit/chain.go` (hash-chained) | DONE |
 | SBOM generation | flyto-indexer `dependency_scanner.py` | DONE |
@@ -126,7 +126,7 @@ Cloud credentials stored in `org_tokens` table (encrypted via `internal/secrets`
 
 ### 9. Runtime Protection
 
-| Feature | Flyto Module | Status |
+| Feature | Flyto2 Module | Status |
 |---------|-------------|--------|
 | Node.js runtime agent | `flyto-runtime-node` (new package) | PLANNED |
 | Python runtime agent | `flyto-runtime-python` (new package) | PLANNED |
@@ -160,7 +160,7 @@ App Process
 
 ### 10. Endpoint Protection
 
-| Feature | Flyto Module | Status |
+| Feature | Flyto2 Module | Status |
 |---------|-------------|--------|
 | Block malware packages (npm/PyPI) | `flyto-guard` CLI | PLANNED |
 | AI tools & models detection | flyto-indexer | PLANNED |
@@ -170,7 +170,7 @@ App Process
 
 ### 11. Compliance
 
-| Standard | Flyto Coverage | Status |
+| Standard | Flyto2 Coverage | Status |
 |----------|---------------|--------|
 | OWASP Top 10 (2021) | DAST pentest YAML mapping | YAML READY |
 | OWASP LLM Top 10 (2025) | `llm_injection.yaml` | YAML READY |
@@ -285,13 +285,13 @@ Protect developer workstations.
 
 ---
 
-## Flyto Differentiators (vs Backstage / Port / Security Scanners)
+## Flyto2 Differentiators (vs Backstage / Port / Security Scanners)
 
-What makes Flyto Code unique as a developer portal:
+What makes Flyto2 Code unique as a developer portal:
 
 1. **Zero config** — connect GitHub/GitLab and scan. No `catalog-info.yaml`, no plugin setup, no self-hosted infra required.
 2. **Code Intelligence** — architecture analysis, API classification, module relationship graph, pattern detection — from the same scanner that finds CVEs.
-3. **Closed-loop verification** — security scanners report findings; Flyto proves them with real browser probes and honest verdicts (confidence + verification method).
+3. **Closed-loop verification** — security scanners report findings; Flyto2 proves them with real browser probes and honest verdicts (confidence + verification method).
 4. **Bitsight-style Health Scoring** — A-F grade, project-type-aware dimensions, CVE penalty curve. Consistent across every page because the engine owns the math.
 5. **CTO War Room** — 9-section dashboard (Architecture / Security / Resources / Cloud / Apps / CI-CD / Testing / Docs / Analytics), not just a list of issues.
 6. **SSE Live Events** — zero-polling, org-scoped event stream drives all UI updates.

@@ -1,5 +1,5 @@
 /* =========================================================================
-   L0: Flyto Code design tokens
+   L0: Flyto2 Code design tokens
 
    Canonical values come from @flyto/design-tokens as --flyto-* variables.
    This file aliases them to the local --color-* names.

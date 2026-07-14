@@ -29,6 +29,6 @@
     "resource",
     "occurred_at"
   ],
-  "title": "Flyto audit event",
+  "title": "Flyto2 audit event",
   "type": "object"
 }

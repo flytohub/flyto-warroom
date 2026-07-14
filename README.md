@@ -106,7 +106,7 @@ enterprise adapters, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1601 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1584 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 21 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 | `flyto-engine-ce` | `flyto-engine` | 42 | Classified CE backend kernel source for capability, resource, and safety primitives. |
 
@@ -126,10 +126,10 @@ Published repository: `docker.io/chesterhsu/flyto-warroom`
 
 ## CE And Enterprise
 
-CE is designed to be useful without calling Flyto Cloud. Higher-value
+CE is designed to be useful without calling Flyto2 Cloud. Higher-value
 Enterprise capabilities can be attached through the Enterprise Cloud
 Bridge: CE keeps the local database, UI, evidence timeline, and audit trail;
-Flyto Cloud provides entitled premium services such as commercial threat
+Flyto2 Cloud provides entitled premium services such as commercial threat
 intelligence, managed runner fleets, live remediation orchestration,
 enterprise identity, and commercial AI proposal workflows.
 
@@ -141,7 +141,7 @@ connector, signature, or cloud service check fails. See
 | --- | --- | --- |
 | CE | Local labs, evaluators, OSS users, self-hosted baseline workflows | Public source packages, public contracts, local install, runnable CE images |
 | Enterprise Cloud Bridge | Teams that need premium intelligence or managed execution | Entitled cloud jobs return signed evidence to the local Warroom |
-| Enterprise Airgap | Regulated deployments that cannot call Flyto Cloud | Private images, signed offline licenses, support, and controlled update bundles |
+| Enterprise Airgap | Regulated deployments that cannot call Flyto2 Cloud | Private images, signed offline licenses, support, and controlled update bundles |
 
 ## Local Operations
 
@@ -164,7 +164,7 @@ The following areas are intentionally not published as CE source:
 - enterprise SSO/SAML/SCIM, legal hold, airgap installers, deployment edition internals
 - darkweb, stealer-log, phishing-feed, commercial threat-intel, and proprietary correlation datasets
 - cloud/container/runtime live remediation orchestration and customer connector credentials
-- Flyto Cloud Enterprise Bridge services, entitlement signer, managed job execution plane, and hosted SaaS control plane
+- Flyto2 Cloud Enterprise Bridge services, entitlement signer, managed job execution plane, and hosted SaaS control plane
 - AutoFix promotion, approval, rollback orchestration, and commercial AI proposal workflows
 - hosted SaaS-only frontend configuration, private preview credentials, and enterprise image publishing metadata
 

@@ -90,6 +90,7 @@ prepare_code_context() {
     "$CODE_CTX/out" \
     "$CODE_CTX/test-results" \
     "$CODE_CTX/flyto-design-tokens-pkg"
+  find "$CODE_CTX/public/i18n" -maxdepth 1 -type f -name '*.json' -delete 2>/dev/null || true
   if [ -d "$WORKSPACE/flyto-design-tokens" ]; then
     cp -R "$WORKSPACE/flyto-design-tokens" "$CODE_CTX/flyto-design-tokens-pkg"
   else

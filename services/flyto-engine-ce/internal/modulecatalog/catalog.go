@@ -57,7 +57,7 @@ type Module struct {
 	// unlocks execution.
 	Billing string `json:"billing,omitempty" yaml:"billing"`
 	// CEValue is the user-visible value this module must provide without a
-	// Flyto Cloud bridge. EnterpriseValue and UpgradeTrigger describe the
+	// Flyto2 Cloud bridge. EnterpriseValue and UpgradeTrigger describe the
 	// paid path without exposing private implementation details.
 	CEValue         string `json:"ce_value,omitempty" yaml:"ce_value"`
 	EnterpriseValue string `json:"enterprise_value,omitempty" yaml:"enterprise_value"`

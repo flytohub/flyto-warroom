@@ -1,4 +1,4 @@
-# Flyto Code — API Response Field Map
+# Flyto2 Code — API Response Field Map
 
 > **Phase 1：scoring + posture + cross-dim stack**（A3 / Section C #4 / P1-G readers / PR4 直接影響範圍）
 >

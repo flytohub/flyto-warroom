@@ -14,7 +14,7 @@ Categories:
   textdisabled — text.disabled on info text (CLAUDE.md font_size_floor)
   hardcoded_color — bgcolor: '#hexHEX' instead of tokens
   competitor  — Bitsight/Snyk/Aikido in user-facing copy
-  brand_typo  — `Flyto ` `FLYTO` `Flyto Platform` instead of `Flyto2`
+  brand_typo  — `Flyto2 ` `FLYTO` `Flyto2 Platform` instead of `Flyto2`
   setstate_memo — setState inside useMemo (React Compiler error)
   dangerous_html — dangerouslySetInnerHTML
   forced_color_scheme — forceColorScheme / dark-only patterns
@@ -156,11 +156,11 @@ def find_competitor(text: str, path: Path) -> list[tuple[int, str]]:
                 out.append((line_no, line.strip()[:120]))
     return out
 
-@check('brand_typo', desc='Product name is Flyto2 — not Flyto, FLYTO, Flyto Platform')
+@check('brand_typo', desc='Product name is Flyto2 — not Flyto2, FLYTO, Flyto2 Platform')
 def find_brand_typo(text: str, path: Path) -> list[tuple[int, str]]:
     out = []
-    # Catch 'Flyto ' (with space, not Flyto2) + 'FLYTO ' / 'Flyto Platform'
-    pat = re.compile(r"\b(Flyto Platform|FLYTO Code|FLYTO Cyber|Flyto Code)\b|\bFlyto(?!2|Hub|hub|\.com|-)\b\s+(?:Code|Platform|Cyber|Cloud)?")
+    # Catch 'Flyto2 ' (with space, not Flyto2) + 'FLYTO ' / 'Flyto2 Platform'
+    pat = re.compile(r"\b(Flyto2 Platform|FLYTO Code|FLYTO Cyber|Flyto2 Code)\b|\bFlyto(?!2|Hub|hub|\.com|-)\b\s+(?:Code|Platform|Cyber|Cloud)?")
     for line_no, line in enumerate(text.splitlines(), 1):
         if re.match(r'\s*//', line): continue
         # Skip imports

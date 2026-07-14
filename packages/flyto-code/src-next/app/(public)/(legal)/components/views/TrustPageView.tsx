@@ -126,7 +126,7 @@ function TrustPageView() {
 							},
 							{
 								title: 'Secret Scanning', titleKey: 'legal.trust.dataPractices.secretScanning.title',
-								body: 'Flyto-indexer scans for accidentally committed secrets. The engine\'s redaction layer prevents any secret detected in execution output from reaching disk.', bodyKey: 'legal.trust.dataPractices.secretScanning.body',
+								body: 'flyto-indexer scans for accidentally committed secrets. The engine\'s redaction layer prevents any secret detected in execution output from reaching disk.', bodyKey: 'legal.trust.dataPractices.secretScanning.body',
 							},
 							{
 								title: 'Third-Party Sharing', titleKey: 'legal.trust.dataPractices.thirdParty.title',

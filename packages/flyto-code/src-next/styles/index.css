@@ -132,7 +132,7 @@ Tables styles
 
 @import './tiptap.css';
 
-/* Flyto design system CSS (migrated from src/) */
+/* Flyto2 design system CSS (migrated from src/) */
 @import '../styles-legacy/tokens.css';
 @import '../styles-legacy/base.css';
 @import '../styles-legacy/layouts.css';

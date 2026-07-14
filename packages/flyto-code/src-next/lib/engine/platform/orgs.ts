@@ -34,7 +34,7 @@ export function listOrgs() {
  *  "custom" honours the customFeatures list. */
 export type ProjectType = 'all' | 'code' | 'ctem' | 'cloud' | 'custom'
 
-/** Per-module data source: Flyto's own engine, or a bring-your-own
+/** Per-module data source: Flyto2's own engine, or a bring-your-own
  *  external provider. `provider` is set only when source === 'byo'. */
 export interface ModuleSourceSelection {
   module: string
@@ -45,7 +45,7 @@ export interface ModuleSourceSelection {
 export interface CreateOrgOptions {
   projectType?: ProjectType
   customFeatures?: string[]
-  /** Per-module source choice (Flyto vs BYO). Backend stores it as
+  /** Per-module source choice (Flyto2 vs BYO). Backend stores it as
    *  project config; BYO credential/ingestion wiring is a later phase. */
   moduleSources?: ModuleSourceSelection[]
 }
@@ -58,7 +58,7 @@ export function createOrg(name: string, slug: string, opts: CreateOrgOptions = {
   if (opts.projectType === 'custom' && opts.customFeatures?.length) {
     body.custom_features = opts.customFeatures
   }
-  // Send every selected module source, including all-Flyto selections, so the
+  // Send every selected module source, including all-Flyto2 selections, so the
   // engine can persist an explicit capability/module policy instead of inferring
   // it from project_type.
   if (opts.moduleSources?.length) {

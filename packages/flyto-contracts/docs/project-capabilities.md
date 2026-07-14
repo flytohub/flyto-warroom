@@ -2,13 +2,13 @@
 
 Last reviewed: 2026-06-24.
 
-This is the current product architecture for composing Flyto security work.
-Older documents that frame Flyto primarily as a scanner, dashboard, or report
+This is the current product architecture for composing Flyto2 security work.
+Older documents that frame Flyto2 primarily as a scanner, dashboard, or report
 generator are historical context unless they explicitly defer to this model.
 
 ## Core Model
 
-Flyto is an evidence-backed security automation platform.
+Flyto2 is an evidence-backed security automation platform.
 
 ```text
 Project is the container.

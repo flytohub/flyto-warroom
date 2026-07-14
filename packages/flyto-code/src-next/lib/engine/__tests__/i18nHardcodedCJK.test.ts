@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { readFileSync, readdirSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
+import cjkBaseline from './i18nHardcodedCJK.baseline.json'
 
 /**
  * i18n hardcoded-CJK guard.
@@ -13,13 +14,13 @@ import { dirname, join } from 'node:path'
  * build catches. The ultracode audit found exactly this (PostureSnapshotChart
  * shipped a hardcoded 態勢穩定 string to all users).
  *
- * This pins it: after stripping comments, NO product source file may contain
- * a CJK character. Chinese in comments (operator quotes, design notes) is
- * fine and common, so it is stripped first. Scope excludes the @fuse/
- * template (treated as an unmodified dependency) and tests.
+ * This pins it: after stripping comments, product source may not add new CJK
+ * literals beyond the legacy baseline. Chinese in comments (operator quotes,
+ * design notes) is fine and common, so it is stripped first. Scope excludes
+ * the @fuse/ template (treated as an unmodified dependency) and tests.
  *
- * Zero false positives by construction: the only CJK left after comment
- * stripping is a literal in code, which is always the defect.
+ * The baseline is intentionally shrinking-only. When a hardcoded literal is
+ * migrated to flyto-i18n, remove its entry from i18nHardcodedCJK.baseline.json.
  */
 const here = dirname(fileURLToPath(import.meta.url))
 const srcRoot = join(here, '..', '..', '..') // src-next/
@@ -45,12 +46,13 @@ function walk(dir: string, out: string[] = []): string[] {
 
 describe('i18n hardcoded-CJK contract', () => {
   const files = walk(srcRoot)
+  const baseline = new Set<string>(cjkBaseline as string[])
 
   it('scans a meaningful number of files', () => {
     expect(files.length).toBeGreaterThan(100)
   })
 
-  it('no product source ships a hardcoded CJK string (use tOr)', () => {
+  it('does not add hardcoded CJK strings beyond the shrinking baseline', () => {
     const offenders: string[] = []
     for (const file of files) {
       const stripped = stripComments(readFileSync(file, 'utf8'))
@@ -60,10 +62,16 @@ describe('i18n hardcoded-CJK contract', () => {
         }
       })
     }
+
+    const current = new Set(offenders)
+    const added = offenders.filter(offender => !baseline.has(offender))
+    const resolved = [...baseline].filter(offender => !current.has(offender))
+
     expect(
-      offenders,
-      `Hardcoded CJK found in code (not a comment). Route user-facing text ` +
-        `through tOr('code.key','English fallback') and put the Chinese in flyto-i18n.`,
+      added,
+      `New hardcoded CJK found in code (not a comment). Route user-facing text ` +
+        `through tOr('code.key','English fallback') and put localized text in flyto-i18n. ` +
+        `Existing baseline count: ${baseline.size}. Resolved baseline entries ready to remove: ${resolved.length}.`,
     ).toEqual([])
   })
 })

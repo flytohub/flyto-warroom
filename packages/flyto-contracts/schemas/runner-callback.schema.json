@@ -41,6 +41,6 @@
     "status",
     "artifacts"
   ],
-  "title": "Flyto runner callback",
+  "title": "Flyto2 runner callback",
   "type": "object"
 }

@@ -17,7 +17,7 @@ names and must not imply that it is an official Flyto2 build.
 
 Official CE images are runnable distribution artifacts. They do not mean the
 private `flyto-engine` implementation, Enterprise datasets, Enterprise
-remediation workers, or Flyto Cloud control plane source have been published.
+remediation workers, or Flyto2 Cloud control plane source have been published.
 
 ## Release Evidence
 
@@ -45,5 +45,5 @@ Forks may rebuild CE under their own names. Forks may not use Flyto2 trademarks,
 official tags, or official release channels for modified images.
 
 Enterprise Cloud Bridge compatibility must be described as compatibility, not as
-official entitlement. Only Flyto-issued entitlements can unlock Flyto Cloud
+official entitlement. Only Flyto2-issued entitlements can unlock Flyto2 Cloud
 premium services.

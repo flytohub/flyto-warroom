@@ -1,6 +1,6 @@
 # Flyto2 Warroom Edition Profiles
 
-Flyto2 Warroom uses the same delivery model as Flyto Cloud, but it keeps its
+Flyto2 Warroom uses the same delivery model as Flyto2 Cloud, but it keeps its
 own identity store, database, evidence store, and runtime implementation. The
 shared boundary is the public capability, license, evidence, and bundle
 contract.
@@ -24,7 +24,7 @@ The shared contract is `flyto.editions.v1`:
 
 | Profile | Edition | Deployment | Auth | License | Cloud Bridge |
 | --- | --- | --- | --- | --- | --- |
-| `warroom_saas` | SaaS | hosted | Flyto account / OIDC | subscription | managed, tenant-scoped |
+| `warroom_saas` | SaaS | hosted | Flyto2 account / OIDC | subscription | managed, tenant-scoped |
 | `warroom_ce` | CE | self_host or local_offline | local JWT | none | optional signed bundle export only |
 | `warroom_enterprise_selfhost` | Enterprise | self_host | OIDC, SAML, LDAP, or local break-glass JWT | enterprise license | optional signed bridge |
 | `warroom_enterprise_airgap` | Enterprise | airgap | enterprise IdP or local fallback | signed offline license | disabled; offline update bundles only |
@@ -34,7 +34,7 @@ The shared contract is `flyto.editions.v1`:
 Warroom and Cloud do not share a password database.
 
 - CE defaults to local JWT in each product.
-- SaaS uses Flyto account or customer OIDC.
+- SaaS uses Flyto2 account or customer OIDC.
 - Self-host Enterprise uses the customer IdP and short-lived signed bridge
   tokens when Cloud is enabled.
 - Airgap uses the customer IdP or local fallback and never depends on SaaS.
@@ -63,7 +63,7 @@ Premium actions fail closed when any gate fails:
 
 ## Cloud Bundle Producer
 
-Warroom can export automation recipes to Flyto Cloud as a signed
+Warroom can export automation recipes to Flyto2 Cloud as a signed
 `flyto-bundle.yaml` dropped into a customer-controlled folder. Cloud only scans,
 validates, and queues the bundle. It does not execute a dropped bundle until a
 Cloud user approves it in the import inbox.

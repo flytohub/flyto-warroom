@@ -1,7 +1,7 @@
 # CI Compliance Evidence
 
 `scripts/ci-compliance-evidence.mjs` is the repo-level compliance contract for
-Flyto Code. It checks that the GitHub Actions pipeline still enforces the
+Flyto2 Code. It checks that the GitHub Actions pipeline still enforces the
 minimum controls required for a secure frontend release and writes a JSON
 evidence artifact to `out/compliance/ci-evidence.json`.
 
