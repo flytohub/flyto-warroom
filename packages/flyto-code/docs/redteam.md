@@ -336,7 +336,7 @@ useRedTeamCampaign({ aiMode: 'auto' })
 | R1 | file_misconfig | **EXPLOIT** | /ftp/, /api-docs, /metrics, swagger spec exposed |
 | R2 | discovery | — | JS bundle scan → 2 API endpoints 抓到 |
 | R3 | access_control | — | /rest/languages 42 records unauth（低風險） |
-| R4 | sql_injection | **EXPLOIT** | `admin@juice-sh.op' OR 1=1--` → 偷到管理員 JWT |
+| R4 | sql_injection | **EXPLOIT** | `admin@flyto2.com' OR 1=1--` → 偷到管理員 JWT |
 | R5 | access_control (chained) | **EXPLOIT** | 用偷到的 token dump 5 個用戶購物車（跨租戶 IDOR） |
 | R6 | file_misconfig (deep) | **EXPLOIT** | /ftp/legal.md + /ftp/incident-support.kdbx (KeePass 密碼庫) |
 | R7 | client_side | — | 無 XSS reflection |

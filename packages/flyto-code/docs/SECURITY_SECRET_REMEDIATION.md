@@ -67,7 +67,7 @@ Move real secrets out of committed files into CI/deploy-time env injection
 
 ```bash
 pip install git-filter-repo
-git clone --mirror git@github.com:flytohub/flyto-code.git flyto-code-scrub
+git clone --mirror https://github.com/flytohub/flyto-code.git flyto-code-scrub
 cd flyto-code-scrub
 cat > /tmp/paths.txt <<'EOF'
 .claude/settings.local.json

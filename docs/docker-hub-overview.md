@@ -44,7 +44,7 @@ Recommended install path is Docker Compose from GitHub:
 git clone https://github.com/flytohub/flyto-warroom.git
 cd flyto-warroom
 
-python3 install/scripts/setup-ce.py --email admin@example.com
+python3 install/scripts/setup-ce.py --email admin@flyto2.com
 make preflight
 make verify-images
 make ce-up
