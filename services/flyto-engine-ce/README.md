@@ -6,6 +6,7 @@ Flyto2 workspace.
 
 It intentionally contains low-level, testable kernel packages only:
 
+- `ce/engine-ce/**`: Runnable CE source runtime exposing health, boundary, module catalog, capability snapshot, and access self-test contracts without private handlers, store, SaaS, billing, or provider adapters. Validation: `go test ./ce/engine-ce`.
 - `internal/canon/**`: Canonical URL/domain helpers; no customer data, provider credentials, store, SaaS, billing, or enterprise imports. Validation: `go test ./internal/canon`.
 - `internal/errx/**`: Typed API error envelopes shared by public clients and integrations. Validation: `go test ./internal/errx`.
 - `internal/modulecatalog/**`: Public module/page/capability catalog data and parser used by CE docs and UI composition. Validation: `go test ./internal/modulecatalog`.
@@ -32,10 +33,12 @@ It intentionally contains low-level, testable kernel packages only:
 - `internal/sla/**`: Pure SLA budget and aging math used by CE findings/report workflows. Validation: `go test ./internal/sla`.
 - `internal/stats/**`: Small statistical helpers for score/report calculations; standard-library only. Validation: `go test ./internal/stats`.
 
-The runnable CE backend and worker are still delivered as CE images until their
-entrypoints are physically split from private orchestration, store internals,
+The source-published CE runtime under `ce/engine-ce` is runnable and exposes
+health, readiness, boundary, module catalog, capability snapshot, and access
+self-test contracts. The production-compatible private API server and worker
+remain delivered as CE images until their orchestration, store internals,
 commercial providers, SaaS adapters, enterprise adapters, and proprietary
-threat-intelligence pipelines.
+threat-intelligence pipelines are physically split.
 
 ## Contribution Rule
 

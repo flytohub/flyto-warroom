@@ -31,6 +31,11 @@
   },
   "ce_source_paths": [
     {
+      "path": "ce/engine-ce/**",
+      "reason": "Runnable CE source runtime exposing health, boundary, module catalog, capability snapshot, and access self-test contracts without private handlers, store, SaaS, billing, or provider adapters.",
+      "validation": "go test ./ce/engine-ce"
+    },
+    {
       "path": "internal/canon/**",
       "reason": "Canonical URL/domain helpers; no customer data, provider credentials, store, SaaS, billing, or enterprise imports.",
       "validation": "go test ./internal/canon"
