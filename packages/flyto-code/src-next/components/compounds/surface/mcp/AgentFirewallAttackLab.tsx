@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useMemo, useState, type ReactNode } from 'react'
+import { useQuery } from '@tanstack/react-query'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
@@ -11,15 +12,37 @@ import DialogTitle from '@mui/material/DialogTitle'
 import IconButton from '@mui/material/IconButton'
 import Tooltip from '@mui/material/Tooltip'
 import Alert from '@mui/material/Alert'
+import CircularProgress from '@mui/material/CircularProgress'
 import { alpha, useTheme } from '@mui/material/styles'
-import { Check, Copy, FlaskConical, GitBranch, LockKeyhole, Radar, ShieldAlert, Siren, Target } from 'lucide-react'
+import {
+  Check,
+  Copy,
+  FlaskConical,
+  GitBranch,
+  LockKeyhole,
+  Radar,
+  ShieldAlert,
+  Activity,
+  DatabaseZap,
+  ShieldCheck,
+} from 'lucide-react'
 import { useOrg } from '@hooks/useOrg'
-import { mcpIngestEndpoint } from '@lib/engine'
-import { t, tOr } from '@lib/i18n';
+import {
+  getMcpEgress,
+  getMcpOverview,
+  getMcpPolicy,
+  mcpIngestEndpoint,
+  simulateMcpPolicy,
+} from '@lib/engine'
+import { qk } from '@lib/queryKeys'
+import { t } from '@lib/i18n'
 import { writeClipboardText } from '@lib/clipboard'
 import { colors } from '@/styles/designTokens'
 
 const BRAND = '#7c3aed'
+const CYAN = '#06b6d4'
+
+type LabTab = 'chains' | 'live' | 'decision' | 'gates'
 
 const CHAINS = [
   {
@@ -44,14 +67,14 @@ const CHAINS = [
   },
   {
     id: 'production-side-effect',
-    title: t('hardcoded.production.side.effect.c4a6afe4'),
+    title: 'Production side effect',
     severity: 'approval',
     detects: 'A state-changing or externally visible action lands on declared production scope without an approved exception.',
     probes: [
       { toolName: 'deploy_prod', verb: 'DELETE', target: 'https://prod.example', stateChange: true },
     ],
   },
-]
+] as const
 
 function probeBody(chainId: string, probe: Record<string, unknown>) {
   return JSON.stringify({
@@ -64,124 +87,162 @@ function probeBody(chainId: string, probe: Record<string, unknown>) {
   }, null, 2)
 }
 
-function curlFor(endpoint: string, chainId: string, probes: Array<Record<string, unknown>>) {
+function curlFor(endpoint: string, chainId: string, probes: readonly Record<string, unknown>[]) {
   return probes.map((probe) => `curl -sS -X POST "${endpoint}" \\
   -H "X-Flyto-API-Key: $FLYTO_AGENT_FIREWALL_KEY" \\
   -H "Content-Type: application/json" \\
   -d '${probeBody(chainId, probe)}'`).join('\n\n')
 }
 
+function isBlockingMode(mode?: string) {
+  return mode === 'enforce' || mode === 'soft_enforce'
+}
+
 export function AgentFirewallAttackLabManagerView() {
   const theme = useTheme()
   const dark = theme.palette.mode === 'dark'
+  const { org } = useOrg()
   const [selectedChainId, setSelectedChainId] = useState<string | null>(null)
-  const [labTab, setLabTab] = useState<'chains' | 'flow' | 'decision' | 'gates'>('chains')
+  const [labTab, setLabTab] = useState<LabTab>('chains')
+
+  const overviewQ = useQuery({
+    queryKey: qk.mcp.overview(org?.id),
+    queryFn: () => getMcpOverview(org!.id),
+    enabled: !!org?.id,
+    staleTime: 60_000,
+  })
+  const egressQ = useQuery({
+    queryKey: qk.mcp.egress(org?.id),
+    queryFn: () => getMcpEgress(org!.id),
+    enabled: !!org?.id,
+    staleTime: 60_000,
+  })
+  const policyQ = useQuery({
+    queryKey: qk.mcp.policy(org?.id),
+    queryFn: () => getMcpPolicy(org!.id),
+    enabled: !!org?.id,
+    staleTime: 60_000,
+  })
+  const simulateQ = useQuery({
+    queryKey: ['mcp-attack-lab-simulate', org?.id, 'enforce'] as const,
+    queryFn: () => simulateMcpPolicy(org!.id, { defaultMode: 'enforce', limit: 200 }),
+    enabled: !!org?.id,
+    staleTime: 60_000,
+  })
+
+  const selectedChain = CHAINS.find((chain) => chain.id === selectedChainId)
   const denyChains = CHAINS.filter((chain) => String(chain.severity).includes('deny')).length
   const totalProbes = CHAINS.reduce((sum, chain) => sum + chain.probes.length, 0)
-  const selectedChain = CHAINS.find((chain) => chain.id === selectedChainId)
+  const liveDecisions = (overviewQ.data?.recentDecisions ?? []).filter((row) => row.toolName !== 'connection_probe')
+  const liveBlocked = liveDecisions.filter((row) => {
+    const verdict = String(row.effective || row.verdict || '').toLowerCase()
+    return ['deny', 'hold', 'approval', 'blocked', 'block'].includes(verdict)
+  }).length
+  const sensitiveEgress = egressQ.data?.total ?? 0
+  const enforceWouldBlock = simulateQ.data?.wouldBlock ?? 0
+  const configured = Boolean(overviewQ.data?.configured)
+  const mode = policyQ.data?.defaultMode ?? 'observe'
+  const blockingMode = isBlockingMode(mode)
+  const loadingLive = overviewQ.isLoading || egressQ.isLoading || policyQ.isLoading || simulateQ.isLoading
+
   const surface = dark ? '#0b1220' : '#ffffff'
   const panel = dark ? alpha('#111827', 0.72) : alpha('#f8fafc', 0.94)
-  const border = dark ? alpha(BRAND, 0.28) : alpha(BRAND, 0.18)
+  const border = dark ? alpha(BRAND, 0.32) : alpha(BRAND, 0.2)
   const danger = dark ? '#f87171' : '#b42318'
   const warn = dark ? '#fbbf24' : '#9a5b00'
   const success = colors.semantic.success
 
-  const gates = [
-    { title: '高風險情境', value: CHAINS.length, helper: '需要納入 release gate', tone: danger, icon: <Siren size={16} /> },
-    { title: '預期拒絕', value: denyChains, helper: '外傳與 mutation 必須阻擋', tone: danger, icon: <LockKeyhole size={16} /> },
-    { title: 'Probe 覆蓋', value: totalProbes, helper: '每條鏈都要有證據', tone: BRAND, icon: <FlaskConical size={16} /> },
-    { title: '正式閘門', value: '必須', helper: '未通過不得 enforce', tone: warn, icon: <Target size={16} /> },
-  ]
+  const gates = useMemo(() => [
+    { title: 'Blueprint chains', value: CHAINS.length, helper: 'front-end lab scenarios', tone: BRAND, icon: <GitBranch size={16} /> },
+    { title: 'Probe coverage', value: totalProbes, helper: 'lab payload sequence', tone: BRAND, icon: <FlaskConical size={16} /> },
+    { title: 'Live decisions', value: liveDecisions.length, helper: configured ? 'from MCP overview API' : 'no runtime ingest yet', tone: configured ? CYAN : warn, icon: <Activity size={16} /> },
+    { title: 'Sensitive egress', value: sensitiveEgress, helper: 'from egress risk API', tone: sensitiveEgress > 0 ? danger : success, icon: <DatabaseZap size={16} /> },
+    { title: 'Release gate', value: blockingMode ? 'ON' : 'OBS', helper: String(mode), tone: blockingMode ? success : warn, icon: <LockKeyhole size={16} /> },
+  ], [blockingMode, configured, liveDecisions.length, mode, sensitiveEgress, success, warn, danger, totalProbes])
 
   return (
     <>
-    <Box
-      sx={{
-        height: '100%',
-        minHeight: 0,
-        overflow: 'hidden',
-        p: { xs: 2, md: 3 },
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 1.25,
-        bgcolor: dark ? '#0b1020' : '#f8f7fc',
-        backgroundImage: dark
-          ? `radial-gradient(circle at 18% 18%, ${alpha(BRAND, 0.18)}, transparent 30%), linear-gradient(${alpha('#94a3b8', 0.08)} 1px, transparent 1px), linear-gradient(90deg, ${alpha('#94a3b8', 0.06)} 1px, transparent 1px)`
-          : `radial-gradient(circle at 18% 18%, ${alpha(BRAND, 0.1)}, transparent 28%), linear-gradient(${alpha('#64748b', 0.06)} 1px, transparent 1px), linear-gradient(90deg, ${alpha('#64748b', 0.045)} 1px, transparent 1px)`,
-        backgroundSize: 'auto, 32px 32px, 32px 32px',
-      }}
-    >
-      <Paper
-        variant="outlined"
+      <Box
         sx={{
-          flexShrink: 0,
-          borderRadius: 1,
-          borderColor: border,
-          bgcolor: dark ? alpha('#0b1220', 0.94) : alpha('#ffffff', 0.98),
+          height: '100%',
+          minHeight: 0,
           overflow: 'hidden',
-          boxShadow: dark ? `0 18px 48px ${alpha('#000', 0.28)}` : `0 14px 34px ${alpha('#0f172a', 0.07)}`,
-          position: 'relative',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            inset: 0,
-            pointerEvents: 'none',
-            opacity: dark ? 0.22 : 0.34,
-            background: `linear-gradient(90deg, ${alpha(BRAND, 0.14)}, transparent 38%), linear-gradient(${alpha('#64748b', 0.08)} 1px, transparent 1px), linear-gradient(90deg, ${alpha('#64748b', 0.06)} 1px, transparent 1px)`,
-            backgroundSize: 'auto, 26px 26px, 26px 26px',
-          },
+          p: { xs: 2, md: 3 },
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 1.25,
+          bgcolor: dark ? '#0b1020' : '#f8f7fc',
+          backgroundImage: dark
+            ? `radial-gradient(circle at 16% 18%, ${alpha(BRAND, 0.16)}, transparent 30%), linear-gradient(${alpha('#94a3b8', 0.08)} 1px, transparent 1px), linear-gradient(90deg, ${alpha('#94a3b8', 0.06)} 1px, transparent 1px)`
+            : `radial-gradient(circle at 16% 18%, ${alpha(BRAND, 0.1)}, transparent 28%), linear-gradient(${alpha('#64748b', 0.06)} 1px, transparent 1px), linear-gradient(90deg, ${alpha('#64748b', 0.045)} 1px, transparent 1px)`,
+          backgroundSize: 'auto, 32px 32px, 32px 32px',
         }}
       >
-        <Box sx={{ position: 'relative', zIndex: 1, display: 'grid', gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) 420px' }, gap: 1.1, p: 1.4, alignItems: 'stretch' }}>
-          <Box sx={{ display: 'flex', gap: 1.2, minWidth: 0 }}>
-            <Box sx={{ width: 52, height: 52, borderRadius: 1, display: 'grid', placeItems: 'center', flexShrink: 0, color: BRAND, bgcolor: alpha(BRAND, dark ? 0.18 : 0.1), border: `1px solid ${alpha(BRAND, 0.28)}`, boxShadow: `0 0 0 4px ${alpha(BRAND, 0.055)}` }}>
-              <ShieldAlert size={24} />
-            </Box>
-            <Box sx={{ minWidth: 0 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-                <Typography component="h1" sx={{ fontSize: { xs: 27, md: 34 }, fontWeight: 950, lineHeight: 1.02, letterSpacing: 0 }}>
-                  {tOr('agentFirewall.manager.attackLabTitle', '攻擊測試實驗室')}
+        <Paper
+          variant="outlined"
+          sx={{
+            flexShrink: 0,
+            borderRadius: 1,
+            borderColor: border,
+            bgcolor: dark ? alpha('#0b1220', 0.94) : alpha('#ffffff', 0.98),
+            overflow: 'hidden',
+            boxShadow: dark ? `0 18px 48px ${alpha('#000', 0.28)}` : `0 14px 34px ${alpha('#0f172a', 0.07)}`,
+          }}
+        >
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: 'minmax(0, 1fr) 440px' }, gap: 1.1, p: 1.4, alignItems: 'stretch' }}>
+            <Box sx={{ display: 'flex', gap: 1.2, minWidth: 0 }}>
+              <Box sx={{ width: 52, height: 52, borderRadius: 1, display: 'grid', placeItems: 'center', flexShrink: 0, color: BRAND, bgcolor: alpha(BRAND, dark ? 0.18 : 0.1), border: `1px solid ${alpha(BRAND, 0.28)}`, boxShadow: `0 0 0 4px ${alpha(BRAND, 0.055)}` }}>
+                <ShieldAlert size={24} />
+              </Box>
+              <Box sx={{ minWidth: 0 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+                  <Typography component="h1" sx={{ fontSize: { xs: 27, md: 34 }, fontWeight: 950, lineHeight: 1.02, letterSpacing: 0 }}>
+                    攻擊測試實驗室
+                  </Typography>
+                  <Chip size="small" label={configured ? 'LIVE API' : 'BLUEPRINT'} sx={{ height: 24, color: configured ? CYAN : BRAND, bgcolor: alpha(configured ? CYAN : BRAND, 0.09), border: `1px solid ${alpha(configured ? CYAN : BRAND, 0.22)}`, fontWeight: 900, letterSpacing: 0.25 }} />
+                </Box>
+                <Typography sx={{ mt: 0.55, color: 'text.secondary', fontSize: 13, lineHeight: 1.55, maxWidth: 840 }}>
+                  這頁現在分成兩層：上方藍圖是固定測試劇本；Live 區塊會讀 Agent Firewall overview、egress risk、policy simulate API。
                 </Typography>
-                <Chip size="small" label="LAB READY" sx={{ height: 24, color: BRAND, bgcolor: alpha(BRAND, 0.09), border: `1px solid ${alpha(BRAND, 0.22)}`, fontWeight: 900, letterSpacing: 0.25 }} />
-              </Box>
-              <Typography sx={{ mt: 0.55, color: 'text.secondary', fontSize: 13, lineHeight: 1.55, maxWidth: 850 }}>
-                {tOr('agentFirewall.manager.attackLabSubtitle', '管理視角整理對抗式 AI 代理情境：測什麼、為什麼重要，以及哪些結果應該阻擋或暫停。')}
-              </Typography>
-              <Box sx={{ mt: 1, display: 'flex', gap: 0.7, flexWrap: 'wrap' }}>
-                {['adversarial simulation', 'policy gate', 'digest evidence'].map((label) => (
-                  <Box key={label} sx={{ px: 0.9, py: 0.45, borderRadius: 1, border: `1px solid ${alpha(BRAND, 0.14)}`, bgcolor: alpha(BRAND, 0.045), color: 'text.secondary', fontSize: 11, fontWeight: 850 }}>
-                    {label}
-                  </Box>
-                ))}
+                <Box sx={{ mt: 1, display: 'flex', gap: 0.7, flexWrap: 'wrap' }}>
+                  {[
+                    configured ? 'runtime connected' : 'runtime not connected',
+                    `mode: ${mode}`,
+                    `ingest: ${mcpIngestEndpoint(org?.id)}`,
+                  ].map((label) => (
+                    <Box key={label} sx={{ px: 0.9, py: 0.45, borderRadius: 1, border: `1px solid ${alpha(BRAND, 0.14)}`, bgcolor: alpha(BRAND, 0.045), color: 'text.secondary', fontSize: 11, fontWeight: 850, maxWidth: 420, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      {label}
+                    </Box>
+                  ))}
+                </Box>
               </Box>
             </Box>
+            <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 0.75, minWidth: 0 }}>
+              {gates.map((gate) => (
+                <AttackMetric key={gate.title} {...gate} />
+              ))}
+            </Box>
           </Box>
-          <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 0.75, minWidth: 0 }}>
-            {gates.map((gate) => (
-              <AttackMetric key={gate.title} {...gate} />
-            ))}
-          </Box>
-        </Box>
-      </Paper>
+        </Paper>
 
-      <Paper variant="outlined" sx={{ flex: 1, minHeight: 0, borderRadius: 1, borderColor: border, bgcolor: surface, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-        <SectionHead
-          icon={labTab === 'decision' ? <Radar size={15} /> : labTab === 'gates' ? <LockKeyhole size={15} /> : <GitBranch size={15} />}
-          title={labTab === 'decision' ? '決策焦點' : labTab === 'gates' ? '上線閘門與保證' : '攻擊鏈指揮板'}
-          badge={labTab === 'decision' ? 'go / no-go' : labTab === 'gates' ? 'release gate' : `${CHAINS.length} chains`}
-          tone={labTab === 'decision' ? danger : labTab === 'gates' ? warn : BRAND}
-        />
-        <Box sx={{ flexShrink: 0, display: 'flex', gap: 0.65, p: 0.85, borderBottom: `1px solid ${alpha('#334155', dark ? 0.28 : 0.12)}`, bgcolor: panel, overflowX: 'auto' }}>
+        <Paper variant="outlined" sx={{ flex: 1, minHeight: 0, borderRadius: 1, borderColor: border, bgcolor: surface, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+          <SectionHead
+            icon={labTab === 'live' ? <Activity size={15} /> : labTab === 'decision' ? <Radar size={15} /> : labTab === 'gates' ? <LockKeyhole size={15} /> : <GitBranch size={15} />}
+            title={labTab === 'live' ? 'Live API 狀態' : labTab === 'decision' ? '決策焦點' : labTab === 'gates' ? '上線閘門' : '攻擊鏈指揮板'}
+            badge={labTab === 'live' ? (configured ? 'connected' : 'no ingest') : labTab === 'decision' ? 'go / no-go' : labTab === 'gates' ? 'release gate' : `${CHAINS.length} chains`}
+            tone={labTab === 'live' ? CYAN : labTab === 'decision' ? danger : labTab === 'gates' ? warn : BRAND}
+          />
+          <Box sx={{ flexShrink: 0, display: 'flex', gap: 0.65, p: 0.85, borderBottom: `1px solid ${alpha('#334155', dark ? 0.28 : 0.12)}`, bgcolor: panel, overflowX: 'auto' }}>
             {[
               ['chains', '攻擊鏈'],
-              ['flow', '檢測流程'],
+              ['live', 'Live API'],
               ['decision', '決策焦點'],
               ['gates', '上線閘門'],
             ].map(([id, label]) => (
               <Button
                 key={id}
                 size="small"
-                onClick={() => setLabTab(id as 'chains' | 'flow' | 'decision' | 'gates')}
+                onClick={() => setLabTab(id as LabTab)}
                 sx={{
                   height: 32,
                   px: 1.25,
@@ -197,122 +258,105 @@ export function AgentFirewallAttackLabManagerView() {
                 {label}
               </Button>
             ))}
-        </Box>
-        <Box sx={{ p: 1.15, flex: 1, minHeight: 0, overflow: 'auto' }}>
-          {labTab === 'flow' ? (
-              <Box sx={{ height: '100%', borderRadius: 1, border: `1px solid ${alpha(BRAND, 0.16)}`, bgcolor: panel, p: 1.15, display: 'flex', flexDirection: 'column', gap: 1 }}>
-                <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: 0.75 }}>
-                  {[
-                    ['讀取敏感', 'secret / code / customer data'],
-                    ['序列關聯', '同 session 關聯前後行為'],
-                    ['外部傳輸', 'webhook / public endpoint'],
-                    ['政策判斷', 'deny / hold / approval'],
-                    ['阻擋證據', 'digest-safe audit trail'],
-                  ].map(([step, detail], index) => (
-                    <Box key={step} sx={{ minWidth: 0, minHeight: 112, borderRadius: 1, border: `1px solid ${alpha(index < 3 ? danger : BRAND, 0.17)}`, bgcolor: alpha(index < 3 ? danger : BRAND, index === 3 ? 0.065 : 0.032), p: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                      <Typography sx={{ color: index < 3 ? danger : BRAND, fontSize: 11, fontWeight: 950 }}>0{index + 1}</Typography>
-                      <Box>
-                        <Typography sx={{ fontSize: 13, fontWeight: 950, lineHeight: 1.18 }}>{step}</Typography>
-                        <Typography sx={{ mt: 0.45, color: 'text.secondary', fontSize: 11.5, lineHeight: 1.35 }}>{detail}</Typography>
-                      </Box>
-                    </Box>
-                  ))}
-                </Box>
-                <Box sx={{ borderRadius: 1, border: `1px solid ${alpha(BRAND, 0.14)}`, bgcolor: alpha(BRAND, 0.04), p: 1.1 }}>
-                  <Typography sx={{ color: BRAND, fontSize: 12, fontWeight: 950 }}>檢測結論</Typography>
-                  <Typography sx={{ mt: 0.45, fontSize: 14, fontWeight: 850, lineHeight: 1.45 }}>
-                    每條攻擊鏈只要缺少「政策判斷」或「阻擋證據」，就不能進入正式攔截模式。
-                  </Typography>
+          </Box>
+          <Box sx={{ p: 1.15, flex: 1, minHeight: 0, overflow: 'auto' }}>
+            {labTab === 'live' ? (
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', lg: '1.1fr 0.9fr' }, gap: 1, alignContent: 'start' }}>
+                <LivePanel
+                  loading={loadingLive}
+                  configured={configured}
+                  liveDecisions={liveDecisions.length}
+                  liveBlocked={liveBlocked}
+                  sensitiveEgress={sensitiveEgress}
+                  enforceWouldBlock={enforceWouldBlock}
+                  mode={String(mode)}
+                  overviewError={overviewQ.isError}
+                  egressError={egressQ.isError}
+                  simulateError={simulateQ.isError}
+                />
+                <Box sx={{ display: 'grid', gap: 0.8, alignContent: 'start' }}>
+                  <ApiStatusCard title="Overview API" value={configured ? 'connected' : 'empty'} detail="/api/v1/code/orgs/{id}/mcp/overview" tone={configured ? success : warn} />
+                  <ApiStatusCard title="Egress Risk API" value={`${sensitiveEgress} events`} detail="/api/v1/code/orgs/{id}/mcp/risk/egress" tone={sensitiveEgress > 0 ? danger : success} />
+                  <ApiStatusCard title="Policy Simulate API" value={`${enforceWouldBlock} would block`} detail="/api/v1/code/orgs/{id}/mcp/policy/simulate" tone={enforceWouldBlock > 0 ? danger : success} />
                 </Box>
               </Box>
-          ) : labTab === 'decision' ? (
-            <Box sx={{ minHeight: '100%', borderRadius: 1, border: `1px solid ${alpha(danger, 0.16)}`, bgcolor: alpha(danger, 0.028), p: 1.15, display: 'flex', flexDirection: 'column', gap: 1 }}>
-              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '76px minmax(0, 1fr)', md: '96px minmax(0, 1fr)' }, gap: 1, alignItems: 'center' }}>
-                <Box sx={{ width: { xs: 68, md: 82 }, height: { xs: 68, md: 82 }, borderRadius: 1, display: 'grid', placeItems: 'center', color: danger, bgcolor: alpha(danger, 0.045), border: `1px solid ${alpha(danger, 0.24)}` }}>
+            ) : labTab === 'decision' ? (
+              <Box sx={{ minHeight: '100%', borderRadius: 1, border: `1px solid ${alpha(danger, 0.16)}`, bgcolor: alpha(danger, 0.028), p: 1.15, display: 'grid', gridTemplateColumns: { xs: '1fr', md: '170px minmax(0, 1fr)' }, gap: 1, alignContent: 'start' }}>
+                <Box sx={{ borderRadius: 1, display: 'grid', placeItems: 'center', color: danger, bgcolor: alpha(danger, 0.045), border: `1px solid ${alpha(danger, 0.24)}`, minHeight: 140 }}>
                   <Box sx={{ textAlign: 'center' }}>
-                    <Typography sx={{ color: danger, fontSize: { xs: 34, md: 42 }, fontWeight: 950, lineHeight: 0.9 }}>{denyChains}</Typography>
-                    <Typography sx={{ mt: 0.45, color: 'text.secondary', fontSize: 11, fontWeight: 850 }}>go / no-go</Typography>
+                    <Typography sx={{ color: danger, fontSize: 54, fontWeight: 950, lineHeight: 0.9 }}>{Math.max(denyChains, enforceWouldBlock)}</Typography>
+                    <Typography sx={{ mt: 0.7, color: 'text.secondary', fontSize: 12, fontWeight: 850 }}>go / no-go</Typography>
                   </Box>
                 </Box>
-              <Box sx={{ minWidth: 0 }}>
-                <Typography sx={{ fontSize: { xs: 22, md: 26 }, fontWeight: 950, lineHeight: 1.08 }}>預期拒絕或暫停</Typography>
-                <Typography sx={{ mt: 0.6, color: 'text.secondary', fontSize: 13, lineHeight: 1.5, maxWidth: 760 }}>
-                  未跑完攻擊鏈，不建議進入 enforce。管理者只需要判斷三件事：是否能阻擋、是否有證據、是否可以上線。
-                </Typography>
-              </Box>
-              </Box>
-                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' }, gap: 0.75 }}>
-                  {[
-                    ['阻擋能力', '敏感讀取後外傳必須 deny', danger],
-                    ['核准路徑', 'production side effect 必須 approval', warn],
-                    ['證據輸出', '每個 probe 要產出稽核摘要', BRAND],
-                  ].map(([title, detail, tone]) => (
-                    <Box key={String(title)} sx={{ borderRadius: 1, border: `1px solid ${alpha(String(tone), 0.18)}`, bgcolor: alpha(String(tone), 0.045), p: 1 }}>
-                      <Typography sx={{ fontSize: 13, fontWeight: 950 }}>{title}</Typography>
-                      <Typography sx={{ mt: 0.4, color: 'text.secondary', fontSize: 12.5, lineHeight: 1.45 }}>{detail}</Typography>
-                    </Box>
-                  ))}
+                <Box sx={{ minWidth: 0, display: 'grid', gap: 0.75 }}>
+                  <Typography sx={{ fontSize: { xs: 22, md: 26 }, fontWeight: 950, lineHeight: 1.08 }}>未接實際事件前，不應進入 enforce</Typography>
+                  <Typography sx={{ color: 'text.secondary', fontSize: 13, lineHeight: 1.5 }}>
+                    管理者要看的不是漂亮數字，而是：目前有沒有 runtime 事件、有沒有外傳、有沒有政策模擬證據。沒有事件時，這裡只能算測試藍圖。
+                  </Typography>
+                  <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(3, minmax(0, 1fr))' }, gap: 0.75 }}>
+                    <DecisionCard title="Runtime evidence" detail={`${liveDecisions.length} live decisions`} tone={configured ? success : warn} />
+                    <DecisionCard title="Sensitive egress" detail={`${sensitiveEgress} outbound events`} tone={sensitiveEgress > 0 ? danger : success} />
+                    <DecisionCard title="Enforce simulation" detail={`${enforceWouldBlock} would block`} tone={enforceWouldBlock > 0 ? danger : warn} />
+                  </Box>
                 </Box>
-            </Box>
-          ) : labTab === 'gates' ? (
-            <Box sx={{ height: '100%', minHeight: 0, overflow: 'auto', display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 0.9, alignContent: 'start' }}>
-              {[
-                ['序列風險', '不能只用單次工具呼叫判斷。', success],
-                ['拒絕驗證', '敏感讀取後外傳必須 deny。', danger],
-                ['核准路徑', 'production side effect 必須 approval。', warn],
-                ['證據交付', '每個 probe 要能產出稽核摘要。', BRAND],
-                ['最小暴露', 'Dialog 看細節，主畫面只留 go/no-go 與鏈路。', BRAND],
-              ].map(([title, detail, tone]) => (
-                <Box key={String(title)} sx={{ borderRadius: 1, border: `1px solid ${alpha(String(tone), 0.18)}`, borderLeft: `3px solid ${alpha(String(tone), 0.78)}`, bgcolor: alpha(String(tone), 0.045), p: 1.15, minHeight: 96 }}>
-                  <Typography sx={{ fontSize: 14, fontWeight: 950 }}>{title}</Typography>
-                  <Typography sx={{ mt: 0.5, color: 'text.secondary', fontSize: 13, lineHeight: 1.5 }}>{detail}</Typography>
-                </Box>
-              ))}
-            </Box>
-          ) : (
-              <Box sx={{ height: '100%', minHeight: 0, overflow: 'auto', display: 'grid', gap: 0.65, alignContent: 'start', pr: 0.4 }}>
+              </Box>
+            ) : labTab === 'gates' ? (
+              <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 0.9, alignContent: 'start' }}>
+                {[
+                  ['必須有 runtime ingest', configured ? '已接 overview API，可讀後端事件。' : '尚未看到 Agent Firewall runtime 事件。', configured ? success : warn],
+                  ['必須有外傳風險資料', egressQ.data ? `egress API 回傳 ${sensitiveEgress} 筆。` : 'egress API 尚無資料。', egressQ.data ? CYAN : warn],
+                  ['必須跑 policy simulate', simulateQ.data ? `enforce 模擬會阻擋 ${enforceWouldBlock} 筆。` : 'simulate API 尚未回傳。', simulateQ.data ? CYAN : warn],
+                  ['前端不得自行判定結果', '前端只呈現：測試藍圖、後端事件、後端模擬結果。', BRAND],
+                ].map(([title, detail, tone]) => (
+                  <Box key={String(title)} sx={{ borderRadius: 1, border: `1px solid ${alpha(String(tone), 0.18)}`, borderLeft: `3px solid ${alpha(String(tone), 0.78)}`, bgcolor: alpha(String(tone), 0.045), p: 1.15, minHeight: 92 }}>
+                    <Typography sx={{ fontSize: 14, fontWeight: 950 }}>{title}</Typography>
+                    <Typography sx={{ mt: 0.5, color: 'text.secondary', fontSize: 13, lineHeight: 1.5 }}>{detail}</Typography>
+                  </Box>
+                ))}
+              </Box>
+            ) : (
+              <Box sx={{ display: 'grid', gap: 0.65, alignContent: 'start', pr: 0.4 }}>
                 {CHAINS.map((chain, index) => (
                   <AttackChainRow key={chain.id} chain={chain} index={index} onOpen={() => setSelectedChainId(chain.id)} />
                 ))}
               </Box>
-          )}
-        </Box>
-      </Paper>
-    </Box>
-    <Dialog open={Boolean(selectedChain)} onClose={() => setSelectedChainId(null)} maxWidth="md" fullWidth PaperProps={{ sx: { borderRadius: 1 } }}>
-      {selectedChain && (
-        <>
-          <DialogTitle sx={{ pb: 1 }}>
-            <Typography sx={{ fontSize: 20, fontWeight: 950 }}>{selectedChain.title}</Typography>
-            <Typography sx={{ mt: 0.4, color: 'text.secondary', fontSize: 13 }}>{selectedChain.detects}</Typography>
-          </DialogTitle>
-          <DialogContent dividers sx={{ display: 'grid', gap: 1 }}>
-            {selectedChain.probes.map((probe, index) => (
-              <Box key={`${selectedChain.id}-${index}`} sx={{ borderRadius: 1, border: `1px solid ${alpha(BRAND, 0.16)}`, bgcolor: alpha(BRAND, 0.045), p: 1.2 }}>
-                <Typography sx={{ color: BRAND, fontSize: 12, fontWeight: 950 }}>Probe {index + 1}</Typography>
-                <Typography sx={{ mt: 0.4, fontSize: 14, fontWeight: 900 }}>{String(probe.verb)} / {String(probe.toolName)}</Typography>
-                <Typography sx={{ mt: 0.35, color: 'text.secondary', fontSize: 12.5, overflowWrap: 'anywhere' }}>
-                  {String((probe as Record<string, unknown>).target || (probe as Record<string, unknown>).dataClass || (probe as Record<string, unknown>).dataDirection || 'policy signal')}
-                </Typography>
-              </Box>
-            ))}
-          </DialogContent>
-          <DialogActions sx={{ px: 2, py: 1.25 }}>
-            <Button onClick={() => setSelectedChainId(null)} sx={{ fontWeight: 850 }}>關閉</Button>
-          </DialogActions>
-        </>
-      )}
-    </Dialog>
+            )}
+          </Box>
+        </Paper>
+      </Box>
+
+      <Dialog open={Boolean(selectedChain)} onClose={() => setSelectedChainId(null)} maxWidth="md" fullWidth PaperProps={{ sx: { borderRadius: 1 } }}>
+        {selectedChain && (
+          <>
+            <DialogTitle sx={{ pb: 1 }}>
+              <Typography sx={{ fontSize: 20, fontWeight: 950 }}>{selectedChain.title}</Typography>
+              <Typography sx={{ mt: 0.4, color: 'text.secondary', fontSize: 13 }}>{selectedChain.detects}</Typography>
+            </DialogTitle>
+            <DialogContent dividers sx={{ display: 'grid', gap: 1 }}>
+              {selectedChain.probes.map((probe, index) => (
+                <Box key={`${selectedChain.id}-${index}`} sx={{ borderRadius: 1, border: `1px solid ${alpha(BRAND, 0.16)}`, bgcolor: alpha(BRAND, 0.045), p: 1.2 }}>
+                  <Typography sx={{ color: BRAND, fontSize: 12, fontWeight: 950 }}>Probe {index + 1}</Typography>
+                  <Typography sx={{ mt: 0.4, fontSize: 14, fontWeight: 900 }}>{String(probe.verb)} / {String(probe.toolName)}</Typography>
+                  <Typography sx={{ mt: 0.35, color: 'text.secondary', fontSize: 12.5, overflowWrap: 'anywhere' }}>
+                    {String((probe as Record<string, unknown>).target || (probe as Record<string, unknown>).dataClass || (probe as Record<string, unknown>).dataDirection || 'policy signal')}
+                  </Typography>
+                </Box>
+              ))}
+            </DialogContent>
+            <DialogActions sx={{ px: 2, py: 1.25 }}>
+              <Button onClick={() => setSelectedChainId(null)} sx={{ fontWeight: 850 }}>關閉</Button>
+            </DialogActions>
+          </>
+        )}
+      </Dialog>
     </>
   )
 }
 
-function AttackMetric({ title, value, helper, tone, icon }: { title: string; value: React.ReactNode; helper: string; tone: string; icon: React.ReactNode }) {
+function AttackMetric({ title, value, helper, tone, icon }: { title: string; value: ReactNode; helper: string; tone: string; icon: ReactNode }) {
   return (
     <Box sx={{ minWidth: 0, borderRadius: 1, border: `1px solid ${alpha(tone, 0.18)}`, borderLeft: `3px solid ${alpha(tone, 0.82)}`, bgcolor: alpha(tone, 0.045), px: 1, py: 0.75, display: 'grid', gridTemplateColumns: '20px minmax(0, 1fr) auto', alignItems: 'center', gap: 0.7 }}>
-      <Box sx={{ color: tone, display: 'grid', placeItems: 'center' }}>
-        {icon}
-      </Box>
+      <Box sx={{ color: tone, display: 'grid', placeItems: 'center' }}>{icon}</Box>
       <Box sx={{ minWidth: 0 }}>
         <Typography sx={{ minWidth: 0, color: 'text.secondary', fontSize: 10, fontWeight: 950, textTransform: 'uppercase', letterSpacing: 0.3, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
           {title}
@@ -324,7 +368,7 @@ function AttackMetric({ title, value, helper, tone, icon }: { title: string; val
   )
 }
 
-function SectionHead({ icon, title, badge, tone }: { icon: React.ReactNode; title: string; badge: string; tone: string }) {
+function SectionHead({ icon, title, badge, tone }: { icon: ReactNode; title: string; badge: string; tone: string }) {
   return (
     <Box sx={{ flexShrink: 0, px: 1.2, py: 0.95, borderBottom: `1px solid ${alpha('#334155', 0.13)}`, display: 'flex', alignItems: 'center', gap: 0.75 }}>
       <Box sx={{ color: tone, display: 'grid', placeItems: 'center' }}>{icon}</Box>
@@ -337,9 +381,9 @@ function SectionHead({ icon, title, badge, tone }: { icon: React.ReactNode; titl
 function AttackChainRow({ chain, index, onOpen }: { chain: typeof CHAINS[number]; index: number; onOpen: () => void }) {
   const tone = String(chain.severity).includes('deny') ? colors.semantic.danger : colors.semantic.warning
   const summaries = [
-    '敏感資料讀取後外傳',
-    '偵察後進行外部變更',
-    '正式環境副作用需核准',
+    '讀取敏感資料後外傳',
+    '偵察外部目標後修改',
+    '生產環境副作用',
   ]
   return (
     <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', md: '34px minmax(0, 1.16fr) minmax(0, 0.8fr) 168px' }, gap: 0.8, alignItems: 'center', borderRadius: 1, border: `1px solid ${alpha(tone, 0.18)}`, borderLeft: `3px solid ${alpha(tone, 0.82)}`, bgcolor: alpha(tone, 0.042), px: 1, py: 0.72 }}>
@@ -354,9 +398,76 @@ function AttackChainRow({ chain, index, onOpen }: { chain: typeof CHAINS[number]
       <Box sx={{ justifySelf: { md: 'end' }, display: 'flex', alignItems: 'center', gap: 0.6 }}>
         <Chip size="small" label={chain.severity} sx={{ height: 24, color: tone, bgcolor: alpha(tone, 0.1), border: `1px solid ${alpha(tone, 0.2)}`, fontWeight: 850 }} />
         <Button size="small" onClick={onOpen} sx={{ height: 26, minWidth: 54, borderRadius: 1, fontWeight: 850, color: BRAND, bgcolor: alpha(BRAND, 0.08), border: `1px solid ${alpha(BRAND, 0.16)}` }}>
-          詳情
+          細節
         </Button>
       </Box>
+    </Box>
+  )
+}
+
+function LivePanel({
+  loading,
+  configured,
+  liveDecisions,
+  liveBlocked,
+  sensitiveEgress,
+  enforceWouldBlock,
+  mode,
+  overviewError,
+  egressError,
+  simulateError,
+}: {
+  loading: boolean
+  configured: boolean
+  liveDecisions: number
+  liveBlocked: number
+  sensitiveEgress: number
+  enforceWouldBlock: number
+  mode: string
+  overviewError: boolean
+  egressError: boolean
+  simulateError: boolean
+}) {
+  const hasError = overviewError || egressError || simulateError
+  return (
+    <Box sx={{ borderRadius: 1, border: `1px solid ${alpha(CYAN, 0.18)}`, bgcolor: alpha(CYAN, 0.035), p: 1.2, minHeight: 260 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <ShieldCheck size={18} color={configured ? colors.semantic.success : colors.semantic.warning} />
+        <Typography sx={{ fontSize: 17, fontWeight: 950 }}>後端資料狀態</Typography>
+        {loading && <CircularProgress size={16} sx={{ ml: 'auto' }} />}
+      </Box>
+      <Typography sx={{ mt: 0.55, color: 'text.secondary', fontSize: 13, lineHeight: 1.5 }}>
+        {hasError
+          ? '有 API 回傳錯誤，這頁不能宣稱已具備真實測試結果。'
+          : configured
+            ? '已讀到後端 Agent Firewall 資料，下面數字來自 API。'
+            : '目前沒有 runtime ingest，因此管理頁只能呈現測試藍圖與接線狀態。'}
+      </Typography>
+      <Box sx={{ mt: 1.15, display: 'grid', gridTemplateColumns: { xs: '1fr', md: 'repeat(2, minmax(0, 1fr))' }, gap: 0.8 }}>
+        <DecisionCard title="Policy mode" detail={mode} tone={isBlockingMode(mode) ? colors.semantic.success : colors.semantic.warning} />
+        <DecisionCard title="Live decisions" detail={`${liveDecisions} events / ${liveBlocked} blocked`} tone={liveBlocked > 0 ? colors.semantic.danger : CYAN} />
+        <DecisionCard title="Sensitive egress" detail={`${sensitiveEgress} outbound`} tone={sensitiveEgress > 0 ? colors.semantic.danger : colors.semantic.success} />
+        <DecisionCard title="Enforce preview" detail={`${enforceWouldBlock} would block`} tone={enforceWouldBlock > 0 ? colors.semantic.danger : colors.semantic.success} />
+      </Box>
+    </Box>
+  )
+}
+
+function DecisionCard({ title, detail, tone }: { title: string; detail: string; tone: string }) {
+  return (
+    <Box sx={{ borderRadius: 1, border: `1px solid ${alpha(tone, 0.18)}`, bgcolor: alpha(tone, 0.045), p: 1, minWidth: 0 }}>
+      <Typography sx={{ fontSize: 12, fontWeight: 950, color: tone }}>{title}</Typography>
+      <Typography sx={{ mt: 0.35, color: 'text.primary', fontSize: 14, lineHeight: 1.35, fontWeight: 850, overflowWrap: 'anywhere' }}>{detail}</Typography>
+    </Box>
+  )
+}
+
+function ApiStatusCard({ title, value, detail, tone }: { title: string; value: string; detail: string; tone: string }) {
+  return (
+    <Box sx={{ borderRadius: 1, border: `1px solid ${alpha(tone, 0.18)}`, bgcolor: alpha(tone, 0.035), p: 1.1, minWidth: 0 }}>
+      <Typography sx={{ color: tone, fontSize: 12, fontWeight: 950, textTransform: 'uppercase', letterSpacing: 0.2 }}>{title}</Typography>
+      <Typography sx={{ mt: 0.4, fontSize: 22, fontWeight: 950, lineHeight: 1 }}>{value}</Typography>
+      <Typography sx={{ mt: 0.45, color: 'text.secondary', fontSize: 11.5, overflowWrap: 'anywhere' }}>{detail}</Typography>
     </Box>
   )
 }

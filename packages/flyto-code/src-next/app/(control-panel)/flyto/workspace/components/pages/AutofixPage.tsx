@@ -1,4 +1,3 @@
-import Box from '@mui/material/Box';
 import { PageShell } from '@atoms/PageShell';
 import { WorkspaceRouteFallback } from '@atoms/WorkspaceRouteFallback';
 import { useParams } from 'react-router';
@@ -13,11 +12,7 @@ export default function AutofixPage() {
   return (
     <PageShell padded={false} scroll="host">
       <ModeView
-        manager={
-          <Box sx={{ height: '100%', overflow: 'auto' }}>
-            <AutofixManagerView orgId={orgId} />
-          </Box>
-        }
+        manager={<AutofixManagerView orgId={orgId} />}
         engineer={<AutofixView />}
       />
     </PageShell>

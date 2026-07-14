@@ -1,8 +1,8 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-09T06:02:31.626207+00:00",
-  "source_workspace": "C:\\Users\\aa090\\專案\\flytohub",
-  "source_manifest": "C:\\Users\\aa090\\專案\\flytohub\\flyto-engine\\release\\config\\flyto2\\open-core-manifest.json",
+  "generated_at": "2026-07-14T07:37:16.531454+00:00",
+  "source_workspace": "/Users/chester/flytohub",
+  "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
   "release": {
     "name": "flyto2-warroom-ce",
@@ -80,6 +80,7 @@
     ".github/workflows/ci.yml",
     ".env.example",
     "CHANGELOG.md",
+    "docs/README.md",
     "docs/autofix-whitepaper.md",
     "docs/benchmark-evidence.md",
     "docs/cloud-bundle-producer.md",
@@ -88,25 +89,27 @@
     "docs/feature-matrix.md",
     "docs/paid-prerequisites.md",
     "docs/public-roadmap.md",
-    "docs/README.md",
     "docs/release-readiness.md",
+    "install/README.md",
     "install/demo-workspace.json",
     "install/fixtures/cloud-bundle/bundle-template.yaml",
     "install/fixtures/cloud-bundle/recipes/flyto2-ui-login-smoke.yaml",
     "install/fixtures/cloud-bundle/recipes/flyto2-ui-smoke.yaml",
     "install/fixtures/cloud-bundle/recipes/warroom-deterministic-audit.yaml",
-    "install/README.md",
     "install/scripts/audit-docker-build-boundary.py",
     "install/scripts/build-cloud-bundle-fixture.py",
     "install/scripts/provider-readiness.py",
     "install/scripts/publish-multiarch-images.sh",
     "install/scripts/seed-demo-workspace.py",
+    "install/tests/__pycache__/test_cloud_bundle_fixture.cpython-311-pytest-9.1.0.pyc",
+    "install/tests/__pycache__/test_positioning_audit.cpython-311-pytest-9.1.0.pyc",
+    "install/tests/__pycache__/test_provider_readiness.cpython-311-pytest-9.1.0.pyc",
     "install/tests/test_cloud_bundle_fixture.py",
     "install/tests/test_positioning_audit.py",
     "install/tests/test_provider_readiness.py",
     "packages/README.md",
-    "scripts/audit-positioning.py",
-    "scripts/README.md"
+    "scripts/README.md",
+    "scripts/audit-positioning.py"
   ],
   "packages": [
     {
@@ -148,6 +151,19 @@
         "sdk/go/contracts/doc.go"
       ],
       "path": "packages/flyto-contracts"
+    },
+    {
+      "name": "flyto-engine-ce",
+      "repo": "flyto-engine",
+      "file_count": 42,
+      "generated_files": [
+        "README.md",
+        "go.mod",
+        "go.sum",
+        "LICENSE",
+        "SOURCE_BOUNDARY.json"
+      ],
+      "path": "services/flyto-engine-ce"
     }
   ],
   "closed_source_boundaries": [

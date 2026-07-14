@@ -20,6 +20,9 @@ accepted public changes back into the source repositories, rerun
   `flyto-engine/api/openapi.yaml`.
 - `packages/flyto-contracts/capabilities/capabilities.yaml` maps back to
   `flyto-engine/internal/permission/capabilities.yaml`.
+- `services/flyto-engine-ce/**` maps back to the same CE-safe
+  `flyto-engine/internal/...` kernel packages listed in
+  `services/flyto-engine-ce/SOURCE_BOUNDARY.json`.
 - `install/**`, root docs, and generated workflow files map back to the
   private Flyto2 open-core exporter maintained by the Flyto2 team.
 

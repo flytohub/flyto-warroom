@@ -830,11 +830,23 @@ export function RedTeamView() {
         <Box
           className={styles.crt}
           sx={{
-            borderLeft: { xs: 0, md: '1px solid' },
+            borderLeft: 0,
             borderTop: { xs: '1px solid', md: 0 },
             borderColor: 'var(--rt-hair)',
             display: 'flex', flexDirection: 'column', overflow: 'auto', minHeight: 0, position: 'relative',
             ['--rt-accent' as string]: centerAccent,
+            '&::before': {
+              content: '""',
+              display: { xs: 'none', md: 'block' },
+              position: 'absolute',
+              left: 0,
+              top: 14,
+              bottom: 14,
+              width: '1px',
+              background: 'linear-gradient(to bottom, transparent, color-mix(in srgb, var(--rt-ready) 20%, transparent) 18%, color-mix(in srgb, var(--rt-recon) 18%, transparent) 52%, color-mix(in srgb, var(--rt-ready) 14%, transparent) 84%, transparent)',
+              boxShadow: '0 0 12px color-mix(in srgb, var(--rt-recon) 10%, transparent)',
+              pointerEvents: 'none',
+            },
           }}
         >
           <Box className={`${styles.aboveDecoration} ${styles.panelHeader}`} sx={{ display: 'flex', alignItems: 'center', gap: 1, px: 2, py: 1.5, borderBottom: '1px solid', borderColor: 'var(--rt-hair)' }}>
@@ -1084,13 +1096,26 @@ export function RedTeamView() {
 
         {/* ════ Col 3 — ATTACK LOG + AI (right rail) ════ */}
         <Box sx={{
-          borderLeft: { xs: 0, md: '1px solid' },
+          borderLeft: 0,
           borderTop: { xs: '1px solid', md: 0 },
           borderColor: 'var(--rt-hair)',
           display: 'flex',
           flexDirection: 'column',
           minHeight: 0,
           overflow: 'auto',
+          position: 'relative',
+          '&::before': {
+            content: '""',
+            display: { xs: 'none', md: 'block' },
+            position: 'absolute',
+            left: 0,
+            top: 14,
+            bottom: 14,
+            width: '1px',
+            background: 'linear-gradient(to bottom, transparent, color-mix(in srgb, var(--rt-ready) 16%, transparent) 18%, color-mix(in srgb, var(--rt-recon) 14%, transparent) 52%, color-mix(in srgb, var(--rt-ready) 12%, transparent) 84%, transparent)',
+            boxShadow: '0 0 10px color-mix(in srgb, var(--rt-recon) 8%, transparent)',
+            pointerEvents: 'none',
+          },
         }}>
           <LogPane log={log} empty={empty} loading={!!active?.loading && !empty} cmdHost={targetHost} round={round} />
           <Box sx={{ borderTop: '1px solid', borderColor: 'var(--rt-hair)' }}>

@@ -1,0 +1,79 @@
+{
+  "blocked": {
+    "path_patterns": [
+      "api/handlers_*",
+      "cmd/**",
+      "internal/ai/**",
+      "internal/billing/**",
+      "internal/cloudscan/**",
+      "internal/containerlive/**",
+      "internal/ghauth/**",
+      "internal/githubapp/**",
+      "internal/license/**",
+      "internal/offlinelicense/**",
+      "internal/saas/**",
+      "internal/saml/**",
+      "internal/stealerlogs/**",
+      "internal/store/**",
+      "internal/threatfeed/**",
+      "internal/threatintel/**",
+      "release/**"
+    ],
+    "private_boundaries": [
+      "billing, entitlement mutation, commercial gates, and Stripe/offline-license adapters",
+      "enterprise SSO/SAML/SCIM, legal hold, airgap installers, deployment edition internals",
+      "darkweb, stealer-log, phishing-feed, commercial threat-intel, and proprietary correlation datasets",
+      "cloud/container/runtime live remediation orchestration and customer connector credentials",
+      "Flyto Cloud Enterprise Bridge services, entitlement signer, managed job execution plane, and hosted SaaS control plane",
+      "AutoFix promotion, approval, rollback orchestration, and commercial AI proposal workflows",
+      "hosted SaaS-only frontend configuration, private preview credentials, and enterprise image publishing metadata"
+    ]
+  },
+  "ce_source_paths": [
+    {
+      "path": "internal/canon/**",
+      "reason": "Canonical URL/domain helpers; no customer data, provider credentials, store, SaaS, billing, or enterprise imports.",
+      "validation": "go test ./internal/canon"
+    },
+    {
+      "path": "internal/errx/**",
+      "reason": "Typed API error envelopes shared by public clients and integrations.",
+      "validation": "go test ./internal/errx"
+    },
+    {
+      "path": "internal/modulecatalog/**",
+      "reason": "Public module/page/capability catalog data and parser used by CE docs and UI composition.",
+      "validation": "go test ./internal/modulecatalog"
+    },
+    {
+      "path": "internal/permission/**",
+      "reason": "Capability, edition, and action-gate kernel. Provider-specific entitlement mutation remains private.",
+      "validation": "go test ./internal/permission"
+    },
+    {
+      "path": "internal/resource/**",
+      "reason": "Resource normalization and graph primitives used to merge code, cloud, container, runtime, and external surfaces.",
+      "validation": "go test ./internal/resource"
+    },
+    {
+      "path": "internal/safehttp/**",
+      "reason": "SSRF-safe HTTP client primitives for community scanners and connectors.",
+      "validation": "go test ./internal/safehttp"
+    },
+    {
+      "path": "internal/severity/**",
+      "reason": "Shared severity normalization helpers.",
+      "validation": "go test ./internal/severity"
+    },
+    {
+      "path": "internal/osvutil/**",
+      "reason": "Version parsing helpers used by public vulnerability contracts.",
+      "validation": "go test ./internal/osvutil"
+    }
+  ],
+  "export_mode": "ce_kernel_source_and_images",
+  "merge_rule": "Change private source first, rerun exporter, review generated delta.",
+  "public_package": "services/flyto-engine-ce",
+  "schema": "flyto.engine-ce-source-boundary.v1",
+  "source_repo": "flyto-engine"
+}

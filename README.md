@@ -80,6 +80,7 @@ Default local ports:
 ```mermaid
 flowchart LR
   UI["flyto-code<br/>Warroom cockpit"] --> API["CE engine image<br/>public contracts"]
+  API --> KERNEL["services/flyto-engine-ce<br/>kernel source"]
   API --> DB[("Postgres")]
   API --> Runner["runner-ce"]
   API --> Verify["verification-ce"]
@@ -92,8 +93,10 @@ flowchart LR
 ```
 
 The public repository is generated from allowlisted packages and contracts.
-Private Go `cmd/**`, `internal/**`, commercial datasets, billing, customer
-connector credentials, and live remediation workers are not exported.
+Only the classified CE kernel under `services/flyto-engine-ce/internal/...`
+is source-published. Private Go `cmd/**`, handlers, store internals,
+commercial datasets, billing, customer connector credentials, SaaS and
+enterprise adapters, and live remediation workers are not exported.
 
 ## Components
 
@@ -101,6 +104,7 @@ connector credentials, and live remediation workers are not exported.
 | --- | --- | ---: | --- |
 | `flyto-code` | `flyto-code` | 1599 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 21 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
+| `flyto-engine-ce` | `flyto-engine` | 42 | Classified CE backend kernel source for capability, resource, and safety primitives. |
 
 ## Docker Images
 

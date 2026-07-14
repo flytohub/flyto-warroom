@@ -146,7 +146,7 @@ export function ArchOverview({ data, repoNameMap }: { data: OrgWarRoomData; repo
 
           {/* Grade + Language — stacked (languages can be many) */}
           {aggregate && (
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, flex: 1, minHeight: 0 }}>
               {/* Grade distribution — compact inline bar */}
               {Object.keys(aggregate.grade_distribution ?? {}).length > 0 && (
                 <JellyCard delay={0.36} noHover>
@@ -199,19 +199,24 @@ export function ArchOverview({ data, repoNameMap }: { data: OrgWarRoomData; repo
                   Now the Paper auto-sizes; only the inner Box has
                   the maxHeight + overflow-auto so long lists scroll
                   inside their natural ceiling. */}
-              <JellyCard delay={0.40}>
+              <JellyCard delay={0.40} noHover style={{ flex: 1, minHeight: 0, display: 'flex', width: '100%' }}>
               <Paper
                 elevation={0}
                 className="rounded-xl"
                 sx={{
                   bgcolor: 'background.paper', border: 1, borderColor: 'divider',
                   overflow: 'hidden',
+                  minHeight: 0,
+                  height: '100%',
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
                 }}
               >
-                <Typography variant="subtitle2" color="text.primary" sx={{ px: 3, pt: 2, pb: 1 }}>
+                <Typography variant="subtitle2" color="text.primary" sx={{ px: 3, pt: 2, pb: 1, flexShrink: 0 }}>
                   {t('warroom.archLangDist')}
                 </Typography>
-                <Box sx={{ maxHeight: 220, overflowY: 'auto', px: 3, pb: 2 }}>
+                <Box sx={{ flex: 1, minHeight: 0, overflowY: 'auto', px: 3, pb: 2 }}>
                   <LanguageGrid dist={aggregate.language_distribution} />
                 </Box>
               </Paper>

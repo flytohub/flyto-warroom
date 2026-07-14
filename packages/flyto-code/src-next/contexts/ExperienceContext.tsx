@@ -80,7 +80,7 @@ const ExperienceContext = createContext<ExperienceContextValue | null>(null)
 export function ExperienceProvider({ children }: { children: ReactNode }) {
   const { orgId } = useParams<{ orgId: string }>()
   const location = useLocation()
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [, setSearchParams] = useSearchParams()
   const cap = useCapabilities(orgId)
   const projectCap = useProjectCapabilities(orgId)
   const base = orgId ? `/projects/${orgId}` : ''
@@ -99,16 +99,20 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
   // Initial mode from the two explicit (sticky) sources. We seed state
   // synchronously so the very first render already has the right mode
   // when the user picked one before; role-default fills in later.
-  const urlMode = searchParams.get('mode')
+  const urlMode = useMemo<ExperienceMode | null>(() => {
+    const params = new URLSearchParams(location.search)
+    const value = params.get('mode')
+    return isMode(value) ? value : null
+  }, [location.search])
   const [mode, setModeState] = useState<ExperienceMode>(() => {
-    if (isMode(urlMode)) return urlMode
+    if (urlMode) return urlMode
     return readStored() ?? 'manager'
   })
 
   // Track whether the user (or URL/storage) has made an explicit
   // choice. If not, we let the role-default win once it resolves.
   const [explicit, setExplicit] = useState<boolean>(
-    () => isMode(urlMode) || readStored() != null,
+    () => urlMode != null || readStored() != null,
   )
 
   // Apply role-default once capabilities resolve, but never override an
@@ -123,24 +127,31 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
   // routes that actually expose a manager/engineer switch.
   useEffect(() => {
     if (!routeSupportsDualMode) return
-    if (isMode(urlMode) && urlMode !== mode) {
-      setModeState(urlMode)
-      setExplicit(true)
+    if (!urlMode) return
+    setExplicit(true)
+    setModeState((current) => (current === urlMode ? current : urlMode))
+    try {
+      localStorage.setItem(STORAGE_KEY, urlMode)
+    } catch {
+      /* private mode / storage disabled - non-fatal */
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [urlMode, routeSupportsDualMode])
 
   const setMode = useCallback(
     (m: ExperienceMode) => {
-      setModeState(m)
+      const nextMode = routeSupportsDualMode ? m : 'engineer'
+      setModeState(nextMode)
       setExplicit(true)
       try {
-        localStorage.setItem(STORAGE_KEY, m)
+        localStorage.setItem(STORAGE_KEY, nextMode)
       } catch {
         /* private mode / storage disabled — non-fatal */
       }
+      const next = new URLSearchParams(location.search)
+      next.set('mode', nextMode)
+      setSearchParams(next, { replace: true })
     },
-    [],
+    [routeSupportsDualMode, location.search, setSearchParams],
   )
 
   // Reflect the resolved mode into the URL query (replace, no nav) and
@@ -151,26 +162,38 @@ export function ExperienceProvider({ children }: { children: ReactNode }) {
   // showing a stale "?mode=manager" that the page cannot honor.
   useEffect(() => {
     if (!routeSupportsDualMode) {
-      if (searchParams.get('mode') !== 'engineer') {
-        const next = new URLSearchParams(searchParams)
+      if (mode !== 'engineer') setModeState('engineer')
+      setExplicit(true)
+      try {
+        localStorage.setItem(STORAGE_KEY, 'engineer')
+      } catch {
+        /* non-fatal */
+      }
+      if (urlMode !== 'engineer') {
+        const next = new URLSearchParams(location.search)
         next.set('mode', 'engineer')
         setSearchParams(next, { replace: true })
       }
       return
     }
 
+    // A route navigation may arrive with an explicit ?mode=engineer while
+    // the previous page still has manager in state for this render. Let the
+    // URL-to-state effect adopt the new URL first instead of writing the
+    // stale state back into the address bar.
+    if (urlMode && urlMode !== mode) return
+
     try {
       localStorage.setItem(STORAGE_KEY, mode)
     } catch {
       /* non-fatal */
     }
-    if (searchParams.get('mode') !== mode) {
-      const next = new URLSearchParams(searchParams)
+    if (urlMode !== mode) {
+      const next = new URLSearchParams(location.search)
       next.set('mode', mode)
       setSearchParams(next, { replace: true })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, routeSupportsDualMode, subPath])
+  }, [mode, routeSupportsDualMode, subPath, urlMode, location.search, setSearchParams])
 
   const effectiveMode: ExperienceMode = routeSupportsDualMode ? mode : 'engineer'
 

@@ -122,7 +122,8 @@ export function AgentFirewallManagerSurface({
       sx={{
         height: '100%',
         minHeight: 0,
-        overflow: 'hidden',
+        overflowY: 'auto',
+        overflowX: 'hidden',
         p: { xs: 2, md: 3 },
         display: 'flex',
         flexDirection: 'column',
@@ -248,9 +249,8 @@ export function AgentFirewallManagerSurface({
 
       <Box
         sx={{
-          minHeight: 0,
-          overflowY: 'auto',
-          overflowX: 'hidden',
+          flexShrink: 0,
+          overflow: 'visible',
           display: 'flex',
           flexDirection: 'column',
           gap: 1.25,

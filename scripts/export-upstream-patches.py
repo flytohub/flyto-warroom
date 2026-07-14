@@ -10,6 +10,7 @@ import subprocess
 
 PACKAGE_PATCHES = {
     "packages/flyto-code": "flyto-code",
+    "services/flyto-engine-ce": "flyto-engine",
 }
 
 GENERATED_REVIEW_PREFIXES = (

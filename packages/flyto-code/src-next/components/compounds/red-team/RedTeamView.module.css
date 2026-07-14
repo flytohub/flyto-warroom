@@ -78,6 +78,7 @@
 :global(body.light) .root,
 :global([data-mui-color-scheme='light']) .root,
 :global([data-mantine-color-scheme='light']) .root {
+  --rt-hair: color-mix(in srgb, var(--rt-ready) 10%, transparent);
   --rt-line-pct: 4%;
   --rt-scanline-pct: 2.5%;
   --rt-crt-pct: 6%;

@@ -1,87 +1,116 @@
 /**
- * AttackPathsManagerView — manager lens for the attacker's-eye view.
+ * Manager view for attack-path candidates.
  *
- * Converts the same attack-path candidate feed the engineer table reads
- * into an executive risk picture: how many credible initial-access
- * hypotheses exist, how many are high-confidence, how many the red team
- * can validate right now, and where exposure concentrates by category.
- *
- * Every number comes from GET /orgs/{id}/attack-paths (full feed at
- * minConfidence=low). No fabricated metrics — empty states fall through
- * to the primitives' em-dash / placeholder rendering.
- *
- * Foundation rule: engine client functions imported by DIRECT FILE PATH.
+ * This page intentionally avoids the generic manager dashboard shell:
+ * attack paths need a command-board hierarchy where the primary route,
+ * validation queue, and go/no-go decision are visible at once.
  */
 import { useMemo } from 'react'
+import type { ReactElement, ReactNode } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
 import Chip from '@mui/material/Chip'
+import Divider from '@mui/material/Divider'
+import LinearProgress from '@mui/material/LinearProgress'
+import Skeleton from '@mui/material/Skeleton'
+import Typography from '@mui/material/Typography'
 import { alpha, useTheme } from '@mui/material/styles'
-import { Activity, Crosshair, Flame, GitBranch, Radar, ShieldCheck, Target } from 'lucide-react'
+import {
+  Activity,
+  ArrowUpRight,
+  Crosshair,
+  Flame,
+  GitBranch,
+  Radar,
+  RefreshCw,
+  ShieldCheck,
+  Target,
+} from 'lucide-react'
 
 import {
-  ManagerDashboard, ChartCard, KpiCard, DonutChart, BubbleChart,
-  ManagerActionList,
-  type DonutDatum,
-} from '@compounds/_shared'
-import {
-  getAttackPaths, type AttackPathCandidate, type AttackPathCategory, type AttackPathSignalsSummary,
+  getAttackPaths,
+  type AttackPathCandidate,
+  type AttackPathCategory,
+  type AttackPathEvidenceSource,
+  type AttackPathSignalsSummary,
 } from '@lib/engine/code/attackPaths'
 import { useOrg } from '@hooks/useOrg'
 import { qk } from '@lib/queryKeys'
-import { t } from '@lib/i18n';
+import { useExperience } from '@/contexts/ExperienceContext'
 import { colors } from '@/styles/designTokens'
 
 const ACCENT = colors.section.exposure
-const ATTACK = colors.semantic.danger
+const DANGER = colors.semantic.danger
+const WARNING = colors.semantic.warning
+const SUCCESS = colors.semantic.success
+const TECH = colors.tech
+
+const CATEGORY_LABEL: Record<AttackPathCategory, string> = {
+  initial_access: '初始入侵',
+  web_app: 'Web 入口',
+  information_exposure: '資訊外洩',
+  email_spoofing: '郵件偽冒',
+  supply_chain: '供應鏈',
+}
+
+const EVIDENCE_SOURCE_LABEL: Record<AttackPathEvidenceSource, string> = {
+  attack_surface: '攻擊面',
+  dns_security: 'DNS',
+  code_alert: '程式碼告警',
+  repo_pr_cache: '開放 PR',
+  github_exposure: 'GitHub 曝露',
+  breach_exposure: '外洩資料',
+  threat_intel: '威脅情資',
+  external_issue_tracker: '外部議題',
+  freshness: '新鮮度',
+  social_intel: '社群情資',
+}
+
+type SeverityTone = 'critical' | 'high' | 'medium' | 'low'
 
 interface AttackPathStats {
+  total: number
   high: number
   medium: number
   low: number
   validatable: number
   whyNow: number
-  byCategory: Record<string, number>
+  categories: Array<{ label: string; value: number; tone: string }>
 }
 
-interface KillChainSummary {
-  src: string
-  asset: string
-  impact: string
-  assetExtra: number
+function number(value: number | null | undefined): string {
+  if (value == null || Number.isNaN(value)) return '--'
+  return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(value)
 }
 
-const EVIDENCE_SOURCE_LABEL: Record<string, string> = {
-  attack_surface: 'Attack surface',
-  dns_security: 'DNS security',
-  code_alert: 'Code alert',
-  repo_pr_cache: 'Open PR',
-  github_exposure: 'GitHub exposure',
-  breach_exposure: 'Breach leak',
-  threat_intel: 'Threat intel',
-  external_issue_tracker: 'Tracked issue',
+function severity(candidate: AttackPathCandidate): SeverityTone {
+  if (candidate.confidence === 'high') return 'critical'
+  if (candidate.confidence === 'medium') return 'high'
+  if (candidate.validation_readiness === 'high') return 'medium'
+  return 'low'
 }
 
-const CATEGORY_LABEL: Record<AttackPathCategory, string> = {
-  initial_access: 'Initial Access',
-  web_app: 'Web Portal',
-  information_exposure: 'Public Exposure',
-  email_spoofing: 'Email Spoofing',
-  supply_chain: 'Supply Chain',
+function severityTone(tone: SeverityTone): string {
+  if (tone === 'critical') return DANGER
+  if (tone === 'high') return WARNING
+  if (tone === 'medium') return ACCENT
+  return SUCCESS
 }
 
-function confidenceSeverity(c: AttackPathCandidate): 'critical' | 'high' | 'medium' | 'low' {
-  if (c.confidence === 'high') return 'critical'
-  if (c.confidence === 'medium') return 'high'
-  return 'medium'
+function scoreCandidate(candidate: AttackPathCandidate): number {
+  return candidate.confidence_score
+    + candidate.validation_readiness_score
+    + (candidate.why_now?.length ?? 0) * 8
+    + candidate.red_team_validation.length * 4
 }
 
 export function AttackPathsManagerView() {
   const { org } = useOrg()
+  const { setMode } = useExperience()
   const orgId = org?.id
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isFetching, refetch } = useQuery({
     queryKey: qk.ctem.attackPathsManager(orgId),
     queryFn: () => getAttackPaths(orgId!, { limit: 100, minConfidence: 'low', sort: 'confidence' }),
     enabled: !!orgId,
@@ -91,425 +120,592 @@ export function AttackPathsManagerView() {
   const candidates = useMemo(() => data?.candidates ?? [], [data])
   const summary = data?.signals_summary
 
+  const ranked = useMemo(
+    () => [...candidates].sort((a, b) => scoreCandidate(b) - scoreCandidate(a)),
+    [candidates],
+  )
+  const top = ranked[0]
+
   const stats: AttackPathStats = useMemo(() => {
-    let high = 0, medium = 0, low = 0
+    const byCategory = new Map<AttackPathCategory, number>()
+    let high = 0
+    let medium = 0
+    let low = 0
     let validatable = 0
     let whyNow = 0
-    const byCategory: Record<string, number> = {}
-    candidates.forEach(c => {
-      if (c.confidence === 'high') high++
-      else if (c.confidence === 'medium') medium++
-      else low++
-      if (c.validation_readiness === 'high') validatable++
-      if (c.why_now && c.why_now.length > 0) whyNow++
-      byCategory[c.category] = (byCategory[c.category] ?? 0) + 1
-    })
-    return { high, medium, low, validatable, whyNow, byCategory }
-  }, [candidates])
 
-  const categoryDonut: DonutDatum[] = useMemo(() =>
-    Object.entries(stats.byCategory).map(([cat, n]) => ({
-      label: CATEGORY_LABEL[cat as AttackPathCategory] ?? cat,
-      value: n,
-    })),
-    [stats.byCategory],
-  )
-
-  // Exposure (x, 0-40) vs Correlation (y, 0-60), bubble size = overall
-  // confidence score. Severity colours the cloud by confidence band so
-  // a manager sees the "real & exposed" upper-right quadrant at a glance.
-  const bubbleSeries = useMemo(() => {
-    const bands: Record<'critical' | 'high' | 'medium' | 'low', { x: number; y: number; z: number }[]> = {
-      critical: [], high: [], medium: [], low: [],
+    for (const candidate of candidates) {
+      if (candidate.confidence === 'high') high += 1
+      else if (candidate.confidence === 'medium') medium += 1
+      else low += 1
+      if (candidate.validation_readiness === 'high') validatable += 1
+      if ((candidate.why_now?.length ?? 0) > 0) whyNow += 1
+      byCategory.set(candidate.category, (byCategory.get(candidate.category) ?? 0) + 1)
     }
-    candidates.forEach(c => {
-      bands[confidenceSeverity(c)].push({
-        x: c.exposure,
-        y: c.correlation,
-        z: Math.max(4, Math.round(c.confidence_score / 5)),
-      })
-    })
-    const out = []
-    if (bands.critical.length) out.push({ name: t('attackpath.manager.bubble.highConfidence'), data: bands.critical, severity: 'critical' as const })
-    if (bands.high.length) out.push({ name: t('autofix.confidenceMedium'), data: bands.high, severity: 'high' as const })
-    if (bands.medium.length) out.push({ name: t('autofix.confidenceLow'), data: bands.medium, severity: 'medium' as const })
-    return out
+
+    const palette = [DANGER, WARNING, ACCENT, TECH, SUCCESS]
+    return {
+      total: candidates.length,
+      high,
+      medium,
+      low,
+      validatable,
+      whyNow,
+      categories: Array.from(byCategory.entries()).map(([category, value], index) => ({
+        label: CATEGORY_LABEL[category],
+        value,
+        tone: palette[index % palette.length],
+      })),
+    }
   }, [candidates])
 
-  const hasData = candidates.length > 0
-
-  // Single ranked ordering shared by the hero (top path) and the queue.
-  const ranked = useMemo(() => {
-    const score = (candidate: AttackPathCandidate) =>
-      candidate.confidence_score +
-      candidate.validation_readiness_score +
-      (candidate.why_now?.length ?? 0) * 10
-    return [...candidates].sort((a, b) => score(b) - score(a))
-  }, [candidates])
-
-  // The 重點: the most-reachable path at the top of the queue, plus a
-  // source → asset → impact kill-chain derived from its own evidence,
-  // targets and category. No new data — all read off the candidate.
-  const top = ranked[0]
-  const killChain = useMemo(() => {
-    if (!top) return null
-    const src = top.evidence.length > 0
-      ? (EVIDENCE_SOURCE_LABEL[top.evidence[0].source] ?? top.evidence[0].source)
-      : t('attackpath.manager.killchain.recon')
-    const asset = top.targets.length > 0
-      ? top.targets[0].value
-      : '—'
-    const impact = CATEGORY_LABEL[top.category] ?? top.category
-    return { src, asset, impact, assetExtra: Math.max(0, top.targets.length - 1) }
-  }, [top])
-
-  const pathQueue = useMemo(() => {
-    return ranked
-      .slice(0, 6)
-      .map((candidate) => ({
-        id: candidate.id,
-        title: candidate.title,
-        subtitle: CATEGORY_LABEL[candidate.category] ?? candidate.category,
-        meta: `${candidate.targets.length} targets · ${candidate.evidence.length} evidence · ${candidate.red_team_validation.length} validation steps`,
-        value: `${Math.round(candidate.confidence_score)}`,
-        severity: confidenceSeverity(candidate),
-      }))
-  }, [ranked])
-
-  // Confidence badge colour band for the hero's headline value.
-  const topTone = top
-    ? (top.confidence === 'high'
-        ? ATTACK
-        : top.confidence === 'medium'
-          ? colors.semantic.warning
-          : colors.semantic.success)
-    : ACCENT
+  const topTone = top ? severityTone(severity(top)) : ACCENT
+  const source = top?.evidence[0]
+  const topSource = source ? EVIDENCE_SOURCE_LABEL[source.source] : '尚無來源'
+  const topAsset = top?.targets[0]?.value ?? '尚無目標'
+  const topImpact = top ? CATEGORY_LABEL[top.category] : '尚無影響面'
+  const gateLabel = stats.high > 0
+    ? '先驗證再放行'
+    : stats.total > 0
+      ? '可排入觀察'
+      : '等待訊號'
 
   return (
-    <ManagerDashboard
-      title={t('attackpath.manager.title')}
-      subtitle={t('attackpath.manager.subtitle')}
-      accent={ACCENT}
-      titleIcon={<Crosshair size={20} />}
-      layout="dashboard"
-      chartMinWidth={300}
-      hero={
-        <AttackPathCommandHero
-          top={top}
-          killChain={killChain}
-          stats={stats}
-          summary={summary}
-          topTone={topTone}
-          isLoading={isLoading}
-        />
-      }
-      kpis={
-        <>
-          <KpiCard
-            label={t('attackpath.title')}
-            value={isLoading ? null : candidates.length}
-            invertDelta
-            loading={isLoading}
-            empty={!isLoading && !hasData}
-            emptyHint="No candidates surfaced"
-            tone={ATTACK}
-            icon={<GitBranch size={15} />}
-          />
-          <KpiCard
-            label={t('attackpath.manager.kpiHighConfidence')}
-            value={isLoading ? null : stats.high}
-            invertDelta
-            loading={isLoading}
-            empty={!isLoading && !hasData}
-            tone={stats.high > 0 ? ATTACK : colors.semantic.success}
-            icon={<Flame size={15} />}
-          />
-          <KpiCard
-            label={t('attackpath.manager.kpiValidatableNow')}
-            value={isLoading ? null : stats.validatable}
-            unit={hasData ? `of ${candidates.length}` : undefined}
-            loading={isLoading}
-            tone={colors.semantic.success}
-            icon={<ShieldCheck size={15} />}
-          />
-          <KpiCard
-            label={t('attackpath.manager.kpiRecentSignals')}
-            value={isLoading ? null : (summary?.why_now_signals_last_30d ?? stats.whyNow)}
-            invertDelta
-            loading={isLoading}
-            tone={colors.tech}
-            icon={<Activity size={15} />}
-          />
-        </>
-      }
-      charts={
-        <>
-          <ChartCard title={t('attackpath.manager.chartExposureByCategory')}>
-            {categoryDonut.length > 0 ? (
-              <DonutChart data={categoryDonut} totalLabel="Paths" height={220} />
-            ) : (
-              <AttackPathEmptyChart text="尚未形成可信攻擊路徑" />
-            )}
-          </ChartCard>
-
-          <ChartCard title={t('hardcoded.exposure.correlation.1840d45e')}>
-            {bubbleSeries.length > 0 ? (
-              <BubbleChart
-                series={bubbleSeries}
-                xTitle="Exposure"
-                yTitle="Correlation"
-                xMax={40}
-                yMax={60}
-                height={220}
-              />
-            ) : (
-              <AttackPathEmptyChart text="偵察訊號尚未收斂成路徑群" />
-            )}
-          </ChartCard>
-        </>
-      }
-      workItems={
-        <ManagerActionList
-          title={t('attackpath.manager.validationQueueTitle')}
-          subtitle={t('attackpath.manager.validationQueueSubtitle')}
-          items={pathQueue}
-          emptyText="No attack paths need validation"
-          actionLabel="Validate"
-        />
-      }
-      narrative={
-        <Box>
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, mb: 0.5 }}>
-            Where an Attacker Would Start
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {!hasData
-              ? 'No attack-path hypotheses have surfaced yet. Run discovery scans or connect repositories to feed the signal collectors, then this view ranks the most credible initial-access routes.'
-              : `${candidates.length} initial-access hypothesis(es) converged from recon — ${stats.high} at high confidence, ${stats.validatable} ready for red-team validation today${summary ? `. Signal base: ${summary.external_assets} external assets, ${summary.leak_signals} leak signal(s), DMARC ${summary.dmarc_status || 'unknown'}.` : '.'} Switch to engineer mode for per-candidate evidence, red-team steps, and recon-mode restrictions.`}
-          </Typography>
-        </Box>
-      }
-    />
-  )
-}
-
-function AttackPathCommandHero({
-  top,
-  killChain,
-  stats,
-  summary,
-  topTone,
-  isLoading,
-}: {
-  top?: AttackPathCandidate
-  killChain: KillChainSummary | null
-  stats: AttackPathStats
-  summary?: AttackPathSignalsSummary
-  topTone: string
-  isLoading: boolean
-}) {
-  const theme = useTheme()
-  const dark = theme.palette.mode === 'dark'
-  const score = top ? Math.round(top.confidence_score) : 0
-  const readiness = top ? Math.round(top.validation_readiness_score) : 0
-  const source = killChain?.src ?? 'Recon pending'
-  const asset = killChain ? (killChain.assetExtra > 0 ? `${killChain.asset} +${killChain.assetExtra}` : killChain.asset) : 'No target'
-  const impact = killChain?.impact ?? 'No impact path'
-
-  return (
-    <Box sx={{
-      position: 'relative',
+    <Box sx={(theme) => ({
+      height: '100%',
+      minHeight: 0,
       overflow: 'hidden',
-      minHeight: { xs: 360, lg: 236 },
-      borderRadius: 1,
-      border: '1px solid',
-      borderColor: alpha(ACCENT, dark ? 0.42 : 0.28),
-      bgcolor: alpha(theme.palette.background.paper, dark ? 0.62 : 0.94),
-      backgroundImage: `
-        linear-gradient(90deg, ${alpha(ACCENT, dark ? 0.08 : 0.045)} 1px, transparent 1px),
-        linear-gradient(0deg, ${alpha(ACCENT, dark ? 0.07 : 0.04)} 1px, transparent 1px),
-        radial-gradient(circle at 18% 18%, ${alpha(topTone, dark ? 0.22 : 0.12)} 0%, transparent 31%),
-        radial-gradient(circle at 88% 12%, ${alpha(colors.tech, dark ? 0.16 : 0.08)} 0%, transparent 24%)
-      `,
-      backgroundSize: '38px 38px, 38px 38px, auto, auto',
-      p: { xs: 1.25, md: 1.5 },
       display: 'grid',
-      gap: 1.25,
-      gridTemplateColumns: {
-        xs: 'minmax(0, 1fr)',
-        lg: 'minmax(210px, 0.72fr) minmax(0, 1.45fr) minmax(210px, 0.78fr)',
-      },
-      alignItems: 'stretch',
-      '&::after': {
-        content: '""',
-        position: 'absolute',
-        inset: 0,
-        pointerEvents: 'none',
-        borderTop: `1px solid ${alpha(colors.tech, dark ? 0.32 : 0.18)}`,
-      },
-    }}>
-      <Box sx={{
-        position: 'relative',
-        zIndex: 1,
-        borderRadius: 1,
-        border: '1px solid',
-        borderColor: alpha(theme.palette.text.primary, dark ? 0.14 : 0.08),
-        bgcolor: alpha(theme.palette.background.paper, dark ? 0.54 : 0.72),
-        p: 1.25,
-        display: 'grid',
-        gridTemplateRows: '1fr auto',
-        gap: 1,
-        minWidth: 0,
-      }}>
-        <ConfidenceRadar score={score} readiness={readiness} tone={topTone} loading={isLoading} />
-        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 0.75 }}>
-          <CommandMetric label="高信心" value={isLoading ? '—' : stats.high} tone={ATTACK} />
-          <CommandMetric label="中/低" value={isLoading ? '—' : `${stats.medium}/${stats.low}`} tone={colors.semantic.warning} />
-        </Box>
-      </Box>
+      gridTemplateRows: 'auto minmax(0, 1fr)',
+      gap: 1.4,
+      p: { xs: 1.2, lg: 1.8 },
+      bgcolor: theme.palette.background.default,
+      backgroundImage: `
+        linear-gradient(90deg, ${alpha(ACCENT, 0.055)} 1px, transparent 1px),
+        linear-gradient(0deg, ${alpha(ACCENT, 0.045)} 1px, transparent 1px)
+      `,
+      backgroundSize: '32px 32px',
+    })}>
+      <CommandHeader
+        loading={isLoading}
+        fetching={isFetching}
+        stats={stats}
+        summary={summary}
+        onRefresh={() => { void refetch() }}
+        onEngineer={() => setMode('engineer')}
+      />
 
       <Box sx={{
-        position: 'relative',
-        zIndex: 1,
-        minWidth: 0,
-        borderRadius: 1,
-        border: '1px solid',
-        borderColor: alpha(ACCENT, dark ? 0.26 : 0.16),
-        bgcolor: alpha(theme.palette.background.paper, dark ? 0.42 : 0.66),
-        p: { xs: 1.25, md: 1.5 },
+        minHeight: 0,
         display: 'grid',
-        gridTemplateRows: 'auto minmax(0, 1fr) auto',
-        gap: 1.2,
+        gridTemplateColumns: { xs: 'minmax(0, 1fr)', md: 'minmax(0, 1.55fr) minmax(330px, 0.45fr)' },
+        gap: 1.4,
+        overflow: 'hidden',
       }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1, flexWrap: 'wrap' }}>
-          <Box sx={{ minWidth: 0 }}>
-            <Typography sx={{ fontSize: 12, fontWeight: 900, color: ATTACK, display: 'flex', alignItems: 'center', gap: 0.7 }}>
-              <Crosshair size={14} />
-              最可達初始存取路徑
-            </Typography>
-            <Typography sx={{
-              mt: 0.35,
-              fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
-              fontSize: { xs: 22, md: 28 },
-              fontWeight: 950,
-              lineHeight: 1.08,
-              letterSpacing: 0,
-              color: 'text.primary',
-              overflowWrap: 'anywhere',
-            }}>
-              {top ? top.title : '尚未形成可信攻擊路徑'}
-            </Typography>
-          </Box>
-          {top && (
-            <Chip
-              size="small"
-              label={top.validation_readiness === 'high' ? '今日可驗證' : `${top.validation_readiness} readiness`}
-              icon={<ShieldCheck size={13} />}
-              sx={{
-                height: 26,
-                borderRadius: 1,
-                fontWeight: 900,
-                color: top.validation_readiness === 'high' ? ATTACK : topTone,
-                bgcolor: alpha(top.validation_readiness === 'high' ? ATTACK : topTone, 0.12),
-                '& .MuiChip-icon': { color: 'inherit' },
-              }}
-            />
-          )}
+        <Box sx={{
+          minHeight: 0,
+          display: 'grid',
+          gridTemplateRows: 'minmax(184px, 0.48fr) minmax(0, 1.52fr)',
+          gap: 1.4,
+          overflow: 'hidden',
+        }}>
+          <RouteCommandPanel
+            loading={isLoading}
+            top={top}
+            topTone={topTone}
+            source={topSource}
+            asset={topAsset}
+            impact={topImpact}
+          />
+          <PathQueuePanel
+            loading={isLoading}
+            candidates={ranked}
+            onEngineer={() => setMode('engineer')}
+          />
         </Box>
 
         <Box sx={{
+          minHeight: 0,
           display: 'grid',
-          alignItems: 'center',
-          gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1fr) 38px minmax(0, 1.2fr) 38px minmax(0, 1fr)' },
-          gap: { xs: 0.8, md: 0.9 },
-          minWidth: 0,
+          gridTemplateRows: 'auto minmax(0, 1fr)',
+          gap: 1.4,
+          overflow: 'hidden',
         }}>
-          <RouteNode icon={<Radar size={16} />} label="來源" value={source} detail={top?.evidence[0]?.kind ?? 'signal'} tone={ACCENT} />
-          <RouteConnector />
-          <RouteNode icon={<Target size={16} />} label="資產" value={asset} detail={top ? `${top.targets.length} target${top.targets.length === 1 ? '' : 's'}` : 'pending'} tone={colors.tech} />
-          <RouteConnector />
-          <RouteNode icon={<Flame size={16} />} label="影響" value={impact} detail={top ? `${top.red_team_validation.length} steps` : 'pending'} tone={topTone} />
-        </Box>
-
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, minmax(0, 1fr))' }, gap: 0.8 }}>
-          <SignalMeter label="Exposure" value={top ? Math.round(top.exposure) : 0} max={40} tone={ATTACK} />
-          <SignalMeter label="Correlation" value={top ? Math.round(top.correlation) : 0} max={60} tone={colors.tech} />
-          <SignalMeter label="Readiness" value={readiness} max={100} tone={topTone} />
-        </Box>
-      </Box>
-
-      <Box sx={{
-        position: 'relative',
-        zIndex: 1,
-        minWidth: 0,
-        borderRadius: 1,
-        border: '1px solid',
-        borderColor: alpha(theme.palette.text.primary, dark ? 0.14 : 0.08),
-        bgcolor: alpha(theme.palette.background.paper, dark ? 0.54 : 0.72),
-        p: 1.25,
-        display: 'grid',
-        gridTemplateRows: 'auto minmax(0, 1fr)',
-        gap: 1,
-      }}>
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8 }}>
-          <Activity size={15} color={colors.tech} />
-          <Typography sx={{ fontSize: 13, fontWeight: 950 }}>
-            指揮訊號
-          </Typography>
-        </Box>
-        <Box sx={{ display: 'grid', gap: 0.75, alignContent: 'start' }}>
-          <CommandMetric label="路徑總數" value={isLoading ? '—' : stats.high + stats.medium + stats.low} tone={ATTACK} detail="candidate feed" />
-          <CommandMetric label="可驗證" value={isLoading ? '—' : `${stats.validatable}/${stats.high + stats.medium + stats.low}`} tone={colors.semantic.success} detail="red-team ready" />
-          <CommandMetric label="30 天訊號" value={isLoading ? '—' : (summary?.why_now_signals_last_30d ?? stats.whyNow)} tone={colors.tech} detail={summary ? `${summary.external_assets} assets / ${summary.leak_signals} leaks` : 'signal base'} />
+          <DecisionPanel
+            loading={isLoading}
+            top={top}
+            stats={stats}
+            summary={summary}
+            gateLabel={gateLabel}
+            topTone={topTone}
+          />
+          <SignalPanel loading={isLoading} stats={stats} summary={summary} />
         </Box>
       </Box>
     </Box>
   )
 }
 
-function ConfidenceRadar({
-  score,
-  readiness,
-  tone,
+function CommandHeader({
   loading,
+  fetching,
+  stats,
+  summary,
+  onRefresh,
+  onEngineer,
 }: {
-  score: number
-  readiness: number
-  tone: string
   loading: boolean
+  fetching: boolean
+  stats: AttackPathStats
+  summary?: AttackPathSignalsSummary
+  onRefresh: () => void
+  onEngineer: () => void
 }) {
   const theme = useTheme()
-  const dark = theme.palette.mode === 'dark'
-  const radius = 48
+  return (
+    <Box sx={{
+      borderRadius: 1.1,
+      border: `1px solid ${alpha(ACCENT, 0.28)}`,
+      bgcolor: alpha(theme.palette.background.paper, 0.94),
+      px: { xs: 1.25, md: 1.6 },
+      py: 1.25,
+      display: 'grid',
+      gridTemplateColumns: { xs: '1fr', lg: 'auto minmax(0, 1fr) auto' },
+      gap: 1.2,
+      alignItems: 'center',
+      boxShadow: `0 18px 48px ${alpha(ACCENT, 0.08)}`,
+    }}>
+      <Box sx={{
+        width: 48,
+        height: 48,
+        borderRadius: 1.1,
+        display: 'grid',
+        placeItems: 'center',
+        color: ACCENT,
+        bgcolor: alpha(ACCENT, 0.11),
+        border: `1px solid ${alpha(ACCENT, 0.25)}`,
+      }}>
+        <Crosshair size={23} />
+      </Box>
+
+      <Box sx={{ minWidth: 0 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.8, flexWrap: 'wrap' }}>
+          <Typography sx={{ fontSize: { xs: 26, lg: 32 }, lineHeight: 1, fontWeight: 950, letterSpacing: 0 }}>
+            攻擊路徑指揮台
+          </Typography>
+          <Chip
+            size="small"
+            label={stats.high > 0 ? '需要驗證' : '監控中'}
+            sx={{
+              height: 25,
+              borderRadius: 0.8,
+              fontWeight: 900,
+              color: stats.high > 0 ? DANGER : SUCCESS,
+              bgcolor: alpha(stats.high > 0 ? DANGER : SUCCESS, 0.12),
+              border: `1px solid ${alpha(stats.high > 0 ? DANGER : SUCCESS, 0.22)}`,
+            }}
+          />
+        </Box>
+        <Typography sx={{ mt: 0.55, color: 'text.secondary', fontWeight: 650 }}>
+          從攻擊面、程式碼告警、外洩與情資訊號，排序最可信的初始入侵假設。
+        </Typography>
+      </Box>
+
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'flex-start', lg: 'flex-end' }, gap: 0.8, flexWrap: 'wrap' }}>
+        <HeaderPill icon={<GitBranch size={14} />} label={`${loading ? '--' : number(stats.total)} 路徑`} tone={ACCENT} />
+        <HeaderPill icon={<Flame size={14} />} label={`${loading ? '--' : number(stats.high)} 高可信`} tone={DANGER} />
+        <HeaderPill icon={<Activity size={14} />} label={`${loading ? '--' : number(summary?.why_now_signals_last_30d ?? stats.whyNow)} 近期訊號`} tone={TECH} />
+        <Button
+          size="small"
+          variant="outlined"
+          startIcon={<RefreshCw size={15} />}
+          onClick={onRefresh}
+          disabled={fetching}
+          sx={{ borderRadius: 1, minHeight: 34, fontWeight: 900 }}
+        >
+          重新整理
+        </Button>
+        <Button
+          size="small"
+          variant="contained"
+          endIcon={<ArrowUpRight size={15} />}
+          onClick={onEngineer}
+          sx={{ borderRadius: 1, minHeight: 34, fontWeight: 900 }}
+        >
+          工程檢視
+        </Button>
+      </Box>
+    </Box>
+  )
+}
+
+function HeaderPill({ icon, label, tone }: { icon: ReactElement; label: string; tone: string }) {
+  return (
+    <Chip
+      size="small"
+      icon={icon}
+      label={label}
+      sx={{
+        height: 34,
+        borderRadius: 1,
+        fontWeight: 900,
+        color: tone,
+        bgcolor: alpha(tone, 0.1),
+        border: `1px solid ${alpha(tone, 0.24)}`,
+        '& .MuiChip-icon': { color: 'inherit' },
+      }}
+    />
+  )
+}
+
+function RouteCommandPanel({
+  loading,
+  top,
+  topTone,
+  source,
+  asset,
+  impact,
+}: {
+  loading: boolean
+  top?: AttackPathCandidate
+  topTone: string
+  source: string
+  asset: string
+  impact: string
+}) {
+  const score = Math.round(top?.confidence_score ?? 0)
+  const readiness = Math.round(top?.validation_readiness_score ?? 0)
+  return (
+    <Panel sx={{
+      p: 1.05,
+      display: 'grid',
+      gridTemplateColumns: { xs: '1fr', md: '154px minmax(0, 1fr)' },
+      gap: 1,
+      overflow: 'hidden',
+    }}>
+      <Box sx={{
+        minWidth: 0,
+        borderRadius: 1,
+        border: `1px solid ${alpha(topTone, 0.2)}`,
+        bgcolor: alpha(topTone, 0.055),
+        display: 'grid',
+        placeItems: 'center',
+        p: 0.85,
+      }}>
+        <ScoreDial score={score} readiness={readiness} tone={topTone} loading={loading} />
+      </Box>
+
+      <Box sx={{
+        minWidth: 0,
+        display: 'grid',
+        gridTemplateRows: 'auto minmax(0, 1fr)',
+        gap: 1,
+      }}>
+        <Box sx={{ minWidth: 0 }}>
+          <Typography sx={{ fontSize: 12, fontWeight: 950, color: topTone, display: 'flex', alignItems: 'center', gap: 0.6 }}>
+            <Radar size={14} />
+            最可能突破點
+          </Typography>
+          {loading ? (
+            <Skeleton width="70%" height={42} />
+          ) : (
+            <Typography sx={{
+              mt: 0.3,
+              fontSize: { xs: 20, lg: 25 },
+              lineHeight: 1.08,
+              fontWeight: 950,
+              letterSpacing: 0,
+              color: 'text.primary',
+              overflowWrap: 'anywhere',
+            }}>
+              {top?.title ?? '尚未形成可信攻擊路徑'}
+            </Typography>
+          )}
+          <Typography sx={{ mt: 0.5, color: 'text.secondary', fontWeight: 650, maxWidth: 880, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+            {top?.description ?? '等待攻擊面、程式碼告警或外洩訊號匯入後，這裡會顯示最值得管理者優先追問的路徑。'}
+          </Typography>
+        </Box>
+
+        <Box sx={{
+          minHeight: 0,
+          display: 'grid',
+          gridTemplateColumns: { xs: '1fr', md: 'minmax(0, 1fr) 34px minmax(0, 1fr) 34px minmax(0, 1fr)' },
+          alignItems: 'center',
+          gap: 0.85,
+        }}>
+          <RouteNode icon={<Radar size={16} />} label="來源" value={source} detail={top?.evidence[0]?.kind ?? 'signal'} tone={ACCENT} />
+          <RouteArrow />
+          <RouteNode icon={<Target size={16} />} label="資產" value={asset} detail={`${top?.targets.length ?? 0} targets`} tone={TECH} />
+          <RouteArrow />
+          <RouteNode icon={<Flame size={16} />} label="影響" value={impact} detail={`${top?.red_team_validation.length ?? 0} validation steps`} tone={topTone} />
+        </Box>
+
+      </Box>
+    </Panel>
+  )
+}
+
+function PathQueuePanel({
+  loading,
+  candidates,
+  onEngineer,
+}: {
+  loading: boolean
+  candidates: AttackPathCandidate[]
+  onEngineer: () => void
+}) {
+  return (
+    <Panel sx={{ display: 'grid', gridTemplateRows: 'auto minmax(0, 1fr)', overflow: 'hidden' }}>
+      <PanelHeader
+        icon={<GitBranch size={17} />}
+        title="驗證隊列"
+        subtitle="先處理可信度高、證據足、可被紅隊重現的路徑"
+        aside={`${candidates.length} candidates`}
+      />
+      <Box sx={{ minHeight: 0, overflow: 'auto', p: 1.15, display: 'grid', gap: 0.85, alignContent: 'start' }}>
+        {loading && Array.from({ length: 4 }).map((_, index) => <Skeleton key={index} height={76} sx={{ borderRadius: 1 }} />)}
+        {!loading && candidates.length === 0 && (
+          <EmptyState title="目前沒有攻擊路徑" subtitle="先補齊 attack surface、repo 與外洩情資來源，再回來看收斂結果。" />
+        )}
+        {!loading && candidates.slice(0, 18).map((candidate, index) => {
+          const tone = severityTone(severity(candidate))
+          return (
+            <Box
+              key={candidate.id}
+              sx={{
+                borderRadius: 1,
+                border: `1px solid ${alpha(tone, 0.24)}`,
+                bgcolor: alpha(tone, 0.055),
+                p: 1,
+                display: 'grid',
+                gridTemplateColumns: { xs: '32px minmax(0, 1fr)', md: '34px minmax(0, 1fr) auto' },
+                gap: 0.9,
+                alignItems: 'center',
+              }}
+            >
+              <Box sx={{
+                width: 30,
+                height: 30,
+                borderRadius: 1,
+                display: 'grid',
+                placeItems: 'center',
+                color: tone,
+                bgcolor: alpha(tone, 0.12),
+                fontWeight: 950,
+              }}>
+                {index + 1}
+              </Box>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography sx={{ fontWeight: 950, color: 'text.primary' }} noWrap title={candidate.title}>
+                  {candidate.title}
+                </Typography>
+                <Typography sx={{ fontSize: 12, color: 'text.secondary' }} noWrap>
+                  {CATEGORY_LABEL[candidate.category]} / {candidate.targets.length} 目標 / {candidate.evidence.length} 證據 / {candidate.red_team_validation.length} 驗證步驟
+                </Typography>
+              </Box>
+              <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 0.65 }}>
+                <ScoreBadge label={candidate.confidence} value={Math.round(candidate.confidence_score)} tone={tone} />
+                <Button
+                  size="small"
+                  variant="outlined"
+                  onClick={onEngineer}
+                  sx={{ borderRadius: 1, minHeight: 30, fontWeight: 900, whiteSpace: 'nowrap' }}
+                >
+                  看證據
+                </Button>
+              </Box>
+            </Box>
+          )
+        })}
+      </Box>
+    </Panel>
+  )
+}
+
+function DecisionPanel({
+  loading,
+  top,
+  stats,
+  summary,
+  gateLabel,
+  topTone,
+}: {
+  loading: boolean
+  top?: AttackPathCandidate
+  stats: AttackPathStats
+  summary?: AttackPathSignalsSummary
+  gateLabel: string
+  topTone: string
+}) {
+  const decision = stats.high > 0
+    ? '先驗證高可信路徑，再決定是否啟動阻擋或修補。'
+    : stats.total > 0
+      ? '目前以觀察和補證據為主，避免把弱訊號直接升級。'
+      : '尚無足夠訊號形成管理決策。'
+  return (
+    <Panel sx={{ overflow: 'hidden', display: 'grid', gridTemplateRows: 'auto auto minmax(0, 1fr)' }}>
+      <PanelHeader
+        icon={<ShieldCheck size={17} />}
+        title="決策雷達"
+        subtitle="管理者只看三件事：能不能重現、是否高可信、下一步誰處理"
+        aside={gateLabel}
+      />
+      <Box sx={{ p: 1.15, display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 0.8 }}>
+        <MiniMetric label="高可信" value={loading ? '--' : stats.high} tone={DANGER} />
+        <MiniMetric label="可驗證" value={loading ? '--' : `${stats.validatable}/${stats.total}`} tone={SUCCESS} />
+        <MiniMetric label="近期訊號" value={loading ? '--' : (summary?.why_now_signals_last_30d ?? stats.whyNow)} tone={TECH} />
+      </Box>
+      <Box sx={{ minHeight: 0, overflow: 'auto', px: 1.15, pb: 1.15 }}>
+        <Box sx={{ borderRadius: 1, border: `1px solid ${alpha(topTone, 0.24)}`, bgcolor: alpha(topTone, 0.06), p: 1.15 }}>
+          <Typography sx={{ fontSize: 12, fontWeight: 950, color: topTone }}>建議判斷</Typography>
+          <Typography sx={{ mt: 0.45, fontSize: 20, lineHeight: 1.18, fontWeight: 950 }}>
+            {decision}
+          </Typography>
+          <Divider sx={{ my: 1.1 }} />
+          <DecisionLine label="第一步" value={top ? `確認 ${top.targets[0]?.value ?? top.title} 的證據鏈` : '補掃描來源與資料新鮮度'} />
+          <DecisionLine label="阻擋條件" value={top?.restrictions[0] ?? '高可信且可重現時才升級'} />
+          <DecisionLine label="工程落點" value={top ? `${top.red_team_validation.length} 個驗證步驟` : '切工程檢視建立證據'} />
+        </Box>
+      </Box>
+    </Panel>
+  )
+}
+
+function SignalPanel({
+  loading,
+  stats,
+  summary,
+}: {
+  loading: boolean
+  stats: AttackPathStats
+  summary?: AttackPathSignalsSummary
+}) {
+  const totalCategory = Math.max(1, stats.categories.reduce((sum, item) => sum + item.value, 0))
+  return (
+    <Panel sx={{ minHeight: 0, overflow: 'hidden', display: 'grid', gridTemplateRows: 'auto minmax(0, 1fr)' }}>
+      <PanelHeader
+        icon={<Activity size={17} />}
+        title="訊號結構"
+        subtitle="避免只看總數，先確認來源是否足以支撐決策"
+        aside={loading ? '--' : `${number(stats.total)} total`}
+      />
+      <Box sx={{ minHeight: 0, overflow: 'auto', p: 1.15, display: 'grid', gap: 1.05, alignContent: 'start' }}>
+        <Box sx={{ display: 'grid', gap: 0.85 }}>
+          {stats.categories.length === 0 && !loading ? (
+            <EmptyState title="尚無分類資料" subtitle="有候選路徑後，這裡會顯示攻擊入口集中在哪些面向。" />
+          ) : stats.categories.map((item) => (
+            <BarRow key={item.label} label={item.label} value={item.value} max={totalCategory} tone={item.tone} />
+          ))}
+          {loading && Array.from({ length: 4 }).map((_, index) => <Skeleton key={index} height={28} />)}
+        </Box>
+        <Divider />
+        <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 0.8 }}>
+          <MiniMetric label="外部資產" value={loading ? '--' : number(summary?.external_assets)} tone={ACCENT} />
+          <MiniMetric label="外洩訊號" value={loading ? '--' : number(summary?.leak_signals)} tone={DANGER} />
+          <MiniMetric label="技術指紋" value={loading ? '--' : number(summary?.tech_fingerprints)} tone={TECH} />
+          <MiniMetric label="滲透專案" value={loading ? '--' : number(summary?.pentest_projects)} tone={SUCCESS} />
+        </Box>
+        <Box sx={{ borderRadius: 1, bgcolor: alpha(ACCENT, 0.06), border: `1px solid ${alpha(ACCENT, 0.16)}`, p: 1 }}>
+          <Typography sx={{ fontSize: 12, fontWeight: 950, color: ACCENT }}>郵件姿態</Typography>
+          <Typography sx={{ mt: 0.45, fontSize: 13, color: 'text.secondary', fontWeight: 700 }}>
+            DMARC {summary?.dmarc_status || '--'} / SPF {summary?.spf_status || '--'} / DKIM {summary?.dkim_status || '--'}
+          </Typography>
+        </Box>
+      </Box>
+    </Panel>
+  )
+}
+
+function Panel({
+  children,
+  sx,
+}: {
+  children: ReactNode
+  sx?: object
+}) {
+  const theme = useTheme()
+  return (
+    <Box sx={{
+      minWidth: 0,
+      minHeight: 0,
+      borderRadius: 1.15,
+      border: `1px solid ${alpha(ACCENT, 0.18)}`,
+      bgcolor: alpha(theme.palette.background.paper, 0.96),
+      boxShadow: `0 16px 42px ${alpha(theme.palette.common.black, 0.06)}`,
+      ...sx,
+    }}>
+      {children}
+    </Box>
+  )
+}
+
+function PanelHeader({
+  icon,
+  title,
+  subtitle,
+  aside,
+}: {
+  icon: ReactNode
+  title: string
+  subtitle: string
+  aside?: string
+}) {
+  return (
+    <Box sx={{
+      px: 1.15,
+      py: 1,
+      borderBottom: (theme) => `1px solid ${alpha(theme.palette.divider, 0.78)}`,
+      display: 'flex',
+      alignItems: 'center',
+      gap: 0.85,
+      minWidth: 0,
+    }}>
+      <Box sx={{ color: ACCENT, display: 'grid', placeItems: 'center' }}>{icon}</Box>
+      <Box sx={{ minWidth: 0, flex: 1 }}>
+        <Typography sx={{ fontWeight: 950, lineHeight: 1.15 }}>{title}</Typography>
+        <Typography sx={{ fontSize: 12, color: 'text.secondary', fontWeight: 650 }} noWrap>{subtitle}</Typography>
+      </Box>
+      {aside && (
+        <Chip
+          size="small"
+          label={aside}
+          sx={{ height: 26, borderRadius: 0.8, fontWeight: 900, color: ACCENT, bgcolor: alpha(ACCENT, 0.11) }}
+        />
+      )}
+    </Box>
+  )
+}
+
+function ScoreDial({ score, readiness, tone, loading }: { score: number; readiness: number; tone: string; loading: boolean }) {
+  const theme = useTheme()
+  const radius = 36
   const circumference = 2 * Math.PI * radius
   const dash = circumference * Math.max(0, Math.min(100, score)) / 100
   return (
-    <Box sx={{ display: 'grid', placeItems: 'center', minHeight: 142, position: 'relative' }}>
-      <Box component="svg" viewBox="0 0 150 150" sx={{ width: 150, height: 150 }}>
-        <circle cx="75" cy="75" r="66" fill="none" stroke={alpha(tone, dark ? 0.22 : 0.16)} strokeWidth="1" strokeDasharray="4 8" />
-        <circle cx="75" cy="75" r="48" fill="none" stroke={alpha(theme.palette.text.primary, dark ? 0.16 : 0.1)} strokeWidth="10" />
+    <Box sx={{ minHeight: 104, display: 'grid', placeItems: 'center', position: 'relative' }}>
+      <Box component="svg" viewBox="0 0 116 116" sx={{ width: 116, height: 116 }}>
+        <circle cx="58" cy="58" r="50" fill="none" stroke={alpha(tone, 0.15)} strokeWidth="1" strokeDasharray="4 8" />
+        <circle cx="58" cy="58" r={radius} fill="none" stroke={alpha(theme.palette.text.primary, 0.1)} strokeWidth="10" />
         <circle
-          cx="75"
-          cy="75"
+          cx="58"
+          cy="58"
           r={radius}
           fill="none"
           stroke={tone}
           strokeWidth="10"
           strokeLinecap="round"
           strokeDasharray={`${dash} ${circumference}`}
-          transform="rotate(-90 75 75)"
+          transform="rotate(-90 58 58)"
         />
-        <circle cx="75" cy="75" r="31" fill={alpha(theme.palette.background.paper, dark ? 0.88 : 0.94)} stroke={alpha(tone, 0.24)} strokeWidth="1" />
+        <circle cx="58" cy="58" r="25" fill={theme.palette.background.paper} stroke={alpha(tone, 0.24)} />
       </Box>
       <Box sx={{ position: 'absolute', textAlign: 'center' }}>
+        <Typography sx={{ fontSize: 10, fontWeight: 950, color: 'text.secondary' }}>信心</Typography>
+        <Typography sx={{ fontSize: 28, lineHeight: 1, fontWeight: 950, color: tone }}>
+          {loading ? '--' : score}
+        </Typography>
         <Typography sx={{ fontSize: 10, fontWeight: 900, color: 'text.secondary' }}>
-          信心度
-        </Typography>
-        <Typography sx={{ fontFamily: 'ui-monospace, monospace', fontSize: 34, fontWeight: 950, lineHeight: 1, color: tone }}>
-          {loading ? '—' : score}
-        </Typography>
-        <Typography sx={{ mt: 0.3, fontSize: 11, fontWeight: 850, color: 'text.secondary' }}>
-          ready {loading ? '—' : readiness}
+          ready {loading ? '--' : readiness}
         </Typography>
       </Box>
     </Box>
@@ -523,70 +719,57 @@ function RouteNode({
   detail,
   tone,
 }: {
-  icon: React.ReactNode
+  icon: ReactNode
   label: string
   value: string
   detail: string
   tone: string
 }) {
-  const theme = useTheme()
   return (
     <Box sx={{
       minWidth: 0,
+      minHeight: 76,
       borderRadius: 1,
-      border: '1px solid',
-      borderColor: alpha(tone, 0.3),
-      bgcolor: alpha(tone, theme.palette.mode === 'dark' ? 0.11 : 0.065),
+      border: `1px solid ${alpha(tone, 0.28)}`,
+      bgcolor: alpha(tone, 0.07),
       p: 1,
       display: 'grid',
-      gridTemplateColumns: '30px minmax(0, 1fr)',
-      gap: 0.8,
+      gridTemplateColumns: '32px minmax(0, 1fr)',
+      gap: 0.85,
       alignItems: 'center',
-      minHeight: 72,
     }}>
       <Box sx={{
-        width: 30,
-        height: 30,
+        width: 32,
+        height: 32,
         borderRadius: 1,
         display: 'grid',
         placeItems: 'center',
         color: tone,
-        bgcolor: alpha(tone, 0.12),
-        border: `1px solid ${alpha(tone, 0.28)}`,
+        bgcolor: alpha(tone, 0.13),
       }}>
         {icon}
       </Box>
       <Box sx={{ minWidth: 0 }}>
-        <Typography sx={{ fontSize: 11, fontWeight: 900, color: tone }}>
-          {label}
-        </Typography>
-        <Typography sx={{ fontSize: 13, fontWeight: 950 }} noWrap title={value}>
-          {value}
-        </Typography>
-        <Typography sx={{ fontSize: 11, color: 'text.secondary' }} noWrap title={detail}>
-          {detail}
-        </Typography>
+        <Typography sx={{ fontSize: 11, fontWeight: 950, color: tone }}>{label}</Typography>
+        <Typography sx={{ fontSize: 14, fontWeight: 950 }} noWrap title={value}>{value}</Typography>
+        <Typography sx={{ fontSize: 11.5, color: 'text.secondary' }} noWrap title={detail}>{detail}</Typography>
       </Box>
     </Box>
   )
 }
 
-function RouteConnector() {
+function RouteArrow() {
   return (
-    <Box sx={{
-      display: { xs: 'none', md: 'grid' },
-      placeItems: 'center',
-      minWidth: 0,
-    }}>
-      <Box sx={{ width: '100%', height: 2, bgcolor: alpha(ACCENT, 0.18), position: 'relative' }}>
+    <Box sx={{ display: { xs: 'none', md: 'grid' }, placeItems: 'center' }}>
+      <Box sx={{ width: '100%', height: 2, bgcolor: alpha(ACCENT, 0.22), position: 'relative' }}>
         <Box sx={{
           position: 'absolute',
-          right: -2,
+          right: -1,
           top: -4,
           width: 10,
           height: 10,
-          borderTop: `2px solid ${alpha(ACCENT, 0.45)}`,
-          borderRight: `2px solid ${alpha(ACCENT, 0.45)}`,
+          borderTop: `2px solid ${alpha(ACCENT, 0.5)}`,
+          borderRight: `2px solid ${alpha(ACCENT, 0.5)}`,
           transform: 'rotate(45deg)',
         }} />
       </Box>
@@ -594,107 +777,69 @@ function RouteConnector() {
   )
 }
 
-function SignalMeter({
-  label,
-  value,
-  max,
-  tone,
-}: {
-  label: string
-  value: number
-  max: number
-  tone: string
-}) {
-  const pct = max > 0 ? Math.max(0, Math.min(100, (value / max) * 100)) : 0
+function MiniMetric({ label, value, tone }: { label: string; value: ReactNode; tone: string }) {
   return (
-    <Box sx={{ minWidth: 0 }}>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1, mb: 0.35 }}>
-        <Typography sx={{ fontSize: 11, fontWeight: 900, color: 'text.secondary' }}>{label}</Typography>
-        <Typography sx={{ fontSize: 11, fontWeight: 950, color: tone }}>{value}/{max}</Typography>
-      </Box>
-      <Box sx={{ height: 7, borderRadius: 999, bgcolor: alpha(tone, 0.11), overflow: 'hidden' }}>
-        <Box sx={{ width: `${pct}%`, height: '100%', borderRadius: 999, bgcolor: tone }} />
-      </Box>
+    <Box sx={{ minWidth: 0, borderRadius: 1, border: `1px solid ${alpha(tone, 0.18)}`, bgcolor: alpha(tone, 0.055), px: 0.9, py: 0.75 }}>
+      <Typography sx={{ fontSize: 11, fontWeight: 950, color: 'text.secondary' }} noWrap>{label}</Typography>
+      <Typography sx={{ mt: 0.25, fontSize: 22, lineHeight: 1, fontWeight: 950, color: tone }} noWrap>{value}</Typography>
     </Box>
   )
 }
 
-function CommandMetric({
-  label,
-  value,
-  tone,
-  detail,
-}: {
-  label: string
-  value: React.ReactNode
-  tone: string
-  detail?: string
-}) {
-  const theme = useTheme()
+function ScoreBadge({ label, value, tone }: { label: string; value: number; tone: string }) {
+  return (
+    <Chip
+      size="small"
+      label={`${label} ${value}`}
+      sx={{ height: 28, borderRadius: 0.8, fontWeight: 950, color: tone, bgcolor: alpha(tone, 0.12) }}
+    />
+  )
+}
+
+function DecisionLine({ label, value }: { label: string; value: string }) {
+  return (
+    <Box sx={{ display: 'grid', gridTemplateColumns: '72px minmax(0, 1fr)', gap: 0.8, py: 0.55 }}>
+      <Typography sx={{ fontSize: 12, color: 'text.secondary', fontWeight: 950 }}>{label}</Typography>
+      <Typography sx={{ fontSize: 13, fontWeight: 750, color: 'text.primary' }}>{value}</Typography>
+    </Box>
+  )
+}
+
+function BarRow({ label, value, max, tone }: { label: string; value: number; max: number; tone: string }) {
+  const pct = Math.max(0, Math.min(100, (value / max) * 100))
+  return (
+    <Box sx={{ display: 'grid', gridTemplateColumns: '90px minmax(0, 1fr) 32px', gap: 0.9, alignItems: 'center' }}>
+      <Typography sx={{ fontSize: 12.5, fontWeight: 900 }} noWrap>{label}</Typography>
+      <LinearProgress
+        variant="determinate"
+        value={pct}
+        sx={{
+          height: 9,
+          borderRadius: 999,
+          bgcolor: alpha(tone, 0.12),
+          '& .MuiLinearProgress-bar': { borderRadius: 999, bgcolor: tone },
+        }}
+      />
+      <Typography sx={{ textAlign: 'right', fontSize: 12.5, fontWeight: 950, color: tone }}>{number(value)}</Typography>
+    </Box>
+  )
+}
+
+function EmptyState({ title, subtitle }: { title: string; subtitle: string }) {
   return (
     <Box sx={{
-      minWidth: 0,
+      minHeight: 150,
       borderRadius: 1,
-      border: '1px solid',
-      borderColor: alpha(tone, 0.22),
-      bgcolor: alpha(tone, theme.palette.mode === 'dark' ? 0.09 : 0.055),
-      px: 1,
-      py: 0.75,
-    }}>
-      <Typography sx={{ fontSize: 11, fontWeight: 900, color: 'text.secondary' }} noWrap>
-        {label}
-      </Typography>
-      <Typography sx={{ mt: 0.2, fontFamily: 'ui-monospace, monospace', fontSize: 20, fontWeight: 950, color: tone, lineHeight: 1 }}>
-        {value}
-      </Typography>
-      {detail && (
-        <Typography sx={{ mt: 0.35, fontSize: 10.5, color: 'text.secondary' }} noWrap title={detail}>
-          {detail}
-        </Typography>
-      )}
-    </Box>
-  )
-}
-
-function AttackPathEmptyChart({ text }: { text: string }) {
-  return (
-    <Box sx={{
-      height: 220,
+      border: `1px dashed ${alpha(ACCENT, 0.28)}`,
+      bgcolor: alpha(ACCENT, 0.045),
       display: 'grid',
       placeItems: 'center',
-      borderRadius: 1,
-      border: (theme) => `1px dashed ${alpha(theme.palette.text.primary, theme.palette.mode === 'dark' ? 0.18 : 0.14)}`,
-      background: (theme) => `linear-gradient(135deg, ${alpha(ACCENT, theme.palette.mode === 'dark' ? 0.08 : 0.045)}, transparent 60%)`,
+      textAlign: 'center',
+      px: 2,
     }}>
-      <Box sx={{ width: '78%', maxWidth: 380 }}>
-        <Box sx={{ display: 'grid', gridTemplateColumns: '1fr 42px 1fr 42px 1fr', alignItems: 'center', mb: 2 }}>
-          {['偵察', '資產', '影響'].map((label, idx) => (
-            <Box key={label} sx={{
-              height: 54,
-              borderRadius: 1,
-              display: 'grid',
-              placeItems: 'center',
-              border: `1px solid ${alpha(idx === 2 ? ATTACK : colors.semantic.info, 0.26)}`,
-              bgcolor: alpha(idx === 2 ? ATTACK : colors.semantic.info, 0.08),
-              color: idx === 2 ? ATTACK : colors.semantic.info,
-              fontSize: 12,
-              fontWeight: 800,
-            }}>
-              {label}
-            </Box>
-          )).flatMap((node, idx, arr) => (
-            idx === arr.length - 1 ? [node] : [
-              node,
-              <Box key={`line-${idx}`} sx={{ height: 2, bgcolor: alpha(ACCENT, 0.22) }} />,
-            ]
-          ))}
-        </Box>
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
-          <GitBranch size={16} color={ACCENT} />
-          <Typography sx={{ fontSize: 13, fontWeight: 700, color: 'text.secondary', textAlign: 'center' }}>
-            {text}
-          </Typography>
-        </Box>
+      <Box>
+        <Typography sx={{ fontWeight: 950 }}>{title}</Typography>
+        <Typography sx={{ mt: 0.45, color: 'text.secondary', fontSize: 13, fontWeight: 650 }}>{subtitle}</Typography>
       </Box>
     </Box>
   )

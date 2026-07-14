@@ -291,7 +291,6 @@ export const MODULES: Module[] = [
     path: 'mcp',
     capability: 'mcp',
     fullBleed: true,
-    dualMode: true,
     lazyImport: () => import('@/app/(control-panel)/flyto/workspace/components/pages/McpPage'),
     sidebar: { group: 'runtime', labelKey: 'nav.agentFirewall', fallback: 'Agent Firewall', icon: Bot },
   },

@@ -28,7 +28,14 @@ jobs:
           python-version: "3.11"
       # The exporter and indexer live in the external flyto-indexer package
       # (tested in their own repo's CI); this mirror no longer vendors them.
-      - name: Verify release audit target
+      - name: Lint release tree
+        run: make lint
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: services/flyto-engine-ce/go.mod
+      - name: Test engine CE source package
+        run: make test
+      - name: Verify release tree
         run: make verify
       - name: Audit generated release boundary
         run: python install/scripts/audit-release-tree.py .

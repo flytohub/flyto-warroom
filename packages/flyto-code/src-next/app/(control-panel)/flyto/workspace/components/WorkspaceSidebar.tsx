@@ -20,6 +20,8 @@ import {
   ChevronDown, Search, LayoutDashboard,
   Pencil, Check, X, LockKeyhole,
   ChevronsLeft, ChevronsRight,
+  ShieldCheck, GitBranch, Shield, Gauge, Cloud, RadioTower,
+  Fingerprint, Database, Clock, BarChart3, HeartPulse, Building,
 } from 'lucide-react';
 import _ from 'lodash';
 import {
@@ -39,8 +41,24 @@ import { useQuery } from '@tanstack/react-query';
 import { getOrgHealthSummary, getEnrichedOrgIssues, listPentestProjects, listAttackSurface, listAutofixFindings, listOrgs, type AutofixFindingRow } from '@lib/engine';
 import { extractHostFromAssetValue, getExternalPostureKernel } from '@compounds/_shared/externalPosture';
 
-const SIDEBAR_EXPANDED_WIDTH = 260;
+const SIDEBAR_EXPANDED_WIDTH = 312;
 const SIDEBAR_COLLAPSED_WIDTH = 76;
+const CATEGORY_RAIL_WIDTH = 74;
+
+const GROUP_NAV_META: Record<string, { icon: typeof LayoutDashboard; fallback: string }> = {
+  overview: { icon: ShieldCheck, fallback: '總覽' },
+  assets: { icon: GitBranch, fallback: '資產' },
+  code: { icon: Shield, fallback: '程式碼' },
+  exposure: { icon: Gauge, fallback: '外部曝險' },
+  cloud: { icon: Cloud, fallback: '雲端' },
+  runtime: { icon: RadioTower, fallback: 'AI 防護' },
+  identity: { icon: Fingerprint, fallback: '身分' },
+  darkweb: { icon: Database, fallback: '情資' },
+  history: { icon: Clock, fallback: '歷史' },
+  scoring: { icon: BarChart3, fallback: '評分' },
+  operations: { icon: HeartPulse, fallback: '維運' },
+  enterprise: { icon: Building, fallback: '企業' },
+};
 
 /* ── Nav item ── */
 function NavItem({
@@ -236,6 +254,7 @@ export default function WorkspaceSidebar() {
   const projectCaps = useProjectCapabilities(org?.id);
   const [editing, setEditing] = useState(false);
   const [editName, setEditName] = useState('');
+  const [activeGroupId, setActiveGroupId] = useState<string>('overview');
   const editRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -329,6 +348,28 @@ export default function WorkspaceSidebar() {
       : Math.max(domainKernel.asset_count ?? 0, projectDomains.size)
     : undefined
   const domainCount = kernelDomainCount ?? (projectDomains.size > 0 ? projectDomains.size : discoveredDomainCount);
+  const visibleGroups = caps.ready && projectCaps.ready
+    ? SIDEBAR_GROUP_ORDER.filter(group => group.id !== 'admin').map(group => ({
+      ...group,
+      label: group.showHeader
+        ? tOr(group.headerKey, group.headerFallback)
+        : GROUP_NAV_META[group.id]?.fallback ?? '總覽',
+      items: getModulesByGroup(group.id).filter(m =>
+        caps.canOpenPage(m.capability ?? m.id) && projectCaps.canOpenPage(m.capability ?? m.id),
+      ),
+    })).filter(group => group.items.length > 0)
+    : [];
+  const currentGroupId = visibleGroups.find(group =>
+    group.items.some(mod => isActive(navPath(mod.path))),
+  )?.id;
+
+  useEffect(() => {
+    if (currentGroupId) setActiveGroupId(currentGroupId);
+  }, [currentGroupId]);
+
+  const activeGroup = visibleGroups.find(group => group.id === activeGroupId)
+    ?? visibleGroups.find(group => group.id === currentGroupId)
+    ?? visibleGroups[0];
 
   return (
     <ThemeProvider theme={sidebarTheme}>
@@ -518,7 +559,7 @@ export default function WorkspaceSidebar() {
           The empty-section guards below collapse a category (e.g.
           "SECURITY") when none of its pages are visible, so a CTEM-
           only customer doesn't see an empty "SECURITY" header. */}
-      <Box sx={{ flex: 1, minHeight: 0, overflow: 'auto', overflowX: 'hidden', pb: 2 }}>
+      <Box sx={{ flex: 1, minHeight: 0, overflow: 'hidden', pb: 1 }}>
         {/* Sidebar nav is generated from the MODULES manifest
             (types/modules.ts). Groups render in SIDEBAR_GROUP_ORDER;
             each group's items in the order they appear in MODULES.
@@ -538,50 +579,222 @@ export default function WorkspaceSidebar() {
             policy-derived nav. */}
         {!caps.ready || !projectCaps.ready ? (
           <NavSkeleton collapsed={sidebarCollapsed} />
+        ) : sidebarCollapsed ? (
+          <Box sx={{ minHeight: 0, height: '100%', overflow: 'auto', overflowX: 'hidden', py: 0.5 }}>
+            {visibleGroups.map(group => group.items.map(mod => {
+              const Icon = mod.sidebar!.icon
+              const pageId = mod.capability ?? mod.id
+              const pageState = caps.pageState(pageId)
+              const locked = pageState.state === 'locked_preview'
+              const count = resolveCount(mod.sidebar!.count, {
+                issues: issueCount,
+                autofix: autofixCount,
+                repos: repoCount,
+                domains: domainCount,
+              })
+              return (
+                <NavItem
+                  key={mod.id}
+                  icon={Icon}
+                  label={tOr(mod.sidebar!.labelKey, mod.sidebar!.fallback)}
+                  count={count}
+                  to={`${base}/${navPath(mod.path)}`}
+                  active={isActive(navPath(mod.path))}
+                  locked={locked}
+                  lockReason={pageState.reason}
+                  dim={locked}
+                  collapsed
+                />
+              )
+            }))}
+          </Box>
         ) : (
-        SIDEBAR_GROUP_ORDER.filter(g => g.id !== 'admin').map(group => {
-          const items = getModulesByGroup(group.id).filter(m =>
-            caps.canOpenPage(m.capability ?? m.id) && projectCaps.canOpenPage(m.capability ?? m.id),
-          )
-          if (items.length === 0) return null
-          return (
-            <Box key={group.id}>
-              {group.showHeader && (
-                <Typography variant="caption" sx={{ px: 2.5, py: 0.5, display: sidebarCollapsed ? 'none' : { xs: 'none', sm: 'block' }, color: 'text.secondary', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', mt: 1 }}>
-                  {tOr(group.headerKey, group.headerFallback)}
-                </Typography>
-              )}
-              <List dense disablePadding sx={!group.showHeader ? { pt: 0.5 } : undefined}>
-                {items.map(mod => {
-                  const Icon = mod.sidebar!.icon
-                  const pageId = mod.capability ?? mod.id
-                  const pageState = caps.pageState(pageId)
-                  const locked = pageState.state === 'locked_preview'
-                  const count = resolveCount(mod.sidebar!.count, {
-                    issues: issueCount,
-                    autofix: autofixCount,
-                    repos: repoCount,
-                    domains: domainCount,
-                  })
-                  return (
-                    <NavItem
-                      key={mod.id}
-                      icon={Icon}
-                      label={tOr(mod.sidebar!.labelKey, mod.sidebar!.fallback)}
-                      count={count}
-                      to={`${base}/${navPath(mod.path)}`}
-                      active={isActive(navPath(mod.path))}
-                      locked={locked}
-                      lockReason={pageState.reason}
-                      dim={locked}
-                      collapsed={sidebarCollapsed}
-                    />
-                  )
-                })}
-              </List>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: `${CATEGORY_RAIL_WIDTH}px minmax(0, 1fr)`,
+              gap: 1.25,
+              minHeight: 0,
+              height: '100%',
+              px: 0.9,
+            }}
+          >
+            <Box
+              sx={{
+                minHeight: 0,
+                overflow: 'auto',
+                overflowX: 'hidden',
+                px: 0.2,
+                py: 0.6,
+                borderRight: '1px solid',
+                borderColor: 'rgba(196,181,253,0.12)',
+              }}
+            >
+              {visibleGroups.map(group => {
+                const meta = GROUP_NAV_META[group.id] ?? { icon: LayoutDashboard, fallback: group.label }
+                const Icon = meta.icon
+                  const active = activeGroup?.id === group.id
+                  const railLabel = meta.fallback
+                return (
+                  <Tooltip key={group.id} title={group.label} placement="right">
+                    <ListItemButton
+                      aria-label={group.label}
+                      selected={active}
+                      onClick={() => setActiveGroupId(group.id)}
+                      sx={{
+                        minHeight: 54,
+                        width: 62,
+                        mb: 0.45,
+                        px: 0.35,
+                        py: 0.55,
+                        borderRadius: 1.5,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: 0.45,
+                        position: 'relative',
+                        color: active ? '#f8fafc' : 'rgba(226,232,240,0.66)',
+                        bgcolor: active ? 'rgba(139,92,246,0.18)' : 'transparent',
+                        border: '1px solid',
+                        borderColor: active ? 'rgba(167,139,250,0.22)' : 'transparent',
+                        boxShadow: active
+                          ? 'inset 0 1px 0 rgba(255,255,255,0.09)'
+                          : 'none',
+                        '&::before': active ? {
+                          content: '""',
+                          position: 'absolute',
+                          left: -4,
+                          top: 10,
+                          bottom: 10,
+                          width: 3,
+                          borderRadius: 2,
+                          bgcolor: '#a78bfa',
+                          boxShadow: '0 0 10px rgba(167,139,250,0.36)',
+                        } : undefined,
+                        '&.Mui-selected': { bgcolor: 'rgba(139,92,246,0.18)' },
+                        '&.Mui-selected:hover': { bgcolor: 'rgba(139,92,246,0.22)' },
+                        '&:hover': { bgcolor: 'rgba(255,255,255,0.07)', color: '#f8fafc' },
+                      }}
+                    >
+                      <Icon size={18} />
+                      <Typography
+                        variant="caption"
+                        sx={{
+                          maxWidth: 54,
+                          fontSize: 10.5,
+                          fontWeight: active ? 800 : 700,
+                          lineHeight: 1.05,
+                          textAlign: 'center',
+                          overflow: 'hidden',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                        }}
+                      >
+                          {railLabel}
+                      </Typography>
+                    </ListItemButton>
+                  </Tooltip>
+                )
+              })}
             </Box>
-          )
-        })
+            <Box
+              sx={{
+                minHeight: 0,
+                overflow: 'auto',
+                overflowX: 'hidden',
+                py: 0.65,
+                pr: 0.2,
+              }}
+            >
+              {activeGroup && (
+                <Box
+                  sx={{
+                    overflow: 'hidden',
+                    borderRadius: 1.25,
+                    bgcolor: 'rgba(255,255,255,0.026)',
+                    border: '1px solid',
+                    borderColor: 'rgba(196,181,253,0.085)',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.035)',
+                  }}
+                >
+                  <Box
+                    sx={{
+                      px: 1.25,
+                      py: 0.8,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      gap: 1,
+                      borderBottom: '1px solid',
+                      borderColor: 'rgba(196,181,253,0.075)',
+                      background: 'linear-gradient(90deg, rgba(139,92,246,0.075), rgba(139,92,246,0.015))',
+                    }}
+                  >
+                    <Box sx={{ minWidth: 0, display: 'flex', alignItems: 'center', gap: 0.9 }}>
+                      <Typography
+                        variant="subtitle2"
+                        sx={{
+                          color: 'text.primary',
+                          fontWeight: 850,
+                          lineHeight: 1.15,
+                          letterSpacing: 0,
+                          overflow: 'hidden',
+                          textOverflow: 'ellipsis',
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {activeGroup.label}
+                      </Typography>
+                    </Box>
+                    <Chip
+                      label={activeGroup.items.length}
+                      size="small"
+                      sx={{
+                        height: 20,
+                        minWidth: 28,
+                        fontSize: 11,
+                        bgcolor: 'rgba(255,255,255,0.08)',
+                        color: 'rgba(226,232,240,0.88)',
+                        fontWeight: 850,
+                        flexShrink: 0,
+                      }}
+                    />
+                  </Box>
+                  <Box sx={{ maxHeight: 'calc(100vh - 285px)', overflow: 'auto', overflowX: 'hidden', py: 0.45 }}>
+                    <List dense disablePadding>
+                      {activeGroup.items.map(mod => {
+                        const Icon = mod.sidebar!.icon
+                        const pageId = mod.capability ?? mod.id
+                        const pageState = caps.pageState(pageId)
+                        const locked = pageState.state === 'locked_preview'
+                        const count = resolveCount(mod.sidebar!.count, {
+                          issues: issueCount,
+                          autofix: autofixCount,
+                          repos: repoCount,
+                          domains: domainCount,
+                        })
+                        return (
+                          <NavItem
+                            key={mod.id}
+                            icon={Icon}
+                            label={tOr(mod.sidebar!.labelKey, mod.sidebar!.fallback)}
+                            count={count}
+                            to={`${base}/${navPath(mod.path)}`}
+                            active={isActive(navPath(mod.path))}
+                            locked={locked}
+                            lockReason={pageState.reason}
+                            dim={locked}
+                          />
+                        )
+                      })}
+                    </List>
+                  </Box>
+                </Box>
+              )}
+            </Box>
+          </Box>
         )}
 
         {/* Single modern nav — the legacy below-the-divider war-room

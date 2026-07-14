@@ -20,7 +20,6 @@ import {
   ArrowUpRight,
   Clock3,
   Crosshair,
-  DollarSign,
   ListChecks,
   RadioTower,
   RefreshCw,
@@ -60,14 +59,6 @@ export interface CTEMManagerViewProps {
   orgId: string
 }
 
-function fmtUSD(usd: number): string {
-  if (!usd || usd <= 0) return '$0'
-  if (usd >= 1_000_000_000) return `$${(usd / 1_000_000_000).toFixed(1)}B`
-  if (usd >= 1_000_000) return `$${(usd / 1_000_000).toFixed(1)}M`
-  if (usd >= 1_000) return `$${Math.round(usd / 1_000)}K`
-  return `$${Math.round(usd)}`
-}
-
 function hoursUntil(iso?: string): number | null {
   if (!iso) return null
   const parsed = Date.parse(iso)
@@ -95,7 +86,7 @@ function pressureScore(item: CTEMPriorityItem): number {
   return item.priority_score +
     (item.breached ? 32 : 0) +
     (item.kev_listed ? 24 : 0) +
-    (item.impact ? Math.min(24, item.impact.mid_usd / 120_000) : 0)
+    Math.min(18, Math.max(0, item.affected_count ?? 0))
 }
 
 function deadlineLabel(item: CTEMPriorityItem): string {
@@ -130,12 +121,11 @@ export function CTEMManagerView({ orgId }: CTEMManagerViewProps) {
 
   const model = useMemo(() => {
     const severityCounts: Record<string, number> = { critical: 0, high: 0, medium: 0, low: 0 }
-    const tiers: Record<string, { count: number; mid: number }> = {}
+    const tiers: Record<string, { count: number; affected: number; priority: number }> = {}
+    const assets = new Set<string>()
     let breached = 0
     let kev = 0
-    let lowImpact = 0
-    let midImpact = 0
-    let highImpact = 0
+    let affectedTotal = 0
     let prioritySum = 0
     let soonest: number | null = null
 
@@ -151,16 +141,15 @@ export function CTEMManagerView({ orgId }: CTEMManagerViewProps) {
         if (hours != null && hours > 0 && (soonest == null || hours < soonest)) soonest = hours
       }
 
-      if (item.impact) {
-        lowImpact += item.impact.low_usd
-        midImpact += item.impact.mid_usd
-        highImpact += item.impact.high_usd
-      }
+      const assetKey = item.domain || item.repo_id || item.category || item.fingerprint || item.id
+      if (assetKey) assets.add(String(assetKey))
+      affectedTotal += Math.max(1, item.affected_count ?? 1)
 
       const tier = item.asset_tier || 'internal'
-      tiers[tier] ??= { count: 0, mid: 0 }
+      tiers[tier] ??= { count: 0, affected: 0, priority: 0 }
       tiers[tier].count += 1
-      tiers[tier].mid += item.impact?.mid_usd ?? 0
+      tiers[tier].affected += Math.max(1, item.affected_count ?? 1)
+      tiers[tier].priority += item.priority_score
     }
 
     const topQueue = [...items]
@@ -169,7 +158,7 @@ export function CTEMManagerView({ orgId }: CTEMManagerViewProps) {
 
     const tierRows = Object.entries(tiers)
       .map(([tier, value]) => ({ tier, ...value }))
-      .sort((a, b) => b.mid - a.mid || b.count - a.count)
+      .sort((a, b) => b.affected - a.affected || b.priority - a.priority || b.count - a.count)
       .slice(0, 4)
 
     return {
@@ -179,9 +168,8 @@ export function CTEMManagerView({ orgId }: CTEMManagerViewProps) {
       high: severityCounts.high ?? 0,
       breached,
       kev,
-      lowImpact,
-      midImpact,
-      highImpact,
+      affectedAssets: assets.size,
+      affectedTotal,
       avgPriority: loadedTotal ? Math.round(prioritySum / loadedTotal) : 0,
       soonest,
       severityCounts,
@@ -296,7 +284,7 @@ export function CTEMManagerView({ orgId }: CTEMManagerViewProps) {
           <Kpi label={tOr('exposure.ctem.kpi.openCriticals', 'Critical')} value={loading ? '--' : model.critical} icon={<ShieldAlert size={16} />} color={colors.semantic.danger} />
           <Kpi label={tOr('exposure.ctem.kpi.slaBreached', 'SLA 逾期')} value={loading ? '--' : model.breached} icon={<Clock3 size={16} />} color={model.breached > 0 ? colors.semantic.danger : colors.semantic.neutral} />
           <Kpi label={tOr('exposure.ctem.kpi.kevListed', 'KEV')} value={loading ? '--' : model.kev} icon={<Zap size={16} />} color={colors.semantic.warning} />
-          <Kpi label={tOr('exposure.ctem.kpi.impactAtRiskMid', '估計影響')} value={loading ? '--' : fmtUSD(model.midImpact)} icon={<DollarSign size={16} />} color={BRAND} />
+          <Kpi label={tOr('exposure.ctem.kpi.affectedAssets', '受影響資產')} value={loading ? '--' : model.affectedAssets} icon={<Target size={16} />} color={BRAND} />
         </Box>
 
         <Box
@@ -369,13 +357,13 @@ export function CTEMManagerView({ orgId }: CTEMManagerViewProps) {
                     <PressureRow
                       key={row.tier}
                       label={tierLabel(row.tier)}
-                      detail={`${row.count} ${tOr('common.findings', '項')}`}
-                      value={fmtUSD(row.mid)}
-                      color={row.mid > 0 ? colors.semantic.warning : ACCENT}
+                      detail={`${row.count} ${tOr('common.findings', '項')} / ${row.affected} affected`}
+                      value={String(row.affected)}
+                      color={row.affected > 0 ? colors.semantic.warning : ACCENT}
                     />
                   )) : (
                     <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>
-                      {tOr('exposure.ctem.empty.monetizedImpactOnFindings', '目前沒有金額影響資料。')}
+                      {tOr('exposure.ctem.empty.assetPressure', '目前沒有資產壓力資料。')}
                     </Typography>
                   )}
                 </Box>
@@ -490,7 +478,6 @@ function PriorityRow({ item, index }: { item: CTEMPriorityItem; index: number })
   const dark = theme.palette.mode === 'dark'
   const tone = severityTone(item.effective_severity)
   const asset = item.domain || item.repo_id || item.category || '-'
-  const impact = item.impact ? fmtUSD(item.impact.mid_usd) : '--'
 
   return (
     <Box
@@ -521,7 +508,7 @@ function PriorityRow({ item, index }: { item: CTEMPriorityItem; index: number })
         {item.kev_listed && <MiniPill color={colors.semantic.warning} label="KEV" />}
         {item.affected_count && item.affected_count > 1 && <MiniPill color={ACCENT} label={`${item.affected_count}x`} />}
         <MiniPill color={tone} label={item.effective_severity || item.severity || 'risk'} />
-        <MiniPill color={BRAND} label={impact} />
+        <MiniPill color={BRAND} label={`${Math.max(1, item.affected_count ?? 1)} affected`} />
         <MiniPill color={ACCENT} label={String(Math.round(item.priority_score))} />
       </Box>
     </Box>

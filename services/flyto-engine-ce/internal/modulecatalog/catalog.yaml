@@ -1,0 +1,303 @@
+modules:
+  - key: core
+    display_name: Core Evidence Platform
+    title_key: projects.feature.core
+    description: Always-on workspace shell, dashboard, audit, scoring, settings, and shared administration.
+    description_key: projects.feature.coreDesc
+    category: core
+    risk_level: low
+    status: live
+    landing_path: dashboard
+    source_selectable: false
+    flyto_native: true
+    default_enabled: true
+    billing: ce_included
+    cross_cutting: true
+    aliases: [workspace_core]
+    features: []
+    gating_features: []
+    permissions: [asset:read, org:settings, org:delete, member:invite, member:remove, member:role_change, score:configure, system:rbac:read, system:rbac:write]
+    commercial_actions: []
+    pages: [dashboard, verdict, pulse, footprint, operations, audit_timeline, timeline, scoring, score_trends, settings, org, repo_detail, exec]
+    navigation: [overview, assets, evidence, workflows]
+    providers: []
+
+  - key: code
+    display_name: Code Security
+    title_key: projects.feature.codeAudit
+    description: Scan source code for vulnerabilities, secrets, dependency risk, and IaC issues.
+    description_key: projects.feature.codeAuditDesc
+    category: surface
+    risk_level: medium
+    status: live
+    landing_path: issues
+    source_selectable: true
+    flyto_native: true
+    default_enabled: true
+    billing: ce_included
+    aliases: [code_audit, sast]
+    features: [surface_code, scoring_unified, asset_map, code_audit, sast, sca, secrets, iac, reachability, ai_fix_plan]
+    gating_features: [surface_code, code_audit]
+    permissions: [asset:read, surface:read_code, scan:trigger_code, scan:trigger, scan:cancel, repo:connect, finding:verify]
+    commercial_actions: [scan.code.run]
+    pages: [repos, issues, pentest, warroom_architecture, warroom_security, containers, repo_detail]
+    navigation: [overview, assets, findings, evidence, workflows, reports]
+    providers: []
+
+  - key: external
+    display_name: CTEM / External Attack Surface
+    title_key: projects.feature.ctem
+    description: External posture, domains, DNS, exposed services, and continuous exposure management.
+    description_key: projects.feature.ctemDesc
+    category: surface
+    risk_level: medium
+    status: live
+    landing_path: posture-overview
+    source_selectable: true
+    flyto_native: true
+    default_enabled: true
+    billing: ce_included
+    aliases: [ctem, attack_surface]
+    features: [surface_external, scoring_unified, ctem, attack_surface, posture_scoring, threat_feed, supply_chain, mttr_tracking, continuous_monitoring, brand_protection]
+    gating_features: [surface_external, ctem]
+    permissions: [asset:read, surface:read_external, scan:trigger_external, scan:trigger, domain:add, domain:remove, domain:validate, finding:verify, finding:update]
+    commercial_actions: [scan.external.run]
+    pages: [domains, asset_map, asset_coverage, posture_overview, findings, ctem_actions, attack_paths, mitigations, vendor_risk, risk_matrix, data_leaks, brand_protection]
+    navigation: [overview, assets, findings, evidence, workflows, reports]
+    providers:
+      - id: bitsight
+        label: Bitsight
+
+  - key: cloud
+    display_name: Cloud Security
+    title_key: projects.feature.cspm
+    description: Cloud inventory, posture checks, and misconfiguration findings.
+    description_key: projects.feature.cspmDesc
+    category: surface
+    risk_level: medium
+    status: beta
+    landing_path: cloud-posture
+    source_selectable: true
+    flyto_native: true
+    default_enabled: false
+    billing: ce_included
+    aliases: [cspm]
+    features: [surface_cloud, scoring_unified, cspm, cloud_inventory, cloud_findings, cloud_scoring]
+    gating_features: [surface_cloud, cspm]
+    permissions: [asset:read, surface:read_cloud, scan:trigger_cloud, finding:verify, finding:update]
+    commercial_actions: [scan.cloud.run]
+    pages: [cspm, asset_map, asset_coverage, findings, risk_matrix]
+    navigation: [overview, assets, findings, evidence, workflows, reports]
+    providers: []
+
+  - key: container
+    display_name: Container Security
+    title_key: projects.feature.container
+    description: Container image CVEs, base-image drift, and image scan evidence.
+    description_key: projects.feature.containerDesc
+    category: surface
+    risk_level: medium
+    status: beta
+    landing_path: containers
+    source_selectable: true
+    flyto_native: true
+    default_enabled: true
+    billing: ce_included
+    aliases: []
+    features: [surface_container, container, container_findings]
+    gating_features: [surface_container]
+    permissions: [asset:read, surface:read_container, scan:trigger_container, finding:verify, finding:update]
+    commercial_actions: [scan.container.run]
+    pages: [containers, asset_map, asset_coverage, findings, risk_matrix]
+    navigation: [overview, assets, findings, evidence, workflows, reports]
+    providers: []
+
+  - key: dark_web
+    display_name: Dark Web & Threat Intelligence
+    title_key: projects.feature.darkWeb
+    description: Leaked credentials, ransomware intelligence, IoCs, and watchlist monitoring.
+    description_key: projects.feature.darkWebDesc
+    category: surface
+    risk_level: medium
+    status: live
+    landing_path: ioc-lookup
+    source_selectable: true
+    flyto_native: true
+    default_enabled: false
+    billing: enterprise_addon
+    aliases: [darkweb, darkweb_intel, threat_intel]
+    features: [dark_web, darkweb_intel, threat_intel]
+    gating_features: [ctem]
+    permissions: [asset:read, surface:read_external, sensitive_evidence:read, darkweb:monitor]
+    commercial_actions: [darkweb.monitor]
+    pages: [threat_actors, malware_families, ransomware_incidents, ioc_lookup, sensor_map, data_leaks, brand_protection, botshield, findings]
+    navigation: [overview, findings, evidence, workflows, reports]
+    providers:
+      - id: cyble
+        label: Cyble
+
+  - key: vuln_mgmt
+    display_name: Vulnerability Management
+    title_key: projects.feature.vulnMgmt
+    description: Unified vulnerability queue across scanners, imports, containers, and external exposure.
+    description_key: projects.feature.vulnMgmtDesc
+    category: surface
+    risk_level: medium
+    status: live
+    landing_path: findings
+    source_selectable: true
+    flyto_native: true
+    default_enabled: true
+    billing: ce_included
+    aliases: [vulnerability_management]
+    features: [vuln_mgmt]
+    gating_features: [vuln_mgmt]
+    permissions: [asset:read, finding:import, finding:verify, finding:update]
+    commercial_actions: []
+    pages: [findings, ctem_actions, mitigations, risk_matrix]
+    navigation: [overview, assets, findings, evidence, workflows, reports]
+    providers:
+      - id: tenable
+        label: Tenable
+
+  - key: identity
+    display_name: Identity Security
+    title_key: projects.feature.identity
+    description: IdP posture, principal risk, OAuth grants, and leaked-credential identity findings.
+    description_key: projects.feature.identityDesc
+    category: surface
+    risk_level: medium
+    status: beta
+    landing_path: identity
+    source_selectable: true
+    flyto_native: false
+    default_enabled: false
+    billing: enterprise_addon
+    aliases: [idp]
+    features: [identity]
+    gating_features: [identity]
+    permissions: [asset:read, evidence:read]
+    commercial_actions: []
+    pages: [identity, asset_map, asset_coverage, findings]
+    navigation: [overview, assets, findings, evidence, workflows, reports]
+    providers:
+      - id: okta
+        label: Okta
+
+  - key: product_verification
+    display_name: Automated Security Testing
+    title_key: projects.feature.productVerification
+    description: Deterministic browser replay, network/DOM/screenshot evidence, and proof reports.
+    description_key: projects.feature.productVerificationDesc
+    category: verification
+    risk_level: medium
+    status: live
+    landing_path: product-verification
+    source_selectable: false
+    flyto_native: true
+    default_enabled: false
+    billing: ce_included
+    aliases: [verify, product_verify]
+    features: [surface_code, code_audit, product_verification]
+    gating_features: [surface_code, code_audit]
+    permissions: [scan:trigger, evidence:read, report:view]
+    commercial_actions: [warroom.verify]
+    pages: [product_verification]
+    navigation: [overview, evidence, workflows, reports, product_verification]
+    providers: []
+
+  - key: autofix
+    display_name: Code Security & AutoFix
+    title_key: projects.feature.addons
+    description: Patch proposal, PR creation, test gate, and proof-of-fix verification.
+    description_key: projects.feature.addonsDesc
+    category: action
+    risk_level: high
+    status: live
+    landing_path: autofix
+    source_selectable: false
+    flyto_native: true
+    default_enabled: true
+    billing: ce_included
+    aliases: [code_autofix, ai_fix]
+    requires: [code]
+    features: [autofix, ai_fix_plan]
+    gating_features: [autofix]
+    permissions: [autofix:open_pr, autofix:approve, autofix:revert, remediation:read, remediation:plan, remediation:approve, remediation:apply, remediation:verify, remediation:rollback, evidence:read]
+    commercial_actions: [ai.fix]
+    pages: [autofix]
+    navigation: [autofix, evidence, workflows, reports]
+    providers: []
+
+  - key: red_team
+    display_name: Red Team Simulation
+    title_key: projects.feature.redTeam
+    description: Approval-gated adversary emulation, attack paths, and replayable evidence.
+    description_key: projects.feature.redTeamDesc
+    category: simulation
+    risk_level: high
+    status: beta
+    landing_path: attack-paths
+    source_selectable: false
+    flyto_native: true
+    default_enabled: false
+    billing: enterprise_addon
+    aliases: [redteam]
+    features: [red_team]
+    gating_features: [red_team]
+    permissions: [pentest:run, pentest:approve_scan, evidence:read, finding:update]
+    commercial_actions: [redteam.run]
+    pages: [pentest, attack_paths, mitigations, findings, risk_matrix]
+    navigation: [overview, findings, evidence, workflows, reports]
+    providers: []
+
+  - key: ai_gate
+    display_name: AI Gate
+    title_key: projects.feature.agentFirewall
+    description: Runtime control for agent tool calls, sensitive-data egress, and dangerous side effects.
+    description_key: projects.feature.agentFirewallDesc
+    category: gate
+    risk_level: high
+    status: beta
+    landing_path: mcp
+    source_selectable: true
+    flyto_native: true
+    default_enabled: false
+    billing: enterprise_addon
+    aliases: [mcp, agent_firewall, agent_guardian]
+    features: [mcp, mcp_guardian]
+    gating_features: [mcp]
+    permissions: [asset:read, mcp:configure, evidence:read]
+    commercial_actions: [ai.agent_tool.call, ai.workflow_mcp.call]
+    pages: [mcp]
+    navigation: [overview, evidence, workflows, reports]
+    providers: []
+
+  - key: reporting
+    display_name: Compliance & Reporting
+    title_key: projects.feature.reporting
+    description: Executive, compliance, and proof-of-fix reporting.
+    description_key: projects.feature.reportingDesc
+    category: program
+    risk_level: low
+    status: live
+    landing_path: reports
+    source_selectable: false
+    flyto_native: true
+    default_enabled: true
+    billing: ce_included
+    aliases: [reports, report]
+    features: [compliance, executive_report, report_export]
+    gating_features: []
+    permissions: [report:view, report:export, evidence:read]
+    commercial_actions: [report.build, report.export, ai.report]
+    pages: [reports, va_report, compliance]
+    navigation: [reports]
+    providers: []
+
+# Templates (preset bundles) were removed — the create-project wizard is
+# module-driven now (one clear list, no English/Chinese mixed second list).
+#
+# Billing is module-level: see `billing:` on each module above. Values are:
+# `ce_included`, `enterprise_addon`, or `enterprise_only`. The frontend price
+# badge and backend tests read this registry instead of hardcoding "free".

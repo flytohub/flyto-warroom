@@ -1,0 +1,139 @@
+editions:
+  community:
+    deploy_mode: community
+    license_class: apache_2
+    providers:
+      auth: local_jwt
+      billing: none
+      storage: local_fs
+      ai: rules_only
+      threat_intel: offline_bundle
+    commercial_boundary:
+      distribution: self_hosted_open_core
+      license_mode: none
+      entitlement_source: local_capability_snapshot
+      evidence_authority: local_evidence_pack
+      premium_execution: disabled_fail_closed
+      upgrade_path: enterprise_cloud_bridge_or_airgap
+      release_gate: ce_release_tree
+    hidden_surfaces:
+      - billing
+      - payments
+      - marketplace
+      - creator_earnings
+      - social
+      - audit
+      - rbac
+      - sso
+      - redteam
+      - darkweb
+      - ai_governance
+    unsupported_actions:
+      - billing.checkout
+      - payment.manage
+      - marketplace.open
+      - audit.export
+      - redteam.run
+      - darkweb.monitor
+      - ai.workflow_mcp.call
+      - ai.agent_tool.call
+
+  saas:
+    deploy_mode: saas
+    license_class: commercial
+    providers:
+      auth: firebase
+      billing: stripe
+      storage: gcs
+      ai: openai
+      threat_intel: online_feed
+    commercial_boundary:
+      distribution: hosted_saas
+      license_mode: subscription
+      entitlement_source: stripe_entitlement
+      evidence_authority: managed_signed_evidence
+      premium_execution: managed_flyto_runtime
+      upgrade_path: enterprise_contract
+      release_gate: github_actions_and_cloud_release
+    hidden_surfaces: []
+    unsupported_actions: []
+
+  enterprise_cloud:
+    deploy_mode: enterprise_cloud
+    license_class: commercial
+    providers:
+      auth: enterprise_jwt
+      billing: offline_license
+      storage: gcs
+      ai: openai
+      threat_intel: online_feed
+    commercial_boundary:
+      distribution: managed_enterprise_cloud
+      license_mode: enterprise_license
+      entitlement_source: contract_or_cloud_entitlement
+      evidence_authority: managed_signed_evidence
+      premium_execution: enterprise_cloud_bridge
+      upgrade_path: enterprise_airgap
+      release_gate: github_actions_and_enterprise_release
+    hidden_surfaces:
+      - billing
+      - payments
+      - creator_earnings
+      - social
+    unsupported_actions:
+      - billing.checkout
+      - payment.manage
+
+  self_hosted_online:
+    deploy_mode: self_hosted_online
+    license_class: commercial
+    providers:
+      auth: enterprise_jwt
+      billing: offline_license
+      storage: minio
+      ai: openai
+      threat_intel: online_feed
+    commercial_boundary:
+      distribution: customer_self_hosted_online
+      license_mode: enterprise_license
+      entitlement_source: signed_license
+      evidence_authority: local_or_bridge_signed_evidence
+      premium_execution: customer_runner_or_bridge
+      upgrade_path: enterprise_airgap
+      release_gate: self_hosted_release_packet
+    hidden_surfaces:
+      - billing
+      - payments
+      - creator_earnings
+      - social
+    unsupported_actions:
+      - billing.checkout
+      - payment.manage
+
+  enterprise_airgap:
+    deploy_mode: enterprise_airgap
+    license_class: commercial
+    providers:
+      auth: enterprise_jwt
+      billing: offline_license
+      storage: minio
+      ai: local_openai_compatible
+      threat_intel: offline_bundle
+    commercial_boundary:
+      distribution: customer_airgap
+      license_mode: offline_license
+      entitlement_source: signed_offline_license
+      evidence_authority: offline_signed_evidence
+      premium_execution: private_runner_bundle
+      upgrade_path: offline_support_contract
+      release_gate: airgap_release_packet
+    hidden_surfaces:
+      - billing
+      - payments
+      - marketplace
+      - creator_earnings
+      - social
+    unsupported_actions:
+      - billing.checkout
+      - payment.manage
+      - marketplace.open

@@ -16,6 +16,7 @@ product line.
 
    ```sh
    git -C /Users/chester/flytohub/flyto-code apply /path/to/upstream-patches/flyto-code.patch
+   git -C /Users/chester/flytohub/flyto-engine apply /path/to/upstream-patches/flyto-engine.patch
    ```
 
    (`flyto-core`, `flyto-indexer`, and `flyto-i18n` are external dependencies,

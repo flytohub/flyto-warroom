@@ -15,13 +15,9 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { alpha, useTheme, type Theme } from '@mui/material/styles'
 import {
-  AlertTriangle,
-  CheckCircle2,
-  GitPullRequest,
   ListChecks,
   RotateCcw,
   ShieldCheck,
-  Sparkles,
   Wand2,
   Workflow,
 } from 'lucide-react'
@@ -254,64 +250,6 @@ function HeaderChip({ label, value, tone }: { label: string; value: string; tone
   )
 }
 
-function MetricCard({
-  icon,
-  label,
-  value,
-  detail,
-  tone,
-}: {
-  icon: ReactNode
-  label: string
-  value: string | number
-  detail: string
-  tone: Tone
-}) {
-  const theme = useTheme()
-  const color = toneColor(tone)
-  return (
-    <Box
-      sx={{
-        ...panelSx(theme),
-        p: 1.35,
-        display: 'flex',
-        alignItems: 'center',
-        gap: 1.25,
-        minWidth: 0,
-        borderColor: alpha(color, theme.palette.mode === 'dark' ? 0.34 : 0.22),
-      }}
-    >
-      <Box
-        sx={{
-          width: 38,
-          height: 38,
-          borderRadius: 1,
-          display: 'grid',
-          placeItems: 'center',
-          color,
-          bgcolor: alpha(color, theme.palette.mode === 'dark' ? 0.18 : 0.1),
-          flexShrink: 0,
-        }}
-      >
-        {icon}
-      </Box>
-      <Box minWidth={0}>
-        <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 800, display: 'block' }}>
-          {label}
-        </Typography>
-        <Stack direction="row" alignItems="baseline" spacing={0.8} minWidth={0}>
-          <Typography variant="h4" sx={{ fontWeight: 900, lineHeight: 1, color: 'text.primary' }}>
-            {value}
-          </Typography>
-          <Typography variant="caption" color="text.secondary" noWrap sx={{ fontWeight: 700 }}>
-            {detail}
-          </Typography>
-        </Stack>
-      </Box>
-    </Box>
-  )
-}
-
 function StatusFunnel({
   buckets,
   passed,
@@ -325,13 +263,13 @@ function StatusFunnel({
   const max = Math.max(1, ...buckets.map((bucket) => bucket.count), passed, failed)
 
   return (
-    <Box sx={{ ...panelSx(theme), p: 1.5 }}>
+    <Box sx={{ ...panelSx(theme), p: 1.75 }}>
       <SectionHeading
         icon={<Workflow size={17} />}
         title={tOr('autofix.manager.statusFunnel', 'Repair funnel')}
         subtitle={tOr('autofix.manager.statusFunnelSub', 'Backend states grouped by readiness')}
       />
-      <Stack spacing={1.1} sx={{ mt: 1.4 }}>
+      <Stack spacing={1.25} sx={{ mt: 1.55 }}>
         {buckets.map((bucket) => (
           <FunnelRow key={bucket.key} label={bucket.label} count={bucket.count} max={max} tone={bucket.tone} />
         ))}
@@ -394,7 +332,7 @@ function PriorityQueue({
 
   return (
     <Box sx={{ ...panelSx(theme), minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
-      <Box sx={{ px: 1.6, py: 1.25, borderBottom: `1px solid ${alpha(theme.palette.divider, 0.9)}` }}>
+      <Box sx={{ px: 1.8, py: 1.45, borderBottom: `1px solid ${alpha(theme.palette.divider, 0.9)}` }}>
         <SectionHeading
           icon={<ListChecks size={17} />}
           title={tOr('autofix.manager.priorityTitle', 'Priority repair queue')}
@@ -406,9 +344,9 @@ function PriorityQueue({
         sx={{
           display: 'grid',
           gridTemplateColumns: { xs: '88px minmax(0,1fr) 128px', xl: '96px minmax(0,1fr) 150px 170px' },
-          gap: 1,
-          px: 1.6,
-          py: 0.85,
+          gap: 1.25,
+          px: 1.8,
+          py: 1,
           bgcolor: theme.palette.mode === 'dark' ? alpha('#ffffff', 0.045) : alpha('#0f172a', 0.04),
           borderBottom: `1px solid ${alpha(theme.palette.divider, 0.9)}`,
         }}
@@ -455,11 +393,11 @@ function QueueRow({ finding }: { finding: AutofixFindingRow }) {
       sx={{
         display: 'grid',
         gridTemplateColumns: { xs: '88px minmax(0,1fr) 128px', xl: '96px minmax(0,1fr) 150px 170px' },
-        gap: 1,
+        gap: 1.25,
         alignItems: 'center',
-        px: 1.6,
-        py: 1.05,
-        minHeight: 64,
+        px: 1.8,
+        py: 1.2,
+        minHeight: 74,
         borderBottom: `1px solid ${alpha(theme.palette.divider, theme.palette.mode === 'dark' ? 0.58 : 0.75)}`,
         '&:hover': {
           bgcolor: alpha(colors.brand, theme.palette.mode === 'dark' ? 0.08 : 0.045),
@@ -517,13 +455,13 @@ function LatestRuns({ runs }: { runs: AutofixRunLogRow[] }) {
   const theme = useTheme()
 
   return (
-    <Box sx={{ ...panelSx(theme), p: 1.5, minHeight: 0, maxHeight: 260, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <Box sx={{ ...panelSx(theme), p: 1.75, minHeight: 0, overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       <SectionHeading
         icon={<RotateCcw size={17} />}
         title={tOr('autofix.manager.latestRunsTitle', 'Recent automation runs')}
         subtitle={tOr('autofix.manager.latestRunsSub', 'PR output and gate results')}
       />
-      <Stack spacing={0.8} sx={{ mt: 1.25, minHeight: 0, overflow: 'auto' }}>
+      <Stack spacing={0.95} sx={{ mt: 1.4, minHeight: 0, overflow: 'auto' }}>
         {runs.length === 0 ? (
           <Box sx={{ minHeight: 116, display: 'grid', placeItems: 'center' }}>
             <Typography variant="body2" color="text.secondary">{tOr('autofix.manager.noRuns', 'No AutoFix runs yet')}</Typography>
@@ -595,13 +533,13 @@ function DistributionPanel({
   const categoryTotal = categoryCounts.reduce((sum, [, value]) => sum + value, 0)
 
   return (
-    <Box sx={{ ...panelSx(theme), p: 1.5 }}>
+    <Box sx={{ ...panelSx(theme), p: 1.75 }}>
       <SectionHeading
         icon={<ShieldCheck size={17} />}
         title={tOr('autofix.manager.patchReadiness', 'Patch readiness')}
         subtitle={tOr('autofix.manager.patchReadinessSub', 'Severity and rule family mix')}
       />
-      <Stack spacing={1.1} sx={{ mt: 1.25 }}>
+      <Stack spacing={1.25} sx={{ mt: 1.4 }}>
         {(['critical', 'high', 'medium', 'low'] as Severity[]).map((severity) => (
           severityCounts[severity] > 0 ? (
             <MiniBar
@@ -803,7 +741,6 @@ export function AutofixManagerView({ orgId }: { orgId: string | undefined }) {
   }, [findings])
 
   const loadingFindings = findingsQ.isLoading && !findingsQ.data
-  const loadingRuns = runsQ.isLoading && !runsQ.data
 
   return (
     <Box
@@ -816,7 +753,7 @@ export function AutofixManagerView({ orgId }: { orgId: string | undefined }) {
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
-        gap: 1.25,
+        gap: 1.35,
         overflow: 'hidden',
         p: { xs: 1.25, md: 1.5 },
       }}
@@ -831,66 +768,36 @@ export function AutofixManagerView({ orgId }: { orgId: string | undefined }) {
         sx={{
           flex: 1,
           minHeight: 0,
-          overflowY: 'auto',
+          overflow: 'hidden',
           overflowX: 'hidden',
           display: 'grid',
-          gridTemplateColumns: { xs: 'minmax(0, 1fr)', xl: 'minmax(0, 1fr) 340px' },
-          alignContent: 'start',
-          alignItems: 'start',
-          gap: 1.25,
-          pr: 0.35,
-          pb: 1,
-          scrollbarGutter: 'stable',
-          overscrollBehavior: 'contain',
+          gridTemplateColumns: {
+            xs: 'minmax(0, 1fr)',
+            lg: 'minmax(0, 1fr) minmax(360px, 420px)',
+            xl: 'minmax(0, 1fr) minmax(380px, 440px)',
+          },
+          alignItems: 'stretch',
+          gap: 1.35,
         }}
       >
-        <Box sx={{ minHeight: 0, overflow: 'visible', display: 'grid', gridTemplateRows: 'auto auto', gap: 1.25 }}>
-          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, minmax(0, 1fr))', xl: 'repeat(4, minmax(0, 1fr))' }, gap: 1.25 }}>
-            <MetricCard
-              icon={<Sparkles size={19} />}
-              label={t('autofix.manager.kpiEligibleBacklog')}
-              value={loadingFindings ? '-' : findings.length}
-              detail={tOr('autofix.manager.patchReadiness', 'Patch readiness')}
-              tone="brand"
-            />
-            <MetricCard
-              icon={<CheckCircle2 size={19} />}
-              label={t('autofix.manager.kpiVerifyPassRate')}
-              value={summary.verifyRate == null ? '-' : `${summary.verifyRate}%`}
-              detail={formatI18n(t('autofix.manager.verifiedSummary'), {
-                passed: summary.passed,
-                total: summary.passed + summary.failed,
-                runs: runs.length,
-              })}
-              tone={summary.verifyRate == null ? 'neutral' : summary.verifyRate >= 90 ? 'success' : summary.verifyRate >= 70 ? 'warning' : 'danger'}
-            />
-            <MetricCard
-              icon={<GitPullRequest size={19} />}
-              label={t('autofix.manager.kpiPRsOpened')}
-              value={loadingRuns ? '-' : summary.prs}
-              detail={t('autofix.manager.kpiPatchesPassed')}
-              tone="tech"
-            />
-            <MetricCard
-              icon={<AlertTriangle size={19} />}
-              label={tOr('autofix.manager.failedPatches', 'Failed gates')}
-              value={loadingRuns ? '-' : summary.failed}
-              detail={t('autofix.manager.kpiAutofixRuns')}
-              tone={summary.failed > 0 ? 'danger' : 'neutral'}
-            />
-          </Box>
-
+        <Box sx={{ minHeight: 0, overflow: 'hidden', display: 'grid' }}>
           <PriorityQueue rows={priorityRows} loading={loadingFindings} />
         </Box>
 
         <Box
           sx={{
             minHeight: 0,
-            overflow: 'auto',
-            display: 'grid',
-            gridTemplateRows: 'auto auto auto',
-            alignContent: 'start',
-            gap: 1.25,
+            maxHeight: '100%',
+            overflowX: 'hidden',
+            overflowY: 'auto',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 1.35,
+            pr: 0.25,
+            scrollbarGutter: 'stable',
+            '& > *': {
+              flex: '0 0 auto',
+            },
           }}
         >
           <StatusFunnel buckets={summary.buckets} passed={summary.passed} failed={summary.failed} />

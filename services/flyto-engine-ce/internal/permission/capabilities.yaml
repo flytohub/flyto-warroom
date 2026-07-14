@@ -1,0 +1,367 @@
+# Capabilities — the entitlement + RBAC matrix.
+#
+# This file is the single source of truth for "what can a user see and
+# do in flyto-code". Everything below is enforced backend-first; the
+# frontend reads `GET /api/v1/me/capabilities?org_id=...` and renders
+# nav + guards from that JSON. Editing this YAML is enough to flip a
+# customer between Code-only and Code+CTEM without code changes.
+#
+# Layers (multi-layer; not all five are always relevant):
+#   L1  org.tier     — product mix the customer pays for
+#   L2  org.plan     — billing tier (free / starter / pro / enterprise)
+#   L3  org.features — explicit feature flags (override tier defaults)
+#   L4  user.role    — owner / admin / member / guest / viewer
+#   L5  action       — capability strings (scan:trigger, autofix:approve, …)
+#   L6  page         — UI route id  (dashboard, pulse, issues, …)
+
+# ─────────────────────────────────────────────────────────────────────
+# TIERS — high-level product packages.
+# A customer's `organizations.tier` is one of these. Features default
+# to the tier's `features` list; the per-org `features` JSON column can
+# add (never remove — removing requires a plan change).
+# ─────────────────────────────────────────────────────────────────────
+tiers:
+  code:
+    label: "Code Security"
+    desc: "弱掃 — SAST / SCA / secrets / IaC + AutoFix"
+    features:
+      - surface_code
+      - surface_container
+      - scoring_unified
+      - code_audit
+      - sast
+      - sca
+      - secrets
+      - iac
+      - autofix
+      - reachability
+      - vuln_mgmt          # unified CVE/finding view (SCA + container CVEs here)
+      # ai_fix_plan / executive_report intentionally NOT here — those
+      # are plan-gated premium features so even free-tier code customers
+      # see the base scanners but not the AI roadmap output.
+
+  ctem:
+    label: "External CTEM"
+    desc: "外部曝險管理 — Attack Surface / SSL / DNS / Posture scoring"
+    features:
+      - surface_external
+      - ctem
+      - attack_surface
+      - asset_map
+      - posture_scoring
+      - scoring_unified
+      - sla_tracking
+      - mttr_tracking
+      - threat_feed
+      - supply_chain
+      - vuln_mgmt          # unified CVE/finding view (external CVEs here)
+      # executive_report is plan-gated (pro+).
+
+  code_ctem:
+    label: "Code + CTEM"
+    desc: "完整 — 內部代碼 × 外部曝險,啟用跨維度關聯"
+    features:
+      - surface_external
+      - surface_code
+      - surface_container
+      - code_audit
+      - sast
+      - sca
+      - secrets
+      - iac
+      - autofix
+      - reachability
+      - ctem
+      - attack_surface
+      - asset_map
+      - posture_scoring
+      - scoring_unified
+      - sla_tracking
+      - mttr_tracking
+      - threat_feed
+      - supply_chain
+      - vuln_mgmt          # unified CVE/finding view across code + external
+      - pulse              # cross-dim only when both sides present
+      - cross_dim_correlation
+      # ai_fix_plan / executive_report still plan-gated (pro+).
+
+  code_ctem_cspm:
+    label: "Full Platform"
+    desc: "Code + CTEM + Cloud CSPM(預留,Q1-2027 上線)"
+    features:
+      - surface_external
+      - surface_code
+      - surface_cloud
+      - surface_container
+      - code_audit
+      - sast
+      - sca
+      - secrets
+      - iac
+      - autofix
+      - reachability
+      - ctem
+      - attack_surface
+      - asset_map
+      - posture_scoring
+      - scoring_unified
+      - sla_tracking
+      - mttr_tracking
+      - threat_feed
+      - supply_chain
+      - vuln_mgmt          # unified CVE/finding view across code + external + cloud
+      - pulse
+      - cross_dim_correlation
+      - cspm
+      # ai_fix_plan / executive_report still plan-gated.
+
+# ─────────────────────────────────────────────────────────────────────
+# PLANS — billing tier; gates features that have an extra cost beyond
+# the base tier (typically AI / compliance / SSO / unlimited seats).
+# A feature is enabled iff both the tier AND the plan permit it.
+# ─────────────────────────────────────────────────────────────────────
+plans:
+  free:
+    label: "Free"
+    seat_cap: 3
+    repo_cap: 3
+    domain_cap: 3
+    plan_features: []           # only base tier features
+  starter:
+    label: "Starter"
+    seat_cap: 10
+    repo_cap: 25
+    domain_cap: 25
+    plan_features:
+      - email_notification
+  pro:
+    label: "Pro"
+    seat_cap: 50
+    repo_cap: 100
+    domain_cap: 100
+    plan_features:
+      - email_notification
+      - slack_notification
+      - webhook
+      - ai_fix_plan
+      - compliance              # SOC2 / ISO27001 / PCI mapping
+      - executive_report
+      - report_export
+      - brand_protection        # impersonation / typosquat detection
+      - continuous_monitoring   # always-on cert/DNS/subdomain change alerts
+  team:
+    label: "Team"
+    seat_cap: 200
+    repo_cap: 500
+    domain_cap: 500
+    plan_features:
+      - email_notification
+      - slack_notification
+      - webhook
+      - ai_fix_plan
+      - compliance
+      - executive_report
+      - report_export
+      - brand_protection
+      - continuous_monitoring
+      - audit_export
+  enterprise:
+    label: "Enterprise"
+    seat_cap: -1                # unlimited
+    repo_cap: -1
+    domain_cap: -1
+    plan_features:
+      - email_notification
+      - slack_notification
+      - webhook
+      - ai_fix_plan
+      - compliance
+      - executive_report
+      - report_export
+      - red_team
+      - darkweb_intel
+      - brand_protection
+      - continuous_monitoring
+      - runtime_protection      # in-process runtime agent (Node / Python SDK)
+      - mcp                     # MCP Guardian read surface (servers/tools/decisions)
+      - sso                     # SAML / OIDC
+      - audit_export
+      - private_runner
+      - dedicated_support
+
+# ─────────────────────────────────────────────────────────────────────
+# PAGES — UI route ids and the feature gate(s) each one requires.
+# Frontend nav filters by `visible_pages` returned from /capabilities,
+# which is derived from this table given the org's active features.
+# A page appears iff EVERY listed `requires` feature is enabled.
+# ─────────────────────────────────────────────────────────────────────
+pages:
+  dashboard:             { requires: [],                       always: true }
+  projects:              { requires: [],                       always: true }
+  org:                   { requires: [],                       always: true }   # Org chart — always available
+  settings:              { requires: [],                       always: true }
+  reports:               { requires: [],                       always: true }
+  pulse:                 { requires: [pulse] }
+  footprint:             { requires: [] }                          # Footprint OSINT graph — pure recon, always-on
+  verdict:               { requires: [] }                          # Verdict-first war-room homepage — always-on (Verified Attack Paths / Verified Safe / MTTV / MTTR)
+  timeline:              { requires: [] }                          # Evidence/decision/path unified history — always-on (honest-empty)
+  risk_matrix:           { requires: [] }                          # Good/bad Asset Risk Matrix (importance × severity) — always-on (honest zeros)
+  issues:                { requires: [code_audit] }
+  repos:                 { requires: [code_audit] }
+  repo_detail:           { requires: [code_audit] }
+  autofix:               { requires: [autofix] }
+  pentest:               { requires: [code_audit] }            # SAST/DAST findings
+  reachability:          { requires: [reachability] }
+  domains:               { requires: [ctem] }
+  asset_map:             { requires: [ctem] }
+  asset_coverage:        { requires: [ctem] }
+  warroom_security:      { requires: [code_audit] }
+  warroom_architecture:  { requires: [code_audit] }
+  warroom_cicd:          { requires: [code_audit] }
+  product_verification:  { requires: [code_audit] }            # Automated Security Testing: site graph -> intent/state graph -> replay -> evidence pack. Engine owns gates; flyto-core executes.
+  warroom_exposure:      { requires: [ctem] }                  # alias — promoted items below
+  warroom_scoring:       { requires: [posture_scoring] }       # alias
+  warroom_compliance:    { requires: [compliance] }            # alias
+  warroom_history:       { requires: [] }                      # alias
+  cspm:                  { requires: [cspm] }                  # Q1-2027
+  containers:            { requires: [surface_container] }
+  remediation:           { requires: [vuln_mgmt] }             # Cross-surface remediation cockpit: code PR, live apply, agent task, external workflow, evidence/verify.
+  vuln_mgmt:             { requires: [vuln_mgmt] }             # 弱點管理 — unified CVE view over /findings (SCA + container + external CVEs). In every paying tier; survives both code & ctem project_type.
+  identity:              { requires: [identity] }              # 身分安全 — BYO IdP posture (Okta etc) from kernel identity.* claims. The `identity` feature is NOT in any default tier: it is added to the org's features when an identity provider is wired, so the page stays hidden (never a dead tile) until connected.
+  mcp:                   { requires: [mcp] }                   # MCP 安全 — Guardian read surface (servers/tools/decisions). Gated on the enterprise `mcp` feature.
+
+  # ──────────────────────────────────────────────────────────────
+  # IA refactor 2026-05-21 — items promoted out of war-room
+  # accordion to top-level sidebar entries. The warroom_* gates
+  # above stay as aliases so existing customer entitlements and
+  # deep-links survive while the new flat IA lands. Each new
+  # page below reuses the same `requires` feature as its
+  # ancestor war-room section.
+  # ──────────────────────────────────────────────────────────────
+  findings:              { requires: [ctem] }                  # external_issue_tracker table + 3D overlay
+  posture_overview:      { requires: [ctem] }
+  ctem_actions:          { requires: [ctem] }
+  brand_protection:      { requires: [brand_protection] }
+  threat_intel:          { requires: [ctem] }                  # HIBP breaches + IP rep + C2/IOC (darkweb side)
+  # Darkweb intel expansion 2026-05-22 — Cyble-parity catalog pages.
+  # threat_actors + malware_families source from MITRE ATT&CK (free,
+  # public, no per-org gate beyond ctem). ransomware_incidents from
+  # ransomware.live mirror. ioc_lookup + sensor_map are org-scoped
+  # views over the existing attack_surface table.
+  threat_actors:         { requires: [ctem] }
+  malware_families:      { requires: [ctem] }
+  ransomware_incidents:  { requires: [ctem] }
+  ioc_lookup:            { requires: [ctem] }
+  sensor_map:            { requires: [ctem] }
+  mitigations:           { requires: [ctem] }
+  vendor_risk:           { requires: [ctem] }
+  attack_paths:          { requires: [] }                      # ungated — was always-true fallback before. Tightening requires customer migration.
+  audit_timeline:        { requires: [] }                      # ex warroom_history
+  operations:            { requires: [] }                      # operator plane — connector/scan/system health + SLA budget; org-wide read view, always-on
+  scoring:               { requires: [posture_scoring] }       # Bitsight-style category breakdown + weight donut. Orphaned by the Phase 3 manifest refactor (page added to modules.ts but YAML missed), restored 2026-05-23 after operator: "分數總表頁面...現在完全找不到".
+  score_trends:          { requires: [posture_scoring] }       # ex warroom_scoring sub-item
+  va_report:             { requires: [] }                      # ex warroom_history sub-item — exec PDF
+  compliance:            { requires: [compliance] }            # ex warroom_compliance
+
+# ─────────────────────────────────────────────────────────────────────
+# ROLES — per-action capability matrix. `role.permissions` is what a
+# given role can DO. Owner is implicitly "all"; this file enumerates
+# the lower tiers so the diff is obvious in review.
+#
+# Naming: `<resource>:<action>`. Resource is what's affected, action is
+# the verb. Read access is implicit when no read permission listed —
+# the visibility/sensitivity layer (L3 + L5) gates reads.
+# ─────────────────────────────────────────────────────────────────────
+roles:
+  owner:
+    label: "Owner"
+    inherits: admin
+    permissions:
+      - org:delete
+      - org:transfer
+      - billing:manage
+      - sso:configure
+
+  admin:
+    label: "Admin"
+    inherits: member
+    permissions:
+      - org:settings
+      - member:invite
+      - member:remove
+      - member:role_change
+      - repo:connect
+      - repo:disconnect
+      - repo:delete
+      - domain:add
+      - domain:remove
+      - domain:validate
+      - scan:trigger
+      - scan:cancel
+      - scan:schedule
+      - pentest:create
+      - pentest:run                # consent gate; admin+ only
+      - pentest:approve_scan       # approve/deny queued scan-approval requests; admin+ only
+      - pentest:delete
+      - autofix:approve
+      - autofix:revert
+      - issue:status_change
+      - issue:bulk_action
+      - webhook:create
+      - webhook:edit
+      - webhook:delete
+      - audit:view
+      - audit:export
+      - asset:merge
+      - score:configure
+      - sensitive_evidence:read     # admin+ only — leaked/scan credentials, raw screenshots, takedown letters, compliance evidence (B7)
+      - scan:trigger_external
+      - scan:trigger_code
+      - scan:trigger_cloud
+      - scan:trigger_container
+      - budget:write                # admin+ only — configure budget policies + resolve incidents (was assertOrgAdmin)
+      - external:ingest             # admin+ only — bulk-ingest external vendor rating feeds (Bitsight) into kernel; distinct from member-level vendor:write manual assessment (audit AUTH-WRITE #4)
+      - integration:configure       # admin+ only — configure Evidence Fusion data sources: wire org_integrations, seal BYO vendor API keys, author custom mappings, write project-module source/billing config (audit AUTH-WRITE: fusion mutations were member-level)
+      - mcp:configure               # admin+ only — configure the MCP Runtime Guardian: per-org policy (rollout mode/targets/approved scopes), server lifecycle (approve/suspend/retire), tool classification (audit AUTH-WRITE)
+      - finding:import              # admin+ only — import an external scanner's findings (SARIF; Trivy-JSON next) onto the finding model; upserts authoritative code_alerts rows that drive SLA/scoring/remediation (audit AUTH-WRITE — third-party facts into the consolidation layer)
+      - darkweb:monitor             # admin+ only — configure paid darkweb/watchlist monitoring; read-only viewing stays surface:read_external
+      - remediation:approve         # admin+ only — approve cross-surface live/code/external remediation plans before apply
+      - remediation:apply           # admin+ only — execute approved mutation adapters; unsupported adapters fail closed
+      - remediation:rollback        # admin+ only — execute rollback where the adapter declares rollback support
+
+  member:
+    label: "Member"
+    inherits: viewer
+    permissions:
+      - scan:trigger                # member can kick off a scan but not delete the repo
+      - issue:status_change         # snooze / ignore / mark solved
+      - autofix:open_pr             # member can ask for AutoFix PR; admin approves
+      - pentest:request             # member can request a pentest; admin runs
+      - finding:update
+      - finding:ignore
+      - remediation:plan            # member can build a plan and request approval; cannot live-apply it
+      - remediation:verify          # member can rerun/read deterministic verification for an approved/applied target
+      - report:manage
+      - vendor:write                # create / update / delete / assess vendor risk (was any-member)
+
+  viewer:
+    label: "Viewer"                 # read-only — useful for auditors / execs / contractors
+    inherits: guest
+    permissions:
+      - report:view
+      - report:export
+      - asset:read
+      - surface:read_external
+      - surface:read_code
+      - surface:read_cloud
+      - surface:read_container
+      - score:read
+      - evidence:read
+      - access:audit_read
+      - remediation:read
+      - vendor:read                 # view vendor risk assessments + summary
+      - budget:read                 # view campaign budget policies + incidents
+
+  guest:
+    label: "Guest"
+    permissions: []                 # read access only on `visibility=public` resources

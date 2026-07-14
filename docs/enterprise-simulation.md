@@ -54,5 +54,5 @@ or wrong-secret tokens.
 ## What This Does Not Pretend
 
 This does not publish enterprise source code. Enterprise implementations remain
-private images and private source; CE receives protocol contracts and install
-composition only.
+private images and private source; CE receives protocol contracts, install
+composition, and the classified `services/flyto-engine-ce` kernel source slice.
