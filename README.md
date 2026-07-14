@@ -113,7 +113,7 @@ enterprise adapters, and live remediation workers are not exported.
 | --- | --- | ---: | --- |
 | `flyto-code` | `flyto-code` | 1598 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 21 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
-| `flyto-engine-ce` | `flyto-engine` | 87 | Classified CE backend kernel source for capability, resource, and safety primitives. |
+| `flyto-engine-ce` | `flyto-engine` | 91 | Classified CE backend kernel source for capability, resource, and safety primitives. |
 
 ## Docker Images
 

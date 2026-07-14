@@ -36,6 +36,11 @@
       "validation": "go test ./ce/engine-ce"
     },
     {
+      "path": "ce/worker-ce/**",
+      "reason": "Runnable CE worker source runtime exposing health, boundary, and deterministic queue/scheduler/backoff/circuit/canary self-tests without private scheduler dispatch, store, hosted runner callbacks, commercial adapters, or remediation orchestration.",
+      "validation": "go test ./ce/worker-ce"
+    },
+    {
       "path": "internal/canon/**",
       "reason": "Canonical URL/domain helpers; no customer data, provider credentials, store, SaaS, billing, or enterprise imports.",
       "validation": "go test ./internal/canon"

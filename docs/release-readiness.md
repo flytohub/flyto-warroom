@@ -16,7 +16,8 @@ The public CE release tree must pass:
 - `python3 install/scripts/audit-release-tree.py .`
 - `go -C services/flyto-engine-ce test ./...`, including the source-published
   `ce/engine-ce` runtime health, boundary, module catalog, capability snapshot,
-  and access self-test handlers.
+  and access self-test handlers plus `ce/worker-ce` queue, scheduler, backoff,
+  circuit, and canary self-test handlers.
 - frontend build, i18n hardcoded audit, visual-system audit, and focused UI
   interaction tests
 - Docker build-boundary audit and multi-arch image verification when publishing
