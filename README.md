@@ -50,6 +50,10 @@ workflows stay behind explicit capability gates.
 | Identity and governance | Local roles, capabilities, gated actions | SSO/SAML/SCIM, advanced entitlement, commercial billing |
 | AI governance | Deterministic fallback, audit events, provider visibility | Quota, routing, commercial AI proposal workflows |
 
+The machine-generated edition matrix lives in `docs/feature-matrix.md`
+and is derived from the engine module catalog instead of hand-written
+marketing copy.
+
 ## Quick Start
 
 ```sh

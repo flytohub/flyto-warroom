@@ -37,6 +37,7 @@ REQUIRED = [
     "docs/github-hardening.md",
     "docs/account-security.md",
     "docs/docker-hub-overview.md",
+    "docs/feature-matrix.md",
     "TRADEMARK.md",
     "SECURITY.md",
     "GOVERNANCE.md",

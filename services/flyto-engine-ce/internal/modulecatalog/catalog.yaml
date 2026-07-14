@@ -12,6 +12,9 @@ modules:
     flyto_native: true
     default_enabled: true
     billing: ce_included
+    ce_value: Local workspace shell, dashboard, audit timeline, scoring primitives, settings, and role administration.
+    enterprise_value: Enterprise identity, offline licensing, legal hold, support SLA, and controlled deployment boundaries.
+    upgrade_trigger: Teams need SSO, legal hold, offline license, audit export guarantees, or regulated deployment support.
     cross_cutting: true
     aliases: [workspace_core]
     features: []
@@ -35,6 +38,9 @@ modules:
     flyto_native: true
     default_enabled: true
     billing: ce_included
+    ce_value: Local SAST, SCA, secrets, IaC, reachability, code score, scan lifecycle, and finding evidence.
+    enterprise_value: AI-assisted proposals, promotion approval, rollback evidence, private runners, and managed code remediation workflows.
+    upgrade_trigger: Engineering teams need approval-backed remediation, PR promotion controls, private runner scale, or commercial AI proposals.
     aliases: [code_audit, sast]
     features: [surface_code, scoring_unified, asset_map, code_audit, sast, sca, secrets, iac, reachability, ai_fix_plan]
     gating_features: [surface_code, code_audit]
@@ -57,6 +63,9 @@ modules:
     flyto_native: true
     default_enabled: true
     billing: ce_included
+    ce_value: Local external inventory, domains, posture, issue lifecycle, SLA/MTTR tracking, and attack-path evidence.
+    enterprise_value: Commercial enrichment, continuous monitoring, premium correlation, takedown workflows, and managed exposure validation.
+    upgrade_trigger: Security teams need always-on monitoring, commercial enrichment, brand abuse response, or verified external remediation evidence.
     aliases: [ctem, attack_surface]
     features: [surface_external, scoring_unified, ctem, attack_surface, posture_scoring, threat_feed, supply_chain, mttr_tracking, continuous_monitoring, brand_protection]
     gating_features: [surface_external, ctem]
@@ -81,6 +90,9 @@ modules:
     flyto_native: true
     default_enabled: false
     billing: ce_included
+    ce_value: Cloud posture views, connector contracts, imported findings, asset map correlation, and local evidence records.
+    enterprise_value: Managed connector execution, multi-cloud remediation, IAM evaluation at scale, and signed cloud evidence return.
+    upgrade_trigger: Teams need live AWS/GCP/Azure/Cloudflare/Kubernetes/Okta remediation, connector operations, or managed posture evidence.
     aliases: [cspm]
     features: [surface_cloud, scoring_unified, cspm, cloud_inventory, cloud_findings, cloud_scoring]
     gating_features: [surface_cloud, cspm]
@@ -103,6 +115,9 @@ modules:
     flyto_native: true
     default_enabled: true
     billing: ce_included
+    ce_value: Container image findings, base-image drift, local scan evidence, and cross-surface vulnerability correlation.
+    enterprise_value: Live workload/runtime remediation, managed registry connectors, agent-backed verification, and rollback evidence.
+    upgrade_trigger: Teams need connected registry/workload remediation, live runtime verification, or managed container fix orchestration.
     aliases: []
     features: [surface_container, container, container_findings]
     gating_features: [surface_container]
@@ -125,6 +140,9 @@ modules:
     flyto_native: true
     default_enabled: false
     billing: enterprise_addon
+    ce_value: Public or user-configured threat-feed lookups can be normalized into the same local evidence and finding model.
+    enterprise_value: Commercial darkweb, stealer-log, leak, phishing, actor, malware, ransomware, and IOC intelligence.
+    upgrade_trigger: Teams need credential exposure monitoring, private leak datasets, phishing correlation, or commercial threat-intel freshness.
     aliases: [darkweb, darkweb_intel, threat_intel]
     features: [dark_web, darkweb_intel, threat_intel]
     gating_features: [ctem]
@@ -149,6 +167,9 @@ modules:
     flyto_native: true
     default_enabled: true
     billing: ce_included
+    ce_value: Unified local finding queue across code, external, container, imported scanner results, verification state, and remediation records.
+    enterprise_value: BYO scanner correlation, managed prioritization, SLA evidence, remediation program reporting, and enterprise workflow integration.
+    upgrade_trigger: Teams need cross-tool correlation, executive remediation KPIs, Jira/SIEM/SOAR workflow coupling, or portfolio-level SLA evidence.
     aliases: [vulnerability_management]
     features: [vuln_mgmt]
     gating_features: [vuln_mgmt]
@@ -173,6 +194,9 @@ modules:
     flyto_native: false
     default_enabled: false
     billing: enterprise_addon
+    ce_value: Imported identity posture and OAuth or IdP findings can be represented as local assets, findings, and evidence.
+    enterprise_value: Managed Okta/Entra/Google Workspace connectors, access graph analysis, SCIM/SSO controls, and identity exposure correlation.
+    upgrade_trigger: Teams need live identity connectors, access graph evaluation, enterprise IdP controls, or leaked-credential identity correlation.
     aliases: [idp]
     features: [identity]
     gating_features: [identity]
@@ -197,6 +221,9 @@ modules:
     flyto_native: true
     default_enabled: false
     billing: ce_included
+    ce_value: Local authorized browser/API replay, DOM snapshot, screenshot, network log, scheduler ledger, and evidence pack.
+    enterprise_value: Managed runner fleet, scale-out execution, signed replay artifacts, advanced approval gates, and enterprise-safe dispatch.
+    upgrade_trigger: Teams need high-volume validation, distributed runners, managed approvals, or signed replay evidence for production programs.
     aliases: [verify, product_verify]
     features: [surface_code, code_audit, product_verification]
     gating_features: [surface_code, code_audit]
@@ -219,6 +246,9 @@ modules:
     flyto_native: true
     default_enabled: true
     billing: ce_included
+    ce_value: Deterministic code and IaC fix rules, PR/test gate records, proof-of-fix verification, and rollback-ready evidence.
+    enterprise_value: AI proposal workflow, promotion approvals, rollback orchestration, live remediation adapters, and managed fix governance.
+    upgrade_trigger: Teams need AI-assisted remediation, approval promotion, live cloud/container/runtime fix apply, or auditable rollback workflows.
     aliases: [code_autofix, ai_fix]
     requires: [code]
     features: [autofix, ai_fix_plan]
@@ -242,6 +272,9 @@ modules:
     flyto_native: true
     default_enabled: false
     billing: enterprise_addon
+    ce_value: Local red-team planning records, safe authorization gates, attack-path context, and replayable evidence timeline.
+    enterprise_value: Managed campaigns, advanced replay, operator approvals, detection-gap mapping, and signed red-team evidence bundles.
+    upgrade_trigger: Teams need coordinated campaigns, managed operators, detection validation, or enterprise red-team delivery evidence.
     aliases: [redteam]
     features: [red_team]
     gating_features: [red_team]
@@ -264,6 +297,9 @@ modules:
     flyto_native: true
     default_enabled: false
     billing: enterprise_addon
+    ce_value: Local MCP/AI governance events, deterministic fallback, provider visibility, and policy simulation records.
+    enterprise_value: Quota routing, egress-risk controls, commercial model policy, managed MCP guardian workflows, and enterprise AI audit packs.
+    upgrade_trigger: Teams need enforceable AI provider policy, sensitive egress controls, MCP runtime governance, or enterprise AI audit evidence.
     aliases: [mcp, agent_firewall, agent_guardian]
     features: [mcp, mcp_guardian]
     gating_features: [mcp]
@@ -286,6 +322,9 @@ modules:
     flyto_native: true
     default_enabled: true
     billing: ce_included
+    ce_value: Local executive, VA, compliance, evidence pack, proof-of-fix, and audit timeline reporting.
+    enterprise_value: Legal hold, retention policy, offline export packs, branded reports, support-backed evidence review, and compliance delivery.
+    upgrade_trigger: Teams need legal hold, retention guarantees, customer-ready compliance packets, or regulated evidence export controls.
     aliases: [reports, report]
     features: [compliance, executive_report, report_export]
     gating_features: []

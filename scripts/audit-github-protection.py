@@ -64,6 +64,7 @@ REQUIRED_MARKERS = {
         "Audit CE moat and privacy boundary",
         "Audit GitHub protection files",
         "Export upstream patch preview",
+        "flyto-index verify",
     ],
     "scripts/audit-ce-boundary.py": [
         "CE_CONTROL_FILES",

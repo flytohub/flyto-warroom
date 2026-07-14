@@ -2,6 +2,7 @@ package modulecatalog
 
 import (
 	"slices"
+	"strings"
 	"testing"
 )
 
@@ -68,5 +69,47 @@ func TestEmbeddedCatalogPinsModuleBillingBoundaries(t *testing.T) {
 	}
 	if slices.Contains(enterpriseOnly, "code") || slices.Contains(enterpriseOnly, "external") || slices.Contains(enterpriseOnly, "autofix") {
 		t.Fatalf("CE core modules must not become enterprise_only: %v", enterpriseOnly)
+	}
+}
+
+func TestEmbeddedCatalogPinsOpenCoreUpgradeBoundaries(t *testing.T) {
+	c, err := LoadEmbedded()
+	if err != nil {
+		t.Fatalf("LoadEmbedded: %v", err)
+	}
+
+	ceIncluded := 0
+	enterpriseGated := 0
+	for _, m := range c.Modules {
+		if strings.TrimSpace(m.CEValue) == "" {
+			t.Fatalf("module %q missing ce_value", m.Key)
+		}
+		if strings.TrimSpace(m.EnterpriseValue) == "" {
+			t.Fatalf("module %q missing enterprise_value", m.Key)
+		}
+		if strings.TrimSpace(m.UpgradeTrigger) == "" {
+			t.Fatalf("module %q missing upgrade_trigger", m.Key)
+		}
+
+		switch m.Billing {
+		case "ce_included":
+			ceIncluded++
+			if len(m.Pages) == 0 && len(m.Permissions) == 0 && len(m.Features) == 0 {
+				t.Fatalf("CE module %q has no pages, permissions, or features", m.Key)
+			}
+		case "enterprise_addon", "enterprise_only":
+			enterpriseGated++
+			if len(m.GatingFeatures) == 0 && len(m.CommercialActions) == 0 && len(m.Providers) == 0 {
+				t.Fatalf("enterprise module %q has no gate, commercial action, or provider", m.Key)
+			}
+		default:
+			t.Fatalf("module %q has unhandled billing boundary %q", m.Key, m.Billing)
+		}
+	}
+	if ceIncluded < 8 {
+		t.Fatalf("CE must stay useful; got only %d ce_included modules", ceIncluded)
+	}
+	if enterpriseGated < 4 {
+		t.Fatalf("Enterprise must keep meaningful paid gates; got only %d gated modules", enterpriseGated)
 	}
 }

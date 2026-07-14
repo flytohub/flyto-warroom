@@ -1,89 +1,32 @@
-# Flyto2 Warroom CE / Enterprise Feature Matrix
+# Flyto2 Warroom CE Feature Matrix
 
-Flyto2 Warroom CE is the self-hosted open-core security war room. In public
-positioning terms, it is a self-hosted open-core security warroom and BYO offensive validation platform:
-a local layer that turns existing tool findings into verified attack paths,
-pentest evidence, and red-team scenarios. It is not a scanner-only dashboard.
-Enterprise adds commercial intelligence, managed remediation, identity, support,
-and deployment controls through explicit capability and evidence contracts.
+Machine-generated from `services/flyto-engine-ce/internal/modulecatalog/catalog.yaml`.
+Do not hand-edit this file in the public mirror; change the private
+`flyto-engine` module catalog and rerun the open-core exporter.
 
-This matrix is a product boundary, not a marketing hint. If a capability is not
-available in CE, the UI should show a gated state with a reason instead of a
-hidden fail-open path.
+CE must stay useful without Flyto Cloud. Enterprise must stay compelling
+without exposing private datasets, provider credentials, hosted control
+planes, live remediation workers, or commercial billing implementation.
 
-| Capability | CE | Enterprise Cloud Bridge | Enterprise Airgap |
-| --- | --- | --- | --- |
-| Local install | Docker Compose, local Postgres, local JWT auth | Same local Warroom plus entitled cloud jobs | Private images, offline license, customer-controlled update bundle |
-| Unified cockpit | Code, container, cloud, external, evidence, score, reports surfaces when data exists | Same cockpit with signed premium results | Same cockpit with offline evidence packages |
-| BYO data ingestion | Normalize findings, assets, identities, and evidence through public contracts and demo seed data | Managed connectors for commercial tools, feeds, scanners, and customer pipelines | Offline importer bundles and customer-controlled connector packages |
-| Attack path validation | Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation | Managed scenario ranking, commercial enrichment, and signed validation evidence | Offline validation packs and customer-approved scenario catalogs |
-| Code security | SAST, SCA, secrets, IaC, reachability, code score, deterministic remediation evidence | AI proposal gate, approval, promotion, rollback | Private proposal/review workflow without cloud egress |
-| Container security | Dockerfile/image-definition posture and local evidence | Live registry/workload remediation and managed connector execution | Private registry/workload connector bundle |
-| Cloud posture | Connector contracts, posture views, IAM evidence when configured | Live cloud remediation and commercial enrichment | Offline/cloud-private connector execution |
-| External attack surface | Footprint, asset map, posture, issue lifecycle, verify fixed, reopen, false positive | Commercial enrichment and continuous monitoring | Customer-controlled enrichment bundle |
-| Threat intelligence | Public/feed-backed lookups when configured | Darkweb, stealer logs, leak, phishing, actor, malware, ransomware datasets | Offline licensed datasets |
-| Automated Security Testing | Safe authorization gates, local runner, replay, screenshot, DOM/network evidence contract | Managed runner fleet and scale-out execution | Customer-controlled runner fleet |
-| Red team workflows | Planning, authorization, attack paths, scenario records, evidence timeline | Managed campaigns, signed operator approvals, and detection-gap workflows | Offline campaign pack and approvals |
-| AutoFix | Deterministic fixes, preview, operator acceptance, verification evidence | AI proposals, live cloud/container/runtime remediation, rollback orchestration | Offline approval and private remediation runners |
-| Evidence and reports | Timeline, evidence pack, report export contracts | Signed premium evidence and support attestations | Legal hold, retention, offline audit export |
-| Identity | Local users, roles, capability-gated UI/actions | SSO/SAML/SCIM, advanced RBAC, billing entitlement | Offline identity and license controls |
-| Compliance | Local evidence, audit timeline, exportable artifacts | Managed compliance mapping, support SLAs | Airgap compliance bundle and retention policy |
+| Module | Boundary | Status | CE baseline | Enterprise value | Upgrade trigger |
+| --- | --- | --- | --- | --- | --- |
+| `core` Core Evidence Platform | `ce_included` | `live` | Local workspace shell, dashboard, audit timeline, scoring primitives, settings, and role administration. | Enterprise identity, offline licensing, legal hold, support SLA, and controlled deployment boundaries. | Teams need SSO, legal hold, offline license, audit export guarantees, or regulated deployment support. |
+| `code` Code Security | `ce_included` | `live` | Local SAST, SCA, secrets, IaC, reachability, code score, scan lifecycle, and finding evidence. | AI-assisted proposals, promotion approval, rollback evidence, private runners, and managed code remediation workflows. | Engineering teams need approval-backed remediation, PR promotion controls, private runner scale, or commercial AI proposals. |
+| `external` CTEM / External Attack Surface | `ce_included` | `live` | Local external inventory, domains, posture, issue lifecycle, SLA/MTTR tracking, and attack-path evidence. | Commercial enrichment, continuous monitoring, premium correlation, takedown workflows, and managed exposure validation. | Security teams need always-on monitoring, commercial enrichment, brand abuse response, or verified external remediation evidence. |
+| `cloud` Cloud Security | `ce_included` | `beta` | Cloud posture views, connector contracts, imported findings, asset map correlation, and local evidence records. | Managed connector execution, multi-cloud remediation, IAM evaluation at scale, and signed cloud evidence return. | Teams need live AWS/GCP/Azure/Cloudflare/Kubernetes/Okta remediation, connector operations, or managed posture evidence. |
+| `container` Container Security | `ce_included` | `beta` | Container image findings, base-image drift, local scan evidence, and cross-surface vulnerability correlation. | Live workload/runtime remediation, managed registry connectors, agent-backed verification, and rollback evidence. | Teams need connected registry/workload remediation, live runtime verification, or managed container fix orchestration. |
+| `dark_web` Dark Web & Threat Intelligence | `enterprise_addon` | `live` | Public or user-configured threat-feed lookups can be normalized into the same local evidence and finding model. | Commercial darkweb, stealer-log, leak, phishing, actor, malware, ransomware, and IOC intelligence. | Teams need credential exposure monitoring, private leak datasets, phishing correlation, or commercial threat-intel freshness. |
+| `vuln_mgmt` Vulnerability Management | `ce_included` | `live` | Unified local finding queue across code, external, container, imported scanner results, verification state, and remediation records. | BYO scanner correlation, managed prioritization, SLA evidence, remediation program reporting, and enterprise workflow integration. | Teams need cross-tool correlation, executive remediation KPIs, Jira/SIEM/SOAR workflow coupling, or portfolio-level SLA evidence. |
+| `identity` Identity Security | `enterprise_addon` | `beta` | Imported identity posture and OAuth or IdP findings can be represented as local assets, findings, and evidence. | Managed Okta/Entra/Google Workspace connectors, access graph analysis, SCIM/SSO controls, and identity exposure correlation. | Teams need live identity connectors, access graph evaluation, enterprise IdP controls, or leaked-credential identity correlation. |
+| `product_verification` Automated Security Testing | `ce_included` | `live` | Local authorized browser/API replay, DOM snapshot, screenshot, network log, scheduler ledger, and evidence pack. | Managed runner fleet, scale-out execution, signed replay artifacts, advanced approval gates, and enterprise-safe dispatch. | Teams need high-volume validation, distributed runners, managed approvals, or signed replay evidence for production programs. |
+| `autofix` Code Security & AutoFix | `ce_included` | `live` | Deterministic code and IaC fix rules, PR/test gate records, proof-of-fix verification, and rollback-ready evidence. | AI proposal workflow, promotion approvals, rollback orchestration, live remediation adapters, and managed fix governance. | Teams need AI-assisted remediation, approval promotion, live cloud/container/runtime fix apply, or auditable rollback workflows. |
+| `red_team` Red Team Simulation | `enterprise_addon` | `beta` | Local red-team planning records, safe authorization gates, attack-path context, and replayable evidence timeline. | Managed campaigns, advanced replay, operator approvals, detection-gap mapping, and signed red-team evidence bundles. | Teams need coordinated campaigns, managed operators, detection validation, or enterprise red-team delivery evidence. |
+| `ai_gate` AI Gate | `enterprise_addon` | `beta` | Local MCP/AI governance events, deterministic fallback, provider visibility, and policy simulation records. | Quota routing, egress-risk controls, commercial model policy, managed MCP guardian workflows, and enterprise AI audit packs. | Teams need enforceable AI provider policy, sensitive egress controls, MCP runtime governance, or enterprise AI audit evidence. |
+| `reporting` Compliance & Reporting | `ce_included` | `live` | Local executive, VA, compliance, evidence pack, proof-of-fix, and audit timeline reporting. | Legal hold, retention policy, offline export packs, branded reports, support-backed evidence review, and compliance delivery. | Teams need legal hold, retention guarantees, customer-ready compliance packets, or regulated evidence export controls. |
 
-## Commercial Gates
+## Enforcement Rules
 
-Premium actions must fail closed when any gate fails:
-
-- missing or expired license
-- unsupported edition
-- denied role or missing action permission
-- missing connector
-- cloud service unavailable
-- unsigned or invalid evidence result
-- tenant/org mismatch
-
-## License Gate Contract
-
-The edition and license contract is deliberately split so CE remains useful and
-Enterprise remains sellable without becoming a separate product:
-
-| Gate | CE behavior | Enterprise behavior | Failure mode |
-| --- | --- | --- | --- |
-| Edition | `community` / Apache-2.0 profile, local auth, local storage, rules-only AI fallback | `enterprise_cloud`, `self_hosted_online`, or `enterprise_airgap` profile | Block unsupported actions and return an explanatory gate reason |
-| License | No commercial license is required for CE baseline workflows | Offline license or cloud entitlement is required for premium jobs | No job dispatch, no optimistic success, no unsigned evidence |
-| Capability snapshot | Public pages/actions come from the CE capabilities contract | Same shape with Enterprise edition/provider fields and premium action states | UI shows disabled or locked state from backend snapshot |
-| Project module | Module can be enabled/disabled independently in the local Warroom | Same module can attach to Enterprise Bridge or airgap runner packages | Module action fails closed when dependency, source, or connector is missing |
-| Evidence | Local evidence packs and report exports remain local | Premium jobs return signed evidence into the local timeline | Reject result if org, signature, or replay contract does not match |
-
-## Revenue Boundary
-
-The source-of-truth naming in the private engine is
-`internal/modulecatalog/catalog.yaml`:
-
-| Boundary | Modules / capabilities | Commercial rule |
-| --- | --- | --- |
-| CE included | Core cockpit, code, CTEM/external, cloud posture views, container evidence, vulnerability queue, local Product Verification, deterministic AutoFix, reporting | Must run locally without Flyto Cloud, Stripe, Firebase, hosted AI, hosted telemetry, or private datasets |
-| Enterprise add-on | Darkweb/commercial intelligence, identity/SSO/SCIM, red team execution, AI Gate premium execution, live cloud/container/runtime/VM remediation, managed runners | May show locked UI states in CE, but execution requires edition, license, role/action permission, connector readiness, and signed evidence |
-| Enterprise-only delivery | Private datasets, private runner bundles, airgap update bundles, support attestations, legal hold, customer-specific retention, managed bridge jobs | Must stay behind private image/source or signed cloud/airgap contracts |
-
-SaaS, on-prem, and airgap are separate deployment profiles:
-
-| Profile | Auth | License | Evidence | Provider dependency |
-| --- | --- | --- | --- | --- |
-| SaaS | hosted/Flyto account or customer OIDC | subscription | managed signed evidence | GitHub Actions and cloud release gates must pass |
-| Self-hosted CE | local JWT | none | local evidence pack | no required Flyto Cloud dependency |
-| Enterprise Cloud Bridge | enterprise identity | enterprise license or cloud entitlement | managed signed evidence returned to local timeline | bridge must be signed and fail closed |
-| Enterprise Airgap | enterprise IdP or local fallback | signed offline license | offline signed evidence | no required egress |
-
-Do not market CE as "free Enterprise." The accurate promise is:
-
-```text
-CE is the self-hosted open-core Warroom. Enterprise unlocks premium execution,
-commercial intelligence, identity, support, and deployment controls through
-license-gated capability and evidence contracts.
-```
-
-## Contribution Boundary
-
-CE changes should flow back upstream. Accepted community changes are reviewed as
-patch bundles, applied to the private source workspace when appropriate, tested,
-and exported again into this public mirror.
+- `ce_included` modules must expose real local value through pages, permissions, or features.
+- `enterprise_addon` and `enterprise_only` modules must declare a gate, commercial action, or provider boundary.
+- Premium actions stay visible as gated states and fail closed when entitlement, role, connector, bridge, or evidence-signature checks fail.
+- This matrix is product positioning evidence; runnable private handlers, store internals, commercial providers, and proprietary intelligence remain outside the CE source tree.

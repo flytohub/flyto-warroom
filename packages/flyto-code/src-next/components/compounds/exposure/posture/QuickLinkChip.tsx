@@ -7,13 +7,14 @@ import { ButtonBase } from '@mui/material'
 // verbatim from PostureOverview.tsx (behaviour-neutral split).
 
 export function QuickLinkChip({
-  icon, label, count, onClick, tone,
+  icon, label, count, onClick, tone, fullWidth = false,
 }: {
   icon: ReactNode
   label: string
   count?: number
   onClick: () => void
   tone: string
+  fullWidth?: boolean
 }) {
   const hasCount = count !== undefined && count > 0
   return (
@@ -21,6 +22,8 @@ export function QuickLinkChip({
       onClick={onClick}
       sx={{
         display: 'inline-flex', alignItems: 'center', gap: 0.75,
+        width: fullWidth ? '100%' : 'auto',
+        justifyContent: fullWidth ? 'space-between' : 'flex-start',
         px: 1.5, py: 0.75, borderRadius: 2,
         bgcolor: 'var(--mui-palette-action-hover)',
         border: '1px solid var(--mui-palette-divider)',
@@ -32,7 +35,7 @@ export function QuickLinkChip({
       }}
     >
       {icon}
-      <span>{label}</span>
+      <span style={{ minWidth: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{label}</span>
       {hasCount && (
         <span style={{
           marginLeft: 4, padding: '2px 7px', borderRadius: 999,

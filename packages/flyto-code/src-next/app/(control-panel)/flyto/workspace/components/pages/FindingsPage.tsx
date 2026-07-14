@@ -1,6 +1,7 @@
 import { PageShell } from '@atoms/PageShell';
 import { ModeView } from '@compounds/_shared';
 import { DomainsManagerView } from '@compounds/domains/DomainsManagerView';
+import { FindingsManagerView } from '@compounds/exposure/FindingsManagerView';
 
 // Promoted out of warroom/exp-findings into a top-level route as
 // part of the 2026-05-21 IA refactor. Backward-compat alias for
@@ -13,7 +14,7 @@ export default function FindingsPage() {
   return (
     <PageShell padded={false} scroll="host">
       <ModeView
-        manager={<DomainsManagerView findingsTitle="Findings" />}
+        manager={<FindingsManagerView />}
         engineer={<DomainsManagerView findingsTitle="Findings" />}
       />
     </PageShell>

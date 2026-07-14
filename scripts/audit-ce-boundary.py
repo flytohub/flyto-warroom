@@ -21,6 +21,7 @@ CE_CONTROL_FILES = [
 
 REQUIRED_FILES = [
     "docs/docker-hub-overview.md",
+    "docs/feature-matrix.md",
     "docs/code-protection.md",
     "docs/enterprise-cloud-bridge.md",
     "docs/official-builds.md",
@@ -77,6 +78,12 @@ REQUIRED_MARKERS = {
         "does not enable product telemetry by default",
         "Recommended install path is Docker Compose",
         "currently published as linux/arm64 images",
+    ],
+    "docs/feature-matrix.md": [
+        "Flyto2 Warroom CE Feature Matrix",
+        "CE must stay useful",
+        "Enterprise must stay compelling",
+        "fail closed",
     ],
     "docs/code-protection.md": [
         "open-core release protects private code by construction",

@@ -56,6 +56,12 @@ type Module struct {
 	// locked states and fail closed until a license/bridge/airgap entitlement
 	// unlocks execution.
 	Billing string `json:"billing,omitempty" yaml:"billing"`
+	// CEValue is the user-visible value this module must provide without a
+	// Flyto Cloud bridge. EnterpriseValue and UpgradeTrigger describe the
+	// paid path without exposing private implementation details.
+	CEValue         string `json:"ce_value,omitempty" yaml:"ce_value"`
+	EnterpriseValue string `json:"enterprise_value,omitempty" yaml:"enterprise_value"`
+	UpgradeTrigger  string `json:"upgrade_trigger,omitempty" yaml:"upgrade_trigger"`
 }
 
 type Catalog struct {
@@ -109,6 +115,9 @@ func (c *Catalog) build() error {
 		if !validBillingTier(m.Billing) {
 			return fmt.Errorf("module catalog: module %q has invalid billing tier %q", m.Key, m.Billing)
 		}
+		if err := validateEditionBoundary(m); err != nil {
+			return err
+		}
 		if _, dup := c.byKey[m.Key]; dup {
 			return fmt.Errorf("module catalog: duplicate module %q", m.Key)
 		}
@@ -130,6 +139,25 @@ func (c *Catalog) build() error {
 			if _, ok := c.byKey[c.Canonical(dep)]; !ok {
 				return fmt.Errorf("module catalog: module %q requires unknown module %q", m.Key, dep)
 			}
+		}
+	}
+	return nil
+}
+
+func validateEditionBoundary(m *Module) error {
+	if strings.TrimSpace(m.CEValue) == "" {
+		return fmt.Errorf("module catalog: module %q must declare ce_value", m.Key)
+	}
+	if strings.TrimSpace(m.EnterpriseValue) == "" {
+		return fmt.Errorf("module catalog: module %q must declare enterprise_value", m.Key)
+	}
+	if strings.TrimSpace(m.UpgradeTrigger) == "" {
+		return fmt.Errorf("module catalog: module %q must declare upgrade_trigger", m.Key)
+	}
+	if m.Billing == "enterprise_addon" || m.Billing == "enterprise_only" {
+		hasGate := len(m.GatingFeatures) > 0 || len(m.CommercialActions) > 0 || len(m.Providers) > 0
+		if !hasGate {
+			return fmt.Errorf("module catalog: enterprise module %q must declare at least one gate, commercial action, or provider", m.Key)
 		}
 	}
 	return nil

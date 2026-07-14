@@ -28,6 +28,7 @@ import { ActivityFeed } from '@atoms/ActivityFeed'
 import { listMonitoringEvents } from '@lib/engine'
 import { DomainDetailPanel } from './posture/DomainDetailPanel'
 import { DarkWebTab } from './posture/DarkWebTab'
+import { QuickLinkChip } from './posture/QuickLinkChip'
 
 // Audit 2026-05-17 v3: ThreatIntel + Monitoring filler tabs
 // consolidated into a single Activity feed. Reduces tab churn from
@@ -550,10 +551,10 @@ function EngineerPostureWorkbench({
         <Stack spacing={1.2} sx={{ minHeight: 0, overflow: 'hidden' }}>
           <EngineerPanel title={tOr('external.engineerSignals', '\u8a0a\u865f')} icon={<Network size={15} />} accent={colors.tech}>
             <Box sx={{ display: 'grid', gap: 0.8 }}>
-              <SignalAction label="CTEM" count={(riskSummary?.critical_count ?? 0) + (riskSummary?.high_count ?? 0)} tone={colors.severity.high} onClick={() => navigateToCTEMActions({ severities: ['critical', 'high'] })} />
-              <SignalAction label={t('external.quickPaths')} count={quickCounts.paths} tone={colors.severity.medium} onClick={() => navigateToSection('exp-paths')} />
-              <SignalAction label={t('external.quickBrand')} count={quickCounts.brand} tone={colors.brand} onClick={() => navigateToSection('exp-brand')} />
-              <SignalAction label={t('external.quickMitigations')} count={riskSummary?.sla_breaches ?? 0} tone={colors.semantic.success} onClick={() => navigateToSection('exp-mitigations')} />
+              <QuickLinkChip fullWidth icon={<AlertTriangle size={14} />} label="CTEM" count={(riskSummary?.critical_count ?? 0) + (riskSummary?.high_count ?? 0)} tone={colors.severity.high} onClick={() => navigateToCTEMActions({ severities: ['critical', 'high'] })} />
+              <QuickLinkChip fullWidth icon={<Network size={14} />} label={t('external.quickPaths')} count={quickCounts.paths} tone={colors.severity.medium} onClick={() => navigateToSection('exp-paths')} />
+              <QuickLinkChip fullWidth icon={<Shield size={14} />} label={t('external.quickBrand')} count={quickCounts.brand} tone={colors.brand} onClick={() => navigateToSection('exp-brand')} />
+              <QuickLinkChip fullWidth icon={<Shield size={14} />} label={t('external.quickMitigations')} count={riskSummary?.sla_breaches ?? 0} tone={colors.semantic.success} onClick={() => navigateToSection('exp-mitigations')} />
             </Box>
           </EngineerPanel>
 
@@ -713,33 +714,6 @@ function EngineerMetric({ label, value, color }: { label: string; value: string;
         {value}
       </Typography>
     </Box>
-  )
-}
-
-function SignalAction({ label, count, tone, onClick }: { label: string; count?: number; tone: string; onClick: () => void }) {
-  return (
-    <ButtonBase
-      onClick={onClick}
-      sx={{
-        width: '100%',
-        borderRadius: 1,
-        border: '1px solid var(--mui-palette-divider)',
-        px: 1,
-        py: 0.9,
-        display: 'flex',
-        justifyContent: 'space-between',
-        gap: 1,
-        color: 'text.primary',
-        bgcolor: 'background.default',
-        boxShadow: `inset 2px 0 0 color-mix(in srgb, ${tone} 72%, transparent)`,
-        '&:hover': { bgcolor: 'action.hover' },
-      }}
-    >
-      <Typography variant="body2" sx={{ fontWeight: 900 }} noWrap>{label}</Typography>
-      {count != null && (
-        <Chip size="small" label={count} sx={{ height: 22, borderRadius: 1, fontWeight: 950, color: tone, bgcolor: `color-mix(in srgb, ${tone} 16%, transparent)` }} />
-      )}
-    </ButtonBase>
   )
 }
 
