@@ -15,6 +15,7 @@ REQUIRED = [
     "services/flyto-engine-ce/go.mod",
     "services/flyto-engine-ce/SOURCE_BOUNDARY.json",
     "services/flyto-engine-ce/ce/engine-ce/main.go",
+    "services/flyto-engine-ce/ce/engine-ce/product_loop.go",
     "services/flyto-engine-ce/ce/engine-ce/server.go",
     "services/flyto-engine-ce/ce/engine-ce/server_test.go",
     "services/flyto-engine-ce/ce/worker-ce/main.go",

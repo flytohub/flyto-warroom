@@ -39,6 +39,7 @@ REQUIRED_FILES = [
     "services/flyto-engine-ce/internal/permission/capabilities.go",
     "services/flyto-engine-ce/internal/safehttp/safehttp.go",
     "packages/flyto-code/CE_SOURCE_BOUNDARY.md",
+    "packages/flyto-code/src-next/types/module-manifests/packageManifest.ts",
     "TRADEMARK.md",
     "GOVERNANCE.md",
 ]

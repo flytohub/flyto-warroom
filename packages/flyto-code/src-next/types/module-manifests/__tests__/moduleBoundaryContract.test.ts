@@ -4,6 +4,7 @@ import {
   MODULE_PACKAGE_ORDER,
   MODULES,
 } from '@code/modules'
+import { buildModulePackageManifest, validateCEPackageManifest } from '../packageManifest'
 
 const CE_FORBIDDEN_MODULE_IDS = new Set([
   'enterprise_control_plane',
@@ -67,5 +68,17 @@ describe('workspace CE module split/merge boundary contract', () => {
         expect(module.boundary?.mergeSurface).toBeTruthy()
       }
     }
+  })
+
+  it('emits a machine-readable CE package manifest for split and merge builds', () => {
+    const manifest = buildModulePackageManifest(MODULES, MODULE_PACKAGE_ORDER)
+
+    expect(manifest.schema).toBe('flyto2.frontend-module-package-manifest.v1')
+    expect(manifest.totalModules).toBe(MODULES.length)
+    expect(manifest.exportableModules).toBe(MODULES.length)
+    expect(manifest.nonExportableModuleIds).toEqual([])
+    expect(manifest.splitBy).toEqual(['package', 'capability', 'edition', 'mergeSurface'])
+    expect(manifest.mergeThrough).toContain('unified-cockpit')
+    expect(validateCEPackageManifest(manifest)).toEqual([])
   })
 })

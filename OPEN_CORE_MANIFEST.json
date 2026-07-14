@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-14T19:00:59.534912+00:00",
+  "generated_at": "2026-07-14T22:12:33.381951+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -113,12 +113,8 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1598,
+      "file_count": 1599,
       "generated_files": [
-        "e2e/product_verification_evidence.spec.ts",
-        "e2e/sweep.spec.ts",
-        "e2e/war_room_views.spec.ts",
-        "playwright.config.ts",
         "package.json",
         "package-lock.json",
         "LICENSE",
@@ -133,7 +129,7 @@
     {
       "name": "flyto-contracts",
       "repo": "flyto-engine",
-      "file_count": 21,
+      "file_count": 22,
       "generated_files": [
         "README.md",
         "schemas/capability.schema.json",
@@ -149,14 +145,15 @@
         "conformance/validate.py",
         "sdk/typescript/src/index.ts",
         "sdk/python/flyto_contracts/__init__.py",
-        "sdk/go/contracts/doc.go"
+        "sdk/go/contracts/doc.go",
+        "openapi/flyto-code-observed.openapi.json"
       ],
       "path": "packages/flyto-contracts"
     },
     {
       "name": "flyto-engine-ce",
       "repo": "flyto-engine",
-      "file_count": 91,
+      "file_count": 92,
       "generated_files": [
         "README.md",
         "go.mod",
@@ -330,6 +327,9 @@
     "ce_rewrite_files": [
       "src-next/types/module-manifests/index.ts",
       "src-next/types/module-manifests/__tests__/moduleBoundaryContract.test.ts"
+    ],
+    "ce_required_public_files": [
+      "src-next/types/module-manifests/packageManifest.ts"
     ],
     "ce_allowed_contract_paths": [
       "src-next/lib/engine/system/enterprise.ts"

@@ -574,7 +574,7 @@ function makeDevToken(): string {
   const enc = (o: object) => Buffer.from(JSON.stringify(o)).toString('base64url')
   return `${enc({ alg: 'none', typ: 'JWT' })}.${enc({
     sub: 'chester',
-    email: 'local-admin@example.invalid',
+    email: 'dev@flyto2.com',
     name: 'Chester',
     aud: 'flyto',
   })}.`

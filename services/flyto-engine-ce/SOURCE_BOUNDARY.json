@@ -32,7 +32,7 @@
   "ce_source_paths": [
     {
       "path": "ce/engine-ce/**",
-      "reason": "Runnable CE source runtime exposing health, boundary, module catalog, capability snapshot, and access self-test contracts without private handlers, store, SaaS, billing, or provider adapters.",
+      "reason": "Runnable CE source runtime exposing health, boundary, module catalog, capability snapshot, deterministic product-loop seed, and access self-test contracts without private handlers, store, SaaS, billing, or provider adapters.",
       "validation": "go test ./ce/engine-ce"
     },
     {

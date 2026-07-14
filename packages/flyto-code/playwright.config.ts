@@ -58,7 +58,7 @@ export default defineConfig({
     env: {
       VITE_DEV_AUTH_BYPASS: '1',
       VITE_DEV_AUTH_UID: 'chester',
-      VITE_DEV_AUTH_EMAIL: 'local-admin@example.invalid',
+      VITE_DEV_AUTH_EMAIL: 'dev@flyto2.com',
       // Browser-side engine calls must work from both host Playwright and the
       // Dockerized flyto-verification runner. Same-origin `/api` calls let Vite
       // proxy to the real engine while avoiding container-local 127.0.0.1.

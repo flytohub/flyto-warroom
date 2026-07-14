@@ -64,7 +64,7 @@ marketing copy.
 ```sh
 git clone https://github.com/flytohub/flyto-warroom.git
 cd flyto-warroom
-python3 install/scripts/setup-ce.py --email admin@flyto2.com
+python3 install/scripts/setup-ce.py --email admin@example.com
 make preflight
 make verify-images
 make ce-up
@@ -111,9 +111,9 @@ enterprise adapters, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1598 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
-| `flyto-contracts` | `flyto-engine` | 21 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
-| `flyto-engine-ce` | `flyto-engine` | 91 | Classified CE backend kernel source for capability, resource, and safety primitives. |
+| `flyto-code` | `flyto-code` | 1599 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-contracts` | `flyto-engine` | 22 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
+| `flyto-engine-ce` | `flyto-engine` | 92 | Classified CE backend kernel source for capability, resource, and safety primitives. |
 
 ## Docker Images
 

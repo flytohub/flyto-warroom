@@ -207,7 +207,7 @@ function base64urlJson(value) {
     .replace(/\//g, '_')
 }
 
-export function buildLoopDevAuthToken(uid = 'test-uid-1', email = 'test@flyto.dev') {
+export function buildLoopDevAuthToken(uid = 'test-uid-1', email = 'dev@flyto2.com') {
   return `${base64urlJson({ alg: 'none', typ: 'JWT' })}.${base64urlJson({ sub: uid, email })}.`
 }
 
@@ -218,7 +218,7 @@ function readAuthEnv() {
   }
   if (process.env.FLYTO_LOOP_DEV_AUTH === '1') {
     const uid = process.env.FLYTO_LOOP_UID || process.env.VITE_DEV_AUTH_UID || 'test-uid-1'
-    const email = process.env.FLYTO_LOOP_EMAIL || process.env.VITE_DEV_AUTH_EMAIL || 'test@flyto.dev'
+    const email = process.env.FLYTO_LOOP_EMAIL || process.env.VITE_DEV_AUTH_EMAIL || 'dev@flyto2.com'
     return { authHeader: `Bearer ${buildLoopDevAuthToken(uid, email)}`, authMode: 'dev-auth' }
   }
   return { authHeader: '', authMode: 'none' }

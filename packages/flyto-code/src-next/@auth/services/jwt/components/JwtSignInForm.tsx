@@ -45,9 +45,8 @@ function JwtSignInForm() {
 
 	const { isValid, dirtyFields, errors } = formState;
 
-	// NOTE: a previous version pre-filled `admin@fusetheme.com` /
-	// `5;4+0IOx:\\Dy` via setValue() in useEffect. That was Fuse
-	// template demo content — removed because (a) it leaked unrelated
+	// NOTE: a previous version pre-filled template demo credentials via
+	// setValue() in useEffect. That was removed because (a) it leaked unrelated
 	// brand naming, (b) confused real users into thinking they had a
 	// saved session, and (c) wired a dummy password into the bundle.
 

@@ -38,5 +38,5 @@ export const env = {
   cortexUrl: requireProdEnv('VITE_CORTEX_URL', 'https://cortex.flyto2.com'),
   devAuthBypass,
   devAuthUid: (import.meta.env.VITE_DEV_AUTH_UID as string) || 'test-uid-1',
-  devAuthEmail: (import.meta.env.VITE_DEV_AUTH_EMAIL as string) || 'test@flyto.dev',
+  devAuthEmail: (import.meta.env.VITE_DEV_AUTH_EMAIL as string) || 'dev@flyto2.com',
 } as const

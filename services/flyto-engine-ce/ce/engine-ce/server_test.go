@@ -98,6 +98,60 @@ func TestCapabilitiesDefaultToCommunityLiveAndFailClosedActions(t *testing.T) {
 	}
 }
 
+func TestProductLoopIsDeterministicCEClosedLoop(t *testing.T) {
+	resetCEEnv(t)
+	rec := getJSON("/api/v1/ce/product-loop")
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, body = %s", rec.Code, rec.Body.String())
+	}
+
+	var body ceProductLoopResponse
+	decodeJSON(t, rec, &body)
+	if body.Schema != "flyto.engine-ce-product-loop.v1" {
+		t.Fatalf("schema = %q", body.Schema)
+	}
+	if body.DataMode != "deterministic_demo_seed" || body.ProviderExecution != "none" {
+		t.Fatalf("CE product loop must not claim live provider success: %#v", body)
+	}
+	requiredSurfaces := map[string]bool{
+		"code": false, "container": false, "cloud": false, "runtime": false, "external": false,
+	}
+	for _, asset := range body.Assets {
+		if _, ok := requiredSurfaces[asset.Surface]; ok {
+			requiredSurfaces[asset.Surface] = true
+		}
+	}
+	for surface, present := range requiredSurfaces {
+		if !present {
+			t.Fatalf("missing CE loop surface %q in %#v", surface, body.Assets)
+		}
+	}
+	if body.Summary.FindingCount != len(body.Findings) ||
+		body.Summary.EvidenceCount != len(body.Evidence) ||
+		body.Summary.RemediationCount != len(body.Remediation) ||
+		body.Summary.ValidationCount != len(body.Validation) {
+		t.Fatalf("summary counts drifted: %#v", body.Summary)
+	}
+	if body.Summary.AttackPathCount == 0 || len(body.Summary.ImpactedAssets) == 0 {
+		t.Fatalf("expected attack path and impacted assets: %#v", body.Summary)
+	}
+	if body.SLA.TotalOpen == 0 || body.SLA.GeneratedAt.IsZero() {
+		t.Fatalf("expected SLA aging report: %#v", body.SLA)
+	}
+	if len(body.MergeContract.MergeThrough) < 4 {
+		t.Fatalf("expected merge contract for unified cockpit: %#v", body.MergeContract)
+	}
+	paidOverlaySeen := false
+	for _, overlay := range body.EnterpriseOverlay {
+		if overlay.Capability == "live_cloud_remediation" && overlay.CEBehavior == "manual_control_plan" {
+			paidOverlaySeen = true
+		}
+	}
+	if !paidOverlaySeen {
+		t.Fatalf("expected enterprise overlay boundary in %#v", body.EnterpriseOverlay)
+	}
+}
+
 func TestAccessSelfTestShowsAllowDenyAndAudit(t *testing.T) {
 	resetCEEnv(t)
 	rec := getJSON("/api/v1/ce/access/self-test")

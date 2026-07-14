@@ -193,7 +193,7 @@ function base64url(value) {
 
 function devAuthIdentity() {
   const uid = envValue('FLYTO_UI_AUDIT_UID') || envValue('VITE_DEV_AUTH_UID') || 'test-uid-1'
-  const email = envValue('FLYTO_UI_AUDIT_EMAIL') || envValue('VITE_DEV_AUTH_EMAIL') || 'test@flyto.dev'
+  const email = envValue('FLYTO_UI_AUDIT_EMAIL') || envValue('VITE_DEV_AUTH_EMAIL') || 'dev@flyto2.com'
   const token = `${base64url({ alg: 'none', typ: 'JWT' })}.${base64url({ sub: uid, email })}.`
   return { uid, email, token }
 }

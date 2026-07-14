@@ -46,6 +46,7 @@ func (s *ceServer) handler() http.Handler {
 	mux.HandleFunc("/api/v1/ce/boundary", s.handleBoundary)
 	mux.HandleFunc("/api/v1/ce/modules", s.handleModules)
 	mux.HandleFunc("/api/v1/ce/capabilities", s.handleCapabilities)
+	mux.HandleFunc("/api/v1/ce/product-loop", s.handleProductLoop)
 	mux.HandleFunc("/api/v1/ce/access/self-test", s.handleAccessSelfTest)
 	return requestContextMiddleware(mux)
 }
@@ -96,6 +97,7 @@ func (s *ceServer) handleIndex(w http.ResponseWriter, r *http.Request) {
 			{"rel": "boundary", "href": "/api/v1/ce/boundary"},
 			{"rel": "modules", "href": "/api/v1/ce/modules"},
 			{"rel": "capabilities", "href": "/api/v1/ce/capabilities"},
+			{"rel": "product_loop", "href": "/api/v1/ce/product-loop"},
 			{"rel": "access_self_test", "href": "/api/v1/ce/access/self-test"},
 		},
 	})
@@ -147,7 +149,7 @@ func (s *ceServer) handleBoundary(w http.ResponseWriter, r *http.Request) {
 		"source_mode":            sourceMode,
 		"source_path":            "ce/engine-ce",
 		"public_package":         "services/flyto-engine-ce",
-		"public_runtime_routes":  []string{"/healthz", "/readyz", "/api/v1/ce/boundary", "/api/v1/ce/modules", "/api/v1/ce/capabilities", "/api/v1/ce/access/self-test"},
+		"public_runtime_routes":  []string{"/healthz", "/readyz", "/api/v1/ce/boundary", "/api/v1/ce/modules", "/api/v1/ce/capabilities", "/api/v1/ce/product-loop", "/api/v1/ce/access/self-test"},
 		"private_api_entrypoint": "cmd/server",
 		"private_worker":         "cmd/worker",
 		"private_boundaries": []string{
@@ -167,6 +169,13 @@ func (s *ceServer) handleBoundary(w http.ResponseWriter, r *http.Request) {
 			"fusion contract",
 		},
 	})
+}
+
+func (s *ceServer) handleProductLoop(w http.ResponseWriter, r *http.Request) {
+	if !allowGET(w, r) {
+		return
+	}
+	writeJSON(w, http.StatusOK, buildCEProductLoop(s.now().UTC()))
 }
 
 func (s *ceServer) handleModules(w http.ResponseWriter, r *http.Request) {

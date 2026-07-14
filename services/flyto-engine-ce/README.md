@@ -6,7 +6,7 @@ Flyto2 workspace.
 
 It intentionally contains low-level, testable kernel packages only:
 
-- `ce/engine-ce/**`: Runnable CE source runtime exposing health, boundary, module catalog, capability snapshot, and access self-test contracts without private handlers, store, SaaS, billing, or provider adapters. Validation: `go test ./ce/engine-ce`.
+- `ce/engine-ce/**`: Runnable CE source runtime exposing health, boundary, module catalog, capability snapshot, deterministic product-loop seed, and access self-test contracts without private handlers, store, SaaS, billing, or provider adapters. Validation: `go test ./ce/engine-ce`.
 - `ce/worker-ce/**`: Runnable CE worker source runtime exposing health, boundary, and deterministic queue/scheduler/backoff/circuit/canary self-tests without private scheduler dispatch, store, hosted runner callbacks, commercial adapters, or remediation orchestration. Validation: `go test ./ce/worker-ce`.
 - `internal/canon/**`: Canonical URL/domain helpers; no customer data, provider credentials, store, SaaS, billing, or enterprise imports. Validation: `go test ./internal/canon`.
 - `internal/errx/**`: Typed API error envelopes shared by public clients and integrations. Validation: `go test ./internal/errx`.

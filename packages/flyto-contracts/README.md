@@ -10,6 +10,9 @@ orchestration.
 ## Contents
 
 - `openapi/flyto-engine.openapi.yaml`: public REST API shape.
+- `openapi/flyto-code-observed.openapi.json`: frontend-observed API contract
+  placeholders so CE source can verify frontend/backend contract closure without
+  exposing private handlers.
 - `capabilities/capabilities.yaml`: public capability catalog source.
 - `schemas/`: JSON Schemas for extension-facing payloads.
 - `examples/`: minimal scanner, runner callback, and evidence examples.
