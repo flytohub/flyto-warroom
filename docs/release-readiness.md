@@ -7,6 +7,11 @@ or public CE release can be built only when both sides are green.
 
 The public CE release tree must pass:
 
+- `python -m release.cli flyto2-open-core-cycle /Users/chester/flytohub`
+  from the private source workspace. This exports the CE package, audits it,
+  runs backend and frontend package checks, deletes generated build artifacts,
+  audits the cleaned package, deletes the generated package, re-exports it, and
+  audits the regenerated package again.
 - `python3 scripts/audit-ce-boundary.py .`
 - `python3 install/scripts/audit-release-tree.py .`
 - frontend build, i18n hardcoded audit, visual-system audit, and focused UI

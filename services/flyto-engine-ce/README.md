@@ -14,6 +14,23 @@ It intentionally contains low-level, testable kernel packages only:
 - `internal/safehttp/**`: SSRF-safe HTTP client primitives for community scanners and connectors. Validation: `go test ./internal/safehttp`.
 - `internal/severity/**`: Shared severity normalization helpers. Validation: `go test ./internal/severity`.
 - `internal/osvutil/**`: Version parsing helpers used by public vulnerability contracts. Validation: `go test ./internal/osvutil`.
+- `internal/access/**`: Pure action/feature access decision kernel for CE-visible RBAC and sensitive-evidence gates; no store, provider, billing, SaaS, or enterprise imports. Validation: `go test ./internal/access`.
+- `internal/backoff/**`: Retry/backoff primitives for stable local scanners and CE-safe workers; standard-library only. Validation: `go test ./internal/backoff`.
+- `internal/canary/**`: Scanner canary self-test primitives that let CE verify scanner regressions without proprietary data sources. Validation: `go test ./internal/canary`.
+- `internal/circuit/**`: Circuit-breaker primitives for resilient connector/scanner execution; standard-library only. Validation: `go test ./internal/circuit`.
+- `internal/compliance/**`: Pure compliance scoring and evidence-binder rendering for CE reports; enterprise retention/orchestration remains private. Validation: `go test ./internal/compliance`.
+- `internal/forecast/**`: Pure score trend forecasting helpers used by report/dashboard summaries; no external ML dependency or provider coupling. Validation: `go test ./internal/forecast`.
+- `internal/freshness/**`: Freshness recorder primitives used to reason about stale findings and evidence without provider coupling. Validation: `go test ./internal/freshness`.
+- `internal/identityscore/**`: Pure identity/OAuth risk scoring helpers with no store, connector, or tenant-provider dependency. Validation: `go test ./internal/identityscore`.
+- `internal/imghash/**`: Evidence screenshot/image hashing helpers for deterministic CE evidence comparison. Validation: `go test ./internal/imghash`.
+- `internal/leakscore/**`: Pure leak freshness and blast-radius scoring helpers; commercial darkweb collection and feeds remain private. Validation: `go test ./internal/leakscore`.
+- `internal/obs/**`: Request/trace id and structured logging helpers for CE observability. Validation: `go test ./internal/obs`.
+- `internal/pdf/**`: Dependency-free basic PDF report renderer for CE report export; enterprise templates and orchestration remain private. Validation: `go test ./internal/pdf`.
+- `internal/scanqueue/**`: Bounded scan job queue primitive for CE-local worker execution. Validation: `go test ./internal/scanqueue`.
+- `internal/scheduler/**`: Stable scheduling/staggering helpers for CE-safe periodic work. Validation: `go test ./internal/scheduler`.
+- `internal/secrets/**`: Local envelope-encryption primitives for self-hosted CE secret storage; managed KMS adapters remain private. Validation: `go test ./internal/secrets`.
+- `internal/sla/**`: Pure SLA budget and aging math used by CE findings/report workflows. Validation: `go test ./internal/sla`.
+- `internal/stats/**`: Small statistical helpers for score/report calculations; standard-library only. Validation: `go test ./internal/stats`.
 
 The runnable CE backend and worker are still delivered as CE images until their
 entrypoints are physically split from private orchestration, store internals,

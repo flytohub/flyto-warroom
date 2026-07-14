@@ -69,6 +69,91 @@
       "path": "internal/osvutil/**",
       "reason": "Version parsing helpers used by public vulnerability contracts.",
       "validation": "go test ./internal/osvutil"
+    },
+    {
+      "path": "internal/access/**",
+      "reason": "Pure action/feature access decision kernel for CE-visible RBAC and sensitive-evidence gates; no store, provider, billing, SaaS, or enterprise imports.",
+      "validation": "go test ./internal/access"
+    },
+    {
+      "path": "internal/backoff/**",
+      "reason": "Retry/backoff primitives for stable local scanners and CE-safe workers; standard-library only.",
+      "validation": "go test ./internal/backoff"
+    },
+    {
+      "path": "internal/canary/**",
+      "reason": "Scanner canary self-test primitives that let CE verify scanner regressions without proprietary data sources.",
+      "validation": "go test ./internal/canary"
+    },
+    {
+      "path": "internal/circuit/**",
+      "reason": "Circuit-breaker primitives for resilient connector/scanner execution; standard-library only.",
+      "validation": "go test ./internal/circuit"
+    },
+    {
+      "path": "internal/compliance/**",
+      "reason": "Pure compliance scoring and evidence-binder rendering for CE reports; enterprise retention/orchestration remains private.",
+      "validation": "go test ./internal/compliance"
+    },
+    {
+      "path": "internal/forecast/**",
+      "reason": "Pure score trend forecasting helpers used by report/dashboard summaries; no external ML dependency or provider coupling.",
+      "validation": "go test ./internal/forecast"
+    },
+    {
+      "path": "internal/freshness/**",
+      "reason": "Freshness recorder primitives used to reason about stale findings and evidence without provider coupling.",
+      "validation": "go test ./internal/freshness"
+    },
+    {
+      "path": "internal/identityscore/**",
+      "reason": "Pure identity/OAuth risk scoring helpers with no store, connector, or tenant-provider dependency.",
+      "validation": "go test ./internal/identityscore"
+    },
+    {
+      "path": "internal/imghash/**",
+      "reason": "Evidence screenshot/image hashing helpers for deterministic CE evidence comparison.",
+      "validation": "go test ./internal/imghash"
+    },
+    {
+      "path": "internal/leakscore/**",
+      "reason": "Pure leak freshness and blast-radius scoring helpers; commercial darkweb collection and feeds remain private.",
+      "validation": "go test ./internal/leakscore"
+    },
+    {
+      "path": "internal/obs/**",
+      "reason": "Request/trace id and structured logging helpers for CE observability.",
+      "validation": "go test ./internal/obs"
+    },
+    {
+      "path": "internal/pdf/**",
+      "reason": "Dependency-free basic PDF report renderer for CE report export; enterprise templates and orchestration remain private.",
+      "validation": "go test ./internal/pdf"
+    },
+    {
+      "path": "internal/scanqueue/**",
+      "reason": "Bounded scan job queue primitive for CE-local worker execution.",
+      "validation": "go test ./internal/scanqueue"
+    },
+    {
+      "path": "internal/scheduler/**",
+      "reason": "Stable scheduling/staggering helpers for CE-safe periodic work.",
+      "validation": "go test ./internal/scheduler"
+    },
+    {
+      "path": "internal/secrets/**",
+      "reason": "Local envelope-encryption primitives for self-hosted CE secret storage; managed KMS adapters remain private.",
+      "validation": "go test ./internal/secrets"
+    },
+    {
+      "path": "internal/sla/**",
+      "reason": "Pure SLA budget and aging math used by CE findings/report workflows.",
+      "validation": "go test ./internal/sla"
+    },
+    {
+      "path": "internal/stats/**",
+      "reason": "Small statistical helpers for score/report calculations; standard-library only.",
+      "validation": "go test ./internal/stats"
     }
   ],
   "export_mode": "ce_kernel_source_and_images",

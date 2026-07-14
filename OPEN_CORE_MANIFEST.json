@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-14T15:48:20.711294+00:00",
+  "generated_at": "2026-07-14T16:36:34.210762+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -156,7 +156,7 @@
     {
       "name": "flyto-engine-ce",
       "repo": "flyto-engine",
-      "file_count": 42,
+      "file_count": 83,
       "generated_files": [
         "README.md",
         "go.mod",
