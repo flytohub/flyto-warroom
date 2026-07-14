@@ -17,6 +17,11 @@ It is built for teams that want a local Warroom they can install, inspect,
 patch, verify, and connect back to Flyto2 Enterprise services when they
 need commercial intelligence, managed remediation, or enterprise controls.
 
+Enterprise and SaaS editions are assembled as build-time overlays on a
+pinned Flyto2 Warroom CE commit. The running system never pulls source
+code dynamically; license tier, overlays, image digests, and verification
+evidence are recorded during packaging.
+
 ## Official Channels
 
 | Channel | Link | Purpose |
@@ -106,7 +111,7 @@ enterprise adapters, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1584 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1602 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 21 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 | `flyto-engine-ce` | `flyto-engine` | 42 | Classified CE backend kernel source for capability, resource, and safety primitives. |
 

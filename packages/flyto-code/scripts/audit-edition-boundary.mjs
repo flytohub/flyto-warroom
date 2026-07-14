@@ -70,6 +70,9 @@ const frontendUseCapabilitiesFile = path.join(SRC, 'hooks', 'useCapabilities.ts'
 const frontendUseCapabilitiesTestFile = path.join(SRC, 'hooks', '__tests__', 'useCapabilities.test.tsx')
 const frontendEnterpriseClientFile = path.join(SRC, 'lib', 'engine', 'system', 'enterprise.ts')
 const frontendEnterpriseViewFile = path.join(SRC, 'components', 'compounds', 'system', 'EnterpriseControlPlaneView.tsx')
+const frontendModuleTypesFile = path.join(SRC, 'types', 'Module.ts')
+const frontendModuleEntryFile = path.join(SRC, 'types', 'modules.ts')
+const frontendModuleManifestDir = path.join(SRC, 'types', 'module-manifests')
 
 const engineCapabilities = readFile(engineCapabilitiesFile)
 expectIncludes(engineCapabilitiesFile, engineCapabilities, [
@@ -229,6 +232,84 @@ expectIncludes(frontendEnterpriseViewFile, frontendEnterpriseView, [
   'EnterpriseReadinessPanel',
   'enterprise.readiness.title',
 ], 'frontend enterprise control plane must render readiness and use typed query keys')
+
+const frontendModuleTypes = readFile(frontendModuleTypesFile)
+expectIncludes(frontendModuleTypesFile, frontendModuleTypes, [
+  'export interface ModuleBoundary',
+  "export type ModuleEdition = 'ce' | 'enterprise' | 'saas' | 'internal'",
+  'export type ModulePackage',
+  'export type ModuleMoat',
+  'exportable: boolean',
+  'mergeSurface: ModuleGroup',
+  'moat: ModuleMoat',
+], 'frontend module type must declare split/merge and moat metadata')
+
+const frontendModuleEntry = readFile(frontendModuleEntryFile).trim()
+if (frontendModuleEntry !== "export * from './module-manifests'") {
+  violations.push({ file: rel(frontendModuleEntryFile), reason: 'frontend module public entry must only re-export module-manifests to avoid a giant mixed registry' })
+}
+
+const requiredModuleManifests = [
+  'overview.ts',
+  'assets.ts',
+  'code.ts',
+  'exposure.ts',
+  'cloud.ts',
+  'runtime.ts',
+  'identity.ts',
+  'operations.ts',
+  'enterprise.ts',
+  'darkweb.ts',
+  'future.ts',
+  'history.ts',
+  'scoring.ts',
+  'admin.ts',
+  'hidden.ts',
+]
+for (const manifest of requiredModuleManifests) {
+  const file = path.join(frontendModuleManifestDir, manifest)
+  const text = readFile(file)
+  expectIncludes(file, text, ['defineModulePackage'], 'each frontend surface must be a physical module manifest')
+}
+
+const moduleManifestIndexFile = path.join(frontendModuleManifestDir, 'index.ts')
+const moduleManifestIndex = readFile(moduleManifestIndexFile)
+expectIncludes(moduleManifestIndexFile, moduleManifestIndex, [
+  'MODULE_PACKAGE_ORDER',
+  'export const MODULES',
+  'getModulesByPackage',
+], 'module manifest index must expose split and merge helpers')
+
+const ceManifestFiles = requiredModuleManifests.filter(name => !['enterprise.ts', 'future.ts'].includes(name))
+for (const manifest of ceManifestFiles) {
+  const file = path.join(frontendModuleManifestDir, manifest)
+  const text = readFile(file)
+  expectIncludes(file, text, [
+    "edition: 'ce'",
+    'exportable: true',
+    "moat: 'none'",
+    "licenseTier: 'community'",
+  ], 'CE module manifests must be exportable and free of moat markers')
+}
+
+const enterpriseManifestFile = path.join(frontendModuleManifestDir, 'enterprise.ts')
+const enterpriseManifest = readFile(enterpriseManifestFile)
+expectIncludes(enterpriseManifestFile, enterpriseManifest, [
+  "defineModulePackage('enterprise'",
+  "edition: 'enterprise'",
+  'exportable: false',
+  "moat: 'enterprise-control-plane'",
+  "licenseTier: 'enterprise'",
+], 'enterprise module manifest must stay non-exportable and moat-marked')
+
+const futureManifestFile = path.join(frontendModuleManifestDir, 'future.ts')
+const futureManifest = readFile(futureManifestFile)
+expectIncludes(futureManifestFile, futureManifest, [
+  "defineModulePackage('future'",
+  "edition: 'internal'",
+  'exportable: false',
+  "moat: 'none'",
+], 'future-only placeholder manifest must not be CE-exportable')
 
 const packageJson = JSON.parse(readFile(packageJsonFile) || '{}')
 if (packageJson.scripts?.['audit:edition-boundary'] !== 'node scripts/audit-edition-boundary.mjs') {

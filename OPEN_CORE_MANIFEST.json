@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-14T11:45:03.365042+00:00",
+  "generated_at": "2026-07-14T14:48:18.262932+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -113,7 +113,7 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1584,
+      "file_count": 1602,
       "generated_files": [
         "e2e/product_verification_evidence.spec.ts",
         "e2e/sweep.spec.ts",
@@ -178,5 +178,134 @@
     "Every package must declare source repo, license, include patterns, protected paths, and deny path patterns.",
     "Exporter fails closed on missing include patterns, missing required paths, protected path inclusion, and denied content markers.",
     "Community packages may call back into enterprise only through documented contracts, not private imports."
-  ]
+  ],
+  "build_time_overlay_contract": {
+    "schema": "flyto.open-core-build-overlay.v1",
+    "runtime_source_pull_allowed": false,
+    "runtime_source_pull_reason": "Enterprise and SaaS builds must be reproducible, signed, offline-capable, and auditable; source is resolved only at package/build time.",
+    "base": {
+      "public_repo": "https://github.com/flytohub/flyto-warroom",
+      "public_package": "flyto2-warroom-ce",
+      "pin_required": true,
+      "accepted_ref_kinds": [
+        "commit_sha"
+      ],
+      "upstream_merge_rule": "Change private flyto-engine/flyto-code first, export flyto-warroom CE, pin that CE commit, then apply private overlays for paid editions."
+    },
+    "profiles": [
+      {
+        "id": "community",
+        "display_name": "Flyto2 Warroom CE",
+        "license_tier": "community",
+        "edition": "ce",
+        "base": "flyto-warroom@commit_sha",
+        "include_packages": [
+          "flyto-code",
+          "flyto-contracts",
+          "flyto-engine-ce"
+        ],
+        "allowed_module_editions": [
+          "ce"
+        ],
+        "forbidden_moats": [
+          "commercial-intel",
+          "enterprise-control-plane",
+          "managed-remediation",
+          "saas-control-plane"
+        ],
+        "private_overlay_kinds": [],
+        "entitlement_source": "local_ce_config"
+      },
+      {
+        "id": "enterprise-onprem",
+        "display_name": "Flyto2 Warroom Enterprise On-prem",
+        "license_tier": "enterprise",
+        "edition": "enterprise",
+        "base": "flyto-warroom@commit_sha",
+        "include_packages": [
+          "flyto-code",
+          "flyto-contracts",
+          "flyto-engine-ce"
+        ],
+        "allowed_module_editions": [
+          "ce",
+          "enterprise"
+        ],
+        "forbidden_moats": [],
+        "private_overlay_kinds": [
+          "signed-license-gates",
+          "sso-saml-scim",
+          "legal-hold",
+          "audit-retention",
+          "enterprise-reporting"
+        ],
+        "entitlement_source": "signed_offline_or_online_license"
+      },
+      {
+        "id": "enterprise-airgap",
+        "display_name": "Flyto2 Warroom Enterprise Airgap",
+        "license_tier": "enterprise",
+        "edition": "enterprise",
+        "base": "flyto-warroom@commit_sha",
+        "include_packages": [
+          "flyto-code",
+          "flyto-contracts",
+          "flyto-engine-ce"
+        ],
+        "allowed_module_editions": [
+          "ce",
+          "enterprise"
+        ],
+        "forbidden_moats": [],
+        "private_overlay_kinds": [
+          "offline-license",
+          "airgap-installers",
+          "offline-update-bundles",
+          "signed-evidence-export"
+        ],
+        "entitlement_source": "offline_license_file"
+      },
+      {
+        "id": "saas",
+        "display_name": "Flyto2 Cloud / SaaS",
+        "license_tier": "enterprise",
+        "edition": "saas",
+        "base": "flyto-warroom@commit_sha",
+        "include_packages": [
+          "flyto-code",
+          "flyto-contracts",
+          "flyto-engine-ce"
+        ],
+        "allowed_module_editions": [
+          "ce",
+          "enterprise",
+          "saas"
+        ],
+        "forbidden_moats": [],
+        "private_overlay_kinds": [
+          "hosted-control-plane",
+          "managed-runner-fleet",
+          "commercial-intel-connectors",
+          "managed-remediation"
+        ],
+        "entitlement_source": "hosted_control_plane"
+      }
+    ],
+    "build_steps": [
+      "Resolve and record the flyto-warroom CE commit SHA.",
+      "Run open-core audit against the CE base before overlay.",
+      "Apply private edition overlay selected by the signed license tier.",
+      "Run capability, entitlement, audit-log, and release-boundary tests.",
+      "Write release evidence with CE base commit, overlay profile, image digests, and verification results."
+    ],
+    "protected_overlay_kinds": [
+      "commercial intelligence datasets",
+      "hosted SaaS control plane",
+      "enterprise license signer",
+      "live cloud/container/runtime remediation adapters",
+      "customer connector credentials",
+      "enterprise SSO/SAML/SCIM implementation",
+      "AutoFix AI proposal, approval, promotion, and rollback orchestration"
+    ]
+  }
 }

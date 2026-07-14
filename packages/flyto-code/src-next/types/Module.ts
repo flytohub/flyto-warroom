@@ -43,6 +43,49 @@ export type ModuleGroup =
  *  repoCount / domainCount). Undefined = no count chip. */
 export type CountSlot = 'issues' | 'autofix' | 'repos' | 'domains'
 
+export type ModuleEdition = 'ce' | 'enterprise' | 'saas' | 'internal'
+
+export type ModulePackage =
+  | 'overview'
+  | 'assets'
+  | 'code'
+  | 'exposure'
+  | 'cloud'
+  | 'runtime'
+  | 'identity'
+  | 'operations'
+  | 'enterprise'
+  | 'darkweb'
+  | 'future'
+  | 'history'
+  | 'scoring'
+  | 'admin'
+  | 'hidden'
+
+export type ModuleMoat =
+  | 'none'
+  | 'commercial-intel'
+  | 'enterprise-control-plane'
+  | 'managed-remediation'
+  | 'saas-control-plane'
+
+export type ModuleLicenseTier = 'community' | 'team' | 'business' | 'enterprise'
+
+export interface ModuleBoundary {
+  /** Which edition owns the module implementation by default. */
+  edition: ModuleEdition
+  /** Physical package manifest that registers this route. */
+  package: ModulePackage
+  /** True when this module is safe to ship in the public CE source export. */
+  exportable: boolean
+  /** Unified cockpit surface this package merges back into. */
+  mergeSurface: ModuleGroup
+  /** Explicit moat marker so CE packaging cannot accidentally expose it. */
+  moat: ModuleMoat
+  /** Minimum commercial tier when the module is not community-owned. */
+  licenseTier?: ModuleLicenseTier
+}
+
 export interface ModuleSidebar {
   group: ModuleGroup
   /** i18n key without the `code.` prefix (tOr will strip). */
@@ -88,4 +131,10 @@ export interface Module {
    * metadata cannot drift into separate page lists.
    */
   dualMode?: boolean
+  /**
+   * Physical split/merge metadata. The route still works without it at
+   * runtime, but contract tests require every workspace module to declare it
+   * so CE, Enterprise, SaaS, and on-prem packaging cannot drift.
+   */
+  boundary?: ModuleBoundary
 }
