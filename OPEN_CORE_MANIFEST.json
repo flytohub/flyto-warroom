@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-15T00:05:48.542993+00:00",
+  "generated_at": "2026-07-15T02:24:21.182532+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -108,7 +108,8 @@
     "packages/README.md",
     "scripts/README.md",
     "scripts/audit-positioning.py",
-    "docs/feature-matrix.md"
+    "docs/feature-matrix.md",
+    "install/edition-overlays.json"
   ],
   "packages": [
     {

@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import json
 import re
 import sys
 from pathlib import Path
@@ -30,6 +31,7 @@ REQUIRED = [
     "packages/flyto-code/src-next/lib/env.ts",
     "packages/flyto-code/.env.example",
     "install/docker-compose.ce.yml",
+    "install/edition-overlays.json",
     "install/docker-compose.ee-sim.yml",
     "install/.env.ce.example",
     "install/.env.ee-sim.example",
@@ -127,6 +129,16 @@ def text(path: Path) -> str:
         return ""
 
 
+def load_json(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def string_list(value) -> list[str]:
+    if not isinstance(value, list):
+        return []
+    return [str(item) for item in value if isinstance(item, str)]
+
+
 def is_local_artifact(path: Path) -> bool:
     try:
         rel = path.relative_to(ROOT)
@@ -166,6 +178,55 @@ def main() -> int:
         for denied in ("VITE_AUTH_MODE=enterprise", "VITE_AUTH_MODE=firebase"):
             if denied in frontend_text:
                 blockers.append(f"frontend CE env contains denied auth mode: {denied}")
+    overlay_path = ROOT / "install/edition-overlays.json"
+    if overlay_path.exists():
+        try:
+            overlay = load_json(overlay_path)
+        except (OSError, json.JSONDecodeError) as exc:
+            blockers.append(f"invalid JSON in {overlay_path.relative_to(ROOT)}: {exc}")
+            overlay = None
+        if isinstance(overlay, dict):
+            if overlay.get("schema") != "flyto.open-core-edition-overlays.v1":
+                blockers.append("edition overlay manifest schema is invalid")
+            if overlay.get("runtime_source_pull_allowed") is not False:
+                blockers.append("edition overlay manifest allows runtime source pull")
+            base = overlay.get("base")
+            if not isinstance(base, dict):
+                blockers.append("edition overlay manifest base must be an object")
+            else:
+                if base.get("pin_required") is not True:
+                    blockers.append("edition overlay manifest base must require pinning")
+                if "commit_sha" not in string_list(base.get("accepted_ref_kinds")):
+                    blockers.append("edition overlay manifest base must include commit SHA pinning")
+                if base.get("resolved_at_build_time_only") is not True:
+                    blockers.append("edition overlay manifest base must resolve at build time only")
+            profiles = overlay.get("profiles")
+            if not isinstance(profiles, list) or not profiles:
+                blockers.append("edition overlay manifest profiles must be a non-empty list")
+                profiles = []
+            profile_ids = set()
+            for profile in profiles:
+                if not isinstance(profile, dict):
+                    blockers.append("edition overlay profile must be an object")
+                    continue
+                profile_id = str(profile.get("id", ""))
+                profile_ids.add(profile_id)
+                if profile.get("runtime_source_pull_allowed") is not False:
+                    blockers.append(f"edition overlay profile {profile_id} allows runtime source pull")
+                if profile.get("public_tree_contains_private_overlay") is not False:
+                    blockers.append(f"edition overlay profile {profile_id} allows private overlay in public tree")
+                private_overlays = string_list(profile.get("private_overlay_kinds"))
+                if profile_id == "community" and private_overlays:
+                    blockers.append("community edition overlay profile contains private overlays")
+                if profile_id != "community" and not private_overlays:
+                    blockers.append(f"paid edition overlay profile {profile_id} lacks private overlays")
+            missing_profiles = {"community", "enterprise-onprem", "enterprise-airgap", "saas"} - profile_ids
+            if missing_profiles:
+                blockers.append("edition overlay manifest missing profiles: " + ", ".join(sorted(missing_profiles)))
+            if not string_list(overlay.get("protected_overlay_kinds")):
+                blockers.append("edition overlay manifest must list protected overlay kinds")
+        elif overlay is not None:
+            blockers.append("edition overlay manifest root must be an object")
     for path in ROOT.rglob("*"):
         if not path.is_file() or path.stat().st_size > 2_000_000:
             continue
