@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-14T22:12:33.381951+00:00",
+  "generated_at": "2026-07-15T00:05:48.542993+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -45,6 +45,7 @@
     "install/.env.ce.example",
     "install/.env.ee-sim.example",
     "Makefile",
+    ".flyto-rules.yaml",
     "install/scripts/build-local-images.sh",
     "install/scripts/hash-local-password.py",
     "install/scripts/setup-ce.py",

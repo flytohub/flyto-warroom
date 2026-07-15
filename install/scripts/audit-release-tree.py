@@ -7,6 +7,7 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 
 REQUIRED = [
     "OPEN_CORE_MANIFEST.json",
+    ".flyto-rules.yaml",
     "Makefile",
     "packages/flyto-contracts/openapi/flyto-engine.openapi.yaml",
     "packages/flyto-contracts/capabilities/capabilities.yaml",

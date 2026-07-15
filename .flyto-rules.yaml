@@ -1,0 +1,50 @@
+version: 1
+
+layers:
+  - name: contracts
+    paths:
+      - "packages/flyto-contracts/**"
+    cannot_import:
+      - frontend
+      - engine_ce
+      - release_ops
+    reason: "Public protocol contracts must not depend on runtime implementation or release tooling."
+
+  - name: frontend
+    paths:
+      - "packages/flyto-code/**"
+    cannot_import:
+      - engine_ce
+      - release_ops
+    reason: "CE frontend source may consume public API contracts, but must not import backend source or installer tooling."
+
+  - name: engine_ce
+    paths:
+      - "services/flyto-engine-ce/**"
+    cannot_import:
+      - frontend
+      - release_ops
+    reason: "CE backend source must stay independently buildable and not depend on frontend source or installer scripts."
+
+  - name: release_ops
+    paths:
+      - ".github/**"
+      - "docs/**"
+      - "install/**"
+      - "scripts/**"
+      - "Makefile"
+    reason: "Release, install, and documentation files may reference package paths but are not runtime code."
+
+cross_imports_deny:
+  - from: "services/flyto-engine-ce/**"
+    to: "packages/flyto-code/**"
+    severity: high
+    reason: "Backend CE source cannot import frontend implementation."
+  - from: "packages/flyto-code/**"
+    to: "services/flyto-engine-ce/**"
+    severity: high
+    reason: "Frontend CE source must use API contracts instead of backend internals."
+  - from: "packages/flyto-contracts/**"
+    to: "services/flyto-engine-ce/**"
+    severity: high
+    reason: "Contracts must stay implementation-neutral."
