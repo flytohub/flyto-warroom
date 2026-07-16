@@ -50,7 +50,9 @@ RUN npm run build
 FROM nginx:alpine
 LABEL org.opencontainers.image.title="flyto-code" \
       org.opencontainers.image.description="Flyto2 frontend application" \
-      org.opencontainers.image.source="https://github.com/flytohub/flytohub" \
+      org.opencontainers.image.url="https://flyto2.com" \
+      org.opencontainers.image.documentation="https://docs.flyto2.com/warroom/self-hosted-ce" \
+      org.opencontainers.image.source="https://github.com/flytohub/flyto-warroom" \
       org.opencontainers.image.licenses="UNLICENSED"
 
 ARG NGINX_CONF=nginx.conf
