@@ -6,6 +6,11 @@ Last reviewed: 2026-07-16
 
 `flyto-warroom` is part of the 27-repository Flyto2 workspace memory standardization.
 
+The bundled `packages/flyto-code` CE frontend now mirrors the upstream
+`flyto-code` public CE package-manifest API. CE route/package split helpers are
+available through `@code/modules`, and product-loop audits read the physical
+module manifest files rather than the compatibility re-export shim.
+
 ## Known Risks
 
 - Keep public copy aligned with Flyto2 naming and current URLs.

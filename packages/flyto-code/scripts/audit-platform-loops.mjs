@@ -33,6 +33,8 @@ import { fileURLToPath } from 'node:url'
 import { parseYaml } from './lib/recipe-yaml.mjs'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const WORKSPACE = path.resolve(ROOT, '..')
+const GENERATED_WARROOM_CE = !fs.existsSync(path.join(WORKSPACE, 'flyto-engine'))
 const json = process.argv.includes('--json')
 
 function read(rel) {
@@ -59,7 +61,15 @@ function walk(dirRel, out = []) {
   return out
 }
 
-const modulesText = read('src-next/types/modules.ts')
+function moduleRegistryText() {
+  const manifestFiles = walk('src-next/types/module-manifests')
+    .filter((file) => /\.(ts|tsx)$/.test(file))
+    .filter((file) => !file.includes('/__tests__/'))
+    .sort()
+  return ['src-next/types/modules.ts', ...manifestFiles].map((file) => read(file)).join('\n')
+}
+
+const modulesText = moduleRegistryText()
 const queryKeysText = read('src-next/lib/queryKeys.ts')
 const orgEventsText = read('src-next/hooks/useOrgEvents.ts')
 // SSE handlers delegate fan-out invalidation to small helper modules
@@ -329,7 +339,7 @@ function loadLoopRegistry() {
   return registry.surfaces
 }
 
-const loops = loadLoopRegistry()
+const loops = loadLoopRegistry().filter((loop) => !(GENERATED_WARROOM_CE && loop.id === 'enterprise_control'))
 
 const surfaceReports = loops.map((loop) => {
   const moduleGaps = loop.modules.filter((id) => !modulePresent(id))

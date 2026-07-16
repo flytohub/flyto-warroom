@@ -1,10 +1,14 @@
 import { describe, expect, it } from 'vitest'
 import {
+  buildCEPackageManifest,
   getModulesByPackage,
+  getCEManifestModules,
+  getCEPackageOrder,
   MODULE_PACKAGE_ORDER,
   MODULES,
+  validateCEPackageManifest,
 } from '@code/modules'
-import { buildModulePackageManifest, validateCEPackageManifest } from '../packageManifest'
+import { buildModulePackageManifest } from '../packageManifest'
 
 const CE_FORBIDDEN_MODULE_IDS = new Set([
   'enterprise_control_plane',
@@ -79,6 +83,21 @@ describe('workspace CE module split/merge boundary contract', () => {
     expect(manifest.nonExportableModuleIds).toEqual([])
     expect(manifest.splitBy).toEqual(['package', 'capability', 'edition', 'mergeSurface'])
     expect(manifest.mergeThrough).toContain('unified-cockpit')
+    expect(manifest.packages.map((entry) => entry.package)).toEqual([...MODULE_PACKAGE_ORDER])
+  })
+
+  it('can cut a standalone CE module manifest without moat markers', () => {
+    const ceModules = getCEManifestModules(MODULES)
+    const cePackages = getCEPackageOrder(MODULES, MODULE_PACKAGE_ORDER)
+    const manifest = buildCEPackageManifest(MODULES, MODULE_PACKAGE_ORDER)
+    const manualManifest = buildModulePackageManifest(ceModules, cePackages)
+
+    expect(ceModules).toHaveLength(MODULES.length)
+    expect(manifest.totalModules).toBe(ceModules.length)
+    expect(manifest.packages.length).toBeGreaterThan(8)
+    expect(manifest).toEqual(manualManifest)
     expect(validateCEPackageManifest(manifest)).toEqual([])
+    expect(manifest.packages.some((entry) => entry.package === 'enterprise')).toBe(false)
+    expect(manifest.packages.some((entry) => entry.package === 'future')).toBe(false)
   })
 })

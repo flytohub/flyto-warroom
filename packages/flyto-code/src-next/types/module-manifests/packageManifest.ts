@@ -79,6 +79,26 @@ export function buildModulePackageManifest(
   }
 }
 
+export function getCEManifestModules(modules: readonly Module[]): Module[] {
+  return modules.filter((module) => module.boundary?.exportable === true)
+}
+
+export function getCEPackageOrder(
+  modules: readonly Module[],
+  packageOrder: readonly ModulePackage[],
+): ModulePackage[] {
+  const packagesWithCEModules = new Set(getCEManifestModules(modules).map((module) => module.boundary!.package))
+  return packageOrder.filter((packageName) => packagesWithCEModules.has(packageName))
+}
+
+export function buildCEPackageManifest(
+  modules: readonly Module[],
+  packageOrder: readonly ModulePackage[],
+): ModulePackageManifest {
+  const ceModules = getCEManifestModules(modules)
+  return buildModulePackageManifest(ceModules, getCEPackageOrder(modules, packageOrder))
+}
+
 export function validateCEPackageManifest(manifest: ModulePackageManifest): string[] {
   const issues: string[] = []
   if (manifest.totalModules === 0) {

@@ -13,6 +13,14 @@ import { scoringModules } from './scoring'
 import { adminModules } from './admin'
 import { hiddenModules } from './hidden'
 
+export {
+  buildCEPackageManifest,
+  buildModulePackageManifest,
+  getCEManifestModules,
+  getCEPackageOrder,
+  validateCEPackageManifest,
+} from './packageManifest'
+
 export const MODULE_PACKAGE_ORDER = [
   'overview',
   'assets',
