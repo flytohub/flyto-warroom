@@ -42,6 +42,7 @@
     "audit:platform-depth": "node scripts/audit-platform-depth.mjs",
     "audit:enterprise-airgap": "node scripts/audit-enterprise-airgap.mjs",
     "audit:edition-boundary": "node scripts/audit-edition-boundary.mjs",
+    "audit:self-hosted-nginx": "node scripts/audit-self-hosted-nginx.mjs",
     "audit:community-export": "node scripts/export-community.mjs --check",
     "audit:workspace-closure": "node scripts/audit-workspace-closure.mjs",
     "audit:page-guards": "node scripts/audit-page-guards.mjs",

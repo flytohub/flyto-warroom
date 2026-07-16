@@ -1,0 +1,41 @@
+import fs from 'node:fs';
+
+const dockerfile = fs.readFileSync('Dockerfile', 'utf8');
+const nginx = fs.readFileSync('nginx.conf', 'utf8');
+
+const checks = [
+  {
+    name: 'Docker healthcheck uses IPv4 healthz',
+    pass: dockerfile.includes('http://127.0.0.1:80/healthz'),
+  },
+  {
+    name: 'NGINX exposes exact /healthz endpoint',
+    pass: /location\s*=\s*\/healthz\s*\{[\s\S]*?return\s+200\s+'\{"status":"ok","service":"flyto-code"\}\\n';/m.test(nginx),
+  },
+  {
+    name: 'NGINX does not let /api/ fall through to the SPA shell',
+    pass: /location\s+\/api\/\s*\{[\s\S]*?proxy_pass\s+\$flyto_engine_upstream\$request_uri;/m.test(nginx),
+  },
+  {
+    name: 'NGINX API proxy resolves the compose engine service lazily',
+    pass: nginx.includes('resolver 127.0.0.11') && nginx.includes('set $flyto_engine_upstream http://engine:8080;'),
+  },
+  {
+    name: 'SPA fallback remains after API proxy',
+    pass: nginx.indexOf('location /api/') !== -1 &&
+      nginx.indexOf('location / {') !== -1 &&
+      nginx.indexOf('location /api/') < nginx.indexOf('location / {'),
+  },
+];
+
+const failed = checks.filter((check) => !check.pass);
+if (failed.length > 0) {
+  for (const check of failed) {
+    console.error(`FAIL ${check.name}`);
+  }
+  process.exit(1);
+}
+
+for (const check of checks) {
+  console.log(`ok ${check.name}`);
+}
