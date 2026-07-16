@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-16T09:11:37.695728+00:00",
+  "generated_at": "2026-07-16T09:32:28.958491+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
