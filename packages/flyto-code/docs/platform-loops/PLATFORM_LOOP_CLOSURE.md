@@ -58,8 +58,8 @@ AI code quality, and compliance evidence.
   module/API/qk/SSE/recipe closure expectations.
 - `navbar-smoke-registry.json` owns the browser-smoke plan for every visible
   sidebar module. `npm run audit:navbar-smoke` compares it against
-  `src-next/types/modules.ts`, so a new navbar page cannot ship without a smoke
-  target.
+  `src-next/types/module-manifests/*.ts`, so a new navbar page cannot ship
+  without a smoke target.
 - `npm run guard:ai-code` blocks the current AI failure modes: view transport
   bypasses, inline query keys, missing PageShell, and manager layouts that skip
   the shared dashboard shell.

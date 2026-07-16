@@ -221,8 +221,9 @@ fixed across 7 compounds.
 
 ### Don't hand-write a route entry
 
-Add to `src-next/types/modules.ts`. Sidebar + route + full-bleed
-shell update automatically. See Phase 3 commit for the why
+Add one `Module` entry to the relevant
+`src-next/types/module-manifests/<package>.ts` file. Sidebar + route +
+full-bleed shell update automatically. See Phase 3 commit for the why
 (used to be 6 touch points per new module).
 
 ### Don't skip the page wrapper
@@ -254,7 +255,7 @@ PageShell layout, lazy loading).
 
 Adding `<NavItem .../>` directly in WorkspaceSidebar.tsx bypasses
 the capability gate + the FULL_BLEED_PAGES derivation. Adding an
-entry to `modules.ts` is the only correct path.
+entry to the package module manifest is the only correct path.
 
 ---
 
@@ -266,8 +267,9 @@ entry to `modules.ts` is the only correct path.
    using the closest pattern above
 3. **Page wrapper** — create `src-next/app/(control-panel)/flyto/workspace/components/pages/<X>Page.tsx`
    (the 12-line shape above)
-4. **Module manifest** — add an entry to `src-next/types/modules.ts`
-   with `id` + `path` + `lazyImport` + `sidebar` + `fullBleed: true`
+4. **Module manifest** — add an entry to the relevant
+   `src-next/types/module-manifests/<package>.ts` file with `id` +
+   `path` + `lazyImport` + `sidebar` + `fullBleed: true`
 5. **i18n** — add `code.nav.<x>` label to `flyto-i18n/locales/code/{en,zh-TW,zh-CN,ja}/code.json`
 6. **Smoke test** — add `src-next/components/compounds/<domain>/__tests__/<X>View.test.tsx`
    following the threat-intel test pattern (mock `@lib/i18n`, `@hooks/useOrg`,

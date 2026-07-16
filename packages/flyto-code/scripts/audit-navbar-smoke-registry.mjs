@@ -13,6 +13,8 @@ import process from 'node:process'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
+const WORKSPACE = path.resolve(ROOT, '..')
+const GENERATED_WARROOM_CE = !fs.existsSync(path.join(WORKSPACE, 'flyto-engine'))
 
 function read(rel) {
   return fs.readFileSync(path.join(ROOT, rel), 'utf8')
@@ -22,14 +24,7 @@ function parseJson(rel) {
   return JSON.parse(read(rel))
 }
 
-function extractModuleBlocks(text) {
-  const start = text.indexOf('export const MODULES')
-  if (start < 0) throw new Error('src-next/types/modules.ts: missing MODULES export')
-  const assign = text.indexOf('=', start)
-  if (assign < 0) throw new Error('src-next/types/modules.ts: MODULES assignment is missing')
-  const arrStart = text.indexOf('[', assign)
-  if (arrStart < 0) throw new Error('src-next/types/modules.ts: MODULES is not an array')
-
+function extractObjectBlocksFromArray(text, arrStart) {
   const blocks = []
   let quote = ''
   let comment = ''
@@ -91,6 +86,23 @@ function extractModuleBlocks(text) {
   return blocks
 }
 
+function extractModuleBlocks(text, sourceName) {
+  const legacyStart = text.indexOf('export const MODULES')
+  if (legacyStart >= 0) {
+    const assign = text.indexOf('=', legacyStart)
+    if (assign < 0) throw new Error(`${sourceName}: MODULES assignment is missing`)
+    const arrStart = text.indexOf('[', assign)
+    if (arrStart < 0) throw new Error(`${sourceName}: MODULES is not an array`)
+    return extractObjectBlocksFromArray(text, arrStart)
+  }
+
+  const packageStart = text.indexOf('defineModulePackage(')
+  if (packageStart < 0) return []
+  const arrStart = text.indexOf('[', packageStart)
+  if (arrStart < 0) throw new Error(`${sourceName}: defineModulePackage is missing module array`)
+  return extractObjectBlocksFromArray(text, arrStart)
+}
+
 function prop(block, key) {
   return block.match(new RegExp(`\\b${key}:\\s*['"]([^'"]+)['"]`))?.[1] ?? null
 }
@@ -110,7 +122,18 @@ function routePath(pathTemplate) {
 }
 
 function loadVisibleModules() {
-  const blocks = extractModuleBlocks(read('src-next/types/modules.ts'))
+  const manifestDir = path.join(ROOT, 'src-next/types/module-manifests')
+  const files = fs.readdirSync(manifestDir)
+    .filter((file) => file.endsWith('.ts'))
+    .filter((file) => !['boundary.ts', 'index.ts', 'packageManifest.ts'].includes(file))
+    .sort()
+  const blocks = files.flatMap((file) => {
+    const rel = `src-next/types/module-manifests/${file}`
+    return extractModuleBlocks(read(rel), rel)
+  })
+  if (blocks.length === 0) {
+    throw new Error('src-next/types/module-manifests/*.ts: no module blocks found')
+  }
   const modules = []
   for (const block of blocks) {
     const id = prop(block, 'id')
@@ -197,7 +220,13 @@ export function detectLoopIslands(routes, loopRegistry, now = new Date()) {
 function main() {
   const json = process.argv.includes('--json')
   const registry = parseJson('docs/platform-loops/navbar-smoke-registry.json')
+  if (GENERATED_WARROOM_CE && Array.isArray(registry.routes)) {
+    registry.routes = registry.routes.filter((route) => route.moduleId !== 'enterprise_control_plane')
+  }
   const loopRegistry = parseJson('docs/platform-loops/platform-loop-registry.json')
+  if (GENERATED_WARROOM_CE && Array.isArray(loopRegistry.surfaces)) {
+    loopRegistry.surfaces = loopRegistry.surfaces.filter((surface) => surface.id !== 'enterprise_control')
+  }
   const surfaceIds = new Set(loopRegistry.surfaces.map((surface) => surface.id))
   const visibleModules = loadVisibleModules()
   const visibleById = new Map(visibleModules.map((module) => [module.id, module]))

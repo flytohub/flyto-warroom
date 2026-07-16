@@ -15,9 +15,13 @@ import yaml from 'js-yaml'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const SRC = path.join(ROOT, 'src-next')
-const ENGINE_ROOT = process.env.FLYTO_ENGINE_ROOT || path.resolve(ROOT, '..', 'flyto-engine')
-const CAPABILITIES_YAML = path.join(ENGINE_ROOT, 'internal/permission/capabilities.yaml')
-const MODULES_FILE = path.join(SRC, 'types/modules.ts')
+const WORKSPACE = path.resolve(ROOT, '..')
+const GENERATED_WARROOM_CE = !fs.existsSync(path.join(WORKSPACE, 'flyto-engine'))
+const ENGINE_ROOT = process.env.FLYTO_ENGINE_ROOT || path.resolve(WORKSPACE, 'flyto-engine')
+const CAPABILITIES_YAML = GENERATED_WARROOM_CE
+  ? path.join(WORKSPACE, 'flyto-contracts', 'capabilities', 'capabilities.yaml')
+  : path.join(ENGINE_ROOT, 'internal/permission/capabilities.yaml')
+const MODULE_MANIFEST_DIR = path.join(SRC, 'types/module-manifests')
 const SECTIONS_FILE = path.join(SRC, 'types/sections.ts')
 const PULSE_FILE = path.join(SRC, 'components/compounds/pulse/PulseView.tsx')
 const FOOTPRINT_SURFACE_FILE = path.join(SRC, 'lib/engine/code/footprintSurface.ts')
@@ -192,21 +196,49 @@ function objectBlocksFromArray(src, marker) {
   return blocks
 }
 
+function objectBlocksFromPackageManifest(src, label) {
+  const start = src.indexOf('defineModulePackage(')
+  if (start === -1) return []
+  const open = src.indexOf('[', start)
+  const close = findMatchingBracket(src, open, '[', ']')
+  if (open === -1 || close === -1) {
+    fail(`${label}: could not parse defineModulePackage module array`)
+    return []
+  }
+  return objectBlocksFromArray(`export const MODULES = ${src.slice(open, close + 1)}`, 'export const MODULES')
+}
+
+function moduleManifestFiles() {
+  if (!fs.existsSync(MODULE_MANIFEST_DIR)) {
+    fail(`missing required directory: ${path.relative(ROOT, MODULE_MANIFEST_DIR)}`)
+    return []
+  }
+  return fs.readdirSync(MODULE_MANIFEST_DIR)
+    .filter((file) => file.endsWith('.ts'))
+    .filter((file) => !['boundary.ts', 'index.ts', 'packageManifest.ts'].includes(file))
+    .sort()
+    .map((file) => path.join(MODULE_MANIFEST_DIR, file))
+}
+
 function parseModules() {
-  const code = stripComments(read(MODULES_FILE))
+  const files = moduleManifestFiles()
   const modules = []
-  for (const block of objectBlocksFromArray(code, 'export const MODULES')) {
-    const id = block.match(/\bid:\s*'([^']+)'/)?.[1]
-    const capability = block.match(/\bcapability:\s*'([^']+)'/)?.[1]
-    const group = block.match(/\bsidebar:\s*\{[\s\S]*?\bgroup:\s*'([^']+)'/)?.[1]
-    if (!id) continue
-    modules.push({
-      id,
-      capability,
-      page: capability ?? id,
-      group,
-      visible: !!group && group !== 'hidden',
-    })
+  for (const file of files) {
+    const code = stripComments(read(file))
+    const label = path.relative(ROOT, file)
+    for (const block of objectBlocksFromPackageManifest(code, label)) {
+      const id = block.match(/\bid:\s*'([^']+)'/)?.[1]
+      const capability = block.match(/\bcapability:\s*'([^']+)'/)?.[1]
+      const group = block.match(/\bsidebar:\s*\{[\s\S]*?\bgroup:\s*'([^']+)'/)?.[1]
+      if (!id) continue
+      modules.push({
+        id,
+        capability,
+        page: capability ?? id,
+        group,
+        visible: !!group && group !== 'hidden',
+      })
+    }
   }
   if (modules.length === 0) fail('parsed zero MODULES entries')
   return modules
@@ -296,7 +328,7 @@ function assertLoopCoverage({ modules }) {
     fail(`platform-loop-registry.json invalid JSON: ${err.message}`)
     return
   }
-  const surfaces = registry.surfaces ?? []
+  const surfaces = (registry.surfaces ?? []).filter((surface) => !(GENERATED_WARROOM_CE && surface.id === 'enterprise_control'))
   if (surfaces.length === 0) {
     fail('platform-loop-registry.json has no surfaces')
     return

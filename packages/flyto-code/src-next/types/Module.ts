@@ -3,24 +3,26 @@
  * surface area.
  *
  * Each `Module` describes one URL-addressable destination + its
- * sidebar nav entry + its capability gate. The hand-list lives in
- * `modules.ts`; this file is just the shape.
+ * sidebar nav entry + its capability gate. The concrete registry is
+ * split by package under `types/module-manifests/`; this file is just
+ * the shape.
  *
  * Drives:
  *   - route.tsx          (FeatureGate + WorkspacePageLoader)
  *   - WorkspaceSidebar   (group → label → icon → count)
  *   - WorkspaceLayout    (FULL_BLEED_PAGES = filter of fullBleed=true)
  *
- * Adding a new module = add one entry to `modules.ts`. No more
- * 5-file edit dance to introduce a route.
+ * Adding a new module = add one entry to the relevant package manifest.
+ * No more 5-file edit dance to introduce a route.
  */
 
 import type { ComponentType } from 'react'
 import type { LucideIcon } from 'lucide-react'
 
-/** Sidebar grouping — order matters; sidebar renders groups in
- *  this enum's declared order. `hidden` = route exists but no
- *  sidebar entry (e.g. /repos/:repoId detail page, /org chart). */
+/** Sidebar grouping. Render order is controlled by
+ *  `SIDEBAR_GROUP_ORDER` in `types/module-manifests/index.ts`.
+ *  `hidden` = route exists but no sidebar entry (e.g.
+ *  /repos/:repoId detail page, /org chart). */
 export type ModuleGroup =
   | 'overview'   // Dashboard / Pulse / Footprint
   | 'assets'     // Repos / Domains / Asset Map

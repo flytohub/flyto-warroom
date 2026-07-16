@@ -14,8 +14,9 @@ solved **once** in `components/atoms/`, not per view.
   its own outer scroll/padding. (`feedback_workspace_scroll_pattern`.)
   - list / table / full-height views: `scroll="host" padded={false}`
   - simple linear reading views: `scroll="self" maxWidth={1200}`
-- Full-bleed paths are derived from `types/modules.ts` (`getFullBleedPaths`) —
-  add new full-height pages there, not by hand in `WorkspaceLayout`.
+- Full-bleed paths are derived from
+  `types/module-manifests/*.ts` (`getFullBleedPaths`) — set
+  `fullBleed: true` on the module entry, not by hand in `WorkspaceLayout`.
 
 ## The header
 

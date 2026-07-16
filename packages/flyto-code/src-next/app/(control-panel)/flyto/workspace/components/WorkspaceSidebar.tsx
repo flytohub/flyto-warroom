@@ -561,17 +561,18 @@ export default function WorkspaceSidebar() {
           only customer doesn't see an empty "SECURITY" header. */}
       <Box sx={{ flex: 1, minHeight: 0, overflow: 'hidden', pb: 1 }}>
         {/* Sidebar nav is generated from the MODULES manifest
-            (types/modules.ts). Groups render in SIDEBAR_GROUP_ORDER;
-            each group's items in the order they appear in MODULES.
+            (types/module-manifests/*). Groups render in
+            SIDEBAR_GROUP_ORDER; each group's items in manifest order.
             Skip the `admin` group (renders at the bottom; pinned)
             and the `hidden` group (routed-only, no nav entry).
             Empty groups (zero visible items after capability gate)
             collapse out entirely so a code-only customer doesn't
             see an empty "EXPOSURE" header.
 
-            Adding a new module = add one entry to MODULES; sidebar
-            picks it up automatically. No more dual-edit between
-            this file + the route registry + the full-bleed list. */}
+            Adding a new module = add one entry to the relevant
+            package manifest; sidebar picks it up automatically. No
+            more dual-edit between this file + the route registry +
+            the full-bleed list. */}
 
         {/* While capabilities are still loading, `canSeePage` fails closed.
             Gate on `caps.ready`: show a stable skeleton during the brief
@@ -633,8 +634,7 @@ export default function WorkspaceSidebar() {
               {visibleGroups.map(group => {
                 const meta = GROUP_NAV_META[group.id] ?? { icon: LayoutDashboard, fallback: group.label }
                 const Icon = meta.icon
-                  const active = activeGroup?.id === group.id
-                  const railLabel = meta.fallback
+                const active = activeGroup?.id === group.id
                 return (
                   <Tooltip key={group.id} title={group.label} placement="right">
                     <ListItemButton
@@ -642,17 +642,16 @@ export default function WorkspaceSidebar() {
                       selected={active}
                       onClick={() => setActiveGroupId(group.id)}
                       sx={{
-                        minHeight: 54,
-                        width: 62,
-                        mb: 0.45,
+                        minHeight: 46,
+                        width: 54,
+                        mb: 0.35,
                         px: 0.35,
                         py: 0.55,
                         borderRadius: 1.5,
                         display: 'flex',
-                        flexDirection: 'column',
+                        flexDirection: 'row',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        gap: 0.45,
                         position: 'relative',
                         color: active ? '#f8fafc' : 'rgba(226,232,240,0.66)',
                         bgcolor: active ? 'rgba(139,92,246,0.18)' : 'transparent',
@@ -677,23 +676,7 @@ export default function WorkspaceSidebar() {
                         '&:hover': { bgcolor: 'rgba(255,255,255,0.07)', color: '#f8fafc' },
                       }}
                     >
-                      <Icon size={18} />
-                      <Typography
-                        variant="caption"
-                        sx={{
-                          maxWidth: 54,
-                          fontSize: 10.5,
-                          fontWeight: active ? 800 : 700,
-                          lineHeight: 1.05,
-                          textAlign: 'center',
-                          overflow: 'hidden',
-                          display: '-webkit-box',
-                          WebkitLineClamp: 2,
-                          WebkitBoxOrient: 'vertical',
-                        }}
-                      >
-                          {railLabel}
-                      </Typography>
+                      <Icon size={20} />
                     </ListItemButton>
                   </Tooltip>
                 )
