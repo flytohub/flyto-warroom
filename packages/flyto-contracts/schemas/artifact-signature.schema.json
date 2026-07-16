@@ -1,0 +1,39 @@
+{
+  "$id": "https://schemas.flyto.dev/artifact-signature.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "algorithm": {
+      "type": "string"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "digest": {
+      "type": "string"
+    },
+    "key_id": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    },
+    "signed_at": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "artifact_id",
+    "digest",
+    "algorithm",
+    "signed_at"
+  ],
+  "title": "Flyto2 artifact signature",
+  "type": "object"
+}

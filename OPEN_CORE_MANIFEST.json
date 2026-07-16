@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-16T16:58:20.048616+00:00",
+  "generated_at": "2026-07-16T17:53:32.604861+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -135,7 +135,7 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1600,
+      "file_count": 1604,
       "generated_files": [
         "package.json",
         "package-lock.json",
@@ -156,7 +156,7 @@
     {
       "name": "flyto-contracts",
       "repo": "flyto-engine",
-      "file_count": 22,
+      "file_count": 28,
       "generated_files": [
         "README.md",
         "schemas/capability.schema.json",
@@ -165,9 +165,15 @@
         "schemas/runner-callback.schema.json",
         "schemas/product-verification-scenario.schema.json",
         "schemas/audit-event.schema.json",
+        "schemas/run-ledger-event.schema.json",
+        "schemas/artifact-signature.schema.json",
+        "schemas/livefix-plan.schema.json",
         "examples/scanner-manifest.yaml",
         "examples/runner-callback.json",
         "examples/evidence-event.json",
+        "examples/run-ledger-event.json",
+        "examples/artifact-signature.json",
+        "examples/livefix-plan.json",
         "conformance/README.md",
         "conformance/validate.py",
         "sdk/typescript/src/index.ts",

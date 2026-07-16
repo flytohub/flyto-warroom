@@ -1,0 +1,18 @@
+{
+  "apply_supported": false,
+  "approval_required": true,
+  "blocked_reason": "premium_required",
+  "evidence_requirements": [
+    "approval_record",
+    "provider_execution_log",
+    "verification_result",
+    "rollback_plan"
+  ],
+  "mode": "live_apply",
+  "provider": "kubernetes",
+  "provider_execution": "none",
+  "rollback_supported": false,
+  "status": "blocked",
+  "surface": "container",
+  "verify_supported": true
+}

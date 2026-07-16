@@ -26,3 +26,40 @@ type EvidenceEvent struct {
 	Severity  string        `json:"severity,omitempty"`
 	Artifacts []ArtifactRef `json:"artifacts"`
 }
+
+type RunLedgerEvent struct {
+	RunID      string        `json:"run_id"`
+	OrgID      string        `json:"org_id"`
+	WorkspaceID string      `json:"workspace_id,omitempty"`
+	Surface    string       `json:"surface"`
+	ScannerID  string       `json:"scanner_id"`
+	Status     string       `json:"status"`
+	Trigger    string       `json:"trigger,omitempty"`
+	OccurredAt string       `json:"occurred_at"`
+	Artifacts  []ArtifactRef `json:"artifacts,omitempty"`
+}
+
+type ArtifactSignature struct {
+	ArtifactID string `json:"artifact_id"`
+	Kind       string `json:"kind,omitempty"`
+	Path       string `json:"path,omitempty"`
+	Digest     string `json:"digest"`
+	Algorithm  string `json:"algorithm"`
+	KeyID      string `json:"key_id,omitempty"`
+	SignedAt   string `json:"signed_at"`
+	Signature  string `json:"signature,omitempty"`
+}
+
+type LivefixPlan struct {
+	Surface              string   `json:"surface"`
+	Provider             string   `json:"provider,omitempty"`
+	Mode                 string   `json:"mode"`
+	Status               string   `json:"status"`
+	ProviderExecution    string   `json:"provider_execution"`
+	BlockedReason        string   `json:"blocked_reason,omitempty"`
+	ApprovalRequired     bool     `json:"approval_required,omitempty"`
+	ApplySupported       bool     `json:"apply_supported,omitempty"`
+	VerifySupported      bool     `json:"verify_supported,omitempty"`
+	RollbackSupported    bool     `json:"rollback_supported,omitempty"`
+	EvidenceRequirements []string `json:"evidence_requirements"`
+}

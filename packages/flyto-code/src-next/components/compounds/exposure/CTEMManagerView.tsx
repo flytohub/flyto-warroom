@@ -31,13 +31,13 @@ import {
 } from 'lucide-react'
 
 import { useExperience } from '@/contexts/ExperienceContext'
+import { LoadingState } from '@atoms/LoadingState'
 import { type CTEMPriorityItem } from '@lib/engine/ctem/ctem'
 import { getCtemPrioritiesPage } from '@lib/engine/code/posture'
 import { getTriageStats } from '@lib/engine/ctem/findingUnified'
 import { qk } from '@lib/queryKeys'
 import { tOr } from '@lib/i18n'
 import { colors } from '@/styles/designTokens'
-
 const ACCENT = colors.section.exposure
 const BRAND = colors.brand
 
@@ -624,7 +624,7 @@ function NoiseBlock({ loading, pct, total, filtered }: { loading: boolean; pct: 
   const color = colors.semantic.success
 
   if (loading) {
-    return <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>{tOr('common.loading', '載入中')}</Typography>
+    return <LoadingState variant="spinner" py={1} />
   }
   if (total <= 0) {
     return <Typography sx={{ color: 'text.secondary', fontSize: 12 }}>{tOr('exposure.ctem.empty.reachability', '尚無可呈現的噪音削減資料。')}</Typography>

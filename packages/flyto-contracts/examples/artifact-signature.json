@@ -1,0 +1,10 @@
+{
+  "algorithm": "ed25519",
+  "artifact_id": "artifact_example_001",
+  "digest": "sha256:example-digest-placeholder",
+  "key_id": "community-example-key",
+  "kind": "evidence_pack",
+  "path": "evidence/example.zip",
+  "signature": "example-signature-placeholder",
+  "signed_at": "2026-06-30T00:01:00Z"
+}

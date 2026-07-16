@@ -29,6 +29,8 @@
     "audit:sse-correspondence": "node scripts/audit-sse-correspondence.mjs",
     "audit:product-verification": "node scripts/audit-product-verification-cockpit.mjs",
     "audit:module-packages": "node scripts/audit-module-package-boundaries.mjs",
+    "audit:module-physical-boundaries": "node scripts/audit-module-physical-boundaries.mjs",
+    "audit:design-system-boundary": "node scripts/audit-design-system-boundary.mjs",
     "audit:data-readiness": "node scripts/audit-data-readiness-boundaries.mjs",
     "audit:ux-closure": "node scripts/audit-ux-closure.mjs",
     "audit:visual-system": "node scripts/audit-visual-system.mjs",

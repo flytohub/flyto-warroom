@@ -15,7 +15,7 @@ orchestration.
   exposing private handlers.
 - `capabilities/capabilities.yaml`: public capability catalog source.
 - `schemas/`: JSON Schemas for extension-facing payloads.
-- `examples/`: minimal scanner, runner callback, and evidence examples.
+- `examples/`: minimal scanner, runner callback, run ledger, livefix, and evidence examples.
 - `conformance/`: zero-dependency validation helper for integration authors.
 - `sdk/`: lightweight type stubs for client and connector authors.
 

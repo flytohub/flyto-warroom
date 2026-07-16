@@ -1,0 +1,56 @@
+{
+  "$id": "https://schemas.flyto.dev/livefix-plan.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "apply_supported": {
+      "type": "boolean"
+    },
+    "approval_required": {
+      "type": "boolean"
+    },
+    "blocked_reason": {
+      "type": "string"
+    },
+    "evidence_requirements": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "mode": {
+      "type": "string"
+    },
+    "provider": {
+      "type": "string"
+    },
+    "provider_execution": {
+      "enum": [
+        "none",
+        "live"
+      ],
+      "type": "string"
+    },
+    "rollback_supported": {
+      "type": "boolean"
+    },
+    "status": {
+      "type": "string"
+    },
+    "surface": {
+      "type": "string"
+    },
+    "verify_supported": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "surface",
+    "mode",
+    "status",
+    "provider_execution",
+    "evidence_requirements"
+  ],
+  "title": "Flyto2 live remediation plan",
+  "type": "object"
+}

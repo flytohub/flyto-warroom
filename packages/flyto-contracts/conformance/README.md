@@ -7,4 +7,7 @@ validation can be layered on by downstream SDKs.
 ```sh
 python conformance/validate.py runner-callback examples/runner-callback.json
 python conformance/validate.py evidence-event examples/evidence-event.json
+python conformance/validate.py run-ledger-event examples/run-ledger-event.json
+python conformance/validate.py artifact-signature examples/artifact-signature.json
+python conformance/validate.py livefix-plan examples/livefix-plan.json
 ```

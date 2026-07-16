@@ -42,6 +42,7 @@ import {
 import { useSnackbar } from 'notistack'
 
 import { GatedButton } from '@atoms/GatedButton'
+import { LoadingState } from '@atoms/LoadingState'
 import { ScanUploadDropzone } from '@compounds/_shared/ScanUploadDropzone'
 import { colors } from '@/styles/designTokens'
 import { qk } from '@lib/queryKeys'
@@ -910,8 +911,8 @@ export function RepoDetailManagerView({
           }}
         >
           {loading ? (
-            <Box sx={{ flex: 1, minHeight: 0, display: 'grid', placeItems: 'center' }}>
-              <CircularProgress size={28} />
+            <Box sx={{ flex: 1, minHeight: 0 }}>
+              <LoadingState variant="spinner" py={8} />
             </Box>
           ) : profileQ.isError || scoreQ.isError ? (
             <Box sx={{ flex: 1, minHeight: 0, display: 'grid', placeItems: 'center', textAlign: 'center', p: 3 }}>

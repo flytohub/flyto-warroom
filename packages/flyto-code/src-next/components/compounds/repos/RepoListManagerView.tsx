@@ -42,6 +42,7 @@ import { t, tOr } from '@lib/i18n'
 import { colors } from '@/styles/designTokens'
 import { useConnectedRepos } from '@hooks/useOrg'
 import { GatedButton } from '@atoms/GatedButton'
+import { LoadingState } from '@atoms/LoadingState'
 import { RepoPickerModal } from '@compounds/_shared/picker'
 import { getComputedScore } from '@lib/engine/scoring/scoring'
 import {
@@ -817,8 +818,8 @@ export function RepoListManagerView({ orgId }: { orgId: string | undefined }) {
 
           <Box sx={{ flex: 1, minHeight: 0, overflow: 'auto' }}>
             {loading ? (
-              <Box sx={{ minHeight: 220, display: 'grid', placeItems: 'center' }}>
-                <CircularProgress size={26} />
+              <Box sx={{ minHeight: 220 }}>
+                <LoadingState variant="spinner" py={6} />
               </Box>
             ) : hasError ? (
               <Box sx={{ minHeight: 220, display: 'grid', placeItems: 'center', textAlign: 'center', p: 3 }}>

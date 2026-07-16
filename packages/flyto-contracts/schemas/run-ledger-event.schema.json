@@ -1,0 +1,50 @@
+{
+  "$id": "https://schemas.flyto.dev/run-ledger-event.v1.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "artifacts": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "occurred_at": {
+      "type": "string"
+    },
+    "org_id": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "scanner_id": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "object"
+    },
+    "status": {
+      "type": "string"
+    },
+    "surface": {
+      "type": "string"
+    },
+    "trigger": {
+      "type": "string"
+    },
+    "workspace_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "run_id",
+    "org_id",
+    "surface",
+    "scanner_id",
+    "status",
+    "occurred_at"
+  ],
+  "title": "Flyto2 scheduler run ledger event",
+  "type": "object"
+}
