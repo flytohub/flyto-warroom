@@ -1,41 +1,15 @@
-# Agent Instructions
+# CLAUDE.md
 
-This repository is a generated Flyto2 Warroom CE mirror. Do not treat it as the
-private Flyto2 source of truth.
+Claude and other coding agents must follow `AGENTS.md` first in this repository.
 
-## Before Changes
+Repository: `flyto-warroom`
 
-- Identify whether the change belongs to `flyto-code`, `flyto-contracts`, or
-  generated release files. (`flyto-core`, `flyto-indexer`, and `flyto-i18n` are
-  external open-source dependencies — contribute to their own public repos, not
-  here. See `DEPENDENCIES.md`.)
-- Prefer `flyto-indexer` search, impact, audit, and verify workflows for code
-  exploration when the tool is available.
-- If a generated file needs a lasting change, update the source package or the
-  exporter template first, then regenerate this repository.
+Before changing code or documentation:
 
-## Safety
-
-- Do not commit credentials, customer data, private image coordinates, private
-  connector secrets, or enterprise-only implementation details.
-- Keep Enterprise features connected only through public capabilities, public
-  API/evidence contracts, signed bridge requests, and gated UI states.
-- Premium paths must fail closed when entitlement, permission, connector, cloud,
-  or evidence-signature checks fail.
-
-## After Changes
-
-Run the relevant verification before committing:
-
-```sh
-make audit
-python3 install/scripts/verify-docker-images.py --dry-run
-```
-
-The exporter that generates this repository lives in the external `flyto-indexer`
-package (`src/flyto2_open_core.py`), not in this tree — change it there and
-regenerate.
-
+1. Read `PROJECT.md`, `ARCHITECTURE.md`, `STATE.md`, and recent files in `handoffs/`.
+2. Preserve Flyto2 naming, `@flyto2.com` contact addresses, and current public URLs.
+3. Apply the Flyto2 Frontend Quality Gate to every UI change.
+4. Update memory files when behavior, deployment, public copy, or architecture changes.
 ## Flyto2 Project Memory Contract
 
 Every Flyto2 repository must keep this project-memory scaffold current:
