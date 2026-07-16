@@ -8,6 +8,21 @@ CE must stay useful without Flyto2 Cloud. Enterprise must stay compelling
 without exposing private datasets, provider credentials, hosted control
 planes, live remediation workers, or commercial billing implementation.
 
+See `docs/reference-architecture.md` for the product-shape references
+behind this split.
+
+## Adoption / Upgrade Trigger
+
+| User need | CE should satisfy | Enterprise should become necessary |
+| --- | --- | --- |
+| Understand Flyto2 | Run locally, load seed data, inspect findings, evidence, reports, and deterministic AutoFix. | Not required. |
+| Bring existing tools | Import public scanner or customer-exported findings through contracts. | Managed commercial connectors, scheduled sync, support, and signed enrichment. |
+| Validate attacks safely | Review attack paths and local safe validation evidence. | Managed runner fleets, red-team campaigns, Enterprise Cloud Bridge, and signed premium results. |
+| Fix and prove closure | Record remediation, deterministic rules, re-test, and report export. | Live cloud/container/runtime/VM remediation, approval workflows, rollback orchestration, and audit export. |
+| Govern enterprise usage | Local roles and capability-gated actions. | SSO/SAML/SCIM, advanced RBAC, legal hold, retention, data residency, HA, and support SLA. |
+
+## Module Boundaries
+
 | Module | Boundary | Status | CE baseline | Enterprise value | Upgrade trigger |
 | --- | --- | --- | --- | --- | --- |
 | `core` Core Evidence Platform | `ce_included` | `live` | Local workspace shell, dashboard, audit timeline, scoring primitives, settings, and role administration. | Enterprise identity, offline licensing, legal hold, support SLA, and controlled deployment boundaries. | Teams need SSO, legal hold, offline license, audit export guarantees, or regulated deployment support. |

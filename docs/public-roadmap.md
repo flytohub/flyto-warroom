@@ -5,6 +5,9 @@ modes: promising Enterprise-only work as CE, and hiding useful CE work behind a
 sales story.
 
 The canonical product loop is Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation.
+The reference architecture in `reference-architecture.md` is the guardrail for
+deciding whether a capability belongs in CE, Enterprise Cloud Bridge, or
+Enterprise Airgap.
 
 ## Shipped In CE
 
@@ -30,6 +33,8 @@ The canonical product loop is Findings -> Attack Paths -> Offensive Validation -
   safe validation tasks.
 - More deterministic AutoFix rules that do not require a commercial AI provider.
 - Clearer empty states for CE surfaces when a connector is not configured.
+- Community-safe connector and test-template examples modeled after scanner
+  adapter projects, without bundling commercial datasets or hosted execution.
 
 ## Enterprise Cloud Bridge
 

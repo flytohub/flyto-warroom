@@ -13,6 +13,8 @@ Start here:
 - `local-install.md` for Docker Compose setup.
 - `demo-seed-workspace.md` for the one-command demo seed.
 - `feature-matrix.md` for CE and Enterprise boundaries.
+- `reference-architecture.md` for the open-core product and contribution model
+  used to keep CE useful without leaking Enterprise implementation.
 - `public-roadmap.md` for shipped, next, Enterprise Bridge, and Airgap work.
 - `paid-prerequisites.md` for paid/provider prerequisites and no-cost maximum.
 - `release-readiness.md` for code gates versus account/provider release blockers.
