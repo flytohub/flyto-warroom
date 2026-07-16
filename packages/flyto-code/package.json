@@ -28,6 +28,7 @@
     "audit:loop-runtime": "node scripts/audit-loop-runtime.mjs",
     "audit:sse-correspondence": "node scripts/audit-sse-correspondence.mjs",
     "audit:product-verification": "node scripts/audit-product-verification-cockpit.mjs",
+    "audit:module-packages": "node scripts/audit-module-package-boundaries.mjs",
     "audit:data-readiness": "node scripts/audit-data-readiness-boundaries.mjs",
     "audit:ux-closure": "node scripts/audit-ux-closure.mjs",
     "audit:visual-system": "node scripts/audit-visual-system.mjs",

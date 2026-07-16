@@ -1,9 +1,8 @@
-# Wrap-Up Workflow
+# Wrap Up Workflow
 
-Use this before finishing a task.
-
-1. Summarize changed files and commits.
-2. Record validation commands and any failures.
-3. Confirm docs, memory files, and public metadata are current.
-4. Note deployment or publish steps that still require credentials.
-5. Leave the worktree clean except for unrelated pre-existing changes.
+1. Identify whether the change belongs to generated release assets, frontend
+   source, public contracts, or CE backend source.
+2. Make durable source changes upstream when possible.
+3. Regenerate Flyto2 Warroom CE from the private exporter.
+4. Run `make verify`.
+5. Review the generated diff for CE usefulness and moat leakage.

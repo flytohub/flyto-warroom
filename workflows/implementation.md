@@ -1,9 +1,8 @@
 # Implementation Workflow
 
-Use this while making changes.
-
-1. Keep edits narrow and aligned with local patterns.
-2. Do not overwrite unrelated user or generated changes.
-3. Update tests, docs, and memory files with behavior changes.
-4. For frontend changes, verify responsive layout, accessibility, navigation, and content clarity.
-5. Record meaningful follow-up work in `tasks.md`.
+1. Identify whether the change belongs to generated release assets, frontend
+   source, public contracts, or CE backend source.
+2. Make durable source changes upstream when possible.
+3. Regenerate Flyto2 Warroom CE from the private exporter.
+4. Run `make verify`.
+5. Review the generated diff for CE usefulness and moat leakage.

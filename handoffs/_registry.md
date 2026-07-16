@@ -1,10 +1,6 @@
 # Handoff Registry
 
-Repository: `flyto-warroom`
-
-Add new handoffs as `YYYY-MM-DD-topic.md` in this directory and list them here.
-
-| Date | Topic | Summary |
-| --- | --- | --- |
-| 2026-07-16 | ce-frontend-package-manifest-api | Synced upstream flyto-code CE package manifest helpers and product-loop audit manifest discovery. |
-| 2026-07-16 | workspace-memory-standard | Adopted Flyto2 project memory scaffold and frontend quality gate. |
+| Date | Topic | File | Status |
+| --- | --- | --- | --- |
+| 2026-07-16 | CE frontend package manifest API | `2026-07-16-ce-frontend-package-manifest-api.md` | Archived |
+| 2026-07-17 | Generated open-core sync | `2026-07-17-generated-open-core-sync.md` | Active |

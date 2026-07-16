@@ -1,9 +1,8 @@
 # Planning Workflow
 
-Use this before implementation work.
-
-1. Read `AGENTS.md`, `PROJECT.md`, `ARCHITECTURE.md`, `STATE.md`, and recent handoffs.
-2. Define scope, non-goals, and rollback path.
-3. Identify files, tests, docs, and deployment surfaces affected.
-4. For frontend work, apply the Flyto2 Frontend Quality Gate.
-5. Update the plan as work completes.
+1. Identify whether the change belongs to generated release assets, frontend
+   source, public contracts, or CE backend source.
+2. Make durable source changes upstream when possible.
+3. Regenerate Flyto2 Warroom CE from the private exporter.
+4. Run `make verify`.
+5. Review the generated diff for CE usefulness and moat leakage.

@@ -1,29 +1,24 @@
-# DECISIONS.md
+# Flyto2 Warroom CE Decisions
 
-## 2026-07-16 - Mirror upstream CE frontend package-manifest API
+## Generated Open-Core Mirror
 
-Decision: keep `packages/flyto-code` aligned with upstream `flyto-code` for CE
-package-manifest helpers and product-loop manifest discovery.
+Decision: this repository is generated from private Flyto2 source and must not
+become a hand-maintained fork.
 
-Rationale: Warroom CE must look and behave like the source platform without
-forking frontend split logic. CE packaging, product-loop audits, and module
-boundary tests should consume the same public `@code/modules` helper surface.
+Reason: CE patches should benefit Flyto2 itself while keeping Enterprise/SaaS
+moat code out of the public tree.
 
-Consequences:
+## Build-Time Overlays Only
 
-- Lasting changes still belong in upstream `flyto-code` first.
-- Generated Warroom sync must not introduce separate CE filters.
-- Product-loop checks read physical module manifest files, not only the
-  `types/modules.ts` re-export shim.
+Decision: Enterprise and SaaS editions use a pinned CE commit plus private
+build-time overlays. Runtime source pulls are forbidden.
 
-## 2026-07-16 - Adopt Flyto2 Workspace Memory Standard
+Reason: deterministic packaging, airgap readiness, auditability, and code
+protection require reproducible build inputs.
 
-Decision: `flyto-warroom` follows the Flyto2 project memory scaffold and frontend quality gate.
+## CE Must Stay Useful
 
-Rationale: All 27 Flyto2 repositories need consistent handoff context, durable decisions, and UI quality constraints.
+Decision: CE must remain locally runnable, inspectable, and patchable.
 
-Consequences:
-
-- Root memory files must stay current.
-- UI changes must avoid the eight forbidden frontend failures in `AGENTS.md`.
-- Handoffs must be registered in `handoffs/_registry.md`.
+Reason: open-core adoption depends on real local value, not a library dump or
+marketing-only mirror.

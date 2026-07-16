@@ -1,9 +1,8 @@
 # Idea Capture Workflow
 
-Use this when turning a rough idea into a tracked Flyto2 task.
-
-1. Capture the user problem and target audience.
-2. Link relevant docs, code, screenshots, or live URLs.
-3. Identify affected product surfaces and repositories.
-4. Record open questions and decision owners.
-5. Move ready work into `tasks.md` or a dated handoff.
+1. Identify whether the change belongs to generated release assets, frontend
+   source, public contracts, or CE backend source.
+2. Make durable source changes upstream when possible.
+3. Regenerate Flyto2 Warroom CE from the private exporter.
+4. Run `make verify`.
+5. Review the generated diff for CE usefulness and moat leakage.

@@ -1,17 +1,23 @@
-# PROJECT.md
+# Flyto2 Warroom CE Project
 
-## Project
+Flyto2 Warroom CE is the self-hosted open-core entry point for Flyto2 Warroom.
+It gives users a local security warroom for code, external exposure, cloud,
+container, runtime, evidence, reporting, and deterministic remediation records.
 
-`flyto-warroom` is part of the Flyto2 workspace. Keep this file current with the repo purpose, owned surfaces, users, and non-goals.
+The product loop is:
 
-## Public Identity
+```text
+Findings -> Attack Paths -> Safe Validation -> Evidence -> Remediation
+```
 
-- Brand: Flyto2
-- Website: https://flyto2.com
-- Docs: https://docs.flyto2.com
-- Blog: https://blog.flyto2.com
-- GitHub org: https://github.com/flytohub
+Enterprise and SaaS editions are built from a pinned CE commit plus private
+build-time overlays for governance, commercial intelligence, managed execution,
+identity, support, and live remediation.
 
-## Maintenance Rule
+## Non-goals
 
-When purpose, scope, public positioning, or ownership changes, update this file in the same commit.
+- Do not publish private backend handlers, store internals, SaaS control-plane
+  implementation, commercial datasets, customer connector credentials, or live
+  remediation orchestration.
+- Do not turn CE into a disconnected fork. Accepted CE patches must flow back
+  into upstream Flyto2 source and be regenerated here.

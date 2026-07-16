@@ -1,6 +1,9 @@
-# tasks.md
+# Flyto2 Warroom CE Tasks
 
-- [ ] Keep root memory files current.
-- [ ] Keep `docs/README.md`, `workflows/`, and `handoffs/_registry.md` current.
-- [ ] Apply the Flyto2 Frontend Quality Gate to every UI change.
-- [ ] Record repo-specific follow-up tasks here.
+- Keep `make verify` green after generated source changes.
+- Run `python3 install/scripts/audit-release-tree.py .` after release asset
+  edits.
+- Route source-package fixes back to `flyto-code`, `flyto-engine`, or
+  `flyto-contracts` before regenerating this repository.
+- Keep CE/Enterprise boundaries explicit in docs, package manifests, and
+  install overlays.

@@ -1,18 +1,21 @@
-# ROADMAP.md
+# Flyto2 Warroom CE Roadmap
 
-## Now
+## Near Term
 
-- Keep project memory scaffold current.
-- Keep Flyto2 public metadata, docs links, and contacts aligned.
-
-## Next
-
-- Add repo-specific product, technical, and verification milestones.
+- Keep CE installable, auditable, and useful for local BYO findings, evidence,
+  reports, and deterministic remediation records.
+- Expand native demo seeding so code, container, cloud, external, evidence, and
+  AutoFix records appear as first-class local data.
+- Keep package boundaries enforced by `make verify` and `flyto-indexer`.
 
 ## Later
 
-- Track larger improvements that are valuable but not blocking current releases.
+- Improve connector SDK examples and safe validation templates.
+- Add more CE-safe report and evidence export examples.
+- Strengthen upstream patch flow from public CE contributions back into private
+  source and regenerated CE output.
 
-## Out of Scope
+## Out Of Scope For CE
 
-Record work that should not be done in this repo.
+- Commercial threat-intel datasets, hosted SaaS control plane, private customer
+  connectors, Enterprise identity implementation, and live managed remediation.

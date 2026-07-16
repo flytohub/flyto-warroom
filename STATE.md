@@ -1,21 +1,19 @@
-# STATE.md
-
-Last reviewed: 2026-07-16
+# Flyto2 Warroom CE State
 
 ## Current State
 
-`flyto-warroom` is part of the 27-repository Flyto2 workspace memory standardization.
+- The repository is generated from private Flyto2 source by
+  `flyto-engine/release` open-core tooling.
+- CE includes frontend source, public contracts, CE-safe engine kernel source,
+  local installer assets, Docker image coordinates, and boundary audits.
+- `make verify` runs release audits, CE backend tests, frontend module-package
+  boundary audit, and Docker image digest dry-run.
+- `install/edition-overlays.json` declares community, enterprise on-prem,
+  enterprise airgap, and SaaS build-time overlay profiles.
 
-The bundled `packages/flyto-code` CE frontend now mirrors the upstream
-`flyto-code` public CE package-manifest API. CE route/package split helpers are
-available through `@code/modules`, and product-loop audits read the physical
-module manifest files rather than the compatibility re-export shim.
+## Known Boundaries
 
-## Known Risks
-
-- Keep public copy aligned with Flyto2 naming and current URLs.
-- Keep frontend changes aligned with accessibility, responsive design, visual hierarchy, navigation, and content clarity standards.
-
-## Verification
-
-Record the latest relevant build, test, lint, deploy, or publish checks here.
+- Commercial intelligence, hosted control plane, Enterprise SSO/SCIM/SAML,
+  managed runner fleets, and live cloud/container/runtime remediation remain
+  private overlays.
+- Generated CE files should be changed upstream first, then regenerated.
