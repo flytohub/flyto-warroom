@@ -234,6 +234,7 @@ expectIncludes(frontendEnterpriseViewFile, frontendEnterpriseView, [
   'EnterpriseReadinessPanel',
   'enterprise.readiness.title',
 ], 'frontend enterprise control plane must render readiness and use typed query keys')
+
 }
 
 const frontendModuleTypes = readFile(frontendModuleTypesFile)

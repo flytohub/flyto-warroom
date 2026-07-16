@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-16T09:32:28.958491+00:00",
+  "generated_at": "2026-07-16T12:36:23.116541+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -125,7 +125,9 @@
         "OPEN_CORE.md",
         "src-next/types/module-manifests/index.ts",
         "src-next/types/module-manifests/__tests__/moduleBoundaryContract.test.ts",
-        "CE_SOURCE_BOUNDARY.md"
+        "CE_SOURCE_BOUNDARY.md",
+        "scripts/audit-edition-boundary.mjs",
+        "scripts/audit-platform-loops.mjs"
       ],
       "path": "packages/flyto-code"
     },
