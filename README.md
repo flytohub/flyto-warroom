@@ -13,6 +13,11 @@ platform for code, CTEM, external attack surface, cloud, container,
 runtime, automated security testing, evidence, scoring, and compliance
 workflows.
 
+Use it when you need a local security war room for continuous threat exposure
+management, attack surface management, MCP security, code risk, runtime
+evidence, BYO integrations, Docker-based deployment, and audit-ready reporting
+without sending source code to a managed control plane.
+
 It is built for teams that want a local Warroom they can install, inspect,
 patch, verify, and connect back to Flyto2 Enterprise services when they
 need commercial intelligence, managed remediation, or enterprise controls.
@@ -64,7 +69,7 @@ marketing copy.
 ```sh
 git clone https://github.com/flytohub/flyto-warroom.git
 cd flyto-warroom
-python3 install/scripts/setup-ce.py --email admin@example.com
+python3 install/scripts/setup-ce.py --email admin@flyto2.com
 make preflight
 make verify-images
 make ce-up
@@ -147,6 +152,12 @@ connector, signature, or cloud service check fails. See
 | CE | Local labs, evaluators, OSS users, self-hosted baseline workflows | Public source packages, public contracts, local install, runnable CE images |
 | Enterprise Cloud Bridge | Teams that need premium intelligence or managed execution | Entitled cloud jobs return signed evidence to the local Warroom |
 | Enterprise Airgap | Regulated deployments that cannot call Flyto2 Cloud | Private images, signed offline licenses, support, and controlled update bundles |
+
+## Usage
+
+Use the CE workspace locally to evaluate security signals, run authorized
+automation, inspect evidence, test BYO integrations, and verify which actions
+stay local versus which require an Enterprise Cloud Bridge entitlement.
 
 ## Local Operations
 
