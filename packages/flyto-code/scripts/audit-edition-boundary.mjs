@@ -374,7 +374,8 @@ if (!GENERATED_WARROOM_CE) {
 const dockerfileFile = path.join(ROOT, 'Dockerfile')
 const dockerfile = readFile(dockerfileFile)
 expectIncludes(dockerfileFile, dockerfile, [
-  'ARG VITE_AUTH_MODE',
+  'ARG FLYTO_PUBLIC_MODE',
+  'VITE_AUTH_MODE="${FLYTO_PUBLIC_MODE}"',
   'ARG NGINX_CONF=nginx.conf',
 ], 'enterprise builds must choose auth mode and nginx profile')
 

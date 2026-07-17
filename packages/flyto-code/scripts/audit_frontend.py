@@ -58,7 +58,8 @@ def check(name, **kwargs):
 def find_unsafe_types(text: str, path: Path) -> list[tuple[int, str]]:
     out = []
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.search(r'\s*//', line): continue
+        if re.search(r'\s*//', line):
+            continue
         if re.search(r'\bas\s+any\b', line) and 'unknown' not in line:
             out.append((line_no, line.strip()[:120]))
         elif re.search(r':\s*any\b', line) and 'any\\b' not in line and 'unknown' not in line:
@@ -71,7 +72,8 @@ def find_unsafe_types(text: str, path: Path) -> list[tuple[int, str]]:
 def find_console(text: str, path: Path) -> list[tuple[int, str]]:
     out = []
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line): continue
+        if re.match(r'\s*//', line):
+            continue
         m = re.search(r'\bconsole\.(log|info|warn|error|debug)\(', line)
         if m:
             # warn/error often intentional — flag at lower priority via category
@@ -100,7 +102,8 @@ def find_small_font(text: str, path: Path) -> list[tuple[int, str]]:
     out = []
     pat = re.compile(r'fontSize\s*:?\s*[\'"`]?(\d+)')
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line): continue
+        if re.match(r'\s*//', line):
+            continue
         for m in pat.finditer(line):
             n = int(m.group(1))
             if 1 <= n <= 11:
@@ -114,7 +117,8 @@ def find_emoji(text: str, path: Path) -> list[tuple[int, str]]:
     # Range of common emoji codepoints
     emoji_rx = re.compile(r'[\U0001F300-\U0001FAFF\U00002600-\U000027BF\U0001F000-\U0001F0FF]')
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line): continue
+        if re.match(r'\s*//', line):
+            continue
         m = emoji_rx.search(line)
         if m:
             out.append((line_no, f"{m.group()!r} :: {line.strip()[:80]}"))
@@ -124,7 +128,8 @@ def find_emoji(text: str, path: Path) -> list[tuple[int, str]]:
 def find_text_disabled(text: str, path: Path) -> list[tuple[int, str]]:
     out = []
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line): continue
+        if re.match(r'\s*//', line):
+            continue
         if 'text.disabled' in line and 'color:' in line:
             out.append((line_no, line.strip()[:120]))
     return out
@@ -135,7 +140,8 @@ def find_hex(text: str, path: Path) -> list[tuple[int, str]]:
     # Match #abcdef or #abc, excluding inside comments
     pat = re.compile(r"#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b")
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line) or re.match(r'\s*\*', line): continue
+        if re.match(r'\s*//', line) or re.match(r'\s*\*', line):
+            continue
         matches = pat.findall(line)
         if matches and len(matches) >= 2:
             # 2+ hex on one line is often a palette/theme map — flag for review
@@ -145,11 +151,13 @@ def find_hex(text: str, path: Path) -> list[tuple[int, str]]:
 @check('competitor', desc='Competitor brand names (Bitsight/Snyk/Aikido) in user-facing copy')
 def find_competitor(text: str, path: Path) -> list[tuple[int, str]]:
     out = []
-    if '__tests__' in str(path): return out
+    if '__tests__' in str(path):
+        return out
     # Look only at strings in JSX context (between > and < or inside attr=)
     pat = re.compile(r"(Bitsight|Snyk|Aikido|SonarQube|Wiz\.io|Orca\.security)")
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line) or re.match(r'\s*\*', line): continue
+        if re.match(r'\s*//', line) or re.match(r'\s*\*', line):
+            continue
         if pat.search(line):
             # Must be a user-facing string — heuristic: inside quotes
             if "'" in line or '"' in line or '>' in line:
@@ -162,9 +170,11 @@ def find_brand_typo(text: str, path: Path) -> list[tuple[int, str]]:
     # Catch 'Flyto2 ' (with space, not Flyto2) + 'FLYTO ' / 'Flyto2 Platform'
     pat = re.compile(r"\b(Flyto2 Platform|FLYTO Code|FLYTO Cyber|Flyto2 Code)\b|\bFlyto(?!2|Hub|hub|\.com|-)\b\s+(?:Code|Platform|Cyber|Cloud)?")
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line): continue
+        if re.match(r'\s*//', line):
+            continue
         # Skip imports
-        if line.lstrip().startswith('import'): continue
+        if line.lstrip().startswith('import'):
+            continue
         for m in pat.finditer(line):
             out.append((line_no, m.group()))
             break
@@ -198,7 +208,8 @@ def find_dangerous(text: str, path: Path) -> list[tuple[int, str]]:
 def find_dark_only(text: str, path: Path) -> list[tuple[int, str]]:
     out = []
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line): continue
+        if re.match(r'\s*//', line):
+            continue
         if re.search(r"\bforceColorScheme\b|\bforceMode\b", line):
             out.append((line_no, line.strip()[:120]))
     return out
@@ -208,9 +219,11 @@ def find_fuse_reach(text: str, path: Path) -> list[tuple[int, str]]:
     out = []
     p = str(path).replace('\\', '/')
     # Only flag if path is product code (NOT @fuse / @auth / @i18n / @mock-utils)
-    if any(d in p for d in ('@fuse/', '@auth/', '@i18n/', '@mock-utils/')): return out
+    if any(d in p for d in ('@fuse/', '@auth/', '@i18n/', '@mock-utils/')):
+        return out
     for line_no, line in enumerate(text.splitlines(), 1):
-        if re.match(r'\s*//', line): continue
+        if re.match(r'\s*//', line):
+            continue
         # Allow specific Fuse exports from product code:
         # FusePageSimple, Link, FuseSvgIcon — these are intentional consumers
         if re.search(r"from\s+['\"]@fuse/", line):
@@ -245,7 +258,8 @@ def audit_file(path: Path, category_filter: str | None) -> dict[str, list[tuple[
         return {}
     result = {}
     for name, info in CHECKS.items():
-        if category_filter and name != category_filter: continue
+        if category_filter and name != category_filter:
+            continue
         out = info['fn'](text, path)
         if out:
             result[name] = out
@@ -294,7 +308,7 @@ def main() -> int:
         ranked = sorted(per_file_cat.items(), key=lambda kv: -sum(len(v) for v in kv[1].values()))
         for f, cats in ranked[:30]:
             n = sum(len(v) for v in cats.values())
-            tags = ' '.join(f'{c}:{len(l)}' for c, l in cats.items())
+            tags = ' '.join(f'{c}:{len(items)}' for c, items in cats.items())
             print(f'{n:4d}  {f.relative_to(REPO_ROOT)}  {tags}')
         return 0
 

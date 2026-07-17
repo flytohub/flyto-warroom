@@ -92,29 +92,38 @@ NON_UI_RX = re.compile(r'^([a-z_][a-z0-9_]*$|[a-z][a-zA-Z0-9]+$|\d|--|kebab|came
 
 def is_ui_text(s: str) -> bool:
     s = s.strip()
-    if len(s) < 4: return False
-    if s in TECHNICAL_LITERALS: return False
-    if URL_RX.match(s): return False
-    if NON_UI_RX.match(s): return False
+    if len(s) < 4:
+        return False
+    if s in TECHNICAL_LITERALS:
+        return False
+    if URL_RX.match(s):
+        return False
+    if NON_UI_RX.match(s):
+        return False
     # Pure CamelCase identifier
     if ' ' not in s and not re.search(r'[a-z][A-Z]|\w-\w', s) and re.fullmatch(r'[A-Z][a-z]+([A-Z][a-z]+)*', s):
         # e.g. "Foo" is one word — KEEP if 2+ chars + likely UI; drop if it looks like an identifier
-        if len(s) <= 5: return False
+        if len(s) <= 5:
+            return False
     # Must have a space OR an apostrophe (real prose) OR a question/exclam OR end punct
-    if ' ' not in s and not any(c in s for c in "'!?."): return False
+    if ' ' not in s and not any(c in s for c in "'!?."):
+        return False
     return True
 
 def is_in_tor(line: str, pos: int) -> bool:
     window = line[max(0, pos - 100):pos]
     last = window.rfind('tOr(')
-    if last < 0: return False
+    if last < 0:
+        return False
     after = window[last + 4:]
     depth = 1
     for ch in after:
-        if ch == '(': depth += 1
+        if ch == '(':
+            depth += 1
         elif ch == ')':
             depth -= 1
-            if depth == 0: return False
+            if depth == 0:
+                return False
     return depth > 0
 
 def is_in_comment(line: str, pos: int) -> bool:
@@ -123,7 +132,8 @@ def is_in_comment(line: str, pos: int) -> bool:
         slash = head.rfind('//')
         # Make sure '//' isn't inside a string
         quotes = head[:slash].count("'") + head[:slash].count('"')
-        if quotes % 2 == 0: return True
+        if quotes % 2 == 0:
+            return True
     return False
 
 def audit_file(path: Path) -> list[tuple[int, str, str]]:
@@ -140,18 +150,24 @@ def audit_file(path: Path) -> list[tuple[int, str, str]]:
         for kind, pat in PATTERNS:
             for m in pat.finditer(line):
                 val = m.group(2) if (m.lastindex or 0) >= 2 else m.group(1)
-                if not val: continue
+                if not val:
+                    continue
                 if kind == 'obj_text' and re.search(r'\b(labelKey|titleKey|nameKey|descKey|hintKey|valueKey|i18nKey)\s*:', line):
                     continue
                 # Skip blacklisted attr names
                 if kind in ('attr_dq', 'attr_sq'):
                     attr = m.group(1)
-                    if attr in PROP_BLACKLIST: continue
-                if not is_ui_text(val): continue
+                    if attr in PROP_BLACKLIST:
+                        continue
+                if not is_ui_text(val):
+                    continue
                 pos = m.start()
-                if is_in_tor(line, pos): continue
-                if is_in_comment(line, pos): continue
-                if val in seen_on_line[line_no]: continue
+                if is_in_tor(line, pos):
+                    continue
+                if is_in_comment(line, pos):
+                    continue
+                if val in seen_on_line[line_no]:
+                    continue
                 seen_on_line[line_no].add(val)
                 findings.append((line_no, kind, val.strip()))
     return findings
@@ -183,7 +199,8 @@ def main() -> int:
 
     if args.by_file or args.top:
         ranked = sorted(by_file.items(), key=lambda kv: -len(kv[1]))
-        if args.top: ranked = ranked[:args.top]
+        if args.top:
+            ranked = ranked[:args.top]
         for f, finds in ranked:
             print(f'{len(finds):4d}  {f.relative_to(REPO_ROOT)}')
         return 0
@@ -200,7 +217,8 @@ def main() -> int:
             parts = f.relative_to(SRC).parts
             ns = parts[1] if len(parts) > 1 else parts[0]
             by_ns[ns] += len(finds)
-        except Exception: pass
+        except Exception:
+            pass
     for ns, n in sorted(by_ns.items(), key=lambda kv: -kv[1])[:30]:
         print(f'  {ns:24s} {n}')
 

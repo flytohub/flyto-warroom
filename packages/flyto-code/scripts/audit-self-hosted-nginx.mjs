@@ -5,6 +5,16 @@ const nginx = fs.readFileSync('nginx.conf', 'utf8');
 
 const checks = [
   {
+    name: 'Docker build args avoid sensitive-looking ARG/ENV names',
+    pass: !/\b(?:ARG|ENV)\s+[A-Z0-9_]*(?:KEY|TOKEN|SECRET|AUTH|PASSWORD)[A-Z0-9_]*/.test(dockerfile),
+  },
+  {
+    name: 'Docker build maps neutral public args to Vite env only during build',
+    pass: dockerfile.includes('ARG FLYTO_PUBLIC_MODE') &&
+      dockerfile.includes('VITE_AUTH_MODE="${FLYTO_PUBLIC_MODE}"') &&
+      dockerfile.includes('VITE_FIREBASE_API_KEY="${FLYTO_PUBLIC_FIREBASE_APP_VALUE}"'),
+  },
+  {
     name: 'Docker healthcheck uses IPv4 healthz',
     pass: dockerfile.includes('http://127.0.0.1:80/healthz'),
   },

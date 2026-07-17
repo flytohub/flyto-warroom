@@ -25,7 +25,6 @@ Run:
 
 import argparse
 import io
-import os
 import re
 import sys
 from collections import defaultdict, Counter
@@ -40,16 +39,22 @@ SKIP_DIRS = {'__tests__', '@fuse', '@auth', '@i18n', '@mock-utils', 'node_module
 def all_files() -> list[Path]:
     out = []
     for f in SRC.rglob('*'):
-        if not f.is_file(): continue
-        if f.suffix not in ('.ts', '.tsx'): continue
-        if f.name.endswith('.d.ts'): continue
-        if any(d in str(f) for d in SKIP_DIRS): continue
+        if not f.is_file():
+            continue
+        if f.suffix not in ('.ts', '.tsx'):
+            continue
+        if f.name.endswith('.d.ts'):
+            continue
+        if any(d in str(f) for d in SKIP_DIRS):
+            continue
         out.append(f)
     return out
 
 def line_count(p: Path) -> int:
-    try: return sum(1 for _ in p.read_text(encoding='utf-8').splitlines())
-    except: return 0
+    try:
+        return sum(1 for _ in p.read_text(encoding='utf-8').splitlines())
+    except OSError:
+        return 0
 
 def rel(p: Path) -> str:
     return str(p.relative_to(REPO_ROOT)).replace('\\', '/')
@@ -64,7 +69,8 @@ def section_layout(files: list[Path]):
     for f in files:
         # domain = first directory under src-next/ (or under components/)
         rel_parts = f.relative_to(SRC).parts
-        if len(rel_parts) < 2: continue
+        if len(rel_parts) < 2:
+            continue
         d = rel_parts[0]
         if d in ('components', 'app', 'lib', 'hooks'):
             # one level deeper
@@ -72,8 +78,10 @@ def section_layout(files: list[Path]):
                 d = f'{rel_parts[0]}/{rel_parts[1]}'
         domains[d]['files'] += 1
         domains[d]['lines'] += line_count(f)
-        if f.suffix == '.tsx': domains[d]['tsx'] += 1
-        else: domains[d]['ts'] += 1
+        if f.suffix == '.tsx':
+            domains[d]['tsx'] += 1
+        else:
+            domains[d]['ts'] += 1
     print(f'{"domain":42s} {"files":>5s} {"tsx":>5s} {"ts":>5s} {"lines":>7s}')
     for d, info in sorted(domains.items(), key=lambda kv: -kv[1]['lines'])[:25]:
         print(f'{d:42s} {info["files"]:>5d} {info["tsx"]:>5d} {info["ts"]:>5d} {info["lines"]:>7d}')
@@ -88,15 +96,18 @@ def section_tests(files: list[Path]):
     untested = []
     tested_count = 0
     for cdir in sorted(compounds_dir.iterdir()):
-        if not cdir.is_dir() or cdir.name in SKIP_DIRS: continue
+        if not cdir.is_dir() or cdir.name in SKIP_DIRS:
+            continue
         has_test = (cdir / '__tests__').exists()
-        if has_test: tested_count += 1
-        else: untested.append(cdir.name)
+        if has_test:
+            tested_count += 1
+        else:
+            untested.append(cdir.name)
     print(f'  Total compound folders: {tested_count + len(untested)}')
     print(f'  With __tests__: {tested_count}')
     print(f'  Without __tests__: {len(untested)}')
     if untested:
-        print(f'\n  Missing (alphabetical):')
+        print('\n  Missing (alphabetical):')
         for name in untested:
             print(f'    {name}')
 
@@ -111,11 +122,11 @@ def section_sizes(files: list[Path]):
     print(f'  Total source lines:  {total_lines:,}')
     print(f'  File count:          {n_files}')
     print(f'  Median file size:    {median}')
-    print(f'  Largest 12 files (split candidates >1500):')
+    print('  Largest 12 files (split candidates >1500):')
     for f, n in sizes[:12]:
         flag = ' ⚠️' if n > 1500 else ''
         print(f'    {n:5d}  {rel(f)}{flag}')
-    print(f'\n  Tiny files (<20 lines) — likely consolidation candidates:')
+    print('\n  Tiny files (<20 lines) — likely consolidation candidates:')
     tiny = [(f, n) for f, n in sizes if n < 20 and 'index.ts' not in f.name]
     for f, n in tiny[:8]:
         print(f'    {n:3d}  {rel(f)}')
@@ -133,7 +144,8 @@ def section_circular(files: list[Path]):
         file_map[key] = f
         try:
             t = f.read_text(encoding='utf-8')
-        except: continue
+        except OSError:
+            continue
         for m in re.finditer(r"from\s+['\"]([^'\"]+)['\"]", t):
             target = m.group(1)
             if target.startswith('.') or target.startswith('@'):
@@ -146,11 +158,14 @@ def section_circular(files: list[Path]):
         src_short = Path(src).stem
         for t in targets:
             t_stem = Path(t).stem
-            if t_stem == src_short: continue
+            if t_stem == src_short:
+                continue
             # Check if any file imports `src`
             for other_src, other_targets in graph.items():
-                if other_src == src: continue
-                if Path(other_src).stem != t_stem: continue
+                if other_src == src:
+                    continue
+                if Path(other_src).stem != t_stem:
+                    continue
                 if any(Path(ot).stem == src_short for ot in other_targets):
                     pair = tuple(sorted([src_short, t_stem]))
                     if pair not in [tuple(sorted([a, b])) for a, b in cycles]:
@@ -166,15 +181,19 @@ def section_coupling(files: list[Path]):
     print('\n## 5. Cross-compound coupling — A imports B (5 most-imported)\n')
     counts: dict[str, int] = Counter()
     for f in files:
-        try: t = f.read_text(encoding='utf-8')
-        except: continue
+        try:
+            t = f.read_text(encoding='utf-8')
+        except OSError:
+            continue
         for m in re.finditer(r"from\s+['\"]@compounds/([a-zA-Z0-9_-]+)/", t):
             domain = m.group(1)
             # Don't count self-imports
             try:
                 src_parts = f.relative_to(SRC / 'components' / 'compounds').parts
-                if src_parts and src_parts[0] == domain: continue
-            except ValueError: pass
+                if src_parts and src_parts[0] == domain:
+                    continue
+            except ValueError:
+                pass
             counts[domain] += 1
     for d, n in counts.most_common(8):
         print(f'  {n:4d}  @compounds/{d}/* imported by other compounds')
@@ -222,7 +241,8 @@ def section_engine(files: list[Path]):
 def section_atoms(files: list[Path]):
     print('\n## 8. Atoms — heavy atoms that should be promoted to compound\n')
     atoms_dir = SRC / 'components' / 'atoms'
-    if not atoms_dir.exists(): return
+    if not atoms_dir.exists():
+        return
     candidates = []
     for f in atoms_dir.rglob('*.tsx'):
         n = line_count(f)
@@ -247,9 +267,12 @@ def section_hooks(files: list[Path]):
     # find inline `function useX` in compounds (not @hooks/)
     inline_hooks = []
     for f in files:
-        if 'hooks' in str(f.relative_to(SRC).parts[0]): continue
-        try: t = f.read_text(encoding='utf-8')
-        except: continue
+        if 'hooks' in str(f.relative_to(SRC).parts[0]):
+            continue
+        try:
+            t = f.read_text(encoding='utf-8')
+        except OSError:
+            continue
         for m in re.finditer(r'\b(?:export\s+)?function\s+(use[A-Z][a-zA-Z0-9]+)', t):
             name = m.group(1)
             if name not in declared:
@@ -266,8 +289,10 @@ def section_path_aliases(files: list[Path]):
     print('\n## 10. Relative imports outside same folder (CLAUDE.md path-alias rule)\n')
     bad: list[tuple[Path, int, str]] = []
     for f in files:
-        try: t = f.read_text(encoding='utf-8')
-        except: continue
+        try:
+            t = f.read_text(encoding='utf-8')
+        except OSError:
+            continue
         for line_no, line in enumerate(t.splitlines(), 1):
             m = re.search(r"from\s+['\"]((?:\.\./)+[^'\"]+)['\"]", line)
             if m:
@@ -279,7 +304,8 @@ def section_path_aliases(files: list[Path]):
     seen_paths = set()
     for f, ln, p in bad[:8]:
         key = rel(f)
-        if key in seen_paths: continue
+        if key in seen_paths:
+            continue
         seen_paths.add(key)
         print(f'  L{ln:4d}  {rel(f)} → {p}')
 
@@ -288,9 +314,12 @@ def section_barrels(files: list[Path]):
     print('\n## 11. Barrel index.ts re-exports\n')
     barrels = []
     for f in files:
-        if f.name != 'index.ts': continue
-        try: t = f.read_text(encoding='utf-8')
-        except: continue
+        if f.name != 'index.ts':
+            continue
+        try:
+            t = f.read_text(encoding='utf-8')
+        except OSError:
+            continue
         if 'export ' in t:
             n = sum(1 for ln in t.splitlines() if re.search(r'^export', ln))
             if n >= 2:
@@ -303,12 +332,15 @@ def section_barrels(files: list[Path]):
 def section_compounds_inventory(files: list[Path]):
     print('\n## 12. Compound inventory — per-domain\n')
     compounds_dir = SRC / 'components' / 'compounds'
-    if not compounds_dir.exists(): return
+    if not compounds_dir.exists():
+        return
     inv = []
     for cdir in sorted(compounds_dir.iterdir()):
-        if not cdir.is_dir(): continue
+        if not cdir.is_dir():
+            continue
         tsf = [f for f in cdir.rglob('*.tsx') if '__tests__' not in str(f)]
-        if not tsf: continue
+        if not tsf:
+            continue
         lines = sum(line_count(f) for f in tsf)
         has_tests = (cdir / '__tests__').exists()
         inv.append((cdir.name, len(tsf), lines, has_tests))
@@ -340,7 +372,7 @@ def main() -> int:
     args = ap.parse_args()
 
     files = all_files()
-    print(f'# Architecture audit — flyto-code')
+    print('# Architecture audit — flyto-code')
     print(f'# Scanned {len(files)} .ts/.tsx files under src-next/')
 
     secs = [args.section] if args.section else SECTIONS.keys()

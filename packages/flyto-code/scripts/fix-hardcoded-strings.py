@@ -212,10 +212,10 @@ def main():
     print()
 
     print('=== Done! ===')
-    print(f'Next steps:')
-    print(f'  1. cd ../flyto-i18n && python scripts/sync-locales.py')
-    print(f'  2. python scripts/build-dist.py')
-    print(f'  3. Run detect-hardcoded-strings.py again to verify')
+    print('Next steps:')
+    print('  1. cd ../flyto-i18n && python scripts/sync-locales.py')
+    print('  2. python scripts/build-dist.py')
+    print('  3. Run detect-hardcoded-strings.py again to verify')
 
 
 if __name__ == '__main__':

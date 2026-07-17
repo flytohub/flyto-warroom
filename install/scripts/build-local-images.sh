@@ -82,9 +82,9 @@ if lock_path.exists():
     lock_path.write_text(json.dumps(lock, indent=2) + "\n", encoding="utf-8")
 PY
 docker build \
-  --build-arg VITE_ENGINE_URL="${FLYTO_CODE_ENGINE_URL:-__same_origin__}" \
-  --build-arg VITE_AUTH_MODE="${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
-  --build-arg VITE_AUTOMATION_URL="${FLYTO_AUTOMATION_URL:-https://cloud.flyto2.com}" \
-  --build-arg VITE_CORTEX_URL="${FLYTO_CORTEX_URL:-https://cortex.flyto2.com}" \
+  --build-arg FLYTO_PUBLIC_ENGINE_ORIGIN="${FLYTO_CODE_ENGINE_URL:-__same_origin__}" \
+  --build-arg FLYTO_PUBLIC_MODE="${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
+  --build-arg FLYTO_PUBLIC_AUTOMATION_ORIGIN="${FLYTO_AUTOMATION_URL:-https://cloud.flyto2.com}" \
+  --build-arg FLYTO_PUBLIC_CORTEX_ORIGIN="${FLYTO_CORTEX_URL:-https://cortex.flyto2.com}" \
   -t "$FRONTEND_IMAGE:$FRONTEND_TAG" \
   "$CODE_CTX"

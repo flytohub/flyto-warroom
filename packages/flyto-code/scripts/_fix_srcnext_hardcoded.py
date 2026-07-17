@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Fix hardcoded English strings in src-next/ flyto business code."""
 import json
-import re
 from pathlib import Path
 
 CODE_ROOT = Path(__file__).parent.parent

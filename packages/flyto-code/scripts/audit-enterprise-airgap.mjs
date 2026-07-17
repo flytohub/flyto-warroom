@@ -59,8 +59,11 @@ if (apiKeysTab.includes('warroom.flyto2.com')) {
 }
 
 const dockerfile = fs.readFileSync(path.join(ROOT, 'Dockerfile'), 'utf8')
-if (!dockerfile.includes('ARG VITE_AUTH_MODE')) {
-  violations.push({ file: 'Dockerfile', reason: 'enterprise builds must be able to set VITE_AUTH_MODE' })
+if (!dockerfile.includes('ARG FLYTO_PUBLIC_MODE')) {
+  violations.push({ file: 'Dockerfile', reason: 'enterprise builds must be able to set VITE_AUTH_MODE through neutral FLYTO_PUBLIC_MODE' })
+}
+if (!dockerfile.includes('VITE_AUTH_MODE="${FLYTO_PUBLIC_MODE}"')) {
+  violations.push({ file: 'Dockerfile', reason: 'Docker build must map FLYTO_PUBLIC_MODE to VITE_AUTH_MODE during frontend compilation' })
 }
 if (!dockerfile.includes('ARG NGINX_CONF=nginx.conf')) {
   violations.push({ file: 'Dockerfile', reason: 'enterprise builds must be able to select nginx.enterprise-airgap.conf' })

@@ -70,42 +70,56 @@ SINGLE_CAMEL = re.compile(r'^[A-Z][a-z]+(?:[A-Z][a-z]+)*$')
 
 def is_ui_text(s: str) -> bool:
     s = s.strip()
-    if len(s) < 4: return False
-    if s in TECHNICAL: return False
-    if '&&' in s or s.endswith('('): return False
-    if URL_RX.match(s): return False
-    if NON_UI_RX.match(s): return False
+    if len(s) < 4:
+        return False
+    if s in TECHNICAL:
+        return False
+    if '&&' in s or s.endswith('('):
+        return False
+    if URL_RX.match(s):
+        return False
+    if NON_UI_RX.match(s):
+        return False
     # Single CamelCase word ≤ 8 chars is usually an identifier
-    if SINGLE_CAMEL.match(s) and len(s) <= 8: return False
+    if SINGLE_CAMEL.match(s) and len(s) <= 8:
+        return False
     # Must contain space OR punctuation OR multiple-word indicator
     if ' ' not in s and not any(c in s for c in "'!?.,:&-"):
         # Allow 2+ word CamelCase
-        if not re.search(r'[a-z][A-Z]', s): return False
+        if not re.search(r'[a-z][A-Z]', s):
+            return False
     return True
 
 def is_in_tor_context(text: str, pos: int) -> bool:
     """Look back up to 200 chars for tOr( with unclosed paren."""
     window = text[max(0, pos - 200):pos]
     last = window.rfind('tOr(')
-    if last < 0: return False
+    if last < 0:
+        return False
     after = window[last + 4:]
     depth = 1
     in_str = None
     for ch in after:
         if in_str:
-            if ch == in_str and (len(after) > 0): in_str = None
+            if ch == in_str and (len(after) > 0):
+                in_str = None
             continue
-        if ch in ('"', "'", '`'): in_str = ch; continue
-        if ch == '(': depth += 1
+        if ch in ('"', "'", '`'):
+            in_str = ch
+            continue
+        if ch == '(':
+            depth += 1
         elif ch == ')':
             depth -= 1
-            if depth == 0: return False
+            if depth == 0:
+                return False
     return depth > 0
 
 def is_in_comment_block(text: str, pos: int) -> bool:
     """Inside /* ... */ block?"""
     open_idx = text.rfind('/*', 0, pos)
-    if open_idx < 0: return False
+    if open_idx < 0:
+        return False
     close_idx = text.find('*/', open_idx)
     return close_idx > pos
 
@@ -114,7 +128,8 @@ def is_in_line_comment(line: str, pos_in_line: int) -> bool:
     if '//' in head:
         slash = head.rfind('//')
         quotes = head[:slash].count("'") + head[:slash].count('"') + head[:slash].count('`')
-        if quotes % 2 == 0: return True
+        if quotes % 2 == 0:
+            return True
     return False
 
 def line_of_pos(text: str, pos: int) -> int:
@@ -124,7 +139,8 @@ def line_at(text: str, pos: int) -> str:
     """Return line text for diagnostics."""
     start = text.rfind('\n', 0, pos) + 1
     end = text.find('\n', pos)
-    if end < 0: end = len(text)
+    if end < 0:
+        end = len(text)
     return text[start:end]
 
 # ────────────────────────────────────────────────────────────────
@@ -180,28 +196,36 @@ def audit_file(path: Path) -> list[tuple[int, str, str]]:
     seen: set[tuple[int, str]] = set()
     for kind, pat, group_idx in PASSES:
         for m in pat.finditer(text):
-            if (m.lastindex or 0) < group_idx: continue
+            if (m.lastindex or 0) < group_idx:
+                continue
             val = m.group(group_idx)
-            if not val: continue
+            if not val:
+                continue
             # Attr filters
             if kind in ('attr_dq', 'attr_sq', 'attr_tpl'):
                 attr = m.group(1)
-                if attr in PROP_BLACKLIST: continue
+                if attr in PROP_BLACKLIST:
+                    continue
                 if attr not in PROP_WHITELIST and not attr.startswith('aria-'):
                     # Only inspect whitelisted attrs to reduce noise
                     continue
-            if not is_ui_text(val): continue
+            if not is_ui_text(val):
+                continue
             pos = m.start()
-            if is_in_tor_context(text, pos): continue
-            if is_in_comment_block(text, pos): continue
+            if is_in_tor_context(text, pos):
+                continue
+            if is_in_comment_block(text, pos):
+                continue
             ln_no = line_of_pos(text, pos)
             line = line_at(text, pos)
             if kind == 'obj_field' and re.search(r'\b(labelKey|titleKey|nameKey|descKey|hintKey|valueKey|i18nKey)\s*:', line):
                 continue
             ln_pos = pos - (text.rfind('\n', 0, pos) + 1)
-            if is_in_line_comment(line, ln_pos): continue
+            if is_in_line_comment(line, ln_pos):
+                continue
             key = (ln_no, val.strip())
-            if key in seen: continue
+            if key in seen:
+                continue
             seen.add(key)
             findings.append((ln_no, kind, val.strip()))
     return sorted(findings)
@@ -224,7 +248,8 @@ def main() -> int:
     by_file = {}
     for f in files:
         out = audit_file(f)
-        if out: by_file[f] = out
+        if out:
+            by_file[f] = out
     total = sum(len(v) for v in by_file.values())
     print(f'audit_v3: {total} candidates in {len(by_file)} files (of {len(files)} scanned)')
     print()
@@ -236,7 +261,8 @@ def main() -> int:
 
     if args.by_file or args.top:
         ranked = sorted(by_file.items(), key=lambda kv: -len(kv[1]))
-        if args.top: ranked = ranked[:args.top]
+        if args.top:
+            ranked = ranked[:args.top]
         for f, finds in ranked:
             print(f'{len(finds):4d}  {f.relative_to(REPO_ROOT)}')
         return 0
@@ -255,7 +281,8 @@ def main() -> int:
             parts = f.relative_to(SRC).parts
             ns = parts[1] if len(parts) > 1 else parts[0]
             by_ns[ns] += len(finds)
-        except Exception: pass
+        except Exception:
+            pass
     for ns, n in sorted(by_ns.items(), key=lambda kv: -kv[1])[:30]:
         print(f'  {ns:24s} {n}')
 

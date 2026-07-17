@@ -15,7 +15,7 @@ import argparse
 import re
 import sys
 from pathlib import Path
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 PROJECT_ROOT = Path(__file__).parent.parent
 SRC_DIR = PROJECT_ROOT / 'src'
@@ -183,10 +183,7 @@ def scan_file(filepath: Path) -> list:
     except Exception:
         return []
 
-    in_import = False
-    in_type_block = False
     in_sx_block = 0  # nesting depth in sx={{ }}
-    in_style_block = 0
 
     for line_num, line in enumerate(lines, 1):
         stripped = line.strip()

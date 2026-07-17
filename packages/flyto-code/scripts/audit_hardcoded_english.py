@@ -95,10 +95,12 @@ def is_in_tor_wrap(line: str, match_start: int) -> bool:
     after = window[last_tor + 4:]
     depth = 1
     for ch in after:
-        if ch == '(': depth += 1
+        if ch == '(':
+            depth += 1
         elif ch == ')':
             depth -= 1
-            if depth == 0: return False
+            if depth == 0:
+                return False
     return depth > 0
 
 def is_in_comment(line: str, match_start: int) -> bool:
@@ -175,7 +177,8 @@ def main():
                 parts = f.relative_to(SRC).parts
                 ns = parts[1] if len(parts) > 1 else parts[0]
                 by_ns[ns] += len(finds)
-            except Exception: pass
+            except Exception:
+                pass
         for ns, n in sorted(by_ns.items(), key=lambda kv: -kv[1]):
             print(f'  {ns:24s} {n}')
 
