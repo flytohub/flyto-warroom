@@ -18,7 +18,6 @@
       },
       "legacyPaths": [
         "src-next/components/compounds/settings",
-        "src-next/components/compounds/system",
         "src-next/components/compounds/integrations"
       ]
     },
