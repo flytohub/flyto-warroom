@@ -280,11 +280,11 @@ func URLPath(raw string) string {
 
 // Email normalises an email address: lowercase + trim. Local-part
 // case sensitivity is technically allowed by RFC but operational
-// reality is that "Foo@x.com" and "foo@x.com" route to the same
+// reality is that "Foo@flyto2.com" and "foo@flyto2.com" route to the same
 // mailbox; treat them as one identity.
 func Email(raw string) string {
 	s := strings.TrimSpace(strings.ToLower(raw))
-	// Guard against pasted "<foo@x.com>" or "mailto:foo@x.com".
+	// Guard against pasted "<foo@flyto2.com>" or "mailto:foo@flyto2.com".
 	s = strings.TrimPrefix(s, "mailto:")
 	s = strings.Trim(s, "<>")
 	return s

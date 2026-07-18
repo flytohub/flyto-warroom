@@ -41,7 +41,7 @@ surface exists, and renders the evidence note without contacting the engine.
 Start CE first:
 
 ```sh
-python3 install/scripts/setup-ce.py --email admin@example.com
+python3 install/scripts/setup-ce.py --email admin@flyto2.com
 make preflight
 make verify-images
 make ce-up
@@ -50,7 +50,7 @@ make ce-up
 Then seed the workspace:
 
 ```sh
-python3 install/scripts/seed-demo-workspace.py --email admin@example.com
+python3 install/scripts/seed-demo-workspace.py --email admin@flyto2.com
 ```
 
 The script:

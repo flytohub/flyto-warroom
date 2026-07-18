@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { readFileSync, readdirSync, statSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 
@@ -27,6 +27,23 @@ import { dirname, join } from 'node:path'
  */
 const here = dirname(fileURLToPath(import.meta.url))
 const srcRoot = join(here, '..', '..', '..') // src-next/
+const DEFAULT_ENGINE_ROOT = join(
+  here,
+  '..',
+  '..',
+  '..',
+  '..',
+  '..',
+  'flyto-engine',
+)
+const ENGINE_ROOT = process.env.FLYTO_ENGINE_ROOT || DEFAULT_ENGINE_ROOT
+const PROJECT_CATALOG_PATH = join(
+  ENGINE_ROOT,
+  'internal',
+  'modulecatalog',
+  'catalog.yaml',
+)
+const HAS_PROJECT_CATALOG = existsSync(PROJECT_CATALOG_PATH)
 
 const VALID_ACTIONS = new Set(
   readFileSync(join(here, '..', '__generated__', 'backend-actions.txt'), 'utf8')
@@ -34,7 +51,7 @@ const VALID_ACTIONS = new Set(
 )
 
 function collectProjectRegistryActions(): Set<string> {
-  const catalog = readFileSync(join(here, '..', '..', '..', '..', '..', 'flyto-engine', 'internal', 'modulecatalog', 'catalog.yaml'), 'utf8')
+  const catalog = readFileSync(PROJECT_CATALOG_PATH, 'utf8')
   const actions = new Set<string>()
   for (const match of catalog.matchAll(/^\s+(?:permissions|commercial_actions):\s*\[([^\]]*)\]/gm)) {
     for (const raw of match[1].split(',')) {
@@ -45,8 +62,9 @@ function collectProjectRegistryActions(): Set<string> {
   return actions
 }
 
-const PROJECT_REGISTRY_ACTIONS = collectProjectRegistryActions()
+const PROJECT_REGISTRY_ACTIONS = HAS_PROJECT_CATALOG ? collectProjectRegistryActions() : new Set<string>()
 const VALID_GATE_ACTIONS = new Set([...VALID_ACTIONS, ...PROJECT_REGISTRY_ACTIONS])
+const projectCatalogIt = HAS_PROJECT_CATALOG ? it : it.skip
 
 function walk(dir: string, out: string[] = []): string[] {
   for (const name of readdirSync(dir)) {
@@ -93,7 +111,7 @@ describe('RBAC action-gate contract', () => {
     expect(actions.length).toBeGreaterThan(10)
   })
 
-  it('every gated action is a real backend permission (no dead buttons)', () => {
+  projectCatalogIt('every gated action is a real backend permission (no dead buttons)', () => {
     const bad = actions.filter((a) => !VALID_GATE_ACTIONS.has(a.action))
     expect(
       bad.map((b) => `${b.action}  (${b.file})`),
@@ -103,7 +121,7 @@ describe('RBAC action-gate contract', () => {
       ).toEqual([])
   })
 
-  it('every gated action is registered in the project module catalog', () => {
+  projectCatalogIt('every gated action is registered in the project module catalog', () => {
     const bad = actions.filter((a) => !PROJECT_REGISTRY_ACTIONS.has(a.action))
     expect(
       bad.map((b) => `${b.action}  (${b.file})`),

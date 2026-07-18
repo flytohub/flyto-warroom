@@ -14,7 +14,31 @@ import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const ENGINE_ROOT = process.env.FLYTO_ENGINE_ROOT || path.resolve(ROOT, '..', 'flyto-engine')
+function engineRootCandidates() {
+  if (process.env.FLYTO_ENGINE_DISABLE_LIVE === '1') return []
+  return [...new Set([
+    process.env.FLYTO_ENGINE_ROOT,
+    process.env.FLYTO_ENGINE_DIR,
+    process.env.FLYTO_ENGINE_PATH,
+    path.resolve(ROOT, '..', 'flyto-engine'),
+    path.resolve(ROOT, 'flyto-engine'),
+  ].filter(Boolean))]
+}
+
+function resolveEngineRoot() {
+  const attempted = []
+  for (const candidate of engineRootCandidates()) {
+    const resolved = path.resolve(candidate)
+    attempted.push(path.join(resolved, 'api'))
+    if (fs.existsSync(path.join(resolved, 'api'))) return { root: resolved, attempted }
+  }
+  return {
+    root: path.resolve(process.env.FLYTO_ENGINE_ROOT || process.env.FLYTO_ENGINE_DIR || process.env.FLYTO_ENGINE_PATH || ROOT),
+    attempted,
+  }
+}
+
+const { root: ENGINE_ROOT, attempted: ENGINE_API_ATTEMPTS } = resolveEngineRoot()
 const API_DIR = path.join(ENGINE_ROOT, 'api')
 
 const MUTATING_METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE'])
@@ -24,6 +48,14 @@ const MUTATING_METHODS = new Set(['POST', 'PUT', 'PATCH', 'DELETE'])
 // member-level write is acceptable.
 const MEMBERSHIP_ONLY_ALLOWLIST = new Map([
 ])
+
+if (!fs.existsSync(API_DIR)) {
+  console.warn(
+    `authz gate warning: flyto-engine api not found; backend authz audit skipped. ` +
+    `Tried: ${ENGINE_API_ATTEMPTS.join(', ')}`,
+  )
+  process.exit(0)
+}
 
 function read(file) {
   return fs.readFileSync(file, 'utf8')

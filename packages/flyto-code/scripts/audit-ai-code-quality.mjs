@@ -56,7 +56,20 @@ const PAGE_SHELL_DELEGATES = new Set([
 ])
 
 const MANAGER_LAYOUT_DELEGATES = new Set([
-  'components/compounds/fusion/FusionManagerView.tsx',
+  // Fixed workbench pages own local height and nested scroll regions; forcing
+  // them into the dashboard waterfall creates double-scroll and mobile overflow.
+  // Delegates must still render a height:100% + overflow:hidden shell.
+  'components/compounds/asset-map/AssetMapManagerView.tsx',
+  'components/compounds/attack-paths/AttackPathsManagerView.tsx',
+  'components/compounds/autofix/AutofixManagerView.tsx',
+  'components/compounds/domains/DomainsManagerView.tsx',
+  'components/compounds/exposure/CTEMManagerView.tsx',
+  'components/compounds/exposure/IssuesManagerView.tsx',
+  'components/compounds/footprint/FootprintManagerView.tsx',
+  'components/compounds/pentest/PentestManagerView.tsx',
+  'components/compounds/repos/RepoDetailManagerView.tsx',
+  'components/compounds/repos/RepoListManagerView.tsx',
+  'components/compounds/scoring/PostureManagerView.tsx',
 ])
 
 const TRANSPORT_PATTERNS = [
@@ -131,6 +144,13 @@ function rendersComponent(code, name) {
   )
 }
 
+function rendersFixedManagerWorkbench(code) {
+  return (
+    /height\s*:\s*['"]100%['"]/.test(code) &&
+    /overflow\s*:\s*['"]hidden['"]/.test(code)
+  )
+}
+
 function selfTestFailures() {
   const cases = [
     ['dynamic import', "await import('@lib/engine/client')", true],
@@ -140,13 +160,16 @@ function selfTestFailures() {
     ['xhr', 'new XMLHttpRequest()', true],
     ['rendered PageShell', 'export function P(){ return <PageShell title=\"x\" /> }', true],
     ['import-only PageShell', "import PageShell from './PageShell'\nexport function P(){ return <div /> }", false],
+    ['fixed workbench', "return <Box sx={{ height: '100%', overflow: 'hidden' }} />", true],
+    ['non-fixed workbench', "return <Box sx={{ minHeight: 0, overflow: 'auto' }} />", false],
   ]
   const failures = []
   for (const [name, code, expected] of cases) {
     const cleaned = stripCommentsPreserveLines(code)
-    const actual = name.includes('PageShell')
-      ? rendersComponent(cleaned, 'PageShell')
-      : TRANSPORT_PATTERNS.some((re) => re.test(cleaned))
+    let actual
+    if (name.includes('PageShell')) actual = rendersComponent(cleaned, 'PageShell')
+    else if (name.includes('workbench')) actual = rendersFixedManagerWorkbench(cleaned)
+    else actual = TRANSPORT_PATTERNS.some((re) => re.test(cleaned))
     if (actual !== expected) failures.push({ name, expected, actual })
   }
   return failures
@@ -234,15 +257,33 @@ if (fs.existsSync(pagesRoot)) {
 }
 
 const managerLayoutViolations = []
+const managerViewFiles = new Set()
 const compoundsRoot = path.join(SRC, 'components/compounds')
 if (fs.existsSync(compoundsRoot)) {
   for (const file of walk(compoundsRoot)) {
     if (!file.endsWith('ManagerView.tsx')) continue
     const rel = srcRel(file)
+    managerViewFiles.add(rel)
     const code = codeByFile.get(file) ?? stripCommentsPreserveLines(read(file))
-    if (!rendersComponent(code, 'ManagerDashboard') && !MANAGER_LAYOUT_DELEGATES.has(rel)) {
-      managerLayoutViolations.push({ file: rel })
-    }
+    if (rendersComponent(code, 'ManagerDashboard')) continue
+    if (MANAGER_LAYOUT_DELEGATES.has(rel) && rendersFixedManagerWorkbench(code)) continue
+    managerLayoutViolations.push({
+      file: rel,
+      kind: MANAGER_LAYOUT_DELEGATES.has(rel)
+        ? 'workbench delegate missing fixed shell'
+        : 'missing ManagerDashboard or workbench delegate',
+    })
+  }
+}
+for (const rel of MANAGER_LAYOUT_DELEGATES) {
+  const abs = path.join(SRC, rel)
+  if (!managerViewFiles.has(rel)) {
+    managerLayoutViolations.push({ file: rel, kind: 'stale workbench delegate' })
+    continue
+  }
+  const code = codeByFile.get(abs) ?? stripCommentsPreserveLines(read(abs))
+  if (!rendersFixedManagerWorkbench(code)) {
+    managerLayoutViolations.push({ file: rel, kind: 'workbench delegate missing fixed shell' })
   }
 }
 

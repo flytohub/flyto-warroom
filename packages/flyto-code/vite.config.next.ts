@@ -131,6 +131,34 @@ export default defineConfig({
           if (id.includes('/@tiptap/') || id.includes('/prosemirror-')) {
             return 'editor-vendor'
           }
+          // Dense table stack — used by operational tables, not by the
+          // first shell paint. Keep Material React Table and TanStack table
+          // internals out of the entrypoint.
+          if (
+            id.includes('/material-react-table/') ||
+            id.includes('/@tanstack/table-core/') ||
+            id.includes('/@tanstack/virtual-core/') ||
+            id.includes('/@tanstack/match-sorter-utils/')
+          ) {
+            return 'table-vendor'
+          }
+          // Form/schema validation stack — mostly auth/settings forms.
+          if (
+            id.includes('/react-hook-form/') ||
+            id.includes('/@hookform/') ||
+            id.includes('/zod/')
+          ) {
+            return 'forms-vendor'
+          }
+          if (id.includes('/lodash/')) {
+            return 'lodash-vendor'
+          }
+          if (id.includes('/prismjs/')) {
+            return 'syntax-vendor'
+          }
+          if (id.includes('/framer-motion/') || id.includes('/motion-dom/')) {
+            return 'motion-vendor'
+          }
           // Firebase (+ its gRPC/protobuf transitive stack) — large and
           // only needed by the auth/data layer.
           if (

@@ -15,6 +15,7 @@ import { fileURLToPath } from 'node:url'
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const MATRIX_FILE = path.join(ROOT, 'docs', 'platform-loops', 'flyto2-module-matrix.json')
 const MODULES_FILE = path.join(ROOT, 'src-next', 'types', 'modules.ts')
+const MODULE_MANIFEST_DIR = path.join(ROOT, 'src-next', 'types', 'module-manifests')
 const PACKAGE_FILE = path.join(ROOT, 'package.json')
 const BRANCH_GUARD_FILE = path.join(ROOT, 'scripts', 'ai-branch-guard.mjs')
 const CI_FILE = path.join(ROOT, '.github', 'workflows', 'ci.yml')
@@ -243,6 +244,31 @@ function sorted(values) {
   return [...new Set(values)].sort()
 }
 
+function collectKnownModuleIds() {
+  const ignoredManifestFiles = new Set(['boundary.ts', 'index.ts', 'packageManifest.ts'])
+  const ids = new Set()
+  let entries = []
+  try {
+    entries = fs.readdirSync(MODULE_MANIFEST_DIR, { withFileTypes: true })
+  } catch (error) {
+    violations.push({ file: rel(MODULE_MANIFEST_DIR), reason: `missing module manifest directory: ${error.message}` })
+    return ids
+  }
+
+  for (const entry of entries) {
+    if (!entry.isFile() || !entry.name.endsWith('.ts') || ignoredManifestFiles.has(entry.name)) continue
+    const text = read(path.join(MODULE_MANIFEST_DIR, entry.name))
+    for (const match of text.matchAll(/id:\s*['"]([^'"]+)['"]/g)) {
+      ids.add(match[1])
+    }
+  }
+
+  if (ids.size === 0) {
+    violations.push({ file: rel(MODULE_MANIFEST_DIR), reason: 'module manifests must expose at least one module id' })
+  }
+  return ids
+}
+
 function sameSet(left, right) {
   const a = sorted(left)
   const b = sorted(right)
@@ -276,8 +302,8 @@ function expectIncludes(file, marker, reason) {
 }
 
 const matrix = readJson(MATRIX_FILE)
-const moduleText = read(MODULES_FILE)
-const knownModules = new Set([...moduleText.matchAll(/id:\s*['"]([^'"]+)['"]/g)].map((match) => match[1]))
+expectIncludes(MODULES_FILE, "export * from './module-manifests'", 'module registry facade must re-export module manifests')
+const knownModules = collectKnownModuleIds()
 
 if (matrix.schema !== 'flyto-code.flyto2-module-matrix.v1') {
   violations.push({ file: rel(MATRIX_FILE), reason: 'unexpected module matrix schema' })
@@ -318,7 +344,7 @@ for (const domain of domains) {
 
   for (const moduleId of expectArray(domain, 'modules')) {
     if (!knownModules.has(moduleId)) {
-      violations.push({ file: rel(MODULES_FILE), domain: domain.id, reason: `unknown module id ${moduleId}` })
+      violations.push({ file: rel(MODULE_MANIFEST_DIR), domain: domain.id, reason: `unknown module id ${moduleId}` })
     }
   }
 

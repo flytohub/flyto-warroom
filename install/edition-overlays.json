@@ -191,5 +191,36 @@
   "runtime_source_pull_allowed": false,
   "runtime_source_pull_reason": "Enterprise and SaaS builds must be reproducible, signed, offline-capable, and auditable; source is resolved only at package/build time.",
   "schema": "flyto.open-core-edition-overlays.v1",
-  "source_contract_schema": "flyto.open-core-build-overlay.v1"
+  "source_contract_schema": "flyto.open-core-build-overlay.v1",
+  "upstream_contract": {
+    "community_contribution_target": "shared_ce_source_first",
+    "community_source_policy": "public_source_and_images",
+    "enterprise_is_overlay_not_fork": true,
+    "moat_controls": [
+      "commercial-intel",
+      "enterprise-control-plane",
+      "firebase-rating-authority",
+      "managed-remediation",
+      "public-rating-authority",
+      "saas-control-plane"
+    ],
+    "model": "gitlab_style_open_core",
+    "paid_edition_policy": "build_time_private_overlay_only",
+    "private_source_repos": [
+      "flyto-engine",
+      "flyto-code",
+      "flyto-cloud"
+    ],
+    "public_base_selector": "flyto-warroom@commit_sha",
+    "public_pr_flow": "public_pr_to_private_source_to_regenerated_ce",
+    "public_upstream": "https://github.com/flytohub/flyto-warroom",
+    "runtime_source_pull_allowed": false,
+    "schema": "flyto.open-core-upstream-contract.v1",
+    "score_authority": {
+      "ce_public_comparability": false,
+      "ce_scope": "local_external_observation_only",
+      "private_code_in_public_score_payload": false,
+      "public_rating_authority_overlay": "private_signed_rating_authority"
+    }
+  }
 }

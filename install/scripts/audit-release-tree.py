@@ -80,6 +80,7 @@ REQUIRED = [
     "CLA.md",
     "scripts/audit-github-protection.py",
     "scripts/audit-ce-boundary.py",
+    "scripts/audit-open-core-overlay.py",
 ]
 
 PRIVATE_GLOBS = [

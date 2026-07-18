@@ -22,3 +22,13 @@ Decision: CE must remain locally runnable, inspectable, and patchable.
 
 Reason: open-core adoption depends on real local value, not a library dump or
 marketing-only mirror.
+
+## GitLab-Style CE Upstream Contract
+
+Decision: CE is the public upstream base. Enterprise, SaaS, on-prem, and
+airgap editions are build-time overlays on a pinned CE commit, never independent
+forks or runtime source pulls.
+
+Reason: public contributions must flow back into Flyto2 itself while moat code,
+commercial datasets, public rating authority, and managed remediation remain
+private signed overlays.

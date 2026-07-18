@@ -9,6 +9,8 @@ Contribution rule:
 - Maintainers import accepted public changes back into `/Users/chester/flytohub/flyto-code`.
 - After source tests pass, maintainers rerun the open-core exporter and update
   `flyto-warroom` from the generated output.
+- Enterprise, SaaS, on-prem, and airgap frontend code is attached only through
+  paid build-time overlays on a pinned CE commit.
 
 Do not add credentials, hosted-only configuration, private image coordinates, or
 enterprise-only implementation details to this package.

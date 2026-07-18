@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { getDualModePaths, MODULES, SIDEBAR_GROUP_ORDER } from '@code/modules'
@@ -22,6 +22,23 @@ import { getDualModePaths, MODULES, SIDEBAR_GROUP_ORDER } from '@code/modules'
  *     ../flyto-engine/internal/permission/capabilities.yaml | sort > backend-pages.txt
  */
 const here = dirname(fileURLToPath(import.meta.url))
+const DEFAULT_ENGINE_ROOT = join(
+  here,
+  '..',
+  '..',
+  '..',
+  '..',
+  '..',
+  'flyto-engine',
+)
+const ENGINE_ROOT = process.env.FLYTO_ENGINE_ROOT || DEFAULT_ENGINE_ROOT
+const PROJECT_CATALOG_PATH = join(
+  ENGINE_ROOT,
+  'internal',
+  'modulecatalog',
+  'catalog.yaml',
+)
+const HAS_PROJECT_CATALOG = existsSync(PROJECT_CATALOG_PATH)
 const BACKEND_PAGES = new Set(
   readFileSync(join(here, '..', '__generated__', 'backend-pages.txt'), 'utf8')
     .split('\n')
@@ -30,7 +47,7 @@ const BACKEND_PAGES = new Set(
 )
 
 function collectProjectRegistryPages(): Set<string> {
-  const catalog = readFileSync(join(here, '..', '..', '..', '..', '..', 'flyto-engine', 'internal', 'modulecatalog', 'catalog.yaml'), 'utf8')
+  const catalog = readFileSync(PROJECT_CATALOG_PATH, 'utf8')
   const pages = new Set<string>()
   for (const match of catalog.matchAll(/^\s+pages:\s*\[([^\]]*)\]/gm)) {
     for (const raw of match[1].split(',')) {
@@ -41,8 +58,9 @@ function collectProjectRegistryPages(): Set<string> {
   return pages
 }
 
-const PROJECT_REGISTRY_PAGES = collectProjectRegistryPages()
+const PROJECT_REGISTRY_PAGES = HAS_PROJECT_CATALOG ? collectProjectRegistryPages() : new Set<string>()
 const RENDERED_GROUPS = new Set(SIDEBAR_GROUP_ORDER.map((g) => g.id))
+const projectCatalogIt = HAS_PROJECT_CATALOG ? it : it.skip
 
 describe('sidebar nav page-id contract', () => {
   it('snapshot is non-empty (regen guard)', () => {
@@ -68,7 +86,7 @@ describe('sidebar nav page-id contract', () => {
       ).toBe(true)
     })
 
-    it(`module '${m.id}' is registered in the project module catalog ('${pageId}')`, () => {
+    projectCatalogIt(`module '${m.id}' is registered in the project module catalog ('${pageId}')`, () => {
       expect(
         PROJECT_REGISTRY_PAGES.has(pageId),
         `module '${m.id}' uses page '${pageId}', but flyto-engine/internal/modulecatalog/catalog.yaml ` +

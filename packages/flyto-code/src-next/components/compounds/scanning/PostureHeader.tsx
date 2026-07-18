@@ -19,6 +19,7 @@
 import { useMemo, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { Alert, Box, CircularProgress, Paper, Typography } from '@mui/material'
+import { styled } from '@mui/material/styles'
 import { t } from '@lib/i18n';
 import { qk } from '@lib/queryKeys'
 import { useOrg } from '@hooks/useOrg'
@@ -43,6 +44,10 @@ import {
 } from '@lib/engine/code/posture'
 
 const GAUGE_HEIGHT = 240
+
+const MonoCellText = styled(Typography)({
+  fontFamily: 'monospace',
+})
 
 // ── Shared presentational frame ─────────────────────────────────────
 
@@ -162,9 +167,9 @@ function ContainerPostureEngineer({ p }: { p: ContainerPosture }) {
         accessorKey: 'digest',
         header: t('warroom.colImage'),
         Cell: ({ cell }) => (
-          <Typography variant="body2" sx={{ fontFamily: 'monospace' }} noWrap>
+          <MonoCellText variant="body2" noWrap>
             {String(cell.getValue() ?? '—')}
-          </Typography>
+          </MonoCellText>
         ),
       },
       {
@@ -352,9 +357,9 @@ function CloudPostureEngineer({ p }: { p: CloudPosture }) {
         accessorKey: 'canonical_id',
         header: t('warroom.colResource'),
         Cell: ({ cell }) => (
-          <Typography variant="body2" sx={{ fontFamily: 'monospace' }} noWrap>
+          <MonoCellText variant="body2" noWrap>
             {String(cell.getValue() ?? '—')}
-          </Typography>
+          </MonoCellText>
         ),
       },
       { accessorKey: 'resource_type', header: t('warroom.colType'), accessorFn: (r) => r.resource_type || '—' },

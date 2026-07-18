@@ -3,6 +3,13 @@
 This repository is designed to accept community PRs without becoming a separate
 product line.
 
+Flyto2 Warroom CE is the public upstream base, not a permanent fork. Paid
+Enterprise, SaaS, on-prem, and airgap editions are build-time overlays on a
+pinned CE commit. A public PR should either become a private source patch and a
+re-exported CE change, or be rejected as a generated/overlay-only change.
+Short rule: import the accepted public change, test private source, then
+re-export CE with the exporter.
+
 ## Maintainer Flow
 
 1. Review the public PR in `flyto-warroom`.
@@ -33,6 +40,12 @@ product line.
    ```
 
 7. Push the regenerated public tree to this repo.
+8. Run the open-core overlay audit to prove the regenerated tree still uses CE
+   as the pinned public upstream and keeps private overlays out of runtime:
+
+   ```sh
+   python scripts/audit-open-core-overlay.py .
+   ```
 
 ## Why This Exists
 

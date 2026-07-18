@@ -17,3 +17,11 @@ Enterprise adapters, proprietary intelligence, or live remediation workers.
 
 Enterprise Cloud Bridge and airgap builds attach premium services through signed
 evidence and build-time overlays. Runtime source pulls are forbidden.
+
+`OPEN_CORE_MANIFEST.json` and `install/edition-overlays.json` both carry the
+GitLab-style upstream contract: CE is the pinned public base, and Enterprise,
+SaaS, on-prem, and airgap editions are private build-time overlays, not forks.
+`scripts/audit-open-core-overlay.py` compares those manifests with the engine
+source boundary, frontend CE boundary, Makefile, and contribution docs so
+runtime source pulls, private overlay material, and public rating-authority
+claims fail closed.

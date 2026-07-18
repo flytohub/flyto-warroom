@@ -20,6 +20,24 @@ The shared contract is `flyto.editions.v1`:
 | `pages` | Explicitly exposed routes; unknown pages are denied |
 | `bridge_policy` | Cloud bridge, signed bundle, and evidence verification rules |
 
+## GitLab-style Open-core Rule
+
+Flyto2 Warroom CE is the public upstream base. Enterprise, SaaS, on-prem, and
+airgap editions must be built as private build-time overlays on a pinned CE
+commit. They must not become independent forks, must not pull private source at
+runtime, and must record CE base commit, overlay profile, image digests, and
+verification evidence during packaging.
+
+Public CE changes are accepted in `flyto-warroom`, imported back into the
+private source workspace, tested there, and then re-exported into CE. This keeps
+community improvements flowing back into Flyto2 itself.
+
+CE scores are local and externally observed. They can help a self-hosted user
+understand local posture, but they are not public cross-organization authority
+ratings. The public rating authority remains a private signed overlay. Private
+code findings may affect local remediation priority, but they must not leak
+repo, package, file, or secret-level detail into public score payloads.
+
 ## Supported Profiles
 
 | Profile | Edition | Deployment | Auth | License | Cloud Bridge |

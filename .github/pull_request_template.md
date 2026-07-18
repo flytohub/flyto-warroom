@@ -9,6 +9,7 @@ Describe the product problem and the scope of this change.
 - [ ] I understand accepted CE changes may be imported into the private Flyto2 source workspace and commercial releases.
 - [ ] I ran `python install/scripts/audit-release-tree.py .` or explained why it is not applicable.
 - [ ] I ran `python scripts/audit-ce-boundary.py .` for CE privacy/moat-sensitive changes.
+- [ ] I ran `python scripts/audit-open-core-overlay.py .` for edition, packaging, or contribution-loop changes.
 - [ ] I included tests, contract checks, or installer evidence for behavior changes.
 - [ ] My commits include `Signed-off-by:` lines, or I certify the same DCO statement in this PR.
 

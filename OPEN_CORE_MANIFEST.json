@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-18T03:36:25.873528+00:00",
+  "generated_at": "2026-07-18T18:13:47.106721+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -80,6 +80,7 @@
     "handoffs/_registry.md",
     "handoffs/2026-07-16-ce-frontend-package-manifest-api.md",
     "handoffs/2026-07-17-generated-open-core-sync.md",
+    "handoffs/2026-07-18-gitlab-style-open-core-contract.md",
     "docs/official-builds.md",
     "docs/account-security.md",
     "docs/docker-hub-overview.md",
@@ -97,6 +98,7 @@
     ".github/pull_request_template.md",
     "scripts/audit-github-protection.py",
     "scripts/audit-ce-boundary.py",
+    "scripts/audit-open-core-overlay.py",
     ".github/workflows/ci.yml",
     ".env.example",
     "CHANGELOG.md",
@@ -123,6 +125,7 @@
     "install/scripts/publish-multiarch-images.sh",
     "install/scripts/seed-demo-workspace.py",
     "install/tests/test_cloud_bundle_fixture.py",
+    "install/tests/test_open_core_overlay_audit.py",
     "install/tests/test_positioning_audit.py",
     "install/tests/test_provider_readiness.py",
     "packages/README.md",
@@ -135,7 +138,7 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1608,
+      "file_count": 1610,
       "generated_files": [
         "package.json",
         "package-lock.json",
@@ -210,8 +213,40 @@
     "OSS exports are generated artifacts; do not hand-edit generated community trees.",
     "Every package must declare source repo, license, include patterns, protected paths, and deny path patterns.",
     "Exporter fails closed on missing include patterns, missing required paths, protected path inclusion, and denied content markers.",
+    "CE is the public upstream base; Enterprise, SaaS, on-prem, and airgap editions are build-time overlays, not forks.",
     "Community packages may call back into enterprise only through documented contracts, not private imports."
   ],
+  "upstream_contract": {
+    "schema": "flyto.open-core-upstream-contract.v1",
+    "model": "gitlab_style_open_core",
+    "public_upstream": "https://github.com/flytohub/flyto-warroom",
+    "public_base_selector": "flyto-warroom@commit_sha",
+    "private_source_repos": [
+      "flyto-engine",
+      "flyto-code",
+      "flyto-cloud"
+    ],
+    "community_source_policy": "public_source_and_images",
+    "paid_edition_policy": "build_time_private_overlay_only",
+    "runtime_source_pull_allowed": false,
+    "enterprise_is_overlay_not_fork": true,
+    "public_pr_flow": "public_pr_to_private_source_to_regenerated_ce",
+    "community_contribution_target": "shared_ce_source_first",
+    "score_authority": {
+      "ce_scope": "local_external_observation_only",
+      "ce_public_comparability": false,
+      "private_code_in_public_score_payload": false,
+      "public_rating_authority_overlay": "private_signed_rating_authority"
+    },
+    "moat_controls": [
+      "commercial-intel",
+      "enterprise-control-plane",
+      "firebase-rating-authority",
+      "managed-remediation",
+      "public-rating-authority",
+      "saas-control-plane"
+    ]
+  },
   "build_time_overlay_contract": {
     "schema": "flyto.open-core-build-overlay.v1",
     "runtime_source_pull_allowed": false,

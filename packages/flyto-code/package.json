@@ -12,6 +12,8 @@
     "gen:api": "openapi-typescript ../flyto-engine/api/openapi.yaml -o src-next/lib/engine/openapi-schema.gen.ts",
     "sync:backend-routes": "node scripts/sync-backend-routes.mjs",
     "check:backend-routes": "node scripts/sync-backend-routes.mjs --check",
+    "sync:backend-capabilities": "node scripts/sync-backend-capabilities.mjs",
+    "check:backend-capabilities": "node scripts/sync-backend-capabilities.mjs --check",
     "build:stats": "BUNDLE_STATS=1 npm run build",
     "check:routes": "python3 scripts/check-route-drift.py",
     "audit:routes-unused": "python3 scripts/check-route-drift.py --strict --report-unused",

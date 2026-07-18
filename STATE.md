@@ -10,10 +10,16 @@
   boundary audit, and Docker image digest dry-run.
 - `install/edition-overlays.json` declares community, enterprise on-prem,
   enterprise airgap, and SaaS build-time overlay profiles.
+- The generated open-core overlay audit proves CE is the public upstream base,
+  paid editions are build-time overlays, runtime source pulls are forbidden,
+  and CE scores remain local/external rather than public rating authority.
 
 ## Known Boundaries
 
 - Commercial intelligence, hosted control plane, Enterprise SSO/SCIM/SAML,
   managed runner fleets, and live cloud/container/runtime remediation remain
   private overlays.
+- Public rating authority, Firebase-backed authority services, and calibration
+  remain private signed overlays. CE local scores must not claim
+  cross-organization comparability.
 - Generated CE files should be changed upstream first, then regenerated.

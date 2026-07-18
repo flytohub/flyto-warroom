@@ -106,8 +106,8 @@ if (hasEngine()) {
     'BYO worker fallback loop',
     engineRoot,
     [
-      'cmd/worker/worker_bootstrap_config.go',
-      'cmd/worker/worker_scoring.go',
+      'cmd/worker/worker_bootstrap_external_workflow_loops.go',
+      'cmd/worker/worker_scoring_byo.go',
       'internal/byo/materialize.go',
     ],
     [

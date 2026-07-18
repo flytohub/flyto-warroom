@@ -22,6 +22,11 @@ pinned Flyto2 Warroom CE commit. The running system never pulls source
 code dynamically; license tier, overlays, image digests, and verification
 evidence are recorded during packaging.
 
+This is a GitLab-style open-core layout: CE is the public upstream base,
+and paid editions are overlays built from a pinned CE commit. Public
+changes are imported back into the private source workspace, tested,
+and re-exported so the CE tree does not become a disconnected fork.
+
 ## Official Channels
 
 | Channel | Link | Purpose |
@@ -111,7 +116,7 @@ enterprise adapters, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1608 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1610 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 | `flyto-engine-ce` | `flyto-engine` | 92 | Classified CE backend kernel source for capability, resource, and safety primitives. |
 
@@ -141,6 +146,11 @@ enterprise identity, and commercial AI proposal workflows.
 Premium actions must fail closed when a license, entitlement, permission,
 connector, signature, or cloud service check fails. See
 `docs/enterprise-cloud-bridge.md`.
+
+CE scores are local and externally observed. They are useful for self-hosted
+verification, but they are not public, cross-organization rating authority
+scores. Public rating authority, Firebase-backed authority services, and
+calibration remain private signed overlays.
 
 | Edition | Best for | Notes |
 | --- | --- | --- |
@@ -185,6 +195,7 @@ Run before opening release-sensitive PRs:
 ```sh
 python3 install/scripts/audit-release-tree.py .
 python3 scripts/audit-ce-boundary.py .
+python3 scripts/audit-open-core-overlay.py .
 ```
 
 ## Verification
@@ -192,7 +203,7 @@ python3 scripts/audit-ce-boundary.py .
 The generated tree includes fail-closed release checks:
 
 - `make verify` runs release audits and Docker image digest dry-run.
-- `make audit` runs release, CE boundary, and GitHub protection audits.
+- `make audit` runs release, CE boundary, open-core overlay, and GitHub protection audits.
 - `make verify-images` checks the public Docker image coordinates and
   expected digests in `OPEN_CORE_MANIFEST.json`.
 - GitHub Actions run governance, release, frontend build, contract, and
