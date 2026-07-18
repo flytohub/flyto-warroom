@@ -52,16 +52,38 @@ def descriptor_digest(payload: object) -> str:
     return ""
 
 
+def write_digests(manifest_path: Path, digests: dict[str, str]) -> None:
+    payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+    release = payload.setdefault("release", {})
+    if not isinstance(release, dict):
+        raise ValueError("manifest release must be an object")
+    existing = release.setdefault("public_image_digests", {})
+    if not isinstance(existing, dict):
+        raise ValueError("manifest release.public_image_digests must be an object")
+    existing.update(digests)
+    manifest_path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Verify Flyto2 Warroom CE Docker Hub image tags and digests")
     parser.add_argument("--manifest", default=str(DEFAULT_MANIFEST))
     parser.add_argument("--pull", action="store_true", help="also docker pull every image")
     parser.add_argument("--dry-run", action="store_true", help="print images without contacting Docker Hub")
+    parser.add_argument(
+        "--write-digests",
+        action="store_true",
+        help="write inspected descriptor digests back to release.public_image_digests",
+    )
     parser.add_argument("--timeout", type=int, default=120)
     args = parser.parse_args()
 
+    if args.dry_run and args.write_digests:
+        print("BLOCKED: --write-digests cannot be used with --dry-run", file=sys.stderr)
+        return 2
+
     manifest = Path(args.manifest)
     blockers: list[str] = []
+    actual_digests: dict[str, str] = {}
     for service, image, expected_digest in service_images(manifest):
         suffix = f" expected={expected_digest}" if expected_digest else ""
         print(f"{service} {image}{suffix}")
@@ -84,6 +106,8 @@ def main() -> int:
                 )
         elif not actual_digest:
             blockers.append(f"manifest descriptor digest missing for {image}")
+        if actual_digest:
+            actual_digests[service] = actual_digest
         if args.pull:
             pulled = run(["docker", "pull", image], timeout=args.timeout * 3)
             if pulled.returncode != 0:
@@ -92,6 +116,9 @@ def main() -> int:
         for blocker in blockers:
             print("BLOCKED: " + blocker, file=sys.stderr)
         return 2
+    if args.write_digests:
+        write_digests(manifest, actual_digests)
+        print(f"wrote digests to {manifest}")
     print("ok")
     return 0
 
