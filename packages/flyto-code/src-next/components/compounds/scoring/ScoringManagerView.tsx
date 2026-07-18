@@ -1,7 +1,7 @@
 /**
  * ScoringManagerView — manager-mode surface for the Scoring Overview.
  *
- * Bitsight-style score hero distilled to the executive essentials:
+ * Flyto2 score hero distilled to the executive essentials:
  * grade gauge, dimension-weight donut, category sub-scores bar, and a
  * weighting-methodology narrative driven by the per-org scoring config.
  *

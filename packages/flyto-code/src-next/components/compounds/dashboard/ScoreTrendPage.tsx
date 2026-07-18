@@ -1,5 +1,5 @@
 /**
- * ScoreTrendPage — Full-page Bitsight-style score trend view.
+ * ScoreTrendPage — Full-page Flyto2 score trend view.
  *
  * Features:
  * - Top stat cards: highest/lowest score + date, grade changes count
@@ -448,7 +448,7 @@ function EventCard({ event, highlighted }: { event: ScoreEvent; highlighted?: bo
 
   // Score events from /score-events carry RAW 0-100 backend scores
   // (from_score/to_score). Map through displayScore() to the
-  // 250-900 / 10-pt Bitsight scale that the rest of the UI uses.
+  // Flyto2 250-900 / 10-pt display scale that the rest of the UI uses.
   // Operator 2026-05-23: "我是十分進位 怎麼會寫成這樣".
   const fromDisplay = displayScore(event.from_score)
   const toDisplay = displayScore(event.to_score)
