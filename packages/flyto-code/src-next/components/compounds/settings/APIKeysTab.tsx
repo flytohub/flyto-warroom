@@ -100,21 +100,21 @@ export function APIKeysTab() {
     const scopes = createdScope?.split(',').map(s => s.trim()) ?? []
     if (scopes.includes('mcp:invoke') && org?.id) {
       return `curl -X POST \\
-  -H "X-Flyto-API-Key: $FLYTO_MCP_API_KEY" \\
+  -H "X-Flyto2-API-Key: $FLYTO_MCP_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"sessionKey":"manual-test","agentId":"local-mcp","serverId":"flyto-security-mcp","toolName":"connection_probe","verb":"READ","dataClass":"metadata","dataDirection":"internal"}' \\
   ${mcpIngestEndpoint(org.id)}`
     }
     if (scopes.includes('runtime:ingest')) {
       return `curl -X POST \\
-  -H "X-Flyto-API-Key: $FLYTO_RUNTIME_API_KEY" \\
+  -H "X-Flyto2-API-Key: $FLYTO_RUNTIME_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"events":[{"type":"info","path":"/health","timestamp":"2026-06-07T00:00:00Z"}]}' \\
   ${runtimeEventsEndpoint()}`
     }
     if (scopes.includes('ci:check')) {
       return `curl -X POST \\
-  -H "X-Flyto-API-Key: $FLYTO_CI_API_KEY" \\
+  -H "X-Flyto2-API-Key: $FLYTO_CI_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"sha":"HEAD","status":"passed"}' \\
   ${ciCheckEndpoint()}`

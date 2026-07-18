@@ -172,7 +172,7 @@ export function McpOverviewView() {
   const data = rawData ?? EMPTY_OVERVIEW
   const endpoint = org?.id ? mcpIngestEndpoint(org.id) : ''
   const curlSnippet = `curl -sS -X POST "${endpoint}" \\
-  -H "X-Flyto-API-Key: $FLYTO_MCP_API_KEY" \\
+  -H "X-Flyto2-API-Key: $FLYTO_MCP_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{"projectHash":"<project-hash>","sessionKey":"manual-test","agentId":"local-mcp","serverId":"flyto-security-mcp","toolName":"connection_probe","verb":"READ","dataClass":"metadata","dataDirection":"internal"}'`
   // Separate real agent traffic from the dashboard diagnostic probe.

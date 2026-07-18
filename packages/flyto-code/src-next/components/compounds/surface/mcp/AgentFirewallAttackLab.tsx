@@ -89,7 +89,7 @@ function probeBody(chainId: string, probe: Record<string, unknown>) {
 
 function curlFor(endpoint: string, chainId: string, probes: readonly Record<string, unknown>[]) {
   return probes.map((probe) => `curl -sS -X POST "${endpoint}" \\
-  -H "X-Flyto-API-Key: $FLYTO_AGENT_FIREWALL_KEY" \\
+  -H "X-Flyto2-API-Key: $FLYTO_AGENT_FIREWALL_KEY" \\
   -H "Content-Type: application/json" \\
   -d '${probeBody(chainId, probe)}'`).join('\n\n')
 }
