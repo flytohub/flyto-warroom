@@ -14,6 +14,7 @@ import LockIcon from '@mui/icons-material/Lock';
 import { getExplorePosture, PostureTeaser } from '@lib/engine/apiExplore';
 import { t } from '@lib/i18n';
 import { qk } from '@lib/queryKeys';
+import { RatingAuthorityBadge } from '@compounds/_shared';
 import MuiLink from '@mui/material/Link';
 import ExploreLayout from './ExploreLayout';
 
@@ -132,6 +133,15 @@ function ScorecardCard({ data, domain }: { data: PostureTeaser; domain: string }
 						/>
 					)}
 					{company.country && <Chip label={company.country} size="small" variant="outlined" />}
+					<RatingAuthorityBadge authority={data.ratingAuthority} />
+					{data.codeLinkedExternalImpact && (
+						<Chip
+							label={t('explore.codeLinkedExternalImpact', { band: codeLinkedImpactBandLabel(data.codeLinkedExternalImpactBand) })}
+							size="small"
+							variant="outlined"
+							color="warning"
+						/>
+					)}
 				</Box>
 			</Box>
 
@@ -291,8 +301,9 @@ function StatusLine({
 		return (
 			<>
 				<Typography variant="h6" sx={{ fontWeight: 600 }}>
-					{`Grade ${grade}`}
-					{industryRank ? ` · ${industryRank} ${t('explore.inIndustry')}` : ''}
+					{industryRank
+						? t('explore.gradeRankLine', { grade, rank: industryRank })
+						: t('explore.gradeLine', { grade })}
 				</Typography>
 				<Typography variant="body2" color="text.secondary" sx={{ mb: 0.5, fontSize: 13 }}>
 					{t('explore.publicPreview')}
@@ -319,4 +330,17 @@ function StatusLine({
 			{t('explore.statusNoData')}
 		</Typography>
 	);
+}
+
+function codeLinkedImpactBandLabel(band?: PostureTeaser['codeLinkedExternalImpactBand']): string {
+	switch (band) {
+		case 'high':
+			return t('explore.codeLinkedImpactBand.high')
+		case 'medium':
+			return t('explore.codeLinkedImpactBand.medium')
+		case 'low':
+			return t('explore.codeLinkedImpactBand.low')
+		default:
+			return t('explore.codeLinkedImpactBand.observed')
+	}
 }

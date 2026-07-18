@@ -14,6 +14,7 @@
  */
 
 import { request } from './client'
+import type { ScoreAuthority } from './scoring/scoring'
 
 // === Public response shapes — must match the Go structs in
 // flyto-engine/api/handlers_public_explore.go EXACTLY. JSON tags on
@@ -59,6 +60,9 @@ export interface PostureTeaser {
 	issuesFound: number
 	visibleFacts?: { category: string; count: number }[]
 	lockedCount: number
+	ratingAuthority?: ScoreAuthority
+	codeLinkedExternalImpact: boolean
+	codeLinkedExternalImpactBand?: 'low' | 'medium' | 'high'
 	industryRank?: string
 	lastScanned?: string
 	cta: { headline: string; body: string; action: string }
@@ -73,6 +77,9 @@ export interface PostureFull {
 		reachable: boolean
 		assetCount: number
 		assetsSummary: Record<string, number>
+		ratingAuthority?: ScoreAuthority
+		codeLinkedExternalImpact: boolean
+		codeLinkedExternalImpactBand?: 'low' | 'medium' | 'high'
 		snapshotDate: string
 	}
 	trend: { date: string; score: number }[]

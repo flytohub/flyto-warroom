@@ -6,6 +6,18 @@
   },
   "openapi": "3.1.0",
   "paths": {
+    "/api/ fall through to the SPA shell": {
+      "get": {
+        "description": "Generated placeholder from Flyto2 Warroom CE frontend API usage. It proves public contract closure without exposing private engine handler, store, provider, or remediation code.",
+        "responses": {
+          "default": {
+            "description": "Shape is implemented by the private or image-delivered engine runtime."
+          }
+        },
+        "summary": "Frontend-observed GET /api/ fall through to the SPA shell",
+        "x-flyto-observed-frontend": true
+      }
+    },
     "/api/ or {{baseUrl}}/api": {
       "get": {
         "description": "Generated placeholder from Flyto2 Warroom CE frontend API usage. It proves public contract closure without exposing private engine handler, store, provider, or remediation code.",

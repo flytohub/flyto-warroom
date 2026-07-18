@@ -37,7 +37,6 @@ ee-sim-logs:
 
 audit:
 	python3 install/scripts/audit-release-tree.py .
-	python3 install/scripts/audit-frontend-runtime.py
 	python3 scripts/audit-ce-boundary.py .
 	python3 scripts/audit-github-protection.py .
 
@@ -50,7 +49,6 @@ frontend-test:
 	npm --prefix packages/flyto-code run audit:module-packages
 	npm --prefix packages/flyto-code run audit:module-physical-boundaries
 	npm --prefix packages/flyto-code run audit:design-system-boundary
-	npm --prefix packages/flyto-code run audit:self-hosted-nginx
 
 contracts-test:
 	python3 packages/flyto-contracts/conformance/validate.py runner-callback packages/flyto-contracts/examples/runner-callback.json

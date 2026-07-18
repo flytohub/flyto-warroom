@@ -64,6 +64,58 @@ func TestModulesExposeCEAndEnterpriseBoundary(t *testing.T) {
 	}
 }
 
+func TestBoundaryFailsClosedForAuthorityAndLicense(t *testing.T) {
+	resetCEEnv(t)
+	rec := getJSON("/api/v1/ce/boundary")
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, body = %s", rec.Code, rec.Body.String())
+	}
+
+	var body struct {
+		AuthorityBoundary struct {
+			Runtime                   string `json:"runtime"`
+			ScoreAuthoritySigning     string `json:"score_authority_signing"`
+			PublicComparableRatings   bool   `json:"public_comparable_ratings"`
+			FirebaseRatingAuthority   string `json:"firebase_rating_authority"`
+			LicensedAuthorityRequired bool   `json:"licensed_authority_required"`
+			CEPublicRatingMode        string `json:"ce_public_rating_mode"`
+			FailClosedWithoutLicense  bool   `json:"fail_closed_without_license"`
+			RuntimeSourcePullAllowed  bool   `json:"runtime_source_pull_allowed"`
+			PublicTreePrivateOverlays bool   `json:"public_tree_private_overlays"`
+			PrivateCodePublicScoring  string `json:"private_code_public_scoring"`
+		} `json:"authority_boundary"`
+		LicenseBoundary struct {
+			LicenseMode                 string `json:"license_mode"`
+			EnterpriseOverlayActivation string `json:"enterprise_overlay_activation"`
+			CommercialProviderExecution string `json:"commercial_provider_execution"`
+			LiveRemediationExecution    string `json:"live_remediation_execution"`
+			HostedControlPlane          string `json:"hosted_control_plane"`
+			OfflineEnterpriseLicense    string `json:"offline_enterprise_license"`
+		} `json:"license_boundary"`
+	}
+	decodeJSON(t, rec, &body)
+	if body.AuthorityBoundary.Runtime != "ce" ||
+		body.AuthorityBoundary.ScoreAuthoritySigning != "disabled" ||
+		body.AuthorityBoundary.PublicComparableRatings ||
+		body.AuthorityBoundary.FirebaseRatingAuthority != "private_saas_overlay_only" ||
+		!body.AuthorityBoundary.LicensedAuthorityRequired ||
+		body.AuthorityBoundary.CEPublicRatingMode != "local_external_non_comparable" ||
+		!body.AuthorityBoundary.FailClosedWithoutLicense ||
+		body.AuthorityBoundary.RuntimeSourcePullAllowed ||
+		body.AuthorityBoundary.PublicTreePrivateOverlays ||
+		body.AuthorityBoundary.PrivateCodePublicScoring != "redacted_external_impact_only" {
+		t.Fatalf("authority boundary is not fail-closed: %#v", body.AuthorityBoundary)
+	}
+	if body.LicenseBoundary.LicenseMode != "none" ||
+		body.LicenseBoundary.EnterpriseOverlayActivation != "disabled_in_ce" ||
+		body.LicenseBoundary.CommercialProviderExecution != "disabled" ||
+		body.LicenseBoundary.LiveRemediationExecution != "disabled" ||
+		body.LicenseBoundary.HostedControlPlane != "not_available_in_ce_runtime" ||
+		body.LicenseBoundary.OfflineEnterpriseLicense != "private_overlay_only" {
+		t.Fatalf("license boundary is not fail-closed: %#v", body.LicenseBoundary)
+	}
+}
+
 func TestCapabilitiesDefaultToCommunityLiveAndFailClosedActions(t *testing.T) {
 	resetCEEnv(t)
 

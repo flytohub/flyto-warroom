@@ -9,9 +9,9 @@ import { LETTER_GRADE_TONE } from '@lib/tokens/severity'
 // imports. `dashboard/types` keeps a re-export for dashboard-internal
 // callers.
 //
-// Bitsight-style display scoring:
+// Flyto2 display scoring:
 //   - Raw engine score: 0–100
-//   - Display score: 300–900, floored to nearest 10
+//   - Display score: 250–900, floored to nearest 10
 //   - Flooring avoids false precision — every visible change maps to a
 //     real risk vector change.
 // Security-semantic grade palette — every colour carries a fixed

@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-16T17:53:32.604861+00:00",
+  "generated_at": "2026-07-18T03:36:25.873528+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -135,7 +135,7 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1604,
+      "file_count": 1608,
       "generated_files": [
         "package.json",
         "package-lock.json",
@@ -243,7 +243,9 @@
         "forbidden_moats": [
           "commercial-intel",
           "enterprise-control-plane",
+          "firebase-rating-authority",
           "managed-remediation",
+          "public-rating-authority",
           "saas-control-plane"
         ],
         "private_overlay_kinds": [],
@@ -267,6 +269,7 @@
         "forbidden_moats": [],
         "private_overlay_kinds": [
           "signed-license-gates",
+          "signed-rating-authority",
           "sso-saml-scim",
           "legal-hold",
           "audit-retention",
@@ -292,6 +295,7 @@
         "forbidden_moats": [],
         "private_overlay_kinds": [
           "offline-license",
+          "signed-rating-authority",
           "airgap-installers",
           "offline-update-bundles",
           "signed-evidence-export"
@@ -319,7 +323,9 @@
           "hosted-control-plane",
           "managed-runner-fleet",
           "commercial-intel-connectors",
-          "managed-remediation"
+          "managed-remediation",
+          "firebase-rating-authority",
+          "public-rating-authority"
         ],
         "entitlement_source": "hosted_control_plane"
       }
@@ -333,6 +339,7 @@
     ],
     "protected_overlay_kinds": [
       "commercial intelligence datasets",
+      "Firebase/public rating authority signer and calibration service",
       "hosted SaaS control plane",
       "enterprise license signer",
       "live cloud/container/runtime remediation adapters",

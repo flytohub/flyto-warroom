@@ -62,6 +62,7 @@ export {
 
 export { ModeView, type ModeViewProps } from './ModeView'
 export { ExperienceToggle } from './ExperienceToggle'
+export { RatingAuthorityBadge, type RatingAuthorityBadgeProps } from './RatingAuthorityBadge'
 
 // Cross-surface display-scoring primitives.
 export { GRADE_COLORS, displayScore, gradeFor } from './scoring'

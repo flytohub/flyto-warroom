@@ -44,7 +44,7 @@ into the private Flyto2 source workspace for CE and commercial releases.
 Use a Signed-off-by line in commits when practical:
 
 ```text
-Signed-off-by: Your Name <dev@flyto2.com>
+Signed-off-by: Your Name <you@example.com>
 ```
 
 ## Maintainer Rule

@@ -121,7 +121,7 @@ VITE_CORTEX_URL=https://cortex.flyto2.com
 - Vite 8 (build), Mantine v8 + Tailwind v4 (UI)
 - `@tanstack/react-query` (data), `openapi-fetch` (typed client)
 - `lucide-react` (icons — no emoji)
-- `@flyto2/design-tokens` (shared design system with flyto-cloud, flyto-cortex)
+- `@flyto/design-tokens` (shared design system with flyto-cloud, flyto-cortex)
 - `flyto-i18n` (shared CDN-loaded translations, 17 languages)
 
 ## Design rules

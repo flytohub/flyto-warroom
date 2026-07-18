@@ -46,7 +46,9 @@
       "forbidden_moats": [
         "commercial-intel",
         "enterprise-control-plane",
+        "firebase-rating-authority",
         "managed-remediation",
+        "public-rating-authority",
         "saas-control-plane"
       ],
       "id": "community",
@@ -89,6 +91,7 @@
       "license_tier": "enterprise",
       "private_overlay_kinds": [
         "signed-license-gates",
+        "signed-rating-authority",
         "sso-saml-scim",
         "legal-hold",
         "audit-retention",
@@ -126,6 +129,7 @@
       "license_tier": "enterprise",
       "private_overlay_kinds": [
         "offline-license",
+        "signed-rating-authority",
         "airgap-installers",
         "offline-update-bundles",
         "signed-evidence-export"
@@ -165,7 +169,9 @@
         "hosted-control-plane",
         "managed-runner-fleet",
         "commercial-intel-connectors",
-        "managed-remediation"
+        "managed-remediation",
+        "firebase-rating-authority",
+        "public-rating-authority"
       ],
       "public_tree_contains_private_overlay": false,
       "runtime_source_pull_allowed": false
@@ -173,6 +179,7 @@
   ],
   "protected_overlay_kinds": [
     "commercial intelligence datasets",
+    "Firebase/public rating authority signer and calibration service",
     "hosted SaaS control plane",
     "enterprise license signer",
     "live cloud/container/runtime remediation adapters",

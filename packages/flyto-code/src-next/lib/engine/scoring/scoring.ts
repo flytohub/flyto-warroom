@@ -160,6 +160,36 @@ export interface UnifiedScoreEntry {
   activeSubVectors: number
   totalSubVectors: number
   computedAt: string
+  authority?: ScoreAuthority
+}
+
+export type ScoreAuthorityLevel = 'verified' | 'imported_verified' | 'local' | 'unavailable'
+export type ScoreAuthorityMode =
+  | 'flyto2_cloud'
+  | 'enterprise_online'
+  | 'enterprise_airgap'
+  | 'ce_local'
+  | 'local_compute'
+export type ScoreAuthoritySignatureStatus = 'valid' | 'missing' | 'invalid' | 'expired' | 'not_required'
+
+export interface ScoreAuthority {
+  level: ScoreAuthorityLevel
+  mode: ScoreAuthorityMode
+  label_key: string
+  algorithm_version: string
+  model_version: string
+  display_scale_id: string
+  source_manifest_version: string
+  calibration_version: string
+  evidence_completeness: number
+  signature_status: ScoreAuthoritySignatureStatus
+  comparable: boolean
+  caveats?: string[]
+  scope?: string
+  observation_window?: {
+    start?: string
+    end?: string
+  }
 }
 
 // ── API functions ──
@@ -214,6 +244,7 @@ export interface ComputedScoreResponse {
     total: number
   }
   mode: 'external' | 'internal' | 'combined'
+  authority?: ScoreAuthority
   explanations?: ScoringExplanationServer[]
   repo_scores?: RepoScoreResultServer[]
 }

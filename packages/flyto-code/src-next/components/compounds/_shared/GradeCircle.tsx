@@ -1,5 +1,5 @@
 /**
- * GradeCircle — Bitsight-style circular grade badge shared across surfaces.
+ * GradeCircle — Flyto2 circular grade badge shared across surfaces.
  *
  * Three states:
  *   1. Rated (colored) — impacts score

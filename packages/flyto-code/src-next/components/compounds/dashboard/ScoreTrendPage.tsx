@@ -471,9 +471,8 @@ function EventCard({ event, highlighted }: { event: ScoreEvent; highlighted?: bo
       boxShadow: highlighted ? `0 0 0 2px ${color}24` : undefined,
       display: 'flex', flexDirection: 'column', gap: 0.5,
     }}>
-      {/* Row 1: date + delta chip on the same line. Tight,
-          Bitsight-style — "May 18  •  ▲ 1 point" reads as a
-          headline at a glance. */}
+      {/* Row 1: date + delta chip on the same line. Tight enough that
+          "May 18  •  ▲ 1 point" reads as a headline at a glance. */}
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 1 }}>
         <Typography sx={{ fontSize: 12, fontWeight: 600, color: 'text.secondary' }}>
           {fmtDate(event.date)}
@@ -488,9 +487,9 @@ function EventCard({ event, highlighted }: { event: ScoreEvent; highlighted?: bo
         </Box>
       </Box>
 
-      {/* Row 2: big from→to scores. Bitsight 250-900 / 10-pt
-          scale — displayScore(raw) maps the engine's 0-100 raw
-          to the operator-facing display number. */}
+      {/* Row 2: big from→to scores. Flyto2 250-900 / 10-pt
+          display scale — displayScore(raw) maps the engine's 0-100
+          raw score to the operator-facing display number. */}
       <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 1 }}>
         <Typography sx={{ fontSize: 18, fontWeight: 800, fontVariantNumeric: 'tabular-nums', color: 'text.primary' }}>
           {fromDisplay}

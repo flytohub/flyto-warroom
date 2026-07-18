@@ -19,6 +19,7 @@
  */
 import { request } from '../client'
 import type { CTEMPriorityItem, CTEMSortKey } from '../ctem/ctem'
+import type { ScoreAuthority } from '../scoring/scoring'
 
 // ── External-posture KPI summary (Wave 1, P1-7) ─────────────────────
 //
@@ -157,6 +158,7 @@ export interface ContainerPosture {
   avg_score?: number
   avg_display?: number
   avg_grade?: string
+  authority?: ScoreAuthority
   /** Set when `score_available` is false (e.g. "no container scoring data yet"). */
   message?: string
   images: ContainerPostureAsset[]
@@ -203,6 +205,7 @@ export interface CloudPosture {
   avg_score?: number
   avg_display?: number
   avg_grade?: string
+  authority?: ScoreAuthority
   message?: string
   accounts: CloudPostureAccount[]
   resources: CloudPostureResource[]

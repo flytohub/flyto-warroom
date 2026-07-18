@@ -28,6 +28,7 @@ import {
   DataTable,
   EvidenceDrawer,
   ModeView,
+  RatingAuthorityBadge,
   type MRT_ColumnDef,
   type EvidenceSection,
 } from '@compounds/_shared'
@@ -143,6 +144,11 @@ function ContainerPostureManager({ p }: { p: ContainerPosture }) {
           </Box>
         )}
       </Box>
+      {p.authority && (
+        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
+          <RatingAuthorityBadge authority={p.authority} />
+        </Box>
+      )}
     </PostureFrame>
   )
 }
@@ -220,6 +226,7 @@ function ContainerPostureEngineer({ p }: { p: ContainerPosture }) {
           available={p.score_available}
           avgGrade={p.avg_grade}
           avgScore={p.avg_display ?? p.avg_score}
+          authority={p.authority}
           message={p.message}
         />
         <Box sx={{ mt: 2 }}>
@@ -302,6 +309,11 @@ function CloudPostureManager({ p }: { p: CloudPosture }) {
           </Box>
         )}
       </Box>
+      {p.authority && (
+        <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
+          <RatingAuthorityBadge authority={p.authority} />
+        </Box>
+      )}
     </PostureFrame>
   )
 }
@@ -394,6 +406,7 @@ function CloudPostureEngineer({ p }: { p: CloudPosture }) {
           available={p.score_available}
           avgGrade={p.avg_grade}
           avgScore={p.avg_display ?? p.avg_score}
+          authority={p.authority}
           message={p.message}
         />
         {p.accounts.length > 0 && (
@@ -440,6 +453,7 @@ function PostureStat({
   available,
   avgGrade,
   avgScore,
+  authority,
   message,
 }: {
   total: number
@@ -447,6 +461,7 @@ function PostureStat({
   available: boolean
   avgGrade?: string
   avgScore?: number
+  authority?: ContainerPosture['authority'] | CloudPosture['authority']
   message?: string
 }) {
   const coverage = coveragePct(scored, total)
@@ -464,6 +479,7 @@ function PostureStat({
           {message || t('warroom.postureNoScore')}
         </Typography>
       )}
+      {authority && <RatingAuthorityBadge authority={authority} />}
     </Box>
   )
 }
