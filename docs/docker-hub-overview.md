@@ -8,6 +8,16 @@ local security operations cockpit for code security, external attack surface,
 cloud/container/runtime posture, automated security testing, evidence, scoring,
 and compliance workflows.
 
+It is a self-hosted open-core security warroom and BYO offensive validation
+platform. Bring your own tools: Flyto2 turns their findings into verified
+attack paths, pentest evidence, and red-team scenarios.
+
+Not a scanner-only image. Existing security tools are inputs; the local loop is:
+
+```text
+Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation
+```
+
 This is a CE Preview for local labs, evaluators, security teams, and
 open-source users who want to run Warroom on their own Docker host.
 

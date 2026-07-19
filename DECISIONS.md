@@ -23,6 +23,16 @@ Decision: CE must remain locally runnable, inspectable, and patchable.
 Reason: open-core adoption depends on real local value, not a library dump or
 marketing-only mirror.
 
+## Deterministic Product Loop
+
+Decision: CE must ship a provider-free product-loop endpoint and smoke test so
+new users can verify the open-source warroom loop without Flyto2 Cloud,
+commercial connectors, Firebase rating authority, or Enterprise overlays.
+
+Reason: a GitLab-style CE needs visible product value in the first install. The
+loop is deterministic demo evidence, not a public rating authority or live
+remediation claim.
+
 ## GitLab-Style CE Upstream Contract
 
 Decision: CE is the public upstream base. Enterprise, SaaS, on-prem, and

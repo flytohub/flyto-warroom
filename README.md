@@ -8,6 +8,22 @@
 
 Self-hosted Community Edition for the Flyto2 security operations platform.
 
+Flyto2 Warroom CE is a self-hosted open-core security warroom and
+BYO offensive validation platform. Bring your own tools: Flyto2
+turns their findings into verified attack paths, pentest evidence,
+and red-team scenarios.
+
+It is not a scanner-only dashboard. Existing security tools are
+inputs; the product loop is:
+
+```text
+Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation
+```
+
+CE is useful without Flyto2 Cloud. Enterprise Cloud Bridge adds
+commercial intelligence, managed remediation, identity, support,
+fleet execution, and signed premium evidence when teams need it.
+
 Flyto2 Warroom CE is the self-hosted open-core security operations
 platform for code, CTEM, external attack surface, cloud, container,
 runtime, automated security testing, evidence, scoring, and compliance
@@ -118,7 +134,7 @@ enterprise adapters, and live remediation workers are not exported.
 | --- | --- | ---: | --- |
 | `flyto-code` | `flyto-code` | 1610 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
-| `flyto-engine-ce` | `flyto-engine` | 92 | Classified CE backend kernel source for capability, resource, and safety primitives. |
+| `flyto-engine-ce` | `flyto-engine` | 94 | Classified CE backend kernel source for capability, resource, and safety primitives. |
 
 ## Docker Images
 

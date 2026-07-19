@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-07-19
+
+- Added a deterministic CE product-loop contract at
+  `/api/v1/ce/product-loop`, shared by the official Flyto2 engine runtime and
+  the CE-safe source runtime.
+- Added `install/scripts/smoke-ce-stack.py` plus `make ce-smoke` so local
+  Docker Compose installs verify engine health, frontend proxying, runner,
+  verification, brand-vision, and product-loop payload shape.
+- Updated README, Docker Hub overview, feature matrix, install docs, and
+  release-readiness docs around Flyto2 Warroom CE as a self-hosted open-core
+  security warroom and BYO offensive validation platform.
+- Kept commercial intelligence, public rating authority, Enterprise identity,
+  managed remediation, and live cloud/container/runtime remediation behind
+  private signed overlays.
+
 ## 2026-07-01
 
 - Added multi-arch Docker publishing for official CE images. Release scripts

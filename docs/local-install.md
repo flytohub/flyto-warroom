@@ -40,12 +40,19 @@ Then start the stack:
 
 ```sh
 make -C /tmp/flyto2-warroom-ce ce-up
+make -C /tmp/flyto2-warroom-ce ce-smoke
 ```
 
 Open:
 
 - Frontend: `http://localhost:8088`
 - Engine health: `http://localhost:8080/health`
+- CE product loop: `http://localhost:8080/api/v1/ce/product-loop`
+
+`ce-smoke` checks engine health, the deterministic CE product-loop contract,
+the frontend API proxy for that contract, runner health, verification health,
+and brand-vision health. It prints the service name, URL, status code, and
+validation error when a setting is wrong.
 
 Sign in with the initial admin email and password provided to `setup-ce.py`.
 CE uses engine-issued local JWTs; it does not require

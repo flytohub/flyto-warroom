@@ -8,6 +8,8 @@ This directory contains the public CE install surface:
 - `demo-workspace.json` is the public demo seed bundle.
 - `scripts/setup-ce.py` creates local-only secrets and the first admin account.
 - `scripts/preflight.py` validates local configuration before compose starts.
+- `scripts/smoke-ce-stack.py` verifies a running compose stack, including the
+  engine CE product-loop route and frontend API proxy.
 - `scripts/seed-demo-workspace.py` seeds the demo evidence workspace through the
   public local JWT API.
 - `scripts/verify-docker-images.py` checks Docker Hub tags and digests.

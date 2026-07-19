@@ -24,6 +24,9 @@ The public CE release tree must pass:
   images
 - demo seed workspace audit covering code, container, cloud, external,
   evidence, and AutoFix
+- running-stack smoke with `python3 install/scripts/smoke-ce-stack.py --env install/.env`
+  after `make ce-up`, including engine health, frontend proxy, runner,
+  verification, brand-vision, and deterministic CE product-loop contract
 - `python3 install/scripts/provider-readiness.py --scope public_release`
   records paid/account gates and returns `CODE_READY_PROVIDER_BLOCKED` until
   the account owner marks the required providers ready.

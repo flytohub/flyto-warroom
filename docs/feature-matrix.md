@@ -4,6 +4,15 @@ Machine-generated from `services/flyto-engine-ce/internal/modulecatalog/catalog.
 Do not hand-edit this file in the public mirror; change the private
 `flyto-engine` module catalog and rerun the open-core exporter.
 
+Flyto2 Warroom CE is a self-hosted open-core security warroom and
+BYO offensive validation platform: it turns existing tool findings into
+verified attack paths, pentest evidence, and red-team scenarios.
+It is not a scanner-only dashboard.
+
+```text
+Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation
+```
+
 CE must stay useful without Flyto2 Cloud. Enterprise must stay compelling
 without exposing private datasets, provider credentials, hosted control
 planes, live remediation workers, or commercial billing implementation.
@@ -43,5 +52,12 @@ behind this split.
 
 - `ce_included` modules must expose real local value through pages, permissions, or features.
 - `enterprise_addon` and `enterprise_only` modules must declare a gate, commercial action, or provider boundary.
+- Premium actions must fail closed when entitlement, role, connector, bridge, or evidence-signature checks fail.
 - Premium actions stay visible as gated states and fail closed when entitlement, role, connector, bridge, or evidence-signature checks fail.
 - This matrix is product positioning evidence; runnable private handlers, store internals, commercial providers, and proprietary intelligence remain outside the CE source tree.
+
+## Contribution Boundary
+
+CE changes should flow back upstream. Accepted community changes are reviewed as
+patch bundles, applied to the private source workspace when appropriate, tested,
+and exported again into this public mirror.

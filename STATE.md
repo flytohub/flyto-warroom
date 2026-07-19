@@ -13,6 +13,15 @@
 - The generated open-core overlay audit proves CE is the public upstream base,
   paid editions are build-time overlays, runtime source pulls are forbidden,
   and CE scores remain local/external rather than public rating authority.
+- CE exposes a deterministic public product-loop contract at
+  `/api/v1/ce/product-loop` in both the official engine runtime and the
+  CE-safe source runtime. The loop covers code, container, cloud, runtime, and
+  external surfaces with findings, attack paths, evidence, remediation,
+  validation, SLA state, and merge contracts without provider execution or
+  private Enterprise implementation.
+- `make ce-smoke` checks a running Docker Compose stack end to end: engine
+  health, frontend health, frontend API proxy, runner, verification,
+  brand-vision, and the CE product-loop payload.
 
 ## Known Boundaries
 

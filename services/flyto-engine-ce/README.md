@@ -10,6 +10,7 @@ It intentionally contains low-level, testable kernel packages only:
 - `ce/worker-ce/**`: Runnable CE worker source runtime exposing health, boundary, and deterministic queue/scheduler/backoff/circuit/canary self-tests without private scheduler dispatch, store, hosted runner callbacks, commercial adapters, or remediation orchestration. Validation: `go test ./ce/worker-ce`.
 - `internal/canon/**`: Canonical URL/domain helpers; no customer data, provider credentials, store, SaaS, billing, or enterprise imports. Validation: `go test ./internal/canon`.
 - `internal/errx/**`: Typed API error envelopes shared by public clients and integrations. Validation: `go test ./internal/errx`.
+- `internal/ceproductloop/**`: Deterministic CE product-loop contract shared by the source runtime and official CE engine image; no store, provider, billing, SaaS, or enterprise imports. Validation: `go test ./internal/ceproductloop`.
 - `internal/modulecatalog/**`: Public module/page/capability catalog data and parser used by CE docs and UI composition. Validation: `go test ./internal/modulecatalog`.
 - `internal/permission/**`: Capability, edition, and action-gate kernel. Provider-specific entitlement mutation remains private. Validation: `go test ./internal/permission`.
 - `internal/resource/**`: Resource normalization and graph primitives used to merge code, cloud, container, runtime, and external surfaces. Validation: `go test ./internal/resource`.

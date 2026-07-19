@@ -51,6 +51,11 @@
       "validation": "go test ./internal/errx"
     },
     {
+      "path": "internal/ceproductloop/**",
+      "reason": "Deterministic CE product-loop contract shared by the source runtime and official CE engine image; no store, provider, billing, SaaS, or enterprise imports.",
+      "validation": "go test ./internal/ceproductloop"
+    },
+    {
       "path": "internal/modulecatalog/**",
       "reason": "Public module/page/capability catalog data and parser used by CE docs and UI composition.",
       "validation": "go test ./internal/modulecatalog"

@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-19T00:19:47.459372+00:00",
+  "generated_at": "2026-07-19T02:28:40.020099+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -51,6 +51,7 @@
     "install/scripts/setup-ce.py",
     "install/scripts/verify-docker-images.py",
     "install/scripts/preflight.py",
+    "install/scripts/smoke-ce-stack.py",
     "install/scripts/mint-ee-sim-jwt.py",
     "install/scripts/audit-release-tree.py",
     "docs/local-install.md",
@@ -81,6 +82,7 @@
     "handoffs/2026-07-16-ce-frontend-package-manifest-api.md",
     "handoffs/2026-07-17-generated-open-core-sync.md",
     "handoffs/2026-07-18-gitlab-style-open-core-contract.md",
+    "handoffs/2026-07-19-ce-public-product-loop.md",
     "docs/official-builds.md",
     "docs/account-security.md",
     "docs/docker-hub-overview.md",
@@ -189,7 +191,7 @@
     {
       "name": "flyto-engine-ce",
       "repo": "flyto-engine",
-      "file_count": 92,
+      "file_count": 94,
       "generated_files": [
         "README.md",
         "go.mod",

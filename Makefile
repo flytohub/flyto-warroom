@@ -5,7 +5,7 @@ DOCKER_COMPOSE ?= $(shell if docker compose version >/dev/null 2>&1; then printf
 COMPOSE_CE = $(DOCKER_COMPOSE) --env-file $(ENV_CE) -f install/docker-compose.ce.yml
 COMPOSE_EE_SIM = $(DOCKER_COMPOSE) --env-file $(ENV_EE_SIM) -f install/docker-compose.ce.yml -f install/docker-compose.ee-sim.yml
 
-.PHONY: setup-ce preflight lint test backend-test frontend-test contracts-test verify verify-images ce-up ce-down ce-logs ce-ps ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit open-core-audit build-local-images
+.PHONY: setup-ce preflight lint test backend-test frontend-test contracts-test verify verify-images ce-up ce-down ce-logs ce-ps ce-smoke ce-reset-db ee-sim-up ee-sim-down ee-sim-logs audit open-core-audit positioning-audit demo-seed-dry-run provider-readiness provider-readiness-strict public-release-check build-local-images
 
 setup-ce:
 	python3 install/scripts/setup-ce.py
@@ -40,9 +40,24 @@ audit:
 	python3 scripts/audit-ce-boundary.py .
 	python3 scripts/audit-open-core-overlay.py .
 	python3 scripts/audit-github-protection.py .
+	python3 scripts/audit-positioning.py .
+	python3 install/scripts/seed-demo-workspace.py --dry-run
+	python3 install/scripts/provider-readiness.py --scope public_release --allow-provider-blocked
 
 open-core-audit:
 	python3 scripts/audit-open-core-overlay.py .
+
+positioning-audit:
+	python3 scripts/audit-positioning.py .
+
+demo-seed-dry-run:
+	python3 install/scripts/seed-demo-workspace.py --dry-run
+
+provider-readiness:
+	python3 install/scripts/provider-readiness.py --scope public_release --allow-provider-blocked
+
+provider-readiness-strict:
+	python3 install/scripts/provider-readiness.py --scope public_release
 
 lint: audit
 
@@ -71,6 +86,11 @@ preflight:
 
 verify-images:
 	python3 install/scripts/verify-docker-images.py
+
+ce-smoke:
+	python3 install/scripts/smoke-ce-stack.py --env $(ENV_CE)
+
+public-release-check: verify provider-readiness-strict
 
 build-local-images:
 	sh install/scripts/build-local-images.sh /Users/chester/flytohub
