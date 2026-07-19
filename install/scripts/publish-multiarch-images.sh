@@ -312,10 +312,10 @@ if buildx_available; then
   buildx_build "$BRAND_VISION_IMAGE" "$BRAND_VISION_TAG" "$WORKSPACE/flyto-engine/brand-vision" "$WORKSPACE/flyto-engine/brand-vision/Dockerfile"
   buildx_build "$PDF_IMAGE" "$PDF_TAG" "$WORKSPACE/flyto-engine/pdf-service" "$WORKSPACE/flyto-engine/pdf-service/Dockerfile"
   buildx_build "$FRONTEND_IMAGE" "$FRONTEND_TAG" "$CODE_CTX" "$CODE_CTX/Dockerfile" \
-    --build-arg "VITE_ENGINE_URL=${FLYTO_CODE_ENGINE_URL:-http://localhost:8080}" \
-    --build-arg "VITE_AUTH_MODE=${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
-    --build-arg "VITE_AUTOMATION_URL=${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
-    --build-arg "VITE_CORTEX_URL=${FLYTO_CORTEX_URL:-http://localhost:8080}"
+    --build-arg "FLYTO_PUBLIC_ENGINE_ORIGIN=${FLYTO_CODE_ENGINE_URL:-__same_origin__}" \
+    --build-arg "FLYTO_PUBLIC_MODE=${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
+    --build-arg "FLYTO_PUBLIC_AUTOMATION_ORIGIN=${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
+    --build-arg "FLYTO_PUBLIC_CORTEX_ORIGIN=${FLYTO_CORTEX_URL:-http://localhost:8080}"
 else
   echo "docker buildx unavailable; using docker build --platform plus docker manifest"
   legacy_build_engine_worker
@@ -324,10 +324,10 @@ else
   legacy_build "$BRAND_VISION_IMAGE" "$BRAND_VISION_TAG" "$WORKSPACE/flyto-engine/brand-vision" "$WORKSPACE/flyto-engine/brand-vision/Dockerfile"
   legacy_build "$PDF_IMAGE" "$PDF_TAG" "$WORKSPACE/flyto-engine/pdf-service" "$WORKSPACE/flyto-engine/pdf-service/Dockerfile"
   legacy_build "$FRONTEND_IMAGE" "$FRONTEND_TAG" "$CODE_CTX" "$CODE_CTX/Dockerfile" \
-    --build-arg "VITE_ENGINE_URL=${FLYTO_CODE_ENGINE_URL:-http://localhost:8080}" \
-    --build-arg "VITE_AUTH_MODE=${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
-    --build-arg "VITE_AUTOMATION_URL=${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
-    --build-arg "VITE_CORTEX_URL=${FLYTO_CORTEX_URL:-http://localhost:8080}"
+    --build-arg "FLYTO_PUBLIC_ENGINE_ORIGIN=${FLYTO_CODE_ENGINE_URL:-__same_origin__}" \
+    --build-arg "FLYTO_PUBLIC_MODE=${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
+    --build-arg "FLYTO_PUBLIC_AUTOMATION_ORIGIN=${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
+    --build-arg "FLYTO_PUBLIC_CORTEX_ORIGIN=${FLYTO_CORTEX_URL:-http://localhost:8080}"
 fi
 
 if [ "$PUSH" -eq 1 ]; then

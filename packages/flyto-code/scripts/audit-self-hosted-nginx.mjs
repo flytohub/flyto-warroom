@@ -31,6 +31,14 @@ const checks = [
     pass: nginx.includes('resolver 127.0.0.11') && nginx.includes('set $flyto_engine_upstream http://engine:8080;'),
   },
   {
+    name: 'NGINX CSP allows self-hosted local engine origins without opening broad http',
+    pass: nginx.includes("connect-src 'self'") &&
+      nginx.includes('http://localhost:8080') &&
+      nginx.includes('http://127.0.0.1:8080') &&
+      !nginx.includes('connect-src http:') &&
+      !nginx.includes('connect-src https:'),
+  },
+  {
     name: 'SPA fallback remains after API proxy',
     pass: nginx.indexOf('location /api/') !== -1 &&
       nginx.indexOf('location / {') !== -1 &&
