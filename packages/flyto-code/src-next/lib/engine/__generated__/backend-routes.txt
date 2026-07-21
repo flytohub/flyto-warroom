@@ -36,6 +36,7 @@ GET /api/v1/budgets/costs
 GET /api/v1/budgets/incidents
 GET /api/v1/budgets/overview
 GET /api/v1/budgets/policies
+GET /api/v1/ce/product-loop
 GET /api/v1/code/alerts/{id}/blast-graph
 GET /api/v1/code/alerts/{id}/history
 GET /api/v1/code/attack-surface/{id}/history

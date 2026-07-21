@@ -8,6 +8,7 @@
     "dev": "vite --config vite.config.next.ts --configLoader runner --open",
     "build": "tsc -b && vite build --config vite.config.next.ts",
     "lint": "eslint .",
+    "audit:eslint-warnings": "node scripts/audit-eslint-warning-budget.mjs",
     "preview": "vite preview",
     "gen:api": "openapi-typescript ../flyto-engine/api/openapi.yaml -o src-next/lib/engine/openapi-schema.gen.ts",
     "sync:backend-routes": "node scripts/sync-backend-routes.mjs",

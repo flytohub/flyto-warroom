@@ -11,7 +11,8 @@ import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const viewPath = path.join(ROOT, 'src-next/components/compounds/product-verification/ProductVerificationView.tsx')
+const modulePath = path.join(ROOT, 'src-next/components/compounds/product-verification')
+const viewPath = path.join(modulePath, 'ProductVerificationView.tsx')
 const e2ePath = path.join(ROOT, 'e2e/product_verification_evidence.spec.ts')
 const enBundlePath = path.join(ROOT, 'public/i18n/code/en.json')
 
@@ -20,8 +21,19 @@ function read(file) {
 }
 
 const view = read(viewPath)
+const moduleSources = listSourceFiles(modulePath)
+  .map((file) => read(file))
+  .join('\n')
 const e2e = read(e2ePath)
 const enTranslations = flattenCodeTranslations(JSON.parse(read(enBundlePath)))
+
+const requiredCompositionTokens = [
+  'useProductVerificationController',
+  'ProductVerificationCommandPanel',
+  'ProductVerificationOverview',
+  'AutomationTestPanel',
+  'ProductVerificationEvidencePanel',
+]
 
 const requiredViewTokens = [
   'Overview',
@@ -113,17 +125,23 @@ const requiredE2ETokens = [
 ]
 
 const failures = []
-if (view.includes('refetchInterval')) {
+if (moduleSources.includes('refetchInterval')) {
   failures.push({
-    file: path.relative(ROOT, viewPath),
-    reason: 'ProductVerificationView must rely on SSE invalidation, mutation invalidation, and manual refresh, not component polling.',
+    file: path.relative(ROOT, modulePath),
+    reason: 'Product Verification must rely on SSE invalidation, mutation invalidation, and manual refresh, not component polling.',
     token: 'refetchInterval',
   })
 }
 
+for (const token of requiredCompositionTokens) {
+  if (!view.includes(token)) {
+    failures.push({ file: path.relative(ROOT, viewPath), reason: 'missing composition boundary token', token })
+  }
+}
+
 for (const token of requiredViewTokens) {
-  if (!viewHasToken(token)) {
-    failures.push({ file: path.relative(ROOT, viewPath), reason: 'missing cockpit surface token', token })
+  if (!moduleHasToken(token)) {
+    failures.push({ file: path.relative(ROOT, modulePath), reason: 'missing cockpit surface token', token })
   }
 }
 
@@ -144,17 +162,26 @@ if (failures.length > 0) {
 
 console.log('product verification cockpit audit: PASS')
 
-function viewHasToken(token) {
-  if (view.includes(token)) return true
+function moduleHasToken(token) {
+  if (moduleSources.includes(token)) return true
   const matchingKeys = Object.entries(enTranslations)
     .filter(([, value]) => value === token)
     .map(([key]) => key)
   return matchingKeys.some((key) => (
-    view.includes(`t('${key}'`) ||
-    view.includes(`t("${key}"`) ||
-    view.includes(`tOr('${key}'`) ||
-    view.includes(`tOr("${key}"`)
+    moduleSources.includes(`t('${key}'`) ||
+    moduleSources.includes(`t("${key}"`) ||
+    moduleSources.includes(`tOr('${key}'`) ||
+    moduleSources.includes(`tOr("${key}"`)
   ))
+}
+
+function listSourceFiles(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true })
+    .flatMap((entry) => {
+      const target = path.join(directory, entry.name)
+      if (entry.isDirectory()) return listSourceFiles(target)
+      return /\.(?:ts|tsx)$/.test(entry.name) ? [target] : []
+    })
 }
 
 function flattenCodeTranslations(bundle) {

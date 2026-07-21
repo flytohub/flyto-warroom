@@ -36,13 +36,18 @@ It intentionally contains low-level, testable kernel packages only:
 - `internal/stats/**`: Small statistical helpers for score/report calculations; standard-library only. Validation: `go test ./internal/stats`.
 
 The source-published CE runtimes under `ce/engine-ce` and `ce/worker-ce` are
-runnable. They expose health, readiness, boundary, module catalog, capability
-snapshot, access self-test, and deterministic worker primitive self-test
-contracts. The production-compatible private API server and worker remain
-delivered as CE images until their orchestration, store internals, commercial
-providers, SaaS adapters, enterprise adapters, hosted runner callbacks, live
-remediation adapters, and proprietary threat-intelligence pipelines are
-physically split.
+runnable and reproducible through this package's multi-stage `Dockerfile`.
+They expose health, readiness, boundary, module catalog, capability snapshot,
+product-loop, access self-test, and deterministic worker primitive self-test
+contracts. The root source-build Compose profile pairs them with the same
+public React frontend at `/community`.
+
+The source-build profile is a public contract/product-loop proof, not a claim
+that the production-compatible private API server is source-published. The
+full CE image distribution keeps local database workflows and provider-backed
+scans; private orchestration, commercial providers, SaaS/Enterprise adapters,
+hosted runner callbacks, live remediation, and proprietary intelligence remain
+outside this package.
 
 ## Contribution Rule
 

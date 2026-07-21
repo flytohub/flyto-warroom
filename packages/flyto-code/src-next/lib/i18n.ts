@@ -10,6 +10,7 @@
 import { flattenTranslations } from './i18nFlatten'
 
 declare const __BUILD_TIMESTAMP__: string;
+declare const __AIRGAP_BUILD__: boolean;
 
 export type Locale = string
 
@@ -17,7 +18,7 @@ type Translations = Record<string, string>
 
 // --- CDN config ---
 const I18N_VERSION = 'main'
-const CDN_ENDPOINTS = [
+const CDN_ENDPOINTS = __AIRGAP_BUILD__ ? ['/i18n'] : [
   // Same-origin first. The deploy workflow bakes
   // flyto-i18n/dist/code/* into public/i18n/code/ at build time, so this
   // is always present in the served bundle. Zero CORS, zero rate limit,
@@ -56,7 +57,7 @@ let localeVersion = 0
 let availableLocales: Array<{ code: string; name: string; native: string; region: string; completion: number }> = []
 
 // --- Flag helpers (use region from manifest → SVG from CDN or local /flags/) ---
-const FLAG_BASE = import.meta.env.DEV
+const FLAG_BASE = import.meta.env.DEV || __AIRGAP_BUILD__
   ? '/flags'
   : 'https://raw.githubusercontent.com/flytohub/flyto-i18n/main/dist/flags'
 

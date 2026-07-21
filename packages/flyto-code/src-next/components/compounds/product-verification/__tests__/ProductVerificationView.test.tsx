@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { describe, expect, it, vi, beforeEach } from 'vitest'
 import { ProductVerificationView } from '../ProductVerificationView'
@@ -554,5 +554,56 @@ describe('ProductVerificationView', () => {
     expect(screen.getByText('not registered in API scanner registry')).toBeTruthy()
     expect(screen.getByText('/api/v1/code/orgs/{org_id}/warroom-verification/runs')).toBeTruthy()
     expect(screen.getByText(/run run-1 -> sha256:evidence/)).toBeTruthy()
+  })
+
+  it('keeps manual verification disabled until scoped input is complete and submits the exact payload', async () => {
+    renderView()
+    await screen.findByText('Automated Security Testing')
+
+    const runButton = screen.getByRole('button', { name: /Start scan/ }) as HTMLButtonElement
+    expect(runButton.disabled).toBe(true)
+
+    fireEvent.change(screen.getByLabelText('Approved target URL'), {
+      target: { value: '  https://customer.example/app  ' },
+    })
+    fireEvent.change(screen.getByLabelText('Repo scope'), {
+      target: { value: '  repo-42  ' },
+    })
+    fireEvent.click(screen.getByRole('checkbox', { name: 'Preview only' }))
+
+    expect(runButton.disabled).toBe(false)
+    fireEvent.click(runButton)
+
+    await waitFor(() => expect(engineMocks.createWarroomVerificationRun).toHaveBeenCalledWith('org-1', {
+      target_url: 'https://customer.example/app',
+      repo_id: 'repo-42',
+      dry_run: false,
+    }))
+  })
+
+  it('wires scheduler enable and run-now controls to their backend mutations', async () => {
+    renderView()
+    await screen.findByText('Automated Security Testing')
+    fireEvent.click(screen.getByRole('tab', { name: /Scheduler Runs/ }))
+    await screen.findByText('product_verification')
+
+    fireEvent.click(screen.getByLabelText('Enabled'))
+    await waitFor(() => expect(engineMocks.patchProductVerificationScanner).toHaveBeenCalledWith({ enabled: true }))
+
+    fireEvent.click(screen.getByRole('button', { name: 'Run scheduler now' }))
+    await waitFor(() => expect(engineMocks.runProductVerificationScannerNow).toHaveBeenCalledTimes(1))
+  })
+
+  it('surfaces a backend rejection without optimistic success', async () => {
+    engineMocks.createWarroomVerificationRun.mockRejectedValueOnce(new Error('target scope denied'))
+    renderView()
+    await screen.findByText('Automated Security Testing')
+
+    fireEvent.change(screen.getByLabelText('Approved target URL'), {
+      target: { value: 'https://denied.example' },
+    })
+    fireEvent.click(screen.getByRole('button', { name: /Start scan/ }))
+
+    expect(await screen.findByText('target scope denied')).toBeTruthy()
   })
 })

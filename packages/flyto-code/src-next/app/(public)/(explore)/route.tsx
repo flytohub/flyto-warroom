@@ -2,6 +2,7 @@ import { FuseRouteItemType } from '@fuse/utils/FuseUtils';
 import ExploreHomeView from './components/ExploreHomeView';
 import ExploreIndustryView from './components/ExploreIndustryView';
 import ExploreScorecardView from './components/ExploreScorecardView';
+import CommunityDemoView from './components/CommunityDemoView';
 
 // HONEST PATH NOTE — 2026-05-19
 //
@@ -45,6 +46,12 @@ const explorePageLayout = {
 
 const route: FuseRouteItemType = {
 	children: [
+		{
+			path: 'community',
+			element: <CommunityDemoView />,
+			settings: explorePageLayout,
+			auth: null,
+		},
 		{
 			path: 'explore',
 			element: <ExploreHomeView />,

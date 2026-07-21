@@ -65,6 +65,8 @@ export interface RequestOptions {
   headers?: Record<string, string>
 }
 
+const PUBLIC_CE_PREFIX = ['/api', 'v1', 'ce'].join('/') + '/'
+
 export async function request<T>(
   method: string,
   path: string,
@@ -150,6 +152,41 @@ export async function request<T>(
     const code = nestedCode || body?.code || body?.blocking_reason || flatCode
     const msg = nested || body?.message || flat || `${res.status} ${res.statusText}`
     throw new EngineRequestError(msg, { status: res.status, code, body, requestId, retryable, details })
+  }
+  const text = await res.text()
+  if (!text.trim()) return null as T
+  return JSON.parse(text) as T
+}
+
+/** Public, read-only CE contract client. The path guard intentionally keeps
+ * anonymous access from becoming a general escape hatch around request(). */
+export async function requestPublicCE<T>(path: string): Promise<T> {
+  if (!path.startsWith(PUBLIC_CE_PREFIX)) {
+    throw new Error('Public CE requests are restricted to the CE product API')
+  }
+  const res = await fetch(`${BASE}${path}`, {
+    method: 'GET',
+    headers: {
+      'Accept-Language': getLocale(),
+    },
+  })
+  if (!res.ok) {
+    const errorText = await res.text().catch(() => '')
+    let body: { error?: { message?: string; code?: string } | string; message?: string } | null = null
+    if (errorText) {
+      try {
+        body = JSON.parse(errorText) as typeof body
+      } catch {
+        body = { message: errorText }
+      }
+    }
+    const nested = typeof body?.error === 'object' ? body.error?.message : undefined
+    const flat = typeof body?.error === 'string' ? body.error : undefined
+    const code = typeof body?.error === 'object' ? body.error?.code : flat
+    throw new EngineRequestError(
+      nested || body?.message || flat || `${res.status} ${res.statusText}`,
+      { status: res.status, code, body },
+    )
   }
   const text = await res.text()
   if (!text.trim()) return null as T

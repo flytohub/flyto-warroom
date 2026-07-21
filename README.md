@@ -105,6 +105,23 @@ Default local ports:
 | Verification | `8344` |
 | Brand Vision | `8095` |
 
+### Build The Public Source Profile
+
+The source profile builds the Apache-2.0 engine kernel, worker, and the
+same React frontend directly from this repository. It does not pull
+Flyto2 service images or require credentials:
+
+```sh
+make source-build
+make source-up
+make source-smoke
+```
+
+Open `http://127.0.0.1:18088/community`. This source profile proves the
+provider-free product-loop and worker reliability contracts. The full CE
+image profile above adds local database, provider scans, runner, reports,
+and authenticated project workflows. See `docs/source-build.md`.
+
 ## Architecture
 
 ```mermaid
@@ -132,9 +149,9 @@ enterprise adapters, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1610 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1635 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
-| `flyto-engine-ce` | `flyto-engine` | 94 | Classified CE backend kernel source for capability, resource, and safety primitives. |
+| `flyto-engine-ce` | `flyto-engine` | 95 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
 
 ## Docker Images
 
@@ -182,6 +199,10 @@ calibration remain private signed overlays.
 | Stop CE | `make ce-down` |
 | Follow logs | `make ce-logs` |
 | Reset local database | `make ce-reset-db` |
+| Build public source profile | `make source-build` |
+| Start public source profile | `make source-up` |
+| Smoke public source profile | `make source-smoke` |
+| Stop public source profile | `make source-down` |
 | Verify release tree | `make verify` |
 | Verify image digests | `make verify-images` |
 

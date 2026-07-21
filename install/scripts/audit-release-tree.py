@@ -15,6 +15,7 @@ REQUIRED = [
     "packages/flyto-contracts/schemas/evidence-event.schema.json",
     "services/flyto-engine-ce/README.md",
     "services/flyto-engine-ce/go.mod",
+    "services/flyto-engine-ce/Dockerfile",
     "services/flyto-engine-ce/SOURCE_BOUNDARY.json",
     "services/flyto-engine-ce/ce/engine-ce/main.go",
     "services/flyto-engine-ce/ce/engine-ce/product_loop.go",
@@ -31,8 +32,21 @@ REQUIRED = [
     "services/flyto-engine-ce/internal/safehttp/safehttp.go",
     "packages/flyto-code/package.json",
     "packages/flyto-code/src-next/lib/env.ts",
+    "packages/flyto-code/src-next/lib/engine/platform/community.ts",
+    "packages/flyto-code/src-next/app/(control-panel)/flyto/projects/components/ProjectsPage.tsx",
+    "packages/flyto-code/src-next/app/(public)/(explore)/components/CommunityDemoView.tsx",
+    "packages/flyto-code/src-next/app/(public)/(explore)/route.tsx",
+    "packages/flyto-code/src-next/components/compounds/onboarding/CommunityProductLoopPanel.styles.ts",
+    "packages/flyto-code/src-next/components/compounds/onboarding/CommunityProductLoopPanel.tsx",
+    "packages/flyto-code/src-next/components/compounds/product-verification/AutomationTestPanel.tsx",
+    "packages/flyto-code/src-next/components/compounds/product-verification/ProductVerificationEvidencePanel.tsx",
+    "packages/flyto-code/src-next/components/compounds/product-verification/ProductVerificationOverview.tsx",
+    "packages/flyto-code/src-next/components/compounds/product-verification/ProductVerificationView.tsx",
+    "packages/flyto-code/src-next/components/compounds/product-verification/productVerificationModel.ts",
+    "packages/flyto-code/src-next/components/compounds/product-verification/useProductVerificationController.ts",
     "packages/flyto-code/.env.example",
     "install/docker-compose.ce.yml",
+    "install/docker-compose.source.yml",
     "install/edition-overlays.json",
     "install/docker-compose.ee-sim.yml",
     "install/.env.ce.example",
@@ -41,9 +55,11 @@ REQUIRED = [
     "install/scripts/setup-ce.py",
     "install/scripts/preflight.py",
     "install/scripts/smoke-ce-stack.py",
+    "install/scripts/smoke-source-stack.py",
     "install/scripts/verify-docker-images.py",
     "install/scripts/mint-ee-sim-jwt.py",
     "docs/local-install.md",
+    "docs/source-build.md",
     "docs/enterprise-simulation.md",
     "docs/enterprise-cloud-bridge.md",
     "docs/code-protection.md",
@@ -111,6 +127,11 @@ PRIVATE_GLOBS = [
     "packages/flyto-code/.env",
     "packages/flyto-code/.env.local",
     "packages/flyto-code/.env.production",
+    "packages/flyto-code/src-next/types/module-manifests/enterprise.ts",
+    "packages/flyto-code/src-next/types/module-manifests/future.ts",
+    "packages/flyto-code/src-next/app/(control-panel)/flyto/workspace/components/pages/EnterpriseControlPlanePage.tsx",
+    "packages/flyto-code/src-next/components/compounds/system/EnterpriseControlPlaneView.tsx",
+    "packages/flyto-code/src-next/components/compounds/system/__tests__/EnterpriseControlPlaneView.test.tsx",
 ]
 
 LOCAL_ARTIFACT_PARTS = {
@@ -184,6 +205,11 @@ def main() -> int:
     ce_compose = ROOT / "install/docker-compose.ce.yml"
     if ce_compose.exists():
         ce_text = text(ce_compose)
+        frontend_port = '"127.0.0.1:${FLYTO_CODE_PORT:-8088}:8080"'
+        if frontend_port not in ce_text:
+            blockers.append(
+                f"CE compose must target the unprivileged frontend image: {frontend_port}"
+            )
         for regex in DENIED_CE_COMPOSE:
             if regex.search(ce_text):
                 blockers.append(f"CE compose contains denied marker: {regex.pattern}")
@@ -195,6 +221,67 @@ def main() -> int:
         ]:
             if marker not in ce_text:
                 blockers.append(f"CE compose missing required marker: {marker}")
+    source_compose = ROOT / "install/docker-compose.source.yml"
+    if source_compose.exists():
+        source_text = text(source_compose)
+        frontend_port = '"127.0.0.1:${FLYTO_SOURCE_CODE_PORT:-18088}:8080"'
+        if frontend_port not in source_text:
+            blockers.append(
+                f"source compose must target the unprivileged frontend image: {frontend_port}"
+            )
+        for marker in [
+            "../services/flyto-engine-ce",
+            "../packages/flyto-code",
+            "target: engine",
+            "target: worker",
+            "FLYTO_PUBLIC_MODE: community",
+        ]:
+            if marker not in source_text:
+                blockers.append(f"source compose missing public build marker: {marker}")
+        for denied in ("docker.io/chesterhsu", "ghcr.io", "enterprise_airgap", "../flyto-engine"):
+            if denied in source_text:
+                blockers.append(f"source compose contains private or published runtime marker: {denied}")
+    ce_source_dockerfile = ROOT / "services/flyto-engine-ce/Dockerfile"
+    if ce_source_dockerfile.exists():
+        ce_image_text = text(ce_source_dockerfile)
+        from_lines = re.findall(r"(?m)^FROM\s+.+$", ce_image_text)
+        external_from_lines = [line for line in from_lines if "FROM runtime-base AS " not in line]
+        if len(external_from_lines) != 2 or any(
+            not re.search(r"@sha256:[0-9a-f]{64}(?:\s+AS\s+[\w-]+)?$", line, re.IGNORECASE)
+            for line in external_from_lines
+        ):
+            blockers.append("every CE source image stage must use a sha256-pinned base image")
+        for marker in (
+            "FROM --platform=$BUILDPLATFORM",
+            "ARG TARGETOS=linux",
+            "ARG TARGETARCH",
+            "USER 10001:10001",
+        ):
+            if marker not in ce_image_text:
+                blockers.append(f"CE source image missing multi-architecture runtime marker: {marker}")
+        if not re.search(r"adduser[^\n]*-u\s+10001\b", ce_image_text):
+            blockers.append("CE source runtime must create fixed uid 10001")
+        if ce_image_text.count("HEALTHCHECK") != 2:
+            blockers.append("CE source engine and worker must each define a healthcheck")
+    enterprise_compose = ROOT / "install/docker-compose.ee-sim.yml"
+    enterprise_text = text(enterprise_compose) if enterprise_compose.exists() else ""
+    for marker in (
+        "FLYTO_DEPLOYMENT_ID",
+        "FLYTO_ENTERPRISE_JWT_SECRET_KEY",
+        "FLYTO_ENTERPRISE_JWT_PREVIOUS_SECRET_KEYS",
+    ):
+        if marker not in enterprise_text:
+            blockers.append(f"enterprise sim compose missing deployment-bound JWT marker: {marker}")
+    mint_script = ROOT / "install/scripts/mint-ee-sim-jwt.py"
+    mint_text = text(mint_script) if mint_script.exists() else ""
+    for marker in (
+        '"iss": "urn:flyto:enterprise:" + deployment_id',
+        '"aud": ["flyto-enterprise-backend", "flyto-engine"]',
+        '"deployment_id": deployment_id',
+        '"jti": str(uuid.uuid4())',
+    ):
+        if marker not in mint_text:
+            blockers.append(f"enterprise sim JWT mint contract missing marker: {marker}")
     frontend_env = ROOT / "packages/flyto-code/.env.example"
     if frontend_env.exists():
         frontend_text = text(frontend_env)
@@ -203,6 +290,21 @@ def main() -> int:
         for denied in ("VITE_AUTH_MODE=enterprise", "VITE_AUTH_MODE=firebase"):
             if denied in frontend_text:
                 blockers.append(f"frontend CE env contains denied auth mode: {denied}")
+    frontend_dockerfile = ROOT / "packages/flyto-code/Dockerfile"
+    frontend_docker_text = text(frontend_dockerfile) if frontend_dockerfile.exists() else ""
+    for marker in (
+        "FROM --platform=$BUILDPLATFORM node:22-alpine@sha256:",
+        "FROM nginxinc/nginx-unprivileged:alpine@sha256:",
+        'org.opencontainers.image.licenses="Apache-2.0"',
+        "NGINX_ENVSUBST_FILTER=^FLYTO_",
+        "FLYTO_NGINX_RESOLVER=127.0.0.11",
+        "COPY --chown=101:0 ${NGINX_CONF} /etc/nginx/templates/default.conf.template",
+        "USER 101:101",
+        "EXPOSE 8080",
+        "http://127.0.0.1:8080/healthz",
+    ):
+        if marker not in frontend_docker_text:
+            blockers.append(f"CE frontend image contract missing marker: {marker}")
     overlay_path = ROOT / "install/edition-overlays.json"
     if overlay_path.exists():
         try:

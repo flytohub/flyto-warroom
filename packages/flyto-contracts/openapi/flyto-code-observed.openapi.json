@@ -522,6 +522,18 @@
         "x-flyto-observed-frontend": true
       }
     },
+    "/api/v1/ce/product-loop": {
+      "get": {
+        "description": "Generated placeholder from Flyto2 Warroom CE frontend API usage. It proves public contract closure without exposing private engine handler, store, provider, or remediation code.",
+        "responses": {
+          "default": {
+            "description": "Shape is implemented by the private or image-delivered engine runtime."
+          }
+        },
+        "summary": "Frontend-observed GET /api/v1/ce/product-loop",
+        "x-flyto-observed-frontend": true
+      }
+    },
     "/api/v1/code/ai-governance/use-cases/{param}": {
       "patch": {
         "description": "Generated placeholder from Flyto2 Warroom CE frontend API usage. It proves public contract closure without exposing private engine handler, store, provider, or remediation code.",
@@ -7245,6 +7257,18 @@
           }
         },
         "summary": "Frontend-observed GET /api/verification/run \u00b7 trigger run-verification \u00b7 type_a_ui_api_no_effect",
+        "x-flyto-observed-frontend": true
+      }
+    },
+    "/api/workflows": {
+      "get": {
+        "description": "Generated placeholder from Flyto2 Warroom CE frontend API usage. It proves public contract closure without exposing private engine handler, store, provider, or remediation code.",
+        "responses": {
+          "default": {
+            "description": "Shape is implemented by the private or image-delivered engine runtime."
+          }
+        },
+        "summary": "Frontend-observed GET /api/workflows",
         "x-flyto-observed-frontend": true
       }
     }

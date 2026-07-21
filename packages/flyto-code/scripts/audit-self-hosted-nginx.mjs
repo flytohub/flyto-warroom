@@ -5,6 +5,10 @@ const nginx = fs.readFileSync('nginx.conf', 'utf8');
 
 const checks = [
   {
+    name: 'Docker build stage is native and digest-pinned',
+    pass: dockerfile.includes('FROM --platform=$BUILDPLATFORM node:22-alpine@sha256:'),
+  },
+  {
     name: 'Docker build args avoid sensitive-looking ARG/ENV names',
     pass: !/\b(?:ARG|ENV)\s+[A-Z0-9_]*(?:KEY|TOKEN|SECRET|AUTH|PASSWORD)[A-Z0-9_]*/.test(dockerfile),
   },
@@ -16,7 +20,18 @@ const checks = [
   },
   {
     name: 'Docker healthcheck uses IPv4 healthz',
-    pass: dockerfile.includes('http://127.0.0.1:80/healthz'),
+    pass: dockerfile.includes('http://127.0.0.1:8080/healthz'),
+  },
+  {
+    name: 'Docker runtime is digest-pinned and unprivileged',
+    pass: dockerfile.includes('FROM nginxinc/nginx-unprivileged:alpine@sha256:') &&
+      dockerfile.includes('COPY --chown=101:0 ${NGINX_CONF} /etc/nginx/templates/default.conf.template') &&
+      dockerfile.includes('USER 101:101') &&
+      dockerfile.includes('EXPOSE 8080'),
+  },
+  {
+    name: 'NGINX listens on an unprivileged port',
+    pass: nginx.includes('listen       8080;') && nginx.includes('listen       [::]:8080;'),
   },
   {
     name: 'NGINX exposes exact /healthz endpoint',

@@ -100,7 +100,7 @@ function RequireAuth({ children }: { children: React.ReactNode }) {
 	// legal review of publishing third-party security ratings without
 	// consent. RequireAuth will redirect anonymous /explore traffic
 	// to /sign-in.
-	const publicPaths = ['/sign-in', '/sign-up', '/sign-out', '/404', '/401', '/security', '/trust', '/privacy', '/terms', '/beta'];
+	const publicPaths = ['/sign-in', '/sign-up', '/sign-out', '/404', '/401', '/security', '/trust', '/privacy', '/terms', '/beta', '/community'];
 	const isPublic = publicPaths.some(p => location.pathname.startsWith(p));
 
 	// Already logged in on a login page → redirect to projects

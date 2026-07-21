@@ -105,6 +105,54 @@ function checkSurface(spec, engineAvailable, router, registry) {
 
 const surfaces = [
   {
+    id: 'community_product_loop',
+    frontendFiles: [
+      'src-next/app/(control-panel)/flyto/projects/components/ProjectsPage.tsx',
+      'src-next/app/(public)/(explore)/components/CommunityDemoView.tsx',
+      'src-next/app/(public)/(explore)/route.tsx',
+      'src-next/components/compounds/onboarding/CommunityProductLoopPanel.tsx',
+      'src-next/lib/engine/platform/community.ts',
+    ],
+    frontendContains: [
+      {
+        file: 'src-next/app/(control-panel)/flyto/projects/components/ProjectsPage.tsx',
+        tokens: ['CommunityProductLoopPanel', '<CommunityProductLoopPanel />'],
+      },
+      {
+        file: 'src-next/app/(public)/(explore)/components/CommunityDemoView.tsx',
+        tokens: ["env.authMode !== 'community'", '<CommunityProductLoopPanel enabled />'],
+      },
+      {
+        file: 'src-next/app/App.tsx',
+        tokens: ["'/community'"],
+      },
+      {
+        file: 'src-next/components/compounds/onboarding/CommunityProductLoopPanel.tsx',
+        tokens: ["env.authMode === 'community'", 'qk.platform.communityProductLoop()', 'getCEProductLoop'],
+      },
+    ],
+    frontendTests: [
+      'src-next/components/compounds/onboarding/__tests__/CommunityProductLoopPanel.test.tsx',
+      'src-next/app/(public)/(explore)/components/__tests__/CommunityDemoView.test.tsx',
+      'src-next/lib/engine/platform/__tests__/community.test.ts',
+    ],
+    queryContains: [
+      { file: 'src-next/lib/queryKeys.ts', tokens: ['communityProductLoop'] },
+    ],
+    backendFiles: [
+      'api/routes_ce_public.go',
+      'internal/ceproductloop/product_loop.go',
+    ],
+    backendTests: [
+      'api/routes_ce_public_test.go',
+      'api/authz_public_exception_test.go',
+      'internal/ceproductloop/product_loop_test.go',
+    ],
+    routes: [
+      { method: 'GET', path: '/api/v1/ce/product-loop' },
+    ],
+  },
+  {
     id: 'footprint',
     frontendFiles: [
       'src-next/components/compounds/footprint/FootprintGraphView.tsx',

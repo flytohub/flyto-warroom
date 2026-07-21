@@ -15,7 +15,10 @@ commit that file.
 
 Required values:
 
+- `FLYTO_DEPLOYMENT_ID` identifies this installation and binds tokens to it.
 - `FLYTO_ENTERPRISE_JWT_SECRET_KEY` must be at least 32 characters.
+- `FLYTO_ENTERPRISE_JWT_PREVIOUS_SECRET_KEYS` optionally retains old verification
+  keys during a bounded signing-key rotation.
 - `FLYTO_RUNNER_SECRET` enables signed engine-to-runner calls.
 - `FLYTO_VERIFICATION_SECRET` enables signed verification callbacks.
 - `FLYTO_MASTER_KEY` enables sealed runtime credentials.
@@ -30,6 +33,7 @@ make -C /tmp/flyto2-warroom-ce ee-sim-up
 
 ```sh
 export FLYTO_ENTERPRISE_JWT_SECRET_KEY=<same-local-secret>
+export FLYTO_DEPLOYMENT_ID=local-ee-sim
 TOKEN="$(python3 /tmp/flyto2-warroom-ce/install/scripts/mint-ee-sim-jwt.py)"
 ```
 
@@ -40,7 +44,7 @@ sessionStorage.setItem("jwt_access_token", JSON.stringify("<paste-token-here>"))
 ```
 
 The engine verifies the HS256 token and rejects expired, unsigned, wrong-type,
-or wrong-secret tokens.
+wrong-secret, wrong-issuer, wrong-audience, and cross-deployment tokens.
 
 ## What This Simulates
 

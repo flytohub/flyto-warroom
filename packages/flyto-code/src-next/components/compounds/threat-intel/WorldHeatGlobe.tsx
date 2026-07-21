@@ -28,14 +28,16 @@ import { COUNTRY_CENTROIDS, type CountryCentroid } from './countryCentroids'
 // setting the prop replaces this constant.
 const DEFAULT_HQ: CountryCentroid = COUNTRY_CENTROIDS.TW
 
-// Globe textures — three-globe ships several. Operator 2026-05-22:
+// Globe textures are copied from the locked three-globe dependency into the
+// build output, keeping this view functional in disconnected deployments.
+// Operator 2026-05-22:
 // "地球會不會太黑了一點" — swapped earth-dark.jpg (nearly all
 // black, continents barely visible) for earth-blue-marble.jpg
 // (NASA blue marble, vivid ocean + land detail). Topology bump
-// stays the same. Both URLs are browser-cached aggressively.
-const GLOBE_IMG_DARK = 'https://unpkg.com/three-globe@2.42.4/example/img/earth-blue-marble.jpg'
-const GLOBE_IMG_LIGHT = 'https://unpkg.com/three-globe@2.42.4/example/img/earth-day.jpg'
-const BUMP_IMG = 'https://unpkg.com/three-globe@2.42.4/example/img/earth-topology.png'
+// stays the same. These same-origin URLs are browser-cached aggressively.
+const GLOBE_IMG_DARK = '/assets/globe/earth-blue-marble.jpg'
+const GLOBE_IMG_LIGHT = '/assets/globe/earth-day.jpg'
+const BUMP_IMG = '/assets/globe/earth-topology.png'
 
 interface Props {
   byCountry: Record<string, number>

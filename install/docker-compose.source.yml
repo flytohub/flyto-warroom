@@ -1,0 +1,46 @@
+name: flyto2-warroom-ce-source
+
+services:
+  engine:
+    build:
+      context: ../services/flyto-engine-ce
+      dockerfile: Dockerfile
+      target: engine
+    image: flyto2/warroom-engine-ce-source:local
+    restart: unless-stopped
+    environment:
+      FLYTO_EDITION: community
+      FLYTO_CE_ADDR: :8080
+    ports:
+      - "127.0.0.1:${FLYTO_SOURCE_ENGINE_PORT:-18080}:8080"
+
+  worker:
+    build:
+      context: ../services/flyto-engine-ce
+      dockerfile: Dockerfile
+      target: worker
+    image: flyto2/warroom-worker-ce-source:local
+    restart: unless-stopped
+    environment:
+      FLYTO_EDITION: community
+      FLYTO_CE_WORKER_ADDR: :8081
+    ports:
+      - "127.0.0.1:${FLYTO_SOURCE_WORKER_PORT:-18081}:8081"
+
+  frontend:
+    build:
+      context: ../packages/flyto-code
+      dockerfile: Dockerfile
+      args:
+        FLYTO_PUBLIC_ENGINE_ORIGIN: __same_origin__
+        FLYTO_PUBLIC_AUTOMATION_ORIGIN: __same_origin__
+        FLYTO_PUBLIC_CORTEX_ORIGIN: __same_origin__
+        FLYTO_PUBLIC_MODE: community
+        FLYTO_PUBLIC_RELEASE: source-local
+    image: flyto2/warroom-code-ce-source:local
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${FLYTO_SOURCE_CODE_PORT:-18088}:8080"
+    depends_on:
+      engine:
+        condition: service_healthy

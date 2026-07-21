@@ -40,6 +40,7 @@ export * from './platform/news'
 export * from './platform/launchpad'
 export * from './platform/notifications'
 export * from './platform/projectCapabilities'
+export * from './platform/community'
 export * from './system/enterprise'
 
 export * from './history/history'

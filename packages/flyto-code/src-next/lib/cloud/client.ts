@@ -7,21 +7,19 @@
  * and handles YAML execution end-to-end.
  */
 
-import { auth } from '@lib/firebase'
 import { env } from '@lib/env'
 import { getLocale } from '@lib/i18n'
+import { getOptionalAuthToken } from '@lib/engine/authToken'
 
 export const CLOUD_BASE = env.automationUrl
 
 async function getToken(): Promise<string | null> {
-  const user = auth.currentUser
-  if (!user) return null
-  try { return await user.getIdToken() } catch { return null }
+  try { return await getOptionalAuthToken() } catch { return null }
 }
 
 export interface CloudRequestOptions {
   headers?: Record<string, string>
-  /** Require auth — throws if no Firebase user. Defaults to false; the
+  /** Require auth — throws if no active identity token. Defaults to false; the
    *  /workflows/run endpoint accepts anonymous callers. */
   requireAuth?: boolean
 }
@@ -67,7 +65,7 @@ export function cloudWsUrl(path: string): string {
 /** Open a WebSocket that authenticates via the first binary message after
  *  `onopen` instead of putting the token in the URL. The cloud worker
  *  expects an initial text frame `AUTH <token>` before streaming data.
- *  Falls back to unauthenticated if no Firebase user is signed in. */
+ *  Falls back to unauthenticated if no identity session is active. */
 export async function cloudWsConnect(path: string): Promise<{ url: string; token: string | null }> {
   const token = await getToken()
   return { url: cloudWsUrl(path), token }

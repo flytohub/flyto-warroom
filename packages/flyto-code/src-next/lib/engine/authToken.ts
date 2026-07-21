@@ -34,7 +34,7 @@ function buildDevToken(): string {
   return `${header}.${payload}.`
 }
 
-export async function getEngineToken(): Promise<string> {
+export async function getOptionalAuthToken(): Promise<string | null> {
   const sessionToken = readSessionToken()
   if (sessionToken) return sessionToken
 
@@ -43,11 +43,17 @@ export async function getEngineToken(): Promise<string> {
   }
 
   if (isSessionJWTAuthMode()) {
-    throw new Error('Not authenticated')
+    return null
   }
 
   const { auth } = await import('@lib/firebase')
   const user = auth.currentUser
-  if (!user) throw new Error('Not authenticated')
+  if (!user) return null
   return user.getIdToken()
+}
+
+export async function getEngineToken(): Promise<string> {
+  const token = await getOptionalAuthToken()
+  if (!token) throw new Error('Not authenticated')
+  return token
 }

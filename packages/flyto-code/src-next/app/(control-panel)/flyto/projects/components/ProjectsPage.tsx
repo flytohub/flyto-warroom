@@ -23,6 +23,7 @@ import { OrgCard } from './OrgCard';
 import { CreateProjectWizard } from './CreateProjectWizard';
 import { PlatformCoverage } from './PlatformCoverage';
 import { CosmicBackground } from './CosmicBackground';
+import { CommunityProductLoopPanel } from '@compounds/onboarding/CommunityProductLoopPanel';
 
 // Drifting aurora blobs behind the hero — ambient "tech" motion.
 const auroraA = keyframes`
@@ -211,6 +212,10 @@ function ProjectsPage() {
           >
             {t('projects.create')}
           </Button>
+        </Box>
+
+        <Box sx={{ mb: 4 }}>
+          <CommunityProductLoopPanel />
         </Box>
 
         {/* Risk Pulse tiles — replaces the flat "1 Projects 24 Repos

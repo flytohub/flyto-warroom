@@ -1,6 +1,6 @@
 {
   "schema": "flyto.open-core-export.v1",
-  "generated_at": "2026-07-19T02:28:40.020099+00:00",
+  "generated_at": "2026-07-21T10:12:15.459030+00:00",
   "source_workspace": "/Users/chester/flytohub",
   "source_manifest": "/Users/chester/flytohub/flyto-engine/release/config/flyto2/open-core-manifest.json",
   "package_name": "flyto2-warroom-ce",
@@ -115,8 +115,10 @@
     "docs/public-roadmap.md",
     "docs/reference-architecture.md",
     "docs/release-readiness.md",
+    "docs/source-build.md",
     "install/README.md",
     "install/demo-workspace.json",
+    "install/docker-compose.source.yml",
     "install/fixtures/cloud-bundle/bundle-template.yaml",
     "install/fixtures/cloud-bundle/recipes/flyto2-ui-login-smoke.yaml",
     "install/fixtures/cloud-bundle/recipes/flyto2-ui-smoke.yaml",
@@ -126,6 +128,7 @@
     "install/scripts/provider-readiness.py",
     "install/scripts/publish-multiarch-images.sh",
     "install/scripts/seed-demo-workspace.py",
+    "install/scripts/smoke-source-stack.py",
     "install/tests/test_cloud_bundle_fixture.py",
     "install/tests/test_open_core_overlay_audit.py",
     "install/tests/test_positioning_audit.py",
@@ -140,7 +143,7 @@
     {
       "name": "flyto-code",
       "repo": "flyto-code",
-      "file_count": 1610,
+      "file_count": 1635,
       "generated_files": [
         "package.json",
         "package-lock.json",
@@ -191,12 +194,13 @@
     {
       "name": "flyto-engine-ce",
       "repo": "flyto-engine",
-      "file_count": 94,
+      "file_count": 95,
       "generated_files": [
         "README.md",
         "go.mod",
         "go.sum",
         "LICENSE",
+        "Dockerfile",
         "SOURCE_BOUNDARY.json"
       ],
       "path": "services/flyto-engine-ce"
@@ -406,6 +410,18 @@
       "src-next/types/module-manifests/__tests__/moduleBoundaryContract.test.ts"
     ],
     "ce_required_public_files": [
+      "src-next/app/(control-panel)/flyto/projects/components/ProjectsPage.tsx",
+      "src-next/app/(public)/(explore)/components/CommunityDemoView.tsx",
+      "src-next/app/(public)/(explore)/route.tsx",
+      "src-next/components/compounds/onboarding/CommunityProductLoopPanel.styles.ts",
+      "src-next/components/compounds/onboarding/CommunityProductLoopPanel.tsx",
+      "src-next/components/compounds/product-verification/AutomationTestPanel.tsx",
+      "src-next/components/compounds/product-verification/ProductVerificationEvidencePanel.tsx",
+      "src-next/components/compounds/product-verification/ProductVerificationOverview.tsx",
+      "src-next/components/compounds/product-verification/ProductVerificationView.tsx",
+      "src-next/components/compounds/product-verification/productVerificationModel.ts",
+      "src-next/components/compounds/product-verification/useProductVerificationController.ts",
+      "src-next/lib/engine/platform/community.ts",
       "src-next/types/module-manifests/packageManifest.ts"
     ],
     "ce_allowed_contract_paths": [

@@ -1,0 +1,21 @@
+{
+  "schema": "flyto-code.eslint-warning-baseline.v1",
+  "generated_at": "2026-07-21T00:00:00Z",
+  "policy": "Legacy warnings may only decrease. Errors, new rule categories, and increases in total, product, or per-rule warning counts fail closed.",
+  "warnings": 404,
+  "product_warnings": 284,
+  "by_rule": {
+    "react-refresh/only-export-components": 137,
+    "react-hooks/set-state-in-effect": 78,
+    "react-hooks/exhaustive-deps": 72,
+    "@typescript-eslint/no-explicit-any": 65,
+    "react-hooks/refs": 15,
+    "react-hooks/static-components": 11,
+    "@typescript-eslint/no-unused-vars": 9,
+    "react-hooks/purity": 7,
+    "react-hooks/incompatible-library": 4,
+    "react-hooks/immutability": 4,
+    "react-hooks/preserve-manual-memoization": 1,
+    "unknown": 1
+  }
+}

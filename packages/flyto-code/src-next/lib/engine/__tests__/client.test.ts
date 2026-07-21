@@ -36,7 +36,7 @@ vi.mock('@lib/i18n', () => ({
 const fetchMock = vi.fn()
 vi.stubGlobal('fetch', fetchMock)
 
-import { EngineRequestError, request } from '../client'
+import { EngineRequestError, request, requestPublicCE } from '../client'
 
 function okJson(body: unknown) {
   return {
@@ -93,6 +93,28 @@ describe('engine client — token handling', () => {
   it('in prod mode, throws "Not authenticated" when no user', async () => {
     firebaseAuthMock.currentUser = null
     await expect(request('GET', '/api/v1/me')).rejects.toThrow('Not authenticated')
+    expect(fetchMock).not.toHaveBeenCalled()
+  })
+
+  it('reads the public CE contract without a user or Authorization header', async () => {
+    firebaseAuthMock.currentUser = null
+    fetchMock.mockResolvedValueOnce(okJson({ edition: 'community' }))
+
+    await expect(requestPublicCE('/api/v1/ce/product-loop')).resolves.toEqual({
+      edition: 'community',
+    })
+
+    expect(fetchMock).toHaveBeenCalledTimes(1)
+    const [url, init] = fetchMock.mock.calls[0]
+    expect(url).toBe('https://engine.example.com/api/v1/ce/product-loop')
+    expect(init.method).toBe('GET')
+    expect(init.headers.Authorization).toBeUndefined()
+  })
+
+  it('does not allow the public CE client to bypass auth on other APIs', async () => {
+    await expect(requestPublicCE('/api/v1/me')).rejects.toThrow(
+      'Public CE requests are restricted',
+    )
     expect(fetchMock).not.toHaveBeenCalled()
   })
 

@@ -367,6 +367,7 @@ export const qk = {
   },
 
   platform: {
+    communityProductLoop: () => ['ce-product-loop'] as const,
     orgs: () => ['orgs'] as const,
     capabilities: (o?: string) => ['capabilities', o] as const,
     moduleRegistry: (o?: string) => (o ? ['module-registry', o] as const : ['module-registry'] as const),

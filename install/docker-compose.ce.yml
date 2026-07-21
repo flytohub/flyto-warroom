@@ -224,7 +224,7 @@ services:
     image: "${FLYTO_WARROOM_FRONTEND_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_FRONTEND_TAG:-code-ce}"
     restart: unless-stopped
     ports:
-      - "127.0.0.1:${FLYTO_CODE_PORT:-8088}:80"
+      - "127.0.0.1:${FLYTO_CODE_PORT:-8088}:8080"
     depends_on:
       engine:
         condition: service_healthy

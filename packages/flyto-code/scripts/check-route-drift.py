@@ -67,6 +67,7 @@ SKIP_PATH_PARTS = {'__tests__', '__test__', 'node_modules', '.gen.ts'}
 #   request('GET', '/path')
 #   request<Type>('POST', `/path/${orgId}`, body)
 #   requestBlob('POST', `/path`, body)
+#   requestPublicCE<Type>('/api/v1/ce/product-loop')  # always GET
 #   fetch(`${BASE}/path`, { method: 'POST', ... })
 #   const url = `${BASE}/path`; fetch(url, { method: 'POST', ... })
 #
@@ -76,7 +77,7 @@ SKIP_PATH_PARTS = {'__tests__', '__test__', 'node_modules', '.gen.ts'}
 # These regexes only locate the CALL — the path is then read off via
 # `extract_template_literal` which handles ${} blocks with nested quotes
 # (common pattern: `/issues${query ? '?' + query : ''}`).
-RX_REQUEST_NAME = re.compile(r"""\brequest(?:Blob)?\b""")
+RX_REQUEST_NAME = re.compile(r"""\b(?P<name>request(?:Blob)?|requestPublicCE)\b""")
 RX_FETCH_CALL = re.compile(r"""\bfetch\(\s*""")
 RX_FETCH_METHOD = re.compile(r"""method\s*:\s*['"](?P<method>[A-Z]+)['"]""")
 RX_API_LITERAL_ASSIGN = re.compile(
@@ -127,7 +128,7 @@ def _skip_angle_type_args(text: str, start: int) -> int | None:
 
 
 def parse_request_call(text: str, start: int) -> tuple[str, str, int] | None:
-    """Parse request/requestBlob method + path from a call starting at start."""
+    """Parse a shared engine-client call starting at ``start``."""
     m = RX_REQUEST_NAME.match(text, start)
     if not m:
         return None
@@ -140,6 +141,11 @@ def parse_request_call(text: str, start: int) -> tuple[str, str, int] | None:
     if i >= len(text) or text[i] != '(':
         return None
     i = _skip_ws(text, i + 1)
+    if m.group('name') == 'requestPublicCE':
+        if i >= len(text) or text[i] not in "'\"`":
+            return None
+        raw, after = extract_template_literal(text, i)
+        return 'GET', raw, after
     if i >= len(text) or text[i] not in "'\"":
         return None
     method, i = extract_template_literal(text, i)
@@ -153,6 +159,27 @@ def parse_request_call(text: str, start: int) -> tuple[str, str, int] | None:
         return None
     raw, after = extract_template_literal(text, i)
     return method, raw, after
+
+
+def verify_client_parser_contract() -> None:
+    """Fail closed if a supported client call shape stops being discoverable."""
+    fixtures = {
+        "request('GET', '/api/v1/me')": ('GET', '/api/v1/me'),
+        "requestBlob<Result>('POST', '/api/v1/report')": ('POST', '/api/v1/report'),
+        "requestPublicCE<Loop>('/api/v1/ce/product-loop')": (
+            'GET',
+            '/api/v1/ce/product-loop',
+        ),
+    }
+    for source, expected in fixtures.items():
+        match = RX_REQUEST_NAME.search(source)
+        parsed = parse_request_call(source, match.start()) if match else None
+        actual = parsed[:2] if parsed else None
+        if actual != expected:
+            raise RuntimeError(
+                f'frontend route parser contract failed for {source!r}: '
+                f'expected {expected!r}, got {actual!r}'
+            )
 
 
 def extract_template_literal(text: str, start: int) -> tuple[str, int]:
@@ -516,6 +543,7 @@ def load_allowlist(path: Path) -> tuple[set[tuple[str, str]], set[tuple[str, str
 
 
 def main() -> int:
+    verify_client_parser_contract()
     ap = argparse.ArgumentParser(description=__doc__.split('\n\n', 1)[0])
     ap.add_argument('--engine-path', default='../flyto-engine', type=Path)
     ap.add_argument('--allowlist', default=SCRIPT_DIR / 'route-drift.allowlist', type=Path)

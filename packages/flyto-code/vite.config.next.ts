@@ -9,6 +9,18 @@ import { fileURLToPath } from 'url'
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url))
 const srcNext = path.resolve(projectRoot, './src-next')
+const providerFreeBuildModes = new Set([
+  'community',
+  'local',
+  'local_jwt',
+  'enterprise',
+  'enterprise_jwt',
+  'enterprise_airgap',
+])
+const authMode = (process.env.VITE_AUTH_MODE || '').toLowerCase()
+const providerFreeBuild = providerFreeBuildModes.has(authMode)
+const airgapBuild = authMode === 'enterprise_airgap'
+const firebaseEnterpriseStub = path.resolve(srcNext, 'lib/shims/firebaseEnterprise.ts')
 const devNoStoreHeaders = {
   'Cache-Control': 'no-store, no-cache, must-revalidate, private',
   'CDN-Cache-Control': 'no-store',
@@ -21,6 +33,17 @@ const engineProxyTarget = process.env.VITE_ENGINE_PROXY_TARGET || 'http://localh
 function htmlEntryPlugin(): Plugin {
   return {
     name: 'html-entry-next',
+    transformIndexHtml(html) {
+      if (!airgapBuild) return html
+      const start = '<!-- flyto:external-fonts:start -->'
+      const end = '<!-- flyto:external-fonts:end -->'
+      const startIndex = html.indexOf(start)
+      const endIndex = html.indexOf(end)
+      if (startIndex === -1 || endIndex === -1 || endIndex < startIndex) {
+        throw new Error('enterprise_airgap build cannot locate the external font block')
+      }
+      return html.slice(0, startIndex) + html.slice(endIndex + end.length)
+    },
     configureServer(server: ViteDevServer) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url ?? ''
@@ -41,6 +64,32 @@ function htmlEntryPlugin(): Plugin {
         }
         next()
       })
+    },
+  }
+}
+
+function localGlobeAssetsPlugin(): Plugin {
+  const sourceDir = path.resolve(projectRoot, 'node_modules/three-globe/example/img')
+  const outputDir = path.resolve(projectRoot, 'dist-next/assets/globe')
+  const assets = ['earth-blue-marble.jpg', 'earth-day.jpg', 'earth-topology.png']
+
+  return {
+    name: 'local-globe-assets',
+    closeBundle() {
+      fs.mkdirSync(outputDir, { recursive: true })
+      for (const asset of assets) {
+        fs.copyFileSync(path.join(sourceDir, asset), path.join(outputDir, asset))
+      }
+      fs.copyFileSync(
+        path.resolve(projectRoot, 'node_modules/three-globe/LICENSE'),
+        path.join(outputDir, 'LICENSE-three-globe.txt'),
+      )
+      if (airgapBuild) {
+        const localeMetaPath = path.resolve(projectRoot, 'dist-next/i18n/locale-meta.json')
+        const localeMeta = JSON.parse(fs.readFileSync(localeMetaPath, 'utf8')) as Record<string, unknown>
+        localeMeta.cdnFlagUrl = '/flags'
+        fs.writeFileSync(localeMetaPath, `${JSON.stringify(localeMeta, null, 2)}\n`)
+      }
     },
   }
 }
@@ -69,6 +118,7 @@ const sentryPlugin = process.env.SENTRY_AUTH_TOKEN
 export default defineConfig({
   plugins: [
     htmlEntryPlugin(),
+    localGlobeAssetsPlugin(),
     react({ jsxImportSource: '@emotion/react' }),
     tailwindcss(),
     ...(sentryPlugin ? [sentryPlugin] : []),
@@ -153,9 +203,6 @@ export default defineConfig({
           if (id.includes('/lodash/')) {
             return 'lodash-vendor'
           }
-          if (id.includes('/prismjs/')) {
-            return 'syntax-vendor'
-          }
           if (id.includes('/framer-motion/') || id.includes('/motion-dom/')) {
             return 'motion-vendor'
           }
@@ -193,10 +240,10 @@ export default defineConfig({
         },
       },
     },
-    // 'hidden' emits sourcemaps to disk for Sentry symbol upload
-    // but does NOT reference them from the JS bundles, so they
-    // aren't fetchable by the public.
-    sourcemap: 'hidden',
+    // Emit maps only when the Sentry upload plugin is active. Hidden maps are
+    // still directly downloadable if they remain in the final static image;
+    // the plugin uploads and deletes them before packaging.
+    sourcemap: sentryPlugin ? 'hidden' : false,
   },
   // Strip non-error console calls in production builds. Keeping
   // `console.error` lets Sentry/Datadog adapters still ingest, and
@@ -248,6 +295,17 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      // Enterprise session-JWT builds must not ship the Firebase SDK. Keep
+      // SaaS builds unchanged, while making accidental enterprise calls fail
+      // closed through a local provider-unavailable shim.
+      ...(providerFreeBuild ? {
+        'firebase/compat/auth': firebaseEnterpriseStub,
+        'firebase/compat/app': firebaseEnterpriseStub,
+        'firebase/compat': firebaseEnterpriseStub,
+        'firebase/auth': firebaseEnterpriseStub,
+        'firebase/app': firebaseEnterpriseStub,
+      } : {}),
+
       // material-react-table imports DatePicker/DateTimePicker/TimePicker
       // from @mui/x-date-pickers (an uninstalled peer dep) for its optional
       // editable date-cell variant, which the workspace's read-only dense
@@ -278,6 +336,7 @@ export default defineConfig({
   define: {
     'import.meta.env.VITE_PORT': JSON.stringify(5181),
     __BUILD_TIMESTAMP__: JSON.stringify(Date.now().toString(36)),
+    __AIRGAP_BUILD__: JSON.stringify(airgapBuild),
     global: 'window',
   },
 })

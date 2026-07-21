@@ -6,6 +6,7 @@ import hmac
 import json
 import os
 import time
+import uuid
 
 
 def b64url(data: bytes) -> str:
@@ -15,6 +16,7 @@ def b64url(data: bytes) -> str:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Mint a local Flyto2 Warroom enterprise-sim JWT.")
     parser.add_argument("--secret", default=os.environ.get("FLYTO_ENTERPRISE_JWT_SECRET_KEY", ""))
+    parser.add_argument("--deployment-id", default=os.environ.get("FLYTO_DEPLOYMENT_ID", "local-ee-sim"))
     parser.add_argument("--sub", default="local-admin")
     parser.add_argument("--email", default="local-admin@example.invalid")
     parser.add_argument("--name", default="Local Admin")
@@ -22,6 +24,9 @@ def main() -> int:
     args = parser.parse_args()
     if len(args.secret) < 32:
         raise SystemExit("secret must be at least 32 characters")
+    deployment_id = args.deployment_id.strip()
+    if not deployment_id:
+        raise SystemExit("deployment id must not be empty")
     now = int(time.time())
     header = {"alg": "HS256", "typ": "JWT"}
     payload = {
@@ -31,6 +36,10 @@ def main() -> int:
         "name": args.name,
         "iat": now,
         "exp": now + args.ttl_seconds,
+        "iss": "urn:flyto:enterprise:" + deployment_id,
+        "aud": ["flyto-enterprise-backend", "flyto-engine"],
+        "deployment_id": deployment_id,
+        "jti": str(uuid.uuid4()),
     }
     signing_input = ".".join([
         b64url(json.dumps(header, separators=(",", ":")).encode("utf-8")),

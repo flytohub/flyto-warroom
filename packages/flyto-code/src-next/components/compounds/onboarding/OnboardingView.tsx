@@ -15,6 +15,7 @@ import { getGitLabOAuthUrl, rememberGitLabReturnPath } from '@lib/oauth'
 import { t } from '@lib/i18n';
 import { RepoPickerModal, type RepoPickerCloseInfo, type RepoProvider } from '@compounds/_shared/picker'
 import { ScanUploadDropzone } from '@compounds/_shared/ScanUploadDropzone'
+import { CommunityProductLoopPanel } from './CommunityProductLoopPanel'
 
 type StepNum = 1 | 2 | 3
 type ProviderConfig = {
@@ -349,6 +350,8 @@ export function OnboardingView() {
                 })}
               </Box>
           </Paper>
+
+          <CommunityProductLoopPanel />
         </Box>
       )}
 
