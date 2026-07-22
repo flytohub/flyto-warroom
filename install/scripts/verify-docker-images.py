@@ -42,6 +42,9 @@ def run(cmd: list[str], *, timeout: int) -> subprocess.CompletedProcess[str]:
 
 def descriptor_digest(payload: object) -> str:
     if isinstance(payload, dict):
+        manifest = payload.get("manifest")
+        if isinstance(manifest, dict) and isinstance(manifest.get("digest"), str):
+            return manifest["digest"]
         descriptor = payload.get("Descriptor")
         if isinstance(descriptor, dict) and isinstance(descriptor.get("digest"), str):
             return descriptor["digest"]
@@ -50,6 +53,29 @@ def descriptor_digest(payload: object) -> str:
     if isinstance(payload, list) and len(payload) == 1:
         return descriptor_digest(payload[0])
     return ""
+
+
+def manifest_platforms(payload: object) -> set[str]:
+    if not isinstance(payload, dict):
+        return set()
+    manifest = payload.get("manifest")
+    if not isinstance(manifest, dict):
+        return set()
+    descriptors = manifest.get("manifests")
+    if not isinstance(descriptors, list):
+        return set()
+    platforms: set[str] = set()
+    for descriptor in descriptors:
+        if not isinstance(descriptor, dict):
+            continue
+        platform = descriptor.get("platform")
+        if not isinstance(platform, dict):
+            continue
+        os_name = str(platform.get("os", ""))
+        architecture = str(platform.get("architecture", ""))
+        if os_name and architecture and architecture != "unknown":
+            platforms.add(f"{os_name}/{architecture}")
+    return platforms
 
 
 def write_digests(manifest_path: Path, digests: dict[str, str]) -> None:
@@ -89,7 +115,10 @@ def main() -> int:
         print(f"{service} {image}{suffix}")
         if args.dry_run:
             continue
-        inspected = run(["docker", "manifest", "inspect", "--verbose", image], timeout=args.timeout)
+        inspected = run(
+            ["docker", "buildx", "imagetools", "inspect", image, "--format", "{{json .}}"],
+            timeout=args.timeout,
+        )
         if inspected.returncode != 0:
             blockers.append(f"manifest inspect failed for {image}: {inspected.stderr.strip() or inspected.stdout.strip()}")
             continue
@@ -99,7 +128,13 @@ def main() -> int:
             blockers.append(f"manifest inspect returned non-json output for {image}")
             continue
         actual_digest = descriptor_digest(parsed)
-        if expected_digest:
+        platforms = manifest_platforms(parsed)
+        missing_platforms = sorted({"linux/amd64", "linux/arm64"} - platforms)
+        if missing_platforms:
+            blockers.append(
+                f"manifest platforms missing for {image}: {', '.join(missing_platforms)}"
+            )
+        if expected_digest and not args.write_digests:
             if actual_digest != expected_digest:
                 blockers.append(
                     f"digest mismatch for {image}: expected {expected_digest}, got {actual_digest or 'missing'}"

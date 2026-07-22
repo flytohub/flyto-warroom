@@ -101,6 +101,7 @@ REQUIRED = [
     "CLA.md",
     "scripts/audit-github-protection.py",
     "scripts/audit-ce-boundary.py",
+    "scripts/audit-provenance.py",
     "scripts/audit-open-core-overlay.py",
 ]
 

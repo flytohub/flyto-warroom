@@ -54,6 +54,7 @@ ee-sim-logs:
 audit:
 	python3 install/scripts/audit-release-tree.py .
 	python3 scripts/audit-ce-boundary.py .
+	python3 scripts/audit-provenance.py .
 	python3 scripts/audit-open-core-overlay.py .
 	python3 scripts/audit-github-protection.py .
 	python3 scripts/audit-positioning.py .

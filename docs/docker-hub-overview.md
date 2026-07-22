@@ -1,7 +1,7 @@
 # Docker Hub Repository Overview
 
 ````markdown
-# Flyto2 Warroom CE Preview
+# Flyto2 Warroom CE
 
 Flyto2 Warroom CE is the self-hosted open-core edition of Flyto2 Warroom: a
 local security operations cockpit for code security, external attack surface,
@@ -18,7 +18,7 @@ Not a scanner-only image. Existing security tools are inputs; the local loop is:
 Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation
 ```
 
-This is a CE Preview for local labs, evaluators, security teams, and
+This Community Edition is for local labs, evaluators, security teams, and
 open-source users who want to run Warroom on their own Docker host.
 
 ## Links
@@ -123,10 +123,10 @@ services.
 
 ## Architecture Note
 
-This image set is currently published as linux/arm64 images from the local
-release pipeline. Check GitHub release notes and image digests before production
-use. linux/amd64 and multi-arch publishing should be enabled before a broader
-public launch.
+The official tags publish a manifest list for `linux/amd64` and `linux/arm64`.
+Every release records and verifies the registry descriptor digest in
+`OPEN_CORE_MANIFEST.json`; check GitHub release evidence and those digests
+before production use.
 
 ## Verify Image Digests
 

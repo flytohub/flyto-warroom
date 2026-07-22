@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import http.client
 import json
 from pathlib import Path
 import sys
@@ -44,8 +45,8 @@ def fetch(url: str) -> tuple[int, str]:
         return exc.code, exc.read().decode("utf-8", "replace")
     except error.URLError as exc:
         raise RuntimeError(str(exc.reason)) from exc
-    except TimeoutError as exc:
-        raise RuntimeError("timeout") from exc
+    except (http.client.HTTPException, OSError) as exc:
+        raise RuntimeError(str(exc) or exc.__class__.__name__) from exc
 
 
 def validate_product_loop(payload: dict[str, object]) -> list[str]:

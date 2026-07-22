@@ -232,6 +232,7 @@ Run before opening release-sensitive PRs:
 ```sh
 python3 install/scripts/audit-release-tree.py .
 python3 scripts/audit-ce-boundary.py .
+python3 scripts/audit-provenance.py .
 python3 scripts/audit-open-core-overlay.py .
 ```
 
@@ -240,13 +241,14 @@ python3 scripts/audit-open-core-overlay.py .
 The generated tree includes fail-closed release checks:
 
 - `make verify` runs release audits and Docker image digest dry-run.
-- `make audit` runs release, CE boundary, open-core overlay, and GitHub protection audits.
+- `make audit` runs release, CE boundary, provenance, open-core overlay, and GitHub protection audits.
 - `make verify-images` checks the public Docker image coordinates and
   expected digests in `OPEN_CORE_MANIFEST.json`.
 - GitHub Actions run governance, release, frontend build, contract, and
   Docker image audit jobs.
-- `OPEN_CORE_MANIFEST.json` records packages, image tags, image digests,
-  release files, closed-source boundaries, and merge contracts.
+- `OPEN_CORE_MANIFEST.json` records credential-free source commits, the
+  deterministic file inventory/tree hash, packages, image digests, release
+  files, closed-source boundaries, and merge contracts.
 
 ## Security
 

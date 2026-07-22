@@ -42,3 +42,13 @@ forks or runtime source pulls.
 Reason: public contributions must flow back into Flyto2 itself while moat code,
 commercial datasets, public rating authority, and managed remediation remain
 private signed overlays.
+
+## Deterministic Release Provenance
+
+Decision: every generated CE tree must pin all contributing source repositories
+to full commits and bind every exported file to one deterministic tree digest.
+The public manifest must never disclose a local workspace path or credentialed
+Git remote URL.
+
+Reason: a public mirror is auditable only when a stranger can connect the exact
+source inputs to the exact release tree without access to a maintainer machine.

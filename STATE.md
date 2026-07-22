@@ -8,6 +8,10 @@
   local installer assets, Docker image coordinates, and boundary audits.
 - `make verify` runs release audits, CE backend tests, frontend module-package
   boundary audit, and Docker image digest dry-run.
+- `OPEN_CORE_MANIFEST.json` records credential-free source repository URLs,
+  full source commits, a deterministic file inventory, and a SHA-256 digest of
+  the complete generated CE tree. `scripts/audit-provenance.py` fails when the
+  public tree or its source pins drift.
 - `install/edition-overlays.json` declares community, enterprise on-prem,
   enterprise airgap, and SaaS build-time overlay profiles.
 - The generated open-core overlay audit proves CE is the public upstream base,

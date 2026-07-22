@@ -62,6 +62,7 @@ REQUIRED_MARKERS = {
         "governance-audit",
         "docker-image-audit",
         "Audit CE moat and privacy boundary",
+        "Audit deterministic source provenance",
         "Audit open-core overlay contract",
         "Audit GitHub protection files",
         "Export upstream patch preview",
@@ -70,7 +71,12 @@ REQUIRED_MARKERS = {
     "scripts/audit-ce-boundary.py": [
         "CE_CONTROL_FILES",
         "POSTHOG",
-        "Flyto2 Warroom CE Preview",
+        "Flyto2 Warroom CE",
+    ],
+    "scripts/audit-provenance.py": [
+        "flyto.open-core-provenance.v1",
+        "tree_sha256",
+        "source_repositories",
     ],
     "scripts/audit-open-core-overlay.py": [
         "gitlab_style_open_core",

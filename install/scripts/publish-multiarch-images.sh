@@ -5,12 +5,13 @@ ROOT="$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)"
 WORKSPACE="/Users/chester/flytohub"
 IMAGE_REPOSITORY="${FLYTO_WARROOM_IMAGE_REPOSITORY:-docker.io/chesterhsu/flyto-warroom}"
 PLATFORMS="${FLYTO_WARROOM_PLATFORMS:-linux/amd64,linux/arm64}"
+SOURCE_MANIFEST="${FLYTO_WARROOM_SOURCE_MANIFEST:-}"
 PUSH=0
 NO_CACHE=0
 
 usage() {
   cat <<'USAGE'
-Usage: publish-multiarch-images.sh [--push] [--no-cache] [--workspace PATH] [--repository IMAGE] [--platforms linux/amd64,linux/arm64]
+Usage: publish-multiarch-images.sh [--push] [--no-cache] [--workspace PATH] [--source-manifest PATH] [--repository IMAGE] [--platforms linux/amd64,linux/arm64]
 
 Build Flyto2 Warroom CE Docker images for linux/amd64 and linux/arm64.
 With docker buildx, the script publishes manifest-list tags directly.
@@ -37,6 +38,10 @@ while [ "$#" -gt 0 ]; do
       IMAGE_REPOSITORY="$2"
       shift 2
       ;;
+    --source-manifest)
+      SOURCE_MANIFEST="$2"
+      shift 2
+      ;;
     --platforms)
       PLATFORMS="$2"
       shift 2
@@ -51,6 +56,8 @@ while [ "$#" -gt 0 ]; do
       ;;
   esac
 done
+
+SOURCE_MANIFEST="${SOURCE_MANIFEST:-$WORKSPACE/flyto-engine/release/config/flyto2/open-core-manifest.json}"
 
 ENGINE_IMAGE="${FLYTO_WARROOM_ENGINE_IMAGE:-$IMAGE_REPOSITORY}"
 ENGINE_TAG="${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
@@ -69,9 +76,25 @@ PDF_TAG="${FLYTO_WARROOM_PDF_TAG:-pdf-ce}"
 
 if [ "$PUSH" -ne 1 ]; then
   echo "dry-run: pass --push to publish images and manifest lists"
+elif [ ! -f "$SOURCE_MANIFEST" ]; then
+  echo "missing private source manifest for digest synchronization: $SOURCE_MANIFEST" >&2
+  exit 1
 fi
 
 python3 "$ROOT/install/scripts/audit-docker-build-boundary.py" "$WORKSPACE"
+
+source_revision() {
+  repo="$1"
+  if [ -n "$(git -C "$repo" status --porcelain --untracked-files=all)" ]; then
+    echo "source repository must be clean before image publishing: $repo" >&2
+    exit 1
+  fi
+  git -C "$repo" rev-parse HEAD
+}
+
+ENGINE_REVISION="$(source_revision "$WORKSPACE/flyto-engine")"
+CODE_REVISION="$(source_revision "$WORKSPACE/flyto-code")"
+CORE_REVISION="$(source_revision "$WORKSPACE/flyto-core")"
 
 TMP_ROOT="$(mktemp -d)"
 cleanup() {
@@ -197,6 +220,7 @@ buildx_build_engine_worker() {
   docker buildx build \
     --platform "$PLATFORMS" \
     $(no_cache_args) \
+    --label "org.opencontainers.image.revision=$ENGINE_REVISION" \
     -f "$WORKSPACE/flyto-engine/Dockerfile" \
     -t "$ENGINE_IMAGE:$ENGINE_TAG" \
     -t "$WORKER_IMAGE:$WORKER_TAG" \
@@ -289,6 +313,7 @@ legacy_build_engine_worker() {
       --build-arg "TARGETOS=$os_name" \
       --build-arg "TARGETARCH=$arch" \
       $(no_cache_args) \
+      --label "org.opencontainers.image.revision=$ENGINE_REVISION" \
       -f "$WORKSPACE/flyto-engine/Dockerfile" \
       -t "$ENGINE_IMAGE:$ENGINE_TAG-$suffix" \
       "$WORKSPACE/flyto-engine"
@@ -307,11 +332,16 @@ if buildx_available; then
     docker buildx inspect >/dev/null 2>&1 || docker buildx create --use
   fi
   buildx_build_engine_worker
-  buildx_build "$RUNNER_IMAGE" "$RUNNER_TAG" "$WORKSPACE/flyto-engine/runner" "$WORKSPACE/flyto-engine/runner/Dockerfile"
-  buildx_build "$VERIFICATION_IMAGE" "$VERIFICATION_TAG" "$WORKSPACE/flyto-core" "$WORKSPACE/flyto-core/Dockerfile.verification"
-  buildx_build "$BRAND_VISION_IMAGE" "$BRAND_VISION_TAG" "$WORKSPACE/flyto-engine/brand-vision" "$WORKSPACE/flyto-engine/brand-vision/Dockerfile"
-  buildx_build "$PDF_IMAGE" "$PDF_TAG" "$WORKSPACE/flyto-engine/pdf-service" "$WORKSPACE/flyto-engine/pdf-service/Dockerfile"
+  buildx_build "$RUNNER_IMAGE" "$RUNNER_TAG" "$WORKSPACE/flyto-engine/runner" "$WORKSPACE/flyto-engine/runner/Dockerfile" \
+    --label "org.opencontainers.image.revision=$ENGINE_REVISION"
+  buildx_build "$VERIFICATION_IMAGE" "$VERIFICATION_TAG" "$WORKSPACE/flyto-core" "$WORKSPACE/flyto-core/Dockerfile.verification" \
+    --label "org.opencontainers.image.revision=$CORE_REVISION"
+  buildx_build "$BRAND_VISION_IMAGE" "$BRAND_VISION_TAG" "$WORKSPACE/flyto-engine/brand-vision" "$WORKSPACE/flyto-engine/brand-vision/Dockerfile" \
+    --label "org.opencontainers.image.revision=$ENGINE_REVISION"
+  buildx_build "$PDF_IMAGE" "$PDF_TAG" "$WORKSPACE/flyto-engine/pdf-service" "$WORKSPACE/flyto-engine/pdf-service/Dockerfile" \
+    --label "org.opencontainers.image.revision=$ENGINE_REVISION"
   buildx_build "$FRONTEND_IMAGE" "$FRONTEND_TAG" "$CODE_CTX" "$CODE_CTX/Dockerfile" \
+    --label "org.opencontainers.image.revision=$CODE_REVISION" \
     --build-arg "FLYTO_PUBLIC_ENGINE_ORIGIN=${FLYTO_CODE_ENGINE_URL:-__same_origin__}" \
     --build-arg "FLYTO_PUBLIC_MODE=${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
     --build-arg "FLYTO_PUBLIC_AUTOMATION_ORIGIN=${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
@@ -319,11 +349,16 @@ if buildx_available; then
 else
   echo "docker buildx unavailable; using docker build --platform plus docker manifest"
   legacy_build_engine_worker
-  legacy_build "$RUNNER_IMAGE" "$RUNNER_TAG" "$WORKSPACE/flyto-engine/runner" "$WORKSPACE/flyto-engine/runner/Dockerfile"
-  legacy_build "$VERIFICATION_IMAGE" "$VERIFICATION_TAG" "$WORKSPACE/flyto-core" "$WORKSPACE/flyto-core/Dockerfile.verification"
-  legacy_build "$BRAND_VISION_IMAGE" "$BRAND_VISION_TAG" "$WORKSPACE/flyto-engine/brand-vision" "$WORKSPACE/flyto-engine/brand-vision/Dockerfile"
-  legacy_build "$PDF_IMAGE" "$PDF_TAG" "$WORKSPACE/flyto-engine/pdf-service" "$WORKSPACE/flyto-engine/pdf-service/Dockerfile"
+  legacy_build "$RUNNER_IMAGE" "$RUNNER_TAG" "$WORKSPACE/flyto-engine/runner" "$WORKSPACE/flyto-engine/runner/Dockerfile" \
+    --label "org.opencontainers.image.revision=$ENGINE_REVISION"
+  legacy_build "$VERIFICATION_IMAGE" "$VERIFICATION_TAG" "$WORKSPACE/flyto-core" "$WORKSPACE/flyto-core/Dockerfile.verification" \
+    --label "org.opencontainers.image.revision=$CORE_REVISION"
+  legacy_build "$BRAND_VISION_IMAGE" "$BRAND_VISION_TAG" "$WORKSPACE/flyto-engine/brand-vision" "$WORKSPACE/flyto-engine/brand-vision/Dockerfile" \
+    --label "org.opencontainers.image.revision=$ENGINE_REVISION"
+  legacy_build "$PDF_IMAGE" "$PDF_TAG" "$WORKSPACE/flyto-engine/pdf-service" "$WORKSPACE/flyto-engine/pdf-service/Dockerfile" \
+    --label "org.opencontainers.image.revision=$ENGINE_REVISION"
   legacy_build "$FRONTEND_IMAGE" "$FRONTEND_TAG" "$CODE_CTX" "$CODE_CTX/Dockerfile" \
+    --label "org.opencontainers.image.revision=$CODE_REVISION" \
     --build-arg "FLYTO_PUBLIC_ENGINE_ORIGIN=${FLYTO_CODE_ENGINE_URL:-__same_origin__}" \
     --build-arg "FLYTO_PUBLIC_MODE=${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
     --build-arg "FLYTO_PUBLIC_AUTOMATION_ORIGIN=${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
@@ -332,4 +367,8 @@ fi
 
 if [ "$PUSH" -eq 1 ]; then
   python3 "$ROOT/install/scripts/verify-docker-images.py" --write-digests --timeout 180
+  python3 "$ROOT/install/scripts/verify-docker-images.py" \
+    --manifest "$SOURCE_MANIFEST" \
+    --write-digests \
+    --timeout 180
 fi

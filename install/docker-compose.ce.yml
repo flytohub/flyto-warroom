@@ -106,6 +106,8 @@ services:
         condition: service_healthy
       runner:
         condition: service_healthy
+    healthcheck:
+      disable: true
 
   discovery-drainer:
     image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
@@ -134,6 +136,8 @@ services:
         condition: service_healthy
       runner:
         condition: service_healthy
+    healthcheck:
+      disable: true
 
   worker:
     image: "${FLYTO_WARROOM_WORKER_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_WORKER_TAG:-worker-ce}"

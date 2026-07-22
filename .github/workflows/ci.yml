@@ -6,26 +6,31 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   governance-audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
       - name: Audit GitHub protection files
         run: python scripts/audit-github-protection.py .
       - name: Audit CE moat and privacy boundary
         run: python scripts/audit-ce-boundary.py .
+      - name: Audit deterministic source provenance
+        run: python scripts/audit-provenance.py .
       - name: Audit open-core overlay contract
         run: python scripts/audit-open-core-overlay.py .
 
   release-audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
       # The exporter and indexer live in the external flyto-indexer package
@@ -34,9 +39,10 @@ jobs:
         run: |
           python install/scripts/audit-release-tree.py .
           python scripts/audit-ce-boundary.py .
+          python scripts/audit-provenance.py .
           python scripts/audit-open-core-overlay.py .
           python scripts/audit-github-protection.py .
-      - uses: actions/setup-go@v5
+      - uses: actions/setup-go@v6
         with:
           go-version-file: services/flyto-engine-ce/go.mod
       - name: Test engine CE source package
@@ -50,6 +56,15 @@ jobs:
         run: |
           python -m pip install flyto-indexer
           flyto-index verify . --full-scan --strict --json
+          flyto-index sbom . --name flyto2-warroom-ce --output /tmp/flyto2-warroom-ce.cdx.json
+          flyto-index license . --json > /tmp/flyto2-warroom-ce-licenses.json
+      - name: Upload CE SBOM and license evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: flyto2-warroom-ce-supply-chain
+          path: |
+            /tmp/flyto2-warroom-ce.cdx.json
+            /tmp/flyto2-warroom-ce-licenses.json
       - name: Audit generated release boundary
         run: python install/scripts/audit-release-tree.py .
       - name: Audit CE moat and privacy boundary
@@ -58,7 +73,7 @@ jobs:
         run: |
           python packages/flyto-contracts/conformance/validate.py runner-callback packages/flyto-contracts/examples/runner-callback.json
           python packages/flyto-contracts/conformance/validate.py evidence-event packages/flyto-contracts/examples/evidence-event.json
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: "22"
           cache: npm
@@ -72,6 +87,7 @@ jobs:
           VITE_CORTEX_URL: http://localhost:8080
         run: |
           npm ci --legacy-peer-deps
+          npm audit --audit-level=high
           npm run lint
           npm run build
       - name: Export upstream patch preview
@@ -83,8 +99,8 @@ jobs:
   docker-image-audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: "3.11"
       - name: Verify Docker Hub manifests
@@ -94,7 +110,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Validate source Compose model
         run: docker compose -f install/docker-compose.source.yml config --quiet
       - name: Build and start public source profile

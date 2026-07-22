@@ -92,10 +92,10 @@ DENIED_TREE_PATTERNS = [
 
 REQUIRED_MARKERS = {
     "docs/docker-hub-overview.md": [
-        "Flyto2 Warroom CE Preview",
+        "Flyto2 Warroom CE",
         "does not enable product telemetry by default",
         "Recommended install path is Docker Compose",
-        "currently published as linux/arm64 images",
+        "linux/amd64` and `linux/arm64",
     ],
     "docs/feature-matrix.md": [
         "Flyto2 Warroom CE Feature Matrix",
