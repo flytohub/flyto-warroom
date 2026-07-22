@@ -27,27 +27,22 @@ Full product description: [`docs/WHITEPAPER.md`](./docs/WHITEPAPER.md).
 
 ## Installation
 
-The frontend expects sibling repositories to sit next to it in the
-workspace:
+The frontend can be installed, built, and previewed from a standalone clone.
+The shared design-token package is tracked under `vendor/`, so packaging does
+not depend on a sibling checkout.
 
-```text
-flytohub/
-  flyto-code/
-  flyto-engine/
-  flyto-indexer/
-  flyto-i18n/
-  flyto-design-tokens/
-```
-
-Install from `flyto-code/`:
+Install from `flyto-code/` with the same peer-dependency mode used by CI and
+the production image:
 
 ```bash
-npm install
+npm ci --legacy-peer-deps
+npm run build
+npm run preview
 ```
 
-`flyto-i18n` and `flyto-design-tokens` are consumed through local file
-links, so keep those sibling checkouts present before running build or CI
-equivalent commands.
+The full workspace remains useful for engine contract-drift checks and for
+refreshing generated translations, but it is not required to package or start
+the production frontend bundle.
 
 ## Usage
 
@@ -97,9 +92,10 @@ Sibling services (separate repos in this monorepo):
 ## Development
 
 ```bash
-npm install
+npm ci --legacy-peer-deps
 npm run dev        # Vite dev server on :5180
 npm run build      # tsc -b && vite build
+npm run preview    # serves dist-next through vite.config.next.ts
 npm run lint
 ```
 

@@ -6,6 +6,7 @@ const distDir = path.join(root, 'dist-next')
 const htmlPath = path.join(distDir, 'index-next.html')
 const outDir = path.join(root, 'out', 'release')
 const reportPath = path.join(outDir, 'static-smoke.json')
+const packageJson = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'))
 
 function fail(message) {
   throw new Error(message)
@@ -62,6 +63,9 @@ if (publicSourceMapRefs.length > 0) {
 }
 if (/localhost|127\.0\.0\.1/.test(html)) {
   violations.push('index-next.html contains localhost/127.0.0.1 references')
+}
+if (packageJson.scripts?.preview !== 'vite preview --config vite.config.next.ts') {
+  violations.push('npm run preview must serve the vite.config.next.ts dist-next artifact')
 }
 
 const report = {

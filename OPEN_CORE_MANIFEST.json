@@ -352,7 +352,7 @@
       "packages/flyto-code/Dockerfile": "46a329c35627c62768d343518729b541d39ef1ce834775569d56693f6231d602",
       "packages/flyto-code/LICENSE": "b7d304f54d6636467ce540b210008383d034e1f9a92337f0fb2d79cef1b57580",
       "packages/flyto-code/OPEN_CORE.md": "6b95ce6f4a8d5b5c1ce3a460919a048781a95b9d5349ec3c38247a3dafa2a369",
-      "packages/flyto-code/README.md": "b05599d04d99e3cba36bf37fd3570a99756248aa1d3905e2c427f69c0922e0d6",
+      "packages/flyto-code/README.md": "3ddc4779760cb5f1e36cdd99357c9cab023c60650fea3a342fb5ca567c5dcb10",
       "packages/flyto-code/SECURITY.md": "3a62c4843f8a0a00ce6d213f4725d07f597e0165df1542779fc9fd1e88f9ef87",
       "packages/flyto-code/docs/API_RESPONSE_FIELD_MAP.md": "c59e14c9e8c2d2d0652524d4f7950bf8db144eb34efcff49681b0b3050e37e1d",
       "packages/flyto-code/docs/AUDIT-fe-be-gap-dual-mode.md": "f64f20bf176e73bce67074800c17189bf125a2a2985b7c4e940007129a1d6a5f",
@@ -466,7 +466,7 @@
       "packages/flyto-code/index-next.html": "f557153266a6b9b73d18f39478ed255c88b1d18f260b45b1fa7a832458eeb63b",
       "packages/flyto-code/nginx.conf": "7c2be3b4159b63846e6ae5bd6085e5291d164a64af2f8b7fca72cd19eb673fb1",
       "packages/flyto-code/package-lock.json": "49c3bccaad7b6bfba49b6fa5bd4ad44d2424e0b458dc4dc6aa38695962799d9f",
-      "packages/flyto-code/package.json": "bbe8951f11ce60b25ab6d88f7624b5ba9fa64c60ad47bd8835c00ec470f3e9bd",
+      "packages/flyto-code/package.json": "ed713e1efbd1ec456d569428366176ae5e89aa67872304c238accf6201cb9427",
       "packages/flyto-code/playwright.config.ts": "6b01d3200d14fd3a19fc275f8d936997c649628e9fc1a53c9766533a0894ad75",
       "packages/flyto-code/playwright.ctem.config.ts": "d39f7bca8776533ef2936cf46d1567085a19447d3f3ffa228d6f908ab4311afe",
       "packages/flyto-code/public/README.md": "fbb2b419e1fe4e23bea520e5e18a9c4e8129206b15c9a88b9006e352c429c892",
@@ -646,7 +646,7 @@
       "packages/flyto-code/scripts/check-release-bundle-budget.mjs": "5d7974e73c8d366de67e8878c7bd2d73f772742f0b73f65ed67147c8264b7452",
       "packages/flyto-code/scripts/check-release-deploy-policy.mjs": "3cbd17ca65e21bf58da27532a55b9c34f7097307a55bf137fca6276d17260c9f",
       "packages/flyto-code/scripts/check-route-drift.py": "de234e8778708755d9259318e1c9ee0f7ff2790af3d644836a55ba2b67faf289",
-      "packages/flyto-code/scripts/ci-compliance-evidence.mjs": "6ea4592c832abe9adde98c9772f5bf35630877faebd54f7ff8b4a4e00b60c1fb",
+      "packages/flyto-code/scripts/ci-compliance-evidence.mjs": "312ba34f21df0ea2b12dfd0b52906ac59abaf5d39896200b5143abc01c4a7c9b",
       "packages/flyto-code/scripts/detect-hardcoded-strings.py": "a9707d069178ac4dba9ed0795588d465bed5f0206dc8ad1a259f96e4b53d455b",
       "packages/flyto-code/scripts/eslint-warning-baseline.json": "3314530f674d3fa74d6937010fe27446d33bfd621084784919beeda958daa6b4",
       "packages/flyto-code/scripts/export-community.mjs": "38a820d4138651dafbf14910e3945fdddf2f71a43c27285e18cd0fc942009d30",
@@ -658,7 +658,7 @@
       "packages/flyto-code/scripts/lint-project-memory.sh": "6b75049e964f9cb9abf884ba2f1255cda827ccbdc61eb126b660de98e6210cd1",
       "packages/flyto-code/scripts/prepare-docker.sh": "35581c70b6eed1ee0ea3c70dcf5ee6805c1b068685a4f1b3c0f0f92511422fb5",
       "packages/flyto-code/scripts/release-gate.mjs": "c66e6f229be28165abe07713f94582bfeb7e127ce3529dea4a4c405c89bda9c2",
-      "packages/flyto-code/scripts/release-static-smoke.mjs": "c0437ac8338e64359a616ce14d43d164cc406fbee8a527c032937dc66e0a7d13",
+      "packages/flyto-code/scripts/release-static-smoke.mjs": "8e6dbbc0a65f9734e377861a60d9e69252c98bb002c526187143d20b8559b260",
       "packages/flyto-code/scripts/route-drift.allowlist": "81900a3d70d0533e81c98078d4dc2476c714898f588ca38cd3720db849194ced",
       "packages/flyto-code/scripts/sync-backend-capabilities.mjs": "658304e74b7968a589cbed58eb03fd6430b76883ba9060a2767997018443d9cd",
       "packages/flyto-code/scripts/sync-backend-routes.mjs": "ca053539c4162650ae9171f102f6b41f90c2a048810827560f498cabc12bf652",
@@ -1966,7 +1966,7 @@
       "scripts/audit-positioning.py": "a62bb744cbfbe8ca7602362a59c91c0f7de3eea233c8d8d38b843e253e6d75a9",
       "scripts/audit-provenance.py": "0e8eaa325ba56ee047367d7bf14e1ba44c59ba8a6172b5a69a9da0eb9e4c33e3",
       "scripts/export-upstream-patches.py": "b2e42d2b981020a60efa257a1cddbbd851be230c363674872dd3057b7a9b9dfa",
-      "services/flyto-engine-ce/Dockerfile": "10e095c422972cbee651cc228038f2c5a7a25bd08a39f29f9ed3d15d77af6040",
+      "services/flyto-engine-ce/Dockerfile": "a249b082154af1449b5945baee199a7eee7949e3682a0a0ad5ccfd5f2f4828a8",
       "services/flyto-engine-ce/LICENSE": "ec7e59a69a0c37cc0c08883d9ce4d8e08ef424de5d8a8ae0d86eb27397ade9a5",
       "services/flyto-engine-ce/README.md": "2401f273040ee5a266836a5594c63b3971e7f82fcca9a8ec64a389ab21d42f94",
       "services/flyto-engine-ce/SOURCE_BOUNDARY.json": "e77949ce5c3b45fcce6546386c253c6da6b11a4f83eca069012b839e2aa0e0dd",
@@ -1979,7 +1979,7 @@
       "services/flyto-engine-ce/ce/worker-ce/main.go": "3ca7e8083d75d26994cbe170716f6e80eaa8829390d836de65444e7420e3d2ad",
       "services/flyto-engine-ce/ce/worker-ce/server.go": "3f9c8e4613ece9295f5ca3df6777aa319df703f231cec87dc2e06648816eebc6",
       "services/flyto-engine-ce/ce/worker-ce/server_test.go": "87085df5b9b01c8294d292d3751f2b903f082a0e1c1aef509394bafc94ed1ae9",
-      "services/flyto-engine-ce/go.mod": "bdca8641c07506f3ab53a60289bf7051b2fee3a5c2dc303cb056f47f6ad18cb0",
+      "services/flyto-engine-ce/go.mod": "b48ef9f0981e9d5ae1f8334240b99788417f1ec9378cea0c546bb38d64a6ab24",
       "services/flyto-engine-ce/go.sum": "e0f091f2b66646a71628e0e9f50f7791221143a3523422f9e2aaf108a786816a",
       "services/flyto-engine-ce/internal/access/access.go": "1c38dd8ab11cf2a06da949353be95e706e913bc9abb816ac172d7187fa0117f9",
       "services/flyto-engine-ce/internal/access/access_test.go": "c437fd26cccd41f0a5af4941a9b3495717908cfa73902eb1f760f60c18d38ef5",
@@ -2071,23 +2071,23 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "3e39fc238780fddaecd68dcae1341b26d899acd4",
+    "source_commit": "dd0197538e2889db98d27d6a8aa22ec37632f61c",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
     },
     "source_repositories": {
       "flyto-code": {
-        "commit": "4c53b5015eacd99a6fef092d67063784042e90aa",
+        "commit": "73104259fe145425348a9a5d98bdb9665cdd74b4",
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
-        "commit": "3e39fc238780fddaecd68dcae1341b26d899acd4",
+        "commit": "dd0197538e2889db98d27d6a8aa22ec37632f61c",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "a7772eedbff14e716553518a1ea4d50e904afee896b87ccd45599b2634371076"
+    "tree_sha256": "5324c7ddc64d122754eb0985480431eca730ee16c6464c7b9f327a339623e9ea"
   },
   "release": {
     "display_name": "Flyto2 Warroom CE",
@@ -2096,13 +2096,13 @@
     ],
     "name": "flyto2-warroom-ce",
     "public_image_digests": {
-      "brand_vision": "sha256:9146d6fed630940711640928aebf9bf2b8c7bb2707ed646449cfa2e0023f5015",
-      "engine": "sha256:4e068725e5141df8fb41c1c4a386e032a3bcd85d9a6d77b5b08d31d640b3fe52",
-      "frontend": "sha256:668737ba880dc8a823e448f824a7587309c687f3813d42ee015fed8a32af61a5",
-      "pdf": "sha256:3ff412ae029c2b44e4c4463b31bd5dd73e447af70bb5ed7940f9390c66c03ab4",
-      "runner": "sha256:f8b0f7fa3c39426dd2e08e2b9413096baf294fbf4fc819ca61a2fa22ca63e08b",
-      "verification": "sha256:d3feb85105fbca0a64fdbf7ebffb3c11647bda106eb3807801ad9672d15fa495",
-      "worker": "sha256:4e068725e5141df8fb41c1c4a386e032a3bcd85d9a6d77b5b08d31d640b3fe52"
+      "brand_vision": "sha256:4347c539a066679604deb2a811b4b7a4bcaec10d2978a48c0e5a941899ebe2a2",
+      "engine": "sha256:17d44ceab67534447680ae810463ddc68e058536384d665c2130e188a5d62cf1",
+      "frontend": "sha256:a591f23bffff4d2ec5215cd50987fa86b8e95b94a0ed42600ac332c2759163cf",
+      "pdf": "sha256:b30d9c9edaafdb9446dbb37e89a86bf211d927eab79a907eb3989831cd8a4650",
+      "runner": "sha256:4f83c729ccd2457c5179b4f6d695a5d310acb8816067eeb6af1542aed7029912",
+      "verification": "sha256:f3c76be62ec88345b4d8025ed7b6570bc9ce858458ca7716d6eeb54718cfd59e",
+      "worker": "sha256:17d44ceab67534447680ae810463ddc68e058536384d665c2130e188a5d62cf1"
     },
     "public_image_repository": "docker.io/chesterhsu/flyto-warroom",
     "public_image_tags": {

@@ -57,7 +57,16 @@ const controls = [
   control('CI-009', 'Navbar browser-smoke registry is checked in CI', ['.github/workflows/ci.yml: npm run audit:navbar-smoke'], has(ci, 'npm run audit:navbar-smoke')),
   control('CI-010', 'AI code quality guard runs in CI', ['.github/workflows/ci.yml: npm run guard:ai-code'], has(ci, 'npm run guard:ai-code')),
   control('CI-011', 'Data readiness boundaries are checked in CI', ['.github/workflows/ci.yml: npm run audit:data-readiness'], has(ci, 'npm run audit:data-readiness')),
-  control('SEC-001', 'Secret and dependency scanning is present through the reusable security workflow', [`${securityWorkflow.rel}: reusable-security.yml stack=npm`], has(security, 'reusable-security.yml@main') && has(security, 'stack: npm')),
+  control(
+    'SEC-001',
+    'Changed commits, the current tree, and npm dependencies are scanned fail-closed',
+    [`${securityWorkflow.rel}: checksum-pinned gitleaks git + dir scans and npm audit`],
+    has(security, 'GITLEAKS_SHA256')
+      && has(security, 'gitleaks git .')
+      && has(security, 'gitleaks dir .')
+      && has(security, 'npm ci --legacy-peer-deps')
+      && has(security, 'npm audit --audit-level=low'),
+  ),
   control('SEC-002', 'SBOM and CodeQL security jobs are present', [`${securityWorkflow.rel}: reusable-sbom.yml + reusable-codeql.yml`], has(security, 'reusable-sbom.yml@main') && has(security, 'reusable-codeql.yml@main')),
   control('SEC-003', 'Command-injection SAST rules have a blocking self-test', ['.github/workflows/command-risk.yml: rules-selftest'], has(commandRisk, 'rules-selftest') && has(commandRisk, '.semgrep/selftest.py')),
   control('SEC-004', 'Command-risk SARIF is uploaded as an artifact', ['.github/workflows/command-risk.yml: upload-artifact'], has(commandRisk, 'upload-artifact') && has(commandRisk, 'semgrep.sarif')),
