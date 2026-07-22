@@ -268,8 +268,8 @@ Air-gap validation requires both static policy and network-level proof. Those
 states must not be described as universally shipped merely because source code
 or a route exists.
 
-Current release blockers and verified counts live in [`STATE.md`](../STATE.md).
-Planned work lives in [`ROADMAP.md`](../ROADMAP.md) and
+Current release blockers and verified counts live in `STATE.md`.
+Planned work lives in `ROADMAP.md` and
 [`PRODUCT_ROADMAP.md`](./PRODUCT_ROADMAP.md). Roadmap entries are not current
 feature claims.
 

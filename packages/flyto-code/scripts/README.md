@@ -19,11 +19,16 @@ runtime target.
 - `generate-documentation-reference.mjs`: uses the TypeScript compiler AST and
   source scans to generate callable, route/module, endpoint, and environment
   reference files.
+- `generate-python-reference.py`: uses the Python AST to index every repository
+  maintenance class, function, and method with an exact source line.
 - `check_documentation.py`: checks the documentation ownership manifest and
   every local Markdown link.
 - `check_brand_identity.py`: enforces Flyto2 naming, `@flyto2.com` literals, and
   the registered public contact list.
 - `lint-project-memory.sh`: checks required durable project-memory documents.
+
+`npm run docs:generate` refreshes both language references and
+`npm run docs:check` rejects drift.
 
 ## Frontend And Contract Closure
 

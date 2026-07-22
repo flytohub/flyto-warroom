@@ -432,7 +432,7 @@ function writeOrCheck(relative, content) {
 const files = trackedFiles()
 const sourceFiles = files.filter((relative) => {
   if (!SOURCE_EXTENSIONS.has(path.extname(relative)) || isTest(relative)) return false
-  return relative.startsWith('src-next/') || relative.startsWith('scripts/') || relative.endsWith('.config.js') || relative.endsWith('.config.ts') || relative.endsWith('.config.mjs')
+  return relative.startsWith('src-next/') || relative.startsWith('scripts/') || relative.includes('.config.')
 })
 const sourceFileSet = new Set(sourceFiles)
 

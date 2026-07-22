@@ -172,7 +172,7 @@ enterprise adapters, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1611 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1613 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 | `flyto-engine-ce` | `flyto-engine` | 95 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
 

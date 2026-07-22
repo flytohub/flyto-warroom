@@ -83,7 +83,14 @@ def repository_files() -> list[str]:
 
 def documentation_paths(manifest: dict) -> Iterable[str]:
     """Yield every durable document declared by the ownership manifest."""
-    yield from manifest["documentation"].values()
+    scope_keys = {"source_reference_exclude", "module_roots", "configuration_not_applicable"}
+    for key, value in manifest["documentation"].items():
+        if key in scope_keys:
+            continue
+        if isinstance(value, str):
+            yield value
+        elif isinstance(value, list):
+            yield from (item for item in value if isinstance(item, str))
     for area in manifest["source_areas"]:
         yield from area["documentation"]
 

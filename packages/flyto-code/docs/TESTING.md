@@ -94,6 +94,6 @@ for the repository.
 
 ## Current Verification Record
 
-Durable current counts and known blockers belong in [`STATE.md`](../STATE.md),
+Durable current counts and known blockers belong in `STATE.md`,
 not in this guide. Handoff-specific command output belongs under `handoffs/` or
 the generated release evidence path.

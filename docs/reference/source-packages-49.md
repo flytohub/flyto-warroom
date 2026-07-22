@@ -2,8 +2,12 @@
 
 # Packages Source Reference 49
 
-Source-linked contracts for **1 declarations** in `packages/`.
+Source-linked contracts for **5 declarations** in `packages/`.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| class | `class FlytoRunnerCallback(TypedDict, total=False):` | Implements flyto runner callback for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:13`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L13>) |
+| class | `class FlytoEvidenceEvent(TypedDict, total=False):` | Implements flyto evidence event for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:23`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L23>) |
+| class | `class FlytoRunLedgerEvent(TypedDict, total=False):` | Implements flyto run ledger event for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:34`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L34>) |
+| class | `class FlytoArtifactSignature(TypedDict, total=False):` | Implements flyto artifact signature for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:47`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L47>) |
 | class | `class FlytoLivefixPlan(TypedDict, total=False):` | Implements flyto livefix plan for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:58`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L58>) |
