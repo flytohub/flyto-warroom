@@ -41,11 +41,14 @@ surface exists, and renders the evidence note without contacting the engine.
 Start CE first:
 
 ```sh
-python3 install/scripts/setup-ce.py --email admin@flyto2.com
+python3 install/scripts/setup-ce.py
 make preflight
 make verify-images
 make ce-up
 ```
+
+Open `http://localhost:8088` and create the first administrator before running
+the authenticated seed command below.
 
 Then seed the workspace:
 

@@ -42,15 +42,15 @@ This repository publishes Flyto2 Warroom CE services as separate tags:
 - `pdf-ce` - report PDF service
 
 Stable semantic-version tags are published for reproducible installs. Git tag
-`v0.1.0` maps to:
+`v0.1.1` maps to:
 
-- `engine-ce-0.1.0`
-- `worker-ce-0.1.0`
-- `code-ce-0.1.0`
-- `runner-ce-0.1.0`
-- `verification-ce-0.1.0`
-- `brand-vision-ce-0.1.0`
-- `pdf-ce-0.1.0`
+- `engine-ce-0.1.1`
+- `worker-ce-0.1.1`
+- `code-ce-0.1.1`
+- `runner-ce-0.1.1`
+- `verification-ce-0.1.1`
+- `brand-vision-ce-0.1.1`
+- `pdf-ce-0.1.1`
 
 The tag-triggered GitHub Actions release verifies the immutable manifest
 digests and both `linux/amd64` and `linux/arm64` before and after promotion.
@@ -63,7 +63,7 @@ Recommended install path is Docker Compose from GitHub:
 git clone https://github.com/flytohub/flyto-warroom.git
 cd flyto-warroom
 
-python3 install/scripts/setup-ce.py --email admin@example.com
+python3 install/scripts/setup-ce.py
 make preflight
 make verify-images
 make ce-up
@@ -75,8 +75,8 @@ Open the UI:
 http://localhost:8088
 ```
 
-The setup script writes `install/.env`, generates local secrets, and stores only
-a password hash for the initial admin account.
+The setup script writes `install/.env` and generates infrastructure secrets.
+Open the UI to create the first administrator through the one-time setup page.
 
 ## What CE Includes
 

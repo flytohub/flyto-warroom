@@ -6,6 +6,10 @@
   `flyto-engine/release` open-core tooling.
 - CE includes frontend source, public contracts, CE-safe engine kernel source,
   local installer assets, Docker image coordinates, and boundary audits.
+- Fresh CE databases expose a one-time browser page for creating the first
+  administrator. Account creation, owner workspace creation, and permanent
+  registration closure are transaction-locked; the installer stores only
+  infrastructure secrets and never asks for account credentials.
 - `make verify` runs release audits, CE backend tests, frontend module-package
   boundary audit, and Docker image digest dry-run.
 - `OPEN_CORE_MANIFEST.json` records credential-free source repository URLs,
@@ -27,9 +31,9 @@
   health, frontend health, frontend API proxy, runner, verification,
   brand-vision, and the CE product-loop payload.
 - Stable Git tags now drive Docker Hub release promotion. The manifest declares
-  version `0.1.0` / Git tag `v0.1.0`; the release workflow requires the tagged
+  version `0.1.1` / Git tag `v0.1.1`; the release workflow requires the tagged
   commit on `main` with successful CI, verifies all seven immutable multi-arch
-  digests, promotes them to `*-0.1.0` tags, re-verifies the aliases, and attaches
+  digests, promotes them to `*-0.1.1` tags, re-verifies the aliases, and attaches
   machine-readable evidence to the GitHub release.
 
 ## Known Boundaries

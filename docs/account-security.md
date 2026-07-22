@@ -16,15 +16,17 @@ compose files, issue comments, screenshots, or release notes.
 
 ## Self-Hosted CE Initial Admin
 
-CE local auth uses an initial admin email/password configured in `install/.env`.
-Run:
+CE local auth uses a one-time browser setup, similar to other self-hosted
+developer platforms. First generate infrastructure secrets and start CE:
 
 ```sh
 python3 install/scripts/setup-ce.py
 ```
 
-The script writes only the password SHA-256 hash and generates local-only
-secrets. It does not store the plaintext password.
+The script generates local-only infrastructure secrets and does not ask for or
+store account credentials. Open `http://localhost:8088` after startup and create
+the first administrator. The Engine stores a bcrypt hash in Postgres and closes
+the registration route atomically after that first account is created.
 
 ## 2FA Boundary
 

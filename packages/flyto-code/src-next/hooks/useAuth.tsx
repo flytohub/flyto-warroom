@@ -17,7 +17,12 @@ import {
 } from 'firebase/auth'
 import { auth } from '@lib/firebase'
 import { env } from '@lib/env'
-import { loginWithLocalEngine, type EngineAuthUser } from '@lib/engine/auth'
+import {
+  bootstrapLocalAdmin,
+  loginWithLocalEngine,
+  type EngineAuthUser,
+  type LocalLoginResponse,
+} from '@lib/engine/auth'
 import { isSessionJWTAuthMode } from '@lib/engine/authToken'
 import { request } from '@lib/engine/client'
 import { GITLAB_TOKEN_KEY } from '@lib/oauth'
@@ -125,6 +130,10 @@ async function fetchEngineMe(): Promise<EngineUser> {
 
 async function signInWithLocalEngine(email: string, password: string): Promise<FirebaseUser> {
   const body = await loginWithLocalEngine(email, password)
+	return persistLocalSession(body)
+}
+
+function persistLocalSession(body: LocalLoginResponse): FirebaseUser {
   const token = body.accessToken || body.access_token
   if (!token || !body.user?.id) throw new Error('auth/invalid-credential')
   sessionStorage.setItem(JWT_SESSION_KEY, JSON.stringify(token))
@@ -143,6 +152,7 @@ export interface AuthState {
   setGitLabToken: (token: string | null) => void
   signInWithEmail: (email: string, password: string) => Promise<void>
   signUpWithEmail: (email: string, password: string, displayName: string) => Promise<void>
+	bootstrapLocalAdmin: (email: string, password: string, displayName: string) => Promise<void>
   resetPassword: (email: string) => Promise<void>
   signOut: () => Promise<void>
 }
@@ -397,6 +407,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         // User can resend from profile settings later.
       })
     },
+		bootstrapLocalAdmin: async (email, password, displayName) => {
+			if (!sessionJWTAuth || !localEngineAuth) throw new Error('auth/provider-unavailable')
+			const body = await bootstrapLocalAdmin({ email, password, displayName })
+			const sessionUser = persistLocalSession(body)
+			setUser(sessionUser)
+			setLoading(false)
+		},
     resetPassword: async (email) => {
       if (sessionJWTAuth) throw new Error('auth/provider-unavailable')
       await sendPasswordResetEmail(auth, email)

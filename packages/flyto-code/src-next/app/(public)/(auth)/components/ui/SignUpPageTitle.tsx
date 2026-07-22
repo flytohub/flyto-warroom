@@ -1,8 +1,8 @@
 import Typography from '@mui/material/Typography';
 import Link from '@components/adapters/Link';
-import { t } from '@lib/i18n'
+import { t, tOr } from '@lib/i18n'
 
-function SignUpPageTitle() {
+function SignUpPageTitle({ localBootstrap = false }: { localBootstrap?: boolean }) {
 	return (
 		<div className="w-full">
 			{/* Mirror SignInPageTitle: logo + title on one row, no
@@ -14,11 +14,15 @@ function SignUpPageTitle() {
 					alt="logo"
 				/>
 				<Typography className="text-4xl leading-[1.1] font-extrabold tracking-tight">
-					{t('auth.register')}
+					{localBootstrap ? tOr('auth.localBootstrap.title', 'Set up your Warroom') : t('auth.register')}
 				</Typography>
 			</div>
 			<div className="mt-1.5 flex items-baseline font-medium">
-				<Typography>{t('auth.hasAccount')}</Typography>
+			<Typography>
+				{localBootstrap
+					? tOr('auth.localBootstrap.hasAdmin', 'Already created the administrator?')
+					: t('auth.hasAccount')}
+			</Typography>
 				<Link
 					className="ml-1"
 					to="/sign-in"

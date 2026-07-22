@@ -20,9 +20,9 @@ tags directly from the published image repository, while maintainers can rebuild
 the same tags locally from the private workspace before starting compose.
 
 For reproducible installs, pin all service tags to one GitHub release version.
-Git tag `v0.1.0` publishes Docker tags `engine-ce-0.1.0`,
-`worker-ce-0.1.0`, `code-ce-0.1.0`, `runner-ce-0.1.0`,
-`verification-ce-0.1.0`, `brand-vision-ce-0.1.0`, and `pdf-ce-0.1.0`.
+Git tag `v0.1.1` publishes Docker tags `engine-ce-0.1.1`,
+`worker-ce-0.1.1`, `code-ce-0.1.1`, `runner-ce-0.1.1`,
+`verification-ce-0.1.1`, `brand-vision-ce-0.1.1`, and `pdf-ce-0.1.1`.
 Those aliases are promoted from the exact multi-architecture digests recorded
 in `OPEN_CORE_MANIFEST.json` only after the tagged `main` commit passes CI.
 
@@ -34,9 +34,11 @@ make -C /tmp/flyto2-warroom-ce verify-images
 make -C /tmp/flyto2-warroom-ce preflight
 ```
 
-`setup-ce.py` prompts for the initial admin email and password, writes only the
-password SHA-256 hash, generates local-only Postgres/JWT/runner/verification
-secrets, and writes `install/.env` with owner-only permissions.
+`setup-ce.py` runs without asking for account credentials. It generates only
+local Postgres/JWT/runner/verification secrets and writes `install/.env` with
+owner-only permissions. Account credentials are submitted directly to the
+Engine from the browser during one-time setup and the password is stored only
+as a bcrypt hash in Postgres.
 
 `verify-images` checks that every public Docker Hub service tag in
 `OPEN_CORE_MANIFEST.json` has a valid manifest and matches the published digest.
@@ -61,7 +63,9 @@ the frontend API proxy for that contract, runner health, verification health,
 and brand-vision health. It prints the service name, URL, status code, and
 validation error when a setting is wrong.
 
-Sign in with the initial admin email and password provided to `setup-ce.py`.
+On the first visit, create the administrator account in the browser. The setup
+route permanently closes after the first successful account creation; later
+visits show the normal sign-in page.
 CE uses engine-issued local JWTs; it does not require
 Firebase and it does not use dev auth.
 

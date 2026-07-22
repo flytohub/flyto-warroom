@@ -85,14 +85,14 @@ marketing copy.
 ```sh
 git clone https://github.com/flytohub/flyto-warroom.git
 cd flyto-warroom
-python3 install/scripts/setup-ce.py --email admin@example.com
+python3 install/scripts/setup-ce.py
 make preflight
 make verify-images
 make ce-up
 ```
 
-Open `http://localhost:8088` and sign in with the local admin account
-created by `setup-ce.py`.
+Open `http://localhost:8088` and create the first administrator in the
+one-time browser setup. Later visits use the normal sign-in page.
 
 Default local ports:
 
@@ -149,7 +149,7 @@ enterprise adapters, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1635 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1637 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 | `flyto-engine-ce` | `flyto-engine` | 95 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
 
@@ -167,8 +167,8 @@ Published repository: `docker.io/chesterhsu/flyto-warroom`
 | Brand Vision | `brand-vision-ce` |
 | PDF | `pdf-ce` |
 
-Stable release `v0.1.0` promotes those exact manifest digests to
-per-service `*-0.1.0` Docker tags after the tagged `main` commit
+Stable release `v0.1.1` promotes those exact manifest digests to
+per-service `*-0.1.1` Docker tags after the tagged `main` commit
 passes CI. See `docs/official-builds.md` for the release contract.
 
 ## CE And Enterprise

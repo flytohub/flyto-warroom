@@ -13,8 +13,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[2]
 REQUIRED_NON_EMPTY = [
     "POSTGRES_PASSWORD",
-    "FLYTO_LOCAL_AUTH_EMAIL",
-    "FLYTO_LOCAL_AUTH_PASSWORD_SHA256",
+    "FLYTO_LOCAL_AUTH_ALLOW_BOOTSTRAP",
     "FLYTO_LOCAL_AUTH_JWT_SECRET",
     "FLYTO_RUNNER_SECRET",
     "FLYTO_VERIFICATION_SECRET",
@@ -67,8 +66,8 @@ def main() -> int:
                 "POSTGRES_PASSWORD must use URL-safe characters [A-Za-z0-9._~-]; "
                 "run setup-ce.py again or replace characters like ':', '@', '/', '?', '#', '[', and ']'"
             )
-        if values.get("FLYTO_LOCAL_AUTH_EMAIL") == "local-admin@example.invalid":
-            blockers.append("FLYTO_LOCAL_AUTH_EMAIL still uses the example placeholder")
+        if values.get("FLYTO_LOCAL_AUTH_ALLOW_BOOTSTRAP") != "1":
+            blockers.append("FLYTO_LOCAL_AUTH_ALLOW_BOOTSTRAP must be 1 for first-run web registration")
         mode = stat.S_IMODE(env_path.stat().st_mode)
         if mode & (stat.S_IRWXG | stat.S_IRWXO):
             blockers.append(f"{env_path} permissions must be 0600 or stricter")

@@ -2,6 +2,7 @@
 
 | Date | Topic | File | Status |
 | --- | --- | --- | --- |
+| 2026-07-22 | One-time CE administrator setup | `2026-07-22-one-time-admin-setup.md` | Active |
 | 2026-07-22 | Tag-driven CE image release | `2026-07-22-tag-driven-image-release.md` | Active |
 | 2026-07-22 | Deterministic CE release provenance | `2026-07-22-deterministic-release-provenance.md` | Active |
 | 2026-07-16 | CE frontend package manifest API | `2026-07-16-ce-frontend-package-manifest-api.md` | Archived |

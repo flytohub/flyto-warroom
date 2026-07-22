@@ -8,7 +8,8 @@ This directory contains the public CE install surface:
 - `docker-compose.ee-sim.yml` overlays local Enterprise-gate simulation.
 - `.env.ce.example` and `.env.ee-sim.example` document generated env files.
 - `demo-workspace.json` is the public demo seed bundle.
-- `scripts/setup-ce.py` creates local-only secrets and the first admin account.
+- `scripts/setup-ce.py` creates local-only infrastructure secrets; the first
+  administrator is created in the browser after startup.
 - `scripts/preflight.py` validates local configuration before compose starts.
 - `scripts/smoke-ce-stack.py` verifies a running compose stack, including the
   engine CE product-loop route and frontend API proxy.

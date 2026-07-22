@@ -23,6 +23,17 @@ Decision: CE must remain locally runnable, inspectable, and patchable.
 Reason: open-core adoption depends on real local value, not a library dump or
 marketing-only mirror.
 
+## One-Time First Administrator
+
+Decision: a fresh CE database creates its first administrator through a
+browser flow controlled by the Engine. The installer generates infrastructure
+secrets only; account creation and permanent registration closure commit in one
+transaction under a singleton row lock.
+
+Reason: GitLab-style local setup avoids placing account credentials in shell
+arguments or env files, and database locking prevents concurrent browsers or
+replicas from creating multiple first owners.
+
 ## Deterministic Product Loop
 
 Decision: CE must ship a provider-free product-loop endpoint and smoke test so
