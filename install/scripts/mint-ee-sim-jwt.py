@@ -18,7 +18,7 @@ def main() -> int:
     parser.add_argument("--secret", default=os.environ.get("FLYTO_ENTERPRISE_JWT_SECRET_KEY", ""))
     parser.add_argument("--deployment-id", default=os.environ.get("FLYTO_DEPLOYMENT_ID", "local-ee-sim"))
     parser.add_argument("--sub", default="local-admin")
-    parser.add_argument("--email", default="local-admin@example.invalid")
+    parser.add_argument("--email", default="admin@flyto2.com")
     parser.add_argument("--name", default="Local Admin")
     parser.add_argument("--ttl-seconds", type=int, default=8 * 60 * 60)
     args = parser.parse_args()

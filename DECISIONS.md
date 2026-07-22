@@ -10,7 +10,7 @@ moat code out of the public tree.
 
 ## Noncommercial Source License From v0.2.0
 
-Decision: Flyto-owned CE code released as v0.2.0 or later uses PolyForm
+Decision: Flyto2-owned CE code released as v0.2.0 or later uses PolyForm
 Noncommercial 1.0.0. Commercial production, SaaS/hosting, managed service,
 paid client delivery, resale, OEM, or other monetary-advantage use requires a
 separate written commercial license.

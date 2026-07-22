@@ -80,7 +80,7 @@ The machine-generated edition matrix lives in `docs/feature-matrix.md`
 and is derived from the engine module catalog instead of hand-written
 marketing copy.
 
-## Quick Start
+## Installation
 
 ```sh
 git clone https://github.com/flytohub/flyto-warroom.git
@@ -104,6 +104,28 @@ Default local ports:
 | Runner | `8090` |
 | Verification | `8344` |
 | Brand Vision | `8095` |
+
+## Usage
+
+Use `make ce-up`, `make ce-ps`, and `make ce-logs` for the normal local
+operator loop. The browser cockpit at `http://localhost:8088` owns project
+setup, findings, attack paths, evidence, remediation, and verification.
+See `docs/README.md` for task-oriented guides and `docs/reference/README.md`
+for exact source-level functions, methods, and classes.
+
+## API Reference
+
+The authoritative public HTTP contract is
+`packages/flyto-contracts/openapi/flyto-engine.openapi.yaml`. Generated SDK
+stubs and conformance fixtures live beside it in `packages/flyto-contracts/`.
+Implementation links are generated under `docs/reference/`.
+
+## Configuration
+
+Run `python3 install/scripts/setup-ce.py` to create `install/.env`. Start
+from `install/.env.ce.example`; every variable includes its purpose and
+safe local default. Enterprise simulation uses
+`install/.env.ee-sim.example`. Never commit generated `.env` files.
 
 ### Build The Public Source Profile
 
@@ -254,6 +276,13 @@ The generated tree includes fail-closed release checks:
 - `OPEN_CORE_MANIFEST.json` records credential-free source commits, the
   deterministic file inventory/tree hash, packages, image digests, release
   files, closed-source boundaries, and merge contracts.
+
+## Testing
+
+Run `make test` for the CE Go source, frontend boundaries, and public
+contract fixtures. Run `make verify` for the complete release gate. After
+installing `flyto-indexer`, `make docs` refreshes the source reference and
+`make docs-check` detects documentation drift.
 
 ## Security
 

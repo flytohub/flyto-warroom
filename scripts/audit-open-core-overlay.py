@@ -19,10 +19,13 @@ REQUIRED_FILES = [
     "install/docker-compose.ee-sim.yml",
     "Makefile",
     "README.md",
+    "docs/documentation-manifest.json",
+    "docs/reference/README.md",
     "docs/edition-profiles.md",
     "docs/upstream-feedback-loop.md",
     "scripts/audit-ce-boundary.py",
     "scripts/audit-open-core-overlay.py",
+    "scripts/generate-documentation-reference.py",
 ]
 
 REQUIRED_PROFILES = {"community", "enterprise-onprem", "enterprise-airgap", "saas"}

@@ -1,0 +1,84 @@
+{
+  "$schema": "https://docs.flyto2.com/schemas/documentation-contract-v1.json",
+  "schema_version": 1,
+  "repository": "flyto-warroom",
+  "status": "generated-community-release",
+  "audiences": [
+    "self-hosted operators",
+    "security teams",
+    "contributors",
+    "release maintainers"
+  ],
+  "documentation": {
+    "index": "docs/README.md",
+    "architecture": "ARCHITECTURE.md",
+    "state": "STATE.md",
+    "security": "SECURITY.md",
+    "changelog": "CHANGELOG.md",
+    "whitepaper": "docs/autofix-whitepaper.md",
+    "feature_reference": "docs/feature-matrix.md",
+    "source_reference": [
+      "docs/reference/source-*.md",
+      "packages/flyto-code/docs/reference/*.md",
+      "packages/flyto-code/vendor/@flyto/design-tokens/docs/GENERATED_REFERENCE.md"
+    ],
+    "module_roots": [
+      "docs",
+      "install",
+      "packages",
+      "scripts",
+      "services/flyto-engine-ce"
+    ]
+  },
+  "source_areas": [
+    {
+      "id": "warroom-cockpit",
+      "paths": [
+        "packages/flyto-code/**"
+      ],
+      "documentation": [
+        "packages/flyto-code/docs/README.md",
+        "packages/flyto-code/docs/reference/source-api.md",
+        "docs/reference/README.md"
+      ]
+    },
+    {
+      "id": "public-contracts",
+      "paths": [
+        "packages/flyto-contracts/**"
+      ],
+      "documentation": [
+        "packages/flyto-contracts/README.md",
+        "docs/reference-architecture.md",
+        "docs/reference/README.md"
+      ]
+    },
+    {
+      "id": "ce-engine",
+      "paths": [
+        "services/flyto-engine-ce/**"
+      ],
+      "documentation": [
+        "services/flyto-engine-ce/README.md",
+        "docs/source-build.md",
+        "docs/reference/README.md"
+      ]
+    },
+    {
+      "id": "release-and-install",
+      "paths": [
+        "install/**",
+        "scripts/**",
+        "Makefile",
+        "OPEN_CORE_MANIFEST.json"
+      ],
+      "documentation": [
+        "install/README.md",
+        "docs/local-install.md",
+        "docs/release-readiness.md",
+        "docs/official-builds.md",
+        "docs/reference/README.md"
+      ]
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 
 - The repository is generated from private Flyto2 source by
   `flyto-engine/release` open-core tooling.
-- Flyto-owned v0.2.0-and-later CE code uses PolyForm Noncommercial 1.0.0.
+- Flyto2-owned v0.2.0-and-later CE code uses PolyForm Noncommercial 1.0.0.
   Commercial production, hosted/SaaS or managed-service use, paid client
   delivery, resale, OEM distribution, and other use for monetary advantage
   require a separate written commercial license. Historical v0.1.0/v0.1.1

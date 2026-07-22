@@ -8,6 +8,7 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 
 REQUIRED = [
     "OPEN_CORE_MANIFEST.json",
+    ".env.example",
     ".flyto-rules.yaml",
     "Makefile",
     "packages/flyto-contracts/openapi/flyto-engine.openapi.yaml",
@@ -82,6 +83,8 @@ REQUIRED = [
     "tasks.md",
     "CHANGELOG.md",
     "docs/README.md",
+    "docs/documentation-manifest.json",
+    "docs/reference/README.md",
     "workflows/idea-capture.md",
     "workflows/planning.md",
     "workflows/implementation.md",
@@ -106,6 +109,7 @@ REQUIRED = [
     "scripts/audit-ce-boundary.py",
     "scripts/audit-provenance.py",
     "scripts/audit-open-core-overlay.py",
+    "scripts/generate-documentation-reference.py",
 ]
 
 PRIVATE_GLOBS = [

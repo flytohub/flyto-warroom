@@ -3,6 +3,7 @@
 .flyto-index/
 .env
 .env.*
+!.env.example
 !install/.env.ce.example
 !install/.env.ee-sim.example
 packages/flyto-code/node_modules/
