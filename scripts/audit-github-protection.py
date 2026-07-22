@@ -68,6 +68,13 @@ REQUIRED_MARKERS = {
         "Export upstream patch preview",
         "flyto-index verify",
     ],
+    ".github/workflows/release-images.yml": [
+        "Publish Versioned CE Images",
+        "Require a tagged main commit with successful CE CI",
+        "promote-release-images.py",
+        "DOCKERHUB_TOKEN",
+        "Create or update GitHub release",
+    ],
     "scripts/audit-ce-boundary.py": [
         "CE_CONTROL_FILES",
         "POSTHOG",

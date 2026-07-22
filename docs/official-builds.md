@@ -19,6 +19,13 @@ Official CE images are runnable distribution artifacts. They do not mean the
 private `flyto-engine` implementation, Enterprise datasets, Enterprise
 remediation workers, or Flyto2 Cloud control plane source have been published.
 
+Stable Git tags drive immutable Docker Hub aliases. For Git tag `v0.1.0`, the
+release workflow promotes the already-verified manifest digests to
+`engine-ce-0.1.0`, `worker-ce-0.1.0`, `code-ce-0.1.0`, and matching auxiliary
+service tags. Promotion copies the exact multi-architecture indexes declared in
+`OPEN_CORE_MANIFEST.json`; it does not rebuild private source in the public
+repository or silently replace a digest.
+
 ## Release Evidence
 
 An official release should include:
@@ -38,6 +45,10 @@ python install/scripts/verify-docker-images.py
 This verifies every service tag and expected digest declared in
 `OPEN_CORE_MANIFEST.json` against Docker Hub. Use `--pull` for a stricter pull
 test.
+
+Maintainer tag releases also run `install/scripts/promote-release-images.py`,
+attach the resulting `release-images.json` evidence to the GitHub release, and
+fail unless the tagged commit is on `main` with a successful CE CI run.
 
 ## Forks
 

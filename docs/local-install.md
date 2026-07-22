@@ -19,6 +19,13 @@ frontend images with the same per-service tags used by Docker Hub
 tags directly from the published image repository, while maintainers can rebuild
 the same tags locally from the private workspace before starting compose.
 
+For reproducible installs, pin all service tags to one GitHub release version.
+Git tag `v0.1.0` publishes Docker tags `engine-ce-0.1.0`,
+`worker-ce-0.1.0`, `code-ce-0.1.0`, `runner-ce-0.1.0`,
+`verification-ce-0.1.0`, `brand-vision-ce-0.1.0`, and `pdf-ce-0.1.0`.
+Those aliases are promoted from the exact multi-architecture digests recorded
+in `OPEN_CORE_MANIFEST.json` only after the tagged `main` commit passes CI.
+
 ## Start CE Locally
 
 ```sh

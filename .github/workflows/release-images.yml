@@ -1,0 +1,73 @@
+name: Publish Versioned CE Images
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-images-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+      - name: Require a tagged main commit with successful CE CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git fetch origin main
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+          successful_runs="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow ci.yml --commit "$GITHUB_SHA" --status success --limit 20 --json databaseId --jq 'length')"
+          if [ "$successful_runs" -lt 1 ]; then
+            echo "No successful Flyto2 Warroom CE run exists for $GITHUB_SHA" >&2
+            exit 1
+          fi
+      - name: Audit release tag and immutable image plan
+        run: |
+          make verify
+          python install/scripts/verify-docker-images.py
+          python install/scripts/promote-release-images.py --tag "$GITHUB_REF_NAME"
+      - name: Require Docker Hub publisher credentials
+        run: |
+          if [ -z "$DOCKERHUB_USERNAME" ] || [ -z "$DOCKERHUB_TOKEN" ]; then
+            echo "DOCKERHUB_USERNAME variable and DOCKERHUB_TOKEN secret are required" >&2
+            exit 1
+          fi
+      - uses: docker/setup-buildx-action@v4
+      - uses: docker/login-action@v4
+        with:
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ env.DOCKERHUB_TOKEN }}
+      - name: Publish and verify semantic-version image tags
+        run: |
+          python install/scripts/promote-release-images.py             --tag "$GITHUB_REF_NAME"             --push             --evidence release-images.json
+      - name: Upload release evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: flyto2-warroom-ce-${{ github.ref_name }}-images
+          path: release-images.json
+          if-no-files-found: error
+      - name: Create or update GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" release-images.json --clobber --repo "$GITHUB_REPOSITORY"
+          else
+            gh release create "$GITHUB_REF_NAME" release-images.json               --verify-tag               --generate-notes               --title "Flyto2 Warroom CE $GITHUB_REF_NAME"               --repo "$GITHUB_REPOSITORY"
+          fi

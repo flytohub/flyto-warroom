@@ -57,6 +57,7 @@ REQUIRED = [
     "install/scripts/smoke-ce-stack.py",
     "install/scripts/smoke-source-stack.py",
     "install/scripts/verify-docker-images.py",
+    "install/scripts/promote-release-images.py",
     "install/scripts/mint-ee-sim-jwt.py",
     "docs/local-install.md",
     "docs/source-build.md",
@@ -93,9 +94,11 @@ REQUIRED = [
     "handoffs/2026-07-17-generated-open-core-sync.md",
     "handoffs/2026-07-18-gitlab-style-open-core-contract.md",
     "handoffs/2026-07-19-ce-public-product-loop.md",
+    "handoffs/2026-07-22-tag-driven-image-release.md",
     ".github/CODEOWNERS",
     ".github/pull_request_template.md",
     ".github/workflows/ci.yml",
+    ".github/workflows/release-images.yml",
     ".github/workflows/cla.yml",
     "LICENSE",
     "CLA.md",
@@ -203,6 +206,19 @@ def main() -> int:
         for match in ROOT.glob(pattern):
             if match.is_file() and not is_local_artifact(match):
                 blockers.append(f"private path escaped release tree: {match.relative_to(ROOT)}")
+    release_manifest = ROOT / "OPEN_CORE_MANIFEST.json"
+    if release_manifest.exists():
+        try:
+            release_payload = load_json(release_manifest)
+            release = release_payload.get("release", {})
+            version = release.get("version") if isinstance(release, dict) else None
+            github_tag = release.get("github_tag") if isinstance(release, dict) else None
+            if not isinstance(version, str) or not re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version):
+                blockers.append("release version must use MAJOR.MINOR.PATCH")
+            elif github_tag != f"v{version}":
+                blockers.append("release github_tag must equal v plus the release version")
+        except (OSError, json.JSONDecodeError) as exc:
+            blockers.append(f"invalid JSON in OPEN_CORE_MANIFEST.json: {exc}")
     ce_compose = ROOT / "install/docker-compose.ce.yml"
     if ce_compose.exists():
         ce_text = text(ce_compose)

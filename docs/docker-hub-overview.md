@@ -41,10 +41,19 @@ This repository publishes Flyto2 Warroom CE services as separate tags:
 - `brand-vision-ce` - brand/image analysis helper
 - `pdf-ce` - report PDF service
 
-Versioned tags are also published for reproducible installs, for example:
+Stable semantic-version tags are published for reproducible installs. Git tag
+`v0.1.0` maps to:
 
-- `engine-ce-20260630-84db98a`
-- `code-ce-20260630-84db98a`
+- `engine-ce-0.1.0`
+- `worker-ce-0.1.0`
+- `code-ce-0.1.0`
+- `runner-ce-0.1.0`
+- `verification-ce-0.1.0`
+- `brand-vision-ce-0.1.0`
+- `pdf-ce-0.1.0`
+
+The tag-triggered GitHub Actions release verifies the immutable manifest
+digests and both `linux/amd64` and `linux/arm64` before and after promotion.
 
 ## Quick Start
 

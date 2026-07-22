@@ -52,3 +52,14 @@ Git remote URL.
 
 Reason: a public mirror is auditable only when a stranger can connect the exact
 source inputs to the exact release tree without access to a maintainer machine.
+
+## Tag-Driven Image Releases
+
+Decision: stable Git tag `vMAJOR.MINOR.PATCH` is the only automatic Docker Hub
+release trigger. Each tag must match the version fields in
+`OPEN_CORE_MANIFEST.json`, point to a `main` commit with successful CE CI, and
+promote the manifest's exact image digests to per-service semantic-version tags.
+
+Reason: the public mirror does not contain every private image build context.
+Digest promotion keeps the CI/CD release reproducible without rebuilding hidden
+source or letting a mutable floating tag silently define a historical release.

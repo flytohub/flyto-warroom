@@ -7,3 +7,5 @@
   `flyto-contracts` before regenerating this repository.
 - Keep CE/Enterprise boundaries explicit in docs, package manifests, and
   install overlays.
+- Bump both `release.version` and `release.github_tag`, regenerate CE, pass CI,
+  and only then push the matching stable Git tag for each image release.

@@ -16,8 +16,10 @@ CE_CONTROL_FILES = [
     "install/scripts/preflight.py",
     "install/scripts/smoke-ce-stack.py",
     "install/scripts/setup-ce.py",
+    "install/scripts/promote-release-images.py",
     "packages/flyto-code/.env.example",
     ".github/workflows/ci.yml",
+    ".github/workflows/release-images.yml",
 ]
 
 REQUIRED_FILES = [

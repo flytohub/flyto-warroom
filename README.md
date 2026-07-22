@@ -167,6 +167,10 @@ Published repository: `docker.io/chesterhsu/flyto-warroom`
 | Brand Vision | `brand-vision-ce` |
 | PDF | `pdf-ce` |
 
+Stable release `v0.1.0` promotes those exact manifest digests to
+per-service `*-0.1.0` Docker tags after the tagged `main` commit
+passes CI. See `docs/official-builds.md` for the release contract.
+
 ## CE And Enterprise
 
 CE is designed to be useful without calling Flyto2 Cloud. Higher-value
