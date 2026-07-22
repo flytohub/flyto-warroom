@@ -100,7 +100,7 @@ const brandResponse: BrandProtectionResponse = {
     source: 'high_similarity_watch',
     value: 'flyto2.net',
     display_value: 'flyto2.net',
-    target: 'flyto.com',
+    target: 'flyto2.com',
     stage: 'candidate',
     workflow_stage: 'needs_evidence',
     verdict: 'similar_domain_only',

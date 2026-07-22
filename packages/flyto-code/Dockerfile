@@ -58,7 +58,7 @@ LABEL org.opencontainers.image.title="flyto-code" \
       org.opencontainers.image.url="https://flyto2.com" \
       org.opencontainers.image.documentation="https://docs.flyto2.com/warroom/self-hosted-ce" \
       org.opencontainers.image.source="https://github.com/flytohub/flyto-warroom" \
-      org.opencontainers.image.licenses="Apache-2.0"
+      org.opencontainers.image.licenses="PolyForm-Noncommercial-1.0.0"
 
 ARG NGINX_CONF=nginx.conf
 ENV NGINX_ENVSUBST_FILTER=^FLYTO_ \

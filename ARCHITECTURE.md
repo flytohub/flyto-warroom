@@ -1,7 +1,7 @@
 # Flyto2 Warroom CE Architecture
 
-Flyto2 Warroom CE is a generated open-core distribution with four physical
-surfaces:
+Flyto2 Warroom CE is a generated source-available, noncommercial distribution
+with four physical surfaces:
 
 ```text
 packages/flyto-code        React/Vite Warroom cockpit

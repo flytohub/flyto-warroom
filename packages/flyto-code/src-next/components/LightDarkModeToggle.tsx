@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
@@ -10,7 +10,13 @@ import type { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSetting
 import useUser from '@auth/useUser';
 import { t } from '@lib/i18n';
 import { useSnackbar } from 'notistack';
-import { persistThemeMode } from '@fuse/default-settings/FuseDefaultSettings';
+import {
+	persistThemePreference,
+	readThemePreference,
+	resolveThemeMode,
+	type EffectiveThemeMode,
+	type ThemePreference
+} from '@lib/themePreference';
 
 type LightDarkModeToggleProps = {
 	className?: string;
@@ -25,18 +31,7 @@ function LightDarkModeToggle(props: LightDarkModeToggleProps) {
 	const { isGuest, updateUserSettings } = useUser();
 	const { enqueueSnackbar } = useSnackbar();
 	const mainTheme = useMainTheme();
-
-	// Listen for system theme changes — auto-follow when user hasn't explicitly chosen
-	useEffect(() => {
-		const mq = window.matchMedia('(prefers-color-scheme: dark)');
-		const handler = (e: MediaQueryListEvent) => {
-			const stored = localStorage.getItem('flyto-theme-mode');
-			if (stored) return; // User made explicit choice, don't override
-			handleSelectionChange(e.matches ? 'dark' : 'light');
-		};
-		mq.addEventListener('change', handler);
-		return () => mq.removeEventListener('change', handler);
-	}, []);
+	const [preference, setPreference] = useState<ThemePreference>(readThemePreference);
 
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
@@ -46,19 +41,9 @@ function LightDarkModeToggle(props: LightDarkModeToggleProps) {
 		setAnchorEl(null);
 	};
 
-	const handleSelectionChange = (selection: 'light' | 'dark') => {
-		persistThemeMode(selection);
-		if (selection === 'light') {
-			handleThemeSelect(lightTheme);
-		} else {
-			handleThemeSelect(darkTheme);
-		}
-
-		handleClose();
-	};
-
-	async function handleThemeSelect(_theme: FuseThemeOption) {
-		const _newSettings = setSettings({ theme: { ..._theme?.section } } as Partial<FuseSettingsConfigType>);
+	const handleThemeSelect = useCallback(async (mode: EffectiveThemeMode) => {
+		const selectedTheme = mode === 'light' ? lightTheme : darkTheme;
+		const _newSettings = setSettings({ theme: { ...selectedTheme?.section } } as Partial<FuseSettingsConfigType>);
 
 		if (!isGuest) {
 			const updatedUserData = await updateUserSettings(_newSettings);
@@ -69,7 +54,26 @@ function LightDarkModeToggle(props: LightDarkModeToggleProps) {
 				});
 			}
 		}
-	}
+	}, [darkTheme, enqueueSnackbar, isGuest, lightTheme, setSettings, updateUserSettings]);
+
+	const handleSelectionChange = useCallback((selection: ThemePreference) => {
+		persistThemePreference(selection);
+		setPreference(selection);
+		void handleThemeSelect(resolveThemeMode(selection));
+		setAnchorEl(null);
+	}, [handleThemeSelect]);
+
+	// Follow OS changes only while the explicit preference is "system".
+	useEffect(() => {
+		if (preference !== 'system') return undefined;
+
+		const mq = window.matchMedia('(prefers-color-scheme: dark)');
+		const handler = (event: MediaQueryListEvent) => {
+			void handleThemeSelect(event.matches ? 'dark' : 'light');
+		};
+		mq.addEventListener('change', handler);
+		return () => mq.removeEventListener('change', handler);
+	}, [handleThemeSelect, preference]);
 
 	return (
 		<>
@@ -91,16 +95,22 @@ function LightDarkModeToggle(props: LightDarkModeToggleProps) {
 				onClose={handleClose}
 			>
 				<MenuItem
-					selected={mainTheme.palette.mode === 'light'}
+					selected={preference === 'light'}
 					onClick={() => handleSelectionChange('light')}
 				>
 					{t('theme.light')}
 				</MenuItem>
 				<MenuItem
-					selected={mainTheme.palette.mode === 'dark'}
+					selected={preference === 'dark'}
 					onClick={() => handleSelectionChange('dark')}
 				>
 					{t('theme.dark')}
+				</MenuItem>
+				<MenuItem
+					selected={preference === 'system'}
+					onClick={() => handleSelectionChange('system')}
+				>
+					{t('theme.system')}
 				</MenuItem>
 			</Menu>
 		</>

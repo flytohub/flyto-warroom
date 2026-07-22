@@ -1,8 +1,10 @@
 # Flyto2 Trademark Policy
 
-The open-source licenses in this repository grant rights to the code they cover.
-They do not grant rights to the Flyto2 name, Flyto2 Warroom name, Flyto2 logos,
-product artwork, domain names, or other brand assets.
+The source licenses in this repository grant only the rights stated in their
+terms. Flyto-owned v0.2.0-and-later CE code is licensed under PolyForm Noncommercial
+1.0.0; it is source-available and is not OSI-approved open source.
+No source license grants rights to the Flyto2 name, Flyto2 Warroom name, Flyto2
+logos, product artwork, domain names, or other brand assets.
 
 ## Allowed Use
 

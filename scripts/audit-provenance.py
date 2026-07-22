@@ -95,6 +95,13 @@ def main() -> int:
         for package in payload.get("packages", [])
         if isinstance(package, dict) and package.get("repo")
     }
+    release = payload.get("release", {})
+    if isinstance(release, dict):
+        required.update(
+            str(name)
+            for name in release.get("build_source_repositories", [])
+            if str(name)
+        )
     missing = sorted(required - set(sources))
     if missing:
         blockers.append("provenance is missing source repositories: " + ", ".join(missing))

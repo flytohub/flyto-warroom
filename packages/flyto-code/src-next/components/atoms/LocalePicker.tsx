@@ -11,7 +11,11 @@ import { ChevronDown, Search, Check } from 'lucide-react'
 import { setLocale, getLocaleFlagUrl, t, type Locale } from '@lib/i18n'
 import { useLocale, useAvailableLocales } from '@hooks/useLocale'
 
-export function LocalePicker() {
+type LocalePickerProps = {
+  showLabel?: boolean
+}
+
+export function LocalePicker({ showLabel = false }: LocalePickerProps) {
   const currentLocale = useLocale()
   const locales = useAvailableLocales()
   const [open, setOpen] = useState(false)
@@ -81,6 +85,7 @@ export function LocalePicker() {
           className="lp-flag"
           onError={e => { (e.target as HTMLImageElement).style.display = 'none' }}
         />
+        {showLabel && <span className="lp-label">{currentInfo?.native ?? currentLocale}</span>}
         <ChevronDown size={12} className={`lp-chevron ${open ? 'lp-chevron--open' : ''}`} />
       </button>
 
@@ -155,6 +160,11 @@ export function LocalePicker() {
         .lp-flag {
           width: 20px; height: 20px; border-radius: 50%;
           object-fit: cover; flex-shrink: 0;
+        }
+
+        .lp-label {
+          max-width: 8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+          font-size: 13px; font-weight: 650;
         }
 
         .lp-chevron { color: var(--mui-palette-text-secondary, #64748b); transition: transform 0.2s; }

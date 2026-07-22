@@ -3,12 +3,12 @@
 ````markdown
 # Flyto2 Warroom CE
 
-Flyto2 Warroom CE is the self-hosted open-core edition of Flyto2 Warroom: a
+Flyto2 Warroom CE is the self-hosted, source-available, noncommercial edition of Flyto2 Warroom: a
 local security operations cockpit for code security, external attack surface,
 cloud/container/runtime posture, automated security testing, evidence, scoring,
 and compliance workflows.
 
-It is a self-hosted open-core security warroom and BYO offensive validation
+It is a self-hosted source-available security warroom and BYO offensive validation
 platform. Bring your own tools: Flyto2 turns their findings into verified
 attack paths, pentest evidence, and red-team scenarios.
 
@@ -18,8 +18,10 @@ Not a scanner-only image. Existing security tools are inputs; the local loop is:
 Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation
 ```
 
-This Community Edition is for local labs, evaluators, security teams, and
-open-source users who want to run Warroom on their own Docker host.
+This Community Edition is for noncommercial local labs, evaluators, researchers,
+and security teams that want to run Warroom on their own Docker host. Commercial
+production, SaaS/hosting, managed services, paid client delivery, resale, OEM,
+or other monetary-advantage use requires a separate written commercial license.
 
 ## Links
 
@@ -42,15 +44,15 @@ This repository publishes Flyto2 Warroom CE services as separate tags:
 - `pdf-ce` - report PDF service
 
 Stable semantic-version tags are published for reproducible installs. Git tag
-`v0.1.1` maps to:
+`v0.2.0` maps to:
 
-- `engine-ce-0.1.1`
-- `worker-ce-0.1.1`
-- `code-ce-0.1.1`
-- `runner-ce-0.1.1`
-- `verification-ce-0.1.1`
-- `brand-vision-ce-0.1.1`
-- `pdf-ce-0.1.1`
+- `engine-ce-0.2.0`
+- `worker-ce-0.2.0`
+- `code-ce-0.2.0`
+- `runner-ce-0.2.0`
+- `verification-ce-0.2.0`
+- `brand-vision-ce-0.2.0`
+- `pdf-ce-0.2.0`
 
 The tag-triggered GitHub Actions release verifies the immutable manifest
 digests and both `linux/amd64` and `linux/arm64` before and after promotion.
@@ -125,7 +127,7 @@ instance.
 
 ## Edition Model
 
-Community Edition includes the self-hosted open-core Warroom stack. Enterprise
+Community Edition includes the self-hosted source-available, noncommercial Warroom stack. Enterprise
 features are separate commercial offerings and are exposed through documented
 capabilities, contracts, signed evidence, private images, or Flyto2 Cloud
 services.

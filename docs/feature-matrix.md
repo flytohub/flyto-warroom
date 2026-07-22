@@ -4,7 +4,7 @@ Machine-generated from `services/flyto-engine-ce/internal/modulecatalog/catalog.
 Do not hand-edit this file in the public mirror; change the private
 `flyto-engine` module catalog and rerun the open-core exporter.
 
-Flyto2 Warroom CE is a self-hosted open-core security warroom and
+Flyto2 Warroom CE is a self-hosted source-available security warroom and
 BYO offensive validation platform: it turns existing tool findings into
 verified attack paths, pentest evidence, and red-team scenarios.
 It is not a scanner-only dashboard.

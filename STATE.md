@@ -4,6 +4,12 @@
 
 - The repository is generated from private Flyto2 source by
   `flyto-engine/release` open-core tooling.
+- Flyto-owned v0.2.0-and-later CE code uses PolyForm Noncommercial 1.0.0.
+  Commercial production, hosted/SaaS or managed-service use, paid client
+  delivery, resale, OEM distribution, and other use for monetary advantage
+  require a separate written commercial license. Historical v0.1.0/v0.1.1
+  releases retain their Apache-2.0 grants, and third-party licenses are
+  unaffected.
 - CE includes frontend source, public contracts, CE-safe engine kernel source,
   local installer assets, Docker image coordinates, and boundary audits.
 - Fresh CE databases expose a one-time browser page for creating the first
@@ -30,10 +36,10 @@
 - `make ce-smoke` checks a running Docker Compose stack end to end: engine
   health, frontend health, frontend API proxy, runner, verification,
   brand-vision, and the CE product-loop payload.
-- Stable Git tags now drive Docker Hub release promotion. The manifest declares
-  version `0.1.1` / Git tag `v0.1.1`; the release workflow requires the tagged
+- Stable Git tags drive Docker Hub release promotion. The manifest declares
+  version `0.2.0` / Git tag `v0.2.0`; the release workflow requires the tagged
   commit on `main` with successful CI, verifies all seven immutable multi-arch
-  digests, promotes them to `*-0.1.1` tags, re-verifies the aliases, and attaches
+  digests, promotes them to `*-0.2.0` tags, re-verifies the aliases, and attaches
   machine-readable evidence to the GitHub release.
 
 ## Known Boundaries

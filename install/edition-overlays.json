@@ -194,7 +194,7 @@
   "source_contract_schema": "flyto.open-core-build-overlay.v1",
   "upstream_contract": {
     "community_contribution_target": "shared_ce_source_first",
-    "community_source_policy": "public_source_and_images",
+    "community_source_policy": "public_source_noncommercial_and_images",
     "enterprise_is_overlay_not_fork": true,
     "moat_controls": [
       "commercial-intel",
@@ -204,7 +204,7 @@
       "public-rating-authority",
       "saas-control-plane"
     ],
-    "model": "gitlab_style_open_core",
+    "model": "generated_source_available_ce",
     "paid_edition_policy": "build_time_private_overlay_only",
     "private_source_repos": [
       "flyto-engine",

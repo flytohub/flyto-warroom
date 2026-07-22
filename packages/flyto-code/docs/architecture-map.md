@@ -3,10 +3,14 @@
 ## Core Areas
 
 - `src-next/app`: app shell, route wiring, providers, and layout behavior.
-- `src-next/pages` and feature views: product-surface experiences.
+- `src-next/app` route groups and `src-next/components/compounds` domain views:
+  product-surface experiences.
 - `src-next/lib` and engine clients: typed data access and shared query keys.
 - `docs/platform-loops`: route, loop, and smoke registry contracts.
 - `scripts`: audit, release, evidence, and closure gates.
+
+The complete current map is maintained in [`ARCHITECTURE.md`](./ARCHITECTURE.md),
+with source-linked symbols in [`reference/source-api.md`](./reference/source-api.md).
 
 ## Cross-Repo Edges
 

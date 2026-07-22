@@ -13,6 +13,8 @@ const buildEnv = {
 }
 
 const steps = [
+  ['npm', ['run', 'docs:check']],
+  ['npm', ['run', 'brand:check']],
   ['npm', ['run', 'audit:eslint-warnings']],
   ['npx', ['tsc', '-b', '--noEmit']],
   ['npx', ['vitest', 'run']],

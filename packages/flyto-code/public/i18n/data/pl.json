@@ -1,1 +1,0 @@
-{"locale": "pl", "name": "Polish", "native": "Polski", "region": "PL", "version": "3043d649bed0", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "Opis tego procesu błędu", "label": "Opis"}}, "pleaseSelect": "Wybierz…", "ports": {"error": "Wyjscie"}}}}

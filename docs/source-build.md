@@ -1,7 +1,8 @@
 # Public Source Build
 
-The public source profile proves that the Apache-2.0 CE engine kernel, worker
-primitives, and React frontend can be rebuilt directly from this repository.
+The public source profile proves that the PolyForm Noncommercial 1.0.0 CE
+engine kernel, worker primitives, and React frontend can be rebuilt directly
+from this repository for permitted noncommercial purposes.
 It does not pull Flyto2 service images and it does not require credentials.
 
 ```sh

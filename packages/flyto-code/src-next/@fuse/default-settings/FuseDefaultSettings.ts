@@ -3,6 +3,12 @@ import { createTheme, ThemeOptions } from '@mui/material/styles';
 import qs from 'qs';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
 import type {} from '@mui/material/themeCssVarsAugmentation';
+import {
+	persistThemePreference,
+	readThemePreference,
+	resolveThemeMode,
+	type ThemePreference
+} from '@lib/themePreference';
 
 /**
  * Detect initial theme mode:
@@ -11,16 +17,12 @@ import type {} from '@mui/material/themeCssVarsAugmentation';
  *   3. fallback to 'dark' (product default)
  */
 function getInitialMode(): 'dark' | 'light' {
-	if (typeof window === 'undefined') return 'dark';
-	const stored = localStorage.getItem('flyto-theme-mode');
-	if (stored === 'dark' || stored === 'light') return stored;
-	if (window.matchMedia?.('(prefers-color-scheme: light)').matches) return 'light';
-	return 'dark';
+	return resolveThemeMode(readThemePreference());
 }
 
 /** Save user's theme choice to localStorage */
-export function persistThemeMode(mode: 'dark' | 'light') {
-	try { localStorage.setItem('flyto-theme-mode', mode); } catch { /* */ }
+export function persistThemeMode(mode: ThemePreference) {
+	persistThemePreference(mode);
 }
 
 const initialMode = getInitialMode();

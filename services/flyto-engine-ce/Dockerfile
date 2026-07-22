@@ -20,7 +20,7 @@ USER 10001:10001
 FROM runtime-base AS engine
 LABEL org.opencontainers.image.title="Flyto2 Engine CE Source Runtime" \
       org.opencontainers.image.source="https://github.com/flytohub/flyto-warroom" \
-      org.opencontainers.image.licenses="Apache-2.0"
+      org.opencontainers.image.licenses="PolyForm-Noncommercial-1.0.0"
 COPY --from=build /out/engine /usr/local/bin/flyto-engine-ce
 EXPOSE 8080
 HEALTHCHECK --interval=10s --timeout=3s --retries=15 \
@@ -30,7 +30,7 @@ ENTRYPOINT ["/usr/local/bin/flyto-engine-ce"]
 FROM runtime-base AS worker
 LABEL org.opencontainers.image.title="Flyto2 Worker CE Source Runtime" \
       org.opencontainers.image.source="https://github.com/flytohub/flyto-warroom" \
-      org.opencontainers.image.licenses="Apache-2.0"
+      org.opencontainers.image.licenses="PolyForm-Noncommercial-1.0.0"
 COPY --from=build /out/worker /usr/local/bin/flyto-worker-ce
 EXPOSE 8081
 HEALTHCHECK --interval=10s --timeout=3s --retries=15 \

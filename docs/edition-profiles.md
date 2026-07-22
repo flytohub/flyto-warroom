@@ -20,7 +20,7 @@ The shared contract is `flyto.editions.v1`:
 | `pages` | Explicitly exposed routes; unknown pages are denied |
 | `bridge_policy` | Cloud bridge, signed bundle, and evidence verification rules |
 
-## GitLab-style Open-core Rule
+## Source-available Noncommercial Rule
 
 Flyto2 Warroom CE is the public upstream base. Enterprise, SaaS, on-prem, and
 airgap editions must be built as private build-time overlays on a pinned CE

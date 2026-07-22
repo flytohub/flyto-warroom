@@ -1,9 +1,9 @@
 /* =========================================================================
-   @flyto/design-tokens — canonical CSS custom properties
+   @flyto2/design-tokens — canonical CSS custom properties
    =========================================================================
 
    Import once in each app's global stylesheet:
-     @import '@flyto/design-tokens/css';
+     @import '@flyto2/design-tokens/css';
 
    Every variable is namespaced with --flyto-*. App-specific aliases (e.g.
    --color-brand in Cortex, --uno-brand in Cloud) can be defined on top of

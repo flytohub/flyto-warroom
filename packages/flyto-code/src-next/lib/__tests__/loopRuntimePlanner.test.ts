@@ -124,14 +124,14 @@ describe('platform loop runtime planner safety', () => {
   })
 
   it('builds a local dev-auth token for authenticated loop API smoke without using secrets', () => {
-    const token = buildLoopDevAuthToken('audit-uid', 'audit@example.test')
+    const token = buildLoopDevAuthToken('audit-uid', 'dev@flyto2.com')
     const parts = token.split('.')
     expect(parts).toHaveLength(3)
     expect(parts[2]).toBe('')
     const header = JSON.parse(Buffer.from(parts[0], 'base64url').toString('utf8'))
     const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'))
     expect(header).toMatchObject({ alg: 'none', typ: 'JWT' })
-    expect(payload).toMatchObject({ sub: 'audit-uid', email: 'audit@example.test' })
+    expect(payload).toMatchObject({ sub: 'audit-uid', email: 'dev@flyto2.com' })
   })
 
   it('fails a runtime assertion that points at the wrong module', () => {

@@ -8,7 +8,10 @@ Folders on the cloud side mirror the taxonomy flyto-code's AI builds per repo
 (e.g. `repo42/auth-tests`, `repo42/injection-tests`). Two-way sync is anchored
 by an `external_id` that flyto-code owns.
 
-Design reference: [`flyto-engine/docs/flyto-code-sync.md`](../../flyto-engine/docs/flyto-code-sync.md).
+This page is the public consumer contract. The private engine repository keeps
+the corresponding provider design in `flyto-engine/docs/flyto-code-sync.md`;
+the CE documentation deliberately does not depend on a sibling or private
+checkout.
 
 ---
 
@@ -192,6 +195,6 @@ only becomes production-grade there.
 
 ## Related
 
-- `flyto-engine/docs/flyto-code-sync.md` — the binding contract & migration plan
+- `flyto-engine/docs/flyto-code-sync.md` — private provider design and migration plan
 - `flyto-code/docs/PRODUCT_ROADMAP.md` — where DAST / pentest YAML lives in the matrix
 - `flyto-core/workflows/pentests/` — YAML workflows ready to sync

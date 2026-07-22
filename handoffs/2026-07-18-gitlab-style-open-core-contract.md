@@ -1,4 +1,4 @@
-# GitLab-style Open-core Contract
+# Generated Source-available CE Contract
 
 Date: 2026-07-18
 

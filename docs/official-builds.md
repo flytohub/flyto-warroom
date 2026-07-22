@@ -19,9 +19,9 @@ Official CE images are runnable distribution artifacts. They do not mean the
 private `flyto-engine` implementation, Enterprise datasets, Enterprise
 remediation workers, or Flyto2 Cloud control plane source have been published.
 
-Stable Git tags drive immutable Docker Hub aliases. For Git tag `v0.1.1`, the
+Stable Git tags drive immutable Docker Hub aliases. For Git tag `v0.2.0`, the
 release workflow promotes the already-verified manifest digests to
-`engine-ce-0.1.1`, `worker-ce-0.1.1`, `code-ce-0.1.1`, and matching auxiliary
+`engine-ce-0.2.0`, `worker-ce-0.2.0`, `code-ce-0.2.0`, and matching auxiliary
 service tags. Promotion copies the exact multi-architecture indexes declared in
 `OPEN_CORE_MANIFEST.json`; it does not rebuild private source in the public
 repository or silently replace a digest.

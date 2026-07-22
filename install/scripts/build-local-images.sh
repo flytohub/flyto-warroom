@@ -33,7 +33,10 @@ tar -C "$WORKSPACE/flyto-code" -cf - . | tar -C "$CODE_CTX" -xf -
 rm -rf "$CODE_CTX/node_modules"   "$CODE_CTX/dist"   "$CODE_CTX/dist-next"   "$CODE_CTX/out"   "$CODE_CTX/test-results"   "$CODE_CTX/flyto-design-tokens-pkg"
 find "$CODE_CTX/public/i18n" -maxdepth 1 -type f -name '*.json' -delete 2>/dev/null || true
 if [ -d "$WORKSPACE/flyto-design-tokens" ]; then
-  cp -R "$WORKSPACE/flyto-design-tokens" "$CODE_CTX/flyto-design-tokens-pkg"
+  rm -rf "$CODE_CTX/vendor/@flyto/design-tokens"
+  mkdir -p "$CODE_CTX/vendor/@flyto/design-tokens"
+  cp -R "$WORKSPACE/flyto-design-tokens/." "$CODE_CTX/vendor/@flyto/design-tokens/"
+  rm -rf "$CODE_CTX/vendor/@flyto/design-tokens/.git"     "$CODE_CTX/vendor/@flyto/design-tokens/.flyto-index"
 else
   echo "missing $WORKSPACE/flyto-design-tokens" >&2
   exit 1
@@ -42,7 +45,7 @@ mkdir -p "$CODE_CTX/public/i18n/code"
 if [ -d "$WORKSPACE/flyto-i18n/dist/code" ]; then
   cp -R "$WORKSPACE/flyto-i18n/dist/code/." "$CODE_CTX/public/i18n/code/"
 fi
-python3 - "$CODE_CTX/package.json" "$CODE_CTX/package-lock.json" "$CODE_CTX/flyto-design-tokens-pkg/package.json" <<'PY'
+python3 - "$CODE_CTX/package.json" "$CODE_CTX/package-lock.json" "$CODE_CTX/vendor/@flyto/design-tokens/package.json" <<'PY'
 import json
 import sys
 from pathlib import Path
@@ -55,7 +58,7 @@ for section in ("dependencies", "devDependencies"):
     deps = payload.get(section, {})
     for name, value in list(deps.items()):
         if name == "@flyto/design-tokens" or value in ("file:../flyto-design-tokens", "file:./vendor/@flyto/design-tokens"):
-            deps[name] = "file:./flyto-design-tokens-pkg"
+            deps[name] = "file:./vendor/@flyto/design-tokens"
 path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 tokens = json.loads(tokens_path.read_text(encoding="utf-8"))
@@ -66,17 +69,17 @@ if lock_path.exists():
     lock = json.loads(lock_path.read_text(encoding="utf-8"))
     packages = lock.setdefault("packages", {})
     root_package = packages.setdefault("", {})
-    root_package.setdefault("dependencies", {})["@flyto/design-tokens"] = "file:./flyto-design-tokens-pkg"
+    root_package.setdefault("dependencies", {})["@flyto/design-tokens"] = "file:./vendor/@flyto/design-tokens"
     for key in list(packages):
-        if key == "../flyto-design-tokens" or key == "vendor/@flyto/design-tokens" or key.endswith("/flyto-design-tokens"):
+        if key == "../flyto-design-tokens" or key == "flyto-design-tokens-pkg":
             packages.pop(key, None)
-    packages["flyto-design-tokens-pkg"] = {
+    packages["vendor/@flyto/design-tokens"] = {
         "name": "@flyto/design-tokens",
         "version": tokens.get("version", "0.1.0"),
         "license": tokens.get("license", "Apache-2.0"),
     }
     packages["node_modules/@flyto/design-tokens"] = {
-        "resolved": "flyto-design-tokens-pkg",
+        "resolved": "vendor/@flyto/design-tokens",
         "link": True,
     }
     lock_path.write_text(json.dumps(lock, indent=2) + "\n", encoding="utf-8")

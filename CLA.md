@@ -3,10 +3,11 @@
 > Standard, industry-common CLA template (Apache-style inbound grant + dual-edition
 > relicensing right). Have counsel review the final wording before relying on it.
 
-To keep Flyto2 Warroom maintainable across both its Community Edition
-(Apache-2.0) and its commercial edition, every contributor agrees to the terms
-below. You retain ownership of your contribution; you grant the rights needed to
-use and relicense it. By signing (via the CLA bot on your PR) you agree to:
+To keep Flyto2 Warroom maintainable across both its source-available Community
+Edition (PolyForm Noncommercial 1.0.0) and its commercial edition, every
+contributor agrees to the terms below. You retain ownership of your
+contribution; you grant the rights needed to use and relicense it. By signing
+(via the CLA bot on your PR) you agree to:
 
 ## 1. Definitions
 - "You" means the individual or legal entity agreeing to this CLA.
@@ -17,8 +18,9 @@ You grant the project maintainer (Flyto2 / evtek) and recipients of software the
 maintainer distributes a perpetual, worldwide, non-exclusive, royalty-free,
 irrevocable copyright license to reproduce, prepare derivative works of, publicly
 display, publicly perform, sublicense, and distribute your Contribution under any
-license terms the maintainer chooses, including both the Apache-2.0 Community
-Edition and the maintainer's proprietary commercial edition.
+license terms the maintainer chooses, including both the PolyForm
+Noncommercial Community Edition and the maintainer's proprietary commercial
+edition.
 
 ## 3. Patent license grant
 You grant a perpetual, worldwide, non-exclusive, royalty-free, irrevocable

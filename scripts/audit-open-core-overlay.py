@@ -91,8 +91,8 @@ def audit_upstream_contract(contract: dict, *, prefix: str) -> list[str]:
         return [f"{prefix} upstream_contract must be an object"]
     if contract.get("schema") != "flyto.open-core-upstream-contract.v1":
         blockers.append(f"{prefix} upstream_contract.schema must be flyto.open-core-upstream-contract.v1")
-    if contract.get("model") != "gitlab_style_open_core":
-        blockers.append(f"{prefix} upstream_contract.model must be gitlab_style_open_core")
+    if contract.get("model") != "generated_source_available_ce":
+        blockers.append(f"{prefix} upstream_contract.model must be generated_source_available_ce")
     if contract.get("public_upstream") != "https://github.com/flytohub/flyto-warroom":
         blockers.append(f"{prefix} upstream_contract.public_upstream must be flytohub/flyto-warroom")
     if contract.get("public_base_selector") != "flyto-warroom@commit_sha":
@@ -250,7 +250,7 @@ def audit_docs() -> list[str]:
             "never pulls source",
         ],
         "docs/edition-profiles.md": [
-            "GitLab-style Open-core Rule",
+            "Source-available Noncommercial Rule",
             "public rating authority remains a private signed overlay",
             "CE scores are local and externally observed",
         ],

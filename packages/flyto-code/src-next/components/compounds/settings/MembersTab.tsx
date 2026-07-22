@@ -363,7 +363,7 @@ export function MembersTab() {
         {/* Invite form */}
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, px: 2.5, py: 2, alignItems: 'center', borderBottom: 1, borderColor: 'divider' }}>
           <TextField
-            placeholder="colleague@company.com"
+            placeholder="team@flyto2.com"
             value={inviteEmail}
             onChange={e => setInviteEmail(e.target.value)}
             size="small"

@@ -61,11 +61,12 @@ token, connector error, cloud service unavailable, or evidence signature failure
 
 ## Product Boundary
 
-Do not market CE as fully open-source Enterprise. The correct promise is:
+Do not market v0.2.0-and-later CE as open source or as fully open-source
+Enterprise. The correct promise is:
 
-> CE is the self-hosted open-core Warroom. Enterprise unlocks cloud-backed
-> intelligence, managed remediation, fleet execution, enterprise identity,
-> governance, and support.
+> CE is the self-hosted, source-available, noncommercial Warroom. Enterprise
+> unlocks commercial use, cloud-backed intelligence, managed remediation,
+> fleet execution, enterprise identity, governance, and support.
 
 This keeps the public project useful, encourages community contributions, and
 protects the commercial moat.

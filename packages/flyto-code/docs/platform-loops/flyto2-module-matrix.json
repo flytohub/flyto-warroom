@@ -454,7 +454,7 @@
       "id": "ai_governance",
       "label": "AI / AI Governance",
       "surface": "runtime_cloud_identity",
-      "commercialSku": "flyto.ai_governance",
+      "commercialSku": "flyto2.ai_governance",
       "modules": [
         "ai_security_center",
         "agent_firewall_attack_lab",
@@ -524,7 +524,7 @@
         "enableControl": "ai_governance and mcp_guardian capabilities expose governance surfaces",
         "disableControl": "provider gate fails closed and deterministic fallback replaces authority decisions",
         "deployBoundary": "AI and MCP providers are adapters behind policy/evidence contracts",
-        "sellBoundary": "flyto.ai_governance entitlement SKU",
+        "sellBoundary": "flyto2.ai_governance entitlement SKU",
         "evidenceBoundary": "provider decisions, quota usage, and policy simulations emit auditable events"
       },
       "merge": {

@@ -1,6 +1,6 @@
 import Typography from '@mui/material/Typography';
 import Link from '@components/adapters/Link';
-import { t, tOr } from '@lib/i18n'
+import { t } from '@lib/i18n'
 
 function SignUpPageTitle({ localBootstrap = false }: { localBootstrap?: boolean }) {
 	return (
@@ -14,13 +14,13 @@ function SignUpPageTitle({ localBootstrap = false }: { localBootstrap?: boolean 
 					alt="logo"
 				/>
 				<Typography className="text-4xl leading-[1.1] font-extrabold tracking-tight">
-					{localBootstrap ? tOr('auth.localBootstrap.title', 'Set up your Warroom') : t('auth.register')}
+					{localBootstrap ? t('auth.localBootstrap.title') : t('auth.register')}
 				</Typography>
 			</div>
 			<div className="mt-1.5 flex items-baseline font-medium">
 			<Typography>
 				{localBootstrap
-					? tOr('auth.localBootstrap.hasAdmin', 'Already created the administrator?')
+					? t('auth.localBootstrap.hasAdmin')
 					: t('auth.hasAccount')}
 			</Typography>
 				<Link

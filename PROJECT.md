@@ -1,6 +1,7 @@
 # Flyto2 Warroom CE Project
 
-Flyto2 Warroom CE is the self-hosted open-core entry point for Flyto2 Warroom.
+Flyto2 Warroom CE is the self-hosted, source-available, noncommercial entry point
+for Flyto2 Warroom.
 It gives users a local security warroom for code, external exposure, cloud,
 container, runtime, evidence, reporting, and deterministic remediation records.
 

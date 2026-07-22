@@ -1,13 +1,16 @@
 {
   "name": "flyto-code",
   "private": true,
-  "license": "Apache-2.0",
+  "license": "PolyForm-Noncommercial-1.0.0",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.next.ts --configLoader runner --open",
     "build": "tsc -b && vite build --config vite.config.next.ts",
     "lint": "eslint .",
+    "docs:generate": "node scripts/generate-documentation-reference.mjs",
+    "docs:check": "node scripts/generate-documentation-reference.mjs --check && python3 scripts/check_documentation.py",
+    "brand:check": "python3 scripts/check_brand_identity.py",
     "audit:eslint-warnings": "node scripts/audit-eslint-warning-budget.mjs",
     "preview": "vite preview --config vite.config.next.ts",
     "gen:api": "openapi-typescript ../flyto-engine/api/openapi.yaml -o src-next/lib/engine/openapi-schema.gen.ts",

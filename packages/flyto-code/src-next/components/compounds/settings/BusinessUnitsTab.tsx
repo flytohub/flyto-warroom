@@ -105,7 +105,7 @@ export function BusinessUnitsTab() {
           </Box>
           <TextField label={t('bu.fieldOwner')} size="small" fullWidth sx={{ mb: 2 }}
             value={form.owner_email} onChange={e => setForm({ ...form, owner_email: e.target.value })}
-            placeholder="ops@acme.com" />
+            placeholder="team@flyto2.com" />
           <Box sx={{ mb: 2 }}>
             <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
               {t('bu.fieldScope')}

@@ -4,11 +4,11 @@
 [![GitHub](https://img.shields.io/badge/GitHub-flytohub%2Fflyto--warroom-181717?logo=github)](https://github.com/flytohub/flyto-warroom)
 [![Website](https://img.shields.io/badge/Website-flyto2.com-2563eb)](https://flyto2.com)
 [![Docs](https://img.shields.io/badge/Docs-docs.flyto2.com-0891b2)](https://docs.flyto2.com/warroom/self-hosted-ce)
-[![License](https://img.shields.io/badge/License-open--core-16a34a)](LICENSES.md)
+[![License](https://img.shields.io/badge/License-PolyForm%20Noncommercial-16a34a)](LICENSES.md)
 
 Self-hosted Community Edition for the Flyto2 security operations platform.
 
-Flyto2 Warroom CE is a self-hosted open-core security warroom and
+Flyto2 Warroom CE is a self-hosted source-available security warroom and
 BYO offensive validation platform. Bring your own tools: Flyto2
 turns their findings into verified attack paths, pentest evidence,
 and red-team scenarios.
@@ -24,7 +24,7 @@ CE is useful without Flyto2 Cloud. Enterprise Cloud Bridge adds
 commercial intelligence, managed remediation, identity, support,
 fleet execution, and signed premium evidence when teams need it.
 
-Flyto2 Warroom CE is the self-hosted open-core security operations
+Flyto2 Warroom CE is the self-hosted source-available security operations
 platform for code, CTEM, external attack surface, cloud, container,
 runtime, automated security testing, evidence, scoring, and compliance
 workflows.
@@ -38,7 +38,7 @@ pinned Flyto2 Warroom CE commit. The running system never pulls source
 code dynamically; license tier, overlays, image digests, and verification
 evidence are recorded during packaging.
 
-This is a GitLab-style open-core layout: CE is the public upstream base,
+This is a generated source-available layout: CE is the public noncommercial base,
 and paid editions are overlays built from a pinned CE commit. Public
 changes are imported back into the private source workspace, tested,
 and re-exported so the CE tree does not become a disconnected fork.
@@ -47,7 +47,7 @@ and re-exported so the CE tree does not become a disconnected fork.
 
 | Channel | Link | Purpose |
 | --- | --- | --- |
-| Product page | https://flyto2.com/open-source/ | CE positioning and edition model |
+| Product page | https://flyto2.com | CE positioning and edition model |
 | Docs | https://docs.flyto2.com/warroom/self-hosted-ce | Install, local auth, Docker tags, and Enterprise bridge boundaries |
 | GitHub | https://github.com/flytohub/flyto-warroom | Public source mirror, contracts, governance, and contribution loop |
 | Docker Hub | https://hub.docker.com/r/chesterhsu/flyto-warroom | Published CE service images |
@@ -107,7 +107,8 @@ Default local ports:
 
 ### Build The Public Source Profile
 
-The source profile builds the Apache-2.0 engine kernel, worker, and the
+The source profile builds the PolyForm Noncommercial 1.0.0 engine
+kernel, worker, and the
 same React frontend directly from this repository. It does not pull
 Flyto2 service images or require credentials:
 
@@ -149,7 +150,7 @@ enterprise adapters, and live remediation workers are not exported.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1637 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1611 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 | `flyto-engine-ce` | `flyto-engine` | 95 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
 
@@ -167,8 +168,8 @@ Published repository: `docker.io/chesterhsu/flyto-warroom`
 | Brand Vision | `brand-vision-ce` |
 | PDF | `pdf-ce` |
 
-Stable release `v0.1.1` promotes those exact manifest digests to
-per-service `*-0.1.1` Docker tags after the tagged `main` commit
+Stable release `v0.2.0` promotes those exact manifest digests to
+per-service `*-0.2.0` Docker tags after the tagged `main` commit
 passes CI. See `docs/official-builds.md` for the release contract.
 
 ## CE And Enterprise
@@ -191,7 +192,7 @@ calibration remain private signed overlays.
 
 | Edition | Best for | Notes |
 | --- | --- | --- |
-| CE | Local labs, evaluators, OSS users, self-hosted baseline workflows | Public source packages, public contracts, local install, runnable CE images |
+| CE | Personal research, education, public-interest organizations, and noncommercial self-hosting | Source-available packages, public contracts, local install, runnable CE images |
 | Enterprise Cloud Bridge | Teams that need premium intelligence or managed execution | Entitled cloud jobs return signed evidence to the local Warroom |
 | Enterprise Airgap | Regulated deployments that cannot call Flyto2 Cloud | Private images, signed offline licenses, support, and controlled update bundles |
 
@@ -263,5 +264,10 @@ enterprise-only implementation details. See `SECURITY.md` and
 
 ## License
 
-Each package keeps its own license. Root installer, workflow, and generated
-documentation files are Apache-2.0. See `LICENSES.md`.
+Flyto2-owned CE source, installer, workflow, and generated documentation
+in this release use PolyForm Noncommercial 1.0.0. Commercial production,
+paid hosting/SaaS, resale/OEM, and paid client delivery require a separate
+written commercial license. Third-party packages keep their own licenses.
+Historical `v0.1.0` and `v0.1.1` releases remain Apache-2.0; those already
+granted rights are not revoked. See `LICENSES.md` for the full FAQ and
+package boundaries.

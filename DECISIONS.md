@@ -8,6 +8,17 @@ become a hand-maintained fork.
 Reason: CE patches should benefit Flyto2 itself while keeping Enterprise/SaaS
 moat code out of the public tree.
 
+## Noncommercial Source License From v0.2.0
+
+Decision: Flyto-owned CE code released as v0.2.0 or later uses PolyForm
+Noncommercial 1.0.0. Commercial production, SaaS/hosting, managed service,
+paid client delivery, resale, OEM, or other monetary-advantage use requires a
+separate written commercial license.
+
+Reason: publishing auditable source should not authorize third parties to
+commercialize the project. Historical v0.1.0/v0.1.1 Apache-2.0 grants are not
+revoked, and third-party dependencies remain governed by their own licenses.
+
 ## Build-Time Overlays Only
 
 Decision: Enterprise and SaaS editions use a pinned CE commit plus private
@@ -20,8 +31,8 @@ protection require reproducible build inputs.
 
 Decision: CE must remain locally runnable, inspectable, and patchable.
 
-Reason: open-core adoption depends on real local value, not a library dump or
-marketing-only mirror.
+Reason: source-available CE adoption depends on real local value, not a library
+dump or marketing-only mirror.
 
 ## One-Time First Administrator
 
@@ -37,7 +48,7 @@ replicas from creating multiple first owners.
 ## Deterministic Product Loop
 
 Decision: CE must ship a provider-free product-loop endpoint and smoke test so
-new users can verify the open-source warroom loop without Flyto2 Cloud,
+new users can verify the source-available warroom loop without Flyto2 Cloud,
 commercial connectors, Firebase rating authority, or Enterprise overlays.
 
 Reason: a GitLab-style CE needs visible product value in the first install. The

@@ -1,6 +1,6 @@
 # Flyto2 Warroom Reference Architecture
 
-Flyto2 Warroom CE is a self-hosted open-core security war room. Its core job is
+Flyto2 Warroom CE is a self-hosted source-available, noncommercial security war room. Its core job is
 not to replace every scanner. Its job is to turn findings from existing tools
 into attack paths, safe validation, evidence, reports, and remediation records.
 
@@ -49,7 +49,7 @@ Flyto2 borrows product-shape lessons from mature open security projects:
 
 | Reference | Lesson applied to Flyto2 |
 | --- | --- |
-| [GitLab](https://handbook.gitlab.com/handbook/company/stewardship/) | Open-core should keep CE useful while paid editions add governance and scale. |
+| Flyto2 CE policy | Source-available CE stays useful for noncommercial use while paid editions add commercial rights, governance, and scale. |
 | [DefectDojo](https://github.com/DefectDojo/django-DefectDojo) | Findings need lifecycle, dedupe, remediation, re-test, and reports. |
 | [OpenCTI](https://github.com/OpenCTI-Platform/opencti) | Connectors and graph relationships make threat and asset data composable. |
 | [OpenAEV](https://github.com/OpenAEV-Platform/openaev) | Offensive validation should be campaign-based, scoped, and evidenced. |

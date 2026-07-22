@@ -73,6 +73,7 @@ BRAND_VISION_IMAGE="${FLYTO_WARROOM_BRAND_VISION_IMAGE:-$IMAGE_REPOSITORY}"
 BRAND_VISION_TAG="${FLYTO_WARROOM_BRAND_VISION_TAG:-brand-vision-ce}"
 PDF_IMAGE="${FLYTO_WARROOM_PDF_IMAGE:-$IMAGE_REPOSITORY}"
 PDF_TAG="${FLYTO_WARROOM_PDF_TAG:-pdf-ce}"
+LICENSE_LABEL="org.opencontainers.image.licenses=PolyForm-Noncommercial-1.0.0"
 
 if [ "$PUSH" -ne 1 ]; then
   echo "dry-run: pass --push to publish images and manifest lists"
@@ -95,6 +96,9 @@ source_revision() {
 ENGINE_REVISION="$(source_revision "$WORKSPACE/flyto-engine")"
 CODE_REVISION="$(source_revision "$WORKSPACE/flyto-code")"
 CORE_REVISION="$(source_revision "$WORKSPACE/flyto-core")"
+INDEXER_REVISION="$(source_revision "$WORKSPACE/flyto-indexer")"
+DESIGN_TOKENS_REVISION="$(source_revision "$WORKSPACE/flyto-design-tokens")"
+I18N_REVISION="$(source_revision "$WORKSPACE/flyto-i18n")"
 
 TMP_ROOT="$(mktemp -d)"
 cleanup() {
@@ -102,29 +106,42 @@ cleanup() {
 }
 trap cleanup EXIT
 
+ENGINE_CTX="$TMP_ROOT/flyto-engine"
 CODE_CTX="$TMP_ROOT/flyto-code"
+
+prepare_engine_context() {
+  mkdir -p "$ENGINE_CTX"
+  tar -C "$WORKSPACE/flyto-engine" -cf - . | tar -C "$ENGINE_CTX" -xf -
+  rm -rf "$ENGINE_CTX/.git" "$ENGINE_CTX/.flyto-index" "$ENGINE_CTX/flyto-indexer-pkg"
+  cp -R "$WORKSPACE/flyto-indexer" "$ENGINE_CTX/flyto-indexer-pkg"
+  rm -rf "$ENGINE_CTX/flyto-indexer-pkg/.git" "$ENGINE_CTX/flyto-indexer-pkg/.flyto-index"
+}
 
 prepare_code_context() {
   mkdir -p "$CODE_CTX"
   tar -C "$WORKSPACE/flyto-code" -cf - . | tar -C "$CODE_CTX" -xf -
-  rm -rf "$CODE_CTX/node_modules" \
-    "$CODE_CTX/dist" \
-    "$CODE_CTX/dist-next" \
-    "$CODE_CTX/out" \
-    "$CODE_CTX/test-results" \
-    "$CODE_CTX/flyto-design-tokens-pkg"
-  find "$CODE_CTX/public/i18n" -maxdepth 1 -type f -name '*.json' -delete 2>/dev/null || true
-  if [ -d "$WORKSPACE/flyto-design-tokens" ]; then
-    cp -R "$WORKSPACE/flyto-design-tokens" "$CODE_CTX/flyto-design-tokens-pkg"
-  else
-    echo "missing $WORKSPACE/flyto-design-tokens" >&2
-    exit 1
-  fi
+rm -rf "$CODE_CTX/node_modules" \
+  "$CODE_CTX/dist" \
+  "$CODE_CTX/dist-next" \
+  "$CODE_CTX/out" \
+  "$CODE_CTX/test-results" \
+  "$CODE_CTX/flyto-design-tokens-pkg"
+find "$CODE_CTX/public/i18n" -maxdepth 1 -type f -name '*.json' -delete 2>/dev/null || true
+if [ -d "$WORKSPACE/flyto-design-tokens" ]; then
+  rm -rf "$CODE_CTX/vendor/@flyto/design-tokens"
+  mkdir -p "$CODE_CTX/vendor/@flyto/design-tokens"
+  cp -R "$WORKSPACE/flyto-design-tokens/." "$CODE_CTX/vendor/@flyto/design-tokens/"
+  rm -rf "$CODE_CTX/vendor/@flyto/design-tokens/.git" \
+    "$CODE_CTX/vendor/@flyto/design-tokens/.flyto-index"
+else
+  echo "missing $WORKSPACE/flyto-design-tokens" >&2
+  exit 1
+fi
   mkdir -p "$CODE_CTX/public/i18n/code"
   if [ -d "$WORKSPACE/flyto-i18n/dist/code" ]; then
     cp -R "$WORKSPACE/flyto-i18n/dist/code/." "$CODE_CTX/public/i18n/code/"
   fi
-  python3 - "$CODE_CTX/package.json" "$CODE_CTX/package-lock.json" "$CODE_CTX/flyto-design-tokens-pkg/package.json" <<'PY'
+python3 - "$CODE_CTX/package.json" "$CODE_CTX/package-lock.json" "$CODE_CTX/vendor/@flyto/design-tokens/package.json" <<'PY'
 import json
 import sys
 from pathlib import Path
@@ -137,7 +154,7 @@ for section in ("dependencies", "devDependencies"):
     deps = payload.get(section, {})
     for name, value in list(deps.items()):
         if name == "@flyto/design-tokens" or value in ("file:../flyto-design-tokens", "file:./vendor/@flyto/design-tokens"):
-            deps[name] = "file:./flyto-design-tokens-pkg"
+            deps[name] = "file:./vendor/@flyto/design-tokens"
 path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 tokens = json.loads(tokens_path.read_text(encoding="utf-8"))
@@ -148,23 +165,24 @@ if lock_path.exists():
     lock = json.loads(lock_path.read_text(encoding="utf-8"))
     packages = lock.setdefault("packages", {})
     root_package = packages.setdefault("", {})
-    root_package.setdefault("dependencies", {})["@flyto/design-tokens"] = "file:./flyto-design-tokens-pkg"
+    root_package.setdefault("dependencies", {})["@flyto/design-tokens"] = "file:./vendor/@flyto/design-tokens"
     for key in list(packages):
-        if key == "../flyto-design-tokens" or key == "vendor/@flyto/design-tokens" or key.endswith("/flyto-design-tokens"):
+        if key == "../flyto-design-tokens" or key == "flyto-design-tokens-pkg":
             packages.pop(key, None)
-    packages["flyto-design-tokens-pkg"] = {
+    packages["vendor/@flyto/design-tokens"] = {
         "name": "@flyto/design-tokens",
         "version": tokens.get("version", "0.1.0"),
         "license": tokens.get("license", "Apache-2.0"),
     }
     packages["node_modules/@flyto/design-tokens"] = {
-        "resolved": "flyto-design-tokens-pkg",
+        "resolved": "vendor/@flyto/design-tokens",
         "link": True,
     }
     lock_path.write_text(json.dumps(lock, indent=2) + "\n", encoding="utf-8")
 PY
 }
 
+prepare_engine_context
 prepare_code_context
 
 no_cache_args() {
@@ -205,6 +223,7 @@ buildx_build() {
   docker buildx build \
     --platform "$PLATFORMS" \
     $(no_cache_args) \
+    --label "$LICENSE_LABEL" \
     "$@" \
     -f "$dockerfile" \
     -t "$image:$tag" \
@@ -214,18 +233,20 @@ buildx_build() {
 
 buildx_build_engine_worker() {
   if [ "$PUSH" -ne 1 ]; then
-    echo "dry-run buildx $ENGINE_IMAGE:$ENGINE_TAG and $WORKER_IMAGE:$WORKER_TAG $WORKSPACE/flyto-engine"
+    echo "dry-run buildx $ENGINE_IMAGE:$ENGINE_TAG and $WORKER_IMAGE:$WORKER_TAG $ENGINE_CTX"
     return 0
   fi
   docker buildx build \
     --platform "$PLATFORMS" \
     $(no_cache_args) \
+    --label "$LICENSE_LABEL" \
     --label "org.opencontainers.image.revision=$ENGINE_REVISION" \
-    -f "$WORKSPACE/flyto-engine/Dockerfile" \
+    --label "org.flyto.indexer.revision=$INDEXER_REVISION" \
+    -f "$ENGINE_CTX/Dockerfile" \
     -t "$ENGINE_IMAGE:$ENGINE_TAG" \
     -t "$WORKER_IMAGE:$WORKER_TAG" \
     --push \
-    "$WORKSPACE/flyto-engine"
+    "$ENGINE_CTX"
 }
 
 legacy_build_one() {
@@ -244,9 +265,11 @@ legacy_build_one() {
   fi
   docker build \
     --platform "$platform" \
+    --provenance=false \
     --build-arg "TARGETOS=$os_name" \
     --build-arg "TARGETARCH=$arch" \
     $(no_cache_args) \
+    --label "$LICENSE_LABEL" \
     "$@" \
     -f "$dockerfile" \
     -t "$image:$tag-$suffix" \
@@ -305,18 +328,21 @@ legacy_build_engine_worker() {
     os_name="$(platform_os "$platform")"
     suffix="$arch"
     if [ "$PUSH" -ne 1 ]; then
-      echo "dry-run docker build --platform $platform $ENGINE_IMAGE:$ENGINE_TAG-$suffix and $WORKER_IMAGE:$WORKER_TAG-$suffix $WORKSPACE/flyto-engine"
+      echo "dry-run docker build --platform $platform $ENGINE_IMAGE:$ENGINE_TAG-$suffix and $WORKER_IMAGE:$WORKER_TAG-$suffix $ENGINE_CTX"
       continue
     fi
     docker build \
       --platform "$platform" \
+      --provenance=false \
       --build-arg "TARGETOS=$os_name" \
       --build-arg "TARGETARCH=$arch" \
       $(no_cache_args) \
+      --label "$LICENSE_LABEL" \
       --label "org.opencontainers.image.revision=$ENGINE_REVISION" \
-      -f "$WORKSPACE/flyto-engine/Dockerfile" \
+      --label "org.flyto.indexer.revision=$INDEXER_REVISION" \
+      -f "$ENGINE_CTX/Dockerfile" \
       -t "$ENGINE_IMAGE:$ENGINE_TAG-$suffix" \
-      "$WORKSPACE/flyto-engine"
+      "$ENGINE_CTX"
     docker tag "$ENGINE_IMAGE:$ENGINE_TAG-$suffix" "$WORKER_IMAGE:$WORKER_TAG-$suffix"
     docker push "$ENGINE_IMAGE:$ENGINE_TAG-$suffix"
     docker push "$WORKER_IMAGE:$WORKER_TAG-$suffix"
@@ -342,6 +368,8 @@ if buildx_available; then
     --label "org.opencontainers.image.revision=$ENGINE_REVISION"
   buildx_build "$FRONTEND_IMAGE" "$FRONTEND_TAG" "$CODE_CTX" "$CODE_CTX/Dockerfile" \
     --label "org.opencontainers.image.revision=$CODE_REVISION" \
+    --label "org.flyto.design-tokens.revision=$DESIGN_TOKENS_REVISION" \
+    --label "org.flyto.i18n.revision=$I18N_REVISION" \
     --build-arg "FLYTO_PUBLIC_ENGINE_ORIGIN=${FLYTO_CODE_ENGINE_URL:-__same_origin__}" \
     --build-arg "FLYTO_PUBLIC_MODE=${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
     --build-arg "FLYTO_PUBLIC_AUTOMATION_ORIGIN=${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \
@@ -359,6 +387,8 @@ else
     --label "org.opencontainers.image.revision=$ENGINE_REVISION"
   legacy_build "$FRONTEND_IMAGE" "$FRONTEND_TAG" "$CODE_CTX" "$CODE_CTX/Dockerfile" \
     --label "org.opencontainers.image.revision=$CODE_REVISION" \
+    --label "org.flyto.design-tokens.revision=$DESIGN_TOKENS_REVISION" \
+    --label "org.flyto.i18n.revision=$I18N_REVISION" \
     --build-arg "FLYTO_PUBLIC_ENGINE_ORIGIN=${FLYTO_CODE_ENGINE_URL:-__same_origin__}" \
     --build-arg "FLYTO_PUBLIC_MODE=${FLYTO_CODE_AUTH_MODE:-local_jwt}" \
     --build-arg "FLYTO_PUBLIC_AUTOMATION_ORIGIN=${FLYTO_AUTOMATION_URL:-http://localhost:8080}" \

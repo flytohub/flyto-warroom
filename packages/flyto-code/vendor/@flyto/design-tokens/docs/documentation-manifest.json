@@ -1,0 +1,103 @@
+{
+  "$schema": "https://docs.flyto2.com/schemas/documentation-contract-v1.json",
+  "schema_version": 1,
+  "repository": "flyto-design-tokens",
+  "status": "internal",
+  "audiences": ["frontend engineers", "design-system maintainers", "plugin authors"],
+  "documentation": {
+    "index": "docs/README.md",
+    "architecture": "ARCHITECTURE.md",
+    "state": "STATE.md",
+    "security": "SECURITY.md",
+    "changelog": "CHANGELOG.md",
+    "feature_reference": "docs/FEATURES.md"
+  },
+  "source_areas": [
+    {
+      "id": "javascript-api",
+      "description": "Framework-neutral JavaScript token modules, package barrel exports, and public TypeScript declarations.",
+      "paths": ["src/**"],
+      "documentation": ["docs/API.md#javascript-exports", "docs/API.md#typescript-contract"]
+    },
+    {
+      "id": "css-api",
+      "description": "Canonical dark-mode CSS custom properties and shared animation keyframes exposed as package subpaths.",
+      "paths": ["css/**"],
+      "documentation": ["docs/API.md#css-contract", "docs/FEATURES.md#javascript-css-and-typescript-delivery"]
+    },
+    {
+      "id": "package-quality",
+      "description": "Package export metadata, public npm publication workflow, dependency-free parity checks, and package dry-run verification.",
+      "paths": ["package.json", "scripts/check-tokens.mjs", ".github/workflows/**"],
+      "documentation": ["README.md#testing", "docs/API.md#compatibility", "CONTRIBUTING.md#verification"]
+    },
+    {
+      "id": "reference-automation",
+      "description": "Generates the exhaustive package-entry, runtime-export, CSS custom-property, and keyframe inventory from source.",
+      "paths": ["scripts/generate-reference.mjs"],
+      "documentation": ["docs/GENERATED_REFERENCE.md", "scripts/README.md"]
+    }
+  ],
+  "feature_surfaces": [
+    {
+      "id": "color-contract",
+      "title": "Brand and semantic color contract",
+      "kind": "library",
+      "status": "internal",
+      "description": "Exports brand scales, dark surfaces, text and border roles, semantic states, presence colors, and resource categories.",
+      "source": ["src/colors.js", "css/tokens.css", "src/index.d.ts"],
+      "documentation": ["docs/API.md#colors", "docs/FEATURES.md#brand-and-semantic-color"],
+      "verification": ["npm test"]
+    },
+    {
+      "id": "gradient-contract",
+      "title": "Gradient and node recipes",
+      "kind": "library",
+      "status": "internal",
+      "description": "Exports canonical brand, glass, border, decorative, and workflow-node gradient recipes for Flyto2 surfaces.",
+      "source": ["src/gradients.js", "css/tokens.css", "src/index.d.ts"],
+      "documentation": ["docs/API.md#gradients", "docs/FEATURES.md#gradient-and-node-recipes"],
+      "verification": ["npm test"]
+    },
+    {
+      "id": "elevation-motion",
+      "title": "Elevation, focus, and motion",
+      "kind": "library",
+      "status": "internal",
+      "description": "Exports elevation shadows, branded glows, focus rings, animation timings, easing curves, names, and keyframes.",
+      "source": ["src/shadows.js", "src/animations.js", "css/animations.css", "css/tokens.css", "src/index.d.ts"],
+      "documentation": ["docs/API.md#elevation-and-focus", "docs/API.md#motion", "docs/FEATURES.md#elevation-focus-and-motion"],
+      "verification": ["npm test"]
+    },
+    {
+      "id": "geometry-typography",
+      "title": "Shape, spacing, layout, and typography",
+      "kind": "library",
+      "status": "internal",
+      "description": "Exports shared radii, node shapes, spacing, shell dimensions, font stacks, and typography scale values.",
+      "source": ["src/radii.js", "src/spacing.js", "css/tokens.css", "src/index.d.ts"],
+      "documentation": ["docs/API.md#shape-spacing-and-typography", "docs/FEATURES.md#shape-spacing-layout-and-type"],
+      "verification": ["npm test"]
+    },
+    {
+      "id": "package-entrypoints",
+      "title": "JavaScript, CSS, and TypeScript delivery",
+      "kind": "library",
+      "status": "internal",
+      "description": "Publishes framework-neutral JavaScript, CSS, animation, package metadata, and TypeScript declaration entry points.",
+      "source": ["src/index.js", "src/index.d.ts", "css/tokens.css", "css/animations.css", "package.json"],
+      "documentation": ["docs/API.md", "docs/FEATURES.md#javascript-css-and-typescript-delivery"],
+      "tests": ["scripts/check-tokens.mjs"]
+    },
+    {
+      "id": "generated-contract-reference",
+      "title": "Generated package contract reference",
+      "kind": "content",
+      "status": "generated",
+      "description": "Records every current entry point, JavaScript export, CSS custom property, and keyframe and rejects generated documentation drift.",
+      "source": ["scripts/generate-reference.mjs", "package.json", "src/index.js", "css/tokens.css", "css/animations.css"],
+      "documentation": ["docs/GENERATED_REFERENCE.md"],
+      "verification": ["npm run docs:check"]
+    }
+  ]
+}

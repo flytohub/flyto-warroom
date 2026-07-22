@@ -9,7 +9,7 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 
 REQUIRED_MARKERS = {
     "TRADEMARK.md": [
-        "do not grant rights to the Flyto2 name",
+        "No source license grants rights to the Flyto2 name",
         "Modified Distributions",
         "official Flyto2 build",
     ],
@@ -86,7 +86,7 @@ REQUIRED_MARKERS = {
         "source_repositories",
     ],
     "scripts/audit-open-core-overlay.py": [
-        "gitlab_style_open_core",
+        "generated_source_available_ce",
         "public_pr_to_private_source_to_regenerated_ce",
         "local_external_observation_only",
     ],

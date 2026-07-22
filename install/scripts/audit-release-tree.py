@@ -307,12 +307,41 @@ def main() -> int:
         for denied in ("VITE_AUTH_MODE=enterprise", "VITE_AUTH_MODE=firebase"):
             if denied in frontend_text:
                 blockers.append(f"frontend CE env contains denied auth mode: {denied}")
+    license_markers = {
+        "LICENSE": (
+            "# PolyForm Noncommercial License 1.0.0",
+            "Required Notice: Copyright 2026 Flyto2 / evtek.",
+        ),
+        "packages/flyto-code/LICENSE": ("# PolyForm Noncommercial License 1.0.0",),
+        "packages/flyto-contracts/LICENSE": ("# PolyForm Noncommercial License 1.0.0",),
+        "services/flyto-engine-ce/LICENSE": ("# PolyForm Noncommercial License 1.0.0",),
+        "LICENSES.md": (
+            "not OSI-approved open-source software",
+            "Commercial use is not granted",
+            "v0.1.0` and `v0.1.1` were published under Apache-2.0",
+        ),
+    }
+    for rel, markers in license_markers.items():
+        path = ROOT / rel
+        body = text(path) if path.exists() else ""
+        for marker in markers:
+            if marker not in body:
+                blockers.append(f"CE noncommercial license contract missing marker in {rel}: {marker}")
+    frontend_package = ROOT / "packages/flyto-code/package.json"
+    if frontend_package.exists():
+        try:
+            frontend_package_payload = load_json(frontend_package)
+        except (OSError, json.JSONDecodeError) as exc:
+            blockers.append(f"invalid JSON in {frontend_package.relative_to(ROOT)}: {exc}")
+        else:
+            if frontend_package_payload.get("license") != "PolyForm-Noncommercial-1.0.0":
+                blockers.append("CE frontend package license metadata is not noncommercial")
     frontend_dockerfile = ROOT / "packages/flyto-code/Dockerfile"
     frontend_docker_text = text(frontend_dockerfile) if frontend_dockerfile.exists() else ""
     for marker in (
         "FROM --platform=$BUILDPLATFORM node:22-alpine@sha256:",
         "FROM nginxinc/nginx-unprivileged:alpine@sha256:",
-        'org.opencontainers.image.licenses="Apache-2.0"',
+        'org.opencontainers.image.licenses="PolyForm-Noncommercial-1.0.0"',
         "NGINX_ENVSUBST_FILTER=^FLYTO_",
         "FLYTO_NGINX_RESOLVER=127.0.0.11",
         "COPY --chown=101:0 ${NGINX_CONF} /etc/nginx/templates/default.conf.template",

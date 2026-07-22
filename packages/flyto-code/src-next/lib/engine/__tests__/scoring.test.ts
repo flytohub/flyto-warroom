@@ -12,7 +12,7 @@ const { envMock } = vi.hoisted(() => ({
     engineUrl: 'https://engine.test',
     devAuthBypass: true,
     devAuthUid: 'u1',
-    devAuthEmail: 'u@test.dev',
+    devAuthEmail: 'dev@flyto2.com',
   },
 }))
 

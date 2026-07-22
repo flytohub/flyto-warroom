@@ -9,7 +9,7 @@
   Docker Compose installs verify engine health, frontend proxying, runner,
   verification, brand-vision, and product-loop payload shape.
 - Updated README, Docker Hub overview, feature matrix, install docs, and
-  release-readiness docs around Flyto2 Warroom CE as a self-hosted open-core
+  release-readiness docs around Flyto2 Warroom CE as a self-hosted source-available
   security warroom and BYO offensive validation platform.
 - Kept commercial intelligence, public rating authority, Enterprise identity,
   managed remediation, and live cloud/container/runtime remediation behind

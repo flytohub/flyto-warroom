@@ -1,6 +1,6 @@
 # Flyto2 Warroom Code Protection
 
-The open-core release protects private code by construction:
+The source-available CE release protects private code by construction:
 
 - Release content is generated from an allowlist.
 - Private `cmd/**`, Go `internal/**`, private handlers, billing, tenant store,

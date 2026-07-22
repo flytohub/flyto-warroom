@@ -1,1 +1,0 @@
-{"locale": "fr", "name": "French", "native": "Français", "region": "FR", "version": "a147935878da", "files_merged": 1, "total_keys": 4, "translations": {"common": {"params": {"description": {"description": "Description de ce flux d'erreur", "label": "Description"}}, "pleaseSelect": "Sélectionnez…", "ports": {"error": "Sortie"}}}}

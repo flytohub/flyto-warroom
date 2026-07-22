@@ -48,6 +48,7 @@ reviewed there, and re-exported.
 
 Before a contribution can be accepted and ported upstream, you must agree to the
 Contributor License Agreement in `CLA.md`. This lets maintainers keep your
-contribution maintainable across both the Apache-2.0 community edition and the
-commercial edition. The CLA-assistant workflow comments a one-time signing link
-on your first PR; the check must be green before the change is merged/ported.
+contribution maintainable across both the PolyForm Noncommercial
+source-available Community Edition and the commercial edition. The CLA-assistant
+workflow comments a one-time signing link on your first PR; the check must be
+green before the change is merged/ported.

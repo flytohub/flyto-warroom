@@ -190,7 +190,7 @@ export function NotificationsTab() {
   }
 
   const channelTargetPlaceholder = channelType === 'email'
-    ? 'soc@example.com'
+    ? 'alerts@flyto2.com'
     : channelType === 'system_event'
       ? 'org.ctem.ops'
       : 'https://hooks.example.com/services/...'

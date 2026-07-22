@@ -1,7 +1,7 @@
 # Flyto2 Warroom CE Governance
 
-Flyto2 Warroom CE follows an open-core model similar to mature enterprise
-projects: the community edition is public, installable, patchable, and useful;
+Flyto2 Warroom CE v0.2.0 and later is a public, source-available, noncommercial
+community distribution. It is installable, inspectable, patchable, and useful;
 enterprise implementations, hosted control plane code, customer data connectors,
 commercial datasets, and premium remediation workflows remain private.
 
@@ -12,8 +12,13 @@ Enterprise should be the natural upgrade path for teams that need commercial
 intelligence, managed execution, live remediation, identity governance, airgap
 delivery, support, or compliance controls.
 
-Do not describe CE as "fully open-source Enterprise." The accurate model is
-open-core CE plus Enterprise Cloud Bridge and private Enterprise editions.
+Do not describe v0.2.0-and-later CE as open source. The accurate model is a
+PolyForm Noncommercial source-available CE plus separately licensed Enterprise
+Cloud Bridge and private Enterprise editions. Commercial use requires a written
+commercial license from Flyto2 / evtek. Historical v0.1.0 and v0.1.1 artifacts
+remain under the Apache-2.0 terms published with those releases; this change
+does not revoke rights already granted. Third-party components keep their own
+licenses.
 
 ## Source Of Truth
 

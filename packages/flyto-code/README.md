@@ -1,132 +1,184 @@
+<p align="center">
+  <img src="public/logo.png" alt="Flyto2 Code" width="96">
+</p>
+
 # Flyto2 Code
 
-**AI-powered war room for your codebase.** Full-spectrum application
-security platform with a code-intelligence layer and a closed-loop
-verification engine — converging the scan, test, and understanding
-stacks into a single console.
+**Open-source application-security and code-intelligence war room.** Connect
+repositories, inspect architecture and attack surface, prioritize findings,
+run authorized verification workflows, and keep the resulting evidence in one
+capability-aware workspace.
 
----
+Flyto2 Code is the React frontend for the Flyto2 platform. Flyto2 Engine owns
+data, authorization, scoring, and lifecycle; Flyto2 Cloud executes delegated
+automation. The browser renders those contracts and never turns missing backend
+state into a fake success.
 
-## What it is
+## What You Can Inspect
 
-Connect your GitHub / GitLab repos and Flyto2 Code:
+- Code security: SAST, SCA, secrets, dependency/CVE, license, architecture, and
+  scan findings supplied by the connected Engine.
+- CTEM and exposure: assets, domains, findings, mitigations, attack paths,
+  vendor risk, and risk matrices.
+- Authorized verification: pentest, red-team, Product Verification, scheduler,
+  replay, and evidence surfaces.
+- Runtime governance: MCP/agent activity, AI governance, DLP, policy simulation,
+  and evidence views when enabled.
+- Cloud, container, and identity posture through edition/capability-gated
+  modules.
+- Threat intelligence, scoring, compliance, timelines, reports, operations,
+  and workspace administration.
+- Community/self-hosted onboarding with provider-neutral JWT auth, first-admin
+  bootstrap, same-origin Engine proxy, locale selection, and light/dark/system
+  appearance.
 
-- Scans for dependencies, secrets, SAST findings, licenses, CVEs.
-- Builds architecture maps, API graphs, and health scores.
-- Generates a YAML pentest workflow for each finding and runs it
-  against staging — real browser, live streaming frames, recorded
-  verdict. You see evidence, not just alerts.
+Static routes are not promises of backend availability. The engine's
+capability and action contracts decide what is enabled, preview-locked, or
+hidden. See the [feature guide](docs/FEATURES.md) and generated
+[route/module inventory](docs/reference/routes-and-modules.md).
 
-One-paragraph elevator: the same scanner that finds CVEs also produces
-architecture maps; the same engine that stores findings also dispatches
-the tests that prove them. Every number in the dashboard comes from the
-server, scored on a unified Bitsight-style A-F grade so it stays
-consistent across every page.
+## Quick Start
 
-Full product description: [`docs/WHITEPAPER.md`](./docs/WHITEPAPER.md).
-
-## Installation
-
-The frontend can be installed, built, and previewed from a standalone clone.
-The shared design-token package is tracked under `vendor/`, so packaging does
-not depend on a sibling checkout.
-
-Install from `flyto-code/` with the same peer-dependency mode used by CI and
-the production image:
+Prerequisites: a current Node.js release compatible with the lockfile and npm.
 
 ```bash
+git clone https://github.com/flytohub/flyto-code.git
+cd flyto-code
 npm ci --legacy-peer-deps
+cp .env.example .env
+npm run dev
+```
+
+The development server listens on `http://localhost:5181`. Configure the
+selected auth mode and Flyto2 Engine endpoint in `.env`; never place secrets in
+`VITE_*` variables because Vite embeds them in the browser bundle.
+
+Build and preview the standalone frontend:
+
+```bash
 npm run build
 npm run preview
 ```
 
-The full workspace remains useful for engine contract-drift checks and for
-refreshing generated translations, but it is not required to package or start
-the production frontend bundle.
+The vendored `@flyto/design-tokens` package makes a standalone clone
+buildable without a private sibling checkout. The production artifact is
+`dist-next/`.
 
 ## Usage
 
-Run the local app:
+Start with a connected Flyto2 Engine, sign in using the configured auth mode,
+then select a workspace and repository. Navigation exposes only the modules
+allowed by the Engine capability contract. Typical work moves from inventory
+or findings to prioritization, an authorized action, and retained evidence;
+unavailable data remains visibly unavailable instead of becoming a sample
+success state.
+
+For local UI development, use `npm run dev`. For a production-like check, use
+`npm run build` followed by `npm run preview`. The [feature guide](docs/FEATURES.md)
+maps user workflows to source, backend contracts, tests, and current status.
+
+## API Contracts
+
+The browser accesses Flyto2 Engine and Flyto2 Cloud through typed clients under
+`src-next/lib/engine/` and `src-next/lib/cloud/`. Components must not call
+backend URLs directly. Read [API clients](docs/API_CLIENTS.md) for ownership,
+authentication, error, and capability rules; use the generated
+[HTTP reference](docs/reference/http-and-environment.md) to locate each static
+endpoint literal.
+
+## Configuration
+
+Copy `.env.example` for local development and set only the values required by
+the selected deployment and authentication mode. `VITE_*` values are public
+browser configuration, never secrets. The complete variable inventory and
+deployment rules are in [Configuration](docs/CONFIGURATION.md).
+
+## Architecture In One Minute
+
+```text
+src-next/app/                     route groups and thin pages
+src-next/components/              product UI and shared primitives
+src-next/hooks/                   query, mutation, and event composition
+src-next/lib/engine/              typed Flyto2 Engine clients
+src-next/lib/cloud/               Flyto2 Cloud automation clients
+src-next/types/module-manifests/  route/capability/package source of truth
+src-next/@fuse/                   template shell, not product feature code
+scripts/                          release and architecture guards
+docs/                             product, engineering, and generated reference
+```
+
+The active source root is `src-next/`, not `src/`. Read the
+[architecture guide](docs/ARCHITECTURE.md), [frontend guide](docs/FRONTEND.md),
+and [API client contracts](docs/API_CLIENTS.md) before changing shared
+boundaries.
+
+## Testing And Quality Gates
+
+Run the full local release contract:
 
 ```bash
-npm run dev
+npm run release:gate
+flyto-index scan . --full
+flyto-index verify . --strict --json
 ```
 
-Run the product and AI-quality gates before handing off a branch:
+The release gate covers generated documentation, brand/email policy, TypeScript,
+the complete Vitest suite, route/API drift, capability and authorization
+contracts, nine product loops, SSE correspondence, data readiness, visual
+regression budgets, production dependency audit, build, bundle budget, static
+smoke, deployment policy, GitHub Actions startup, and release evidence.
+
+Useful focused commands:
 
 ```bash
-npm run guard:branch
-npm run lint -- --quiet
-npm run build
+npm run docs:generate       # regenerate source/route/API/env references
+npm run docs:check          # ownership, freshness, and local-link checks
+npm run brand:check         # Flyto2 and @flyto2.com identity policy
+npm run guard:branch        # product and architecture closure
+npx vitest run              # unit and component tests
+npm run build               # strict typecheck and production bundle
 ```
 
-For cross-repo closure checks, run flyto-indexer from `flyto-code/`:
+## Documentation
 
-```bash
-PYTHONPATH=../flyto-indexer python3 -m src.cli verify-workspace .. \
-  --project . \
-  --project ../flyto-engine \
-  --project ../flyto-indexer
-```
+- [Documentation hub](docs/README.md)
+- [White paper](docs/WHITEPAPER.md)
+- [Feature guide](docs/FEATURES.md)
+- [Architecture](docs/ARCHITECTURE.md)
+- [Frontend](docs/FRONTEND.md)
+- [API clients](docs/API_CLIENTS.md)
+- [Configuration](docs/CONFIGURATION.md)
+- [Testing](docs/TESTING.md)
+- [Operations](docs/OPERATIONS.md)
+- [Source API reference](docs/reference/source-api.md)
+- [Routes and module surfaces](docs/reference/routes-and-modules.md)
+- [HTTP and environment reference](docs/reference/http-and-environment.md)
 
-## Repo layout
+`docs/documentation-manifest.json` assigns every source/configuration file to a
+durable guide. CI fails when generated references are stale or local links are
+broken.
 
-```
-flyto-code/                    # this repo (React 19 + Vite 8 frontend)
-  src/                         # app source
-  docs/
-    WHITEPAPER.md              # product overview, problem, solution, moat
-    PRODUCT_ROADMAP.md         # feature matrix, phases, pricing sketch
-    cloud-integration.md       # template sync contract with flyto-cloud
-  CLAUDE.md                    # AI-agent context (tech stack, conventions)
-```
+## Related Projects
 
-Sibling services (separate repos in this monorepo):
+- [Flyto2](https://github.com/flytohub/flyto2): open-source project index
+- [Flyto2 Engine](https://github.com/flytohub/flyto-engine): API, lifecycle,
+  capability, policy, and evidence authority
+- [Flyto2 Indexer](https://github.com/flytohub/flyto-indexer): local code graph,
+  security, dependency, and documentation scanner
+- [Flyto2 Cloud](https://github.com/flytohub/flyto-cloud): automation and
+  verification execution surface
+- [Flyto2 Core](https://github.com/flytohub/flyto-core): YAML workflow execution
+  engine
 
-- `flyto-engine` — Go + PostgreSQL backend, source of truth for data
-- `flyto-indexer` — Python stdlib-only scanner + MCP server
-- `flyto-cloud` — FastAPI + Vue worker that executes pentest YAML
-- `flyto-ai` — PyPI package that generates pentest YAML from findings
-- `flyto-core` — PyPI package that interprets pentest YAML
+## Contributing And Security
 
-## Development
+Read [SECURITY.md](SECURITY.md) before reporting a vulnerability and
+[CONTRIBUTING.md](CONTRIBUTING.md) before opening a change. Security reports go
+to `security@flyto2.com`.
 
-```bash
-npm ci --legacy-peer-deps
-npm run dev        # Vite dev server on :5180
-npm run build      # tsc -b && vite build
-npm run preview    # serves dist-next through vite.config.next.ts
-npm run lint
-```
+## License
 
-Environment (`.env`):
-
-```
-VITE_FIREBASE_API_KEY=…
-VITE_FIREBASE_AUTH_DOMAIN=ticket-helper-dbc0e.firebaseapp.com
-VITE_FIREBASE_PROJECT_ID=ticket-helper-dbc0e
-VITE_GITHUB_CLIENT_ID=…
-VITE_GITLAB_CLIENT_ID=…
-VITE_AUTOMATION_URL=https://cloud.flyto2.com
-VITE_CORTEX_URL=https://cortex.flyto2.com
-```
-
-## Tech stack
-
-- React 19 + TypeScript (strict mode)
-- Vite 8 (build), Mantine v8 + Tailwind v4 (UI)
-- `@tanstack/react-query` (data), `openapi-fetch` (typed client)
-- `lucide-react` (icons — no emoji)
-- `@flyto/design-tokens` (shared design system with flyto-cloud, flyto-cortex)
-- `flyto-i18n` (shared CDN-loaded translations, 17 languages)
-
-## Design rules
-
-- Dark mode only — no light tokens.
-- Backend owns all data processing. The frontend reduces nothing, sums
-  nothing, sorts nothing for aggregation. Every number on screen is a
-  field from an API response.
-- Unified A-F grade bands across engine and frontend (Bitsight-style).
-- Cross-folder imports use path aliases (`@compounds/*`, `@hooks/*`,
-  `@lib/*`); same-folder imports are relative.
-- No emoji anywhere in UI.
+License and distribution boundaries are documented in the repository's
+[edition boundary](docs/open-core/edition-boundary.md) and package manifests.
+Confirm the applicable boundary before redistributing enterprise-only modules
+or assets.

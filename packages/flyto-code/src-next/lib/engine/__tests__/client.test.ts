@@ -19,7 +19,7 @@ const { envMock, firebaseAuthMock } = vi.hoisted(() => ({
     engineUrl: 'https://engine.example.com',
     devAuthBypass: false,
     devAuthUid: 'test-uid',
-    devAuthEmail: 'test@example.com',
+    devAuthEmail: 'dev@flyto2.com',
   },
   firebaseAuthMock: {
     currentUser: null as null | { getIdToken: () => Promise<string> },
@@ -135,7 +135,7 @@ describe('engine client — token handling', () => {
     // Payload decodes to the configured dev claims.
     const decoded = JSON.parse(atob(payload.replace(/-/g, '+').replace(/_/g, '/')))
     expect(decoded.sub).toBe('test-uid')
-    expect(decoded.email).toBe('test@example.com')
+    expect(decoded.email).toBe('dev@flyto2.com')
   })
 
   it('with enterprise auth mode, sends the session JWT without calling Firebase', async () => {

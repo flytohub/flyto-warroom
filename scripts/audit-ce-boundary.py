@@ -106,7 +106,7 @@ REQUIRED_MARKERS = {
         "fail closed",
     ],
     "docs/code-protection.md": [
-        "open-core release protects private code by construction",
+        "source-available CE release protects private code by construction",
         "Enterprise Cloud Bridge integration",
         "audit-ce-boundary.py",
     ],
@@ -136,7 +136,7 @@ REQUIRED_MARKERS = {
     ],
     "GOVERNANCE.md": [
         "private Flyto2 source workspace",
-        "community edition is public",
+        "public, source-available, noncommercial",
     ],
 }
 

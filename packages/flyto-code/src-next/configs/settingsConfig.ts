@@ -1,17 +1,15 @@
 import themesConfig from 'src/configs/themesConfig';
 import { FuseSettingsConfigType } from '@fuse/core/FuseSettings/FuseSettings';
+import { readThemePreference, resolveThemeMode } from '@lib/themePreference';
 
 /**
  * Pick theme based on stored preference or system setting.
  * Priority: localStorage > prefers-color-scheme > dark (default).
  */
 function getPreferredTheme() {
-	if (typeof window === 'undefined') return themesConfig.defaultDark;
-	const stored = localStorage.getItem('flyto-theme-mode');
-	if (stored === 'light') return themesConfig.default;
-	if (stored === 'dark') return themesConfig.defaultDark;
-	if (window.matchMedia?.('(prefers-color-scheme: light)').matches) return themesConfig.default;
-	return themesConfig.defaultDark;
+	return resolveThemeMode(readThemePreference()) === 'light'
+		? themesConfig.default
+		: themesConfig.defaultDark;
 }
 
 const preferredTheme = getPreferredTheme();
