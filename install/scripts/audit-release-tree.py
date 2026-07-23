@@ -46,6 +46,7 @@ REQUIRED = [
     "packages/flyto-code/src-next/components/compounds/product-verification/productVerificationModel.ts",
     "packages/flyto-code/src-next/components/compounds/product-verification/useProductVerificationController.ts",
     "packages/flyto-code/.env.example",
+    "packages/flyto-code/.dockerignore",
     "install/docker-compose.ce.yml",
     "install/docker-compose.source.yml",
     "install/edition-overlays.json",

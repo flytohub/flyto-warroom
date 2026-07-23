@@ -6,11 +6,11 @@ Source-linked contracts for **84 declarations** in `install/`.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
-| function | `def text(path: Path) -> str:` | Implements text for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:179`](<../../install/scripts/audit-release-tree.py#L179>) |
-| function | `def load_json(path: Path):` | Retrieves load json for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:186`](<../../install/scripts/audit-release-tree.py#L186>) |
-| function | `def string_list(value) -> list[str]:` | Implements string list for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:190`](<../../install/scripts/audit-release-tree.py#L190>) |
-| function | `def is_local_artifact(path: Path) -> bool:` | Reports whether is local artifact for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:196`](<../../install/scripts/audit-release-tree.py#L196>) |
-| function | `def main() -> int:` | Implements main for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:204`](<../../install/scripts/audit-release-tree.py#L204>) |
+| function | `def text(path: Path) -> str:` | Implements text for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:180`](<../../install/scripts/audit-release-tree.py#L180>) |
+| function | `def load_json(path: Path):` | Retrieves load json for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:187`](<../../install/scripts/audit-release-tree.py#L187>) |
+| function | `def string_list(value) -> list[str]:` | Implements string list for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:191`](<../../install/scripts/audit-release-tree.py#L191>) |
+| function | `def is_local_artifact(path: Path) -> bool:` | Reports whether is local artifact for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:197`](<../../install/scripts/audit-release-tree.py#L197>) |
+| function | `def main() -> int:` | Implements main for `install/scripts/audit-release-tree.py`. | [`install/scripts/audit-release-tree.py:205`](<../../install/scripts/audit-release-tree.py#L205>) |
 | class | `class BundleBuildError(ValueError):` | Implements bundle build error for `install/scripts/build-cloud-bundle-fixture.py`. | [`install/scripts/build-cloud-bundle-fixture.py:36`](<../../install/scripts/build-cloud-bundle-fixture.py#L36>) |
 | function | `def main() -> int:` | Implements main for `install/scripts/build-cloud-bundle-fixture.py`. | [`install/scripts/build-cloud-bundle-fixture.py:40`](<../../install/scripts/build-cloud-bundle-fixture.py#L40>) |
 | function | `def build_bundle(` | Builds build bundle for `install/scripts/build-cloud-bundle-fixture.py`. | [`install/scripts/build-cloud-bundle-fixture.py:79`](<../../install/scripts/build-cloud-bundle-fixture.py#L79>) |

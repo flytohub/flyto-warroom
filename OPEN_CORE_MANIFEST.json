@@ -194,8 +194,9 @@
   "package_name": "flyto2-warroom-ce",
   "packages": [
     {
-      "file_count": 1615,
+      "file_count": 1616,
       "generated_files": [
+        ".dockerignore",
         ".env.example",
         "CE_SOURCE_BOUNDARY.md",
         "Dockerfile",
@@ -362,7 +363,7 @@
       "LICENSES.md": "3fecd7905ea0dff9961192b39d798cc68578cc66c429ebd8ec6bb6c5a7a962e3",
       "Makefile": "0fde84fd10150c11c50c22322faccdd90914cf31177e2055bb8e2e24286e21c1",
       "PROJECT.md": "d1394199d19beb1894b7cee78e99bc8774c15b9bb2a143059d84fd615beb7912",
-      "README.md": "9f668de9beba9d3aeb7b8fb4e3248d654c87c5d7356d0996dbcb0bbfddfd9d15",
+      "README.md": "3e1fed71cdfc5e85fb550e1d888b3c23acfe4bc447763792e08ae9dc09a0d219",
       "ROADMAP.md": "ee56a6d573ca7368bba57aa2142518ac1690ef7ec01906110f6bc683604ad758",
       "SECURITY.md": "2c759fa0acefd866a7252a8d79ae4647c02d7d860a23ef976fd20e1ddc93a31a",
       "STATE.md": "cd9732f2e0592a7a75b225c8f66d16c67ab2b2b659e419600782c20392755448",
@@ -387,7 +388,7 @@
       "docs/public-roadmap.md": "0d9c2521b84459682f44eb89a535287fd3a970786aa93da5df47bda539eab503",
       "docs/reference-architecture.md": "c1983bde3e02f09c96b454acbea0092542b313b8ca7648988d79f7ef660aa93f",
       "docs/reference/README.md": "c161d0234366b685fa97c695bfaaad747bee7edcbdba272a793287765e04f5d9",
-      "docs/reference/source-install-01.md": "7b8917ffb2efc16dfa369a0cab7302249873ecfa6d3db8e7e587011c82f7d301",
+      "docs/reference/source-install-01.md": "a3e94aeea8a1d88e860b6621256e4f71954793a35d8f2ae841008371832f827d",
       "docs/reference/source-packages-01.md": "519ffa89c674ec45b4d7b081f559f8b7fde013867aa43ad4a9be981d9d0e4a33",
       "docs/reference/source-packages-02.md": "18c5f9ff70cf877633a9fe89637ef74485aa0fef4c0c89956ebca55f605bb11f",
       "docs/reference/source-packages-03.md": "697929e6f50e2fda218c0f13141f7c26ba6fcce766b1bec0c1d3374ed02842a4",
@@ -464,7 +465,7 @@
       "install/fixtures/cloud-bundle/recipes/flyto2-ui-login-smoke.yaml": "00ba6dc52a02c9af377b438388258ac5cfd5850dcb6ffd63c4df44b3b4c14c3e",
       "install/fixtures/cloud-bundle/recipes/flyto2-ui-smoke.yaml": "a71c23e56940c722026a96471bf6421e9c7f2249e9938f62f832700a448d2e92",
       "install/fixtures/cloud-bundle/recipes/warroom-deterministic-audit.yaml": "26fff8f4e29fd991f60cac477928f78d084a04b78e8a415e826bbd592f37667a",
-      "install/scripts/audit-release-tree.py": "2022d515ccc9b92636cd943dbfc40873679840eb84ad7a7f6247f748a0b90958",
+      "install/scripts/audit-release-tree.py": "56c647f9641af11bc40ac0ff885edeb764f22d25fd03d81ac0b5e309dd076179",
       "install/scripts/build-cloud-bundle-fixture.py": "520e22f141e9a3df394f8a72f8b4225dc449d1a82c72699364131a20e46639d7",
       "install/scripts/build-local-images.sh": "d85091b99833ce38ebede7933b52ec06b82ee099e61b7a87bb240c0ae9604d32",
       "install/scripts/hash-local-password.py": "7da7136c91be8a95af0677a407e56b61225060102e62a116f516c2340629ff49",
@@ -482,6 +483,7 @@
       "install/tests/test_positioning_audit.py": "707aef3639e8ad41599b1d353ba5536d7719742ccae2d0236f8d8d7bc33e8da7",
       "install/tests/test_provider_readiness.py": "9d4eab5a475169c40c6a6e75f38f4fbc5a9d8b96b4b0020a687fd8f80505ada6",
       "packages/README.md": "7f1e96c9904e4328ed4eafa86588542ee79b15cf6070ab33e78cedc190bb724c",
+      "packages/flyto-code/.dockerignore": "9cc51c375b4498fa795bee0954ba843e006294879d6238700aced7fff4d22cf5",
       "packages/flyto-code/.env.example": "70157c4ae660332345a0f8e59f8fc7b8ddf452ce32c7e351a832c85eaf9d1450",
       "packages/flyto-code/.npmrc": "a093bb2fed59d699b7f9a62a5203cc196054c624e9c39c6d908c9e7db5dd2464",
       "packages/flyto-code/CE_SOURCE_BOUNDARY.md": "ef20062c6cff6368f8d5b7a152077456bf807b7eae5328b6b8fbf5260b18c3b1",
@@ -1994,7 +1996,7 @@
       "packages/flyto-code/tsconfig.node.json": "3dc5ea3d3deb73de1525fcc30e56dc6cb61ae62cc8969c79370d5e902f314582",
       "packages/flyto-code/vendor/@flyto/design-tokens/.env.example": "3aa176c0a2afa3c79473be1c9714b77d81fe54875950c3e6e2dbfb8bbe2c6da1",
       "packages/flyto-code/vendor/@flyto/design-tokens/.github/dependabot.yml": "ee8dde56a537f3d29bf2a87b719c2c7c38403b002d32453635f66915220e71c2",
-      "packages/flyto-code/vendor/@flyto/design-tokens/.github/workflows/ci.yml": "09a738793021bc97a9ec5c4f70b8b1ee34ea89925c738dd0db8e9fb65b1330c3",
+      "packages/flyto-code/vendor/@flyto/design-tokens/.github/workflows/ci.yml": "6f86a280c71299c92d30cf4d408808b5d551cc3198034a25e35816026ea70733",
       "packages/flyto-code/vendor/@flyto/design-tokens/.github/workflows/documentation.yml": "fb625158e45d35a2c35de561d955333afcc737d4fe07dabd538a56afbbcf506c",
       "packages/flyto-code/vendor/@flyto/design-tokens/.github/workflows/publish-npmjs.yml": "d666e963fa651ee9fed8c61fbf397a1650211fdca96fce156b2e5c8385c89dbf",
       "packages/flyto-code/vendor/@flyto/design-tokens/.github/workflows/security.yml": "86eced9620b55f37c7a5a69626ba39f77826a165782cd992725f5e7b3ee10778",
@@ -2198,7 +2200,7 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "c9299a25aebafd16b693a115cdbc523b9df7a94a",
+    "source_commit": "9d50165343aae094c0c3b6db1c526f7a406958b6",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
@@ -2213,15 +2215,15 @@
         "repository": "https://github.com/flytohub/flyto-core.git"
       },
       "flyto-design-tokens": {
-        "commit": "bd0c46ac1a5287f9d22cb4f74267af6dbb7b658f",
+        "commit": "2c027b6bf542072de7a3dfd5c04bd4d9babf1976",
         "repository": "https://github.com/flytohub/flyto-design-tokens.git"
       },
       "flyto-engine": {
-        "commit": "c9299a25aebafd16b693a115cdbc523b9df7a94a",
+        "commit": "9d50165343aae094c0c3b6db1c526f7a406958b6",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       },
       "flyto-i18n": {
-        "commit": "b77a4feef22e6a4a2700972b5cb09408cd365662",
+        "commit": "4bc66d35db39894d2db087c7adddc3879c854dd2",
         "repository": "https://github.com/flytohub/flyto-i18n.git"
       },
       "flyto-indexer": {
@@ -2230,7 +2232,7 @@
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "10eaa9fef5714ee6c0c2f589453ef11c92eea5e355e962ca822503c046555ebf"
+    "tree_sha256": "edfe9349283026e78819468d9e8ed9cf458d4650bc988f2ee2f8adc73384a432"
   },
   "release": {
     "build_source_repositories": [
