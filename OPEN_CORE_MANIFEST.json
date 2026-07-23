@@ -275,7 +275,7 @@
       ".flyto-rules.yaml": "54b337f30354b03c9e8a05ffdc32e35580344db1fafe880d923d5a8d6fb03ae3",
       ".github/CODEOWNERS": "8921ec8bafa8b9017e5e947af16af5df603d05f2da27ce61bf8a3857ca0c0022",
       ".github/pull_request_template.md": "0b2057635b761f3f7479c62cae960fbc605e7f2c02b0aa25713aa0f8620924e3",
-      ".github/workflows/ci.yml": "dcc3b847683d663452023eee8082241be4a03a3bbcb3adfcd23e09cf37868a79",
+      ".github/workflows/ci.yml": "ff56b5c9a2841674b0e6cfff83669f832a270767bb4dbc53adb8200ed8a36b67",
       ".github/workflows/cla.yml": "5d6173339b9e04a4b9d3528e3163dd3bb317d649c30574fc8f272bf6bb736071",
       ".github/workflows/release-images.yml": "bc7e928bfa3d4458e4a0bdfa07b251322140664760174696b7405084ce64a1f1",
       ".gitignore": "aff9047751406e785242a3f434819cb0fdf71a2f52b6af77ed22c20f9076d815",
@@ -607,7 +607,7 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "e4fac210c3eb4411e670fd3d15855e935eb969c2",
+    "source_commit": "cb88cc0d871bd51f2b89223b702de51025e8a378",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
@@ -618,12 +618,12 @@
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
-        "commit": "e4fac210c3eb4411e670fd3d15855e935eb969c2",
+        "commit": "cb88cc0d871bd51f2b89223b702de51025e8a378",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "ad790c9607bae56514a5a2fd0a28102529585afb12d8cf5b628f7aaa4df95dd6"
+    "tree_sha256": "4c5d1856ac9166a83414be3078ab9ddaf22b2b70505b429d6b7133dcc7002460"
   },
   "release": {
     "build_source_repositories": [],
