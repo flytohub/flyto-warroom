@@ -9,7 +9,7 @@ fully closed by source code alone and what can still be done without paying.
 | --- | --- | --- | --- |
 | GitHub Actions billing/startup | Required checks cannot become release evidence while workflows fail to start | public release, SaaS, Enterprise Cloud | Run local `make verify`, indexer full scan, frontend builds, and keep verdict `CODE_READY_PROVIDER_BLOCKED` |
 | Docker Hub publish permission | Public images must be pushed by an account allowed to publish the declared repo and tags | public CE image release | Build local images, run Docker boundary audits, dry-run multi-arch publish commands |
-| Domain, DNS, TLS, support contact | Hosted service links and commercial support claims need owned reachable endpoints | SaaS | CE artifacts remain installable from GitHub and Docker Hub without a hosted Flyto service |
+| Domain, DNS, TLS, support contact | Hosted service links and commercial support claims need owned reachable endpoints | SaaS | CE artifacts remain installable from GitHub and Docker Hub without a hosted Flyto2 service |
 
 ## Required For SaaS
 
