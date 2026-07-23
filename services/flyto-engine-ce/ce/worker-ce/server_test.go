@@ -34,7 +34,7 @@ func TestHealthIncludesWorkerRuntimeBoundary(t *testing.T) {
 	}
 }
 
-func TestBoundarySeparatesPublicWorkerRuntimeFromPrivateWorker(t *testing.T) {
+func TestBoundaryPublishesCompleteCEScanWorker(t *testing.T) {
 	rec := getJSON("/api/v1/ce/worker/boundary")
 	if rec.Code != http.StatusOK {
 		t.Fatalf("status = %d, body = %s", rec.Code, rec.Body.String())
@@ -42,15 +42,15 @@ func TestBoundarySeparatesPublicWorkerRuntimeFromPrivateWorker(t *testing.T) {
 
 	var body struct {
 		SourcePath        string   `json:"source_path"`
-		PrivateWorker     string   `json:"private_worker"`
+		SourceMode        string   `json:"source_mode"`
 		PrivateBoundaries []string `json:"private_boundaries"`
 	}
 	decodeJSON(t, rec, &body)
 	if body.SourcePath != "ce/worker-ce" {
 		t.Fatalf("source_path = %q", body.SourcePath)
 	}
-	if body.PrivateWorker != "cmd/worker" {
-		t.Fatalf("private_worker = %q", body.PrivateWorker)
+	if body.SourceMode != "complete_ce_worker_source_runtime" {
+		t.Fatalf("source_mode = %q", body.SourceMode)
 	}
 	if len(body.PrivateBoundaries) < 4 {
 		t.Fatalf("expected private boundaries, got %#v", body.PrivateBoundaries)

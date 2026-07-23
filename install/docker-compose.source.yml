@@ -1,6 +1,21 @@
 name: flyto2-warroom-ce-source
 
 services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: "${POSTGRES_USER:-flyto}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD:-change-me-local-only}"
+      POSTGRES_DB: "${POSTGRES_DB:-flyto}"
+    volumes:
+      - source-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-flyto}"]
+      interval: 1s
+      timeout: 2s
+      retries: 30
+
   engine:
     build:
       context: ../services/flyto-engine-ce
@@ -11,8 +26,14 @@ services:
     environment:
       FLYTO_EDITION: community
       FLYTO_CE_ADDR: :8080
+      FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable"
+      FLYTO_LOCAL_AUTH_JWT_SECRET: "${FLYTO_LOCAL_AUTH_JWT_SECRET:?run make setup-ce first}" # placeholder
+      FLYTO_LOCAL_AUTH_ALLOW_BOOTSTRAP: "1"
     ports:
       - "127.0.0.1:${FLYTO_SOURCE_ENGINE_PORT:-18080}:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   worker:
     build:
@@ -24,8 +45,12 @@ services:
     environment:
       FLYTO_EDITION: community
       FLYTO_CE_WORKER_ADDR: :8081
+      FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable"
     ports:
       - "127.0.0.1:${FLYTO_SOURCE_WORKER_PORT:-18081}:8081"
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   frontend:
     build:
@@ -44,3 +69,6 @@ services:
     depends_on:
       engine:
         condition: service_healthy
+
+volumes:
+  source-pgdata:

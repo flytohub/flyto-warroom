@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-07-23
+
+- Replaced the diagnostic-only CE source slice with a complete local product
+  runtime: one-time administrator bootstrap, local JWT sessions, organizations,
+  projects, credential-free public repository connections, durable scan jobs,
+  native findings, computed scores, and HTML reports.
+- Added a public-source worker that clones supported public Git hosts and runs
+  bounded secrets, IaC, SAST, and dependency checks without private services.
+- Changed Docker Compose and the tag release workflow to build engine, worker,
+  and frontend images directly from this public source tree.
+
 ## 2026-07-19
 
 - Added a deterministic CE product-loop contract at

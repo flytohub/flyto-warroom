@@ -36,11 +36,11 @@
 - `make ce-smoke` checks a running Docker Compose stack end to end: engine
   health, frontend health, frontend API proxy, runner, verification,
   brand-vision, and the CE product-loop payload.
-- Stable Git tags drive Docker Hub release promotion. The manifest declares
-  version `0.2.0` / Git tag `v0.2.0`; the release workflow requires the tagged
-  commit on `main` with successful CI, verifies all seven immutable multi-arch
-  digests, promotes them to `*-0.2.0` tags, re-verifies the aliases, and attaches
-  machine-readable evidence to the GitHub release.
+- Stable Git tags drive public-source Docker builds. The manifest declares
+  version `0.3.0` / Git tag `v0.3.0`; the release workflow requires the tagged
+  commit on `main` with successful CI, builds the engine, worker, and frontend
+  for both supported architectures, and attaches immutable digest evidence to
+  the GitHub release.
 
 ## Known Boundaries
 

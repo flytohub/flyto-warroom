@@ -54,7 +54,7 @@ jobs:
           python install/scripts/verify-docker-images.py --dry-run
       - name: Verify source graph with flyto-index
         run: |
-          python -m pip install "flyto-indexer @ git+https://github.com/flytohub/flyto-indexer@7ad6917887ffde8e43a3cee029c849a1a0ba2909"
+          python -m pip install flyto-indexer
           flyto-index verify . --full-scan --strict --json
           python scripts/generate-documentation-reference.py --check
           flyto-index sbom . --name flyto2-warroom-ce --output /tmp/flyto2-warroom-ce.cdx.json
@@ -97,30 +97,22 @@ jobs:
           git fetch origin main
           python scripts/export-upstream-patches.py --base origin/main --output upstream-patches
 
-  docker-image-audit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
-        with:
-          python-version: "3.11"
-      - name: Verify Docker Hub manifests
-        run: python install/scripts/verify-docker-images.py
-
   source-build-smoke:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
+      - name: Generate local CE infrastructure secrets
+        run: python3 install/scripts/setup-ce.py
       - name: Validate source Compose model
-        run: docker compose -f install/docker-compose.source.yml config --quiet
+        run: docker compose --env-file install/.env -f install/docker-compose.source.yml config --quiet
       - name: Build and start public source profile
-        run: docker compose -f install/docker-compose.source.yml up -d --build
+        run: docker compose --env-file install/.env -f install/docker-compose.source.yml up -d --build
       - name: Smoke public source product loop
         run: python3 install/scripts/smoke-source-stack.py
       - name: Capture source service logs
         if: failure()
-        run: docker compose -f install/docker-compose.source.yml logs --no-color
+        run: docker compose --env-file install/.env -f install/docker-compose.source.yml logs --no-color
       - name: Stop public source profile
         if: always()
-        run: docker compose -f install/docker-compose.source.yml down --volumes
+        run: docker compose --env-file install/.env -f install/docker-compose.source.yml down --volumes

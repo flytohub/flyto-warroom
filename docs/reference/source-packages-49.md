@@ -2,10 +2,31 @@
 
 # Packages Source Reference 49
 
-Source-linked contracts for **5 declarations** in `packages/`.
+Source-linked contracts for **26 declarations** in `packages/`.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| function | `const url = req.url ?? ''` | Implements url for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:49`](<../../packages/flyto-code/vite.config.next.ts#L49>) |
+| function | `const accept = (req as { headers?: Record<string, string> }).headers?.accept ?? ''` | Implements accept for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:50`](<../../packages/flyto-code/vite.config.next.ts#L50>) |
+| function | `const pathname = url.split('?')[0]` | Implements pathname for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:53`](<../../packages/flyto-code/vite.config.next.ts#L53>) |
+| function | `const rawHtml = fs.readFileSync(path.resolve(projectRoot, 'index-next.html'), 'utf-8')` | Implements raw html for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:58`](<../../packages/flyto-code/vite.config.next.ts#L58>) |
+| function | `const html = await server.transformIndexHtml(url, rawHtml)` | Implements html for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:59`](<../../packages/flyto-code/vite.config.next.ts#L59>) |
+| function | `function localGlobeAssetsPlugin(): Plugin {` | Implements local globe assets plugin for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:71`](<../../packages/flyto-code/vite.config.next.ts#L71>) |
+| function | `const sourceDir = path.resolve(projectRoot, 'node_modules/three-globe/example/img')` | Implements source dir for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:72`](<../../packages/flyto-code/vite.config.next.ts#L72>) |
+| function | `const outputDir = path.resolve(projectRoot, 'dist-next/assets/globe')` | Implements output dir for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:73`](<../../packages/flyto-code/vite.config.next.ts#L73>) |
+| function | `const assets = ['earth-blue-marble.jpg', 'earth-day.jpg', 'earth-topology.png']` | Implements assets for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:74`](<../../packages/flyto-code/vite.config.next.ts#L74>) |
+| function | `const localeMetaPath = path.resolve(projectRoot, 'dist-next/i18n/locale-meta.json')` | Implements locale meta path for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:88`](<../../packages/flyto-code/vite.config.next.ts#L88>) |
+| function | `const localeMeta = JSON.parse(fs.readFileSync(localeMetaPath, 'utf8')) as Record<string, unknown>` | Implements locale meta for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:89`](<../../packages/flyto-code/vite.config.next.ts#L89>) |
+| function | `const sentryPlugin = process.env.SENTRY_AUTH_TOKEN` | Implements sentry plugin for `packages/flyto-code/vite.config.next.ts`. | [`packages/flyto-code/vite.config.next.ts:102`](<../../packages/flyto-code/vite.config.next.ts#L102>) |
+| function | `const src = path.resolve(__dirname, './src-next')` | Implements src for `packages/flyto-code/vitest.config.ts`. | [`packages/flyto-code/vitest.config.ts:4`](<../../packages/flyto-code/vitest.config.ts#L4>) |
+| function | `def main() -> int:` | Implements main for `packages/flyto-contracts/conformance/validate.py`. | [`packages/flyto-contracts/conformance/validate.py:16`](<../../packages/flyto-contracts/conformance/validate.py#L16>) |
+| class | `type ArtifactRef struct {` | Implements artifact ref for `packages/flyto-contracts/sdk/go/contracts/doc.go`. | [`packages/flyto-contracts/sdk/go/contracts/doc.go:4`](<../../packages/flyto-contracts/sdk/go/contracts/doc.go#L4>) |
+| class | `type RunnerCallback struct {` | Executes runner callback for `packages/flyto-contracts/sdk/go/contracts/doc.go`. | [`packages/flyto-contracts/sdk/go/contracts/doc.go:11`](<../../packages/flyto-contracts/sdk/go/contracts/doc.go#L11>) |
+| class | `type EvidenceEvent struct {` | Implements evidence event for `packages/flyto-contracts/sdk/go/contracts/doc.go`. | [`packages/flyto-contracts/sdk/go/contracts/doc.go:20`](<../../packages/flyto-contracts/sdk/go/contracts/doc.go#L20>) |
+| class | `type RunLedgerEvent struct {` | Executes run ledger event for `packages/flyto-contracts/sdk/go/contracts/doc.go`. | [`packages/flyto-contracts/sdk/go/contracts/doc.go:30`](<../../packages/flyto-contracts/sdk/go/contracts/doc.go#L30>) |
+| class | `type ArtifactSignature struct {` | Implements artifact signature for `packages/flyto-contracts/sdk/go/contracts/doc.go`. | [`packages/flyto-contracts/sdk/go/contracts/doc.go:42`](<../../packages/flyto-contracts/sdk/go/contracts/doc.go#L42>) |
+| class | `type LivefixPlan struct {` | Implements livefix plan for `packages/flyto-contracts/sdk/go/contracts/doc.go`. | [`packages/flyto-contracts/sdk/go/contracts/doc.go:53`](<../../packages/flyto-contracts/sdk/go/contracts/doc.go#L53>) |
+| class | `class FlytoArtifactRef(TypedDict, total=False):` | Implements flyto artifact ref for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:6`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L6>) |
 | class | `class FlytoRunnerCallback(TypedDict, total=False):` | Implements flyto runner callback for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:13`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L13>) |
 | class | `class FlytoEvidenceEvent(TypedDict, total=False):` | Implements flyto evidence event for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:23`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L23>) |
 | class | `class FlytoRunLedgerEvent(TypedDict, total=False):` | Implements flyto run ledger event for `packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py`. | [`packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py:34`](<../../packages/flyto-contracts/sdk/python/flyto_contracts/__init__.py#L34>) |

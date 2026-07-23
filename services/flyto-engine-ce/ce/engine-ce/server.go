@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"net/http"
@@ -10,6 +11,8 @@ import (
 	"time"
 
 	"github.com/flytohub/flyto-engine/internal/access"
+	"github.com/flytohub/flyto-engine/internal/ceauth"
+	"github.com/flytohub/flyto-engine/internal/ceplatform"
 	"github.com/flytohub/flyto-engine/internal/modulecatalog"
 	"github.com/flytohub/flyto-engine/internal/obs"
 	"github.com/flytohub/flyto-engine/internal/permission"
@@ -18,12 +21,16 @@ import (
 const (
 	productName = "Flyto2 Warroom CE"
 	serviceName = "engine-ce-source-runtime"
-	sourceMode  = "ce_runtime_kernel_source_and_images"
+	sourceMode  = "complete_ce_source_runtime"
 )
 
 type ceServer struct {
-	startedAt time.Time
-	now       func() time.Time
+	startedAt        time.Time
+	now              func() time.Time
+	store            *ceplatform.Store
+	auth             *ceauth.Manager
+	bootstrapLimiter *ipRateLimiter
+	loginLimiter     *ipRateLimiter
 }
 
 func newHandler() http.Handler {
@@ -42,12 +49,20 @@ func (s *ceServer) handler() http.Handler {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", s.handleIndex)
 	mux.HandleFunc("/healthz", s.handleHealth)
+	mux.HandleFunc("/health", s.handleHealth)
 	mux.HandleFunc("/readyz", s.handleReady)
 	mux.HandleFunc("/api/v1/ce/boundary", s.handleBoundary)
 	mux.HandleFunc("/api/v1/ce/modules", s.handleModules)
 	mux.HandleFunc("/api/v1/ce/capabilities", s.handleCapabilities)
 	mux.HandleFunc("/api/v1/ce/product-loop", s.handleProductLoop)
 	mux.HandleFunc("/api/v1/ce/access/self-test", s.handleAccessSelfTest)
+	mux.HandleFunc("/api/v1/auth/local/bootstrap", s.handleLocalBootstrap)
+	mux.HandleFunc("/api/v1/auth/local/login", s.handleLocalLogin)
+	mux.HandleFunc("/api/v1/me", s.handleMe)
+	mux.HandleFunc("/api/v1/me/", s.handleMe)
+	mux.HandleFunc("/api/v1/code/orgs", s.handleOrgs)
+	mux.HandleFunc("/api/v1/code/orgs/", s.handleOrgRoutes)
+	mux.HandleFunc("/api/v1/code/repos/", s.handleRepoRoutes)
 	return requestContextMiddleware(mux)
 }
 
@@ -128,6 +143,14 @@ func (s *ceServer) handleReady(w http.ResponseWriter, r *http.Request) {
 		writeJSON(w, http.StatusServiceUnavailable, errorResponse{Error: "not_ready", Details: err.Error()})
 		return
 	}
+	if s.store != nil {
+		ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
+		defer cancel()
+		if err := s.store.Ping(ctx); err != nil {
+			writeJSON(w, http.StatusServiceUnavailable, errorResponse{Error: "not_ready", Details: "postgres unavailable"})
+			return
+		}
+	}
 	writeJSON(w, http.StatusOK, map[string]any{
 		"status":       "ready",
 		"product":      productName,
@@ -146,10 +169,10 @@ func (s *ceServer) handleBoundary(w http.ResponseWriter, r *http.Request) {
 		"product":               productName,
 		"service":               serviceName,
 		"edition":               "community",
-		"source_mode":           sourceMode,
+		"source_mode":           "complete_ce_source_runtime",
 		"source_path":           "ce/engine-ce",
 		"public_package":        "services/flyto-engine-ce",
-		"public_runtime_routes": []string{"/healthz", "/readyz", "/api/v1/ce/boundary", "/api/v1/ce/modules", "/api/v1/ce/capabilities", "/api/v1/ce/product-loop", "/api/v1/ce/access/self-test"},
+		"public_runtime_routes": []string{"/health", "/readyz", "/api/v1/auth/local/bootstrap", "/api/v1/auth/local/login", "/api/v1/me", "/api/v1/code/orgs", "/api/v1/code/orgs/{id}/repos", "/api/v1/code/repos/{id}/scans", "/api/v1/code/repos/{id}/findings", "/api/v1/code/orgs/{id}/reports/build"},
 		"authority_boundary": map[string]any{
 			"runtime":                      "ce",
 			"score_authority_signing":      "disabled",
@@ -170,10 +193,7 @@ func (s *ceServer) handleBoundary(w http.ResponseWriter, r *http.Request) {
 			"hosted_control_plane":          "not_available_in_ce_runtime",
 			"offline_enterprise_license":    "private_overlay_only",
 		},
-		"private_api_entrypoint": "cmd/server",
-		"private_worker":         "cmd/worker",
 		"private_boundaries": []string{
-			"api handlers and private store orchestration",
 			"billing, entitlement mutation, and license signers",
 			"SaaS control plane, Firebase, Stripe, and hosted callbacks",
 			"commercial threat intelligence and proprietary datasets",

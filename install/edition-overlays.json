@@ -208,8 +208,7 @@
     "paid_edition_policy": "build_time_private_overlay_only",
     "private_source_repos": [
       "flyto-engine",
-      "flyto-code",
-      "flyto-cloud"
+      "flyto-code"
     ],
     "public_base_selector": "flyto-warroom@commit_sha",
     "public_pr_flow": "public_pr_to_private_source_to_regenerated_ce",

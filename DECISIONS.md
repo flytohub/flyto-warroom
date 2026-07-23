@@ -80,8 +80,9 @@ source inputs to the exact release tree without access to a maintainer machine.
 Decision: stable Git tag `vMAJOR.MINOR.PATCH` is the only automatic Docker Hub
 release trigger. Each tag must match the version fields in
 `OPEN_CORE_MANIFEST.json`, point to a `main` commit with successful CE CI, and
-promote the manifest's exact image digests to per-service semantic-version tags.
+build the engine, worker, and frontend public contexts for both supported
+architectures before recording immutable registry digests.
 
-Reason: the public mirror does not contain every private image build context.
-Digest promotion keeps the CI/CD release reproducible without rebuilding hidden
-source or letting a mutable floating tag silently define a historical release.
+Reason: building only the public contexts makes the source/image relationship
+independently reproducible and prevents private build inputs or a mutable
+floating tag from silently defining a historical release.

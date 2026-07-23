@@ -1,9 +1,10 @@
 # External Dependencies
 
-Flyto2 Warroom CE builds on these open-source packages. They are **not vendored**
-into this repository — the published CE container images install them from their
-public registries at build time, and their source lives in their own public
-repositories (where contributions and issues should go).
+Flyto2 Warroom CE builds on these open-source packages. Their source remains in
+their own public repositories (where contributions and issues should go). The
+generated public tree contains the complete CE engine/worker Go module and the
+frontend's generated locale assets, so a CE source build never requires a
+private Flyto2 repository or private Flyto2 service image.
 
 | Package | Install from | Source repository | License |
 | --- | --- | --- | --- |
@@ -11,8 +12,7 @@ repositories (where contributions and issues should go).
 | `flyto-indexer` | PyPI (`pip install flyto-indexer`) | github.com/flytohub/flyto-indexer | Apache-2.0 |
 | `flyto-i18n` | locale bundle (build-time) | github.com/flytohub/flyto-i18n | MIT |
 
-Why they are not in this repo: copying already-open, separately-published
-packages here only duplicated source and created regeneration churn without
-being used at runtime (the CE `docker-compose` runs prebuilt images). Depending
-on them from their registries keeps this distribution small and each project's
-own repo the single source of truth.
+Why the full upstream repositories are not copied here: the CE runtime uses a
+reviewed allowlist of public engine packages plus built frontend assets. Keeping
+the upstream packages separate avoids duplicated source while the generated
+`OPEN_CORE_MANIFEST.json` pins every contributing source commit.

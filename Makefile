@@ -4,7 +4,7 @@ ENV_EE_SIM ?= install/.env.ee-sim
 DOCKER_COMPOSE ?= $(shell if docker compose version >/dev/null 2>&1; then printf 'docker compose'; elif command -v docker-compose >/dev/null 2>&1; then printf 'docker-compose'; else printf 'docker compose'; fi)
 COMPOSE_CE = $(DOCKER_COMPOSE) --env-file $(ENV_CE) -f install/docker-compose.ce.yml
 COMPOSE_EE_SIM = $(DOCKER_COMPOSE) --env-file $(ENV_EE_SIM) -f install/docker-compose.ce.yml -f install/docker-compose.ee-sim.yml
-COMPOSE_SOURCE = $(DOCKER_COMPOSE) -f install/docker-compose.source.yml
+COMPOSE_SOURCE = $(DOCKER_COMPOSE) --env-file $(ENV_CE) -f install/docker-compose.source.yml
 
 .PHONY: setup-ce preflight lint test backend-test frontend-test contracts-test docs docs-check verify verify-images ce-up ce-down ce-logs ce-ps ce-smoke ce-reset-db source-build source-up source-down source-logs source-smoke ee-sim-up ee-sim-down ee-sim-logs audit open-core-audit positioning-audit demo-seed-dry-run provider-readiness provider-readiness-strict public-release-check build-local-images
 

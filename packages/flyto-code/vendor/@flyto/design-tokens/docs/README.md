@@ -2,6 +2,8 @@
 
 ## Consumer Reference
 
+- [Whitepaper](WHITEPAPER.md) explains the cross-framework token contract,
+  compatibility policy, and consumer responsibilities.
 - [Feature reference](FEATURES.md) explains the shared visual contracts and
   their intended use.
 - [API reference](API.md) lists every package entry point and exported token

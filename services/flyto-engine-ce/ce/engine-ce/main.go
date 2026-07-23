@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log/slog"
 	"net/http"
 	"os"
@@ -13,11 +14,17 @@ import (
 func main() {
 	ensureCEEnvironment()
 	obs.SetDefault(obs.NewJSONLogger(os.Stdout, slog.LevelInfo))
+	handler, closeRuntime, err := newRuntimeHandler(context.Background())
+	if err != nil {
+		obs.Default().Error("Flyto2 Warroom CE runtime initialization failed", "error", err)
+		os.Exit(1)
+	}
+	defer closeRuntime()
 
 	addr := listenAddr()
 	srv := &http.Server{
 		Addr:              addr,
-		Handler:           newHandler(),
+		Handler:           handler,
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 

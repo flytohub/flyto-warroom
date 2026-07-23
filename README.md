@@ -129,52 +129,51 @@ safe local default. Enterprise simulation uses
 
 ### Build The Public Source Profile
 
-The source profile builds the PolyForm Noncommercial 1.0.0 engine
-kernel, worker, and the
-same React frontend directly from this repository. It does not pull
+The source profile builds the complete PolyForm Noncommercial 1.0.0 CE
+PostgreSQL engine, scan worker, and the same React frontend directly
+from this repository. It does not pull
 Flyto2 service images or require credentials:
 
 ```sh
+make setup-ce
 make source-build
 make source-up
 make source-smoke
 ```
 
-Open `http://127.0.0.1:18088/community`. This source profile proves the
-provider-free product-loop and worker reliability contracts. The full CE
-image profile above adds local database, provider scans, runner, reports,
-and authenticated project workflows. See `docs/source-build.md`.
+Open `http://127.0.0.1:18088/sign-in`; a fresh database redirects to the
+one-time local administrator form.
+This source profile owns authenticated projects, durable public-repository
+scans, findings, health summaries, and local report delivery. See
+`docs/source-build.md`.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  UI["flyto-code<br/>Warroom cockpit"] --> API["CE engine image<br/>public contracts"]
-  API --> KERNEL["services/flyto-engine-ce<br/>kernel source"]
+  UI["flyto-code<br/>Warroom cockpit"] --> API["CE engine<br/>public source"]
+  API --> KERNEL["services/flyto-engine-ce<br/>complete CE runtime"]
   API --> DB[("Postgres")]
-  API --> Runner["runner-ce"]
-  API --> Verify["verification-ce"]
-  API --> PDF["pdf-ce"]
-  API --> Vision["brand-vision-ce"]
-  Core["flyto-core<br/>YAML runtime"] --> API
-  Indexer["flyto-indexer<br/>local code intelligence"] --> API
+  API --> Worker["CE scan worker<br/>public source"]
+  Worker --> Repo["credential-free public repo clone"]
+  Worker --> DB
   API -. premium signed jobs .-> Cloud["Flyto2 Enterprise Cloud Bridge"]
   Cloud -. signed evidence .-> API
 ```
 
 The public repository is generated from allowlisted packages and contracts.
-Only the classified CE kernel under `services/flyto-engine-ce/internal/...`
-is source-published. Private Go `cmd/**`, handlers, store internals,
-commercial datasets, billing, customer connector credentials, SaaS and
-enterprise adapters, and live remediation workers are not exported.
+The complete local CE product path under `services/flyto-engine-ce` is
+source-published: local auth, PostgreSQL projects, durable scans, native
+findings, and reports. Commercial datasets, billing, customer connector
+credentials, SaaS/Enterprise adapters, and live remediation remain private.
 
 ## Components
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1613 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 1615 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
-| `flyto-engine-ce` | `flyto-engine` | 95 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
+| `flyto-engine-ce` | `flyto-engine` | 104 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
 
 ## Docker Images
 
@@ -185,14 +184,10 @@ Published repository: `docker.io/chesterhsu/flyto-warroom`
 | Engine API | `engine-ce` |
 | Worker | `worker-ce` |
 | Warroom UI | `code-ce` |
-| Runner | `runner-ce` |
-| Verification | `verification-ce` |
-| Brand Vision | `brand-vision-ce` |
-| PDF | `pdf-ce` |
 
-Stable release `v0.2.0` promotes those exact manifest digests to
-per-service `*-0.2.0` Docker tags after the tagged `main` commit
-passes CI. See `docs/official-builds.md` for the release contract.
+Stable release `v0.3.0` builds per-service `*-0.3.0`
+Docker images directly from that tagged public source after its `main`
+commit passes CI. See `docs/official-builds.md` for the release contract.
 
 ## CE And Enterprise
 

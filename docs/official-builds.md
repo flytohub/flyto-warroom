@@ -15,16 +15,15 @@ The official CE image repository and per-service tags are declared in
 `OPEN_CORE_MANIFEST.json`. A modified distribution must use different image
 names and must not imply that it is an official Flyto2 build.
 
-Official CE images are runnable distribution artifacts. They do not mean the
-private `flyto-engine` implementation, Enterprise datasets, Enterprise
-remediation workers, or Flyto2 Cloud control plane source have been published.
+Official CE engine, worker, and frontend images are reproducible distribution
+artifacts built from this public repository. Enterprise datasets, private
+remediation workers, and hosted control-plane implementations are not part of
+CE and are not needed to run the CE product loop.
 
-Stable Git tags drive immutable Docker Hub aliases. For Git tag `v0.2.0`, the
-release workflow promotes the already-verified manifest digests to
-`engine-ce-0.2.0`, `worker-ce-0.2.0`, `code-ce-0.2.0`, and matching auxiliary
-service tags. Promotion copies the exact multi-architecture indexes declared in
-`OPEN_CORE_MANIFEST.json`; it does not rebuild private source in the public
-repository or silently replace a digest.
+Stable Git tags build immutable Docker Hub aliases. For Git tag `v0.3.0`, the
+release workflow builds `engine-ce-0.3.0`, `worker-ce-0.3.0`, and
+`code-ce-0.3.0` directly from the tagged public source for `linux/amd64` and
+`linux/arm64`, then records the registry manifest digests as release evidence.
 
 ## Release Evidence
 
@@ -46,9 +45,9 @@ This verifies every service tag and expected digest declared in
 `OPEN_CORE_MANIFEST.json` against Docker Hub. Use `--pull` for a stricter pull
 test.
 
-Maintainer tag releases also run `install/scripts/promote-release-images.py`,
-attach the resulting `release-images.json` evidence to the GitHub release, and
-fail unless the tagged commit is on `main` with a successful CE CI run.
+Maintainer tag releases attach `release-images.json` evidence to the GitHub
+release and fail unless the tagged commit is on `main` with a successful CE CI
+run.
 
 ## Forks
 

@@ -18,9 +18,7 @@ This directory contains the public CE install surface:
 - `scripts/seed-demo-workspace.py` seeds the demo evidence workspace through the
   public local JWT API.
 - `scripts/verify-docker-images.py` checks Docker Hub tags and digests.
-- `scripts/audit-docker-build-boundary.py` checks source-image boundaries before
-  maintainers publish official images.
-- `scripts/publish-multiarch-images.sh` publishes official `linux/amd64` and
-  `linux/arm64` CE image manifest lists.
+- Git tags publish official `linux/amd64` and `linux/arm64` engine, worker, and
+  frontend images from this public source tree through GitHub Actions.
 
 Do not place real credentials in this directory.

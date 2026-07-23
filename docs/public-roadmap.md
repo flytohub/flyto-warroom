@@ -11,8 +11,8 @@ Enterprise Airgap.
 
 ## Shipped In CE
 
-- Self-hosted Docker Compose stack for engine, worker, frontend, runner,
-  verification, brand-vision, pdf, and Postgres.
+- Self-hosted Docker Compose stack for the public-source engine, worker,
+  frontend, and Postgres.
 - Local JWT authentication for the CE install path.
 - Public contracts for capabilities, scanner manifests, runner callbacks,
   product verification scenarios, audit events, and evidence events.
@@ -26,8 +26,8 @@ Enterprise Airgap.
 
 - Importable demo seed that populates native code/container/cloud/external
   tables when the running engine exposes a supported seed endpoint.
-- Browser smoke for the published Docker Compose stack.
-- Public screenshots and replay artifacts for CE install, seed, and report flow.
+- Browser smoke and public screenshots for the CE install, scan, and report
+  flow.
 - Importers for common scanner, ASM, SAST, DAST, CSPM, and SIEM exports.
 - Stronger local attack-path templates that convert imported findings into
   safe validation tasks.

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log/slog"
 	"net/http"
 	"os"
@@ -12,11 +13,20 @@ import (
 
 func main() {
 	obs.SetDefault(obs.NewJSONLogger(os.Stdout, slog.LevelInfo))
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+	worker, closeRuntime, err := newRuntimeWorker(ctx)
+	if err != nil {
+		obs.Default().Error("Flyto2 Warroom CE worker initialization failed", "error", err)
+		os.Exit(1)
+	}
+	defer closeRuntime()
+	go worker.runScanLoop(ctx)
 
 	addr := listenAddr()
 	srv := &http.Server{
 		Addr:              addr,
-		Handler:           newHandler(),
+		Handler:           worker.handler(),
 		ReadHeaderTimeout: 5 * time.Second,
 	}
 

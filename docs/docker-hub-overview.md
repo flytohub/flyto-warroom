@@ -33,29 +33,20 @@ or other monetary-advantage use requires a separate written commercial license.
 
 ## Images
 
-This repository publishes Flyto2 Warroom CE services as separate tags:
+This repository publishes the CE application services as separate tags:
 
 - `engine-ce` - backend API and security workflow engine
 - `worker-ce` - background worker
 - `code-ce` - web UI
-- `runner-ce` - automation and browser runner service
-- `verification-ce` - product verification service
-- `brand-vision-ce` - brand/image analysis helper
-- `pdf-ce` - report PDF service
-
 Stable semantic-version tags are published for reproducible installs. Git tag
-`v0.2.0` maps to:
+`v0.3.0` maps to:
 
-- `engine-ce-0.2.0`
-- `worker-ce-0.2.0`
-- `code-ce-0.2.0`
-- `runner-ce-0.2.0`
-- `verification-ce-0.2.0`
-- `brand-vision-ce-0.2.0`
-- `pdf-ce-0.2.0`
+- `engine-ce-0.3.0`
+- `worker-ce-0.3.0`
+- `code-ce-0.3.0`
 
-The tag-triggered GitHub Actions release verifies the immutable manifest
-digests and both `linux/amd64` and `linux/arm64` before and after promotion.
+The tag-triggered GitHub Actions release builds all three from public source,
+publishes both `linux/amd64` and `linux/arm64`, and records immutable digests.
 
 ## Quick Start
 
@@ -67,8 +58,8 @@ cd flyto-warroom
 
 python3 install/scripts/setup-ce.py
 make preflight
-make verify-images
-make ce-up
+make source-build
+make source-up
 ```
 
 Open the UI:

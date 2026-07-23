@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises'
+import { readFile, readdir, writeFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -13,6 +13,33 @@ const css = await readFile(resolve(root, 'css/tokens.css'), 'utf8')
 const animationCss = await readFile(resolve(root, 'css/animations.css'), 'utf8')
 
 const escapeCell = (value) => String(value).replaceAll('|', '\\|').replaceAll('\n', ' ')
+
+const listJavaScriptFiles = async (directory) => {
+  const files = []
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const absolute = resolve(directory, entry.name)
+    if (entry.isDirectory()) files.push(...await listJavaScriptFiles(absolute))
+    else if (entry.name.endsWith('.js')) files.push(absolute)
+  }
+  return files.sort()
+}
+
+const sourceFunctionRows = []
+for (const sourcePath of await listJavaScriptFiles(resolve(root, 'src'))) {
+  const source = await readFile(sourcePath, 'utf8')
+  const relative = sourcePath.slice(root.length + 1).replaceAll('\\', '/')
+  const pattern = /^(?:export\s+)?(?:async\s+)?function\s+([A-Za-z_$][\w$]*)\s*\(/gm
+  for (const match of source.matchAll(pattern)) {
+    const line = source.slice(0, match.index).split('\n').length
+    const leadingComment = source.slice(0, match.index).match(/\/\*\*([\s\S]*?)\*\/\s*$/)
+    const summary = leadingComment
+      ? leadingComment[1].split('\n').map((part) => part.replace(/^\s*\*?\s?/, '')).join(' ').replace(/\s+/g, ' ').trim()
+      : `Internal ${match[1]} helper.`
+    sourceFunctionRows.push(
+      `| \`${match[1]}\` | [\`${relative}:${line}\`](../${relative}#L${line}) | ${escapeCell(summary)} |`,
+    )
+  }
+}
 
 const exportRows = Object.entries(tokens)
   .sort(([left], [right]) => left.localeCompare(right))
@@ -64,6 +91,16 @@ scalar exports. TypeScript declarations are maintained in \`src/index.d.ts\`.
 | Export | Runtime kind | Members or value |
 |---|---|---|
 ${exportRows.join('\n')}
+
+## Source Functions
+
+Named source functions remain implementation details unless exported through a
+package entry point. They are listed here so each callable has a source-backed
+contract.
+
+| Function | Source | Contract |
+|---|---|---|
+${sourceFunctionRows.join('\n')}
 
 ## CSS Custom Properties
 

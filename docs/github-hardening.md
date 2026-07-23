@@ -10,7 +10,7 @@ Recommended repository settings for `flytohub/flyto-warroom`:
 - require conversation resolution;
 - require linear history;
 - block force pushes and branch deletion;
-- require the `release-audit`, `governance-audit`, and `docker-image-audit`
+- require the `release-audit`, `governance-audit`, and `source-build-smoke`
   status checks;
 - restrict release publishing to maintainer-owned GitHub Actions.
 - protect stable `vMAJOR.MINOR.PATCH` tags from deletion or retargeting;
@@ -24,5 +24,5 @@ The repository also carries file-level guardrails:
 - `scripts/audit-github-protection.py` fails CI if protection files are removed
   or weakened.
 - `.github/workflows/release-images.yml` accepts stable version tags only,
-  requires prior successful CI on the tagged `main` commit, and promotes exact
-  manifest digests instead of rebuilding hidden sources.
+  requires prior successful CI on the tagged `main` commit, and builds the
+  engine, worker, and frontend directly from that public source tree.

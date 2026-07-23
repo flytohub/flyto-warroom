@@ -1,4 +1,4 @@
-name: Publish Versioned CE Images
+name: Build And Publish CE Images From Public Source
 
 on:
   push:
@@ -15,10 +15,11 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45
     env:
       DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      IMAGE_REPOSITORY: docker.io/chesterhsu/flyto-warroom
     steps:
       - uses: actions/checkout@v6
         with:
@@ -37,11 +38,12 @@ jobs:
             echo "No successful Flyto2 Warroom CE run exists for $GITHUB_SHA" >&2
             exit 1
           fi
-      - name: Audit release tag and immutable image plan
+      - name: Audit tagged public source tree
         run: |
+          python install/scripts/setup-ce.py
           make verify
-          python install/scripts/verify-docker-images.py
-          python install/scripts/promote-release-images.py --tag "$GITHUB_REF_NAME"
+          python install/scripts/audit-release-tree.py .
+          docker compose --env-file install/.env -f install/docker-compose.source.yml config --quiet
       - name: Require Docker Hub publisher credentials
         run: |
           if [ -z "$DOCKERHUB_USERNAME" ] || [ -z "$DOCKERHUB_TOKEN" ]; then
@@ -53,9 +55,76 @@ jobs:
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ env.DOCKERHUB_TOKEN }}
-      - name: Publish and verify semantic-version image tags
+      - name: Build and publish engine, worker, and frontend from this tag
         run: |
-          python install/scripts/promote-release-images.py             --tag "$GITHUB_REF_NAME"             --push             --evidence release-images.json
+          set -eu
+          version="${GITHUB_REF_NAME#v}"
+          common_flags=(--platform "linux/amd64,linux/arm64" --push --provenance=mode=max --sbom=true)
+
+          docker buildx build "${common_flags[@]}" \
+            --file services/flyto-engine-ce/Dockerfile \
+            --target engine \
+            --tag "$IMAGE_REPOSITORY:engine-ce-$version" \
+            --tag "$IMAGE_REPOSITORY:engine-ce" \
+            services/flyto-engine-ce
+
+          docker buildx build "${common_flags[@]}" \
+            --file services/flyto-engine-ce/Dockerfile \
+            --target worker \
+            --tag "$IMAGE_REPOSITORY:worker-ce-$version" \
+            --tag "$IMAGE_REPOSITORY:worker-ce" \
+            services/flyto-engine-ce
+
+          docker buildx build "${common_flags[@]}" \
+            --file packages/flyto-code/Dockerfile \
+            --build-arg FLYTO_PUBLIC_ENGINE_ORIGIN=__same_origin__ \
+            --build-arg FLYTO_PUBLIC_AUTOMATION_ORIGIN=__same_origin__ \
+            --build-arg FLYTO_PUBLIC_CORTEX_ORIGIN=__same_origin__ \
+            --build-arg FLYTO_PUBLIC_MODE=community \
+            --build-arg FLYTO_PUBLIC_RELEASE="$GITHUB_REF_NAME" \
+            --tag "$IMAGE_REPOSITORY:code-ce-$version" \
+            --tag "$IMAGE_REPOSITORY:code-ce" \
+            packages/flyto-code
+
+          docker buildx imagetools inspect "$IMAGE_REPOSITORY:engine-ce-$version" --format '{{json .Manifest}}' > engine-manifest.json
+          docker buildx imagetools inspect "$IMAGE_REPOSITORY:worker-ce-$version" --format '{{json .Manifest}}' > worker-manifest.json
+          docker buildx imagetools inspect "$IMAGE_REPOSITORY:code-ce-$version" --format '{{json .Manifest}}' > frontend-manifest.json
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          version = os.environ["GITHUB_REF_NAME"].removeprefix("v")
+          repository = os.environ["IMAGE_REPOSITORY"]
+          services = {}
+          for name, tag in (("engine", "engine-ce"), ("worker", "worker-ce"), ("frontend", "code-ce")):
+              descriptor = json.loads(Path(f"{name}-manifest.json").read_text(encoding="utf-8"))
+              services[name] = {
+                  "image": repository,
+                  "tag": f"{tag}-{version}",
+                  "digest": descriptor["digest"],
+                  "descriptor": descriptor,
+              }
+          evidence = {
+              "schema": "flyto.warroom-ce.source-image-release.v1",
+              "source_repository": os.environ["GITHUB_REPOSITORY"],
+              "source_commit": os.environ["GITHUB_SHA"],
+              "source_tag": os.environ["GITHUB_REF_NAME"],
+              "services": services,
+          }
+          Path("release-images.json").write_text(json.dumps(evidence, indent=2) + "\n", encoding="utf-8")
+          PY
+      - name: Verify published immutable tags
+        run: |
+          python3 - <<'PY'
+          import json
+          import subprocess
+
+          evidence = json.load(open("release-images.json", encoding="utf-8"))
+          for service in evidence["services"].values():
+              reference = f'{service["image"]}:{service["tag"]}'
+              subprocess.run(["docker", "buildx", "imagetools", "inspect", reference], check=True)
+          PY
       - name: Upload release evidence
         uses: actions/upload-artifact@v7
         with:
@@ -69,5 +138,9 @@ jobs:
           if gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
             gh release upload "$GITHUB_REF_NAME" release-images.json --clobber --repo "$GITHUB_REPOSITORY"
           else
-            gh release create "$GITHUB_REF_NAME" release-images.json               --verify-tag               --generate-notes               --title "Flyto2 Warroom CE $GITHUB_REF_NAME"               --repo "$GITHUB_REPOSITORY"
+            gh release create "$GITHUB_REF_NAME" release-images.json \
+              --verify-tag \
+              --generate-notes \
+              --title "Flyto2 Warroom CE $GITHUB_REF_NAME" \
+              --repo "$GITHUB_REPOSITORY"
           fi

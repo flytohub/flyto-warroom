@@ -10,6 +10,7 @@ import (
 
 	"github.com/flytohub/flyto-engine/internal/backoff"
 	"github.com/flytohub/flyto-engine/internal/canary"
+	"github.com/flytohub/flyto-engine/internal/ceplatform"
 	"github.com/flytohub/flyto-engine/internal/circuit"
 	"github.com/flytohub/flyto-engine/internal/obs"
 	"github.com/flytohub/flyto-engine/internal/scanqueue"
@@ -19,7 +20,7 @@ import (
 const (
 	productName = "Flyto2 Warroom CE"
 	serviceName = "worker-ce-source-runtime"
-	sourceMode  = "ce_worker_runtime_kernel_source_and_images"
+	sourceMode  = "complete_ce_worker_source_runtime"
 )
 
 type workerServer struct {
@@ -27,6 +28,7 @@ type workerServer struct {
 	now       func() time.Time
 	queue     *scanqueue.Queue
 	processed chan scanqueue.ScanJob
+	store     *ceplatform.Store
 }
 
 func newHandler() http.Handler {
@@ -116,12 +118,23 @@ func (s *workerServer) handleReady(w http.ResponseWriter, r *http.Request) {
 	if !allowGET(w, r) {
 		return
 	}
+	if s.store != nil {
+		ctx, cancel := context.WithTimeout(r.Context(), 2*time.Second)
+		defer cancel()
+		if err := s.store.Ping(ctx); err != nil {
+			writeJSON(w, http.StatusServiceUnavailable, errorResponse{Error: "not_ready", Details: "postgres unavailable"})
+			return
+		}
+	}
 	writeJSON(w, http.StatusOK, map[string]any{
 		"status":  "ready",
 		"product": productName,
 		"service": serviceName,
 		"edition": "community",
 		"primitives": []string{
+			"durable PostgreSQL scan dispatch",
+			"credential-free public Git clone",
+			"native secrets, IaC, SAST, and dependency scanning",
 			"bounded scan queue",
 			"stable scheduler buckets",
 			"adaptive backoff",
@@ -144,9 +157,7 @@ func (s *workerServer) handleBoundary(w http.ResponseWriter, r *http.Request) {
 		"source_path":           "ce/worker-ce",
 		"public_package":        "services/flyto-engine-ce",
 		"public_runtime_routes": []string{"/healthz", "/readyz", "/api/v1/ce/worker/boundary", "/api/v1/ce/worker/self-test"},
-		"private_worker":        "cmd/worker",
 		"private_boundaries": []string{
-			"production scheduler dispatch and tenant orchestration",
 			"runner callback authentication and hosted execution plane",
 			"commercial cloud, container, runtime, and AutoFix adapters",
 			"proprietary threat intelligence and customer connector credentials",

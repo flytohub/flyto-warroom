@@ -256,6 +256,9 @@ def main() -> int:
             "target: engine",
             "target: worker",
             "FLYTO_PUBLIC_MODE: community",
+            "postgres:17-alpine",
+            "FLYTO_PG_URL",
+            "FLYTO_LOCAL_AUTH_JWT_SECRET",
         ]:
             if marker not in source_text:
                 blockers.append(f"source compose missing public build marker: {marker}")

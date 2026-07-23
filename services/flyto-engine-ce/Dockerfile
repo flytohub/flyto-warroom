@@ -13,7 +13,7 @@ RUN CGO_ENABLED=0 GOOS="${TARGETOS:-linux}" GOARCH="${TARGETARCH:-$(go env GOARC
     go build -trimpath -ldflags="-s -w" -o /out/worker ./ce/worker-ce
 
 FROM alpine:3.23@sha256:fd791d74b68913cbb027c6546007b3f0d3bc45125f797758156952bc2d6daf40 AS runtime-base
-RUN apk add --no-cache ca-certificates && \
+RUN apk add --no-cache ca-certificates git && \
     addgroup -S -g 10001 flyto && adduser -S -D -u 10001 -G flyto -h /home/flyto flyto
 USER 10001:10001
 

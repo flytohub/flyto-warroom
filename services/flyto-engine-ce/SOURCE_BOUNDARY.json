@@ -32,13 +32,23 @@
   "ce_source_paths": [
     {
       "path": "ce/engine-ce/**",
-      "reason": "Runnable CE source runtime exposing health, boundary, module catalog, capability snapshot, deterministic product-loop seed, and access self-test contracts without private handlers, store, SaaS, billing, or provider adapters.",
+      "reason": "Complete CE source runtime exposing local authentication, PostgreSQL-backed projects/repositories, scan/finding/report APIs, health, capability, and evidence contracts without SaaS, billing, or commercial provider adapters.",
       "validation": "go test ./ce/engine-ce"
     },
     {
       "path": "ce/worker-ce/**",
-      "reason": "Runnable CE worker source runtime exposing health, boundary, and deterministic queue/scheduler/backoff/circuit/canary self-tests without private scheduler dispatch, store, hosted runner callbacks, commercial adapters, or remediation orchestration.",
+      "reason": "Complete CE worker source runtime claiming durable PostgreSQL scan jobs, cloning credential-free public repositories, running native secrets/IaC/SAST/dependency checks, and persisting findings without hosted callbacks or commercial adapters.",
       "validation": "go test ./ce/worker-ce"
+    },
+    {
+      "path": "internal/ceauth/**",
+      "reason": "Local-only password policy, bcrypt verification, and signed JWT sessions for the one-time CE administrator flow.",
+      "validation": "go test ./internal/ceauth"
+    },
+    {
+      "path": "internal/ceplatform/**",
+      "reason": "Community-owned PostgreSQL schema/store plus native repository scanner for durable projects, scans, findings, evidence, and reports.",
+      "validation": "go test ./internal/ceplatform"
     },
     {
       "path": "internal/canon/**",
@@ -171,7 +181,7 @@
       "validation": "go test ./internal/stats"
     }
   ],
-  "export_mode": "ce_kernel_source_and_images",
+  "export_mode": "complete_ce_source_runtime",
   "merge_rule": "Change private source first, rerun exporter, review generated delta.",
   "public_package": "services/flyto-engine-ce",
   "schema": "flyto.engine-ce-source-boundary.v1",

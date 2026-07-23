@@ -39,7 +39,7 @@ REQUIRED_MARKERS = {
     ],
     "docs/github-hardening.md": [
         "require pull requests before merging",
-        "docker-image-audit",
+        "source-build-smoke",
     ],
     "docs/account-security.md": [
         "Official publisher accounts must use 2FA",
@@ -60,7 +60,7 @@ REQUIRED_MARKERS = {
     ".github/workflows/ci.yml": [
         "release-audit",
         "governance-audit",
-        "docker-image-audit",
+        "source-build-smoke",
         "Audit CE moat and privacy boundary",
         "Audit deterministic source provenance",
         "Audit open-core overlay contract",
@@ -69,9 +69,9 @@ REQUIRED_MARKERS = {
         "flyto-index verify",
     ],
     ".github/workflows/release-images.yml": [
-        "Publish Versioned CE Images",
+        "Build And Publish CE Images From Public Source",
         "Require a tagged main commit with successful CE CI",
-        "promote-release-images.py",
+        "Build and publish engine, worker, and frontend from this tag",
         "DOCKERHUB_TOKEN",
         "Create or update GitHub release",
     ],

@@ -5,8 +5,11 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import CircularProgress from '@mui/material/CircularProgress'
+import TextField from '@mui/material/TextField'
+import Alert from '@mui/material/Alert'
 import { AlertTriangle, RefreshCw, Link2 } from 'lucide-react'
 import { useAuth } from '@hooks/useAuth'
 import { useOrg, useConnectedRepos } from '@hooks/useOrg'
@@ -19,6 +22,7 @@ import { connectRepo, disconnectRepo } from '@lib/engine'
 import { GatedButton } from '@atoms/GatedButton'
 import { useQueryClient } from '@tanstack/react-query'
 import { t, tOr } from '@lib/i18n';
+import { env } from '@lib/env'
 import { queryResolved, resolvedList } from '@lib/queryState'
 import type { Repository, RepoProvider } from '@code/repository'
 import { OwnerList } from './OwnerList'
@@ -47,6 +51,7 @@ interface RepoPickerModalProps {
 export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPickerModalProps) {
   const { gitlabToken, connectGitHub } = useAuth()
   const { org } = useOrg()
+  const localEngineAuth = env.authMode === 'local' || env.authMode === 'local_jwt' || env.authMode === 'community'
   // Bumped after a successful reconnect to force the repo list to reload
   // (the load effect keys on it). Lets the empty-state "Reconnect" button
   // re-authorize and refresh in place instead of bouncing to settings.
@@ -68,7 +73,7 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
   const connectedRepos = useConnectedRepos(org?.id)
   const qc = useQueryClient()
   // GitHub: no longer needs token (engine proxy). GitLab: still uses browser token.
-  const hasConnection = provider === 'github' ? !!org?.id : !!gitlabToken
+  const hasConnection = localEngineAuth ? !!org?.id : provider === 'github' ? !!org?.id : !!gitlabToken
   const connectedReposReady = queryResolved(connectedRepos, !!org?.id)
   const [allRepos, setAllRepos] = useState<Repository[]>([])
   const [loading, setLoading] = useState(false)
@@ -77,6 +82,8 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
   const [saving, setSaving] = useState(false)
   const [confirmDisconnect, setConfirmDisconnect] = useState<string[]>([])
   const [selectedOwner, setSelectedOwner] = useState<string | null>(null)
+  const [publicRepoURL, setPublicRepoURL] = useState('')
+  const [publicRepoError, setPublicRepoError] = useState<string | null>(null)
 
   // Map providerId → backend repo ID so the save step can disconnect
   // by repo UUID (what the engine's DELETE endpoint expects) instead
@@ -93,6 +100,7 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
 
   useEffect(() => {
     if (!opened) return
+    if (localEngineAuth) return
     if (!hasConnection) {
       setLoading(false)
       return
@@ -162,7 +170,60 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
         setAllRepos([])
         setLoading(false)
       })
-  }, [opened, hasConnection, connectedReposReady, connectedByProviderId, provider, org?.id, gitlabToken, reloadNonce])
+  }, [opened, hasConnection, connectedReposReady, connectedByProviderId, provider, org?.id, gitlabToken, reloadNonce, localEngineAuth])
+
+  async function handleConnectPublicRepository() {
+    if (!org?.id) return
+    setPublicRepoError(null)
+
+    let parsed: URL
+    try {
+      parsed = new URL(publicRepoURL.trim())
+    } catch {
+      setPublicRepoError(t('repoPicker.publicUrlInvalid'))
+      return
+    }
+
+    const allowedHosts = new Set(['github.com', 'gitlab.com', 'codeberg.org', 'bitbucket.org'])
+    const host = parsed.hostname.toLowerCase()
+    const pathParts = parsed.pathname.replace(/\.git$/, '').split('/').filter(Boolean)
+    if (parsed.protocol !== 'https:' || parsed.username || parsed.password || !allowedHosts.has(host) || pathParts.length < 2) {
+      setPublicRepoError(t('repoPicker.publicUrlInvalid'))
+      return
+    }
+
+    const fullName = pathParts.join('/')
+    const repoName = pathParts.at(-1)!
+    const ownerName = pathParts.slice(0, -1).join('/')
+    const providerByHost: Record<string, string> = {
+      'github.com': 'github',
+      'gitlab.com': 'gitlab',
+      'codeberg.org': 'codeberg',
+      'bitbucket.org': 'bitbucket',
+    }
+
+    setSaving(true)
+    try {
+      await connectRepo(org.id, {
+        provider: providerByHost[host],
+        providerId: fullName,
+        ownerName,
+        repoName,
+        fullName,
+        defaultBranch: 'main',
+        isPrivate: false,
+        htmlUrl: `${parsed.origin}/${fullName}`,
+      })
+      await qc.invalidateQueries({ queryKey: qk.repos.connected(org.id) })
+      await qc.invalidateQueries({ queryKey: qk.repos.scansAll() })
+      setPublicRepoURL('')
+      onClose({ connected: resolvedList(connectedRepos.data, connectedRepos, true).length + 1 })
+    } catch {
+      setPublicRepoError(t('repoPicker.publicConnectFailed'))
+    } finally {
+      setSaving(false)
+    }
+  }
 
   // Force a fresh GitHub authorization, then reload the repo list in place.
   // Prefers the GitHub App install (durable installation tokens that don't
@@ -332,7 +393,11 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
       maxWidth="md"
       fullWidth
     >
-      <DialogTitle>{selectedOwner ? t('repoPicker.selectRepos') : t('repoPicker.title')}</DialogTitle>
+      <DialogTitle>
+        {localEngineAuth
+          ? t('repoPicker.publicDialogTitle')
+          : selectedOwner ? t('repoPicker.selectRepos') : t('repoPicker.title')}
+      </DialogTitle>
       <DialogContent>
         {loading ? (
           <div className="flex items-center justify-center py-12">
@@ -360,7 +425,55 @@ export function RepoPickerModal({ opened, onClose, provider = 'github' }: RepoPi
                 </Box>
               </Box>
             )}
-            {owners.length === 0 ? (
+            {localEngineAuth ? (
+              <Stack
+                component="form"
+                onSubmit={(event) => {
+                  event.preventDefault()
+                  void handleConnectPublicRepository()
+                }}
+                spacing={2}
+                py={2}
+              >
+                <Box>
+                  <Typography variant="subtitle1" fontWeight={700}>
+                    {t('repoPicker.publicTitle')}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" mt={0.5}>
+                    {t('repoPicker.publicDescription')}
+                  </Typography>
+                </Box>
+                <TextField
+                  fullWidth
+                  autoFocus
+                  type="url"
+                  label={t('repoPicker.publicUrlLabel')}
+                  placeholder="https://github.com/owner/repository"
+                  value={publicRepoURL}
+                  onChange={(event) => setPublicRepoURL(event.target.value)}
+                  disabled={saving}
+                  slotProps={{ htmlInput: { 'aria-describedby': 'public-repository-help' } }}
+                />
+                <Typography id="public-repository-help" variant="caption" color="text.secondary">
+                  {t('repoPicker.publicHosts')}
+                </Typography>
+                {publicRepoError && <Alert severity="error">{publicRepoError}</Alert>}
+                <DialogActions>
+                  <Button variant="text" onClick={() => onClose()} disabled={saving}>
+                    {t('repoPicker.cancel')}
+                  </Button>
+                  <GatedButton
+                    action="repo:connect"
+                    type="submit"
+                    variant="contained"
+                    disabled={saving || !publicRepoURL.trim()}
+                    startIcon={saving ? <CircularProgress size={14} color="inherit" /> : <Link2 size={15} />}
+                  >
+                    {saving ? t('repoPicker.saving') : t('repoPicker.publicConnectAction')}
+                  </GatedButton>
+                </DialogActions>
+              </Stack>
+            ) : owners.length === 0 ? (
               // Empty list has two very different causes:
               //   (a) GitHub was never connected for this org (first-time /
               //       disconnected) — status.connected === false. Show a plain

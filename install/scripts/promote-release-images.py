@@ -18,10 +18,6 @@ DEFAULT_TAGS = {
     "engine": "engine-ce",
     "worker": "worker-ce",
     "frontend": "code-ce",
-    "runner": "runner-ce",
-    "verification": "verification-ce",
-    "brand_vision": "brand-vision-ce",
-    "pdf": "pdf-ce",
 }
 
 

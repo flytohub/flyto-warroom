@@ -23,10 +23,6 @@ def service_images(manifest_path: Path) -> list[tuple[str, str, str]]:
         "engine": "engine-ce",
         "worker": "worker-ce",
         "frontend": "code-ce",
-        "runner": "runner-ce",
-        "verification": "verification-ce",
-        "brand_vision": "brand-vision-ce",
-        "pdf": "pdf-ce",
     }
     result: list[tuple[str, str, str]] = []
     for service, default_tag in defaults.items():
