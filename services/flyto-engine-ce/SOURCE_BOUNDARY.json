@@ -22,7 +22,7 @@
     "private_boundaries": [
       "billing, entitlement mutation, commercial gates, and Stripe/offline-license adapters",
       "enterprise SSO/SAML/SCIM, legal hold, airgap installers, deployment edition internals",
-      "darkweb, stealer-log, phishing-feed, commercial threat-intel, and proprietary correlation datasets",
+      "darkweb, stealer-log, proprietary phishing-feed credentials/data, commercial threat-intel, and proprietary correlation datasets",
       "cloud/container/runtime live remediation orchestration and customer connector credentials",
       "Flyto2 Cloud Enterprise Bridge services, entitlement signer, managed job execution plane, and hosted SaaS control plane",
       "AutoFix promotion, approval, rollback orchestration, and commercial AI proposal workflows",
@@ -179,10 +179,818 @@
       "path": "internal/stats/**",
       "reason": "Small statistical helpers for score/report calculations; standard-library only.",
       "validation": "go test ./internal/stats"
+    },
+    {
+      "path": "internal/classify/**",
+      "reason": "Provider-free YAML and regular-expression classification rules used by local Community scanner workflows.",
+      "validation": "go test ./internal/classify"
+    },
+    {
+      "path": "internal/codescan/**",
+      "reason": "Deterministic dependency package extraction and canonicalization for Community code scanning.",
+      "validation": "go test ./internal/codescan/..."
+    },
+    {
+      "path": "internal/containerscan/**",
+      "reason": "Local container scan command adapter with deterministic result handling and no provider credentials.",
+      "validation": "go test ./internal/containerscan"
+    },
+    {
+      "path": "internal/cve/**",
+      "reason": "Public vulnerability and OSV retrieval implemented through the provider-free bounded HTTP client.",
+      "validation": "go test ./internal/cve"
+    },
+    {
+      "path": "internal/dast/**",
+      "reason": "Local Nuclei dynamic-scanning command adapter with no tenant-store or managed-provider dependency.",
+      "validation": "go test ./internal/dast/..."
+    },
+    {
+      "path": "internal/discovery/**",
+      "reason": "Public certificate-transparency discovery and certificate-phishing heuristics for Community scans.",
+      "validation": "go test ./internal/discovery/..."
+    },
+    {
+      "path": "internal/endpoints/**",
+      "reason": "Local endpoint configuration helpers with no embedded customer credentials or hosted callbacks.",
+      "validation": "go test ./internal/endpoints"
+    },
+    {
+      "path": "internal/findings/**",
+      "reason": "Provider-free SARIF, Trivy, and external finding normalization for Community ingestion.",
+      "validation": "go test ./internal/findings/..."
+    },
+    {
+      "path": "internal/httpx/**",
+      "reason": "Bounded HTTP transport with circuit breaker support for safe local Community scanners.",
+      "validation": "go test ./internal/httpx"
+    },
+    {
+      "path": "internal/i18n/**",
+      "reason": "Backend locale catalog loading and translation helpers for self-hosted Community language support.",
+      "validation": "go test ./internal/i18n"
+    },
+    {
+      "path": "internal/impact/**",
+      "reason": "Provider-free YAML impact mapping used by Community finding and report explanations.",
+      "validation": "go test ./internal/impact"
+    },
+    {
+      "path": "internal/liveevent/**",
+      "reason": "PostgreSQL-backed local event publication without SaaS callbacks or managed-provider code.",
+      "validation": "go test ./internal/liveevent"
+    },
+    {
+      "path": "internal/monitoring/**",
+      "reason": "SSRF-safe TCP and TLS endpoint monitoring primitives for self-hosted Community operation.",
+      "validation": "go test ./internal/monitoring"
+    },
+    {
+      "path": "internal/phishfeed/**",
+      "reason": "Public phishing-feed parsing and domain normalization without proprietary feed credentials.",
+      "validation": "go test ./internal/phishfeed"
+    },
+    {
+      "path": "internal/screenshot/**",
+      "reason": "Provider-free screenshot request and evidence decoding for Community evidence collection.",
+      "validation": "go test ./internal/screenshot"
+    },
+    {
+      "path": "internal/threatcache/**",
+      "reason": "Bounded in-memory threat lookup cache containing no proprietary data or provider integration.",
+      "validation": "go test ./internal/threatcache"
+    },
+    {
+      "path": "internal/vulnescalate/**",
+      "reason": "Deterministic vulnerability severity and age escalation rules for Community prioritization.",
+      "validation": "go test ./internal/vulnescalate"
+    },
+    {
+      "path": "internal/workerruntime/**",
+      "reason": "Provider-free worker capability and runtime-selection contracts for Community workers.",
+      "validation": "go test ./internal/workerruntime"
+    },
+    {
+      "path": "config/classification/**",
+      "reason": "Provider-free category and rule definitions required by the published Community classification kernel.",
+      "validation": "go test ./internal/classify"
     }
   ],
+  "classification_counts": {
+    "ce_source": 49,
+    "commercial_private": 42,
+    "enterprise_private": 11,
+    "proprietary_data_private": 16,
+    "provider_private": 12,
+    "release_private": 6,
+    "saas_private": 3
+  },
+  "classification_invariants": {
+    "duplicate_paths_allowed": false,
+    "exact_paths_only": true,
+    "missing_paths_allowed": false,
+    "private_paths_exported": false,
+    "stale_paths_allowed": false
+  },
   "export_mode": "complete_ce_source_runtime",
   "merge_rule": "Change private source first, rerun exporter, review generated delta.",
+  "path_classifications": [
+    {
+      "classification": "commercial_private",
+      "path": "api",
+      "reason": "Private monolithic API composition mixes paid orchestration, tenant storage, managed providers, and enterprise routes; the independent CE HTTP runtime lives under ce/engine-ce."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "cmd/agent-firewall-endpoint",
+      "reason": "Managed endpoint firewall agent command belongs to enterprise endpoint enforcement and is not required by the local CE engine or worker runtime."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "cmd/asset-reverify-once",
+      "reason": "Operator maintenance command drives the private verification store and commercial asset lifecycle rather than the provider-free CE scan queue."
+    },
+    {
+      "classification": "release_private",
+      "path": "cmd/backfill",
+      "reason": "Private deployment data-migration and backfill command targets the full commercial schema and is not a distributable CE runtime component."
+    },
+    {
+      "classification": "provider_private",
+      "path": "cmd/bitsight-import",
+      "reason": "BitSight customer-provider import command requires a commercial external integration and customer-specific provider configuration."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "cmd/desktop",
+      "reason": "Managed desktop endpoint command participates in private endpoint control and is outside the local repository-scanning CE product path."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "cmd/flyto-security-mcp",
+      "reason": "Security MCP command exposes private orchestration, audit storage, and commercial control-plane actions not used by the standalone CE runtimes."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "cmd/footprint-probe",
+      "reason": "Footprint research probe invokes the proprietary discovery and enrichment pipeline and its protected research datasets."
+    },
+    {
+      "classification": "release_private",
+      "path": "cmd/gen-event-types",
+      "reason": "Internal source-generation command produces private event schema artifacts and is only part of the private repository maintenance workflow."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "cmd/learner",
+      "reason": "Research learner command acquires and curates protected company intelligence used by the private enrichment pipeline."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "cmd/server",
+      "reason": "Private full-product server composes SaaS, enterprise, provider, intelligence, and commercial storage layers; CE builds from ce/engine-ce instead."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "cmd/worker",
+      "reason": "Private full-product worker dispatches commercial pipelines and managed callbacks; CE builds the independent local worker from ce/worker-ce."
+    },
+    {
+      "classification": "ce_source",
+      "path": "ce/engine-ce",
+      "reason": "Provider-free standalone Community engine implements local setup, sessions, projects, scans, findings, summaries, and reports from published source."
+    },
+    {
+      "classification": "ce_source",
+      "path": "ce/worker-ce",
+      "reason": "Provider-free standalone Community worker claims durable local scan jobs and runs repository scanners entirely from published source."
+    },
+    {
+      "classification": "ce_source",
+      "path": "config/classification",
+      "reason": "Provider-free category and rule definitions are required to run and test the published Community classification kernel."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "config/companies_seed",
+      "reason": "Company seed records feed protected commercial research and enrichment behavior rather than the standalone CE scanner."
+    },
+    {
+      "classification": "release_private",
+      "path": "config/deployment",
+      "reason": "Private deployment profile configuration controls internal release environments and is not CE runtime source."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "config/footprint",
+      "reason": "Footprint profiles and acquisition configuration form part of the protected research and enrichment dataset boundary."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "config/permissions",
+      "reason": "Private permission-policy configuration governs paid control-plane roles beyond the published CE capability catalog."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "config/pipeline",
+      "reason": "Full-product pipeline configuration coordinates protected commercial stages, providers, and tenant persistence."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "config/plans",
+      "reason": "Paid plan and entitlement configuration is part of the Enterprise commercial packaging boundary."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "config/search",
+      "reason": "Private search configuration targets the commercial multi-source and tenant-indexing product surface."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/access",
+      "reason": "Pure action and feature access decisions support CE-visible RBAC without store, provider, tenant, billing, SaaS, or enterprise imports."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/ai",
+      "reason": "Managed model-provider client and prompt transport underpin commercial AI features and are intentionally outside the provider-free CE runtime."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/apictl",
+      "reason": "API-control service persists commercial control state through the private store and is not required by the independent CE API."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/approval",
+      "reason": "Approval workflow coordinates private pipelines, live events, and persistent commercial actions rather than CE-local scan execution."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/assetcoverage",
+      "reason": "Asset coverage analytics depend on the private multi-tenant store and form part of the commercial exposure-management product."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/attribution",
+      "reason": "Attribution logic consumes the protected footprint discovery model and is retained with proprietary research and enrichment behavior."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "internal/audit",
+      "reason": "Enterprise audit ledger is coupled to the private multi-tenant store and paid governance lifecycle, not CE-local event reporting."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/auth",
+      "reason": "Authentication package includes Firebase identity-provider integration; provider-free local CE authentication is isolated in internal/ceauth."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/autofix",
+      "reason": "AutoFix proposal, AI generation, promotion, and execution are protected managed-remediation orchestration and commercial product logic."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/backoff",
+      "reason": "Standard-library retry and cancellation primitives are reusable by local Community scanners without provider or commercial dependencies."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "internal/billing",
+      "reason": "Stripe customer, checkout, subscription, and webhook integration is paid-edition billing implementation and never part of CE."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/boy",
+      "reason": "Build-or-buy recommendation engine combines private attack-path and store evidence as commercial decision intelligence."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/brandprotect",
+      "reason": "Brand protection correlation, lookalike detection, and protected threat-cache workflow are commercial intelligence product logic."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/brandvision",
+      "reason": "External visual-model provider adapter supports commercial brand intelligence and is not needed by provider-free CE scanning."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/budget",
+      "reason": "Commercial execution-budget enforcement coordinates private pipelines, event accounting, and persistent tenant limits."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/byo",
+      "reason": "Bring-your-own scanner orchestration persists private pipeline and resource-kernel state beyond the standalone CE scanner contract."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/canary",
+      "reason": "Scanner canary self-tests let Community installations detect scanner regressions without proprietary datasets or provider credentials."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/canon",
+      "reason": "Canonical URL and domain normalization is deterministic Community utility code with no tenant, provider, billing, or SaaS coupling."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/ceauth",
+      "reason": "Local password policy, bcrypt verification, and signed sessions implement the one-time standalone CE administrator flow."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/ceplatform",
+      "reason": "Community PostgreSQL persistence and native repository scanner own durable projects, scan jobs, findings, summaries, and reports."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/ceproductloop",
+      "reason": "Deterministic Community product-loop contract defines the public engine and UI behavior without private authority or provider code."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/circuit",
+      "reason": "Standard-library circuit breaker protects local Community scanners and connectors without commercial or provider dependencies."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/classify",
+      "reason": "Local YAML and regular-expression classification rules are provider-free scanner primitives suitable for Community extension."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/cloudscan",
+      "reason": "AWS, Azure, GCP, identity, Kubernetes, and SaaS cloud credential adapters are managed-provider integration code."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/cloudsurface",
+      "reason": "Cloud asset surface projection depends on the private resource graph, scoring authority, and tenant store."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/codescan",
+      "reason": "Dependency package extraction and canonicalization are local deterministic Community scanner primitives with no provider coupling."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/codesurface",
+      "reason": "Code-surface projection persists into the private cross-surface resource graph and commercial scoring lifecycle."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/companyreader",
+      "reason": "Company research reader queries protected tenant and enrichment records used by the private intelligence pipeline."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/companyscope",
+      "reason": "Company-scope inference persists protected enrichment and relationship knowledge in the private resource graph and store."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/compliance",
+      "reason": "Pure compliance scoring and evidence-binder rendering support local Community reports without private retention orchestration."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/connectorpoll",
+      "reason": "Customer connector polling consumes stored provider credentials and private import mappings for managed integrations."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/connectors",
+      "reason": "Google Drive and OAuth provider implementation requires external customer credentials and remains a private provider adapter."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/containerlive",
+      "reason": "Live container inspection feeds the private cross-surface and runtime control product rather than the local CE repository scanner."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/containerscan",
+      "reason": "Local command-based container scan execution is provider-free Community scanner code with deterministic result handling."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/containersurface",
+      "reason": "Container surface projection joins private resource graphs, store records, and commercial cross-surface scoring."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/correlate",
+      "reason": "Attack-path, identity, vulnerability, and leak correlation is protected commercial prioritization and product moat logic."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/cspm",
+      "reason": "Cloud security posture policies and IAM evaluation feed the managed cloud product and private tenant store."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/ctem",
+      "reason": "Continuous exposure management lifecycle and aggregation are protected commercial product orchestration."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/cve",
+      "reason": "Public vulnerability and OSV retrieval uses provider-free HTTP helpers and contains no customer credentials or private data."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/cvemeta",
+      "reason": "Curated vulnerability metadata cache, enrichment, and tenant persistence are protected commercial intelligence infrastructure."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/cvemetaai",
+      "reason": "AI-assisted vulnerability metadata enrichment combines managed model providers with protected curated intelligence."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/dast",
+      "reason": "Local Nuclei command execution adapter is provider-free Community dynamic-scanning code with no tenant-store dependency."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/discovery",
+      "reason": "Certificate-transparency lookup and certificate phishing heuristics use public data and provider-free Community HTTP code."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/endpoints",
+      "reason": "Endpoint configuration helpers are local environment utilities without embedded credentials or commercial control-plane calls."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/errx",
+      "reason": "Typed HTTP error envelopes are shared Community API primitives with no store, tenant, provider, or paid-edition dependency."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/findings",
+      "reason": "SARIF, Trivy, and external-finding normalization are deterministic Community ingestion formats without provider credentials."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/footprint",
+      "reason": "Internet footprint acquisition, classifier corpus, peer research, enrichment, and persistence form a protected intelligence moat."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/forecast",
+      "reason": "Pure mathematical score-trend forecasting supports Community summaries without external models, stores, or providers."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/freshness",
+      "reason": "Finding freshness recording is a small provider-free Community primitive with no tenant or commercial orchestration imports."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/fusion",
+      "reason": "Cross-source evidence fusion writes private tenant state and implements commercial prioritization and scoring behavior."
+    },
+    {
+      "classification": "saas_private",
+      "path": "internal/ghauth",
+      "reason": "Hosted GitHub authentication bridges the GitHub App and private tenant store for the managed SaaS control plane."
+    },
+    {
+      "classification": "saas_private",
+      "path": "internal/githubapp",
+      "reason": "GitHub App signing, installation tokens, and hosted callback behavior are managed SaaS integration implementation."
+    },
+    {
+      "classification": "release_private",
+      "path": "internal/gitleaks",
+      "reason": "Repository-policy test package contains no runtime implementation and intentionally validates private allowlist fixtures and CI configuration."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/heartbeat",
+      "reason": "Managed worker heartbeat accounting coordinates private pipelines, live events, tenant state, and commercial execution status."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/httpx",
+      "reason": "Bounded HTTP client and circuit-breaker transport are Community scanner utilities without provider credentials or tenant state."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/i18n",
+      "reason": "Backend locale catalog loading and translation helpers provide Community language support without paid-edition coupling."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/identityscore",
+      "reason": "Pure identity and OAuth-risk arithmetic is deterministic Community scoring code with no connector or store dependency."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/imghash",
+      "reason": "Deterministic evidence image hashing is Community utility code with no network provider, tenant, or commercial dependency."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/impact",
+      "reason": "YAML-driven impact mapping is local deterministic Community report logic without provider credentials or private data."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/importmap",
+      "reason": "Private import mapping composes commercial resource kernels, build-or-buy logic, safe fetches, and tenant persistence."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/integrations",
+      "reason": "BitSight and other customer provider adapters require commercial accounts and external provider configuration."
+    },
+    {
+      "classification": "release_private",
+      "path": "internal/kerneltestfixtures",
+      "reason": "Private resource-kernel and tenant-store test fixtures exist only to verify protected internal persistence behavior."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/leakcheck",
+      "reason": "External leak lookup adapter calls a managed data provider and is not necessary for provider-free CE operation."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/leakscore",
+      "reason": "Pure leak age and blast-radius arithmetic is Community scoring code; feed collection and proprietary records stay private."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/learner",
+      "reason": "Company research acquisition, source curation, and learning pipeline produce protected commercial intelligence datasets."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "internal/license",
+      "reason": "Online license checks and entitlement enforcement are paid-edition controls and never part of Community authorization."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/liveevent",
+      "reason": "PostgreSQL-backed local event publication is reusable Community infrastructure without SaaS callbacks or tenant-provider code."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/livefix",
+      "reason": "Live remediation contracts belong to the protected managed-fix workflow, promotion controls, and rollback product moat."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "internal/mcpguard",
+      "reason": "Enterprise MCP network policy, audit persistence, and protected action enforcement depend on private governance storage."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/modulecatalog",
+      "reason": "Public module, page, capability, and edition catalog drives Community documentation and frontend composition."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/monitoring",
+      "reason": "Provider-free TCP and TLS endpoint monitoring uses SSRF-safe Community primitives and stores no customer credentials."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/notify",
+      "reason": "Email, webhook, and notification delivery consumes stored customer secrets and private tenant notification policy."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/obs",
+      "reason": "Request identifiers and structured logging are provider-free Community observability primitives using the standard library."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "internal/offlinelicense",
+      "reason": "Signed offline license verification and air-gapped entitlement payloads are enterprise distribution controls."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/orchestrator",
+      "reason": "Managed scan orchestration coordinates private tenant state, provider callbacks, and commercial execution policy."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/osvutil",
+      "reason": "Version parsing and comparison helpers support public vulnerability scans without providers, credentials, or tenant state."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/pdf",
+      "reason": "Dependency-free basic PDF report rendering is Community report functionality; paid templates and signing stay private."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/peercorpus",
+      "reason": "Peer-company corpus acquisition and comparison implement protected research datasets and commercial benchmarking."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/permission",
+      "reason": "Capability, edition, and action-gate kernel is published for Community feature transparency and local authorization."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/phishfeed",
+      "reason": "Public phishing feed parsing and domain normalization use provider-free Community HTTP and public-suffix primitives."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/pipeline",
+      "reason": "Full product pipeline coordinates private audit, storage, tenant persistence, and commercial execution stages."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/plugin",
+      "reason": "Plugin lifecycle is coupled to the private commercial pipeline and tenant store rather than standalone CE scanning."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/policyfile",
+      "reason": "Scanner policy loader depends on private tenant-store policy models and protected execution configuration."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/productverify",
+      "reason": "Managed product-verification workflow persists private tenant evidence and protected callback state."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/providerchain",
+      "reason": "Provider connectivity-chain checks target managed external integrations and customer-provider availability."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/reachkb",
+      "reason": "Reachability knowledge base combines curated vulnerability intelligence, external tooling, and private tenant records."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/remediation",
+      "reason": "Remediation plan contracts are coupled to protected store models and managed commercial remediation workflows."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/reskernel",
+      "reason": "Cross-surface resource graph, relationship persistence, and entity resolution are protected commercial correlation moat."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/resource",
+      "reason": "Resource normalization, fingerprinting, and graph primitives are deterministic Community contracts without store coupling."
+    },
+    {
+      "classification": "saas_private",
+      "path": "internal/saas",
+      "reason": "Hosted SaaS-only GitHub posture and managed control-plane adapters are not part of self-hosted Community operation."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/safehttp",
+      "reason": "SSRF-safe request validation and HTTP transport are essential Community scanner security primitives."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "internal/saml",
+      "reason": "SAML identity-provider metadata, signing, and assertion handling are enterprise SSO implementation."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/scanner",
+      "reason": "Full scanner process orchestration consumes private tenant policy and managed tool execution configuration."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/scanqueue",
+      "reason": "Bounded local scan job queue is a provider-free Community worker primitive with no tenant-store dependency."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/scanregistry",
+      "reason": "Full registry includes private managed scanner adapters, product verification, notification, and tenant persistence hooks."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/scheduler",
+      "reason": "Stable schedule staggering is deterministic Community utility code with no store, provider, or commercial dependency."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/scoring",
+      "reason": "Full scoring package combines protected rating authority, tenant persistence, configuration, and commercial calibration."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/screenshot",
+      "reason": "Provider-free screenshot request and evidence decoding support Community evidence collection without tenant storage."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/secrets",
+      "reason": "Local envelope encryption supports self-hosted Community secrets; managed KMS and provider adapters remain private."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/severity",
+      "reason": "Severity normalization is deterministic Community utility code with no provider, tenant, or commercial dependencies."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/sla",
+      "reason": "Pure SLA budget and finding-age arithmetic support Community finding and report workflows without tenant storage."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/stats",
+      "reason": "Small statistical helpers are deterministic Community score and report utilities using only the standard library."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/stealerlogs",
+      "reason": "Commercial stealer-log provider adapter and protected breach intelligence are explicitly excluded from Community source."
+    },
+    {
+      "classification": "provider_private",
+      "path": "internal/storage",
+      "reason": "Mixed storage package includes Google Cloud Storage credentials and managed object-storage implementation."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/store",
+      "reason": "Full multi-tenant commercial schema, private product models, protected intelligence records, and enterprise state remain private."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/structure",
+      "reason": "Organization structure inference persists protected cross-resource relationships in the private tenant store."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/suggest",
+      "reason": "Suggestion generation uses private resource context and tenant persistence as commercial prioritization behavior."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/surface",
+      "reason": "Unified external surface model composes protected footprint research, resource graph, attribution, and tenant state."
+    },
+    {
+      "classification": "enterprise_private",
+      "path": "internal/syslog",
+      "reason": "Durable enterprise syslog and audit event publication depends on private tenant persistence and governance policy."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/threatcache",
+      "reason": "In-memory bounded threat lookup cache is provider-free Community infrastructure and contains no proprietary feed data."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/threatfeed",
+      "reason": "Commercial threat-feed collection, normalization, and provider behavior are protected intelligence implementation."
+    },
+    {
+      "classification": "proprietary_data_private",
+      "path": "internal/threatintel",
+      "reason": "Threat intelligence ingestion, feed fusion, and tenant persistence contain protected datasets and commercial behavior."
+    },
+    {
+      "classification": "release_private",
+      "path": "internal/updatebundle",
+      "reason": "Signed offline update-bundle assembly and verification belong to enterprise air-gap release distribution."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/verifier",
+      "reason": "Full verifier tree includes private asset verification, tenant persistence, and commercial verification orchestration."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/vulnescalate",
+      "reason": "Pure vulnerability escalation severity and age rules are deterministic Community prioritization utilities."
+    },
+    {
+      "classification": "commercial_private",
+      "path": "internal/worker",
+      "reason": "Private worker composes protected storage, tenant store, AI classification, and commercial pipeline dispatch."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/workerruntime",
+      "reason": "Worker capability and runtime-selection contracts are provider-free Community code without tenant or provider imports."
+    }
+  ],
   "public_package": "services/flyto-engine-ce",
   "schema": "flyto.engine-ce-source-boundary.v1",
   "source_repo": "flyto-engine"

@@ -21,8 +21,8 @@ private Flyto2 repository, private service image, source token, or Flyto Cloud
 connection is required.
 
 For reproducible installs, pin all service tags to one GitHub release version.
-Git tag `v0.3.2` publishes Docker tags `engine-ce-0.3.2`,
-`worker-ce-0.3.2`, and `code-ce-0.3.2`. GitHub Actions builds those images from
+Git tag `v0.4.0` publishes Docker tags `engine-ce-0.4.0`,
+`worker-ce-0.4.0`, and `code-ce-0.4.0`. GitHub Actions builds those images from
 the tagged public source after the tagged `main` commit passes CI and records
 the resulting immutable digests as release evidence.
 

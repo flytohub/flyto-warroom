@@ -1,0 +1,205 @@
+# ============================================================================
+# Resource Categories
+# ============================================================================
+# Defines every valid ResourceCategory value used by the classification engine.
+# Each category has a description, icon hint, and a list of default subcategories.
+# ============================================================================
+
+version: "1.0"
+
+categories:
+
+  document:
+    description: "Text-based documents including PDFs, word processing files, notes, and other written content."
+    icon: "file-text"
+    indexable: true
+    extractable: true
+    default_subcategories:
+      - name: general
+        description: "Generic document that does not match a more specific subcategory."
+      - name: meeting-notes
+        description: "Meeting minutes, standup notes, retrospective summaries."
+      - name: invoice
+        description: "Invoices, billing statements, and receipts."
+      - name: contract
+        description: "Legal contracts, agreements, NDAs, and terms of service."
+      - name: specification
+        description: "Technical specifications, PRDs, and RFCs."
+      - name: api-documentation
+        description: "API references, Swagger/OpenAPI specs, and integration guides."
+      - name: readme
+        description: "Project README files."
+      - name: report
+        description: "Analytical reports, assessments, and audit findings."
+      - name: plan
+        description: "Project plans, roadmaps, sprint plans, and timelines."
+      - name: resume
+        description: "Resumes, CVs, and cover letters."
+      - name: sop
+        description: "Standard operating procedures, runbooks, and playbooks."
+      - name: email
+        description: "Email messages and correspondence threads."
+      - name: presentation
+        description: "Slide decks, pitch documents, and keynote files."
+      - name: changelog
+        description: "Changelogs, release notes, and version history."
+      - name: pdf
+        description: "Generic PDF documents."
+      - name: word-document
+        description: "Microsoft Word and compatible documents."
+      - name: markdown
+        description: "Markdown-formatted text files."
+      - name: web-page
+        description: "HTML web pages and saved articles."
+
+  code:
+    description: "Source code files, scripts, and programming artifacts."
+    icon: "code"
+    indexable: true
+    extractable: true
+    default_subcategories:
+      - name: golang
+        description: "Go source files."
+      - name: python
+        description: "Python source files."
+      - name: javascript
+        description: "JavaScript source files."
+      - name: typescript
+        description: "TypeScript source files."
+      - name: rust
+        description: "Rust source files."
+      - name: java
+        description: "Java source files."
+      - name: csharp
+        description: "C# source files."
+      - name: cpp
+        description: "C/C++ source and header files."
+      - name: ruby
+        description: "Ruby source files."
+      - name: shell
+        description: "Shell scripts (bash, zsh, fish)."
+      - name: sql
+        description: "SQL scripts and queries."
+      - name: swift
+        description: "Swift source files."
+      - name: kotlin
+        description: "Kotlin source files."
+      - name: php
+        description: "PHP source files."
+      - name: dart
+        description: "Dart source files."
+      - name: other
+        description: "Source code in other languages."
+
+  data:
+    description: "Structured and semi-structured data files."
+    icon: "database"
+    indexable: true
+    extractable: true
+    default_subcategories:
+      - name: dataset
+        description: "Training data, data exports, and bulk data files."
+      - name: spreadsheet
+        description: "Excel and spreadsheet files."
+      - name: json
+        description: "JSON data files."
+      - name: xml
+        description: "XML data files."
+      - name: csv
+        description: "CSV and TSV tabular data."
+      - name: tabular
+        description: "Generic tabular data."
+      - name: columnar
+        description: "Columnar formats (Parquet, Avro, ORC)."
+      - name: protobuf-schema
+        description: "Protocol Buffer schema definitions."
+      - name: graphql-schema
+        description: "GraphQL schema definitions."
+
+  media:
+    description: "Images, video, and audio files."
+    icon: "image"
+    indexable: false
+    extractable: true
+    default_subcategories:
+      - name: image
+        description: "Raster images (PNG, JPEG, WebP, GIF)."
+      - name: video
+        description: "Video files (MP4, WebM, MOV)."
+      - name: audio
+        description: "Audio files (MP3, WAV, FLAC, M4A)."
+      - name: recording
+        description: "Meeting recordings and screen captures."
+
+  design:
+    description: "Design assets, wireframes, and visual artifacts."
+    icon: "palette"
+    indexable: false
+    extractable: true
+    default_subcategories:
+      - name: design-document
+        description: "Design specs and wireframe documents."
+      - name: figma
+        description: "Figma design files."
+      - name: sketch
+        description: "Sketch design files."
+      - name: vector
+        description: "SVG and vector graphics."
+      - name: mockup
+        description: "UI mockups and prototypes."
+
+  config:
+    description: "Configuration files, environment settings, and infrastructure definitions."
+    icon: "settings"
+    indexable: true
+    extractable: true
+    default_subcategories:
+      - name: yaml
+        description: "YAML configuration files."
+      - name: toml
+        description: "TOML configuration files."
+      - name: ini
+        description: "INI/CFG configuration files."
+      - name: environment
+        description: "Environment variable files (.env)."
+      - name: dockerfile
+        description: "Dockerfiles and container definitions."
+      - name: terraform
+        description: "Terraform and IaC definitions."
+      - name: kubernetes
+        description: "Kubernetes manifests."
+      - name: ci-cd
+        description: "CI/CD pipeline definitions (GitHub Actions, GitLab CI)."
+
+  archive:
+    description: "Compressed files and archives."
+    icon: "archive"
+    indexable: false
+    extractable: false
+    default_subcategories:
+      - name: compressed
+        description: "ZIP, TAR, GZIP, 7Z archives."
+      - name: bundle
+        description: "Application bundles and packages."
+
+  link:
+    description: "External links, bookmarks, and URL references."
+    icon: "link"
+    indexable: true
+    extractable: false
+    default_subcategories:
+      - name: bookmark
+        description: "Saved web bookmarks."
+      - name: external-reference
+        description: "References to external services or resources."
+
+  unknown:
+    description: "Unclassified resources pending manual or re-classification."
+    icon: "help-circle"
+    indexable: false
+    extractable: false
+    default_subcategories:
+      - name: pending
+        description: "Awaiting classification."
+      - name: unsupported
+        description: "File type not supported by the classification engine."

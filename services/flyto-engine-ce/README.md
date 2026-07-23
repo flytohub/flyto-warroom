@@ -37,6 +37,25 @@ testable kernel packages:
 - `internal/secrets/**`: Local envelope-encryption primitives for self-hosted CE secret storage; managed KMS adapters remain private. Validation: `go test ./internal/secrets`.
 - `internal/sla/**`: Pure SLA budget and aging math used by CE findings/report workflows. Validation: `go test ./internal/sla`.
 - `internal/stats/**`: Small statistical helpers for score/report calculations; standard-library only. Validation: `go test ./internal/stats`.
+- `internal/classify/**`: Provider-free YAML and regular-expression classification rules used by local Community scanner workflows. Validation: `go test ./internal/classify`.
+- `internal/codescan/**`: Deterministic dependency package extraction and canonicalization for Community code scanning. Validation: `go test ./internal/codescan/...`.
+- `internal/containerscan/**`: Local container scan command adapter with deterministic result handling and no provider credentials. Validation: `go test ./internal/containerscan`.
+- `internal/cve/**`: Public vulnerability and OSV retrieval implemented through the provider-free bounded HTTP client. Validation: `go test ./internal/cve`.
+- `internal/dast/**`: Local Nuclei dynamic-scanning command adapter with no tenant-store or managed-provider dependency. Validation: `go test ./internal/dast/...`.
+- `internal/discovery/**`: Public certificate-transparency discovery and certificate-phishing heuristics for Community scans. Validation: `go test ./internal/discovery/...`.
+- `internal/endpoints/**`: Local endpoint configuration helpers with no embedded customer credentials or hosted callbacks. Validation: `go test ./internal/endpoints`.
+- `internal/findings/**`: Provider-free SARIF, Trivy, and external finding normalization for Community ingestion. Validation: `go test ./internal/findings/...`.
+- `internal/httpx/**`: Bounded HTTP transport with circuit breaker support for safe local Community scanners. Validation: `go test ./internal/httpx`.
+- `internal/i18n/**`: Backend locale catalog loading and translation helpers for self-hosted Community language support. Validation: `go test ./internal/i18n`.
+- `internal/impact/**`: Provider-free YAML impact mapping used by Community finding and report explanations. Validation: `go test ./internal/impact`.
+- `internal/liveevent/**`: PostgreSQL-backed local event publication without SaaS callbacks or managed-provider code. Validation: `go test ./internal/liveevent`.
+- `internal/monitoring/**`: SSRF-safe TCP and TLS endpoint monitoring primitives for self-hosted Community operation. Validation: `go test ./internal/monitoring`.
+- `internal/phishfeed/**`: Public phishing-feed parsing and domain normalization without proprietary feed credentials. Validation: `go test ./internal/phishfeed`.
+- `internal/screenshot/**`: Provider-free screenshot request and evidence decoding for Community evidence collection. Validation: `go test ./internal/screenshot`.
+- `internal/threatcache/**`: Bounded in-memory threat lookup cache containing no proprietary data or provider integration. Validation: `go test ./internal/threatcache`.
+- `internal/vulnescalate/**`: Deterministic vulnerability severity and age escalation rules for Community prioritization. Validation: `go test ./internal/vulnescalate`.
+- `internal/workerruntime/**`: Provider-free worker capability and runtime-selection contracts for Community workers. Validation: `go test ./internal/workerruntime`.
+- `config/classification/**`: Provider-free category and rule definitions required by the published Community classification kernel. Validation: `go test ./internal/classify`.
 
 The source-published CE runtimes under `ce/engine-ce` and `ce/worker-ce` are
 runnable and reproducible through this package's multi-stage `Dockerfile`.
@@ -49,6 +68,11 @@ profile pairs them with PostgreSQL and the public React frontend.
 Commercial intelligence, managed provider execution, SaaS/Enterprise adapters,
 hosted runner callbacks, live remediation, and proprietary datasets remain
 outside this package.
+
+`SOURCE_BOUNDARY.json` publishes the exhaustive, exact-path decision ledger for
+the private Engine source inventory. The release audit refuses generation when
+one source unit is missing, duplicated, stale, wildcard-only, vaguely justified,
+or exported under a private classification.
 
 ## Contribution Rule
 

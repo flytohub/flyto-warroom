@@ -173,7 +173,7 @@ credentials, SaaS/Enterprise adapters, and live remediation remain private.
 | --- | --- | ---: | --- |
 | `flyto-code` | `flyto-code` | 1616 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
-| `flyto-engine-ce` | `flyto-engine` | 104 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
+| `flyto-engine-ce` | `flyto-engine` | 160 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
 
 ## Docker Images
 
@@ -185,7 +185,7 @@ Published repository: `docker.io/chesterhsu/flyto-warroom`
 | Worker | `worker-ce` |
 | Warroom UI | `code-ce` |
 
-Stable release `v0.3.2` builds per-service `*-0.3.2`
+Stable release `v0.4.0` builds per-service `*-0.4.0`
 Docker images directly from that tagged public source after its `main`
 commit passes CI. See `docs/official-builds.md` for the release contract.
 
@@ -236,7 +236,7 @@ See `docs/local-install.md` for setup and reset details. See
 The following areas are intentionally not published as CE source:
 - billing, entitlement mutation, commercial gates, and Stripe/offline-license adapters
 - enterprise SSO/SAML/SCIM, legal hold, airgap installers, deployment edition internals
-- darkweb, stealer-log, phishing-feed, commercial threat-intel, and proprietary correlation datasets
+- darkweb, stealer-log, proprietary phishing-feed credentials/data, commercial threat-intel, and proprietary correlation datasets
 - cloud/container/runtime live remediation orchestration and customer connector credentials
 - Flyto2 Cloud Enterprise Bridge services, entitlement signer, managed job execution plane, and hosted SaaS control plane
 - AutoFix promotion, approval, rollback orchestration, and commercial AI proposal workflows

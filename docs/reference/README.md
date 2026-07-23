@@ -4,7 +4,7 @@
 
 This generated index links public classes, functions, methods, and callable source declarations to their exact implementation lines. Domain behavior is explained in the owning package and feature guides; these pages provide the complete implementation-level navigation contract.
 
-Inventory: **17711 declaration sites** across **1330 source files**.
+Inventory: **18220 declaration sites** across **1383 source files**.
 
 | Reference | Area | Declarations | Files |
 |---|---|---:|---:|
@@ -59,6 +59,7 @@ Inventory: **17711 declaration sites** across **1330 source files**.
 | [`source-packages-48.md`](source-packages-48.md) | `packages/` | 350 | 48 |
 | [`source-packages-49.md`](source-packages-49.md) | `packages/` | 26 | 5 |
 | [`source-scripts-01.md`](source-scripts-01.md) | `scripts/` | 37 | 7 |
-| [`source-services-01.md`](source-services-01.md) | `services/` | 350 | 37 |
-| [`source-services-02.md`](source-services-02.md) | `services/` | 350 | 44 |
-| [`source-services-03.md`](source-services-03.md) | `services/` | 69 | 12 |
+| [`source-services-01.md`](source-services-01.md) | `services/` | 350 | 38 |
+| [`source-services-02.md`](source-services-02.md) | `services/` | 350 | 39 |
+| [`source-services-03.md`](source-services-03.md) | `services/` | 350 | 37 |
+| [`source-services-04.md`](source-services-04.md) | `services/` | 228 | 33 |

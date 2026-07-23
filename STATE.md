@@ -38,7 +38,7 @@
   connection, worker scan, findings, HTML report, engine/worker health, and
   frontend proxy. It does not expect private or legacy sidecar services.
 - Stable Git tags drive public-source Docker builds. The manifest declares
-  version `0.3.2` / Git tag `v0.3.2`; the release workflow requires the tagged
+  version `0.4.0` / Git tag `v0.4.0`; the release workflow requires the tagged
   commit on `main` with successful CI, builds the engine, worker, and frontend
   for both supported architectures, and attaches immutable digest evidence to
   the GitHub release.

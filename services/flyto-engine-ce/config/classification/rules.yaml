@@ -1,0 +1,480 @@
+# ============================================================================
+# Classification Rules
+# ============================================================================
+# Rules are evaluated top-to-bottom; first match wins.
+# Each rule produces a ResourceCategory + optional subcategory.
+#
+# Rule types:
+#   - filename_pattern : regex matched against the resource filename
+#   - mime_category    : matched against the MIME type prefix
+#   - extension        : matched against the file extension (without dot)
+#   - content_keyword  : regex matched against extracted text content
+#   - default          : catch-all when nothing else matches
+# ============================================================================
+
+version: "1.0"
+
+rules:
+
+  # -------------------------------------------------------------------------
+  # 1. Filename-pattern rules (highest priority)
+  # -------------------------------------------------------------------------
+  - name: meeting-notes
+    type: filename_pattern
+    pattern: "(?i)(meeting|standup|retro|sprint[-_]?review|sync[-_]?notes)"
+    category: document
+    subcategory: meeting-notes
+    confidence: 0.95
+
+  - name: invoice
+    type: filename_pattern
+    pattern: "(?i)(invoice|inv[-_]?\\d+|billing[-_]?statement|receipt)"
+    category: document
+    subcategory: invoice
+    confidence: 0.95
+
+  - name: contract
+    type: filename_pattern
+    pattern: "(?i)(contract|agreement|nda|terms[-_]?of[-_]?service|tos|msa|sla)"
+    category: document
+    subcategory: contract
+    confidence: 0.95
+
+  - name: spec
+    type: filename_pattern
+    pattern: "(?i)(spec|specification|requirements|prd|rfc|technical[-_]?design)"
+    category: document
+    subcategory: specification
+    confidence: 0.90
+
+  - name: api-doc
+    type: filename_pattern
+    pattern: "(?i)(api[-_]?doc|swagger|openapi|api[-_]?reference|api[-_]?spec)"
+    category: document
+    subcategory: api-documentation
+    confidence: 0.95
+
+  - name: readme
+    type: filename_pattern
+    pattern: "(?i)^readme(\\..*)?$"
+    category: document
+    subcategory: readme
+    confidence: 0.98
+
+  - name: report
+    type: filename_pattern
+    pattern: "(?i)(report|analysis|findings|assessment|audit[-_]?report)"
+    category: document
+    subcategory: report
+    confidence: 0.90
+
+  - name: plan
+    type: filename_pattern
+    pattern: "(?i)(plan|roadmap|timeline|milestones|project[-_]?plan|sprint[-_]?plan)"
+    category: document
+    subcategory: plan
+    confidence: 0.90
+
+  - name: design
+    type: filename_pattern
+    pattern: "(?i)(design|wireframe|mockup|prototype|ui[-_]?spec|ux[-_]?flow)"
+    category: design
+    subcategory: design-document
+    confidence: 0.90
+
+  - name: resume
+    type: filename_pattern
+    pattern: "(?i)(resume|cv|curriculum[-_]?vitae|cover[-_]?letter)"
+    category: document
+    subcategory: resume
+    confidence: 0.95
+
+  - name: sop
+    type: filename_pattern
+    pattern: "(?i)(sop|standard[-_]?operating[-_]?procedure|runbook|playbook|howto)"
+    category: document
+    subcategory: sop
+    confidence: 0.90
+
+  - name: email
+    type: filename_pattern
+    pattern: "(?i)(\\.eml$|\\.msg$|email[-_]?thread|correspondence)"
+    category: document
+    subcategory: email
+    confidence: 0.95
+
+  - name: presentation
+    type: filename_pattern
+    pattern: "(?i)(presentation|slide|deck|pitch|keynote[-_]?\\d)"
+    category: document
+    subcategory: presentation
+    confidence: 0.90
+
+  - name: dataset
+    type: filename_pattern
+    pattern: "(?i)(dataset|data[-_]?export|data[-_]?dump|training[-_]?data|sample[-_]?data)"
+    category: data
+    subcategory: dataset
+    confidence: 0.90
+
+  - name: changelog
+    type: filename_pattern
+    pattern: "(?i)(changelog|changes|release[-_]?notes|whatsnew|history)"
+    category: document
+    subcategory: changelog
+    confidence: 0.95
+
+  # -------------------------------------------------------------------------
+  # 2. MIME-category rules
+  # -------------------------------------------------------------------------
+  - name: mime-pdf
+    type: mime_category
+    pattern: "application/pdf"
+    category: document
+    subcategory: pdf
+    confidence: 0.85
+
+  - name: mime-word
+    type: mime_category
+    pattern: "application/vnd.openxmlformats-officedocument.wordprocessingml"
+    category: document
+    subcategory: word-document
+    confidence: 0.85
+
+  - name: mime-spreadsheet
+    type: mime_category
+    pattern: "application/vnd.openxmlformats-officedocument.spreadsheetml"
+    category: data
+    subcategory: spreadsheet
+    confidence: 0.85
+
+  - name: mime-presentation
+    type: mime_category
+    pattern: "application/vnd.openxmlformats-officedocument.presentationml"
+    category: document
+    subcategory: presentation
+    confidence: 0.90
+
+  - name: mime-image
+    type: mime_category
+    pattern: "image/"
+    category: media
+    subcategory: image
+    confidence: 0.90
+
+  - name: mime-video
+    type: mime_category
+    pattern: "video/"
+    category: media
+    subcategory: video
+    confidence: 0.90
+
+  - name: mime-audio
+    type: mime_category
+    pattern: "audio/"
+    category: media
+    subcategory: audio
+    confidence: 0.90
+
+  - name: mime-json
+    type: mime_category
+    pattern: "application/json"
+    category: data
+    subcategory: json
+    confidence: 0.80
+
+  - name: mime-xml
+    type: mime_category
+    pattern: "application/xml"
+    category: data
+    subcategory: xml
+    confidence: 0.80
+
+  - name: mime-csv
+    type: mime_category
+    pattern: "text/csv"
+    category: data
+    subcategory: csv
+    confidence: 0.85
+
+  - name: mime-html
+    type: mime_category
+    pattern: "text/html"
+    category: document
+    subcategory: web-page
+    confidence: 0.75
+
+  - name: mime-markdown
+    type: mime_category
+    pattern: "text/markdown"
+    category: document
+    subcategory: markdown
+    confidence: 0.80
+
+  - name: mime-archive
+    type: mime_category
+    pattern: "application/zip|application/x-tar|application/gzip|application/x-7z-compressed"
+    category: archive
+    subcategory: compressed
+    confidence: 0.90
+
+  # -------------------------------------------------------------------------
+  # 3. Extension-based code detection
+  # -------------------------------------------------------------------------
+  - name: code-go
+    type: extension
+    extensions: [go]
+    category: code
+    subcategory: golang
+    confidence: 0.95
+
+  - name: code-python
+    type: extension
+    extensions: [py, pyw, pyi]
+    category: code
+    subcategory: python
+    confidence: 0.95
+
+  - name: code-javascript
+    type: extension
+    extensions: [js, mjs, cjs]
+    category: code
+    subcategory: javascript
+    confidence: 0.95
+
+  - name: code-typescript
+    type: extension
+    extensions: [ts, tsx]
+    category: code
+    subcategory: typescript
+    confidence: 0.95
+
+  - name: code-rust
+    type: extension
+    extensions: [rs]
+    category: code
+    subcategory: rust
+    confidence: 0.95
+
+  - name: code-java
+    type: extension
+    extensions: [java]
+    category: code
+    subcategory: java
+    confidence: 0.95
+
+  - name: code-csharp
+    type: extension
+    extensions: [cs]
+    category: code
+    subcategory: csharp
+    confidence: 0.95
+
+  - name: code-cpp
+    type: extension
+    extensions: [cpp, cc, cxx, c, h, hpp, hxx]
+    category: code
+    subcategory: cpp
+    confidence: 0.90
+
+  - name: code-ruby
+    type: extension
+    extensions: [rb]
+    category: code
+    subcategory: ruby
+    confidence: 0.95
+
+  - name: code-shell
+    type: extension
+    extensions: [sh, bash, zsh, fish]
+    category: code
+    subcategory: shell
+    confidence: 0.90
+
+  - name: code-sql
+    type: extension
+    extensions: [sql]
+    category: code
+    subcategory: sql
+    confidence: 0.90
+
+  - name: code-swift
+    type: extension
+    extensions: [swift]
+    category: code
+    subcategory: swift
+    confidence: 0.95
+
+  - name: code-kotlin
+    type: extension
+    extensions: [kt, kts]
+    category: code
+    subcategory: kotlin
+    confidence: 0.95
+
+  - name: code-php
+    type: extension
+    extensions: [php]
+    category: code
+    subcategory: php
+    confidence: 0.95
+
+  - name: code-dart
+    type: extension
+    extensions: [dart]
+    category: code
+    subcategory: dart
+    confidence: 0.95
+
+  - name: config-yaml
+    type: extension
+    extensions: [yaml, yml]
+    category: config
+    subcategory: yaml
+    confidence: 0.85
+
+  - name: config-toml
+    type: extension
+    extensions: [toml]
+    category: config
+    subcategory: toml
+    confidence: 0.85
+
+  - name: config-ini
+    type: extension
+    extensions: [ini, cfg, conf]
+    category: config
+    subcategory: ini
+    confidence: 0.80
+
+  - name: config-env
+    type: extension
+    extensions: [env]
+    category: config
+    subcategory: environment
+    confidence: 0.85
+
+  - name: config-dockerfile
+    type: extension
+    extensions: [dockerfile]
+    category: config
+    subcategory: dockerfile
+    confidence: 0.90
+
+  - name: data-csv
+    type: extension
+    extensions: [csv, tsv]
+    category: data
+    subcategory: tabular
+    confidence: 0.85
+
+  - name: data-parquet
+    type: extension
+    extensions: [parquet, avro, orc]
+    category: data
+    subcategory: columnar
+    confidence: 0.90
+
+  - name: data-protobuf
+    type: extension
+    extensions: [proto]
+    category: data
+    subcategory: protobuf-schema
+    confidence: 0.90
+
+  - name: design-figma
+    type: extension
+    extensions: [fig]
+    category: design
+    subcategory: figma
+    confidence: 0.95
+
+  - name: design-sketch
+    type: extension
+    extensions: [sketch]
+    category: design
+    subcategory: sketch
+    confidence: 0.95
+
+  - name: design-svg
+    type: extension
+    extensions: [svg]
+    category: design
+    subcategory: vector
+    confidence: 0.85
+
+  # -------------------------------------------------------------------------
+  # 4. Content-keyword rules (lowest priority before default)
+  # -------------------------------------------------------------------------
+  - name: content-meeting
+    type: content_keyword
+    pattern: "(?i)(attendees|agenda|action[-_]?items|minutes|meeting[-_]?summary)"
+    min_matches: 2
+    category: document
+    subcategory: meeting-notes
+    confidence: 0.75
+
+  - name: content-invoice
+    type: content_keyword
+    pattern: "(?i)(total[-_]?amount|due[-_]?date|bill[-_]?to|payment[-_]?terms|invoice[-_]?number)"
+    min_matches: 2
+    category: document
+    subcategory: invoice
+    confidence: 0.75
+
+  - name: content-contract
+    type: content_keyword
+    pattern: "(?i)(whereas|hereby|party|obligations|governing[-_]?law|indemnif|liability)"
+    min_matches: 3
+    category: document
+    subcategory: contract
+    confidence: 0.70
+
+  - name: content-api-doc
+    type: content_keyword
+    pattern: "(?i)(endpoint|request[-_]?body|response[-_]?code|authentication|rate[-_]?limit|REST|GraphQL)"
+    min_matches: 3
+    category: document
+    subcategory: api-documentation
+    confidence: 0.70
+
+  - name: content-resume
+    type: content_keyword
+    pattern: "(?i)(experience|education|skills|objective|references|employment[-_]?history)"
+    min_matches: 3
+    category: document
+    subcategory: resume
+    confidence: 0.65
+
+  - name: content-sop
+    type: content_keyword
+    pattern: "(?i)(procedure|step[-_]?\\d|prerequisite|responsible[-_]?party|scope|purpose)"
+    min_matches: 3
+    category: document
+    subcategory: sop
+    confidence: 0.65
+
+  - name: content-report
+    type: content_keyword
+    pattern: "(?i)(executive[-_]?summary|findings|recommendations|conclusion|methodology)"
+    min_matches: 2
+    category: document
+    subcategory: report
+    confidence: 0.65
+
+  - name: content-changelog
+    type: content_keyword
+    pattern: "(?i)(added|changed|deprecated|removed|fixed|security|\\[\\d+\\.\\d+)"
+    min_matches: 3
+    category: document
+    subcategory: changelog
+    confidence: 0.60
+
+  # -------------------------------------------------------------------------
+  # 5. Default fallback
+  # -------------------------------------------------------------------------
+  - name: default-fallback
+    type: default
+    category: document
+    subcategory: general
+    confidence: 0.10
