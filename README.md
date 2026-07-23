@@ -22,17 +22,21 @@ Repository -> Scan -> Findings -> Evidence -> Risk Hypotheses -> Verify -> Repor
 
 ## See The Warroom In Action
 
-The public frontend and CE runtime include the same security-testing loop
-shown below. These English captures come from the repository's automated
-product-verification suite, not from a separate hosted demo.
+These English captures were taken from the source-built 0.5.0
+CE stack after all six images reached healthy. They show the actual
+self-hosted frontend, not a hosted demo or a design mockup.
 
-### Discover And Replay Authorized Security Flows
+### First Run: Create The Local Administrator
 
-![Flyto2 Warroom automated security discovery view](docs/images/warroom-automated-security-discovery.png)
+![Flyto2 Warroom CE local administrator setup](docs/images/warroom-ce-first-admin.png)
 
-### Review Evidence And Reproducible Artifacts
+### Returning Operators: Sign In Locally
 
-![Flyto2 Warroom evidence pack view](docs/images/warroom-evidence-pack.png)
+![Flyto2 Warroom CE local sign-in](docs/images/warroom-ce-sign-in.png)
+
+### Built-In Light And Dark Themes
+
+![Flyto2 Warroom CE light theme](docs/images/warroom-ce-first-admin-light.png)
 
 CE is useful without Flyto2 Cloud. Enterprise Cloud Bridge adds
 commercial intelligence, managed remediation, identity, support,

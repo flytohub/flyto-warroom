@@ -292,7 +292,7 @@
       "LICENSES.md": "bca5e5811923849d6e5b9c141de4e10f0b281301cf4839efcbfecf2444a5d716",
       "Makefile": "e71914b7e630896c20b68559fc0bb003c59c5de7a1c9c07ad5be83d41a080fec",
       "PROJECT.md": "d1394199d19beb1894b7cee78e99bc8774c15b9bb2a143059d84fd615beb7912",
-      "README.md": "23f4e22ad42a792ccc525939455d477ce2e627bba8164ffb9e7d6b5977ed91f1",
+      "README.md": "0c66661111bad87adc3dffca7ab52a3e2a7d91a99ad7c515c7a17ce4d413ea7f",
       "ROADMAP.md": "ee56a6d573ca7368bba57aa2142518ac1690ef7ec01906110f6bc683604ad758",
       "SECURITY.md": "2c759fa0acefd866a7252a8d79ae4647c02d7d860a23ef976fd20e1ddc93a31a",
       "STATE.md": "226a78ad734993237071a13c303304681ce1b33467ce531f5f4858393d4e0bc6",
@@ -311,8 +311,9 @@
       "docs/enterprise-simulation.md": "41eab16fc1068149a06b2c682fa00c2fb639c091a563c1ff5af2ae1d01a44a2d",
       "docs/feature-matrix.md": "216c71055d685bbdaa8e39558521bc63d2662ab3211b14edf59580e2fe7e5f7b",
       "docs/github-hardening.md": "c052f6f3369f3a3bbe36939620ff089ef95aa9415c4f6298065d5e4bbdd914ec",
-      "docs/images/warroom-automated-security-discovery.png": "5ac579e8d6a2be232ae110a64d7eae7b8d07a277e2ee0d6f1c64f9edae3da578",
-      "docs/images/warroom-evidence-pack.png": "b8dee5a47e531968ac1a324b886a325f54c370af0591ad253e9187d515125b03",
+      "docs/images/warroom-ce-first-admin-light.png": "051a98eee1a944b45281629efdf95954ed211d202bb1566d1c83049805dcff63",
+      "docs/images/warroom-ce-first-admin.png": "00add855594f520f7dea60a0e8aeef48c05d00750af417e513ca0bdbeb8ebedc",
+      "docs/images/warroom-ce-sign-in.png": "937b2fd78d1570cde6ce2831f3e1f92d4ef42b07792f2d8146ba4614229c48dd",
       "docs/local-install.md": "da8b6367ee5d462c36bdb3ae74270a57f80313a504feb3ecf84316e34614ee38",
       "docs/official-builds.md": "7507fb39091e3f6e27f734d354035e17bb9acead00ab3759cf728d29db037843",
       "docs/paid-prerequisites.md": "b902b3ff5bed3c8ef54a3da48b858f2f08521bc54185ec8303f9a641d2b5746c",
@@ -606,7 +607,7 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "c805396737effffe729aad4675cf64e176727463",
+    "source_commit": "e4fac210c3eb4411e670fd3d15855e935eb969c2",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
@@ -617,12 +618,12 @@
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
-        "commit": "c805396737effffe729aad4675cf64e176727463",
+        "commit": "e4fac210c3eb4411e670fd3d15855e935eb969c2",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "ac466ffdd492832b51485d728bf1c835c1c39d946c7ea4e5a2044c31edb54336"
+    "tree_sha256": "8523a798903bf98d7d314401ee63bc392eb9e0f3da5c352567c4c224676f759d"
   },
   "release": {
     "build_source_repositories": [],
@@ -732,8 +733,9 @@
     "docs/demo-seed-workspace.md",
     "docs/edition-profiles.md",
     "docs/feature-matrix.md",
-    "docs/images/warroom-automated-security-discovery.png",
-    "docs/images/warroom-evidence-pack.png",
+    "docs/images/warroom-ce-first-admin-light.png",
+    "docs/images/warroom-ce-first-admin.png",
+    "docs/images/warroom-ce-sign-in.png",
     "docs/paid-prerequisites.md",
     "docs/public-roadmap.md",
     "docs/reference-architecture.md",
