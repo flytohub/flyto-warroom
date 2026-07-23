@@ -185,7 +185,7 @@ Published repository: `docker.io/chesterhsu/flyto-warroom`
 | Worker | `worker-ce` |
 | Warroom UI | `code-ce` |
 
-Stable release `v0.3.1` builds per-service `*-0.3.1`
+Stable release `v0.3.2` builds per-service `*-0.3.2`
 Docker images directly from that tagged public source after its `main`
 commit passes CI. See `docs/official-builds.md` for the release contract.
 

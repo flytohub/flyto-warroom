@@ -9,8 +9,9 @@ Warroom CE now starts like a self-hosted developer platform: run
 `http://localhost:8088`. A fresh database redirects to a browser form that
 creates the first administrator and signs that user in.
 
-The installer generates Postgres, JWT, runner, verification, and encryption
-secrets only. It does not request, print, or write account credentials.
+The installer generates only the Postgres password and local-JWT signing secret
+needed by the three-service CE application stack. It does not request, print,
+or write account credentials.
 
 ## Security Boundary
 

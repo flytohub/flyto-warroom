@@ -39,11 +39,11 @@ This repository publishes the CE application services as separate tags:
 - `worker-ce` - background worker
 - `code-ce` - web UI
 Stable semantic-version tags are published for reproducible installs. Git tag
-`v0.3.1` maps to:
+`v0.3.2` maps to:
 
-- `engine-ce-0.3.1`
-- `worker-ce-0.3.1`
-- `code-ce-0.3.1`
+- `engine-ce-0.3.2`
+- `worker-ce-0.3.2`
+- `code-ce-0.3.2`
 
 The tag-triggered GitHub Actions release builds all three from public source,
 publishes both `linux/amd64` and `linux/arm64`, and records immutable digests.
@@ -58,8 +58,7 @@ cd flyto-warroom
 
 python3 install/scripts/setup-ce.py
 make preflight
-make source-build
-make source-up
+make ce-up
 ```
 
 Open the UI:
@@ -74,8 +73,9 @@ Open the UI to create the first administrator through the one-time setup page.
 ## What CE Includes
 
 - Local Warroom UI with local JWT auth, no Firebase requirement.
-- CE engine, worker, runner, verification, brand-vision, PDF, and Postgres
-  services.
+- CE engine, scan worker, frontend, and PostgreSQL services. The application
+  images are built entirely from this public repository; PostgreSQL uses its
+  official upstream image.
 - Public frontend source, i18n packages, local code intelligence, YAML runtime,
   public API/capability/evidence contracts, and installer scripts.
 - Baseline workflows for code security, CTEM/external posture, automated
@@ -100,10 +100,8 @@ signature, or cloud validation fails.
 
 - UI: `8088`
 - Engine API: `8080`
+- Worker health/self-test: `8081` (loopback only)
 - Postgres: `5432`
-- Runner: `8090`
-- Verification: `8344`
-- Brand Vision: `8095`
 
 Ports can be changed in `install/.env`.
 

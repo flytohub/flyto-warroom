@@ -4,11 +4,11 @@
 
 This generated index links public classes, functions, methods, and callable source declarations to their exact implementation lines. Domain behavior is explained in the owning package and feature guides; these pages provide the complete implementation-level navigation contract.
 
-Inventory: **17716 declaration sites** across **1330 source files**.
+Inventory: **17711 declaration sites** across **1330 source files**.
 
 | Reference | Area | Declarations | Files |
 |---|---|---:|---:|
-| [`source-install-01.md`](source-install-01.md) | `install/` | 84 | 16 |
+| [`source-install-01.md`](source-install-01.md) | `install/` | 79 | 16 |
 | [`source-packages-01.md`](source-packages-01.md) | `packages/` | 350 | 17 |
 | [`source-packages-02.md`](source-packages-02.md) | `packages/` | 350 | 9 |
 | [`source-packages-03.md`](source-packages-03.md) | `packages/` | 350 | 10 |

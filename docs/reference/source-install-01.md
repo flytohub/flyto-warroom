@@ -2,7 +2,7 @@
 
 # Install Source Reference 1
 
-Source-linked contracts for **84 declarations** in `install/`.
+Source-linked contracts for **79 declarations** in `install/`.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
@@ -26,9 +26,9 @@ Source-linked contracts for **84 declarations** in `install/`.
 | function | `def main() -> int:` | Implements main for `install/scripts/hash-local-password.py`. | [`install/scripts/hash-local-password.py:7`](<../../install/scripts/hash-local-password.py#L7>) |
 | function | `def b64url(data: bytes) -> str:` | Implements b64url for `install/scripts/mint-ee-sim-jwt.py`. | [`install/scripts/mint-ee-sim-jwt.py:12`](<../../install/scripts/mint-ee-sim-jwt.py#L12>) |
 | function | `def main() -> int:` | Implements main for `install/scripts/mint-ee-sim-jwt.py`. | [`install/scripts/mint-ee-sim-jwt.py:16`](<../../install/scripts/mint-ee-sim-jwt.py#L16>) |
-| function | `def parse_env(path: Path) -> dict[str, str]:` | Parses parse env for `install/scripts/preflight.py`. | [`install/scripts/preflight.py:25`](<../../install/scripts/preflight.py#L25>) |
-| function | `def compose_command() -> list[str] \| None:` | Implements compose command for `install/scripts/preflight.py`. | [`install/scripts/preflight.py:35`](<../../install/scripts/preflight.py#L35>) |
-| function | `def main() -> int:` | Implements main for `install/scripts/preflight.py`. | [`install/scripts/preflight.py:45`](<../../install/scripts/preflight.py#L45>) |
+| function | `def parse_env(path: Path) -> dict[str, str]:` | Parses parse env for `install/scripts/preflight.py`. | [`install/scripts/preflight.py:22`](<../../install/scripts/preflight.py#L22>) |
+| function | `def compose_command() -> list[str] \| None:` | Implements compose command for `install/scripts/preflight.py`. | [`install/scripts/preflight.py:32`](<../../install/scripts/preflight.py#L32>) |
+| function | `def main() -> int:` | Implements main for `install/scripts/preflight.py`. | [`install/scripts/preflight.py:42`](<../../install/scripts/preflight.py#L42>) |
 | function | `def run(cmd: list[str], *, timeout: int) -> subprocess.CompletedProcess[str]:` | Executes run for `install/scripts/promote-release-images.py`. | [`install/scripts/promote-release-images.py:24`](<../../install/scripts/promote-release-images.py#L24>) |
 | function | `def descriptor_digest(payload: object) -> str:` | Implements descriptor digest for `install/scripts/promote-release-images.py`. | [`install/scripts/promote-release-images.py:28`](<../../install/scripts/promote-release-images.py#L28>) |
 | function | `def manifest_platforms(payload: object) -> set[str]:` | Implements manifest platforms for `install/scripts/promote-release-images.py`. | [`install/scripts/promote-release-images.py:41`](<../../install/scripts/promote-release-images.py#L41>) |
@@ -45,17 +45,12 @@ Source-linked contracts for **84 declarations** in `install/`.
 | function | `def http_json(method: str, url: str, payload: dict \| None = None, token: str = "") -> dict:` | Implements http json for `install/scripts/seed-demo-workspace.py`. | [`install/scripts/seed-demo-workspace.py:38`](<../../install/scripts/seed-demo-workspace.py#L38>) |
 | function | `def render_markdown(bundle: dict) -> str:` | Builds render markdown for `install/scripts/seed-demo-workspace.py`. | [`install/scripts/seed-demo-workspace.py:57`](<../../install/scripts/seed-demo-workspace.py#L57>) |
 | function | `def main() -> int:` | Implements main for `install/scripts/seed-demo-workspace.py`. | [`install/scripts/seed-demo-workspace.py:99`](<../../install/scripts/seed-demo-workspace.py#L99>) |
-| function | `def parse_env(path: Path) -> list[tuple[str, str \| None]]:` | Parses parse env for `install/scripts/setup-ce.py`. | [`install/scripts/setup-ce.py:23`](<../../install/scripts/setup-ce.py#L23>) |
-| function | `def render_env(entries: list[tuple[str, str \| None]], updates: dict[str, str]) -> str:` | Builds render env for `install/scripts/setup-ce.py`. | [`install/scripts/setup-ce.py:34`](<../../install/scripts/setup-ce.py#L34>) |
-| function | `def main() -> int:` | Implements main for `install/scripts/setup-ce.py`. | [`install/scripts/setup-ce.py:49`](<../../install/scripts/setup-ce.py#L49>) |
-| function | `def parse_env(path: Path) -> dict[str, str]:` | Parses parse env for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:17`](<../../install/scripts/smoke-ce-stack.py#L17>) |
-| function | `def env_int(values: dict[str, str], key: str, default: int) -> int:` | Implements env int for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:29`](<../../install/scripts/smoke-ce-stack.py#L29>) |
-| function | `def fetch(url: str) -> tuple[int, str]:` | Retrieves fetch for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:39`](<../../install/scripts/smoke-ce-stack.py#L39>) |
-| function | `def validate_product_loop(payload: dict[str, object]) -> list[str]:` | Validates validate product loop for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:52`](<../../install/scripts/smoke-ce-stack.py#L52>) |
-| function | `def check(name: str, url: str, *, expect_json: bool = False, product_loop: bool = False) -> dict[str, object]:` | Validates check for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:75`](<../../install/scripts/smoke-ce-stack.py#L75>) |
-| function | `def run_checks(values: dict[str, str]) -> list[dict[str, object]]:` | Executes run checks for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:101`](<../../install/scripts/smoke-ce-stack.py#L101>) |
-| function | `def print_text(rows: list[dict[str, object]]) -> None:` | Implements print text for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:118`](<../../install/scripts/smoke-ce-stack.py#L118>) |
-| function | `def main() -> int:` | Implements main for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:130`](<../../install/scripts/smoke-ce-stack.py#L130>) |
+| function | `def parse_env(path: Path) -> list[tuple[str, str \| None]]:` | Parses parse env for `install/scripts/setup-ce.py`. | [`install/scripts/setup-ce.py:20`](<../../install/scripts/setup-ce.py#L20>) |
+| function | `def render_env(entries: list[tuple[str, str \| None]], updates: dict[str, str]) -> str:` | Builds render env for `install/scripts/setup-ce.py`. | [`install/scripts/setup-ce.py:31`](<../../install/scripts/setup-ce.py#L31>) |
+| function | `def main() -> int:` | Implements main for `install/scripts/setup-ce.py`. | [`install/scripts/setup-ce.py:46`](<../../install/scripts/setup-ce.py#L46>) |
+| function | `def parse_env(path: Path) -> dict[str, str]:` | Parses parse env for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:13`](<../../install/scripts/smoke-ce-stack.py#L13>) |
+| function | `def env_port(values: dict[str, str], key: str, default: int) -> int:` | Implements env port for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:23`](<../../install/scripts/smoke-ce-stack.py#L23>) |
+| function | `def main() -> int:` | Implements main for `install/scripts/smoke-ce-stack.py`. | [`install/scripts/smoke-ce-stack.py:34`](<../../install/scripts/smoke-ce-stack.py#L34>) |
 | function | `def get(url: str) -> tuple[int, bytes, str]:` | Retrieves get for `install/scripts/smoke-source-stack.py`. | [`install/scripts/smoke-source-stack.py:12`](<../../install/scripts/smoke-source-stack.py#L12>) |
 | function | `def request_json(` | Implements request json for `install/scripts/smoke-source-stack.py`. | [`install/scripts/smoke-source-stack.py:18`](<../../install/scripts/smoke-source-stack.py#L18>) |
 | function | `def request_bytes(url: str, *, body: dict[str, object], token: str) -> tuple[bytes, str]:` | Implements request bytes for `install/scripts/smoke-source-stack.py`. | [`install/scripts/smoke-source-stack.py:37`](<../../install/scripts/smoke-source-stack.py#L37>) |
@@ -63,11 +58,11 @@ Source-linked contracts for **84 declarations** in `install/`.
 | function | `def expect_json(url: str, schema: str \| None = None) -> dict[str, object]:` | Implements expect json for `install/scripts/smoke-source-stack.py`. | [`install/scripts/smoke-source-stack.py:67`](<../../install/scripts/smoke-source-stack.py#L67>) |
 | function | `def main() -> int:` | Implements main for `install/scripts/smoke-source-stack.py`. | [`install/scripts/smoke-source-stack.py:75`](<../../install/scripts/smoke-source-stack.py#L75>) |
 | function | `def service_images(manifest_path: Path) -> list[tuple[str, str, str]]:` | Implements service images for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:15`](<../../install/scripts/verify-docker-images.py#L15>) |
-| function | `def run(cmd: list[str], *, timeout: int) -> subprocess.CompletedProcess[str]:` | Executes run for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:35`](<../../install/scripts/verify-docker-images.py#L35>) |
-| function | `def descriptor_digest(payload: object) -> str:` | Implements descriptor digest for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:39`](<../../install/scripts/verify-docker-images.py#L39>) |
-| function | `def manifest_platforms(payload: object) -> set[str]:` | Implements manifest platforms for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:54`](<../../install/scripts/verify-docker-images.py#L54>) |
-| function | `def write_digests(manifest_path: Path, digests: dict[str, str]) -> None:` | Updates write digests for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:77`](<../../install/scripts/verify-docker-images.py#L77>) |
-| function | `def main() -> int:` | Implements main for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:89`](<../../install/scripts/verify-docker-images.py#L89>) |
+| function | `def run(cmd: list[str], *, timeout: int) -> subprocess.CompletedProcess[str]:` | Executes run for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:38`](<../../install/scripts/verify-docker-images.py#L38>) |
+| function | `def descriptor_digest(payload: object) -> str:` | Implements descriptor digest for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:42`](<../../install/scripts/verify-docker-images.py#L42>) |
+| function | `def manifest_platforms(payload: object) -> set[str]:` | Implements manifest platforms for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:57`](<../../install/scripts/verify-docker-images.py#L57>) |
+| function | `def write_digests(manifest_path: Path, digests: dict[str, str]) -> None:` | Updates write digests for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:80`](<../../install/scripts/verify-docker-images.py#L80>) |
+| function | `def main() -> int:` | Implements main for `install/scripts/verify-docker-images.py`. | [`install/scripts/verify-docker-images.py:92`](<../../install/scripts/verify-docker-images.py#L92>) |
 | function | `def _run_builder(tmp_path: Path, secret: str = "test-import-secret") -> tuple[subprocess.CompletedProcess[str], Path]:` | Executes run builder for `install/tests/test_cloud_bundle_fixture.py`. | [`install/tests/test_cloud_bundle_fixture.py:18`](<../../install/tests/test_cloud_bundle_fixture.py#L18>) |
 | function | `def test_cloud_bundle_fixture_writes_signed_manifest(tmp_path: Path) -> None:` | Implements test cloud bundle fixture writes signed manifest for `install/tests/test_cloud_bundle_fixture.py`. | [`install/tests/test_cloud_bundle_fixture.py:40`](<../../install/tests/test_cloud_bundle_fixture.py#L40>) |
 | function | `def test_cloud_bundle_fixture_requires_signing_secret(tmp_path: Path) -> None:` | Implements test cloud bundle fixture requires signing secret for `install/tests/test_cloud_bundle_fixture.py`. | [`install/tests/test_cloud_bundle_fixture.py:81`](<../../install/tests/test_cloud_bundle_fixture.py#L81>) |

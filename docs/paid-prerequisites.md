@@ -9,7 +9,7 @@ fully closed by source code alone and what can still be done without paying.
 | --- | --- | --- | --- |
 | GitHub Actions billing/startup | Required checks cannot become release evidence while workflows fail to start | public release, SaaS, Enterprise Cloud | Run local `make verify`, indexer full scan, frontend builds, and keep verdict `CODE_READY_PROVIDER_BLOCKED` |
 | Docker Hub publish permission | Public images must be pushed by an account allowed to publish the declared repo and tags | public CE image release | Build local images, run Docker boundary audits, dry-run multi-arch publish commands |
-| Domain, DNS, TLS, support contact | Public docs, website links, and commercial support claims need owned reachable endpoints | public release, SaaS | Keep links documented, avoid production availability claims |
+| Domain, DNS, TLS, support contact | Hosted service links and commercial support claims need owned reachable endpoints | SaaS | CE artifacts remain installable from GitHub and Docker Hub without a hosted Flyto service |
 
 ## Required For SaaS
 
@@ -32,7 +32,7 @@ fully closed by source code alone and what can still be done without paying.
 
 ## Current No-Cost Maximum
 
-Without paying, the strongest honest state is:
+Without current external evidence, the strongest honest local-only state is:
 
 ```text
 CODE_READY_PROVIDER_BLOCKED
@@ -40,9 +40,10 @@ CODE_READY_PROVIDER_BLOCKED
 
 That means the CE source tree, local install, demo seed, frontend build, i18n
 audit, visual-system audit, release-tree audit, Docker build boundary, and
-enterprise simulation can be verified locally. It does not mean GitHub Actions,
-Docker Hub publishing, SaaS hosting, paid threat feeds, or enterprise private
-distribution are commercially ready.
+enterprise simulation can be verified locally. The official tag workflow
+upgrades the public-release verdict only after a successful GitHub CI run and
+authenticated Docker Hub login; it still makes no SaaS, paid-feed, support-SLA,
+or enterprise-distribution claim.
 
 Use:
 

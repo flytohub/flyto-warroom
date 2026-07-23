@@ -25,11 +25,12 @@ The public CE release tree must pass:
 - demo seed workspace audit covering code, container, cloud, external,
   evidence, and AutoFix
 - running-stack smoke with `python3 install/scripts/smoke-ce-stack.py --env install/.env`
-  after `make ce-up`, including engine health, frontend proxy, runner,
-  verification, brand-vision, and deterministic CE product-loop contract
+  after `make ce-up` on a disposable fresh database, including one-time admin
+  bootstrap, local JWT, workspace, public repository connection, public worker
+  scan, findings, score, HTML report, engine/worker health, and frontend proxy
 - `python3 install/scripts/provider-readiness.py --scope public_release`
-  records paid/account gates and returns `CODE_READY_PROVIDER_BLOCKED` until
-  the account owner marks the required providers ready.
+  records account gates. The tag workflow runs the strict form only after it
+  has proved a successful GitHub CI run and authenticated to Docker Hub.
 
 ## Account And Provider Gates
 
@@ -41,9 +42,8 @@ until the account owner resolves them:
 - Docker Hub authentication, repository visibility, and image-push permission:
   public images must be pushed by an account allowed to publish the declared
   repository and tags.
-- Domain, website, and support-contact ownership: public docs may link to
-  Flyto2 properties, but production claims require the corresponding service to
-  be reachable.
+- Domain, website, and support-contact ownership is a SaaS/commercial service
+  gate, not a blocker for publishing the self-contained CE source and images.
 - Enterprise license, bridge, and airgap package distribution: CE can expose the
   protocol and locked UI state, but premium execution requires signed entitlement and signed evidence.
 

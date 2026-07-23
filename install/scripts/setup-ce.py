@@ -14,9 +14,6 @@ DEFAULT_OUTPUT = ROOT / "install/.env"
 SECRET_KEYS = {
     "POSTGRES_PASSWORD": lambda: secrets.token_urlsafe(32),
     "FLYTO_LOCAL_AUTH_JWT_SECRET": lambda: secrets.token_urlsafe(48),
-    "FLYTO_RUNNER_SECRET": lambda: secrets.token_urlsafe(48),
-    "FLYTO_VERIFICATION_SECRET": lambda: secrets.token_urlsafe(48),
-    "FLYTO_MASTER_KEY": lambda: secrets.token_urlsafe(48),
 }
 
 

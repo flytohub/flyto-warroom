@@ -33,11 +33,12 @@
   external surfaces with findings, attack paths, evidence, remediation,
   validation, SLA state, and merge contracts without provider execution or
   private Enterprise implementation.
-- `make ce-smoke` checks a running Docker Compose stack end to end: engine
-  health, frontend health, frontend API proxy, runner, verification,
-  brand-vision, and the CE product-loop payload.
+- `make ce-smoke` checks the three-service CE application stack end to end:
+  one-time admin bootstrap, local JWT identity, workspace, public repository
+  connection, worker scan, findings, HTML report, engine/worker health, and
+  frontend proxy. It does not expect private or legacy sidecar services.
 - Stable Git tags drive public-source Docker builds. The manifest declares
-  version `0.3.1` / Git tag `v0.3.1`; the release workflow requires the tagged
+  version `0.3.2` / Git tag `v0.3.2`; the release workflow requires the tagged
   commit on `main` with successful CI, builds the engine, worker, and frontend
   for both supported architectures, and attaches immutable digest evidence to
   the GitHub release.

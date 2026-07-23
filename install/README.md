@@ -11,10 +11,11 @@ This directory contains the public CE install surface:
 - `scripts/setup-ce.py` creates local-only infrastructure secrets; the first
   administrator is created in the browser after startup.
 - `scripts/preflight.py` validates local configuration before compose starts.
-- `scripts/smoke-ce-stack.py` verifies a running compose stack, including the
-  engine CE product-loop route and frontend API proxy.
-- `scripts/smoke-source-stack.py` verifies the source-built engine, worker,
-  `/community` frontend route, and same-origin API proxy.
+- `scripts/smoke-ce-stack.py` verifies the official-image stack through the
+  complete disposable first-install product path: admin, repository, worker
+  scan, findings, report, health, and frontend proxy.
+- `scripts/smoke-source-stack.py` runs that same complete product path against
+  the source-built engine, worker, and frontend.
 - `scripts/seed-demo-workspace.py` seeds the demo evidence workspace through the
   public local JWT API.
 - `scripts/verify-docker-images.py` checks Docker Hub tags and digests.

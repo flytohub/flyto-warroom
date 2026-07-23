@@ -55,6 +55,11 @@ jobs:
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ env.DOCKERHUB_TOKEN }}
+      - name: Require public release provider gates
+        env:
+          FLYTO_PROVIDER_GITHUB_ACTIONS_READY: "1"
+          FLYTO_PROVIDER_DOCKER_HUB_READY: "1"
+        run: make provider-readiness-strict
       - name: Build and publish engine, worker, and frontend from this tag
         run: |
           set -eu

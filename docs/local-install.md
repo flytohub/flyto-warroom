@@ -21,8 +21,8 @@ private Flyto2 repository, private service image, source token, or Flyto Cloud
 connection is required.
 
 For reproducible installs, pin all service tags to one GitHub release version.
-Git tag `v0.3.1` publishes Docker tags `engine-ce-0.3.1`,
-`worker-ce-0.3.1`, and `code-ce-0.3.1`. GitHub Actions builds those images from
+Git tag `v0.3.2` publishes Docker tags `engine-ce-0.3.2`,
+`worker-ce-0.3.2`, and `code-ce-0.3.2`. GitHub Actions builds those images from
 the tagged public source after the tagged `main` commit passes CI and records
 the resulting immutable digests as release evidence.
 
@@ -40,13 +40,14 @@ Engine from the browser during one-time setup and the password is stored only
 as a bcrypt hash in Postgres.
 
 `preflight` verifies that local secrets are not blank/placeholders and that
-Compose can resolve the source-built service set.
+Compose can resolve the official CE image set. The generated environment pins
+the immutable image tags for this release; it does not silently follow mutable
+latest aliases.
 
-Then start the stack:
+To run the official release images, start a fresh stack:
 
 ```sh
-make source-up
-make source-smoke
+make ce-up
 ```
 
 Open:
@@ -55,10 +56,16 @@ Open:
 - Engine health: `http://localhost:8080/health`
 - CE product loop: `http://localhost:8080/api/v1/ce/product-loop`
 
-`source-smoke` creates the first local administrator through the public API,
-connects a credential-free public repository, waits for the public worker to
-finish scanning, and verifies findings, score, report, engine health, worker
-health, and frontend proxying.
+Release maintainers can run `make ce-smoke` against a disposable fresh database.
+That command intentionally consumes the one-time bootstrap by creating a
+temporary administrator, connects a credential-free public repository, waits
+for the public worker to finish scanning, and verifies findings, score, report,
+engine health, worker health, and frontend proxying. Run `make ce-reset-db`
+afterward before using the instance normally.
+
+To build and test the exact same three application services from the checked-out
+public source instead, run `make source-up && make source-smoke` against a fresh
+source-profile database.
 
 On the first visit, create the administrator account in the browser. The setup
 route permanently closes after the first successful account creation; later
@@ -84,7 +91,7 @@ See `docs/enterprise-cloud-bridge.md` for the intended bridge model.
 ## Reset The Database
 
 ```sh
-docker compose --env-file install/.env -f install/docker-compose.source.yml down --volumes
+docker compose --env-file install/.env -f install/docker-compose.ce.yml down --volumes
 ```
 
 This removes only the generated compose stack's `pgdata` volume.

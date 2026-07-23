@@ -2,6 +2,12 @@
 
 ## 2026-07-23
 
+- Advanced the clean installer path to `v0.3.2`: the generated environment now
+  pins immutable release image tags, exposes the public worker health endpoint
+  on loopback, and generates only the PostgreSQL/JWT secrets used by CE.
+- Replaced the stale legacy-sidecar `ce-smoke` with the complete public product
+  smoke: first administrator, local JWT, workspace, public repository, queued
+  worker scan, findings, score, HTML report, and frontend proxy.
 - Replaced the diagnostic-only CE source slice with a complete local product
   runtime: one-time administrator bootstrap, local JWT sessions, organizations,
   projects, credential-free public repository connections, durable scan jobs,

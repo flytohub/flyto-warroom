@@ -18,6 +18,7 @@ def service_images(manifest_path: Path) -> list[tuple[str, str, str]]:
     images = release.get("public_images", {})
     tags = release.get("public_image_tags", {})
     digests = release.get("public_image_digests", {})
+    version = str(release.get("version", "")).strip()
     default_repo = release.get("public_image_repository", "docker.io/chesterhsu/flyto-warroom")
     defaults = {
         "engine": "engine-ce",
@@ -28,6 +29,8 @@ def service_images(manifest_path: Path) -> list[tuple[str, str, str]]:
     for service, default_tag in defaults.items():
         repo = images.get(service, default_repo)
         tag = tags.get(service, default_tag)
+        if version and not tag.endswith(f"-{version}"):
+            tag = f"{tag}-{version}"
         result.append((service, f"{repo}:{tag}", digests.get(service, "")))
     return result
 
