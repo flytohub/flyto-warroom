@@ -12,6 +12,9 @@
   and frontend images directly from this public source tree.
 - Serialized empty-database schema installation across engine and worker so a
   fresh Compose deployment is safe when both processes start concurrently.
+- Ordered tag-release source verification before local Compose secret setup
+  and advanced the complete-source release to `v0.3.1` after the immutable
+  `v0.3.0` publication attempt stopped before image push.
 
 ## 2026-07-19
 

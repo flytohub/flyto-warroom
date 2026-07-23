@@ -40,9 +40,9 @@ jobs:
           fi
       - name: Audit tagged public source tree
         run: |
-          python install/scripts/setup-ce.py
           make verify
           python install/scripts/audit-release-tree.py .
+          python install/scripts/setup-ce.py
           docker compose --env-file install/.env -f install/docker-compose.source.yml config --quiet
       - name: Require Docker Hub publisher credentials
         run: |

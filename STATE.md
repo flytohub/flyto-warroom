@@ -37,7 +37,7 @@
   health, frontend health, frontend API proxy, runner, verification,
   brand-vision, and the CE product-loop payload.
 - Stable Git tags drive public-source Docker builds. The manifest declares
-  version `0.3.0` / Git tag `v0.3.0`; the release workflow requires the tagged
+  version `0.3.1` / Git tag `v0.3.1`; the release workflow requires the tagged
   commit on `main` with successful CI, builds the engine, worker, and frontend
   for both supported architectures, and attaches immutable digest evidence to
   the GitHub release.
