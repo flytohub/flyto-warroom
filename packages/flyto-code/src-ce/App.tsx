@@ -212,7 +212,7 @@ function AuthScreen({
               autoComplete="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
-              placeholder="admin@example.com"
+              placeholder="admin@flyto2.com"
             />
           </label>
           <label>

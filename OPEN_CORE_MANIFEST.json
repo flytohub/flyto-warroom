@@ -385,7 +385,7 @@
       "packages/flyto-code/nginx.conf": "f79187fbb3eb37e10ca18b4c662487b07ef1f0788a5b6fedbb59245bdee53160",
       "packages/flyto-code/package-lock.json": "e572898310db42c3777ea5889310f9b05306d2feb0bfb8017a502520bd0df9ce",
       "packages/flyto-code/package.json": "eec100f9105482584b55023d402fd6757c2104c0c1b79a28692f935222342cc3",
-      "packages/flyto-code/src-ce/App.tsx": "b6a1763c5539482104ab52494c39c835d20920264e5c0e3ec5802061bffefef3",
+      "packages/flyto-code/src-ce/App.tsx": "a48c5e0c450186c868824f718b2e0ae436c98f8901f4d7f9f1c61f2d20bbad94",
       "packages/flyto-code/src-ce/api.ts": "f2effb30350a1c9abdd51fb59ea465090eaa0ee1eb09eb6b1b6a0c84dae6665f",
       "packages/flyto-code/src-ce/i18n.ts": "95f276692c281d2d78566224cb71940d68f8ca9c68ab3646b071483a5b498de0",
       "packages/flyto-code/src-ce/main.tsx": "dd06d304ada95fff0c454f73873f89dc1ec3919a9f54345baa963f6b4df55a4b",
@@ -614,7 +614,7 @@
     },
     "source_repositories": {
       "flyto-code": {
-        "commit": "7af51199be1d9d711047a0d74e9baede025d0fad",
+        "commit": "52ef8f2cb4c304fba874ed2e7dc4642046b26f93",
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
@@ -623,7 +623,7 @@
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "8523a798903bf98d7d314401ee63bc392eb9e0f3da5c352567c4c224676f759d"
+    "tree_sha256": "ad790c9607bae56514a5a2fd0a28102529585afb12d8cf5b628f7aaa4df95dd6"
   },
   "release": {
     "build_source_repositories": [],
