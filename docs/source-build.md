@@ -22,6 +22,11 @@ runs native secret, IaC, SAST, and dependency checks. Commercial intelligence,
 signed public rating authority, managed execution, live remediation, and
 Enterprise identity remain private overlays.
 
+On an empty PostgreSQL volume, engine and worker may start at the same time.
+Schema installation is guarded by a transaction-scoped PostgreSQL advisory
+lock; one process performs the idempotent migration while the other waits, so
+the first boot does not depend on container scheduling order.
+
 Stop and remove source-profile containers with:
 
 ```sh

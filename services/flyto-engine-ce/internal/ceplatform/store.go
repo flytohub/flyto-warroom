@@ -56,11 +56,31 @@ func Open(ctx context.Context, dsn string) (*Store, error) {
 		case <-time.After(250 * time.Millisecond):
 		}
 	}
-	if _, err = pool.Exec(ctx, schemaSQL); err != nil {
+	if err = migrateSchema(ctx, pool); err != nil {
 		pool.Close()
 		return nil, fmt.Errorf("migrate CE schema: %w", err)
 	}
 	return s, nil
+}
+
+// migrateSchema serializes the first schema installation across every CE
+// process. PostgreSQL's CREATE TABLE IF NOT EXISTS is not concurrency-safe
+// when two sessions create the same relation type at the same instant, which
+// is common when Compose starts the engine and worker together on a fresh
+// volume.
+func migrateSchema(ctx context.Context, pool *pgxpool.Pool) error {
+	tx, err := pool.BeginTx(ctx, pgx.TxOptions{})
+	if err != nil {
+		return err
+	}
+	defer func() { _ = tx.Rollback(ctx) }()
+	if _, err = tx.Exec(ctx, `SELECT pg_advisory_xact_lock(46022025)`); err != nil {
+		return err
+	}
+	if _, err = tx.Exec(ctx, schemaSQL); err != nil {
+		return err
+	}
+	return tx.Commit(ctx)
 }
 
 func (s *Store) Close() { s.pool.Close() }

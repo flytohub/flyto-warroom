@@ -352,7 +352,7 @@
       ".gitignore": "8bec61909df700f4b9b649117e4e7d941bb4d8dac72d060e7184c0ea2c07d82e",
       "AGENTS.md": "05b116299ec8084a6530f94001148a2fb47d5409953101754768c0046d9213e9",
       "ARCHITECTURE.md": "ae87ef7724a58ec281176e767823fc5615ea1846963e584c58698186c18a63e6",
-      "CHANGELOG.md": "743f55dccae9763e263f6c4dad3ecfd78526b53b5cb54e69251acf8c894161cf",
+      "CHANGELOG.md": "9c94105618757193e90c1669acaf7052ddfbea67d722de743674b75004aad44c",
       "CLA.md": "90a5b1795c372cdedeb5a4d4bef443942b4602ed1db2bce53fdacb218d944e1b",
       "CLAUDE.md": "fb7972ccec46e94e0777be383b985a2d99f3804245c23ca9fedafa796bf44ec3",
       "CONTRIBUTING.md": "d827cbcdf3017922939c41dca9aae7b649e3990fba543c53264990683adfa022",
@@ -387,7 +387,7 @@
       "docs/paid-prerequisites.md": "5aa3840d082f75d38748b3d8f4f1f5774664955c61d328099caa8911a301778c",
       "docs/public-roadmap.md": "0d9c2521b84459682f44eb89a535287fd3a970786aa93da5df47bda539eab503",
       "docs/reference-architecture.md": "c1983bde3e02f09c96b454acbea0092542b313b8ca7648988d79f7ef660aa93f",
-      "docs/reference/README.md": "c161d0234366b685fa97c695bfaaad747bee7edcbdba272a793287765e04f5d9",
+      "docs/reference/README.md": "ed500166dfd141776480d22b3437fb64b80d4ca0196c520b86d9293cd4db309e",
       "docs/reference/source-install-01.md": "a3e94aeea8a1d88e860b6621256e4f71954793a35d8f2ae841008371832f827d",
       "docs/reference/source-packages-01.md": "519ffa89c674ec45b4d7b081f559f8b7fde013867aa43ad4a9be981d9d0e4a33",
       "docs/reference/source-packages-02.md": "18c5f9ff70cf877633a9fe89637ef74485aa0fef4c0c89956ebca55f605bb11f",
@@ -439,11 +439,11 @@
       "docs/reference/source-packages-48.md": "b5ddf1ce07d111fd74e2ae696b2849428d04cfdffb15f379cae15d2152a654a9",
       "docs/reference/source-packages-49.md": "9db508a3d14f5c776bbc192fe410b0113d6b42b3895b47ff12e21d23fda04a1d",
       "docs/reference/source-scripts-01.md": "84195a7b77e6474af9a772c684b26b3001561a171f8e93c1e7a7d4f789077f8c",
-      "docs/reference/source-services-01.md": "2d2b981b76dbd051888beb1ed3e607f3d5453fe44bedb425a4c3b055dd92ec37",
-      "docs/reference/source-services-02.md": "8c7aec3a2b366eebda3b394cb98114adc51168a92ce7e4063a35227775f6ab4e",
-      "docs/reference/source-services-03.md": "48cc2fbc790ff9ca41e8f2533e5c84cfb407fc84e8efc7e53167230a4af9ad4c",
+      "docs/reference/source-services-01.md": "a4679f97ca289c35c526419ff82703279668f8f05b873e3fbc52df0e4b763834",
+      "docs/reference/source-services-02.md": "49c767be28f73265f078021cb8553dcc6dd2192b9470a17c2bfb779859ab6c0f",
+      "docs/reference/source-services-03.md": "2f52f2d626ae842bfe8c82b5db0a951c414e74379c53a89c4d14c5f39a3e508c",
       "docs/release-readiness.md": "81808de76fc072086da69e724a69f82cbcc1cf2b6f9baf2b62b7244ee8dfa493",
-      "docs/source-build.md": "9787cb42537ec6c7051d547ee9fed051ba6ba7b72af495dc8a1311160d0dda39",
+      "docs/source-build.md": "571c39052c4d699835a74e1239d1203a7960be0bb15bffe73fdb4c3eee25a293",
       "docs/upstream-feedback-loop.md": "cce175db6f2d2df3c6bb4abae88217441839ba6ba2ffad2638908d75ec4d3387",
       "handoffs/2026-07-16-ce-frontend-package-manifest-api.md": "1fc88fe7f77d933e510fd4775a52bf71022ef3ba15a933ff68c676c0165a0106",
       "handoffs/2026-07-17-generated-open-core-sync.md": "87f812822d6145fc59ce1e239a692ebff2bc154926cf2d9ded4112823f569344",
@@ -2117,7 +2117,7 @@
       "services/flyto-engine-ce/internal/ceplatform/scanner.go": "0fb74b2f8a26c07e584be020a1b81946646aeaed04fe0fe32d92ce465cee2351",
       "services/flyto-engine-ce/internal/ceplatform/scanner_test.go": "f7ff2f77a738ac7dc4584646f0feb1529c7ec112c7d261ca1dbd0b9d605b1607",
       "services/flyto-engine-ce/internal/ceplatform/schema.go": "76b4ae9c45e90638d28050089ce9352420d3b865e875e270b61209a99e45c7be",
-      "services/flyto-engine-ce/internal/ceplatform/store.go": "1ecdcd44b54268d24fa3f65eddf6f3d1a71b1fc3fd1f2b29b187fd80d27c2f3a",
+      "services/flyto-engine-ce/internal/ceplatform/store.go": "10463111c1833d096519e3c5fe9d4c450b4963a9e9669a5e88bc00640004705f",
       "services/flyto-engine-ce/internal/ceproductloop/product_loop.go": "c99e3c92f6d2f7be306a2486eaafecef079c9ca6be29d46138fa976f0069a3f1",
       "services/flyto-engine-ce/internal/ceproductloop/product_loop_test.go": "117e6f937bb02c78e2b80edb1120c5bc07d61daf86db0785e13feb22da54f050",
       "services/flyto-engine-ce/internal/circuit/circuit.go": "4dace9b141050382a25457c34fe62cb999c2e26adb16d94b21e4a65d14e1d2b0",
@@ -2200,7 +2200,7 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "9d50165343aae094c0c3b6db1c526f7a406958b6",
+    "source_commit": "e5258110bcc62fe99e1824c554632f0616daaa44",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
@@ -2211,7 +2211,7 @@
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-core": {
-        "commit": "4e22c3f05e42fb4a8e6562958d68a764066e1c1f",
+        "commit": "dfdb401db92569989ee6d7ffaccaa48abdaec9f0",
         "repository": "https://github.com/flytohub/flyto-core.git"
       },
       "flyto-design-tokens": {
@@ -2219,7 +2219,7 @@
         "repository": "https://github.com/flytohub/flyto-design-tokens.git"
       },
       "flyto-engine": {
-        "commit": "9d50165343aae094c0c3b6db1c526f7a406958b6",
+        "commit": "e5258110bcc62fe99e1824c554632f0616daaa44",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       },
       "flyto-i18n": {
@@ -2232,7 +2232,7 @@
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "edfe9349283026e78819468d9e8ed9cf458d4650bc988f2ee2f8adc73384a432"
+    "tree_sha256": "a689f841d1d0221f361e92bb05f8f810cd88605b370899580ada1c6c902e6e78"
   },
   "release": {
     "build_source_repositories": [

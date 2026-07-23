@@ -2,10 +2,11 @@
 
 # Services Source Reference 3
 
-Source-linked contracts for **68 declarations** in `services/`.
+Source-linked contracts for **69 declarations** in `services/`.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
+| function | `func IsBucketDue(orgID string, buckets int, now time.Time) bool {` | Reports whether is bucket due for `services/flyto-engine-ce/internal/scheduler/stagger.go`. | [`services/flyto-engine-ce/internal/scheduler/stagger.go:38`](<../../services/flyto-engine-ce/internal/scheduler/stagger.go#L38>) |
 | function | `func FilterDueOrgs(orgIDs []string, buckets int, now time.Time) []string {` | Implements filter due orgs for `services/flyto-engine-ce/internal/scheduler/stagger.go`. | [`services/flyto-engine-ce/internal/scheduler/stagger.go:53`](<../../services/flyto-engine-ce/internal/scheduler/stagger.go#L53>) |
 | function | `func TestHourBucket_Stable(t *testing.T) {` | Implements test hour bucket stable for `services/flyto-engine-ce/internal/scheduler/stagger_test.go`. | [`services/flyto-engine-ce/internal/scheduler/stagger_test.go:12`](<../../services/flyto-engine-ce/internal/scheduler/stagger_test.go#L12>) |
 | function | `func TestFilterDueOrgs_FullDayCoverage(t *testing.T) {` | Implements test filter due orgs full day coverage for `services/flyto-engine-ce/internal/scheduler/stagger_test.go`. | [`services/flyto-engine-ce/internal/scheduler/stagger_test.go:26`](<../../services/flyto-engine-ce/internal/scheduler/stagger_test.go#L26>) |

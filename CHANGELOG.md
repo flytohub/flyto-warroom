@@ -10,6 +10,8 @@
   bounded secrets, IaC, SAST, and dependency checks without private services.
 - Changed Docker Compose and the tag release workflow to build engine, worker,
   and frontend images directly from this public source tree.
+- Serialized empty-database schema installation across engine and worker so a
+  fresh Compose deployment is safe when both processes start concurrently.
 
 ## 2026-07-19
 
