@@ -348,7 +348,7 @@
       ".github/pull_request_template.md": "0b2057635b761f3f7479c62cae960fbc605e7f2c02b0aa25713aa0f8620924e3",
       ".github/workflows/ci.yml": "17e17bf43a89ca903807492a80faf138d17eeb2f890e4c06e9ea08d2f41ff5f3",
       ".github/workflows/cla.yml": "5d6173339b9e04a4b9d3528e3163dd3bb317d649c30574fc8f272bf6bb736071",
-      ".github/workflows/release-images.yml": "22e6915a557d17143ca01bcc74740900435a22bb0a530a394863b8465e6153b7",
+      ".github/workflows/release-images.yml": "f7aae438ad54ce9c5f581a0aefdd583d0afbfc6f9ff91d6fe14541f27a718538",
       ".gitignore": "8bec61909df700f4b9b649117e4e7d941bb4d8dac72d060e7184c0ea2c07d82e",
       "AGENTS.md": "05b116299ec8084a6530f94001148a2fb47d5409953101754768c0046d9213e9",
       "ARCHITECTURE.md": "f6a69e5a9ece5a3e3c596b94adbf5b22dee8df7dc5bcc5f13ea3110b53ed5082",
@@ -375,7 +375,7 @@
       "docs/cloud-bundle-producer.md": "8a11cfc67c567b7b401912a6288c8b0f5cd4ef61f4eff4634ab47deed8e01d15",
       "docs/code-protection.md": "a46814ce4deff594417fbfe04ef2a3c1237f5703fe65fdff5f15e91e80d7ec99",
       "docs/demo-seed-workspace.md": "598c2155b7fce31d90947d41cfb73d6eebee87127f972006764d262ef3a4c938",
-      "docs/docker-hub-overview.md": "8de16bd183c14c419bdf51dab04e8f549738a75bbcfb76cd3524023376b9ec4c",
+      "docs/docker-hub-overview.md": "a11c62405cc24947d273bf0ea0f60f238e5dbe840bebc3d1737954b077aa0ac1",
       "docs/documentation-manifest.json": "b1a61973f939878d2c11e5fc1836af9cf0597c0ab65a53c27554f471abb261b0",
       "docs/edition-profiles.md": "a894f6e845f92839945ee804a40a37e826fc21c23d964f6318f6aff6fc7f2920",
       "docs/enterprise-cloud-bridge.md": "97ae7ac4a3b7968fa9140aea91b29d768ff43f8ca781717f56ecce2abcd1a37d",
@@ -2291,7 +2291,7 @@
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "1447c7f02e697bda7f5a90c3c2d85ff0696619d7ae9f2a4fbeb23e7b61f49237"
+    "tree_sha256": "9c55830a12d40a8376dcb494aef3a2e2065fdf87810d1f5a88cb3cd6a2b3fc93"
   },
   "release": {
     "build_source_repositories": [

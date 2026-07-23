@@ -130,6 +130,15 @@ jobs:
               reference = f'{service["image"]}:{service["tag"]}'
               subprocess.run(["docker", "buildx", "imagetools", "inspect", reference], check=True)
           PY
+      - name: Update official Docker Hub description
+        uses: peter-evans/dockerhub-description@1b9a80c056b620d92cedb9d9b5a223409c68ddfa # v5
+        with:
+          username: ${{ env.DOCKERHUB_USERNAME }}
+          password: ${{ env.DOCKERHUB_TOKEN }}
+          repository: flyto2/warroom
+          short-description: Self-hosted code security scanning, findings, evidence, and reports for Flyto2 Warroom CE.
+          readme-filepath: ./docs/docker-hub-overview.md
+          enable-url-completion: true
       - name: Upload release evidence
         uses: actions/upload-artifact@v7
         with:
