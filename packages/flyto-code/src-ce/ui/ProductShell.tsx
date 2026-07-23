@@ -110,7 +110,7 @@ export function ProductShell({
             </select>
           </div>
           <div className="topbar-actions">
-            <span className="release-chip">Community · v0.5.0</span>
+            <span className="release-chip">Community · v0.5.1</span>
             <label className="select-control topbar-language">
               <Icon name="globe" size={15} />
               <select

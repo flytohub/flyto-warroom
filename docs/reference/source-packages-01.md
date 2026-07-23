@@ -2,7 +2,7 @@
 
 # Packages Source Reference 1
 
-Source-linked contracts for **124 declarations** in `packages/`.
+Source-linked contracts for **125 declarations** in `packages/`.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
@@ -61,6 +61,7 @@ Source-linked contracts for **124 declarations** in `packages/`.
 | function | `const app = await readFile(join(ceRoot, "App.tsx"), "utf8");` | Implements app for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:27`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L27>) |
 | function | `const styles = await readFile(join(ceRoot, "styles.css"), "utf8");` | Implements styles for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:28`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L28>) |
 | function | `const dockerfile = await readFile(join(ceRoot, "..", "Dockerfile.ce"), "utf8").catch(() =>` | Implements dockerfile for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:29`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L29>) |
+| function | `const packageManifest = JSON.parse(` | Implements package manifest for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:32`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L32>) |
 | function | `export const emptyWorkflow: WorkflowSummary = {` | Implements empty workflow for `packages/flyto-code/src-ce/product.ts`. | [`packages/flyto-code/src-ce/product.ts:3`](<../../packages/flyto-code/src-ce/product.ts#L3>) |
 | function | `export const communityServices: ServiceBoundary[] = [` | Implements community services for `packages/flyto-code/src-ce/product.ts`. | [`packages/flyto-code/src-ce/product.ts:10`](<../../packages/flyto-code/src-ce/product.ts#L10>) |
 | function | `export function AuthScreen({` | Implements auth screen for `packages/flyto-code/src-ce/ui/AuthScreen.tsx`. | [`packages/flyto-code/src-ce/ui/AuthScreen.tsx:23`](<../../packages/flyto-code/src-ce/ui/AuthScreen.tsx#L23>) |

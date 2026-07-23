@@ -22,7 +22,7 @@ Repository -> Scan -> Findings -> Evidence -> Risk Hypotheses -> Verify -> Repor
 
 ## See The Warroom In Action
 
-These English captures were taken from the source-built 0.5.0
+These English captures were taken from the source-built 0.5.1
 CE stack after all six images reached healthy. They show the actual
 self-hosted frontend, not a hosted demo or a design mockup.
 
@@ -206,7 +206,7 @@ Published repository: `docker.io/flyto2/warroom`
 | Report | `report-ce` |
 | Warroom UI | `code-ce` |
 
-Stable release `v0.5.0` builds per-service `*-0.5.0`
+Stable release `v0.5.1` builds per-service `*-0.5.1`
 Docker images directly from that tagged public source after its `main`
 commit passes CI. See `docs/official-builds.md` for the release contract.
 

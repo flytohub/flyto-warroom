@@ -29,6 +29,11 @@ const styles = await readFile(join(ceRoot, "styles.css"), "utf8");
 const dockerfile = await readFile(join(ceRoot, "..", "Dockerfile.ce"), "utf8").catch(() =>
   readFile(join(ceRoot, "..", "Dockerfile"), "utf8"),
 );
+const packageManifest = JSON.parse(
+  await readFile(join(ceRoot, "..", "package.ce.json"), "utf8").catch(() =>
+    readFile(join(ceRoot, "..", "package.json"), "utf8"),
+  ),
+);
 
 for (const modulePath of [
   "./ui/AuthScreen",
@@ -59,6 +64,7 @@ assert.match(styles, /--accent:\s*#8b5cf6/);
 assert.match(styles, /\.cosmic-background/);
 assert.match(joined, /src="\/favicon\.svg"/);
 assert.match(dockerfile, /^COPY public \.\/public$/m);
+assert.match(joined, new RegExp(`Community · v${packageManifest.version.replaceAll(".", "\\.")}`));
 assert.match(joined, /original-auth-message/);
 assert.match(styles, /\.original-auth-root/);
 assert.match(styles, /background:\s*#1e1045/);

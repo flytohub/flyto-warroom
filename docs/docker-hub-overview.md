@@ -40,14 +40,14 @@ This repository publishes the CE application services as separate tags:
 - `report-ce` - portable HTML report renderer
 - `code-ce` - web UI
 Stable semantic-version tags are published for reproducible installs. Git tag
-`v0.5.0` maps to:
+`v0.5.1` maps to:
 
-- `engine-ce-0.5.0`
-- `worker-ce-0.5.0`
-- `scheduler-ce-0.5.0`
-- `analysis-ce-0.5.0`
-- `report-ce-0.5.0`
-- `code-ce-0.5.0`
+- `engine-ce-0.5.1`
+- `worker-ce-0.5.1`
+- `scheduler-ce-0.5.1`
+- `analysis-ce-0.5.1`
+- `report-ce-0.5.1`
+- `code-ce-0.5.1`
 
 The tag-triggered GitHub Actions release builds all six from public source,
 publishes both `linux/amd64` and `linux/arm64`, and records immutable digests.
@@ -88,19 +88,19 @@ Open the UI to create the first administrator through the one-time setup page.
 ## Product Views
 
 All captures below use the English CE interface from the immutable
-`v0.5.0` public source.
+`v0.5.1` public source.
 
 ### Create The First Local Administrator
 
-![Flyto2 Warroom CE first administrator setup](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.0/docs/images/warroom-ce-first-admin.png)
+![Flyto2 Warroom CE first administrator setup](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.1/docs/images/warroom-ce-first-admin.png)
 
 ### Sign In To The Local Warroom
 
-![Flyto2 Warroom CE local sign in](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.0/docs/images/warroom-ce-sign-in.png)
+![Flyto2 Warroom CE local sign in](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.1/docs/images/warroom-ce-sign-in.png)
 
 ### Light Appearance
 
-![Flyto2 Warroom CE first administrator setup in light appearance](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.0/docs/images/warroom-ce-first-admin-light.png)
+![Flyto2 Warroom CE first administrator setup in light appearance](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.1/docs/images/warroom-ce-first-admin-light.png)
 
 ## Enterprise Path
 

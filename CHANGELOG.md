@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-07-24
+
+- Advanced the public source profile to `v0.5.1` after restoring the canonical
+  Flyto2 Warroom authentication and product-shell UI in the independent CE
+  frontend.
+- Included the original lightning logo in the public export and final frontend
+  image, with a contract test that fails when Docker packaging omits the
+  `public` asset directory.
+- Revalidated a fresh seven-container source install, one-time local
+  administrator bootstrap, repository scan, evidence/report pipeline, and
+  frontend proxy in under the 60-second startup ceiling.
+
 ## 2026-07-23
 
 - Advanced the public source profile to `v0.5.0` with independent engine,

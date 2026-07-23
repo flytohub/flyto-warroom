@@ -42,7 +42,7 @@
   health endpoints, and frontend proxy. It does not expect private or legacy
   sidecar services.
 - Stable Git tags drive public-source Docker builds. The manifest declares
-  version `0.5.0` / Git tag `v0.5.0`; the release workflow requires the tagged
+  version `0.5.1` / Git tag `v0.5.1`; the release workflow requires the tagged
   commit on `main` with successful CI, builds all five Go runtimes plus the
   frontend for both supported architectures, and attaches immutable digest
   evidence to the GitHub release.

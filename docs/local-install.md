@@ -22,10 +22,10 @@ repository, private service image, source token, or hosted connection is
 required.
 
 For reproducible installs, pin all service tags to one GitHub release version.
-Git tag `v0.5.0` publishes Docker tags `engine-ce-0.5.0`,
-`worker-ce-0.5.0`, `scheduler-ce-0.5.0`,
-`analysis-ce-0.5.0`, `report-ce-0.5.0`, and
-`code-ce-0.5.0`. GitHub Actions builds those images from the tagged
+Git tag `v0.5.1` publishes Docker tags `engine-ce-0.5.1`,
+`worker-ce-0.5.1`, `scheduler-ce-0.5.1`,
+`analysis-ce-0.5.1`, `report-ce-0.5.1`, and
+`code-ce-0.5.1`. GitHub Actions builds those images from the tagged
 public source after the tagged `main` commit passes CI and records the resulting
 immutable digests as release evidence.
 
