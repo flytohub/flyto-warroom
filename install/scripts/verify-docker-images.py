@@ -19,7 +19,7 @@ def service_images(manifest_path: Path) -> list[tuple[str, str, str]]:
     tags = release.get("public_image_tags", {})
     digests = release.get("public_image_digests", {})
     version = str(release.get("version", "")).strip()
-    default_repo = release.get("public_image_repository", "docker.io/chesterhsu/flyto-warroom")
+    default_repo = release.get("public_image_repository", "docker.io/flyto2/warroom")
     defaults = {
         "engine": "engine-ce",
         "worker": "worker-ce",

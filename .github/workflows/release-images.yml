@@ -19,7 +19,7 @@ jobs:
     env:
       DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-      IMAGE_REPOSITORY: docker.io/chesterhsu/flyto-warroom
+      IMAGE_REPOSITORY: docker.io/flyto2/warroom
     steps:
       - uses: actions/checkout@v6
         with:

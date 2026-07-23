@@ -19,7 +19,7 @@ services:
       retries: 30
 
   engine:
-    image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
+    image: "${FLYTO_WARROOM_ENGINE_IMAGE:-docker.io/flyto2/warroom}:${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLYTO_ENGINE_PORT:-8080}:8080"
@@ -36,7 +36,7 @@ services:
         condition: service_healthy
 
   worker:
-    image: "${FLYTO_WARROOM_WORKER_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_WORKER_TAG:-worker-ce}"
+    image: "${FLYTO_WARROOM_WORKER_IMAGE:-docker.io/flyto2/warroom}:${FLYTO_WARROOM_WORKER_TAG:-worker-ce}"
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLYTO_WORKER_PORT:-8081}:8081"
@@ -49,7 +49,7 @@ services:
         condition: service_healthy
 
   frontend:
-    image: "${FLYTO_WARROOM_FRONTEND_IMAGE:-docker.io/chesterhsu/flyto-warroom}:${FLYTO_WARROOM_FRONTEND_TAG:-code-ce}"
+    image: "${FLYTO_WARROOM_FRONTEND_IMAGE:-docker.io/flyto2/warroom}:${FLYTO_WARROOM_FRONTEND_TAG:-code-ce}"
     restart: unless-stopped
     ports:
       - "127.0.0.1:${FLYTO_CODE_PORT:-8088}:8080"

@@ -35,7 +35,7 @@ def test_public_release_defaults_to_provider_blocked() -> None:
     report = json.loads(result.stdout)
     assert report["verdict"] == "CODE_READY_PROVIDER_BLOCKED"
     blocker_ids = {item["gate_id"] for item in report["blockers"]}
-    assert {"github_actions_billing", "docker_hub_publish", "domain_dns_tls"} <= blocker_ids
+    assert blocker_ids == {"github_actions_billing", "docker_hub_publish"}
     assert "credentials" not in result.stdout.lower()
 
 
@@ -63,7 +63,6 @@ def test_provider_ready_env_unblocks_public_release() -> None:
         env={
             "FLYTO_PROVIDER_GITHUB_ACTIONS_READY": "1",
             "FLYTO_PROVIDER_DOCKER_HUB_READY": "true",
-            "FLYTO_PROVIDER_DOMAIN_READY": "ready",
         },
     )
 

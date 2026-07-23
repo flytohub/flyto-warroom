@@ -1,6 +1,6 @@
 # Flyto2 Warroom
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/chesterhsu/flyto-warroom)](https://hub.docker.com/r/chesterhsu/flyto-warroom)
+[![Docker Pulls](https://img.shields.io/docker/pulls/flyto2/warroom)](https://hub.docker.com/r/flyto2/warroom)
 [![GitHub](https://img.shields.io/badge/GitHub-flytohub%2Fflyto--warroom-181717?logo=github)](https://github.com/flytohub/flyto-warroom)
 [![Website](https://img.shields.io/badge/Website-flyto2.com-2563eb)](https://flyto2.com)
 [![Docs](https://img.shields.io/badge/Docs-docs.flyto2.com-0891b2)](https://docs.flyto2.com/warroom/self-hosted-ce)
@@ -19,6 +19,20 @@ inputs; the product loop is:
 ```text
 Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation
 ```
+
+## See The Warroom In Action
+
+The public frontend and CE runtime include the same security-testing loop
+shown below. These English captures come from the repository's automated
+product-verification suite, not from a separate hosted demo.
+
+### Discover And Replay Authorized Security Flows
+
+![Flyto2 Warroom automated security discovery view](docs/images/warroom-automated-security-discovery.png)
+
+### Review Evidence And Reproducible Artifacts
+
+![Flyto2 Warroom evidence pack view](docs/images/warroom-evidence-pack.png)
 
 CE is useful without Flyto2 Cloud. Enterprise Cloud Bridge adds
 commercial intelligence, managed remediation, identity, support,
@@ -50,7 +64,7 @@ and re-exported so the CE tree does not become a disconnected fork.
 | Product page | https://flyto2.com | CE positioning and edition model |
 | Docs | https://docs.flyto2.com/warroom/self-hosted-ce | Install, local auth, Docker tags, and Enterprise bridge boundaries |
 | GitHub | https://github.com/flytohub/flyto-warroom | Public source mirror, contracts, governance, and contribution loop |
-| Docker Hub | https://hub.docker.com/r/chesterhsu/flyto-warroom | Published CE service images |
+| Docker Hub | https://hub.docker.com/r/flyto2/warroom | Published CE service images |
 
 ## What Is Flyto2 Warroom?
 
@@ -177,7 +191,7 @@ credentials, SaaS/Enterprise adapters, and live remediation remain private.
 
 ## Docker Images
 
-Published repository: `docker.io/chesterhsu/flyto-warroom`
+Published repository: `docker.io/flyto2/warroom`
 
 | Service | Tag |
 | --- | --- |

@@ -33,6 +33,8 @@ or other monetary-advantage use requires a separate written commercial license.
 
 ## Images
 
+Docker Hub repository: `flyto2/warroom`
+
 This repository publishes the CE application services as separate tags:
 
 - `engine-ce` - backend API and security workflow engine

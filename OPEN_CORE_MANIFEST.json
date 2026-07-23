@@ -348,7 +348,7 @@
       ".github/pull_request_template.md": "0b2057635b761f3f7479c62cae960fbc605e7f2c02b0aa25713aa0f8620924e3",
       ".github/workflows/ci.yml": "17e17bf43a89ca903807492a80faf138d17eeb2f890e4c06e9ea08d2f41ff5f3",
       ".github/workflows/cla.yml": "5d6173339b9e04a4b9d3528e3163dd3bb317d649c30574fc8f272bf6bb736071",
-      ".github/workflows/release-images.yml": "36d627dc1ae6dd5f21b9db09f90f1cc0ed12fd9372dfd4bf90114e8545770965",
+      ".github/workflows/release-images.yml": "22e6915a557d17143ca01bcc74740900435a22bb0a530a394863b8465e6153b7",
       ".gitignore": "8bec61909df700f4b9b649117e4e7d941bb4d8dac72d060e7184c0ea2c07d82e",
       "AGENTS.md": "05b116299ec8084a6530f94001148a2fb47d5409953101754768c0046d9213e9",
       "ARCHITECTURE.md": "f6a69e5a9ece5a3e3c596b94adbf5b22dee8df7dc5bcc5f13ea3110b53ed5082",
@@ -363,7 +363,7 @@
       "LICENSES.md": "3fecd7905ea0dff9961192b39d798cc68578cc66c429ebd8ec6bb6c5a7a962e3",
       "Makefile": "0fde84fd10150c11c50c22322faccdd90914cf31177e2055bb8e2e24286e21c1",
       "PROJECT.md": "d1394199d19beb1894b7cee78e99bc8774c15b9bb2a143059d84fd615beb7912",
-      "README.md": "9f0f0b8cb6a085b12fc67865ac00a41bca08a7342cff36f680006651ec3be665",
+      "README.md": "56c1e5bd547601bdfb9401929bb352a7d8f9ca66caac71e45ed4928894869069",
       "ROADMAP.md": "ee56a6d573ca7368bba57aa2142518ac1690ef7ec01906110f6bc683604ad758",
       "SECURITY.md": "2c759fa0acefd866a7252a8d79ae4647c02d7d860a23ef976fd20e1ddc93a31a",
       "STATE.md": "de4ae043ea893f148d5fe77c47e4560e362809bb01a7c2704c9b7bb5053ec2dc",
@@ -375,13 +375,15 @@
       "docs/cloud-bundle-producer.md": "8a11cfc67c567b7b401912a6288c8b0f5cd4ef61f4eff4634ab47deed8e01d15",
       "docs/code-protection.md": "a46814ce4deff594417fbfe04ef2a3c1237f5703fe65fdff5f15e91e80d7ec99",
       "docs/demo-seed-workspace.md": "598c2155b7fce31d90947d41cfb73d6eebee87127f972006764d262ef3a4c938",
-      "docs/docker-hub-overview.md": "4f5ee58bfe74f0510b9a520eb02f4413a7383c4c9853c4d151d38259e5bcb91d",
+      "docs/docker-hub-overview.md": "8de16bd183c14c419bdf51dab04e8f549738a75bbcfb76cd3524023376b9ec4c",
       "docs/documentation-manifest.json": "b1a61973f939878d2c11e5fc1836af9cf0597c0ab65a53c27554f471abb261b0",
       "docs/edition-profiles.md": "a894f6e845f92839945ee804a40a37e826fc21c23d964f6318f6aff6fc7f2920",
       "docs/enterprise-cloud-bridge.md": "97ae7ac4a3b7968fa9140aea91b29d768ff43f8ca781717f56ecce2abcd1a37d",
       "docs/enterprise-simulation.md": "24e19158fcb546cdfb83ee3dcfdd9473061c1d3dd808add84d526970884904e8",
       "docs/feature-matrix.md": "216c71055d685bbdaa8e39558521bc63d2662ab3211b14edf59580e2fe7e5f7b",
       "docs/github-hardening.md": "bdda6efbb206c52e4f2bfbe95afa964c1430526c978817677af4cae23e416908",
+      "docs/images/warroom-automated-security-discovery.png": "5ac579e8d6a2be232ae110a64d7eae7b8d07a277e2ee0d6f1c64f9edae3da578",
+      "docs/images/warroom-evidence-pack.png": "b8dee5a47e531968ac1a324b886a325f54c370af0591ad253e9187d515125b03",
       "docs/local-install.md": "bee6d09b4a4845a18e515ed639ce274883f57457282d0a094c54db849d33865e",
       "docs/official-builds.md": "b69adfa4934e89d885700eb90c1e48f71348a05789b6742609c2dd963a7b9473",
       "docs/paid-prerequisites.md": "b902b3ff5bed3c8ef54a3da48b858f2f08521bc54185ec8303f9a641d2b5746c",
@@ -454,11 +456,11 @@
       "handoffs/2026-07-22-one-time-admin-setup.md": "6d4d402115c3584b7ede05d0fd1faf527741889a03026e1630fd988d3d59c72f",
       "handoffs/2026-07-22-tag-driven-image-release.md": "a56af4bac8a2e3803bf66662934e3125441d7ce43ab137370363e3ad3da7282b",
       "handoffs/_registry.md": "f1d80c9e08d951a187b6a7d26d9023994563cb87b8be4e9ade26866e02f17327",
-      "install/.env.ce.example": "56140b1db54d0ecad62289bc834df133a2807ad032f2012b504f301d8082694a",
-      "install/.env.ee-sim.example": "d07a4682ca8cd5b674cc34f451d410e6c60864b8704280922f489d5159a807f8",
+      "install/.env.ce.example": "593e53b65d846b1719c89bb8364bca162008fcedf529b70debd54d4ad3824685",
+      "install/.env.ee-sim.example": "abe937433c963f84a3859eaf75060c1fb2183305813fa41df18ab88cdf031dc7",
       "install/README.md": "c781252de570596ca04eabd3d6690b12e1b5a4c22e3b7b6f061763e5089b7db2",
       "install/demo-workspace.json": "9a76902974d5e2c8c04f697003bd494fdee5e0fc1664483cf2a356293686cb3f",
-      "install/docker-compose.ce.yml": "220e45b8a91b41afc441bdaf78d725baadbd2923a365ef9aa0bc560c1b668800",
+      "install/docker-compose.ce.yml": "d14cfe0a5c1c370ea88673ace746448d4b418303680f1c307833f61d8ff399fe",
       "install/docker-compose.ee-sim.yml": "48ede3ca59cb85263e5c55d0abb82977b4981a97eaf1e378f86e054d7d62d35d",
       "install/docker-compose.source.yml": "f63318cf59d81f21811f224f5825b95993af9b1a04b4c2d4bbb0849301c09d30",
       "install/edition-overlays.json": "4ad8beb1cffd345fe3cffc81b0bbd5e6a0e0faa33719cbaadbe90924f74bad43",
@@ -468,21 +470,21 @@
       "install/fixtures/cloud-bundle/recipes/warroom-deterministic-audit.yaml": "26fff8f4e29fd991f60cac477928f78d084a04b78e8a415e826bbd592f37667a",
       "install/scripts/audit-release-tree.py": "56c647f9641af11bc40ac0ff885edeb764f22d25fd03d81ac0b5e309dd076179",
       "install/scripts/build-cloud-bundle-fixture.py": "520e22f141e9a3df394f8a72f8b4225dc449d1a82c72699364131a20e46639d7",
-      "install/scripts/build-local-images.sh": "d85091b99833ce38ebede7933b52ec06b82ee099e61b7a87bb240c0ae9604d32",
+      "install/scripts/build-local-images.sh": "276a147a5d7f816f14bf000b7d752958e795450a0d512d048600c5653c5691b4",
       "install/scripts/hash-local-password.py": "7da7136c91be8a95af0677a407e56b61225060102e62a116f516c2340629ff49",
       "install/scripts/mint-ee-sim-jwt.py": "3acc507cb82dc45819074bf4adb9df71c99eb5172fa16f1239c3faf35e8e80f1",
       "install/scripts/preflight.py": "18877e118d0b7502ddf64ecbec702dc1d3951474e56a1bde96f52b627bf0213c",
-      "install/scripts/promote-release-images.py": "472d3ff80c20aadeeb76d98d263af90276a002673d475712f10aa64171b9033e",
+      "install/scripts/promote-release-images.py": "a63f8a0534c215e02688416342700824f48139f7bfc708a5669889cee6a2442a",
       "install/scripts/provider-readiness.py": "3da08f564ec262587341f775b6b5fb99e1c0ca4ecf8a22e03d6613adbfb65b8b",
       "install/scripts/seed-demo-workspace.py": "b4417046bd5ea1647cc534fbc52e39af7d87b630a90eca0c8bd1960255abe92b",
       "install/scripts/setup-ce.py": "4b176a0ff8ebb7f307b751c38ebccabecaae18fbf9a635154f271ba709fa716e",
       "install/scripts/smoke-ce-stack.py": "a36e6ac1d441d107cb63f44b4f4eaeda1c687036f946ceaa3ff101283b678e8a",
       "install/scripts/smoke-source-stack.py": "022e0e7a984350d150cd36fda9fd516369b5ef108e87692bf5c0b68b82d36361",
-      "install/scripts/verify-docker-images.py": "55213dbdbda3fb787575d214c2bcba75a63f206122c1fe2258d68dc2b6f6d705",
+      "install/scripts/verify-docker-images.py": "3e11e868aaaaa8f5e97ab30fd9f71aa0bd7e8e38d743fbcfe601d65d5ff0318f",
       "install/tests/test_cloud_bundle_fixture.py": "7ef3d77c744ec88f439b11e90f18a7ab6f2b83cd2e2a69ad62cc7671456eace7",
       "install/tests/test_open_core_overlay_audit.py": "cc49a87c2536c4288d5352343f5c84057279654b891d1bf0478f05408508df8b",
       "install/tests/test_positioning_audit.py": "707aef3639e8ad41599b1d353ba5536d7719742ccae2d0236f8d8d7bc33e8da7",
-      "install/tests/test_provider_readiness.py": "9d4eab5a475169c40c6a6e75f38f4fbc5a9d8b96b4b0020a687fd8f80505ada6",
+      "install/tests/test_provider_readiness.py": "5851cb2d9172c450441b382c6f9db200f71ab61c4216226d47d5ffc4807aadb7",
       "packages/README.md": "7f1e96c9904e4328ed4eafa86588542ee79b15cf6070ab33e78cedc190bb724c",
       "packages/flyto-code/.dockerignore": "9cc51c375b4498fa795bee0954ba843e006294879d6238700aced7fff4d22cf5",
       "packages/flyto-code/.env.example": "70157c4ae660332345a0f8e59f8fc7b8ddf452ce32c7e351a832c85eaf9d1450",
@@ -2257,7 +2259,7 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "39c3fe307d48f17ce322564b1a9d9daaf1bebb63",
+    "source_commit": "a1514875f540a7c3f7ef6d4b21d55f9ba46faa92",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
@@ -2276,7 +2278,7 @@
         "repository": "https://github.com/flytohub/flyto-design-tokens.git"
       },
       "flyto-engine": {
-        "commit": "39c3fe307d48f17ce322564b1a9d9daaf1bebb63",
+        "commit": "a1514875f540a7c3f7ef6d4b21d55f9ba46faa92",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       },
       "flyto-i18n": {
@@ -2289,7 +2291,7 @@
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "de826bfdf792e5e28df2c76c71377078317df04329358ff3b41a316706ab3830"
+    "tree_sha256": "1447c7f02e697bda7f5a90c3c2d85ff0696619d7ae9f2a4fbeb23e7b61f49237"
   },
   "release": {
     "build_source_repositories": [
@@ -2305,16 +2307,16 @@
     "github_tag": "v0.4.1",
     "name": "flyto2-warroom-ce",
     "public_image_digests": {},
-    "public_image_repository": "docker.io/chesterhsu/flyto-warroom",
+    "public_image_repository": "docker.io/flyto2/warroom",
     "public_image_tags": {
       "engine": "engine-ce",
       "frontend": "code-ce",
       "worker": "worker-ce"
     },
     "public_images": {
-      "engine": "docker.io/chesterhsu/flyto-warroom",
-      "frontend": "docker.io/chesterhsu/flyto-warroom",
-      "worker": "docker.io/chesterhsu/flyto-warroom"
+      "engine": "docker.io/flyto2/warroom",
+      "frontend": "docker.io/flyto2/warroom",
+      "worker": "docker.io/flyto2/warroom"
     },
     "version": "0.4.1"
   },
@@ -2398,6 +2400,8 @@
     "docs/demo-seed-workspace.md",
     "docs/edition-profiles.md",
     "docs/feature-matrix.md",
+    "docs/images/warroom-automated-security-discovery.png",
+    "docs/images/warroom-evidence-pack.png",
     "docs/paid-prerequisites.md",
     "docs/public-roadmap.md",
     "docs/reference-architecture.md",

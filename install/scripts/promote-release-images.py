@@ -100,7 +100,7 @@ def release_targets(manifest_path: Path, github_tag: str) -> tuple[str, list[dic
     digests = release.get("public_image_digests", {})
     if not isinstance(images, dict) or not isinstance(tags, dict) or not isinstance(digests, dict):
         raise ValueError("manifest image, tag, and digest maps must be objects")
-    default_repo = str(release.get("public_image_repository", "docker.io/chesterhsu/flyto-warroom"))
+    default_repo = str(release.get("public_image_repository", "docker.io/flyto2/warroom"))
     targets: list[dict[str, str]] = []
     for service, default_tag in DEFAULT_TAGS.items():
         repository = str(images.get(service, default_repo))
