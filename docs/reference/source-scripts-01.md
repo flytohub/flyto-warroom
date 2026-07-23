@@ -6,8 +6,8 @@ Source-linked contracts for **37 declarations** in `scripts/`.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
-| function | `def read(path: Path) -> str:` | Retrieves read for `scripts/audit-ce-boundary.py`. | [`scripts/audit-ce-boundary.py:144`](<../../scripts/audit-ce-boundary.py#L144>) |
-| function | `def main() -> int:` | Implements main for `scripts/audit-ce-boundary.py`. | [`scripts/audit-ce-boundary.py:151`](<../../scripts/audit-ce-boundary.py#L151>) |
+| function | `def read(path: Path) -> str:` | Retrieves read for `scripts/audit-ce-boundary.py`. | [`scripts/audit-ce-boundary.py:152`](<../../scripts/audit-ce-boundary.py#L152>) |
+| function | `def main() -> int:` | Implements main for `scripts/audit-ce-boundary.py`. | [`scripts/audit-ce-boundary.py:159`](<../../scripts/audit-ce-boundary.py#L159>) |
 | function | `def main() -> int:` | Implements main for `scripts/audit-github-protection.py`. | [`scripts/audit-github-protection.py:123`](<../../scripts/audit-github-protection.py#L123>) |
 | function | `def read_json(rel: str) -> dict:` | Retrieves read json for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:56`](<../../scripts/audit-open-core-overlay.py#L56>) |
 | function | `def text(rel: str) -> str:` | Implements text for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:67`](<../../scripts/audit-open-core-overlay.py#L67>) |
@@ -19,10 +19,10 @@ Source-linked contracts for **37 declarations** in `scripts/`.
 | function | `def audit_tree(boundary: dict, manifest: dict) -> list[str]:` | Audits audit tree for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:223`](<../../scripts/audit-open-core-overlay.py#L223>) |
 | function | `def audit_docs() -> list[str]:` | Audits audit docs for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:247`](<../../scripts/audit-open-core-overlay.py#L247>) |
 | function | `def main() -> int:` | Implements main for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:286`](<../../scripts/audit-open-core-overlay.py#L286>) |
-| function | `def read(path: Path) -> str:` | Retrieves read for `scripts/audit-positioning.py`. | [`scripts/audit-positioning.py:94`](<../../scripts/audit-positioning.py#L94>) |
-| function | `def normalize(text: str) -> str:` | Implements normalize for `scripts/audit-positioning.py`. | [`scripts/audit-positioning.py:101`](<../../scripts/audit-positioning.py#L101>) |
-| function | `def claim_is_negated(lines: list[str], index: int) -> bool:` | Implements claim is negated for `scripts/audit-positioning.py`. | [`scripts/audit-positioning.py:105`](<../../scripts/audit-positioning.py#L105>) |
-| function | `def main() -> int:` | Implements main for `scripts/audit-positioning.py`. | [`scripts/audit-positioning.py:110`](<../../scripts/audit-positioning.py#L110>) |
+| function | `def read(path: Path) -> str:` | Retrieves read for `scripts/audit-positioning.py`. | [`scripts/audit-positioning.py:91`](<../../scripts/audit-positioning.py#L91>) |
+| function | `def normalize(text: str) -> str:` | Implements normalize for `scripts/audit-positioning.py`. | [`scripts/audit-positioning.py:98`](<../../scripts/audit-positioning.py#L98>) |
+| function | `def claim_is_negated(lines: list[str], index: int) -> bool:` | Implements claim is negated for `scripts/audit-positioning.py`. | [`scripts/audit-positioning.py:102`](<../../scripts/audit-positioning.py#L102>) |
+| function | `def main() -> int:` | Implements main for `scripts/audit-positioning.py`. | [`scripts/audit-positioning.py:107`](<../../scripts/audit-positioning.py#L107>) |
 | function | `def ignored(rel: Path) -> bool:` | Implements ignored for `scripts/audit-provenance.py`. | [`scripts/audit-provenance.py:22`](<../../scripts/audit-provenance.py#L22>) |
 | function | `def inventory() -> tuple[dict[str, str], str, list[str]]:` | Implements inventory for `scripts/audit-provenance.py`. | [`scripts/audit-provenance.py:28`](<../../scripts/audit-provenance.py#L28>) |
 | function | `def unsafe_url(value: str) -> bool:` | Implements unsafe url for `scripts/audit-provenance.py`. | [`scripts/audit-provenance.py:51`](<../../scripts/audit-provenance.py#L51>) |

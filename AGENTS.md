@@ -5,10 +5,9 @@ private Flyto2 source of truth.
 
 ## Before Changes
 
-- Identify whether the change belongs to `flyto-code`, `flyto-contracts`, or
-  generated release files. (`flyto-core`, `flyto-indexer`, and `flyto-i18n` are
-  external open-source dependencies — contribute to their own public repos, not
-  here. See `DEPENDENCIES.md`.)
+- Identify whether the change belongs to `flyto-code`, `flyto-contracts`,
+  `flyto-engine-ce`, or generated release files. No other Flyto repository is a
+  CE implementation source.
 - Prefer `flyto-indexer` search, impact, audit, and verify workflows for code
   exploration when the tool is available.
 - If a generated file needs a lasting change, update the source package or the

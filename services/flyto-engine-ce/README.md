@@ -9,8 +9,13 @@ testable kernel packages:
 
 - `ce/engine-ce/**`: Complete CE source runtime exposing local authentication, PostgreSQL-backed projects/repositories, scan/finding/report APIs, health, capability, and evidence contracts without SaaS, billing, or commercial provider adapters. Validation: `go test ./ce/engine-ce`.
 - `ce/worker-ce/**`: Complete CE worker source runtime claiming durable PostgreSQL scan jobs, cloning credential-free public repositories, running native secrets/IaC/SAST/dependency checks, and persisting findings without hosted callbacks or commercial adapters. Validation: `go test ./ce/worker-ce`.
+- `ce/scheduler-ce/**`: Independent CE scheduling runtime for due public-repository scans with durable one-active-scan safety. Validation: `go test ./ce/scheduler-ce`.
+- `ce/analysis-ce/**`: Independent CE analysis runtime for transparent evidence, remediation guidance, and explicitly non-authoritative risk-chain hypotheses. Validation: `go test ./ce/analysis-ce`.
+- `ce/report-ce/**`: Independent CE report runtime for portable local HTML evidence reports. Validation: `go test ./ce/report-ce`.
 - `internal/ceauth/**`: Local-only password policy, bcrypt verification, and signed JWT sessions for the one-time CE administrator flow. Validation: `go test ./internal/ceauth`.
-- `internal/ceplatform/**`: Community-owned PostgreSQL schema/store plus native repository scanner for durable projects, scans, findings, evidence, and reports. Validation: `go test ./internal/ceplatform`.
+- `internal/ceplatform/**`: Community-owned PostgreSQL schema/store plus native repository scanner for durable projects, scans, findings, evidence, remediations, verification state, and reports. Validation: `go test ./internal/ceplatform`.
+- `internal/ceruntime/**`: Shared lifecycle, health, readiness, and explicit boundary server for independently deployable CE background runtimes. Validation: `go test ./internal/ceruntime`.
+- `internal/ceworkflow/**`: Deterministic provider-free analysis and HTML report rendering for the local CE product loop. Validation: `go test ./internal/ceworkflow`.
 - `internal/canon/**`: Canonical URL/domain helpers; no customer data, provider credentials, store, SaaS, billing, or enterprise imports. Validation: `go test ./internal/canon`.
 - `internal/errx/**`: Typed API error envelopes shared by public clients and integrations. Validation: `go test ./internal/errx`.
 - `internal/ceproductloop/**`: Deterministic CE product-loop contract shared by the source runtime and official CE engine image; no store, provider, billing, SaaS, or enterprise imports. Validation: `go test ./internal/ceproductloop`.
@@ -57,13 +62,15 @@ testable kernel packages:
 - `internal/workerruntime/**`: Provider-free worker capability and runtime-selection contracts for Community workers. Validation: `go test ./internal/workerruntime`.
 - `config/classification/**`: Provider-free category and rule definitions required by the published Community classification kernel. Validation: `go test ./internal/classify`.
 
-The source-published CE runtimes under `ce/engine-ce` and `ce/worker-ce` are
+Five source-published CE runtimes under `ce/engine-ce`, `ce/worker-ce`,
+`ce/scheduler-ce`, `ce/analysis-ce`, and `ce/report-ce` are independently
 runnable and reproducible through this package's multi-stage `Dockerfile`.
-They expose one-time local administrator setup, signed local sessions,
-PostgreSQL-backed projects and repositories, durable scan dispatch, real public
-repository cloning, native secrets/IaC/SAST/dependency checks, findings, health
-summaries, and local HTML report delivery. The root source-build Compose
-profile pairs them with PostgreSQL and the public React frontend.
+Together they expose one-time local administrator setup, signed local sessions,
+PostgreSQL-backed projects and repositories, durable scheduled scan dispatch,
+real public repository cloning, native secrets/IaC/SAST/dependency checks,
+transparent evidence and risk hypotheses, remediation re-verification, and
+local HTML report delivery. The root source-build Compose profile pairs them
+with PostgreSQL and the physically independent public React frontend.
 
 Commercial intelligence, managed provider execution, SaaS/Enterprise adapters,
 hosted runner callbacks, live remediation, and proprietary datasets remain

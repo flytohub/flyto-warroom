@@ -26,8 +26,8 @@ re-export CE with the exporter.
    git -C /Users/chester/flytohub/flyto-engine apply /path/to/upstream-patches/flyto-engine.patch
    ```
 
-   (`flyto-core`, `flyto-indexer`, and `flyto-i18n` are external dependencies,
-   not vendored here — contributions to them go to their own public repos.)
+   Only `flyto-engine` and `flyto-code` receive implementation patches from
+   this generated CE tree.
 
 4. For generated-only changes listed in `REVIEW_GENERATED.md`, change the
    `flyto-engine` release generator or Engine contract first.

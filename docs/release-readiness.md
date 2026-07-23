@@ -16,10 +16,10 @@ The public CE release tree must pass:
 - `python3 install/scripts/audit-release-tree.py .`
 - `go -C services/flyto-engine-ce test ./...`, including the source-published
   `ce/engine-ce` runtime health, boundary, module catalog, capability snapshot,
-  and access self-test handlers plus `ce/worker-ce` queue, scheduler, backoff,
-  circuit, and canary self-test handlers.
-- frontend build, i18n hardcoded audit, visual-system audit, and focused UI
-  interaction tests
+  and access handlers plus the worker, scheduler, analysis, and report runtime
+  workflow tests.
+- dedicated CE frontend dependency install, typecheck, lint, and production
+  build
 - Docker build-boundary audit and multi-arch image verification when publishing
   images
 - demo seed workspace audit covering code, container, cloud, external,
@@ -27,7 +27,8 @@ The public CE release tree must pass:
 - running-stack smoke with `python3 install/scripts/smoke-ce-stack.py --env install/.env`
   after `make ce-up` on a disposable fresh database, including one-time admin
   bootstrap, local JWT, workspace, public repository connection, public worker
-  scan, findings, score, HTML report, engine/worker health, and frontend proxy
+  scan, findings, evidence, risk hypotheses, HTML report, all five Go service
+  health endpoints, frontend proxy, and a 60-second startup ceiling
 - `python3 install/scripts/provider-readiness.py --scope public_release`
   records account gates. The tag workflow runs the strict form only after it
   has proved a successful GitHub CI run and authenticated to Docker Hub.

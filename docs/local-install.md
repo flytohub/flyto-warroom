@@ -15,16 +15,19 @@ python3 install/scripts/setup-ce.py
 make source-build
 ```
 
-The source profile builds the engine API, scan worker, and frontend from the
-checked-out public tree. PostgreSQL comes from its upstream official image. No
-private Flyto2 repository, private service image, source token, or Flyto Cloud
-connection is required.
+The source profile builds the engine API, scan worker, scheduler, analysis
+service, report service, and frontend from the checked-out public tree.
+PostgreSQL comes from its upstream official image. No private Flyto2
+repository, private service image, source token, or hosted connection is
+required.
 
 For reproducible installs, pin all service tags to one GitHub release version.
-Git tag `v0.4.1` publishes Docker tags `engine-ce-0.4.1`,
-`worker-ce-0.4.1`, and `code-ce-0.4.1`. GitHub Actions builds those images from
-the tagged public source after the tagged `main` commit passes CI and records
-the resulting immutable digests as release evidence.
+Git tag `v0.5.0` publishes Docker tags `engine-ce-0.5.0`,
+`worker-ce-0.5.0`, `scheduler-ce-0.5.0`,
+`analysis-ce-0.5.0`, `report-ce-0.5.0`, and
+`code-ce-0.5.0`. GitHub Actions builds those images from the tagged
+public source after the tagged `main` commit passes CI and records the resulting
+immutable digests as release evidence.
 
 ## Start CE Locally
 
@@ -54,18 +57,22 @@ Open:
 
 - Frontend: `http://localhost:8088`
 - Engine health: `http://localhost:8080/health`
-- CE product loop: `http://localhost:8080/api/v1/ce/product-loop`
+- Worker health: `http://localhost:8081/health`
+- Scheduler health: `http://localhost:8082/health`
+- Analysis health: `http://localhost:8083/health`
+- Report health: `http://localhost:8084/health`
 
 Release maintainers can run `make ce-smoke` against a disposable fresh database.
 That command intentionally consumes the one-time bootstrap by creating a
 temporary administrator, connects a credential-free public repository, waits
 for the public worker to finish scanning, and verifies findings, score, report,
-engine health, worker health, and frontend proxying. Run `make ce-reset-db`
+evidence, risk hypotheses, all five Go service health endpoints, and frontend
+proxying. Run `make ce-reset-db`
 afterward before using the instance normally.
 
-To build and test the exact same three application services from the checked-out
-public source instead, run `make source-up && make source-smoke` against a fresh
-source-profile database.
+To build and test the exact same six application images from the checked-out
+public source instead, run `make source-up && make source-smoke` against a
+fresh source-profile database.
 
 On the first visit, create the administrator account in the browser. The setup
 route permanently closes after the first successful account creation; later

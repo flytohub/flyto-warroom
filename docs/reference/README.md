@@ -4,62 +4,14 @@
 
 This generated index links public classes, functions, methods, and callable source declarations to their exact implementation lines. Domain behavior is explained in the owning package and feature guides; these pages provide the complete implementation-level navigation contract.
 
-Inventory: **18220 declaration sites** across **1383 source files**.
+Inventory: **1533 declaration sites** across **184 source files**.
 
 | Reference | Area | Declarations | Files |
 |---|---|---:|---:|
 | [`source-install-01.md`](source-install-01.md) | `install/` | 79 | 16 |
-| [`source-packages-01.md`](source-packages-01.md) | `packages/` | 350 | 17 |
-| [`source-packages-02.md`](source-packages-02.md) | `packages/` | 350 | 9 |
-| [`source-packages-03.md`](source-packages-03.md) | `packages/` | 350 | 10 |
-| [`source-packages-04.md`](source-packages-04.md) | `packages/` | 350 | 10 |
-| [`source-packages-05.md`](source-packages-05.md) | `packages/` | 350 | 4 |
-| [`source-packages-06.md`](source-packages-06.md) | `packages/` | 350 | 23 |
-| [`source-packages-07.md`](source-packages-07.md) | `packages/` | 350 | 69 |
-| [`source-packages-08.md`](source-packages-08.md) | `packages/` | 350 | 59 |
-| [`source-packages-09.md`](source-packages-09.md) | `packages/` | 350 | 22 |
-| [`source-packages-10.md`](source-packages-10.md) | `packages/` | 350 | 19 |
-| [`source-packages-11.md`](source-packages-11.md) | `packages/` | 350 | 103 |
-| [`source-packages-12.md`](source-packages-12.md) | `packages/` | 350 | 44 |
-| [`source-packages-13.md`](source-packages-13.md) | `packages/` | 350 | 48 |
-| [`source-packages-14.md`](source-packages-14.md) | `packages/` | 350 | 24 |
-| [`source-packages-15.md`](source-packages-15.md) | `packages/` | 350 | 10 |
-| [`source-packages-16.md`](source-packages-16.md) | `packages/` | 350 | 10 |
-| [`source-packages-17.md`](source-packages-17.md) | `packages/` | 350 | 14 |
-| [`source-packages-18.md`](source-packages-18.md) | `packages/` | 350 | 9 |
-| [`source-packages-19.md`](source-packages-19.md) | `packages/` | 350 | 17 |
-| [`source-packages-20.md`](source-packages-20.md) | `packages/` | 350 | 8 |
-| [`source-packages-21.md`](source-packages-21.md) | `packages/` | 350 | 11 |
-| [`source-packages-22.md`](source-packages-22.md) | `packages/` | 350 | 22 |
-| [`source-packages-23.md`](source-packages-23.md) | `packages/` | 350 | 14 |
-| [`source-packages-24.md`](source-packages-24.md) | `packages/` | 350 | 19 |
-| [`source-packages-25.md`](source-packages-25.md) | `packages/` | 350 | 16 |
-| [`source-packages-26.md`](source-packages-26.md) | `packages/` | 350 | 35 |
-| [`source-packages-27.md`](source-packages-27.md) | `packages/` | 350 | 11 |
-| [`source-packages-28.md`](source-packages-28.md) | `packages/` | 350 | 17 |
-| [`source-packages-29.md`](source-packages-29.md) | `packages/` | 350 | 21 |
-| [`source-packages-30.md`](source-packages-30.md) | `packages/` | 350 | 20 |
-| [`source-packages-31.md`](source-packages-31.md) | `packages/` | 350 | 27 |
-| [`source-packages-32.md`](source-packages-32.md) | `packages/` | 350 | 11 |
-| [`source-packages-33.md`](source-packages-33.md) | `packages/` | 350 | 14 |
-| [`source-packages-34.md`](source-packages-34.md) | `packages/` | 350 | 12 |
-| [`source-packages-35.md`](source-packages-35.md) | `packages/` | 350 | 38 |
-| [`source-packages-36.md`](source-packages-36.md) | `packages/` | 350 | 23 |
-| [`source-packages-37.md`](source-packages-37.md) | `packages/` | 350 | 16 |
-| [`source-packages-38.md`](source-packages-38.md) | `packages/` | 350 | 15 |
-| [`source-packages-39.md`](source-packages-39.md) | `packages/` | 350 | 18 |
-| [`source-packages-40.md`](source-packages-40.md) | `packages/` | 350 | 54 |
-| [`source-packages-41.md`](source-packages-41.md) | `packages/` | 350 | 65 |
-| [`source-packages-42.md`](source-packages-42.md) | `packages/` | 350 | 36 |
-| [`source-packages-43.md`](source-packages-43.md) | `packages/` | 350 | 31 |
-| [`source-packages-44.md`](source-packages-44.md) | `packages/` | 350 | 33 |
-| [`source-packages-45.md`](source-packages-45.md) | `packages/` | 350 | 25 |
-| [`source-packages-46.md`](source-packages-46.md) | `packages/` | 350 | 38 |
-| [`source-packages-47.md`](source-packages-47.md) | `packages/` | 350 | 36 |
-| [`source-packages-48.md`](source-packages-48.md) | `packages/` | 350 | 48 |
-| [`source-packages-49.md`](source-packages-49.md) | `packages/` | 26 | 5 |
+| [`source-packages-01.md`](source-packages-01.md) | `packages/` | 75 | 8 |
 | [`source-scripts-01.md`](source-scripts-01.md) | `scripts/` | 37 | 7 |
 | [`source-services-01.md`](source-services-01.md) | `services/` | 350 | 38 |
-| [`source-services-02.md`](source-services-02.md) | `services/` | 350 | 39 |
-| [`source-services-03.md`](source-services-03.md) | `services/` | 350 | 37 |
-| [`source-services-04.md`](source-services-04.md) | `services/` | 228 | 33 |
+| [`source-services-02.md`](source-services-02.md) | `services/` | 350 | 38 |
+| [`source-services-03.md`](source-services-03.md) | `services/` | 350 | 39 |
+| [`source-services-04.md`](source-services-04.md) | `services/` | 292 | 41 |

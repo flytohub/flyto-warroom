@@ -84,7 +84,7 @@ REQUIRED_MARKERS = {
     ".github/workflows/release-images.yml": [
         "Build And Publish CE Images From Public Source",
         "Require a tagged main commit with successful CE CI",
-        "Build and publish engine, worker, and frontend from this tag",
+        "Build and publish five Go runtimes and frontend from this tag",
         "DOCKERHUB_TOKEN",
         "Create or update GitHub release",
     ],

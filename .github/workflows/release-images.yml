@@ -60,7 +60,7 @@ jobs:
           FLYTO_PROVIDER_GITHUB_ACTIONS_READY: "1"
           FLYTO_PROVIDER_DOCKER_HUB_READY: "1"
         run: make provider-readiness-strict
-      - name: Build and publish engine, worker, and frontend from this tag
+      - name: Build and publish five Go runtimes and frontend from this tag
         run: |
           set -eu
           version="${GITHUB_REF_NAME#v}"
@@ -81,18 +81,37 @@ jobs:
             services/flyto-engine-ce
 
           docker buildx build "${common_flags[@]}" \
+            --file services/flyto-engine-ce/Dockerfile \
+            --target scheduler \
+            --tag "$IMAGE_REPOSITORY:scheduler-ce-$version" \
+            --tag "$IMAGE_REPOSITORY:scheduler-ce" \
+            services/flyto-engine-ce
+
+          docker buildx build "${common_flags[@]}" \
+            --file services/flyto-engine-ce/Dockerfile \
+            --target analysis \
+            --tag "$IMAGE_REPOSITORY:analysis-ce-$version" \
+            --tag "$IMAGE_REPOSITORY:analysis-ce" \
+            services/flyto-engine-ce
+
+          docker buildx build "${common_flags[@]}" \
+            --file services/flyto-engine-ce/Dockerfile \
+            --target report \
+            --tag "$IMAGE_REPOSITORY:report-ce-$version" \
+            --tag "$IMAGE_REPOSITORY:report-ce" \
+            services/flyto-engine-ce
+
+          docker buildx build "${common_flags[@]}" \
             --file packages/flyto-code/Dockerfile \
-            --build-arg FLYTO_PUBLIC_ENGINE_ORIGIN=__same_origin__ \
-            --build-arg FLYTO_PUBLIC_AUTOMATION_ORIGIN=__same_origin__ \
-            --build-arg FLYTO_PUBLIC_CORTEX_ORIGIN=__same_origin__ \
-            --build-arg FLYTO_PUBLIC_MODE=community \
-            --build-arg FLYTO_PUBLIC_RELEASE="$GITHUB_REF_NAME" \
             --tag "$IMAGE_REPOSITORY:code-ce-$version" \
             --tag "$IMAGE_REPOSITORY:code-ce" \
             packages/flyto-code
 
           docker buildx imagetools inspect "$IMAGE_REPOSITORY:engine-ce-$version" --format '{{json .Manifest}}' > engine-manifest.json
           docker buildx imagetools inspect "$IMAGE_REPOSITORY:worker-ce-$version" --format '{{json .Manifest}}' > worker-manifest.json
+          docker buildx imagetools inspect "$IMAGE_REPOSITORY:scheduler-ce-$version" --format '{{json .Manifest}}' > scheduler-manifest.json
+          docker buildx imagetools inspect "$IMAGE_REPOSITORY:analysis-ce-$version" --format '{{json .Manifest}}' > analysis-manifest.json
+          docker buildx imagetools inspect "$IMAGE_REPOSITORY:report-ce-$version" --format '{{json .Manifest}}' > report-manifest.json
           docker buildx imagetools inspect "$IMAGE_REPOSITORY:code-ce-$version" --format '{{json .Manifest}}' > frontend-manifest.json
           python3 - <<'PY'
           import json
@@ -102,7 +121,14 @@ jobs:
           version = os.environ["GITHUB_REF_NAME"].removeprefix("v")
           repository = os.environ["IMAGE_REPOSITORY"]
           services = {}
-          for name, tag in (("engine", "engine-ce"), ("worker", "worker-ce"), ("frontend", "code-ce")):
+          for name, tag in (
+              ("engine", "engine-ce"),
+              ("worker", "worker-ce"),
+              ("scheduler", "scheduler-ce"),
+              ("analysis", "analysis-ce"),
+              ("report", "report-ce"),
+              ("frontend", "code-ce"),
+          ):
               descriptor = json.loads(Path(f"{name}-manifest.json").read_text(encoding="utf-8"))
               services[name] = {
                   "image": repository,
@@ -130,15 +156,6 @@ jobs:
               reference = f'{service["image"]}:{service["tag"]}'
               subprocess.run(["docker", "buildx", "imagetools", "inspect", reference], check=True)
           PY
-      - name: Update official Docker Hub description
-        uses: peter-evans/dockerhub-description@1b9a80c056b620d92cedb9d9b5a223409c68ddfa # v5
-        with:
-          username: ${{ env.DOCKERHUB_USERNAME }}
-          password: ${{ env.DOCKERHUB_TOKEN }}
-          repository: flyto2/warroom
-          short-description: Self-hosted code security scanning, findings, evidence, and reports for Flyto2 Warroom CE.
-          readme-filepath: ./docs/docker-hub-overview.md
-          enable-url-completion: true
       - name: Upload release evidence
         uses: actions/upload-artifact@v7
         with:

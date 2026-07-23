@@ -7,6 +7,12 @@ ENGINE_IMAGE="${FLYTO_WARROOM_ENGINE_IMAGE:-$IMAGE_REPOSITORY}"
 ENGINE_TAG="${FLYTO_WARROOM_ENGINE_TAG:-engine-ce}"
 WORKER_IMAGE="${FLYTO_WARROOM_WORKER_IMAGE:-$IMAGE_REPOSITORY}"
 WORKER_TAG="${FLYTO_WARROOM_WORKER_TAG:-worker-ce}"
+SCHEDULER_IMAGE="${FLYTO_WARROOM_SCHEDULER_IMAGE:-$IMAGE_REPOSITORY}"
+SCHEDULER_TAG="${FLYTO_WARROOM_SCHEDULER_TAG:-scheduler-ce}"
+ANALYSIS_IMAGE="${FLYTO_WARROOM_ANALYSIS_IMAGE:-$IMAGE_REPOSITORY}"
+ANALYSIS_TAG="${FLYTO_WARROOM_ANALYSIS_TAG:-analysis-ce}"
+REPORT_IMAGE="${FLYTO_WARROOM_REPORT_IMAGE:-$IMAGE_REPOSITORY}"
+REPORT_TAG="${FLYTO_WARROOM_REPORT_TAG:-report-ce}"
 FRONTEND_IMAGE="${FLYTO_WARROOM_FRONTEND_IMAGE:-$IMAGE_REPOSITORY}"
 FRONTEND_TAG="${FLYTO_WARROOM_FRONTEND_TAG:-code-ce}"
 
@@ -21,10 +27,15 @@ docker build --target engine \
 docker build --target worker \
   -t "$WORKER_IMAGE:$WORKER_TAG" \
   "$ROOT/services/flyto-engine-ce"
+docker build --target scheduler \
+  -t "$SCHEDULER_IMAGE:$SCHEDULER_TAG" \
+  "$ROOT/services/flyto-engine-ce"
+docker build --target analysis \
+  -t "$ANALYSIS_IMAGE:$ANALYSIS_TAG" \
+  "$ROOT/services/flyto-engine-ce"
+docker build --target report \
+  -t "$REPORT_IMAGE:$REPORT_TAG" \
+  "$ROOT/services/flyto-engine-ce"
 docker build \
-  --build-arg FLYTO_PUBLIC_ENGINE_ORIGIN=__same_origin__ \
-  --build-arg FLYTO_PUBLIC_MODE=community \
-  --build-arg FLYTO_PUBLIC_AUTOMATION_ORIGIN=__same_origin__ \
-  --build-arg FLYTO_PUBLIC_CORTEX_ORIGIN=__same_origin__ \
   -t "$FRONTEND_IMAGE:$FRONTEND_TAG" \
   "$ROOT/packages/flyto-code"

@@ -48,6 +48,46 @@ services:
       postgres:
         condition: service_healthy
 
+  scheduler:
+    image: "${FLYTO_WARROOM_SCHEDULER_IMAGE:-docker.io/flyto2/warroom}:${FLYTO_WARROOM_SCHEDULER_TAG:-scheduler-ce}"
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${FLYTO_SCHEDULER_PORT:-8082}:8082"
+    environment:
+      FLYTO_EDITION: "community"
+      FLYTO_CE_SCHEDULER_ADDR: ":8082"
+      FLYTO_CE_SCAN_INTERVAL: "${FLYTO_CE_SCAN_INTERVAL:-24h}"
+      FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable" # placeholder
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  analysis:
+    image: "${FLYTO_WARROOM_ANALYSIS_IMAGE:-docker.io/flyto2/warroom}:${FLYTO_WARROOM_ANALYSIS_TAG:-analysis-ce}"
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${FLYTO_ANALYSIS_PORT:-8083}:8083"
+    environment:
+      FLYTO_EDITION: "community"
+      FLYTO_CE_ANALYSIS_ADDR: ":8083"
+      FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable" # placeholder
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  report:
+    image: "${FLYTO_WARROOM_REPORT_IMAGE:-docker.io/flyto2/warroom}:${FLYTO_WARROOM_REPORT_TAG:-report-ce}"
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${FLYTO_REPORT_PORT:-8084}:8084"
+    environment:
+      FLYTO_EDITION: "community"
+      FLYTO_CE_REPORT_ADDR: ":8084"
+      FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable" # placeholder
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   frontend:
     image: "${FLYTO_WARROOM_FRONTEND_IMAGE:-docker.io/flyto2/warroom}:${FLYTO_WARROOM_FRONTEND_TAG:-code-ce}"
     restart: unless-stopped

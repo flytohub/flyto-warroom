@@ -10,23 +10,20 @@ ROOT = Path(sys.argv[1] if len(sys.argv) > 1 else ".").resolve()
 
 REQUIRED_MARKERS = {
     "README.md": [
-        "BYO offensive validation platform",
-        "Bring your own tools",
-        "turns their findings into verified attack paths, pentest evidence, and red-team scenarios",
-        "self-hosted source-available security warroom",
-        "scanner-only dashboard",
-        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
+        "self-hosted source-available security workbench",
+        "Connect a public Git repository",
+        "Repository -> Scan -> Findings -> Evidence -> Risk Hypotheses -> Verify -> Report",
+        "not a scanner-only dashboard",
         "Existing security tools are inputs",
         "CE is useful without Flyto2 Cloud",
         "Enterprise Cloud Bridge",
     ],
     "docs/docker-hub-overview.md": [
-        "BYO offensive validation platform",
-        "Bring your own tools",
-        "turns their findings into verified attack paths, pentest evidence, and red-team scenarios",
-        "self-hosted source-available security warroom",
+        "self-hosted, source-available, noncommercial edition",
+        "local source-security workbench",
         "Not a scanner-only image",
-        "Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation",
+        "Repository -> Scan -> Findings -> Evidence -> Risk Hypotheses -> Verify -> Report",
+        "all six from public source",
         "Enterprise Path",
     ],
     "docs/feature-matrix.md": [

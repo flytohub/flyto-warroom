@@ -8,16 +8,16 @@
 
 Self-hosted Community Edition for the Flyto2 security operations platform.
 
-Flyto2 Warroom CE is a self-hosted source-available security warroom and
-BYO offensive validation platform. Bring your own tools: Flyto2
-turns their findings into verified attack paths, pentest evidence,
-and red-team scenarios.
+Flyto2 Warroom CE is a self-hosted source-available security workbench.
+Connect a public Git repository, run credential-free source checks, review
+evidence and transparent risk-chain hypotheses, verify remediation, and
+export a local HTML report.
 
 It is not a scanner-only dashboard. Existing security tools are
 inputs; the product loop is:
 
 ```text
-Findings -> Attack Paths -> Offensive Validation -> Evidence -> Remediation
+Repository -> Scan -> Findings -> Evidence -> Risk Hypotheses -> Verify -> Report
 ```
 
 ## See The Warroom In Action
@@ -38,10 +38,9 @@ CE is useful without Flyto2 Cloud. Enterprise Cloud Bridge adds
 commercial intelligence, managed remediation, identity, support,
 fleet execution, and signed premium evidence when teams need it.
 
-Flyto2 Warroom CE is the self-hosted source-available security operations
-platform for code, CTEM, external attack surface, cloud, container,
-runtime, automated security testing, evidence, scoring, and compliance
-workflows.
+Flyto2 Warroom CE is the self-hosted source-available code-security loop:
+local users, public repositories, queued scans, findings, evidence,
+non-authoritative risk hypotheses, remediation verification, and reports.
 
 It is built for teams that want a local Warroom they can install, inspect,
 patch, verify, and connect back to Flyto2 Enterprise services when they
@@ -81,14 +80,13 @@ workflows stay behind explicit capability gates.
 
 | Area | What CE is meant to show | Enterprise path |
 | --- | --- | --- |
-| Code security | SAST, SCA, secrets, IaC, reachability, code score, evidence | AI proposals, promotion, approval, rollback |
-| CTEM and external exposure | Footprint, asset map, posture, issue lifecycle, scoring | Commercial enrichment and continuous monitoring |
-| Automated security testing | Authorized DAST/runner workflows, replay, evidence | Managed runner fleet and scale-out execution |
-| Cloud, container, runtime, VM | Posture views, connector contracts, local evidence | Live remediation and managed connector execution |
-| Threat intelligence | Public/feed-backed lookups where configured | Darkweb, stealer, leak, phishing, actor, malware datasets |
-| Evidence and compliance | Audit timeline, reports, evidence packs, verification | Legal hold, offline license, airgap, enterprise support |
-| Identity and governance | Local roles, capabilities, gated actions | SSO/SAML/SCIM, advanced entitlement, commercial billing |
-| AI governance | Deterministic fallback, audit events, provider visibility | Quota, routing, commercial AI proposal workflows |
+| Local identity | One-time administrator setup and engine-issued local JWT | Enterprise identity and policy controls |
+| Repository security | Credential-free public Git scans for secrets, IaC, source, and dependency signals | Managed connectors and proprietary intelligence |
+| Evidence | Deterministic evidence digests and finding-linked records | Signed premium evidence and commercial correlation |
+| Risk chains | Explainable, non-authoritative attack-path hypotheses | Authoritative scoring and cross-organization calibration |
+| Remediation | Guidance and finding-fingerprint re-verification | Approval, execution, rollback, and managed remediation |
+| Reporting | Local portable HTML reports | Enterprise reporting, retention, and support |
+| Operator experience | 16 languages and light/dark/system themes | Enterprise branding and fleet governance |
 
 The machine-generated edition matrix lives in `docs/feature-matrix.md`
 and is derived from the engine module catalog instead of hand-written
@@ -114,10 +112,11 @@ Default local ports:
 | --- | --- |
 | Warroom UI | `8088` |
 | Engine API | `8080` |
+| Scan worker | `8081` |
+| Scheduler | `8082` |
+| Analysis | `8083` |
+| Report | `8084` |
 | Postgres | `5432` |
-| Runner | `8090` |
-| Verification | `8344` |
-| Brand Vision | `8095` |
 
 ## Usage
 
@@ -144,7 +143,8 @@ safe local default. Enterprise simulation uses
 ### Build The Public Source Profile
 
 The source profile builds the complete PolyForm Noncommercial 1.0.0 CE
-PostgreSQL engine, scan worker, and the same React frontend directly
+PostgreSQL, all five Go runtimes, and the independent React CE frontend
+directly
 from this repository. It does not pull
 Flyto2 service images or require credentials:
 
@@ -165,14 +165,14 @@ scans, findings, health summaries, and local report delivery. See
 
 ```mermaid
 flowchart LR
-  UI["flyto-code<br/>Warroom cockpit"] --> API["CE engine<br/>public source"]
-  API --> KERNEL["services/flyto-engine-ce<br/>complete CE runtime"]
+  UI["CE React workbench"] --> API["Engine API :8080"]
   API --> DB[("Postgres")]
-  API --> Worker["CE scan worker<br/>public source"]
-  Worker --> Repo["credential-free public repo clone"]
+  Scheduler["Scheduler :8082"] --> DB
+  Worker["Scan worker :8081"] --> Repo["public Git repository"]
   Worker --> DB
-  API -. premium signed jobs .-> Cloud["Flyto2 Enterprise Cloud Bridge"]
-  Cloud -. signed evidence .-> API
+  Analysis["Analysis :8083"] --> DB
+  Report["Report :8084"] --> DB
+  DB --> API
 ```
 
 The public repository is generated from allowlisted packages and contracts.
@@ -185,9 +185,9 @@ credentials, SaaS/Enterprise adapters, and live remediation remain private.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 1616 | React/Vite Warroom cockpit, i18n runtime, and capability-gated UI. |
+| `flyto-code` | `flyto-code` | 25 | Independent React/Vite CE workbench with built-in languages and themes. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
-| `flyto-engine-ce` | `flyto-engine` | 160 | Reproducible CE engine/worker source runtimes and public kernel primitives. |
+| `flyto-engine-ce` | `flyto-engine` | 168 | Five independently buildable Go CE runtimes and their public kernel. |
 
 ## Docker Images
 
@@ -196,10 +196,13 @@ Published repository: `docker.io/flyto2/warroom`
 | Service | Tag |
 | --- | --- |
 | Engine API | `engine-ce` |
-| Worker | `worker-ce` |
+| Scan Worker | `worker-ce` |
+| Scheduler | `scheduler-ce` |
+| Analysis | `analysis-ce` |
+| Report | `report-ce` |
 | Warroom UI | `code-ce` |
 
-Stable release `v0.4.1` builds per-service `*-0.4.1`
+Stable release `v0.5.0` builds per-service `*-0.5.0`
 Docker images directly from that tagged public source after its `main`
 commit passes CI. See `docs/official-builds.md` for the release contract.
 

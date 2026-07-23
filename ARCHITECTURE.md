@@ -15,11 +15,12 @@ resource/evidence records, and edition gates. CE source must not import private
 `flyto-engine` API handlers, store internals, billing, SaaS adapters,
 Enterprise adapters, proprietary intelligence, or live remediation workers.
 
-The public tree contains buildable Go entrypoints for both
-`ce/engine-ce` and `ce/worker-ce`, their complete allowlisted CE kernel source,
-and the frontend source. Engine, worker, and frontend build and run from this
-repository without a private repository checkout, private image, hosted
-service, deploy key, or commercial runtime.
+The public tree contains five buildable Go entrypoints:
+`ce/engine-ce`, `ce/worker-ce`, `ce/scheduler-ce`, `ce/analysis-ce`, and
+`ce/report-ce`, plus their allowlisted CE kernel and the physically independent
+`src-ce` frontend. All six application images build and run from this
+repository without a private checkout, private image, hosted service, deploy
+key, or commercial runtime.
 
 Enterprise Cloud Bridge and airgap builds attach premium services through signed
 evidence and build-time overlays. Runtime source pulls are forbidden.

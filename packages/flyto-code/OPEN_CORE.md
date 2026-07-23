@@ -1,7 +1,7 @@
 # Flyto2 Code In Flyto2 Warroom CE
 
-This frontend package is copied from the private `flyto-code` source tree by
-`flyto2-open-core-export`.
+This physically independent frontend package is exported from `flyto-code/src-ce`
+by `flyto2-open-core-export`. It does not contain the private unified cockpit.
 
 Contribution rule:
 
@@ -9,8 +9,13 @@ Contribution rule:
 - Maintainers import accepted public changes back into `/Users/chester/flytohub/flyto-code`.
 - After source tests pass, maintainers rerun the open-core exporter and update
   `flyto-warroom` from the generated output.
-- Enterprise, SaaS, on-prem, and airgap frontend code is attached only through
-  paid build-time overlays on a pinned CE commit.
+- Enterprise capabilities are paid build-time overlays on a pinned CE commit;
+  they are never copied into this public package.
+- Enterprise and SaaS frontend code remains outside this tree and composes
+  through reviewed contracts on a pinned CE commit.
 
-Do not add credentials, hosted-only configuration, private image coordinates, or
-enterprise-only implementation details to this package.
+The CE UI includes local administrator setup, repository scans, evidence,
+transparent risk hypotheses, remediation re-verification, portable reports,
+language selection, and light/dark/system themes. Do not add credentials,
+hosted-only configuration, private image coordinates, or commercial
+implementation details to this package.

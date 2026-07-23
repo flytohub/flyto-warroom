@@ -10,8 +10,8 @@ Warroom CE now starts like a self-hosted developer platform: run
 creates the first administrator and signs that user in.
 
 The installer generates only the Postgres password and local-JWT signing secret
-needed by the three-service CE application stack. It does not request, print,
-or write account credentials.
+needed by the six-image CE application stack. It does not request, print, or
+write account credentials.
 
 ## Security Boundary
 

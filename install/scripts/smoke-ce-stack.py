@@ -49,6 +49,12 @@ def main() -> int:
         f"http://127.0.0.1:{env_port(values, 'FLYTO_ENGINE_PORT', 8080)}",
         "--worker",
         f"http://127.0.0.1:{env_port(values, 'FLYTO_WORKER_PORT', 8081)}",
+        "--scheduler",
+        f"http://127.0.0.1:{env_port(values, 'FLYTO_SCHEDULER_PORT', 8082)}",
+        "--analysis",
+        f"http://127.0.0.1:{env_port(values, 'FLYTO_ANALYSIS_PORT', 8083)}",
+        "--report",
+        f"http://127.0.0.1:{env_port(values, 'FLYTO_REPORT_PORT', 8084)}",
         "--frontend",
         f"http://127.0.0.1:{env_port(values, 'FLYTO_CODE_PORT', 8088)}",
     ]

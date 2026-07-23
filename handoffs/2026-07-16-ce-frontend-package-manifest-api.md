@@ -1,32 +1,32 @@
-# CE Frontend Package Manifest API
+# CE Frontend Physical Source Boundary
 
-Date: 2026-07-16
+Date: 2026-07-23
 
 ## Context
 
-`flyto-warroom` is a generated CE mirror. Upstream `flyto-code` added a public
-CE module package-manifest API so community builds, audits, and Warroom syncs
-consume the same split/merge contract.
+`flyto-warroom` is a generated CE mirror. The upstream `flyto-code/src-ce`
+directory is the complete frontend source of the public workbench; the private
+unified cockpit is never copied and then pruned.
 
 ## Change
 
-- Synced `packages/flyto-code/src-next/types/module-manifests/packageManifest.ts`.
-- Synced `packages/flyto-code/src-next/types/module-manifests/index.ts`.
-- Synced `packages/flyto-code/src-next/types/module-manifests/__tests__/moduleBoundaryContract.test.ts`.
-- Synced `packages/flyto-code/scripts/audit-edition-boundary.mjs`.
-- Synced `packages/flyto-code/scripts/audit-platform-loops.mjs`.
+- Exported only `src-ce`, its Vite/TypeScript configuration, nginx config,
+  Dockerfile, and dedicated CE package manifest/lockfile.
+- Added local account bootstrap, repository scans, findings, evidence,
+  risk-chain hypotheses, remediation verification, reports, languages, and
+  themes.
+- Declared `src-next`, `e2e`, and `vendor` forbidden public roots.
 
 ## Verification
 
 ```text
-npm run audit:edition-boundary
-npm run audit:closure
-npm run audit:loops
+npm ci --legacy-peer-deps
+npm run test
+npm run lint
+npm run build
 ```
 
 Run these from `packages/flyto-code`.
 
-The upstream `flyto-code` source commit owns and verifies the TypeScript test,
-lint, build, and community-export checks. This generated package intentionally
-does not include the private sibling `flyto-engine` workspace required by the
-upstream community exporter, and its local node_modules may not include vitest.
+The generated package has no dependency on private sibling repositories or
+hosted Flyto services.

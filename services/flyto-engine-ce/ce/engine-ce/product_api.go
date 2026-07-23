@@ -338,9 +338,32 @@ func (s *ceServer) handleOrgRoutes(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		writeJSON(w, http.StatusOK, map[string]any{"entries": rows, "count": len(rows)})
+	case "workflow":
+		if len(parts) != 6 || r.Method != http.MethodGet {
+			writeAPIError(w, http.StatusMethodNotAllowed, "method_not_allowed")
+			return
+		}
+		summary, err := s.store.ProjectWorkflow(r.Context(), user.ID, projectID)
+		writeStoreResult(w, summary, err, http.StatusOK)
+	case "remediations":
+		if len(parts) != 8 || parts[7] != "verify" || r.Method != http.MethodPost {
+			writeAPIError(w, http.StatusNotFound, "not_found")
+			return
+		}
+		scan, err := s.store.QueueRemediationVerification(
+			r.Context(),
+			user.ID,
+			projectID,
+			parts[6],
+		)
+		writeStoreResult(w, scan, err, http.StatusAccepted)
 	case "reports":
 		if len(parts) == 7 && parts[6] == "build" {
 			s.handleBuildReport(w, r, user, projectID)
+			return
+		}
+		if len(parts) == 7 && parts[6] == "latest.html" {
+			s.handleLatestReport(w, r, user, projectID)
 			return
 		}
 		writeAPIError(w, http.StatusNotFound, "not_found")
@@ -668,6 +691,27 @@ func (s *ceServer) handleBuildReport(w http.ResponseWriter, r *http.Request, use
 	w.Header().Set("Content-Disposition", `inline; filename="flyto-warroom-ce-report.html"`)
 	w.WriteHeader(http.StatusOK)
 	_ = ceReportTemplate.Execute(w, map[string]any{"Project": project, "GeneratedAt": s.now().UTC().Format(time.RFC3339), "Findings": findings, "Severity": severity, "Summary": summary})
+}
+
+func (s *ceServer) handleLatestReport(
+	w http.ResponseWriter,
+	r *http.Request,
+	user ceplatform.User,
+	projectID string,
+) {
+	if r.Method != http.MethodGet {
+		writeAPIError(w, http.StatusMethodNotAllowed, "method_not_allowed")
+		return
+	}
+	report, err := s.store.LatestReport(r.Context(), user.ID, projectID)
+	if err != nil {
+		writeStoreError(w, err)
+		return
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.Header().Set("Content-Disposition", `inline; filename="flyto-warroom-ce-evidence-report.html"`)
+	w.WriteHeader(http.StatusOK)
+	_, _ = io.WriteString(w, report.Body)
 }
 
 var ceReportTemplate = template.Must(template.New("report").Parse(`<!doctype html><html><head><meta charset="utf-8"><title>Flyto2 Warroom CE Security Report</title><style>body{font:15px system-ui;max-width:1050px;margin:40px auto;padding:0 24px;color:#172033}h1,h2{color:#111827}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{padding:16px;border:1px solid #dbe2ea;border-radius:10px}.critical{color:#b91c1c}.high{color:#c2410c}table{width:100%;border-collapse:collapse;margin-top:16px}th,td{text-align:left;border-bottom:1px solid #e5e7eb;padding:9px;vertical-align:top}code{font-size:12px}</style></head><body><h1>Flyto2 Warroom CE Security Report</h1><p><strong>{{.Project.Name}}</strong> · generated {{.GeneratedAt}} · locally computed, non-comparable CE evidence</p><div class="metrics"><div class="metric critical"><strong>{{index .Severity "critical"}}</strong><br>Critical</div><div class="metric high"><strong>{{index .Severity "high"}}</strong><br>High</div><div class="metric"><strong>{{index .Severity "medium"}}</strong><br>Medium</div><div class="metric"><strong>{{len .Findings}}</strong><br>Total findings</div></div><h2>Findings</h2><table><thead><tr><th>Severity</th><th>Finding</th><th>Location</th><th>Remediation</th></tr></thead><tbody>{{range .Findings}}<tr><td>{{.Severity}}</td><td>{{.Name}}<br><code>{{.RuleID}}</code></td><td><code>{{.File}}:{{.Line}}</code></td><td>{{.Detail}}</td></tr>{{else}}<tr><td colspan="4">No findings in the latest scans.</td></tr>{{end}}</tbody></table></body></html>`))

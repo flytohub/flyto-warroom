@@ -26,25 +26,30 @@ REQUIRED = [
     "services/flyto-engine-ce/ce/worker-ce/server.go",
     "services/flyto-engine-ce/ce/worker-ce/server_test.go",
     "services/flyto-engine-ce/ce/worker-ce/README.md",
+    "services/flyto-engine-ce/ce/scheduler-ce/main.go",
+    "services/flyto-engine-ce/ce/analysis-ce/main.go",
+    "services/flyto-engine-ce/ce/report-ce/main.go",
+    "services/flyto-engine-ce/internal/ceruntime/service.go",
+    "services/flyto-engine-ce/internal/ceworkflow/workflow.go",
+    "services/flyto-engine-ce/internal/ceworkflow/workflow_test.go",
     "services/flyto-engine-ce/internal/canon/canon.go",
     "services/flyto-engine-ce/internal/ceproductloop/product_loop.go",
     "services/flyto-engine-ce/internal/ceproductloop/product_loop_test.go",
     "services/flyto-engine-ce/internal/permission/capabilities.go",
     "services/flyto-engine-ce/internal/safehttp/safehttp.go",
     "packages/flyto-code/package.json",
-    "packages/flyto-code/src-next/lib/env.ts",
-    "packages/flyto-code/src-next/lib/engine/platform/community.ts",
-    "packages/flyto-code/src-next/app/(control-panel)/flyto/projects/components/ProjectsPage.tsx",
-    "packages/flyto-code/src-next/app/(public)/(explore)/components/CommunityDemoView.tsx",
-    "packages/flyto-code/src-next/app/(public)/(explore)/route.tsx",
-    "packages/flyto-code/src-next/components/compounds/onboarding/CommunityProductLoopPanel.styles.ts",
-    "packages/flyto-code/src-next/components/compounds/onboarding/CommunityProductLoopPanel.tsx",
-    "packages/flyto-code/src-next/components/compounds/product-verification/AutomationTestPanel.tsx",
-    "packages/flyto-code/src-next/components/compounds/product-verification/ProductVerificationEvidencePanel.tsx",
-    "packages/flyto-code/src-next/components/compounds/product-verification/ProductVerificationOverview.tsx",
-    "packages/flyto-code/src-next/components/compounds/product-verification/ProductVerificationView.tsx",
-    "packages/flyto-code/src-next/components/compounds/product-verification/productVerificationModel.ts",
-    "packages/flyto-code/src-next/components/compounds/product-verification/useProductVerificationController.ts",
+    "packages/flyto-code/package-lock.json",
+    "packages/flyto-code/index-ce.html",
+    "packages/flyto-code/vite.config.ce.ts",
+    "packages/flyto-code/tsconfig.ce.json",
+    "packages/flyto-code/Dockerfile",
+    "packages/flyto-code/nginx.conf",
+    "packages/flyto-code/src-ce/App.tsx",
+    "packages/flyto-code/src-ce/api.ts",
+    "packages/flyto-code/src-ce/i18n.ts",
+    "packages/flyto-code/src-ce/main.tsx",
+    "packages/flyto-code/src-ce/styles.css",
+    "packages/flyto-code/src-ce/types.ts",
     "packages/flyto-code/.env.example",
     "packages/flyto-code/.dockerignore",
     "install/docker-compose.ce.yml",
@@ -136,16 +141,15 @@ PRIVATE_GLOBS = [
     "packages/flyto-code/.env",
     "packages/flyto-code/.env.local",
     "packages/flyto-code/.env.production",
-    "packages/flyto-code/src-next/types/module-manifests/enterprise.ts",
-    "packages/flyto-code/src-next/types/module-manifests/future.ts",
-    "packages/flyto-code/src-next/app/(control-panel)/flyto/workspace/components/pages/EnterpriseControlPlanePage.tsx",
-    "packages/flyto-code/src-next/components/compounds/system/EnterpriseControlPlaneView.tsx",
-    "packages/flyto-code/src-next/components/compounds/system/__tests__/EnterpriseControlPlaneView.test.tsx",
+    "packages/flyto-code/src-next/**",
+    "packages/flyto-code/e2e/**",
+    "packages/flyto-code/vendor/**",
 ]
 
 LOCAL_ARTIFACT_PARTS = {
     "node_modules",
     "dist",
+    "dist-ce",
     "dist-next",
     "reports",
     "test-results",
@@ -256,7 +260,9 @@ def main() -> int:
             "../packages/flyto-code",
             "target: engine",
             "target: worker",
-            "FLYTO_PUBLIC_MODE: community",
+            "target: scheduler",
+            "target: analysis",
+            "target: report",
             "postgres:17-alpine",
             "FLYTO_PG_URL",
             "FLYTO_LOCAL_AUTH_JWT_SECRET",
@@ -286,8 +292,14 @@ def main() -> int:
                 blockers.append(f"CE source image missing multi-architecture runtime marker: {marker}")
         if not re.search(r"adduser[^\n]*-u\s+10001\b", ce_image_text):
             blockers.append("CE source runtime must create fixed uid 10001")
-        if ce_image_text.count("HEALTHCHECK") != 2:
-            blockers.append("CE source engine and worker must each define a healthcheck")
+        required_targets = ("engine", "worker", "scheduler", "analysis", "report")
+        for target in required_targets:
+            if f"FROM runtime-base AS {target}" not in ce_image_text:
+                blockers.append(f"CE source Dockerfile missing {target} runtime target")
+            if f"./ce/{target}-ce" not in ce_image_text:
+                blockers.append(f"CE source Dockerfile does not build ce/{target}-ce")
+        if ce_image_text.count("HEALTHCHECK") != len(required_targets):
+            blockers.append("all five CE source runtimes must define a healthcheck")
     enterprise_compose = ROOT / "install/docker-compose.ee-sim.yml"
     enterprise_text = text(enterprise_compose) if enterprise_compose.exists() else ""
     for marker in (

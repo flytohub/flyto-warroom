@@ -45,13 +45,7 @@ release says otherwise.
 
 ## Third-party software
 
-External open-source dependencies — installed from their public registries, NOT
-vendored into this repo (see `DEPENDENCIES.md`):
-
-- `flyto-core` (PyPI): Apache-2.0
-- `flyto-indexer` (PyPI): Apache-2.0
-- `flyto-i18n` (github.com/flytohub/flyto-i18n): MIT
-
-Every third-party package and vendored asset keeps its original license. If a
-package-level or third-party license conflicts with this summary, that specific
-license controls that material.
+External Go, npm, PostgreSQL, and container-base dependencies come from their
+public registries and keep their original licenses. No sibling Flyto repository
+is a build dependency of this release. If a package-level or third-party license
+conflicts with this summary, that specific license controls that material.

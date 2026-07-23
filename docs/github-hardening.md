@@ -25,4 +25,5 @@ The repository also carries file-level guardrails:
   or weakened.
 - `.github/workflows/release-images.yml` accepts stable version tags only,
   requires prior successful CI on the tagged `main` commit, and builds the
-  engine, worker, and frontend directly from that public source tree.
+  engine, worker, scheduler, analysis, report, and frontend directly from that
+  public source tree.

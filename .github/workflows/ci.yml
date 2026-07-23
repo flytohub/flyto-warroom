@@ -45,6 +45,11 @@ jobs:
       - uses: actions/setup-go@v6
         with:
           go-version-file: services/flyto-engine-ce/go.mod
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: packages/flyto-code/package-lock.json
       - name: Test engine CE source package
         working-directory: services/flyto-engine-ce
         run: go test ./...
@@ -74,11 +79,6 @@ jobs:
         run: |
           python packages/flyto-contracts/conformance/validate.py runner-callback packages/flyto-contracts/examples/runner-callback.json
           python packages/flyto-contracts/conformance/validate.py evidence-event packages/flyto-contracts/examples/evidence-event.json
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "22"
-          cache: npm
-          cache-dependency-path: packages/flyto-code/package-lock.json
       - name: Build frontend package
         working-directory: packages/flyto-code
         env:

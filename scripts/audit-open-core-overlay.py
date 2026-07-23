@@ -14,7 +14,9 @@ REQUIRED_FILES = [
     "services/flyto-engine-ce/SOURCE_BOUNDARY.json",
     "packages/flyto-code/OPEN_CORE.md",
     "packages/flyto-code/CE_SOURCE_BOUNDARY.md",
-    "packages/flyto-code/src-next/types/module-manifests/packageManifest.ts",
+    "packages/flyto-code/src-ce/App.tsx",
+    "packages/flyto-code/src-ce/api.ts",
+    "packages/flyto-code/src-ce/i18n.ts",
     "install/docker-compose.ce.yml",
     "install/docker-compose.ee-sim.yml",
     "Makefile",
@@ -45,11 +47,9 @@ AUTHORITY_OVERLAYS = {
 }
 
 FRONTEND_PRIVATE_PATHS = [
-    "packages/flyto-code/src-next/types/module-manifests/enterprise.ts",
-    "packages/flyto-code/src-next/types/module-manifests/future.ts",
-    "packages/flyto-code/src-next/app/(control-panel)/flyto/workspace/components/pages/EnterpriseControlPlanePage.tsx",
-    "packages/flyto-code/src-next/components/compounds/system/EnterpriseControlPlaneView.tsx",
-    "packages/flyto-code/src-next/components/compounds/system/__tests__/EnterpriseControlPlaneView.test.tsx",
+    "packages/flyto-code/src-next",
+    "packages/flyto-code/e2e",
+    "packages/flyto-code/vendor",
 ]
 
 

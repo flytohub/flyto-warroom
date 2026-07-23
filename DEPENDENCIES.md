@@ -1,18 +1,17 @@
 # External Dependencies
 
-Flyto2 Warroom CE builds on these open-source packages. Their source remains in
-their own public repositories (where contributions and issues should go). The
-generated public tree contains the complete CE engine/worker Go module and the
-frontend's generated locale assets, so a CE source build never requires a
-private Flyto2 repository or private Flyto2 service image.
+Flyto2 Warroom CE uses public registry dependencies only. The generated tree
+contains all five CE Go entrypoints, their CE-safe kernel, the independent React
+frontend, and built-in locale strings, so a source build never requires another
+Flyto repository or private service image.
 
 | Package | Install from | Source repository | License |
 | --- | --- | --- | --- |
-| `flyto-core` | PyPI (`pip install flyto-core`) | github.com/flytohub/flyto-core | Apache-2.0 |
-| `flyto-indexer` | PyPI (`pip install flyto-indexer`) | github.com/flytohub/flyto-indexer | Apache-2.0 |
-| `flyto-i18n` | locale bundle (build-time) | github.com/flytohub/flyto-i18n | MIT |
+| Go modules | `proxy.golang.org` / declared module source | `services/flyto-engine-ce/go.mod` | Per module |
+| React, Vite, TypeScript | npm registry | `packages/flyto-code/package-lock.json` | Per package |
+| PostgreSQL | Official container image | `install/docker-compose*.yml` | PostgreSQL License |
+| Alpine, Go, Node, nginx base images | Public image registries | Public Dockerfiles | Per image |
 
-Why the full upstream repositories are not copied here: the CE runtime uses a
-reviewed allowlist of public engine packages plus built frontend assets. Keeping
-the upstream packages separate avoids duplicated source while the generated
-`OPEN_CORE_MANIFEST.json` pins every contributing source commit.
+`OPEN_CORE_MANIFEST.json` pins the two Flyto source repositories that contribute
+implementation (`flyto-engine` and `flyto-code`) and records the generated tree
+digest.

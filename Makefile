@@ -89,9 +89,10 @@ backend-test:
 	go -C services/flyto-engine-ce test ./...
 
 frontend-test:
-	npm --prefix packages/flyto-code run audit:module-packages
-	npm --prefix packages/flyto-code run audit:module-physical-boundaries
-	npm --prefix packages/flyto-code run audit:design-system-boundary
+	npm --prefix packages/flyto-code ci --legacy-peer-deps
+	npm --prefix packages/flyto-code audit --audit-level=high
+	npm --prefix packages/flyto-code run test
+	npm --prefix packages/flyto-code run build
 
 contracts-test:
 	python3 packages/flyto-contracts/conformance/validate.py runner-callback packages/flyto-contracts/examples/runner-callback.json

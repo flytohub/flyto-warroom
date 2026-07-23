@@ -41,14 +41,39 @@
       "validation": "go test ./ce/worker-ce"
     },
     {
+      "path": "ce/scheduler-ce/**",
+      "reason": "Independent CE scheduling runtime for due public-repository scans with durable one-active-scan safety.",
+      "validation": "go test ./ce/scheduler-ce"
+    },
+    {
+      "path": "ce/analysis-ce/**",
+      "reason": "Independent CE analysis runtime for transparent evidence, remediation guidance, and explicitly non-authoritative risk-chain hypotheses.",
+      "validation": "go test ./ce/analysis-ce"
+    },
+    {
+      "path": "ce/report-ce/**",
+      "reason": "Independent CE report runtime for portable local HTML evidence reports.",
+      "validation": "go test ./ce/report-ce"
+    },
+    {
       "path": "internal/ceauth/**",
       "reason": "Local-only password policy, bcrypt verification, and signed JWT sessions for the one-time CE administrator flow.",
       "validation": "go test ./internal/ceauth"
     },
     {
       "path": "internal/ceplatform/**",
-      "reason": "Community-owned PostgreSQL schema/store plus native repository scanner for durable projects, scans, findings, evidence, and reports.",
+      "reason": "Community-owned PostgreSQL schema/store plus native repository scanner for durable projects, scans, findings, evidence, remediations, verification state, and reports.",
       "validation": "go test ./internal/ceplatform"
+    },
+    {
+      "path": "internal/ceruntime/**",
+      "reason": "Shared lifecycle, health, readiness, and explicit boundary server for independently deployable CE background runtimes.",
+      "validation": "go test ./internal/ceruntime"
+    },
+    {
+      "path": "internal/ceworkflow/**",
+      "reason": "Deterministic provider-free analysis and HTML report rendering for the local CE product loop.",
+      "validation": "go test ./internal/ceworkflow"
     },
     {
       "path": "internal/canon/**",
@@ -277,7 +302,7 @@
     }
   ],
   "classification_counts": {
-    "ce_source": 49,
+    "ce_source": 54,
     "commercial_private": 42,
     "enterprise_private": 11,
     "proprietary_data_private": 16,
@@ -358,12 +383,27 @@
     {
       "classification": "ce_source",
       "path": "ce/engine-ce",
-      "reason": "Provider-free standalone Community engine implements local setup, sessions, projects, scans, findings, summaries, and reports from published source."
+      "reason": "Provider-free standalone Community engine implements local setup, sessions, projects, scans, findings, workflow evidence, remediation verification, and report delivery from published source."
     },
     {
       "classification": "ce_source",
       "path": "ce/worker-ce",
       "reason": "Provider-free standalone Community worker claims durable local scan jobs and runs repository scanners entirely from published source."
+    },
+    {
+      "classification": "ce_source",
+      "path": "ce/scheduler-ce",
+      "reason": "Independent Community scheduler creates due public-repository scan jobs with one-active-scan safety and no provider credentials."
+    },
+    {
+      "classification": "ce_source",
+      "path": "ce/analysis-ce",
+      "reason": "Independent Community analysis runtime converts completed scan findings into transparent evidence, remediation guidance, and non-authoritative risk-chain hypotheses."
+    },
+    {
+      "classification": "ce_source",
+      "path": "ce/report-ce",
+      "reason": "Independent Community report runtime renders portable local HTML evidence reports after CE analysis completes."
     },
     {
       "classification": "ce_source",
@@ -503,7 +543,17 @@
     {
       "classification": "ce_source",
       "path": "internal/ceplatform",
-      "reason": "Community PostgreSQL persistence and native repository scanner own durable projects, scan jobs, findings, summaries, and reports."
+      "reason": "Community PostgreSQL persistence and native repository scanner own durable projects, scan jobs, findings, evidence, remediations, verification state, and reports."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/ceruntime",
+      "reason": "Shared fail-closed lifecycle, health, readiness, and boundary shell for independently deployable Community background services."
+    },
+    {
+      "classification": "ce_source",
+      "path": "internal/ceworkflow",
+      "reason": "Deterministic provider-free Community analysis and report rendering with explicit non-authoritative output wording."
     },
     {
       "classification": "ce_source",

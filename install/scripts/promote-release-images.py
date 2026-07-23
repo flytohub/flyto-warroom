@@ -17,6 +17,9 @@ EXPECTED_PLATFORMS = {"linux/amd64", "linux/arm64"}
 DEFAULT_TAGS = {
     "engine": "engine-ce",
     "worker": "worker-ce",
+    "scheduler": "scheduler-ce",
+    "analysis": "analysis-ce",
+    "report": "report-ce",
     "frontend": "code-ce",
 }
 

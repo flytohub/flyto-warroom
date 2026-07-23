@@ -52,16 +52,62 @@ services:
       postgres:
         condition: service_healthy
 
+  scheduler:
+    build:
+      context: ../services/flyto-engine-ce
+      dockerfile: Dockerfile
+      target: scheduler
+    image: flyto2/warroom-scheduler-ce-source:local
+    restart: unless-stopped
+    environment:
+      FLYTO_EDITION: community
+      FLYTO_CE_SCHEDULER_ADDR: :8082
+      FLYTO_CE_SCAN_INTERVAL: "${FLYTO_CE_SCAN_INTERVAL:-24h}"
+      FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable"
+    ports:
+      - "127.0.0.1:${FLYTO_SOURCE_SCHEDULER_PORT:-18082}:8082"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  analysis:
+    build:
+      context: ../services/flyto-engine-ce
+      dockerfile: Dockerfile
+      target: analysis
+    image: flyto2/warroom-analysis-ce-source:local
+    restart: unless-stopped
+    environment:
+      FLYTO_EDITION: community
+      FLYTO_CE_ANALYSIS_ADDR: :8083
+      FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable"
+    ports:
+      - "127.0.0.1:${FLYTO_SOURCE_ANALYSIS_PORT:-18083}:8083"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  report:
+    build:
+      context: ../services/flyto-engine-ce
+      dockerfile: Dockerfile
+      target: report
+    image: flyto2/warroom-report-ce-source:local
+    restart: unless-stopped
+    environment:
+      FLYTO_EDITION: community
+      FLYTO_CE_REPORT_ADDR: :8084
+      FLYTO_PG_URL: "postgres://${POSTGRES_USER:-flyto}:${POSTGRES_PASSWORD:-change-me-local-only}@postgres:5432/${POSTGRES_DB:-flyto}?sslmode=disable"
+    ports:
+      - "127.0.0.1:${FLYTO_SOURCE_REPORT_PORT:-18084}:8084"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
   frontend:
     build:
       context: ../packages/flyto-code
       dockerfile: Dockerfile
-      args:
-        FLYTO_PUBLIC_ENGINE_ORIGIN: __same_origin__
-        FLYTO_PUBLIC_AUTOMATION_ORIGIN: __same_origin__
-        FLYTO_PUBLIC_CORTEX_ORIGIN: __same_origin__
-        FLYTO_PUBLIC_MODE: community
-        FLYTO_PUBLIC_RELEASE: source-local
     image: flyto2/warroom-code-ce-source:local
     restart: unless-stopped
     ports:

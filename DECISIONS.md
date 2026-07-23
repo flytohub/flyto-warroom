@@ -94,8 +94,9 @@ source inputs to the exact release tree without access to a maintainer machine.
 Decision: stable Git tag `vMAJOR.MINOR.PATCH` is the only automatic Docker Hub
 release trigger. Each tag must match the version fields in
 `OPEN_CORE_MANIFEST.json`, point to a `main` commit with successful CE CI, and
-build the engine, worker, and frontend public contexts for both supported
-architectures before recording immutable registry digests.
+build the engine, worker, scheduler, analysis, report, and frontend images from
+the two public source contexts for both supported architectures before
+recording immutable registry digests.
 
 Reason: building only the public contexts makes the source/image relationship
 independently reproducible and prevents private build inputs or a mutable

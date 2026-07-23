@@ -2,6 +2,14 @@
 
 ## 2026-07-23
 
+- Advanced the public source profile to `v0.5.0` with independent engine,
+  worker, scheduler, analysis, report, and frontend images.
+- Replaced private-frontend pruning with a dedicated `src-ce` workbench and
+  minimal CE-only npm manifest/lockfile.
+- Added evidence, risk hypotheses, remediation re-verification, portable
+  reports, 16 languages, themes, and a measured 60-second startup ceiling.
+- Removed build dependencies on sibling Flyto2 repositories and legacy
+  runner/verification/brand-vision/PDF images.
 - Advanced the clean installer path to `v0.3.2`: the generated environment now
   pins immutable release image tags, exposes the public worker health endpoint
   on loopback, and generates only the PostgreSQL/JWT secrets used by CE.
