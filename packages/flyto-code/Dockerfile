@@ -6,6 +6,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --legacy-peer-deps
 
 COPY index-ce.html tsconfig.ce.json vite.config.ce.ts ./
+COPY public ./public
 COPY src-ce ./src-ce
 
 RUN npm run build

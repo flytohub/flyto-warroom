@@ -64,6 +64,20 @@ The vendored `@flyto/design-tokens` package makes a standalone clone
 buildable without a private sibling checkout. The production artifact is
 `dist-next/`.
 
+The independently buildable Community product slice lives under `src-ce/`.
+It keeps the Flyto2 product shell and visual language while excluding hosted,
+commercial, provider-credential, and proprietary correlation modules:
+
+```bash
+npm run dev:ce
+npm run test:ce
+npm run lint:ce
+npm run build:ce
+```
+
+Its production artifact is `dist-ce/`; the public exporter copies the source,
+CE-only package manifests, and build configuration into `flyto-warroom`.
+
 ## Usage
 
 Start with a connected Flyto2 Engine, sign in using the configured auth mode,

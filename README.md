@@ -189,7 +189,7 @@ credentials, SaaS/Enterprise adapters, and live remediation remain private.
 
 | Package | Source | Files | Role |
 | --- | --- | ---: | --- |
-| `flyto-code` | `flyto-code` | 25 | Independent React/Vite CE workbench with built-in languages and themes. |
+| `flyto-code` | `flyto-code` | 41 | Independent React/Vite CE workbench with built-in languages and themes. |
 | `flyto-contracts` | `flyto-engine` | 28 | Public OpenAPI, capabilities, schemas, examples, and SDK stubs. |
 | `flyto-engine-ce` | `flyto-engine` | 168 | Five independently buildable Go CE runtimes and their public kernel. |
 

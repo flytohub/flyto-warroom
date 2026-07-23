@@ -6,6 +6,9 @@
   worker, scheduler, analysis, report, and frontend images.
 - Replaced private-frontend pruning with a dedicated `src-ce` workbench and
   minimal CE-only npm manifest/lockfile.
+- Preserved the canonical Flyto2 product UI in that independent workbench,
+  including the lightning logo asset, Warroom wordmark, original authentication
+  composition, purple navigation palette, locale control, and themes.
 - Added evidence, risk hypotheses, remediation re-verification, portable
   reports, 16 languages, themes, and a measured 60-second startup ceiling.
 - Removed build dependencies on sibling Flyto2 repositories and legacy

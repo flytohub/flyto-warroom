@@ -52,7 +52,7 @@ def test_missing_positioning_marker_blocks_release(tmp_path: Path) -> None:
     readme = repo / "README.md"
     readme.write_text(
         readme.read_text(encoding="utf-8").replace(
-            "Bring your own tools",
+            "Connect a public Git repository",
             "Generic scanner dashboard",
         ),
         encoding="utf-8",
@@ -61,7 +61,7 @@ def test_missing_positioning_marker_blocks_release(tmp_path: Path) -> None:
     result = run_audit(repo)
 
     assert result.returncode == 2
-    assert "missing positioning marker: Bring your own tools" in result.stderr
+    assert "missing positioning marker: Connect a public Git repository" in result.stderr
 
 
 def test_unsafe_competitor_claim_blocks_release(tmp_path: Path) -> None:

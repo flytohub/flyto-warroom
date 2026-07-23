@@ -12,6 +12,11 @@
   unaffected.
 - CE includes frontend source, public contracts, CE-safe engine kernel source,
   local installer assets, Docker image coordinates, and boundary audits.
+- The independent CE frontend preserves the canonical Flyto2 product UI rather
+  than introducing a second visual design. Its public source includes the
+  lightning logo and Warroom wordmark, original authentication composition,
+  purple navigation palette, locale selector, and light/dark/system themes;
+  `packages/flyto-code/public/favicon.svg` is a required export asset.
 - Fresh CE databases expose a one-time browser page for creating the first
   administrator. Account creation, owner workspace creation, and permanent
   registration closure are transaction-locked; the installer stores only
