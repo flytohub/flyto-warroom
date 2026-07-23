@@ -39,11 +39,11 @@ This repository publishes the CE application services as separate tags:
 - `worker-ce` - background worker
 - `code-ce` - web UI
 Stable semantic-version tags are published for reproducible installs. Git tag
-`v0.4.0` maps to:
+`v0.4.1` maps to:
 
-- `engine-ce-0.4.0`
-- `worker-ce-0.4.0`
-- `code-ce-0.4.0`
+- `engine-ce-0.4.1`
+- `worker-ce-0.4.1`
+- `code-ce-0.4.1`
 
 The tag-triggered GitHub Actions release builds all three from public source,
 publishes both `linux/amd64` and `linux/arm64`, and records immutable digests.

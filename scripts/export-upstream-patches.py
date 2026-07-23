@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 import subprocess
 
@@ -99,7 +100,9 @@ def main() -> int:
     output_dir = (root / args.output).resolve()
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    all_changed = changed_files(root, args.base)
     written: list[str] = []
+    patch_files: dict[str, str] = {}
     for prefix, repo_name in PACKAGE_PATCHES.items():
         patch = run_git(root, ["diff", "--binary", args.base, "--", prefix])
         if not patch.strip():
@@ -107,9 +110,10 @@ def main() -> int:
         patch_path = output_dir / f"{repo_name}.patch"
         patch_path.write_text(strip_package_prefix(patch, prefix), encoding="utf-8")
         written.append(display_path(patch_path, root))
+        patch_files[repo_name] = patch_path.name
 
     generated = [
-        path for path in changed_files(root, args.base)
+        path for path in all_changed
         if path in GENERATED_REVIEW_FILES
         or any(path.startswith(prefix) for prefix in GENERATED_REVIEW_PREFIXES)
     ]
@@ -126,9 +130,44 @@ def main() -> int:
         )
         written.append(display_path(review_path, root))
 
-    if not written:
-        print("no upstream patches generated")
-        return 0
+    mapped_paths = {
+        repo_name: sorted(
+            path
+            for path in all_changed
+            if path == prefix or path.startswith(prefix + "/")
+        )
+        for prefix, repo_name in PACKAGE_PATCHES.items()
+    }
+    mapped_or_generated = {
+        path
+        for paths in mapped_paths.values()
+        for path in paths
+    } | set(generated)
+    manifest_path = output_dir / "PATCH_MANIFEST.json"
+    manifest_path.write_text(
+        json.dumps(
+            {
+                "schema": "flyto.warroom-upstream-patches.v1",
+                "base": args.base,
+                "allowed_source_repositories": sorted(PACKAGE_PATCHES.values()),
+                "changed_paths": all_changed,
+                "mapped_paths": mapped_paths,
+                "generated_review_paths": generated,
+                "unmapped_paths": sorted(set(all_changed) - mapped_or_generated),
+                "patch_files": patch_files,
+                "policy": (
+                    "review and apply only to flyto-engine or flyto-code; "
+                    "then regenerate flyto-warroom from authoritative source"
+                ),
+            },
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    written.append(display_path(manifest_path, root))
+
     for path in written:
         print(path)
     return 0

@@ -8,7 +8,7 @@ Source-linked contracts for **37 declarations** in `scripts/`.
 |---|---|---|---|
 | function | `def read(path: Path) -> str:` | Retrieves read for `scripts/audit-ce-boundary.py`. | [`scripts/audit-ce-boundary.py:144`](<../../scripts/audit-ce-boundary.py#L144>) |
 | function | `def main() -> int:` | Implements main for `scripts/audit-ce-boundary.py`. | [`scripts/audit-ce-boundary.py:151`](<../../scripts/audit-ce-boundary.py#L151>) |
-| function | `def main() -> int:` | Implements main for `scripts/audit-github-protection.py`. | [`scripts/audit-github-protection.py:96`](<../../scripts/audit-github-protection.py#L96>) |
+| function | `def main() -> int:` | Implements main for `scripts/audit-github-protection.py`. | [`scripts/audit-github-protection.py:123`](<../../scripts/audit-github-protection.py#L123>) |
 | function | `def read_json(rel: str) -> dict:` | Retrieves read json for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:56`](<../../scripts/audit-open-core-overlay.py#L56>) |
 | function | `def text(rel: str) -> str:` | Implements text for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:67`](<../../scripts/audit-open-core-overlay.py#L67>) |
 | function | `def string_list(value) -> list[str]:` | Implements string list for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:74`](<../../scripts/audit-open-core-overlay.py#L74>) |
@@ -27,11 +27,11 @@ Source-linked contracts for **37 declarations** in `scripts/`.
 | function | `def inventory() -> tuple[dict[str, str], str, list[str]]:` | Implements inventory for `scripts/audit-provenance.py`. | [`scripts/audit-provenance.py:28`](<../../scripts/audit-provenance.py#L28>) |
 | function | `def unsafe_url(value: str) -> bool:` | Implements unsafe url for `scripts/audit-provenance.py`. | [`scripts/audit-provenance.py:51`](<../../scripts/audit-provenance.py#L51>) |
 | function | `def main() -> int:` | Implements main for `scripts/audit-provenance.py`. | [`scripts/audit-provenance.py:58`](<../../scripts/audit-provenance.py#L58>) |
-| function | `def run_git(root: Path, args: list[str]) -> str:` | Executes run git for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:47`](<../../scripts/export-upstream-patches.py#L47>) |
-| function | `def strip_package_prefix(patch: str, prefix: str) -> str:` | Implements strip package prefix for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:57`](<../../scripts/export-upstream-patches.py#L57>) |
-| function | `def changed_files(root: Path, base: str) -> list[str]:` | Implements changed files for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:75`](<../../scripts/export-upstream-patches.py#L75>) |
-| function | `def display_path(path: Path, root: Path) -> str:` | Implements display path for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:80`](<../../scripts/export-upstream-patches.py#L80>) |
-| function | `def main() -> int:` | Implements main for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:91`](<../../scripts/export-upstream-patches.py#L91>) |
+| function | `def run_git(root: Path, args: list[str]) -> str:` | Executes run git for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:48`](<../../scripts/export-upstream-patches.py#L48>) |
+| function | `def strip_package_prefix(patch: str, prefix: str) -> str:` | Implements strip package prefix for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:58`](<../../scripts/export-upstream-patches.py#L58>) |
+| function | `def changed_files(root: Path, base: str) -> list[str]:` | Implements changed files for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:76`](<../../scripts/export-upstream-patches.py#L76>) |
+| function | `def display_path(path: Path, root: Path) -> str:` | Implements display path for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:81`](<../../scripts/export-upstream-patches.py#L81>) |
+| function | `def main() -> int:` | Implements main for `scripts/export-upstream-patches.py`. | [`scripts/export-upstream-patches.py:92`](<../../scripts/export-upstream-patches.py#L92>) |
 | function | `def source_files() -> list[Path]:` | Implements source files for `scripts/generate-documentation-reference.py`. | [`scripts/generate-documentation-reference.py:28`](<../../scripts/generate-documentation-reference.py#L28>) |
 | function | `def humanize(name: str) -> str:` | Implements humanize for `scripts/generate-documentation-reference.py`. | [`scripts/generate-documentation-reference.py:37`](<../../scripts/generate-documentation-reference.py#L37>) |
 | function | `def responsibility(name: str, relative: str) -> str:` | Implements responsibility for `scripts/generate-documentation-reference.py`. | [`scripts/generate-documentation-reference.py:44`](<../../scripts/generate-documentation-reference.py#L44>) |

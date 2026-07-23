@@ -65,6 +65,20 @@ Reason: public contributions must flow back into Flyto2 itself while moat code,
 commercial datasets, public rating authority, and managed remediation remain
 private signed overlays.
 
+## Unprivileged Public Contribution Gate
+
+Decision: public PR CI may build and audit the submitted CE tree and upload
+patch-review artifacts, but it must never receive a PAT, deploy key, or
+cross-repository write path. A first-party no-checkout policy publishes
+`cla/verified` and `upstream/regenerated`; the latter succeeds only after a
+maintainer imports the change into `flyto-engine` / `flyto-code`, regenerates
+the mirror, and posts a proof containing the exact PR head SHA.
+
+Reason: contributors need a normal fork-and-PR workflow without giving
+untrusted code or public automation authority over the source repositories.
+Binding maintainer proof to the head SHA automatically invalidates approval
+when the contributor pushes another commit.
+
 ## Deterministic Release Provenance
 
 Decision: every generated CE tree must pin all contributing source repositories

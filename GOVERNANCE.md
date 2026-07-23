@@ -22,10 +22,11 @@ licenses.
 
 ## Source Of Truth
 
-This repository is a generated CE distribution. The private Flyto2 workspace is
-the source of truth for implementation. Public PRs are reviewed here, converted
-into upstream patch bundles, applied to the source workspace, tested there, and
-then re-exported back into this repository.
+This repository is a generated CE distribution. `flyto-engine` and
+`flyto-code` are the authoritative implementation sources for the CE runtime.
+Public PRs are reviewed here, converted into explicit patch artifacts, applied
+only to those source repositories, tested there, and then re-exported back into
+this repository.
 
 Accepted community changes should improve Flyto2 itself, not only this mirror.
 That keeps the public project and commercial product aligned.
@@ -38,7 +39,9 @@ Every PR must keep these checks green:
 - GitHub protection audit;
 - public contract conformance;
 - frontend install/build smoke;
-- upstream patch preview for public PRs.
+- uploaded upstream patch preview for public PRs;
+- first-party `cla/verified`; and
+- maintainer-issued `upstream/regenerated` proof bound to the exact PR head SHA.
 
 ## Contributor Certificate
 
@@ -56,6 +59,11 @@ Signed-off-by: Your Name <dev@flyto2.com>
 
 Generated files should not become a permanent fork. If a change belongs to a
 source package or contract, apply it upstream and regenerate this repo.
+
+The public contribution workflow must never check out untrusted PR code, read a
+private PAT/deploy key, dispatch another repository, or push to `flyto-engine`
+or `flyto-code`. A maintainer performs source import and regeneration outside
+the public workflow, then posts the exact head-SHA proof.
 
 Enterprise features may be surfaced in CE only through public capabilities,
 public contracts, signed evidence, documented cloud bridge calls, or clearly

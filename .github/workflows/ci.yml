@@ -96,6 +96,13 @@ jobs:
         run: |
           git fetch origin main
           python scripts/export-upstream-patches.py --base origin/main --output upstream-patches
+      - name: Upload upstream patch preview
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v7
+        with:
+          name: upstream-patch-preview-${{ github.event.pull_request.number }}
+          path: upstream-patches/
+          if-no-files-found: error
 
   source-build-smoke:
     runs-on: ubuntu-latest

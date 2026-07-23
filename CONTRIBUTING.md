@@ -41,14 +41,37 @@ Maintainers can run:
 python scripts/export-upstream-patches.py --base origin/main --output upstream-patches
 ```
 
-The generated patch bundle is then applied to the private source repositories,
-reviewed there, and re-exported.
+CI uploads the generated patch bundle as an `upstream-patch-preview` artifact.
+Maintainers apply mapped patches only to `flyto-engine` and `flyto-code`,
+review and test them there, and then re-export this repository.
 
 ## Contributor License Agreement (CLA)
 
 Before a contribution can be accepted and ported upstream, you must agree to the
 Contributor License Agreement in `CLA.md`. This lets maintainers keep your
 contribution maintainable across both the PolyForm Noncommercial
-source-available Community Edition and the commercial edition. The CLA-assistant
-workflow comments a one-time signing link on your first PR; the check must be
-green before the change is merged/ported.
+source-available Community Edition and the commercial edition. Post this exact
+PR comment:
+
+```text
+I have read the CLA Document and I hereby sign the CLA
+```
+
+The first-party policy workflow does not check out or execute PR code and uses
+no PAT, deploy key, or private-repository credential. It sets `cla/verified`
+only when the PR author posted the exact signature.
+
+## Upstream Regeneration Gate
+
+`flyto-warroom` PRs never write to another repository. After a maintainer has
+applied the generated patches to `flyto-engine` / `flyto-code`, tested them,
+and reproduced the public tree, the maintainer posts:
+
+```text
+upstream-regenerated: <exact-pr-head-sha>
+```
+
+Only a repository owner, member, or collaborator can satisfy
+`upstream/regenerated`. The proof contains the exact PR head SHA, so any later
+push invalidates the old approval. Both status contexts are required before a
+public PR can merge.

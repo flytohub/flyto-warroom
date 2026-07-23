@@ -38,10 +38,15 @@
   connection, worker scan, findings, HTML report, engine/worker health, and
   frontend proxy. It does not expect private or legacy sidecar services.
 - Stable Git tags drive public-source Docker builds. The manifest declares
-  version `0.4.0` / Git tag `v0.4.0`; the release workflow requires the tagged
+  version `0.4.1` / Git tag `v0.4.1`; the release workflow requires the tagged
   commit on `main` with successful CI, builds the engine, worker, and frontend
   for both supported architectures, and attaches immutable digest evidence to
   the GitHub release.
+- Public PR automation has read-only repository contents permission, never
+  checks out code in the privileged policy workflow, and has no credential that
+  can write `flyto-engine` or `flyto-code`. CI always uploads a patch manifest;
+  merge protection requires the author CLA plus maintainer regeneration proof
+  bound to the exact PR head SHA.
 
 ## Known Boundaries
 

@@ -19,7 +19,7 @@ re-export CE with the exporter.
    python scripts/export-upstream-patches.py --base origin/main --output upstream-patches
    ```
 
-3. Apply package patches to the private workspace:
+3. Apply package patches to the authoritative source repositories:
 
    ```sh
    git -C /Users/chester/flytohub/flyto-code apply /path/to/upstream-patches/flyto-code.patch
@@ -30,7 +30,7 @@ re-export CE with the exporter.
    not vendored here — contributions to them go to their own public repos.)
 
 4. For generated-only changes listed in `REVIEW_GENERATED.md`, change the
-   source generator or private engine contract first.
+   `flyto-engine` release generator or Engine contract first.
 5. Run source-repo tests.
 6. Re-export CE:
 
@@ -39,8 +39,15 @@ re-export CE with the exporter.
    python /tmp/flyto-warroom/install/scripts/audit-release-tree.py /tmp/flyto-warroom
    ```
 
-7. Push the regenerated public tree to this repo.
-8. Run the open-core overlay audit to prove the regenerated tree still uses CE
+7. Confirm the regenerated public tree contains the intended PR change and no
+   unrelated diff, then post this exact PR comment using its current head SHA:
+
+   ```text
+   upstream-regenerated: <exact-pr-head-sha>
+   ```
+
+8. Push the regenerated public tree to this repo.
+9. Run the open-core overlay audit to prove the regenerated tree still uses CE
    as the pinned public upstream and keeps private overlays out of runtime:
 
    ```sh
@@ -51,5 +58,6 @@ re-export CE with the exporter.
 
 Community changes should improve Flyto2 itself, not only the public mirror. The
 patch exporter gives maintainers a repeatable bridge from public contribution to
-private source-of-truth, while release audits prevent private code or credentials
-from flowing in the other direction.
+the authoritative `flyto-engine` / `flyto-code` source, while release audits
+prevent private code or credentials from flowing in the other direction. The
+public workflow has no credential that could push to either source repository.

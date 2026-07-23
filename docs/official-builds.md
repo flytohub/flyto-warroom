@@ -20,9 +20,9 @@ artifacts built from this public repository. Enterprise datasets, private
 remediation workers, and hosted control-plane implementations are not part of
 CE and are not needed to run the CE product loop.
 
-Stable Git tags build immutable Docker Hub aliases. For Git tag `v0.4.0`, the
-release workflow builds `engine-ce-0.4.0`, `worker-ce-0.4.0`, and
-`code-ce-0.4.0` directly from the tagged public source for `linux/amd64` and
+Stable Git tags build immutable Docker Hub aliases. For Git tag `v0.4.1`, the
+release workflow builds `engine-ce-0.4.1`, `worker-ce-0.4.1`, and
+`code-ce-0.4.1` directly from the tagged public source for `linux/amd64` and
 `linux/arm64`, then records the registry manifest digests as release evidence.
 
 ## Release Evidence

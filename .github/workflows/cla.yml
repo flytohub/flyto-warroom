@@ -1,32 +1,72 @@
-name: CLA Assistant
-# Requires every PR author to sign the CLA (CLA.md) before the contribution can
-# be accepted/ported upstream.
+name: Public Contribution Policy
+# This workflow deliberately does not check out or execute pull-request code.
+# It uses the repository-scoped GITHUB_TOKEN only to publish two commit-status
+# contexts on the untrusted PR head.
 on:
   issue_comment:
-    types: [created]
+    types: [created, edited, deleted]
   pull_request_target:
-    types: [opened, closed, synchronize]
+    types: [opened, reopened, synchronize, ready_for_review]
 
 permissions:
-  actions: write
-  contents: write
-  pull-requests: write
+  contents: read
+  issues: read
+  pull-requests: read
   statuses: write
 
 jobs:
-  cla:
+  contribution-policy:
+    if: github.event_name == 'pull_request_target' || github.event.issue.pull_request
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPOSITORY: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+      CLA_SIGNATURE: I have read the CLA Document and I hereby sign the CLA
     steps:
-      - name: CLA Assistant
-        if: (github.event.comment.body == 'recheck' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request_target'
-        uses: contributor-assistant/github-action@v2.6.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.CLA_PAT }}
-        with:
-          path-to-signatures: 'signatures/cla-signatures.json'
-          path-to-document: 'https://github.com/flytohub/flyto-warroom/blob/main/CLA.md'
-          branch: 'main'
-          allowlist: 'dependabot[bot],*[bot]'
-          custom-pr-sign-comment: 'I have read the CLA Document and I hereby sign the CLA'
-          custom-allsigned-prcomment: 'All contributors have signed the CLA.'
+      - name: Verify CLA and regenerated-upstream proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          pr_json="$(gh api "repos/${REPOSITORY}/pulls/${PR_NUMBER}")"
+          head_sha="$(jq -r '.head.sha' <<<"${pr_json}")"
+          author="$(jq -r '.user.login' <<<"${pr_json}")"
+          comments_json="$(gh api "repos/${REPOSITORY}/issues/${PR_NUMBER}/comments?per_page=100")"
+          target_url="https://github.com/${REPOSITORY}/pull/${PR_NUMBER}"
+
+          set_status() {
+            local state="$1"
+            local context="$2"
+            local description="$3"
+            gh api --method POST "repos/${REPOSITORY}/statuses/${head_sha}" \
+              -f state="${state}" \
+              -f context="${context}" \
+              -f description="${description}" \
+              -f target_url="${target_url}" >/dev/null
+          }
+
+          if [[ "${author}" == *"[bot]" ]]; then
+            set_status success cla/verified "Automated dependency contributor"
+          elif jq -e \
+            --arg author "${author}" \
+            --arg signature "${CLA_SIGNATURE}" \
+            'any(.[]; .user.login == $author and .body == $signature)' \
+            <<<"${comments_json}" >/dev/null; then
+            set_status success cla/verified "PR author accepted CLA.md"
+          else
+            set_status pending cla/verified "Author must post the exact CLA signature comment"
+          fi
+
+          upstream_proof="upstream-regenerated: ${head_sha}"
+          if jq -e \
+            --arg proof "${upstream_proof}" \
+            'any(.[];
+              (.author_association == "OWNER"
+               or .author_association == "MEMBER"
+               or .author_association == "COLLABORATOR")
+              and .body == $proof
+            )' <<<"${comments_json}" >/dev/null; then
+            set_status success upstream/regenerated "Maintainer verified source import and regeneration"
+          else
+            set_status pending upstream/regenerated "Maintainer must verify this exact head SHA upstream"
+          fi

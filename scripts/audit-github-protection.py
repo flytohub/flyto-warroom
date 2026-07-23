@@ -66,7 +66,20 @@ REQUIRED_MARKERS = {
         "Audit open-core overlay contract",
         "Audit GitHub protection files",
         "Export upstream patch preview",
+        "Upload upstream patch preview",
+        "upstream-patch-preview-",
+        "if-no-files-found: error",
         "flyto-index verify",
+    ],
+    ".github/workflows/cla.yml": [
+        "Public Contribution Policy",
+        "contents: read",
+        "pull-requests: read",
+        "statuses: write",
+        "cla/verified",
+        "upstream/regenerated",
+        "upstream-regenerated:",
+        "author_association",
     ],
     ".github/workflows/release-images.yml": [
         "Build And Publish CE Images From Public Source",
@@ -90,6 +103,20 @@ REQUIRED_MARKERS = {
         "public_pr_to_private_source_to_regenerated_ce",
         "local_external_observation_only",
     ],
+    "scripts/export-upstream-patches.py": [
+        "flyto.warroom-upstream-patches.v1",
+        "allowed_source_repositories",
+        "flyto-engine",
+        "flyto-code",
+        "PATCH_MANIFEST.json",
+    ],
+}
+
+FORBIDDEN_WORKFLOW_MARKERS = {
+    "CLA_PAT": "public contribution policy must not require a private PAT",
+    "contributor-assistant/": "public contribution policy must remain first-party",
+    "repository_dispatch": "public workflows must not dispatch into another repository",
+    "flyto-cloud": "public workflows must not couple to a private hosted repository",
 }
 
 
@@ -104,6 +131,41 @@ def main() -> int:
         for marker in markers:
             if marker not in text:
                 blockers.append(f"{rel} missing marker: {marker}")
+
+    workflow_dir = ROOT / ".github" / "workflows"
+    for workflow in sorted(workflow_dir.glob("*.y*ml")):
+        text = workflow.read_text(encoding="utf-8")
+        for marker, reason in FORBIDDEN_WORKFLOW_MARKERS.items():
+            if marker in text:
+                blockers.append(f"{workflow.relative_to(ROOT)}: {reason}")
+
+    contribution_workflow = ROOT / ".github/workflows/cla.yml"
+    if contribution_workflow.exists():
+        text = contribution_workflow.read_text(encoding="utf-8")
+        if "actions/checkout@" in text:
+            blockers.append(
+                ".github/workflows/cla.yml must not check out untrusted PR code"
+            )
+        if "secrets." in text:
+            blockers.append(
+                ".github/workflows/cla.yml must not read repository or organization secrets"
+            )
+
+    ci_workflow = ROOT / ".github/workflows/ci.yml"
+    if ci_workflow.exists():
+        text = ci_workflow.read_text(encoding="utf-8")
+        if "permissions:\n  contents: read" not in text:
+            blockers.append(".github/workflows/ci.yml must keep read-only contents permission")
+
+    release_workflow = ROOT / ".github/workflows/release-images.yml"
+    if release_workflow.exists():
+        text = release_workflow.read_text(encoding="utf-8")
+        trigger = text.split("permissions:", 1)[0]
+        if "pull_request" in trigger or "workflow_dispatch" in trigger:
+            blockers.append(
+                ".github/workflows/release-images.yml must remain tag-push-only"
+            )
+
     if blockers:
         for blocker in blockers:
             print("BLOCKED: " + blocker, file=sys.stderr)
