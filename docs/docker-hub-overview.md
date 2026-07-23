@@ -85,6 +85,23 @@ Open the UI to create the first administrator through the one-time setup page.
 - Credential-free public repository checks, evidence, transparent risk
   hypotheses, remediation re-verification, and portable HTML reports.
 
+## Product Views
+
+All captures below use the English CE interface from the immutable
+`v0.5.0` public source.
+
+### Create The First Local Administrator
+
+![Flyto2 Warroom CE first administrator setup](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.0/docs/images/warroom-ce-first-admin.png)
+
+### Sign In To The Local Warroom
+
+![Flyto2 Warroom CE local sign in](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.0/docs/images/warroom-ce-sign-in.png)
+
+### Light Appearance
+
+![Flyto2 Warroom CE first administrator setup in light appearance](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.0/docs/images/warroom-ce-first-admin-light.png)
+
 ## Enterprise Path
 
 CE is not a full Enterprise source release. Premium capabilities can be attached
