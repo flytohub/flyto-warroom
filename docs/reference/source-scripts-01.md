@@ -8,7 +8,7 @@ Source-linked contracts for **37 declarations** in `scripts/`.
 |---|---|---|---|
 | function | `def read(path: Path) -> str:` | Retrieves read for `scripts/audit-ce-boundary.py`. | [`scripts/audit-ce-boundary.py:152`](<../../scripts/audit-ce-boundary.py#L152>) |
 | function | `def main() -> int:` | Implements main for `scripts/audit-ce-boundary.py`. | [`scripts/audit-ce-boundary.py:159`](<../../scripts/audit-ce-boundary.py#L159>) |
-| function | `def main() -> int:` | Implements main for `scripts/audit-github-protection.py`. | [`scripts/audit-github-protection.py:123`](<../../scripts/audit-github-protection.py#L123>) |
+| function | `def main() -> int:` | Implements main for `scripts/audit-github-protection.py`. | [`scripts/audit-github-protection.py:133`](<../../scripts/audit-github-protection.py#L133>) |
 | function | `def read_json(rel: str) -> dict:` | Retrieves read json for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:56`](<../../scripts/audit-open-core-overlay.py#L56>) |
 | function | `def text(rel: str) -> str:` | Implements text for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:67`](<../../scripts/audit-open-core-overlay.py#L67>) |
 | function | `def string_list(value) -> list[str]:` | Implements string list for `scripts/audit-open-core-overlay.py`. | [`scripts/audit-open-core-overlay.py:74`](<../../scripts/audit-open-core-overlay.py#L74>) |

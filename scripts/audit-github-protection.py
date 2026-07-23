@@ -88,6 +88,16 @@ REQUIRED_MARKERS = {
         "DOCKERHUB_TOKEN",
         "Create or update GitHub release",
     ],
+    ".github/workflows/sync-docker-hub-overview.yml": [
+        "Sync Docker Hub Overview",
+        "workflow_dispatch:",
+        "branches:",
+        "- main",
+        "docs/docker-hub-overview.md",
+        "DOCKERHUB_TOKEN",
+        "peter-evans/dockerhub-description@e98e4d1628a5f3be2be7c231e50981aee98723ae",
+        "repository: flyto2/warroom",
+    ],
     "scripts/audit-ce-boundary.py": [
         "CE_CONTROL_FILES",
         "POSTHOG",
@@ -164,6 +174,19 @@ def main() -> int:
         if "pull_request" in trigger or "workflow_dispatch" in trigger:
             blockers.append(
                 ".github/workflows/release-images.yml must remain tag-push-only"
+            )
+
+    overview_workflow = ROOT / ".github/workflows/sync-docker-hub-overview.yml"
+    if overview_workflow.exists():
+        text = overview_workflow.read_text(encoding="utf-8")
+        trigger = text.split("permissions:", 1)[0]
+        if "pull_request" in trigger:
+            blockers.append(
+                ".github/workflows/sync-docker-hub-overview.yml must not expose publisher credentials to pull requests"
+            )
+        if "branches:\n      - main" not in trigger:
+            blockers.append(
+                ".github/workflows/sync-docker-hub-overview.yml must remain scoped to main"
             )
 
     if blockers:

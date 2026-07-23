@@ -14,7 +14,7 @@ MANIFEST_NAME = "OPEN_CORE_MANIFEST.json"
 IGNORED_DIRECTORIES = {
     ".git", ".flyto", ".flyto-index", ".flyto-runs", ".hypothesis",
     ".mypy_cache", ".pytest_cache", ".ruff_cache", ".venv", ".venv-sec",
-    ".vite", ".vitest", "__pycache__", "build", "dist", "dist-next",
+    ".vite", ".vitest", "__pycache__", "build", "dist", "dist-ce", "dist-next",
     "node_modules", "out", "output", "reports", "test-results",
 }
 

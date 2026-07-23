@@ -108,6 +108,7 @@ REQUIRED = [
     ".github/pull_request_template.md",
     ".github/workflows/ci.yml",
     ".github/workflows/release-images.yml",
+    ".github/workflows/sync-docker-hub-overview.yml",
     ".github/workflows/cla.yml",
     "LICENSE",
     "CLA.md",

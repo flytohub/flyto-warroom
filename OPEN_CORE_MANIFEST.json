@@ -278,6 +278,7 @@
       ".github/workflows/ci.yml": "ff56b5c9a2841674b0e6cfff83669f832a270767bb4dbc53adb8200ed8a36b67",
       ".github/workflows/cla.yml": "5d6173339b9e04a4b9d3528e3163dd3bb317d649c30574fc8f272bf6bb736071",
       ".github/workflows/release-images.yml": "bc7e928bfa3d4458e4a0bdfa07b251322140664760174696b7405084ce64a1f1",
+      ".github/workflows/sync-docker-hub-overview.yml": "cdaaa0e5f096e1e44b7cf854ded0a1c8f0f204c5853ea6fb51c3ac856b903acd",
       ".gitignore": "aff9047751406e785242a3f434819cb0fdf71a2f52b6af77ed22c20f9076d815",
       "AGENTS.md": "78da7491ff4fd574959c67d3961e6357043c3f93737debb818fbfc89c2d87f75",
       "ARCHITECTURE.md": "8360e071f14c0d4b53518ee57ec8c7e7fb615521f38a69d22e45925e60ae5063",
@@ -320,9 +321,9 @@
       "docs/public-roadmap.md": "0d9c2521b84459682f44eb89a535287fd3a970786aa93da5df47bda539eab503",
       "docs/reference-architecture.md": "c1983bde3e02f09c96b454acbea0092542b313b8ca7648988d79f7ef660aa93f",
       "docs/reference/README.md": "830aa938f24be9e73ea0f0d3aa7c9a4ed010e4e66c3002bed02c6e2d14330b31",
-      "docs/reference/source-install-01.md": "5e26f50c0e646e5c3741827d14b45c42d52ddb8d3feaa7f50a9106804f94bc4c",
+      "docs/reference/source-install-01.md": "00147525d0e995a4de7bb6415d4dcd1428e89398fbf1d3c0afd717eecccd614f",
       "docs/reference/source-packages-01.md": "b0fee12729acd7d9a3b30fa74f89fe25b084b1e6553ee41e7635dc7b45007dea",
-      "docs/reference/source-scripts-01.md": "4f03c6112e160ed11f3f5f631a152b58ede22157f9806f8a9a2d4d75a17e00c2",
+      "docs/reference/source-scripts-01.md": "cb6f170ab53c752e27743f36f437a99f0e512dfa9a8d31d7deeeaf3497586ec2",
       "docs/reference/source-services-01.md": "b863651b66d60bcd21fcdb0346d1be0a1cbe33d93974917cefb1d43196918326",
       "docs/reference/source-services-02.md": "1442622e84c8d01c16a50c791ff3ea9bc968597eacd66f82e2b3647c4954d5e2",
       "docs/reference/source-services-03.md": "5b2dcf750509dd9b10c79ba240fa16c2b6cbe7c7a9fd8b935a7bc9e3a140f5d1",
@@ -350,7 +351,7 @@
       "install/fixtures/cloud-bundle/recipes/flyto2-ui-login-smoke.yaml": "00ba6dc52a02c9af377b438388258ac5cfd5850dcb6ffd63c4df44b3b4c14c3e",
       "install/fixtures/cloud-bundle/recipes/flyto2-ui-smoke.yaml": "a71c23e56940c722026a96471bf6421e9c7f2249e9938f62f832700a448d2e92",
       "install/fixtures/cloud-bundle/recipes/warroom-deterministic-audit.yaml": "26fff8f4e29fd991f60cac477928f78d084a04b78e8a415e826bbd592f37667a",
-      "install/scripts/audit-release-tree.py": "0c95036f167fdcda5885f9b57dcb6fd29aa73fb4867cfc37d7725707e40ea19a",
+      "install/scripts/audit-release-tree.py": "336d1cd949b3270dae75ed4d7f28e7aadf1f84a6070f929071f64534136575dc",
       "install/scripts/build-cloud-bundle-fixture.py": "520e22f141e9a3df394f8a72f8b4225dc449d1a82c72699364131a20e46639d7",
       "install/scripts/build-local-images.sh": "bd61da23a406cca6914dd98b52005c84172f6b438d9443881b7bbc7b983e5f90",
       "install/scripts/hash-local-password.py": "7da7136c91be8a95af0677a407e56b61225060102e62a116f516c2340629ff49",
@@ -423,10 +424,10 @@
       "packages/flyto-contracts/sdk/typescript/src/index.ts": "e6f9c252cd25b9b69ffdb932538949331918b15a6d42155bfa3d5292e13aaf60",
       "scripts/README.md": "7734c669d4c31447c4e6c88853439ed8d30b5d40ff632ff96a05c8005d8ce9c1",
       "scripts/audit-ce-boundary.py": "62713402c42d5d7051ff77cf758884d9b499075a9254bfd9d14e68eb3c4eff69",
-      "scripts/audit-github-protection.py": "3cdac13435d7e0e7fc34c56540f9891b54c628ccb7aeafd2d3c6b9b1ff22e8e0",
+      "scripts/audit-github-protection.py": "405befb8d4b39b4aa0157e625a5d1fb29328124308a98d8156241cbd2396d839",
       "scripts/audit-open-core-overlay.py": "ac88db9d31102f63026c90a67776a4f4f380c7a04cf6a96c349aef958cb466a3",
       "scripts/audit-positioning.py": "dbdf3f71abd299b70af9e8cb386d19b3b6412c78c43989fffe5c48f4ff51fa50",
-      "scripts/audit-provenance.py": "7b5e71b858ac392f0462278c8c44ffd4a00e3f70cd0b0ee2442e694d5b55e9c5",
+      "scripts/audit-provenance.py": "d5c20cdcf0747924759d9f34d851385ec659d3a33964afaf93a33c7229549df5",
       "scripts/export-upstream-patches.py": "9c24df20091e223fafa1ead56571f0f62225426c2e65a6140d8b96e8f3c63c60",
       "scripts/generate-documentation-reference.py": "5ac4260186f27a4f0cb181bcb527a1fea9f51ccf7e10ac4e944bb2f12c4f90d3",
       "services/flyto-engine-ce/Dockerfile": "8f5b984f8554b95c1e9740fdd05bb152907a785f8123ecf0e7efd90677ecebbb",
@@ -607,7 +608,7 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "cb88cc0d871bd51f2b89223b702de51025e8a378",
+    "source_commit": "7afdcb403f45c4576ac92a7b20a5e4d678413de7",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
@@ -618,12 +619,12 @@
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
-        "commit": "cb88cc0d871bd51f2b89223b702de51025e8a378",
+        "commit": "7afdcb403f45c4576ac92a7b20a5e4d678413de7",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "4c5d1856ac9166a83414be3078ab9ddaf22b2b70505b429d6b7133dcc7002460"
+    "tree_sha256": "958fe77c857a86b95463f3abfe02d8c7aab24c5a70d3f23d9854ffed9b3df0f3"
   },
   "release": {
     "build_source_repositories": [],
@@ -724,6 +725,7 @@
     "scripts/generate-documentation-reference.py",
     ".github/workflows/ci.yml",
     ".github/workflows/release-images.yml",
+    ".github/workflows/sync-docker-hub-overview.yml",
     ".env.example",
     "CHANGELOG.md",
     "docs/README.md",

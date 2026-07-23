@@ -1,0 +1,61 @@
+name: Sync Docker Hub Overview
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - docs/docker-hub-overview.md
+      - .github/workflows/sync-docker-hub-overview.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docker-hub-overview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: github.repository == 'flytohub/flyto-warroom'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - name: Extract the generated Docker Hub overview
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          source = Path("docs/docker-hub-overview.md").read_text(encoding="utf-8")
+          prefix = "# Docker Hub Repository Overview\n\n````markdown\n"
+          suffix = "````\n"
+          if not source.startswith(prefix) or not source.endswith(suffix):
+              raise SystemExit("docs/docker-hub-overview.md wrapper contract changed")
+          overview = source[len(prefix):-len(suffix)]
+          if "Git tag `v0.5.0` maps to:" not in overview:
+              raise SystemExit("Docker Hub overview is not the v0.5.0 service contract")
+          if overview.count("- `") < 6:
+              raise SystemExit("Docker Hub overview does not list all six application tags")
+          output = Path(".flyto/docker-hub-overview.md")
+          output.parent.mkdir(parents=True, exist_ok=True)
+          output.write_text(overview, encoding="utf-8")
+          PY
+      - name: Require Docker Hub publisher credentials
+        env:
+          DOCKERHUB_USERNAME: ${{ vars.DOCKERHUB_USERNAME }}
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+        run: |
+          if [ -z "$DOCKERHUB_USERNAME" ] || [ -z "$DOCKERHUB_TOKEN" ]; then
+            echo "DOCKERHUB_USERNAME variable and DOCKERHUB_TOKEN secret are required" >&2
+            exit 1
+          fi
+      - name: Publish the official repository overview
+        uses: peter-evans/dockerhub-description@e98e4d1628a5f3be2be7c231e50981aee98723ae # v4.0.0
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: flyto2/warroom
+          readme-filepath: ./.flyto/docker-hub-overview.md
+          short-description: Self-hosted code security scanning, findings, evidence, and reports for Flyto2 Warroom CE.
