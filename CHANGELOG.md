@@ -2,6 +2,9 @@
 
 ## 2026-07-24
 
+- Advanced the canonical UI alignment and explicit visual-contract release to
+  `v0.5.2`, including the React Router 7.18.1 security update and a fresh
+  25.48-second public-source startup proof.
 - Corrected the public product gallery by removing the standalone
   administrator/sign-in presentation and restoring the canonical Warroom
   automated-security and evidence-pack product screens.

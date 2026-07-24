@@ -40,14 +40,14 @@ This repository publishes the CE application services as separate tags:
 - `report-ce` - portable HTML report renderer
 - `code-ce` - web UI
 Stable semantic-version tags are published for reproducible installs. Git tag
-`v0.5.1` maps to:
+`v0.5.2` maps to:
 
-- `engine-ce-0.5.1`
-- `worker-ce-0.5.1`
-- `scheduler-ce-0.5.1`
-- `analysis-ce-0.5.1`
-- `report-ce-0.5.1`
-- `code-ce-0.5.1`
+- `engine-ce-0.5.2`
+- `worker-ce-0.5.2`
+- `scheduler-ce-0.5.2`
+- `analysis-ce-0.5.2`
+- `report-ce-0.5.2`
+- `code-ce-0.5.2`
 
 The tag-triggered GitHub Actions release builds all six from public source,
 publishes both `linux/amd64` and `linux/arm64`, and records immutable digests.
