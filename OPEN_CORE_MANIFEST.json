@@ -632,7 +632,7 @@
     },
     "source_repositories": {
       "flyto-code": {
-        "commit": "a9623a4048d634f1cf3c9ab168c87893156f6bdc",
+        "commit": "faa680a146d2c9c8cb3008e13c1b14a36577db0c",
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
