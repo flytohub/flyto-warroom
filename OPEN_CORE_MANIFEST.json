@@ -625,7 +625,7 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "5c0ce7775eb2afd9f651ab3bdad4d87481c293f0",
+    "source_commit": "6d95b86cb80661c82e93cf1344f27866df44b59b",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
@@ -636,7 +636,7 @@
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
-        "commit": "5c0ce7775eb2afd9f651ab3bdad4d87481c293f0",
+        "commit": "6d95b86cb80661c82e93cf1344f27866df44b59b",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       }
     },
