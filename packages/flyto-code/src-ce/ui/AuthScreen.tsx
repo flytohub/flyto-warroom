@@ -20,6 +20,25 @@ export interface AuthScreenProps {
   onAuthenticated: (user: User) => void;
 }
 
+const languageFlags: Record<Language, string> = {
+  en: "🇺🇸",
+  "zh-TW": "🇹🇼",
+  "zh-CN": "🇨🇳",
+  ja: "🇯🇵",
+  ko: "🇰🇷",
+  de: "🇩🇪",
+  es: "🇪🇸",
+  fr: "🇫🇷",
+  hi: "🇮🇳",
+  id: "🇮🇩",
+  it: "🇮🇹",
+  pl: "🇵🇱",
+  "pt-BR": "🇧🇷",
+  th: "🇹🇭",
+  tr: "🇹🇷",
+  vi: "🇻🇳",
+};
+
 export function AuthScreen({
   language,
   setLanguage,
@@ -53,13 +72,15 @@ export function AuthScreen({
   }
 
   return (
-    <main className="original-auth-root">
+    <main className="auth-layout">
       <aside
-        className="original-auth-preferences"
+        className="auth-preferences"
         aria-label={`${t("app.language")} / ${t("app.theme")}`}
       >
         <label className="select-control">
-          <Icon name="globe" size={16} />
+          <span className="language-flag" aria-hidden="true">
+            {languageFlags[language]}
+          </span>
           <select
             aria-label={t("app.language")}
             value={language}
@@ -80,20 +101,18 @@ export function AuthScreen({
         </button>
       </aside>
 
-      <section className="original-auth-paper">
-        <form className="original-auth-form" onSubmit={submit}>
-          <div className="original-auth-title">
+      <section className="auth-paper">
+        <form className="auth-form" onSubmit={submit}>
+          <div className="auth-title">
             <Logo compact />
-            <h1>{setup ? t("auth.setup") : t("auth.login")}</h1>
+            <h1>{setup ? t("auth.setup") : t("auth.signIn")}</h1>
           </div>
-          <p className="original-auth-subtitle">{t("auth.subtitle")}</p>
-          <div className="local-badge">
-            <span className="status-dot status-online" />
-            {t("app.local")}
-          </div>
+          {setup && (
+            <p className="auth-setup-copy">{t("auth.setupDescription")}</p>
+          )}
           {error && <ErrorBanner message={error} clear={() => setError("")} />}
           {setup && (
-            <label>
+            <label className="auth-field">
               <span>{t("auth.name")}</span>
               <input
                 required
@@ -106,7 +125,7 @@ export function AuthScreen({
               />
             </label>
           )}
-          <label>
+          <label className="auth-field">
             <span>{t("auth.email")}</span>
             <input
               required
@@ -117,7 +136,7 @@ export function AuthScreen({
               placeholder="admin@flyto2.com"
             />
           </label>
-          <label>
+          <label className="auth-field">
             <span>{t("auth.password")}</span>
             <input
               required
@@ -129,26 +148,39 @@ export function AuthScreen({
               placeholder="At least 12 characters"
             />
           </label>
-          <button className="primary-button original-auth-submit" disabled={busy}>
+          <button
+            className="primary-button auth-submit"
+            disabled={
+              busy
+              || !email
+              || password.length < 12
+              || (setup && name.trim().length < 2)
+            }
+          >
             {busy
               ? "Working…"
               : setup
                 ? t("auth.submitSetup")
                 : t("auth.submitLogin")}
           </button>
-          <button
-            className="text-button"
-            type="button"
-            onClick={() => setSetup((value) => !value)}
-          >
-            {setup ? t("auth.switchLogin") : t("auth.switchSetup")}
-          </button>
+          {setup && (
+            <p className="auth-switch">
+              {t("auth.hasAdmin")}
+              <button
+                className="text-button"
+                type="button"
+                onClick={() => setSetup(false)}
+              >
+                {t("auth.signIn")}
+              </button>
+            </p>
+          )}
         </form>
       </section>
 
-      <section className="original-auth-message">
+      <section className="auth-message">
         <svg
-          className="original-auth-circles"
+          className="auth-circles"
           viewBox="0 0 960 540"
           width="100%"
           height="100%"
@@ -161,7 +193,7 @@ export function AuthScreen({
           </g>
         </svg>
         <svg
-          className="original-auth-dots"
+          className="auth-dots"
           viewBox="0 0 220 192"
           width="220"
           height="192"
@@ -182,24 +214,21 @@ export function AuthScreen({
           </defs>
           <rect width="220" height="192" fill="url(#auth-dot-pattern)" />
         </svg>
-        <div className="original-auth-message-content">
-          <div className="original-auth-welcome">
-            <div>Welcome to</div>
-            <div>Flyto2 Warroom</div>
+        <div className="auth-message-content">
+          <div className="auth-welcome">
+            <div>{t("auth.welcomeTo")}</div>
+            <div>{t("auth.welcomeSubtitle")}</div>
           </div>
-          <p>
-            One workspace for repository risk, deterministic evidence,
-            remediation verification, and portable local reports.
-          </p>
-          <div className="original-auth-pillars">
-            <div><strong>5</strong><span>CE runtimes</span></div>
-            <div><strong>4</strong><span>Native scanners</span></div>
-            <div><strong>16</strong><span>Local languages</span></div>
+          <p>{t("auth.welcomeDescription")}</p>
+          <div className="auth-pillars">
+            <div><strong>19+</strong><span>{t("auth.pillarScanners")}</span></div>
+            <div><strong>12</strong><span>{t("auth.pillarPlaybooks")}</span></div>
+            <div><strong>17</strong><span>{t("auth.pillarLocales")}</span></div>
           </div>
           <ul>
-            <li><span />Scan source without a hosted control plane</li>
-            <li><span />Keep findings and evidence in your PostgreSQL</li>
-            <li><span />Build every Community runtime from public source</li>
+            <li><span />{t("auth.pillarBullet1")}</li>
+            <li><span />{t("auth.pillarBullet2")}</li>
+            <li><span />{t("auth.pillarBullet3")}</li>
           </ul>
         </div>
       </section>

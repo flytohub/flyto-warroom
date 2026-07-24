@@ -8,9 +8,11 @@ export type IconName =
   | "code"
   | "evidence"
   | "file"
+  | "fullscreen"
   | "globe"
   | "moon"
   | "overview"
+  | "panel"
   | "refresh"
   | "repository"
   | "scan"
@@ -48,6 +50,11 @@ const paths: Record<IconName, ReactNode> = {
       <path d="M14 2v5h5M9 13h6M9 17h6" />
     </>
   ),
+  fullscreen: (
+    <>
+      <path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5" />
+    </>
+  ),
   globe: (
     <>
       <circle cx="12" cy="12" r="9" />
@@ -61,6 +68,12 @@ const paths: Record<IconName, ReactNode> = {
       <rect x="14" y="3" width="7" height="5" rx="1" />
       <rect x="14" y="12" width="7" height="9" rx="1" />
       <rect x="3" y="14" width="7" height="7" rx="1" />
+    </>
+  ),
+  panel: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M9 4v16" />
     </>
   ),
   refresh: (

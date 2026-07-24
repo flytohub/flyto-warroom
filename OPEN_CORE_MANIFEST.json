@@ -153,6 +153,7 @@
       "src-ce/main.tsx",
       "src-ce/styles.css",
       "src-ce/types.ts",
+      "src-ce/visual-contract.json",
       "public/favicon.svg",
       "index-ce.html",
       "vite.config.ce.ts",
@@ -320,9 +321,9 @@
       "docs/paid-prerequisites.md": "b902b3ff5bed3c8ef54a3da48b858f2f08521bc54185ec8303f9a641d2b5746c",
       "docs/public-roadmap.md": "0d9c2521b84459682f44eb89a535287fd3a970786aa93da5df47bda539eab503",
       "docs/reference-architecture.md": "c1983bde3e02f09c96b454acbea0092542b313b8ca7648988d79f7ef660aa93f",
-      "docs/reference/README.md": "46c651d4ea19efbb207d1a783b7403f4e37f96e4cc3cf2b707b34171d26999f4",
+      "docs/reference/README.md": "7892c7649ca5846fca54b62b54da61099555e789c32a212df787f5a95b39e1bd",
       "docs/reference/source-install-01.md": "00147525d0e995a4de7bb6415d4dcd1428e89398fbf1d3c0afd717eecccd614f",
-      "docs/reference/source-packages-01.md": "a8a3b909217ff1ec7a0eb398d45324bba4fbcca0d33e703de02d2fa8c53d8ee3",
+      "docs/reference/source-packages-01.md": "5170d59fea0c52369092e5bb13d7209046ab7f9c27b5daf440046657d9b93639",
       "docs/reference/source-scripts-01.md": "cb6f170ab53c752e27743f36f437a99f0e512dfa9a8d31d7deeeaf3497586ec2",
       "docs/reference/source-services-01.md": "b863651b66d60bcd21fcdb0346d1be0a1cbe33d93974917cefb1d43196918326",
       "docs/reference/source-services-02.md": "1442622e84c8d01c16a50c791ff3ea9bc968597eacd66f82e2b3647c4954d5e2",
@@ -389,18 +390,17 @@
       "packages/flyto-code/public/favicon.svg": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66",
       "packages/flyto-code/src-ce/App.tsx": "4d6f72b6ee7b68657e6caef6f1bd46653d1a923fb86dec4d6066c778697d781f",
       "packages/flyto-code/src-ce/api.ts": "f2effb30350a1c9abdd51fb59ea465090eaa0ee1eb09eb6b1b6a0c84dae6665f",
-      "packages/flyto-code/src-ce/i18n.ts": "95f276692c281d2d78566224cb71940d68f8ca9c68ab3646b071483a5b498de0",
-      "packages/flyto-code/src-ce/main.tsx": "dd06d304ada95fff0c454f73873f89dc1ec3919a9f54345baa963f6b4df55a4b",
-      "packages/flyto-code/src-ce/product-shell.contract.test.mjs": "bad1ffd6d95969647763d9bb9f75a82d5650e655a8a958a63bc055df02bcd93b",
+      "packages/flyto-code/src-ce/i18n.ts": "e9f974e9838a4664205ea8c2daa7b47876e2e38b09830c802f9afe97dc15d093",
+      "packages/flyto-code/src-ce/main.tsx": "30b7af17da1460dc9bd31377646ae00e6d7d15c8e7551e1ff45d77284d31950b",
+      "packages/flyto-code/src-ce/product-shell.contract.test.mjs": "91d1954de677d7f2f4b89e1fc6e10493f53ef2eebf66e246720704c6d6d23a52",
       "packages/flyto-code/src-ce/product.ts": "69b216537f30c01bb666045cdef9d0f37ba519c434795672c461929ba1507d6c",
-      "packages/flyto-code/src-ce/styles.css": "e5b723841d289955d363691d9463ff58b2d74bc17f5074dca89ca57d90982181",
+      "packages/flyto-code/src-ce/styles.css": "862aa093346eea1693e28a0bfbbe1ecc5464fff33492e9ae81ede6e101f894a0",
       "packages/flyto-code/src-ce/types.ts": "442eea792e41e431fb63ae50d9c5443af3b9f51bd0801eee200d7719141e2dfc",
-      "packages/flyto-code/src-ce/ui/AuthScreen.tsx": "df42755d0e57bb6c4922da748fbd6fe13233f3c245a14bd1130e55ba3b3c24b9",
-      "packages/flyto-code/src-ce/ui/CosmicBackground.tsx": "4ded342c0efd6b361a24337a581d6becd57ae3cef184e65a44a87750f25a3a9d",
+      "packages/flyto-code/src-ce/ui/AuthScreen.tsx": "35ad96174d3ef1571a00034c5dc8f5a579afb2a2635c52ba4d718d04cdf76759",
       "packages/flyto-code/src-ce/ui/Logo.tsx": "e4e5a063cc235e06548e86ec7be6e9877c60c197a5eabdbb6195578b7df2fbcd",
-      "packages/flyto-code/src-ce/ui/ProductShell.tsx": "d5fc172439efef8878fd912b92fa7c67c056ef92a694d7a8b4f93207c18cc096",
+      "packages/flyto-code/src-ce/ui/ProductShell.tsx": "b4056e624d4b751346828fb7e2dc8f3605a36225f0ede5658d9e67cdc1f5b8d3",
       "packages/flyto-code/src-ce/ui/format.ts": "4a05717cf9e6c940f2ab98a630a44de5e9da727d2a17addf740a0debc8964ced",
-      "packages/flyto-code/src-ce/ui/icons.tsx": "503fe7864fa01a82cd87be88ce2301f7e332d375018d7e16f2bcad0110c2b74a",
+      "packages/flyto-code/src-ce/ui/icons.tsx": "953a4c365084d24213d8d9bef2a4bd17c29257179ebdcfe80703378f0f400e74",
       "packages/flyto-code/src-ce/ui/primitives.tsx": "e5cdbf952b082a3b8db211b2236e7177c59cad716fd103af468e7accc106d316",
       "packages/flyto-code/src-ce/views/ArchitectureView.tsx": "bde02e9f0b4319312e2506f9e3f0db7bef6128a9ac7bdaa7fae101c8aa2c7ecf",
       "packages/flyto-code/src-ce/views/EvidenceView.tsx": "e3e4856c3c453d8e82c8643f03a8dba33af5f1d5ab3a25c62ba3d04d483611b3",
@@ -408,6 +408,7 @@
       "packages/flyto-code/src-ce/views/RemediationView.tsx": "75499802c8e34a3c5071d61683f9e7ebf6429a8f7bebe34cf6732b1ca699b312",
       "packages/flyto-code/src-ce/views/ReportsView.tsx": "48fd1117a903fa5e7fdeb47a5e583e897e44636541ff9c525ea5a9b81f911bf2",
       "packages/flyto-code/src-ce/views/RepositoriesView.tsx": "bb546acc84615a8edf1f5e4fae44b28817c09c533cb293caabac8132576c9744",
+      "packages/flyto-code/src-ce/visual-contract.json": "37bb6d3c9f79c41ffb08fc0f613d283400e77a3e337557e62016ae7d157ec2b8",
       "packages/flyto-code/tsconfig.ce.json": "07d6bb166e32dc7ceeca37e7c9c3345af9b482cd28afdc6be191b2182799feba",
       "packages/flyto-code/vite.config.ce.ts": "2e87db3ffc5bb577072fcae1e66d675f79d90d4e1806ed8d5cdf8368a837a1f7",
       "packages/flyto-contracts/CONTRIBUTING.md": "e332cc16a36cf1611621592a7c3f1eafd2248023caf873b487747277ac013f38",
@@ -624,23 +625,23 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "9ae7785e006ab58f0bf66138f1c60fe81e195c7e",
+    "source_commit": "ad552ec4d8d7706637add7d6a6a0ed5e9e441014",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
     },
     "source_repositories": {
       "flyto-code": {
-        "commit": "ee8cceca1e102ec1c7f144a643610e19c9814e4d",
+        "commit": "70259f78aa6370e90ff1933b82633c0aa02011d7",
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
-        "commit": "9ae7785e006ab58f0bf66138f1c60fe81e195c7e",
+        "commit": "ad552ec4d8d7706637add7d6a6a0ed5e9e441014",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "f28af28c9d9fc6f173e74e20024e19f461f962be140632ce2ff99cb40a804d96"
+    "tree_sha256": "d00631265227080b2524251759b561e4ffa355619b2d8ef153b2ebf261059ce2"
   },
   "release": {
     "build_source_repositories": [],

@@ -5,7 +5,6 @@ import {
   type TranslationKey,
 } from "../i18n";
 import type { Project, ThemeMode, User, View } from "../types";
-import { CosmicBackground } from "./CosmicBackground";
 import { Icon, type IconName } from "./icons";
 import { Logo } from "./Logo";
 
@@ -58,17 +57,13 @@ export function ProductShell({
   t,
 }: ProductShellProps) {
   return (
-    <div className="app-shell product-app-shell">
-      <aside className="sidebar product-sidebar">
-        <Logo className="product-sidebar-logo" />
-        <div className="instance-state">
-          <span className="status-dot status-online" />
-          <span>
-            <strong>{t("app.local")}</strong>
-            <small>PostgreSQL · source build</small>
-          </span>
+    <div className="product-app-shell">
+      <aside className="product-sidebar">
+        <div className="sidebar-brand">
+          <Logo className="product-sidebar-logo" />
         </div>
-        <nav aria-label="Community product navigation">
+        <nav aria-label="Community product navigation" className="product-navigation">
+          <span className="navigation-section">{t("app.community")}</span>
           {navigation.map((item) => (
             <button
               type="button"
@@ -78,17 +73,13 @@ export function ProductShell({
             >
               <Icon name={item.icon} size={17} />
               <span>{t(item.label)}</span>
-              {view === item.view && <Icon className="nav-chevron" name="chevron" size={14} />}
             </button>
           ))}
         </nav>
-        <div className="boundary-card">
-          <span>COMMUNITY AUTHORITY</span>
-          <strong>{t("overview.boundary")}</strong>
-          <p>Transparent local evidence. Commercial orchestration remains outside this build.</p>
-        </div>
         <div className="user-block">
-          <span className="avatar">{user.displayName.slice(0, 2).toUpperCase()}</span>
+          <span className="avatar-ring">
+            <span className="avatar">{user.displayName.slice(0, 1).toUpperCase()}</span>
+          </span>
           <span><strong>{user.displayName}</strong><small>{user.email}</small></span>
           <button type="button" onClick={signOut} title={t("app.signout")}>
             <Icon name="signout" size={16} />
@@ -96,8 +87,14 @@ export function ProductShell({
         </div>
       </aside>
 
-      <main className="workspace product-workspace">
-        <header className="topbar product-topbar">
+      <main className="product-workspace">
+        <header className="product-topbar">
+          <div className="topbar-leading">
+            <button className="icon-button sidebar-toggle" type="button" aria-label="Toggle navigation">
+              <Icon name="panel" size={17} />
+            </button>
+            <span className="topbar-divider" />
+          </div>
           <div className="project-switcher">
             <span>Workspace</span>
             <select
@@ -110,7 +107,6 @@ export function ProductShell({
             </select>
           </div>
           <div className="topbar-actions">
-            <span className="release-chip">Community · v0.5.1</span>
             <label className="select-control topbar-language">
               <Icon name="globe" size={15} />
               <select
@@ -123,6 +119,9 @@ export function ProductShell({
                 ))}
               </select>
             </label>
+            <button className="icon-button" type="button" aria-label="Full screen">
+              <Icon name="fullscreen" size={17} />
+            </button>
             <button
               aria-label={t("app.theme")}
               className="icon-button"
@@ -132,17 +131,20 @@ export function ProductShell({
               <Icon name={theme === "light" ? "sun" : "moon"} size={16} />
             </button>
             <button
-              className="secondary-button refresh-button"
+              aria-label={t("app.refresh")}
+              className="icon-button"
               type="button"
               disabled={busy}
               onClick={() => void refresh()}
             >
-              <Icon name="refresh" size={15} />{t("app.refresh")}
+              <Icon name="refresh" size={16} />
             </button>
+            <span className="topbar-avatar-ring">
+              <span className="topbar-avatar">{user.displayName.slice(0, 1).toUpperCase()}</span>
+            </span>
           </div>
         </header>
         <section className="product-stage">
-          <CosmicBackground />
           <div className="content">{children}</div>
         </section>
       </main>

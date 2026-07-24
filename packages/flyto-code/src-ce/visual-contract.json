@@ -1,0 +1,53 @@
+{
+  "schema": "flyto.warroom-ce-visual-contract.v1",
+  "canonical_baseline": "src-next",
+  "sync_model": "flow-cloud-style-explicit-visual-contract",
+  "canonical_sources": [
+    "src-next/app/(public)/(auth)/components/views/SignInPageView.tsx",
+    "src-next/app/(public)/(auth)/components/views/SignUpPageView.tsx",
+    "src-next/app/(public)/(auth)/components/ui/AuthPagesMessageSection.tsx",
+    "src-next/components/AuthPreferenceControls.tsx",
+    "src-next/components/theme-layouts/components/Logo.tsx",
+    "src-next/components/theme-layouts/layout1/components/navbar/style-1/NavbarStyle1.tsx",
+    "src-next/components/theme-layouts/layout1/components/navbar/style-1/NavbarStyle1Content.tsx",
+    "src-next/components/theme-layouts/layout1/components/ToolbarLayout1.tsx",
+    "src-next/configs/themesConfig.ts"
+  ],
+  "shared_surface": [
+    "brand artwork and wordmark",
+    "authentication split layout",
+    "navigation geometry and interaction states",
+    "toolbar geometry and controls",
+    "light and dark palette",
+    "typography, spacing, borders, and page-card rhythm"
+  ],
+  "edition_owned_surface": [
+    "CE routes and navigation labels",
+    "local bootstrap and JWT wiring",
+    "CE API data and actions",
+    "Community feature composition"
+  ],
+  "tokens": {
+    "navbar_width": "280px",
+    "toolbar_height": "64px",
+    "content_width": "1120px",
+    "auth_form_width": "320px",
+    "auth_input_height": "48px",
+    "auth_button_height": "36px",
+    "auth_title_size": "24px",
+    "auth_message_title_size": "48px",
+    "auth_message_horizontal_padding": "112px",
+    "brand_light": "#a78bfa",
+    "brand_main_light": "#7c3aed",
+    "brand_main_dark": "#8b5cf6",
+    "brand_dark": "#6d28d9",
+    "secondary": "#06b6d4",
+    "navbar_background": "#1e1045",
+    "navbar_paper": "#2a1557",
+    "light_background": "#f5f5f5",
+    "light_paper": "#ffffff",
+    "dark_background": "#0c1222",
+    "dark_paper": "#151d2e",
+    "font_family": "Roboto, Helvetica, Arial, sans-serif"
+  }
+}
