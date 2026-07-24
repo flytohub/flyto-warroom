@@ -280,11 +280,11 @@
       ".github/workflows/ci.yml": "ff56b5c9a2841674b0e6cfff83669f832a270767bb4dbc53adb8200ed8a36b67",
       ".github/workflows/cla.yml": "5d6173339b9e04a4b9d3528e3163dd3bb317d649c30574fc8f272bf6bb736071",
       ".github/workflows/release-images.yml": "bc7e928bfa3d4458e4a0bdfa07b251322140664760174696b7405084ce64a1f1",
-      ".github/workflows/sync-docker-hub-overview.yml": "bd672c52d4c56dc54527a64124e3da802adf32324fd139bade9f4c5bbe490e7a",
+      ".github/workflows/sync-docker-hub-overview.yml": "d18e02a0010afc46ef5afabf24dd588e2d27c68bebe6f180447c2836ec872810",
       ".gitignore": "aff9047751406e785242a3f434819cb0fdf71a2f52b6af77ed22c20f9076d815",
       "AGENTS.md": "78da7491ff4fd574959c67d3961e6357043c3f93737debb818fbfc89c2d87f75",
       "ARCHITECTURE.md": "8360e071f14c0d4b53518ee57ec8c7e7fb615521f38a69d22e45925e60ae5063",
-      "CHANGELOG.md": "1a5389b2c831ff2cd6cfa1b51c9863497ce910a9885d4762bfc9657e3c5c0d28",
+      "CHANGELOG.md": "87858135a026079c5258d9b60371b2a1443242616d0dff27983236cca4ccb933",
       "CLA.md": "90a5b1795c372cdedeb5a4d4bef443942b4602ed1db2bce53fdacb218d944e1b",
       "CLAUDE.md": "fb7972ccec46e94e0777be383b985a2d99f3804245c23ca9fedafa796bf44ec3",
       "CONTRIBUTING.md": "336d1cac1c2ba94c92edba96d1b0c0680e371526c80897885c29d5b34e1363c8",
@@ -295,10 +295,10 @@
       "LICENSES.md": "bca5e5811923849d6e5b9c141de4e10f0b281301cf4839efcbfecf2444a5d716",
       "Makefile": "e71914b7e630896c20b68559fc0bb003c59c5de7a1c9c07ad5be83d41a080fec",
       "PROJECT.md": "d1394199d19beb1894b7cee78e99bc8774c15b9bb2a143059d84fd615beb7912",
-      "README.md": "add8a2a1ac1b3e28a9cb6e62707d13da1f09c378389b38d2464f5cae7e2e8380",
+      "README.md": "acb127fb3f7c84ec3980845d7a14ce75a26dd4bd1e34f0e4e76048e9bd3a9fd2",
       "ROADMAP.md": "ee56a6d573ca7368bba57aa2142518ac1690ef7ec01906110f6bc683604ad758",
       "SECURITY.md": "2c759fa0acefd866a7252a8d79ae4647c02d7d860a23ef976fd20e1ddc93a31a",
-      "STATE.md": "4db026e76dc0f9fefd5ae484b8105e2377b1d4e1e054e70f219434d7d5e3b3b7",
+      "STATE.md": "3c012826d0456a01781876b97f8708752f4bb1ed1d357e788eabc39aff58923c",
       "TRADEMARK.md": "22840f83e6833e702ea9b089d2952ad9789494a55f1cd17a4d598061685f39d9",
       "docs/README.md": "9f0d4e08a109519ca9c487b7fc8dd706ff9da7a40d08a2333a28bcf31b22f9c0",
       "docs/account-security.md": "1574d4ef6a77905b627b13a691885ab405886deed7dc81cf4594b0dce1f09209",
@@ -307,7 +307,7 @@
       "docs/cloud-bundle-producer.md": "8a11cfc67c567b7b401912a6288c8b0f5cd4ef61f4eff4634ab47deed8e01d15",
       "docs/code-protection.md": "a46814ce4deff594417fbfe04ef2a3c1237f5703fe65fdff5f15e91e80d7ec99",
       "docs/demo-seed-workspace.md": "598c2155b7fce31d90947d41cfb73d6eebee87127f972006764d262ef3a4c938",
-      "docs/docker-hub-overview.md": "26990104498207d9ebd7610b902c1556de0c3d033a7c904fa889113879bcc938",
+      "docs/docker-hub-overview.md": "3e0d2e00ab7b658c983cf79ecbd35785fdf3a94fdb35654f74093db3b892e4be",
       "docs/documentation-manifest.json": "b1a61973f939878d2c11e5fc1836af9cf0597c0ab65a53c27554f471abb261b0",
       "docs/edition-profiles.md": "a894f6e845f92839945ee804a40a37e826fc21c23d964f6318f6aff6fc7f2920",
       "docs/enterprise-cloud-bridge.md": "97ae7ac4a3b7968fa9140aea91b29d768ff43f8ca781717f56ecce2abcd1a37d",
@@ -316,14 +316,14 @@
       "docs/github-hardening.md": "c052f6f3369f3a3bbe36939620ff089ef95aa9415c4f6298065d5e4bbdd914ec",
       "docs/images/warroom-automated-security-discovery.png": "5ac579e8d6a2be232ae110a64d7eae7b8d07a277e2ee0d6f1c64f9edae3da578",
       "docs/images/warroom-evidence-pack.png": "b8dee5a47e531968ac1a324b886a325f54c370af0591ad253e9187d515125b03",
-      "docs/local-install.md": "f433444fa71a523dbed36fa5a1eaf6ac9b2831e9029379e40fdf49cd597af64a",
-      "docs/official-builds.md": "4cb207c2de5c68dd5ad796c41d3effbc0bcbd2352d435b015508a08310fc1390",
+      "docs/local-install.md": "1e79c3320da6c4159e2abf323dd85ffb13b4955045fae579e03180a4ce8f1fc9",
+      "docs/official-builds.md": "13083a64f941cc8cef206f23d35882bb5fa8c3fb7553e63799fc58502959d097",
       "docs/paid-prerequisites.md": "b902b3ff5bed3c8ef54a3da48b858f2f08521bc54185ec8303f9a641d2b5746c",
       "docs/public-roadmap.md": "0d9c2521b84459682f44eb89a535287fd3a970786aa93da5df47bda539eab503",
       "docs/reference-architecture.md": "c1983bde3e02f09c96b454acbea0092542b313b8ca7648988d79f7ef660aa93f",
-      "docs/reference/README.md": "7892c7649ca5846fca54b62b54da61099555e789c32a212df787f5a95b39e1bd",
+      "docs/reference/README.md": "8eb8e7e2bcf6795ea842bbd994f4cbd7a7df90fa9215e7c23924548060d53568",
       "docs/reference/source-install-01.md": "00147525d0e995a4de7bb6415d4dcd1428e89398fbf1d3c0afd717eecccd614f",
-      "docs/reference/source-packages-01.md": "5170d59fea0c52369092e5bb13d7209046ab7f9c27b5daf440046657d9b93639",
+      "docs/reference/source-packages-01.md": "d3145935f076f517cfa5925a9d722e7b11242af940c84ab8f56526c1eb08599b",
       "docs/reference/source-scripts-01.md": "cb6f170ab53c752e27743f36f437a99f0e512dfa9a8d31d7deeeaf3497586ec2",
       "docs/reference/source-services-01.md": "b863651b66d60bcd21fcdb0346d1be0a1cbe33d93974917cefb1d43196918326",
       "docs/reference/source-services-02.md": "1442622e84c8d01c16a50c791ff3ea9bc968597eacd66f82e2b3647c4954d5e2",
@@ -338,9 +338,9 @@
       "handoffs/2026-07-19-ce-public-product-loop.md": "bc22663aaddf5d0430de0d5cf626d6a2b323a4278380b93aaa854d20aa8a0c85",
       "handoffs/2026-07-22-deterministic-release-provenance.md": "e195532b0c7b199a5719c80a643959a68d0f4a3bbd364a96eb1e36253ff20d37",
       "handoffs/2026-07-22-one-time-admin-setup.md": "167c78294fa2372d180cc62fe0702199890860300e54227aa3bb4d675e54a89c",
-      "handoffs/2026-07-22-tag-driven-image-release.md": "1f520714c0c466ec63a32775cbaec217c2b51dd4fb4014697a3e39c886c2e8eb",
+      "handoffs/2026-07-22-tag-driven-image-release.md": "3e43b3f0050f8aa6869568fcd1dd1db64dc5a169d226801764e8848c69168932",
       "handoffs/_registry.md": "f1d80c9e08d951a187b6a7d26d9023994563cb87b8be4e9ade26866e02f17327",
-      "install/.env.ce.example": "71bd7721b50f04a8d5426b82fa0b2a863749c5e492792ffec2e9a2f155a05f5e",
+      "install/.env.ce.example": "4a9b4fb9df2ee8a93f181ac219faa74adce64c6047c6521a31b3142a259a8377",
       "install/.env.ee-sim.example": "73471bffd749a9fedfa864233c84e9ec012124e8830b3f0bfd78d9788729829e",
       "install/README.md": "2ea44c88ffa4ce0f355deec1b5d2c85ccc5c92664b14e6d576502dd9e9d21316",
       "install/demo-workspace.json": "9a76902974d5e2c8c04f697003bd494fdee5e0fc1664483cf2a356293686cb3f",
@@ -385,18 +385,18 @@
       "packages/flyto-code/docs/reference/source-api.md": "6e0458e3a708af1b7a32276fd293546cef4b6df6feb8e1f2799a2bc1c9d27466",
       "packages/flyto-code/index-ce.html": "36a213546c820e5417cc7fdbcfef41caf403b2da13b9db13d1569f760bf6a344",
       "packages/flyto-code/nginx.conf": "f79187fbb3eb37e10ca18b4c662487b07ef1f0788a5b6fedbb59245bdee53160",
-      "packages/flyto-code/package-lock.json": "d1d78ef7dfd53ab2343bf90bc71729506fa423068f6553e43489f7f08c5e0ff8",
-      "packages/flyto-code/package.json": "07d25035f193c5eb382086cad5ee021d12b318de90401323fb2926f117f60b86",
+      "packages/flyto-code/package-lock.json": "25cf7298b43aed33aa18175923c5edcfdd975466f42d93ba60dc29d424207983",
+      "packages/flyto-code/package.json": "f1e9d93e57ff2e106f2481e2012b883cb61320720f6d1a134e34fc5fc794e40e",
       "packages/flyto-code/public/favicon.svg": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66",
       "packages/flyto-code/src-ce/App.tsx": "4d6f72b6ee7b68657e6caef6f1bd46653d1a923fb86dec4d6066c778697d781f",
       "packages/flyto-code/src-ce/api.ts": "f2effb30350a1c9abdd51fb59ea465090eaa0ee1eb09eb6b1b6a0c84dae6665f",
       "packages/flyto-code/src-ce/i18n.ts": "e9f974e9838a4664205ea8c2daa7b47876e2e38b09830c802f9afe97dc15d093",
       "packages/flyto-code/src-ce/main.tsx": "30b7af17da1460dc9bd31377646ae00e6d7d15c8e7551e1ff45d77284d31950b",
-      "packages/flyto-code/src-ce/product-shell.contract.test.mjs": "91d1954de677d7f2f4b89e1fc6e10493f53ef2eebf66e246720704c6d6d23a52",
+      "packages/flyto-code/src-ce/product-shell.contract.test.mjs": "e0fae37c62e09ff47643b53bcd10801600f627bcf2a5a137bc236b933dfb9f6b",
       "packages/flyto-code/src-ce/product.ts": "69b216537f30c01bb666045cdef9d0f37ba519c434795672c461929ba1507d6c",
       "packages/flyto-code/src-ce/styles.css": "862aa093346eea1693e28a0bfbbe1ecc5464fff33492e9ae81ede6e101f894a0",
       "packages/flyto-code/src-ce/types.ts": "442eea792e41e431fb63ae50d9c5443af3b9f51bd0801eee200d7719141e2dfc",
-      "packages/flyto-code/src-ce/ui/AuthScreen.tsx": "35ad96174d3ef1571a00034c5dc8f5a579afb2a2635c52ba4d718d04cdf76759",
+      "packages/flyto-code/src-ce/ui/AuthScreen.tsx": "73ff96ee3716d0c7fb8d49d610441351dc3f0adee3292af4eef80257fad10f70",
       "packages/flyto-code/src-ce/ui/Logo.tsx": "e4e5a063cc235e06548e86ec7be6e9877c60c197a5eabdbb6195578b7df2fbcd",
       "packages/flyto-code/src-ce/ui/ProductShell.tsx": "b4056e624d4b751346828fb7e2dc8f3605a36225f0ede5658d9e67cdc1f5b8d3",
       "packages/flyto-code/src-ce/ui/format.ts": "4a05717cf9e6c940f2ab98a630a44de5e9da727d2a17addf740a0debc8964ced",
@@ -625,23 +625,23 @@
       "workflows/wrap-up.md": "c194cf03422ea13b5df82c6d631f708ad525f78349f40c3cad7bcb67e4eacdaf"
     },
     "schema": "flyto.open-core-provenance.v1",
-    "source_commit": "6d95b86cb80661c82e93cf1344f27866df44b59b",
+    "source_commit": "db6811b2298d55d193a29da9cad87d00b98b22b0",
     "source_manifest": {
       "path": "release/config/flyto2/open-core-manifest.json",
       "repository": "flyto-engine"
     },
     "source_repositories": {
       "flyto-code": {
-        "commit": "230cda7f2f7b5e5f65399418db0f56748871ba95",
+        "commit": "d6b5a685103404b7632ed60e20cb7dd094240a40",
         "repository": "https://github.com/flytohub/flyto-code.git"
       },
       "flyto-engine": {
-        "commit": "6d95b86cb80661c82e93cf1344f27866df44b59b",
+        "commit": "db6811b2298d55d193a29da9cad87d00b98b22b0",
         "repository": "https://github.com/flytohub/flyto-engine.git"
       }
     },
     "source_repository": "https://github.com/flytohub/flyto-engine.git",
-    "tree_sha256": "44a18aaca9d1532abed4941ad0ab029e8c28d3380b3bdd937e28d6a1b9595ac0"
+    "tree_sha256": "4149c96321388218b710032aed68f8135114022170c440f2e4a4e10d7aa40e88"
   },
   "release": {
     "build_source_repositories": [],
@@ -649,7 +649,7 @@
     "generate": [
       "warroom-ce-installer"
     ],
-    "github_tag": "v0.5.2",
+    "github_tag": "v0.5.3",
     "name": "flyto2-warroom-ce",
     "public_image_digests": {},
     "public_image_repository": "docker.io/flyto2/warroom",
@@ -669,7 +669,7 @@
       "scheduler": "docker.io/flyto2/warroom",
       "worker": "docker.io/flyto2/warroom"
     },
-    "version": "0.5.2"
+    "version": "0.5.3"
   },
   "release_files": [
     "install/docker-compose.ce.yml",

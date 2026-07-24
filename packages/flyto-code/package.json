@@ -2,7 +2,7 @@
   "name": "flyto-warroom-ce-frontend",
   "private": true,
   "license": "PolyForm-Noncommercial-1.0.0",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "type": "module",
   "scripts": {
     "dev": "vite --config vite.config.ce.ts --open /index-ce.html",

@@ -202,7 +202,7 @@ Published repository: `docker.io/flyto2/warroom`
 | Report | `report-ce` |
 | Warroom UI | `code-ce` |
 
-Stable release `v0.5.2` builds per-service `*-0.5.2`
+Stable release `v0.5.3` builds per-service `*-0.5.3`
 Docker images directly from that tagged public source after its `main`
 commit passes CI. See `docs/official-builds.md` for the release contract.
 

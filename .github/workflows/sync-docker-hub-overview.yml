@@ -34,8 +34,8 @@ jobs:
           if not source.startswith(prefix) or not source.endswith(suffix):
               raise SystemExit("docs/docker-hub-overview.md wrapper contract changed")
           overview = source[len(prefix):-len(suffix)]
-          if "`v0.5.2` maps to:" not in overview:
-              raise SystemExit("Docker Hub overview is not the v0.5.2 service contract")
+          if "`v0.5.3` maps to:" not in overview:
+              raise SystemExit("Docker Hub overview is not the v0.5.3 service contract")
           if overview.count("- `") < 6:
               raise SystemExit("Docker Hub overview does not list all six application tags")
           output = Path(".flyto/docker-hub-overview.md")

@@ -2,7 +2,7 @@
 
 # Packages Source Reference 1
 
-Source-linked contracts for **101 declarations** in `packages/`.
+Source-linked contracts for **102 declarations** in `packages/`.
 
 | Kind | Declaration | Responsibility | Source |
 |---|---|---|---|
@@ -59,11 +59,12 @@ Source-linked contracts for **101 declarations** in `packages/`.
 | function | `const sources = await Promise.all(` | Implements sources for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:23`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L23>) |
 | function | `const joined = sources.map(([, source]) => source).join("\n");` | Implements joined for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:26`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L26>) |
 | function | `const app = await readFile(join(ceRoot, "App.tsx"), "utf8");` | Implements app for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:27`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L27>) |
-| function | `const styles = await readFile(join(ceRoot, "styles.css"), "utf8");` | Implements styles for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:28`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L28>) |
-| function | `const visualContract = JSON.parse(` | Implements visual contract for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:29`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L29>) |
-| function | `const dockerfile = await readFile(join(ceRoot, "..", "Dockerfile.ce"), "utf8").catch(() =>` | Implements dockerfile for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:32`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L32>) |
-| function | `const canonicalTheme = await readFile(` | Reports whether canonical theme for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:97`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L97>) |
-| function | `const canonicalNavbar = await readFile(` | Reports whether canonical navbar for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:101`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L101>) |
+| function | `const authScreen = await readFile(join(ceRoot, "ui", "AuthScreen.tsx"), "utf8");` | Implements auth screen for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:28`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L28>) |
+| function | `const styles = await readFile(join(ceRoot, "styles.css"), "utf8");` | Implements styles for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:29`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L29>) |
+| function | `const visualContract = JSON.parse(` | Implements visual contract for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:30`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L30>) |
+| function | `const dockerfile = await readFile(join(ceRoot, "..", "Dockerfile.ce"), "utf8").catch(() =>` | Implements dockerfile for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:33`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L33>) |
+| function | `const canonicalTheme = await readFile(` | Reports whether canonical theme for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:106`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L106>) |
+| function | `const canonicalNavbar = await readFile(` | Reports whether canonical navbar for `packages/flyto-code/src-ce/product-shell.contract.test.mjs`. | [`packages/flyto-code/src-ce/product-shell.contract.test.mjs:110`](<../../packages/flyto-code/src-ce/product-shell.contract.test.mjs#L110>) |
 | function | `export const emptyWorkflow: WorkflowSummary = {` | Implements empty workflow for `packages/flyto-code/src-ce/product.ts`. | [`packages/flyto-code/src-ce/product.ts:3`](<../../packages/flyto-code/src-ce/product.ts#L3>) |
 | function | `export const communityServices: ServiceBoundary[] = [` | Implements community services for `packages/flyto-code/src-ce/product.ts`. | [`packages/flyto-code/src-ce/product.ts:10`](<../../packages/flyto-code/src-ce/product.ts#L10>) |
 | function | `const languageFlags: Record<Language, string> = {` | Implements language flags for `packages/flyto-code/src-ce/ui/AuthScreen.tsx`. | [`packages/flyto-code/src-ce/ui/AuthScreen.tsx:23`](<../../packages/flyto-code/src-ce/ui/AuthScreen.tsx#L23>) |

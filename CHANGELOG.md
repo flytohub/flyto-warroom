@@ -2,6 +2,9 @@
 
 ## 2026-07-24
 
+- Advanced the verified CE source and image release to `v0.5.3`; the
+  authentication page now derives its advertised language count from the
+  actual bundled locale list, with a contract test rejecting hard-coded drift.
 - Advanced the canonical UI alignment and explicit visual-contract release to
   `v0.5.2`, including the React Router 7.18.1 security update and a fresh
   25.48-second public-source startup proof.

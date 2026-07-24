@@ -25,6 +25,7 @@ const sources = await Promise.all(
 );
 const joined = sources.map(([, source]) => source).join("\n");
 const app = await readFile(join(ceRoot, "App.tsx"), "utf8");
+const authScreen = await readFile(join(ceRoot, "ui", "AuthScreen.tsx"), "utf8");
 const styles = await readFile(join(ceRoot, "styles.css"), "utf8");
 const visualContract = JSON.parse(
   await readFile(join(ceRoot, "visual-contract.json"), "utf8"),
@@ -71,6 +72,14 @@ assert.match(styles, /\.auth-message[\s\S]*?padding:\s*64px 112px/);
 assert.match(joined, /src="\/favicon\.svg"/);
 assert.match(dockerfile, /^COPY public \.\/public$/m);
 assert.match(joined, /auth-message/);
+assert.match(
+  authScreen,
+  /<strong>\{languages\.length\}<\/strong><span>\{t\("auth\.pillarLocales"\)\}<\/span>/,
+);
+assert.doesNotMatch(
+  authScreen,
+  /<strong>\d+<\/strong><span>\{t\("auth\.pillarLocales"\)\}<\/span>/,
+);
 assert.match(styles, /\.auth-layout/);
 assert.match(styles, /--sidebar:\s*#1e1045/);
 assert.doesNotMatch(joined, /CosmicBackground/);

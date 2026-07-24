@@ -223,7 +223,7 @@ export function AuthScreen({
           <div className="auth-pillars">
             <div><strong>19+</strong><span>{t("auth.pillarScanners")}</span></div>
             <div><strong>12</strong><span>{t("auth.pillarPlaybooks")}</span></div>
-            <div><strong>17</strong><span>{t("auth.pillarLocales")}</span></div>
+            <div><strong>{languages.length}</strong><span>{t("auth.pillarLocales")}</span></div>
           </div>
           <ul>
             <li><span />{t("auth.pillarBullet1")}</li>

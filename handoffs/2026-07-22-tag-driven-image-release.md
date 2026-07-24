@@ -5,8 +5,8 @@ Date: 2026-07-22
 ## Summary
 
 Flyto2 Warroom CE uses stable Git tags as the public Docker release boundary.
-The current complete public-source runtime release is manifest version `0.5.2`
-with Git tag `v0.5.2`.
+The current complete public-source runtime release is manifest version `0.5.3`
+with Git tag `v0.5.3`.
 
 `.github/workflows/release-images.yml` requires the tag commit to be on `main`
 with successful CE CI. It audits the tagged tree, then builds the CE engine,
