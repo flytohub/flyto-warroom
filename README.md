@@ -22,21 +22,17 @@ Repository -> Scan -> Findings -> Evidence -> Risk Hypotheses -> Verify -> Repor
 
 ## See The Warroom In Action
 
-These English captures were taken from the source-built 0.5.1
-CE stack after all six images reached healthy. They show the actual
-self-hosted frontend, not a hosted demo or a design mockup.
+These first-party English captures come from the canonical Flyto2
+Warroom product-verification interface. They are real product screens,
+not authentication pages, a hosted landing page, or a design mockup.
 
-### First Run: Create The Local Administrator
+### Automated Security Discovery
 
-![Flyto2 Warroom CE local administrator setup](docs/images/warroom-ce-first-admin.png)
+![Flyto2 Warroom automated security discovery](docs/images/warroom-automated-security-discovery.png)
 
-### Returning Operators: Sign In Locally
+### Evidence Pack Review
 
-![Flyto2 Warroom CE local sign-in](docs/images/warroom-ce-sign-in.png)
-
-### Built-In Light And Dark Themes
-
-![Flyto2 Warroom CE light theme](docs/images/warroom-ce-first-admin-light.png)
+![Flyto2 Warroom evidence pack](docs/images/warroom-evidence-pack.png)
 
 CE is useful without Flyto2 Cloud. Enterprise Cloud Bridge adds
 commercial intelligence, managed remediation, identity, support,

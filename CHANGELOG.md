@@ -2,6 +2,11 @@
 
 ## 2026-07-24
 
+- Corrected the public product gallery by removing the standalone
+  administrator/sign-in presentation and restoring the canonical Warroom
+  automated-security and evidence-pack product screens.
+- Added release tests that prevent authentication or landing-page captures
+  from being republished as product UI.
 - Advanced the public source profile to `v0.5.1` after restoring the canonical
   Flyto2 Warroom authentication and product-shell UI in the independent CE
   frontend.

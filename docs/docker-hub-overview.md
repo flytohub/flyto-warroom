@@ -87,20 +87,17 @@ Open the UI to create the first administrator through the one-time setup page.
 
 ## Product Views
 
-All captures below use the English CE interface from the immutable
-`v0.5.1` public source.
+These first-party English captures show the canonical Flyto2 Warroom
+product-verification interface. Authentication and landing-page captures are
+deliberately excluded from the product gallery.
 
-### Create The First Local Administrator
+### Automated Security Discovery
 
-![Flyto2 Warroom CE first administrator setup](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.1/docs/images/warroom-ce-first-admin.png)
+![Flyto2 Warroom automated security discovery](https://raw.githubusercontent.com/flytohub/flyto-warroom/main/docs/images/warroom-automated-security-discovery.png)
 
-### Sign In To The Local Warroom
+### Evidence Pack Review
 
-![Flyto2 Warroom CE local sign in](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.1/docs/images/warroom-ce-sign-in.png)
-
-### Light Appearance
-
-![Flyto2 Warroom CE first administrator setup in light appearance](https://raw.githubusercontent.com/flytohub/flyto-warroom/v0.5.1/docs/images/warroom-ce-first-admin-light.png)
+![Flyto2 Warroom evidence pack](https://raw.githubusercontent.com/flytohub/flyto-warroom/main/docs/images/warroom-evidence-pack.png)
 
 ## Enterprise Path
 
